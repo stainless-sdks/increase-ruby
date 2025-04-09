@@ -5,176 +5,157 @@ module Increase
     # @see Increase::Resources::RealTimePaymentsTransfers#create
     class RealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Real-Time Payments Transfer's identifier.
+      #   #/components/schemas/real_time_payments_transfer/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The Account from which the transfer was sent.
+      #   #/components/schemas/real_time_payments_transfer/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute acknowledgement
-      #   If the transfer is acknowledged by the recipient bank, this will contain
-      #   supplemental details.
+      #   #/components/schemas/real_time_payments_transfer/properties/acknowledgement
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::Acknowledgement, nil]
       required :acknowledgement, -> { Increase::Models::RealTimePaymentsTransfer::Acknowledgement }, nil?: true
 
       # @!attribute amount
-      #   The transfer amount in USD cents.
+      #   #/components/schemas/real_time_payments_transfer/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute approval
-      #   If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
+      #   #/components/schemas/real_time_payments_transfer/properties/approval
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::Approval, nil]
       required :approval, -> { Increase::Models::RealTimePaymentsTransfer::Approval }, nil?: true
 
       # @!attribute cancellation
-      #   If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
+      #   #/components/schemas/real_time_payments_transfer/properties/cancellation
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::Cancellation, nil]
       required :cancellation, -> { Increase::Models::RealTimePaymentsTransfer::Cancellation }, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      #   #/components/schemas/real_time_payments_transfer/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute created_by
-      #   What object created the transfer, either via the API or the dashboard.
+      #   #/components/schemas/real_time_payments_transfer/properties/created_by
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy, nil]
       required :created_by, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy }, nil?: true
 
       # @!attribute creditor_name
-      #   The name of the transfer's recipient. This is set by the sender when creating
-      #   the transfer.
+      #   #/components/schemas/real_time_payments_transfer/properties/creditor_name
       #
       #   @return [String]
       required :creditor_name, String
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   currency. For real-time payments transfers this is always equal to `USD`.
+      #   #/components/schemas/real_time_payments_transfer/properties/currency
       #
       #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::Models::RealTimePaymentsTransfer::Currency }
 
       # @!attribute debtor_name
-      #   The name of the transfer's sender. If not provided, defaults to the name of the
-      #   account's entity.
+      #   #/components/schemas/real_time_payments_transfer/properties/debtor_name
       #
       #   @return [String, nil]
       required :debtor_name, String, nil?: true
 
       # @!attribute destination_account_number
-      #   The destination account number.
+      #   #/components/schemas/real_time_payments_transfer/properties/destination_account_number
       #
       #   @return [String]
       required :destination_account_number, String
 
       # @!attribute destination_routing_number
-      #   The destination American Bankers' Association (ABA) Routing Transit Number
-      #   (RTN).
+      #   #/components/schemas/real_time_payments_transfer/properties/destination_routing_number
       #
       #   @return [String]
       required :destination_routing_number, String
 
       # @!attribute external_account_id
-      #   The identifier of the External Account the transfer was made to, if any.
+      #   #/components/schemas/real_time_payments_transfer/properties/external_account_id
       #
       #   @return [String, nil]
       required :external_account_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/real_time_payments_transfer/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute pending_transaction_id
-      #   The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
+      #   #/components/schemas/real_time_payments_transfer/properties/pending_transaction_id
       #
       #   @return [String, nil]
       required :pending_transaction_id, String, nil?: true
 
       # @!attribute rejection
-      #   If the transfer is rejected by Real-Time Payments or the destination financial
-      #   institution, this will contain supplemental details.
+      #   #/components/schemas/real_time_payments_transfer/properties/rejection
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::Rejection, nil]
       required :rejection, -> { Increase::Models::RealTimePaymentsTransfer::Rejection }, nil?: true
 
       # @!attribute remittance_information
-      #   Unstructured information that will show on the recipient's bank statement.
+      #   #/components/schemas/real_time_payments_transfer/properties/remittance_information
       #
       #   @return [String]
       required :remittance_information, String
 
       # @!attribute source_account_number_id
-      #   The Account Number the recipient will see as having sent the transfer.
+      #   #/components/schemas/real_time_payments_transfer/properties/source_account_number_id
       #
       #   @return [String]
       required :source_account_number_id, String
 
       # @!attribute status
-      #   The lifecycle status of the transfer.
+      #   #/components/schemas/real_time_payments_transfer/properties/status
       #
       #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Status]
       required :status, enum: -> { Increase::Models::RealTimePaymentsTransfer::Status }
 
       # @!attribute submission
-      #   After the transfer is submitted to Real-Time Payments, this will contain
-      #   supplemental details.
+      #   #/components/schemas/real_time_payments_transfer/properties/submission
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::Submission, nil]
       required :submission, -> { Increase::Models::RealTimePaymentsTransfer::Submission }, nil?: true
 
       # @!attribute transaction_id
-      #   The Transaction funding the transfer once it is complete.
+      #   #/components/schemas/real_time_payments_transfer/properties/transaction_id
       #
       #   @return [String, nil]
       required :transaction_id, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `real_time_payments_transfer`.
+      #   #/components/schemas/real_time_payments_transfer/properties/type
       #
       #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Type]
       required :type, enum: -> { Increase::Models::RealTimePaymentsTransfer::Type }
 
       # @!attribute ultimate_creditor_name
-      #   The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #   an intermediary receiving the payment for someone else.
+      #   #/components/schemas/real_time_payments_transfer/properties/ultimate_creditor_name
       #
       #   @return [String, nil]
       required :ultimate_creditor_name, String, nil?: true
 
       # @!attribute ultimate_debtor_name
-      #   The name of the ultimate sender of the transfer. Set this if the funds are being
-      #   sent on behalf of someone who is not the account holder at Increase.
+      #   #/components/schemas/real_time_payments_transfer/properties/ultimate_debtor_name
       #
       #   @return [String, nil]
       required :ultimate_debtor_name, String, nil?: true
 
       # @!parse
-      #   # Real-Time Payments transfers move funds, within seconds, between your Increase
-      #   # account and any other account on the Real-Time Payments network.
+      #   # #/components/schemas/real_time_payments_transfer
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -238,14 +219,13 @@ module Increase
       # @see Increase::Models::RealTimePaymentsTransfer#acknowledgement
       class Acknowledgement < Increase::Internal::Type::BaseModel
         # @!attribute acknowledged_at
-        #   When the transfer was acknowledged.
+        #   #/components/schemas/real_time_payments_transfer/properties/acknowledgement/anyOf/0/properties/acknowledged_at
         #
         #   @return [Time]
         required :acknowledged_at, Time
 
         # @!parse
-        #   # If the transfer is acknowledged by the recipient bank, this will contain
-        #   # supplemental details.
+        #   # #/components/schemas/real_time_payments_transfer/properties/acknowledgement
         #   #
         #   # @param acknowledged_at [Time]
         #   #
@@ -257,22 +237,19 @@ module Increase
       # @see Increase::Models::RealTimePaymentsTransfer#approval
       class Approval < Increase::Internal::Type::BaseModel
         # @!attribute approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
+        #   #/components/schemas/real_time_payments_transfer/properties/approval/anyOf/0/properties/approved_at
         #
         #   @return [Time]
         required :approved_at, Time
 
         # @!attribute approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
+        #   #/components/schemas/real_time_payments_transfer/properties/approval/anyOf/0/properties/approved_by
         #
         #   @return [String, nil]
         required :approved_by, String, nil?: true
 
         # @!parse
-        #   # If your account requires approvals for transfers and the transfer was approved,
-        #   # this will contain details of the approval.
+        #   # #/components/schemas/real_time_payments_transfer/properties/approval
         #   #
         #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
@@ -285,22 +262,19 @@ module Increase
       # @see Increase::Models::RealTimePaymentsTransfer#cancellation
       class Cancellation < Increase::Internal::Type::BaseModel
         # @!attribute canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
+        #   #/components/schemas/real_time_payments_transfer/properties/cancellation/anyOf/0/properties/canceled_at
         #
         #   @return [Time]
         required :canceled_at, Time
 
         # @!attribute canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
+        #   #/components/schemas/real_time_payments_transfer/properties/cancellation/anyOf/0/properties/canceled_by
         #
         #   @return [String, nil]
         required :canceled_by, String, nil?: true
 
         # @!parse
-        #   # If your account requires approvals for transfers and the transfer was not
-        #   # approved, this will contain details of the cancellation.
+        #   # #/components/schemas/real_time_payments_transfer/properties/cancellation
         #   #
         #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
@@ -313,19 +287,19 @@ module Increase
       # @see Increase::Models::RealTimePaymentsTransfer#created_by
       class CreatedBy < Increase::Internal::Type::BaseModel
         # @!attribute api_key
-        #   If present, details about the API key that created the transfer.
+        #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/api_key
         #
         #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, nil]
         required :api_key, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey }, nil?: true
 
         # @!attribute category
-        #   The type of object that created this transfer.
+        #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/category
         #
         #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category }
 
         # @!attribute oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
+        #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/oauth_application
         #
         #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, nil]
         required :oauth_application,
@@ -333,13 +307,13 @@ module Increase
                  nil?: true
 
         # @!attribute user
-        #   If present, details about the User that created the transfer.
+        #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/user
         #
         #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, nil]
         required :user, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::User }, nil?: true
 
         # @!parse
-        #   # What object created the transfer, either via the API or the dashboard.
+        #   # #/components/schemas/real_time_payments_transfer/properties/created_by
         #   #
         #   # @param api_key [Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, nil]
         #   # @param category [Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category]
@@ -353,13 +327,13 @@ module Increase
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#api_key
         class APIKey < Increase::Internal::Type::BaseModel
           # @!attribute description
-          #   The description set for the API key when it was created.
+          #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/api_key/anyOf/0/properties/description
           #
           #   @return [String, nil]
           required :description, String, nil?: true
 
           # @!parse
-          #   # If present, details about the API key that created the transfer.
+          #   # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/api_key
           #   #
           #   # @param description [String, nil]
           #   #
@@ -368,7 +342,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The type of object that created this transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/category
         #
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#category
         module Category
@@ -393,13 +367,13 @@ module Increase
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::Internal::Type::BaseModel
           # @!attribute name
-          #   The name of the OAuth Application.
+          #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/oauth_application/anyOf/0/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!parse
-          #   # If present, details about the OAuth Application that created the transfer.
+          #   # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/oauth_application
           #   #
           #   # @param name [String]
           #   #
@@ -411,13 +385,13 @@ module Increase
         # @see Increase::Models::RealTimePaymentsTransfer::CreatedBy#user
         class User < Increase::Internal::Type::BaseModel
           # @!attribute email
-          #   The email address of the User.
+          #   #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/user/anyOf/0/properties/email
           #
           #   @return [String]
           required :email, String
 
           # @!parse
-          #   # If present, details about the User that created the transfer.
+          #   # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/user
           #   #
           #   # @param email [String]
           #   #
@@ -427,8 +401,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For real-time payments transfers this is always equal to `USD`.
+      # #/components/schemas/real_time_payments_transfer/properties/currency
       #
       # @see Increase::Models::RealTimePaymentsTransfer#currency
       module Currency
@@ -462,30 +435,26 @@ module Increase
       # @see Increase::Models::RealTimePaymentsTransfer#rejection
       class Rejection < Increase::Internal::Type::BaseModel
         # @!attribute reject_reason_additional_information
-        #   Additional information about the rejection provided by the recipient bank when
-        #   the `reject_reason_code` is `NARRATIVE`.
+        #   #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/reject_reason_additional_information
         #
         #   @return [String, nil]
         required :reject_reason_additional_information, String, nil?: true
 
         # @!attribute reject_reason_code
-        #   The reason the transfer was rejected as provided by the recipient bank or the
-        #   Real-Time Payments network.
+        #   #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/reject_reason_code
         #
         #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode]
         required :reject_reason_code,
                  enum: -> { Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode }
 
         # @!attribute rejected_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was rejected.
+        #   #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/rejected_at
         #
         #   @return [Time, nil]
         required :rejected_at, Time, nil?: true
 
         # @!parse
-        #   # If the transfer is rejected by Real-Time Payments or the destination financial
-        #   # institution, this will contain supplemental details.
+        #   # #/components/schemas/real_time_payments_transfer/properties/rejection
         #   #
         #   # @param reject_reason_additional_information [String, nil]
         #   # @param reject_reason_code [Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode]
@@ -495,8 +464,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The reason the transfer was rejected as provided by the recipient bank or the
-        # Real-Time Payments network.
+        # #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/reject_reason_code
         #
         # @see Increase::Models::RealTimePaymentsTransfer::Rejection#reject_reason_code
         module RejectReasonCode
@@ -573,7 +541,7 @@ module Increase
         end
       end
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/real_time_payments_transfer/properties/status
       #
       # @see Increase::Models::RealTimePaymentsTransfer#status
       module Status
@@ -613,21 +581,19 @@ module Increase
       # @see Increase::Models::RealTimePaymentsTransfer#submission
       class Submission < Increase::Internal::Type::BaseModel
         # @!attribute submitted_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was submitted to The Clearing House.
+        #   #/components/schemas/real_time_payments_transfer/properties/submission/anyOf/0/properties/submitted_at
         #
         #   @return [Time, nil]
         required :submitted_at, Time, nil?: true
 
         # @!attribute transaction_identification
-        #   The Real-Time Payments network identification of the transfer.
+        #   #/components/schemas/real_time_payments_transfer/properties/submission/anyOf/0/properties/transaction_identification
         #
         #   @return [String]
         required :transaction_identification, String
 
         # @!parse
-        #   # After the transfer is submitted to Real-Time Payments, this will contain
-        #   # supplemental details.
+        #   # #/components/schemas/real_time_payments_transfer/properties/submission
         #   #
         #   # @param submitted_at [Time, nil]
         #   # @param transaction_identification [String]
@@ -637,8 +603,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `real_time_payments_transfer`.
+      # #/components/schemas/real_time_payments_transfer/properties/type
       #
       # @see Increase::Models::RealTimePaymentsTransfer#type
       module Type

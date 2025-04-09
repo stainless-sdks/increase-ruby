@@ -16,10 +16,9 @@ module Increase
             .returns(Increase::Models::CardPayment)
         end
         def create(
-          # The amount of the fuel_confirmation in minor units in the card authorization's
-          # currency.
+          # #/components/schemas/sandbox_confirm_the_fuel_pump_amount_for_a_card_authorization_parameters/properties/amount
           amount:,
-          # The identifier of the Card Payment to create a fuel_confirmation on.
+          # #/components/schemas/sandbox_confirm_the_fuel_pump_amount_for_a_card_authorization_parameters/properties/card_payment_id
           card_payment_id:,
           request_options: {}
         ); end

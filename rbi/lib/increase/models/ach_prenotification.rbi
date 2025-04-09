@@ -3,59 +3,55 @@
 module Increase
   module Models
     class ACHPrenotification < Increase::Internal::Type::BaseModel
-      # The ACH Prenotification's identifier.
+      # #/components/schemas/ach_prenotification/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The destination account number.
+      # #/components/schemas/ach_prenotification/properties/account_number
       sig { returns(String) }
       attr_accessor :account_number
 
-      # Additional information for the recipient.
+      # #/components/schemas/ach_prenotification/properties/addendum
       sig { returns(T.nilable(String)) }
       attr_accessor :addendum
 
-      # The description of the date of the notification.
+      # #/components/schemas/ach_prenotification/properties/company_descriptive_date
       sig { returns(T.nilable(String)) }
       attr_accessor :company_descriptive_date
 
-      # Optional data associated with the notification.
+      # #/components/schemas/ach_prenotification/properties/company_discretionary_data
       sig { returns(T.nilable(String)) }
       attr_accessor :company_discretionary_data
 
-      # The description of the notification.
+      # #/components/schemas/ach_prenotification/properties/company_entry_description
       sig { returns(T.nilable(String)) }
       attr_accessor :company_entry_description
 
-      # The name by which you know the company.
+      # #/components/schemas/ach_prenotification/properties/company_name
       sig { returns(T.nilable(String)) }
       attr_accessor :company_name
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the prenotification was created.
+      # #/components/schemas/ach_prenotification/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # If the notification is for a future credit or debit.
+      # #/components/schemas/ach_prenotification/properties/credit_debit_indicator
       sig { returns(T.nilable(Increase::Models::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)) }
       attr_accessor :credit_debit_indicator
 
-      # The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      # #/components/schemas/ach_prenotification/properties/effective_date
       sig { returns(T.nilable(Time)) }
       attr_accessor :effective_date
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/ach_prenotification/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # If the receiving bank notifies that future transfers should use different
-      # details, this will contain those details.
+      # #/components/schemas/ach_prenotification/properties/notifications_of_change
       sig { returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]) }
       attr_accessor :notifications_of_change
 
-      # If your prenotification is returned, this will contain details of the return.
+      # #/components/schemas/ach_prenotification/properties/prenotification_return
       sig { returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn)) }
       attr_reader :prenotification_return
 
@@ -67,21 +63,19 @@ module Increase
       end
       attr_writer :prenotification_return
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      # #/components/schemas/ach_prenotification/properties/routing_number
       sig { returns(String) }
       attr_accessor :routing_number
 
-      # The lifecycle status of the ACH Prenotification.
+      # #/components/schemas/ach_prenotification/properties/status
       sig { returns(Increase::Models::ACHPrenotification::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `ach_prenotification`.
+      # #/components/schemas/ach_prenotification/properties/type
       sig { returns(Increase::Models::ACHPrenotification::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # ACH Prenotifications are one way you can verify account and routing numbers by
-      # Automated Clearing House (ACH).
+      # #/components/schemas/ach_prenotification
       sig do
         params(
           id: String,
@@ -146,7 +140,7 @@ module Increase
       end
       def to_hash; end
 
-      # If the notification is for a future credit or debit.
+      # #/components/schemas/ach_prenotification/properties/credit_debit_indicator
       module CreditDebitIndicator
         extend Increase::Internal::Type::Enum
 
@@ -165,24 +159,19 @@ module Increase
       end
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # #/components/schemas/ach_prenotification/properties/notifications_of_change/items/properties/change_code
         sig { returns(Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
         attr_accessor :change_code
 
-        # The corrected data that should be used in future ACHs to this account. This may
-        # contain the suggested new account number or routing number. When the
-        # `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        # Numbers starting with a 2 encourage changing the `funding` parameter to
-        # checking; numbers starting with a 3 encourage changing to savings.
+        # #/components/schemas/ach_prenotification/properties/notifications_of_change/items/properties/corrected_data
         sig { returns(String) }
         attr_accessor :corrected_data
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the notification occurred.
+        # #/components/schemas/ach_prenotification/properties/notifications_of_change/items/properties/created_at
         sig { returns(Time) }
         attr_accessor :created_at
 
+        # #/components/schemas/ach_prenotification/properties/notifications_of_change/items
         sig do
           params(
             change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode::OrSymbol,
@@ -205,8 +194,7 @@ module Increase
         end
         def to_hash; end
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # #/components/schemas/ach_prenotification/properties/notifications_of_change/items/properties/change_code
         module ChangeCode
           extend Increase::Internal::Type::Enum
 
@@ -363,16 +351,15 @@ module Increase
       end
 
       class PrenotificationReturn < Increase::Internal::Type::BaseModel
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Prenotification was returned.
+        # #/components/schemas/ach_prenotification/properties/prenotification_return/anyOf/0/properties/created_at
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # Why the Prenotification was returned.
+        # #/components/schemas/ach_prenotification/properties/prenotification_return/anyOf/0/properties/return_reason_code
         sig { returns(Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol) }
         attr_accessor :return_reason_code
 
-        # If your prenotification is returned, this will contain details of the return.
+        # #/components/schemas/ach_prenotification/properties/prenotification_return
         sig do
           params(
             created_at: Time,
@@ -393,7 +380,7 @@ module Increase
         end
         def to_hash; end
 
-        # Why the Prenotification was returned.
+        # #/components/schemas/ach_prenotification/properties/prenotification_return/anyOf/0/properties/return_reason_code
         module ReturnReasonCode
           extend Increase::Internal::Type::Enum
 
@@ -908,7 +895,7 @@ module Increase
         end
       end
 
-      # The lifecycle status of the ACH Prenotification.
+      # #/components/schemas/ach_prenotification/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -934,8 +921,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `ach_prenotification`.
+      # #/components/schemas/ach_prenotification/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

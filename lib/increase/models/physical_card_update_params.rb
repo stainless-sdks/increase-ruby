@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute status
-      #   The status to update the Physical Card to.
+      #   #/components/schemas/update_a_physical_card_parameters/properties/status
       #
       #   @return [Symbol, Increase::Models::PhysicalCardUpdateParams::Status]
       required :status, enum: -> { Increase::Models::PhysicalCardUpdateParams::Status }
@@ -22,7 +22,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The status to update the Physical Card to.
+      # #/components/schemas/update_a_physical_card_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

@@ -9,26 +9,25 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The Increase identifier for the account that will send the transfer.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute account_number
-      #   The account number for the destination account.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/account_number
       #
       #   @return [String]
       required :account_number, String
 
       # @!attribute routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/routing_number
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute [r] addendum
-      #   Additional information that will be sent to the recipient.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/addendum
       #
       #   @return [String, nil]
       optional :addendum, String
@@ -38,7 +37,7 @@ module Increase
       #   attr_writer :addendum
 
       # @!attribute [r] company_descriptive_date
-      #   The description of the date of the transfer.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/company_descriptive_date
       #
       #   @return [String, nil]
       optional :company_descriptive_date, String
@@ -48,7 +47,7 @@ module Increase
       #   attr_writer :company_descriptive_date
 
       # @!attribute [r] company_discretionary_data
-      #   The data you choose to associate with the transfer.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/company_discretionary_data
       #
       #   @return [String, nil]
       optional :company_discretionary_data, String
@@ -58,7 +57,7 @@ module Increase
       #   attr_writer :company_discretionary_data
 
       # @!attribute [r] company_entry_description
-      #   The description of the transfer you wish to be shown to the recipient.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/company_entry_description
       #
       #   @return [String, nil]
       optional :company_entry_description, String
@@ -68,7 +67,7 @@ module Increase
       #   attr_writer :company_entry_description
 
       # @!attribute [r] company_name
-      #   The name by which the recipient knows you.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/company_name
       #
       #   @return [String, nil]
       optional :company_name, String
@@ -78,7 +77,7 @@ module Increase
       #   attr_writer :company_name
 
       # @!attribute [r] credit_debit_indicator
-      #   Whether the Prenotification is for a future debit or credit.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/credit_debit_indicator
       #
       #   @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator, nil]
       optional :credit_debit_indicator,
@@ -89,8 +88,7 @@ module Increase
       #   attr_writer :credit_debit_indicator
 
       # @!attribute [r] effective_date
-      #   The transfer effective date in
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/effective_date
       #
       #   @return [Date, nil]
       optional :effective_date, Date
@@ -100,7 +98,7 @@ module Increase
       #   attr_writer :effective_date
 
       # @!attribute [r] individual_id
-      #   Your identifier for the transfer recipient.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/individual_id
       #
       #   @return [String, nil]
       optional :individual_id, String
@@ -110,8 +108,7 @@ module Increase
       #   attr_writer :individual_id
 
       # @!attribute [r] individual_name
-      #   The name of the transfer recipient. This value is information and not verified
-      #   by the recipient's bank.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/individual_name
       #
       #   @return [String, nil]
       optional :individual_name, String
@@ -121,7 +118,7 @@ module Increase
       #   attr_writer :individual_name
 
       # @!attribute [r] standard_entry_class_code
-      #   The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      #   #/components/schemas/create_an_ach_prenotification_parameters/properties/standard_entry_class_code
       #
       #   @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode, nil]
       optional :standard_entry_class_code,
@@ -169,7 +166,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # Whether the Prenotification is for a future debit or credit.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/credit_debit_indicator
       module CreditDebitIndicator
         extend Increase::Internal::Type::Enum
 
@@ -186,7 +183,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/standard_entry_class_code
       module StandardEntryClassCode
         extend Increase::Internal::Type::Enum
 

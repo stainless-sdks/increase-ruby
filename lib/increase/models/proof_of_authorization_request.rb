@@ -5,45 +5,44 @@ module Increase
     # @see Increase::Resources::ProofOfAuthorizationRequests#retrieve
     class ProofOfAuthorizationRequest < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Proof of Authorization Request identifier.
+      #   #/components/schemas/proof_of_authorization_request/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute ach_transfers
-      #   The ACH Transfers associated with the request.
+      #   #/components/schemas/proof_of_authorization_request/properties/ach_transfers
       #
       #   @return [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
       required :ach_transfers,
                -> { Increase::Internal::Type::ArrayOf[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer] }
 
       # @!attribute created_at
-      #   The time the Proof of Authorization Request was created.
+      #   #/components/schemas/proof_of_authorization_request/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute due_on
-      #   The time the Proof of Authorization Request is due.
+      #   #/components/schemas/proof_of_authorization_request/properties/due_on
       #
       #   @return [Time]
       required :due_on, Time
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
+      #   #/components/schemas/proof_of_authorization_request/properties/type
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequest::Type }
 
       # @!attribute updated_at
-      #   The time the Proof of Authorization Request was last updated.
+      #   #/components/schemas/proof_of_authorization_request/properties/updated_at
       #
       #   @return [Time]
       required :updated_at, Time
 
       # @!parse
-      #   # A request for proof of authorization for one or more ACH debit transfers.
+      #   # #/components/schemas/proof_of_authorization_request
       #   #
       #   # @param id [String]
       #   # @param ach_transfers [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
@@ -58,12 +57,14 @@ module Increase
 
       class ACHTransfer < Increase::Internal::Type::BaseModel
         # @!attribute id
-        #   The ACH Transfer identifier.
+        #   #/components/schemas/proof_of_authorization_request/properties/ach_transfers/items/properties/id
         #
         #   @return [String]
         required :id, String
 
         # @!parse
+        #   # #/components/schemas/proof_of_authorization_request/properties/ach_transfers/items
+        #   #
         #   # @param id [String]
         #   #
         #   def initialize(id:, **) = super
@@ -71,8 +72,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request`.
+      # #/components/schemas/proof_of_authorization_request/properties/type
       #
       # @see Increase::Models::ProofOfAuthorizationRequest#type
       module Type

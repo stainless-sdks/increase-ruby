@@ -14,7 +14,7 @@ module Increase
             .returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse)
         end
         def create(
-          # The identifier of the Card to be authorized.
+          # #/components/schemas/sandbox_create_a_digital_wallet_token_request_parameters/properties/card_id
           card_id:,
           request_options: {}
         ); end

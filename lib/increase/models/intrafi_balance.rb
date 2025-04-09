@@ -5,49 +5,43 @@ module Increase
     # @see Increase::Resources::IntrafiBalances#intrafi_balance
     class IntrafiBalance < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The identifier of this balance.
+      #   #/components/schemas/intrafi_balance/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute balances
-      #   Each entry represents a balance held at a different bank. IntraFi separates the
-      #   total balance across many participating banks in the network.
+      #   #/components/schemas/intrafi_balance/properties/balances
       #
       #   @return [Array<Increase::Models::IntrafiBalance::Balance>]
       required :balances, -> { Increase::Internal::Type::ArrayOf[Increase::Models::IntrafiBalance::Balance] }
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #   currency.
+      #   #/components/schemas/intrafi_balance/properties/currency
       #
       #   @return [Symbol, Increase::Models::IntrafiBalance::Currency]
       required :currency, enum: -> { Increase::Models::IntrafiBalance::Currency }
 
       # @!attribute effective_date
-      #   The date this balance reflects.
+      #   #/components/schemas/intrafi_balance/properties/effective_date
       #
       #   @return [Date]
       required :effective_date, Date
 
       # @!attribute total_balance
-      #   The total balance, in minor units of `currency`. Increase reports this balance
-      #   to IntraFi daily.
+      #   #/components/schemas/intrafi_balance/properties/total_balance
       #
       #   @return [Integer]
       required :total_balance, Integer
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `intrafi_balance`.
+      #   #/components/schemas/intrafi_balance/properties/type
       #
       #   @return [Symbol, Increase::Models::IntrafiBalance::Type]
       required :type, enum: -> { Increase::Models::IntrafiBalance::Type }
 
       # @!parse
-      #   # When using IntraFi, each account's balance over the standard FDIC insurance
-      #   # amount are swept to various other institutions. Funds are rebalanced across
-      #   # banks as needed once per business day.
+      #   # #/components/schemas/intrafi_balance
       #   #
       #   # @param id [String]
       #   # @param balances [Array<Increase::Models::IntrafiBalance::Balance>]
@@ -62,38 +56,38 @@ module Increase
 
       class Balance < Increase::Internal::Type::BaseModel
         # @!attribute id
-        #   The identifier of this balance.
+        #   #/components/schemas/intrafi_balance/properties/balances/items/properties/id
         #
         #   @return [String]
         required :id, String
 
         # @!attribute balance
-        #   The balance, in minor units of `currency`, held with this bank.
+        #   #/components/schemas/intrafi_balance/properties/balances/items/properties/balance
         #
         #   @return [Integer]
         required :balance, Integer
 
         # @!attribute bank
-        #   The name of the bank holding these funds.
+        #   #/components/schemas/intrafi_balance/properties/balances/items/properties/bank
         #
         #   @return [String]
         required :bank, String
 
         # @!attribute bank_location
-        #   The primary location of the bank.
+        #   #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location
         #
         #   @return [Increase::Models::IntrafiBalance::Balance::BankLocation, nil]
         required :bank_location, -> { Increase::Models::IntrafiBalance::Balance::BankLocation }, nil?: true
 
         # @!attribute fdic_certificate_number
-        #   The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-        #   Because many banks have the same or similar names, this can be used to uniquely
-        #   identify the institution.
+        #   #/components/schemas/intrafi_balance/properties/balances/items/properties/fdic_certificate_number
         #
         #   @return [String]
         required :fdic_certificate_number, String
 
         # @!parse
+        #   # #/components/schemas/intrafi_balance/properties/balances/items
+        #   #
         #   # @param id [String]
         #   # @param balance [Integer]
         #   # @param bank [String]
@@ -107,19 +101,19 @@ module Increase
         # @see Increase::Models::IntrafiBalance::Balance#bank_location
         class BankLocation < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The bank's city.
+          #   #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location/anyOf/0/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute state
-          #   The bank's state.
+          #   #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location/anyOf/0/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!parse
-          #   # The primary location of the bank.
+          #   # #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location
           #   #
           #   # @param city [String]
           #   # @param state [String]
@@ -130,8 +124,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      # currency.
+      # #/components/schemas/intrafi_balance/properties/currency
       #
       # @see Increase::Models::IntrafiBalance#currency
       module Currency
@@ -162,8 +155,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_balance`.
+      # #/components/schemas/intrafi_balance/properties/type
       #
       # @see Increase::Models::IntrafiBalance#type
       module Type

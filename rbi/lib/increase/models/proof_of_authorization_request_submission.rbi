@@ -3,86 +3,79 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestSubmission < Increase::Internal::Type::BaseModel
-      # The Proof of Authorization Request Submission identifier.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # File containing additional evidence.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/additional_evidence_file_id
       sig { returns(T.nilable(String)) }
       attr_accessor :additional_evidence_file_id
 
-      # Terms of authorization.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/authorization_terms
       sig { returns(String) }
       attr_accessor :authorization_terms
 
-      # Time of authorization.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/authorized_at
       sig { returns(Time) }
       attr_accessor :authorized_at
 
-      # Company of the authorizer.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_company
       sig { returns(T.nilable(String)) }
       attr_accessor :authorizer_company
 
-      # Email of the authorizer.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_email
       sig { returns(T.nilable(String)) }
       attr_accessor :authorizer_email
 
-      # IP address of the authorizer.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_ip_address
       sig { returns(T.nilable(String)) }
       attr_accessor :authorizer_ip_address
 
-      # Name of the authorizer.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_name
       sig { returns(T.nilable(String)) }
       attr_accessor :authorizer_name
 
-      # The time the Proof of Authorization Request Submission was created.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # Whether the customer has been offboarded.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/customer_has_been_offboarded
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :customer_has_been_offboarded
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/proof_of_authorization_request_submission/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # ID of the proof of authorization request.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/proof_of_authorization_request_id
       sig { returns(String) }
       attr_accessor :proof_of_authorization_request_id
 
-      # Status of the proof of authorization request submission.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/status
       sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request_submission`.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/type
       sig { returns(Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # The time the Proof of Authorization Request Submission was last updated.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/updated_at
       sig { returns(Time) }
       attr_accessor :updated_at
 
-      # Whether account ownership was validated via credential (for instance, Plaid).
+      # #/components/schemas/proof_of_authorization_request_submission/properties/validated_account_ownership_via_credential
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :validated_account_ownership_via_credential
 
-      # Whether account ownership was validated with an account statement.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/validated_account_ownership_with_account_statement
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :validated_account_ownership_with_account_statement
 
-      # Whether account ownership was validated with microdeposit.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/validated_account_ownership_with_microdeposit
       sig { returns(T.nilable(T::Boolean)) }
       attr_accessor :validated_account_ownership_with_microdeposit
 
-      # Information submitted in response to a proof of authorization request. Per
-      # Nacha's guidance on proof of authorization, the originator must ensure that the
-      # authorization complies with applicable legal requirements, is readily
-      # identifiable as an authorization, and has clear and readily understandable
-      # terms.
+      # #/components/schemas/proof_of_authorization_request_submission
       sig do
         params(
           id: String,
@@ -153,7 +146,7 @@ module Increase
       end
       def to_hash; end
 
-      # Status of the proof of authorization request submission.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -185,8 +178,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request_submission`.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

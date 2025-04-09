@@ -5,45 +5,44 @@ module Increase
     # @see Increase::Resources::RoutingNumbers#list
     class RoutingNumberListResponse < Increase::Internal::Type::BaseModel
       # @!attribute ach_transfers
-      #   This routing number's support for ACH Transfers.
+      #   #/components/schemas/routing_number/properties/ach_transfers
       #
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers]
       required :ach_transfers, enum: -> { Increase::Models::RoutingNumberListResponse::ACHTransfers }
 
       # @!attribute name
-      #   The name of the financial institution belonging to a routing number.
+      #   #/components/schemas/routing_number/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute real_time_payments_transfers
-      #   This routing number's support for Real-Time Payments Transfers.
+      #   #/components/schemas/routing_number/properties/real_time_payments_transfers
       #
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers]
       required :real_time_payments_transfers,
                enum: -> { Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers }
 
       # @!attribute routing_number
-      #   The nine digit routing number identifier.
+      #   #/components/schemas/routing_number/properties/routing_number
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
+      #   #/components/schemas/routing_number/properties/type
       #
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::Type]
       required :type, enum: -> { Increase::Models::RoutingNumberListResponse::Type }
 
       # @!attribute wire_transfers
-      #   This routing number's support for Wire Transfers.
+      #   #/components/schemas/routing_number/properties/wire_transfers
       #
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers]
       required :wire_transfers, enum: -> { Increase::Models::RoutingNumberListResponse::WireTransfers }
 
       # @!parse
-      #   # Routing numbers are used to identify your bank in a financial transaction.
+      #   # #/components/schemas/routing_number_list/properties/data/items
       #   #
       #   # @param ach_transfers [Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers]
       #   # @param name [String]
@@ -56,7 +55,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # This routing number's support for ACH Transfers.
+      # #/components/schemas/routing_number/properties/ach_transfers
       #
       # @see Increase::Models::RoutingNumberListResponse#ach_transfers
       module ACHTransfers
@@ -75,7 +74,7 @@ module Increase
         #   def self.values; end
       end
 
-      # This routing number's support for Real-Time Payments Transfers.
+      # #/components/schemas/routing_number/properties/real_time_payments_transfers
       #
       # @see Increase::Models::RoutingNumberListResponse#real_time_payments_transfers
       module RealTimePaymentsTransfers
@@ -94,8 +93,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `routing_number`.
+      # #/components/schemas/routing_number/properties/type
       #
       # @see Increase::Models::RoutingNumberListResponse#type
       module Type
@@ -110,7 +108,7 @@ module Increase
         #   def self.values; end
       end
 
-      # This routing number's support for Wire Transfers.
+      # #/components/schemas/routing_number/properties/wire_transfers
       #
       # @see Increase::Models::RoutingNumberListResponse#wire_transfers
       module WireTransfers

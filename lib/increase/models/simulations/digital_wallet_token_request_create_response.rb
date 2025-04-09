@@ -6,8 +6,7 @@ module Increase
       # @see Increase::Resources::Simulations::DigitalWalletTokenRequests#create
       class DigitalWalletTokenRequestCreateResponse < Increase::Internal::Type::BaseModel
         # @!attribute decline_reason
-        #   If the simulated tokenization attempt was declined, this field contains details
-        #   as to why.
+        #   #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/decline_reason
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         required :decline_reason,
@@ -15,21 +14,19 @@ module Increase
                  nil?: true
 
         # @!attribute digital_wallet_token_id
-        #   If the simulated tokenization attempt was accepted, this field contains the id
-        #   of the Digital Wallet Token that was created.
+        #   #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/digital_wallet_token_id
         #
         #   @return [String, nil]
         required :digital_wallet_token_id, String, nil?: true
 
         # @!attribute type
-        #   A constant representing the object's type. For this resource it will always be
-        #   `inbound_digital_wallet_token_request_simulation_result`.
+        #   #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/type
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type]
         required :type, enum: -> { Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type }
 
         # @!parse
-        #   # The results of a Digital Wallet Token simulation.
+        #   # #/paths//simulations/digital_wallet_token_requests/post/responses/200/content/application/json/schema
         #   #
         #   # @param decline_reason [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         #   # @param digital_wallet_token_id [String, nil]
@@ -39,8 +36,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/decline_reason
         #
         # @see Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse#decline_reason
         module DeclineReason
@@ -65,8 +61,7 @@ module Increase
           #   def self.values; end
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_digital_wallet_token_request_simulation_result`.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/type
         #
         # @see Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse#type
         module Type

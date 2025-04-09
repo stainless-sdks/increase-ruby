@@ -9,8 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute address
-      #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      #   are disallowed.
+      #   #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address
       #
       #   @return [Increase::Models::EntityUpdateAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateAddressParams::Address }
@@ -25,32 +24,31 @@ module Increase
 
       class Address < Increase::Internal::Type::BaseModel
         # @!attribute city
-        #   The city of the address.
+        #   #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/city
         #
         #   @return [String]
         required :city, String
 
         # @!attribute line1
-        #   The first line of the address. This is usually the street number and street.
+        #   #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/line1
         #
         #   @return [String]
         required :line1, String
 
         # @!attribute state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
+        #   #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/state
         #
         #   @return [String]
         required :state, String
 
         # @!attribute zip
-        #   The ZIP code of the address.
+        #   #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/zip
         #
         #   @return [String]
         required :zip, String
 
         # @!attribute [r] line2
-        #   The second line of the address. This might be the floor or room number.
+        #   #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/line2
         #
         #   @return [String, nil]
         optional :line2, String
@@ -60,8 +58,7 @@ module Increase
         #   attr_writer :line2
 
         # @!parse
-        #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   # are disallowed.
+        #   # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address
         #   #
         #   # @param city [String]
         #   # @param line1 [String]

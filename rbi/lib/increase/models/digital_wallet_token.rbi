@@ -3,15 +3,15 @@
 module Increase
   module Models
     class DigitalWalletToken < Increase::Internal::Type::BaseModel
-      # The Digital Wallet Token identifier.
+      # #/components/schemas/digital_wallet_token/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier for the Card this Digital Wallet Token belongs to.
+      # #/components/schemas/digital_wallet_token/properties/card_id
       sig { returns(String) }
       attr_accessor :card_id
 
-      # The cardholder information given when the Digital Wallet Token was created.
+      # #/components/schemas/digital_wallet_token/properties/cardholder
       sig { returns(Increase::Models::DigitalWalletToken::Cardholder) }
       attr_reader :cardholder
 
@@ -21,38 +21,34 @@ module Increase
       end
       attr_writer :cardholder
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Digital Wallet Token was created.
+      # #/components/schemas/digital_wallet_token/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The device that was used to create the Digital Wallet Token.
+      # #/components/schemas/digital_wallet_token/properties/device
       sig { returns(Increase::Models::DigitalWalletToken::Device) }
       attr_reader :device
 
       sig { params(device: T.any(Increase::Models::DigitalWalletToken::Device, Increase::Internal::AnyHash)).void }
       attr_writer :device
 
-      # This indicates if payments can be made with the Digital Wallet Token.
+      # #/components/schemas/digital_wallet_token/properties/status
       sig { returns(Increase::Models::DigitalWalletToken::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # The digital wallet app being used.
+      # #/components/schemas/digital_wallet_token/properties/token_requestor
       sig { returns(Increase::Models::DigitalWalletToken::TokenRequestor::TaggedSymbol) }
       attr_accessor :token_requestor
 
-      # A constant representing the object's type. For this resource it will always be
-      # `digital_wallet_token`.
+      # #/components/schemas/digital_wallet_token/properties/type
       sig { returns(Increase::Models::DigitalWalletToken::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Updates to the Digital Wallet Token.
+      # #/components/schemas/digital_wallet_token/properties/updates
       sig { returns(T::Array[Increase::Models::DigitalWalletToken::Update]) }
       attr_accessor :updates
 
-      # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      # Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      # Card.
+      # #/components/schemas/digital_wallet_token
       sig do
         params(
           id: String,
@@ -99,11 +95,11 @@ module Increase
       def to_hash; end
 
       class Cardholder < Increase::Internal::Type::BaseModel
-        # Name of the cardholder, for example "John Smith".
+        # #/components/schemas/digital_wallet_token/properties/cardholder/properties/name
         sig { returns(T.nilable(String)) }
         attr_accessor :name
 
-        # The cardholder information given when the Digital Wallet Token was created.
+        # #/components/schemas/digital_wallet_token/properties/cardholder
         sig { params(name: T.nilable(String)).returns(T.attached_class) }
         def self.new(name:); end
 
@@ -112,23 +108,23 @@ module Increase
       end
 
       class Device < Increase::Internal::Type::BaseModel
-        # Device type.
+        # #/components/schemas/digital_wallet_token/properties/device/properties/device_type
         sig { returns(T.nilable(Increase::Models::DigitalWalletToken::Device::DeviceType::TaggedSymbol)) }
         attr_accessor :device_type
 
-        # ID assigned to the device by the digital wallet provider.
+        # #/components/schemas/digital_wallet_token/properties/device/properties/identifier
         sig { returns(T.nilable(String)) }
         attr_accessor :identifier
 
-        # IP address of the device.
+        # #/components/schemas/digital_wallet_token/properties/device/properties/ip_address
         sig { returns(T.nilable(String)) }
         attr_accessor :ip_address
 
-        # Name of the device, for example "My Work Phone".
+        # #/components/schemas/digital_wallet_token/properties/device/properties/name
         sig { returns(T.nilable(String)) }
         attr_accessor :name
 
-        # The device that was used to create the Digital Wallet Token.
+        # #/components/schemas/digital_wallet_token/properties/device
         sig do
           params(
             device_type: T.nilable(Increase::Models::DigitalWalletToken::Device::DeviceType::OrSymbol),
@@ -153,7 +149,7 @@ module Increase
         end
         def to_hash; end
 
-        # Device type.
+        # #/components/schemas/digital_wallet_token/properties/device/properties/device_type
         module DeviceType
           extend Increase::Internal::Type::Enum
 
@@ -198,7 +194,7 @@ module Increase
         end
       end
 
-      # This indicates if payments can be made with the Digital Wallet Token.
+      # #/components/schemas/digital_wallet_token/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -222,7 +218,7 @@ module Increase
         def self.values; end
       end
 
-      # The digital wallet app being used.
+      # #/components/schemas/digital_wallet_token/properties/token_requestor
       module TokenRequestor
         extend Increase::Internal::Type::Enum
 
@@ -246,8 +242,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `digital_wallet_token`.
+      # #/components/schemas/digital_wallet_token/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -263,15 +258,15 @@ module Increase
       end
 
       class Update < Increase::Internal::Type::BaseModel
-        # The status the update changed this Digital Wallet Token to.
+        # #/components/schemas/digital_wallet_token/properties/updates/items/properties/status
         sig { returns(Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol) }
         attr_accessor :status
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the update happened.
+        # #/components/schemas/digital_wallet_token/properties/updates/items/properties/timestamp
         sig { returns(Time) }
         attr_accessor :timestamp
 
+        # #/components/schemas/digital_wallet_token/properties/updates/items
         sig do
           params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)
             .returns(T.attached_class)
@@ -284,7 +279,7 @@ module Increase
         end
         def to_hash; end
 
-        # The status the update changed this Digital Wallet Token to.
+        # #/components/schemas/digital_wallet_token/properties/updates/items/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 

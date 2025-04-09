@@ -10,21 +10,19 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute card_id
-        #   The identifier of the Card to create a settlement on.
+        #   #/components/schemas/sandbox_settle_a_card_authorization_parameters/properties/card_id
         #
         #   @return [String]
         required :card_id, String
 
         # @!attribute pending_transaction_id
-        #   The identifier of the Pending Transaction for the Card Authorization you wish to
-        #   settle.
+        #   #/components/schemas/sandbox_settle_a_card_authorization_parameters/properties/pending_transaction_id
         #
         #   @return [String]
         required :pending_transaction_id, String
 
         # @!attribute [r] amount
-        #   The amount to be settled. This defaults to the amount of the Pending Transaction
-        #   being settled.
+        #   #/components/schemas/sandbox_settle_a_card_authorization_parameters/properties/amount
         #
         #   @return [Integer, nil]
         optional :amount, Integer

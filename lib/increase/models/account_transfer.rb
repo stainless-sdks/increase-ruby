@@ -5,120 +5,109 @@ module Increase
     # @see Increase::Resources::AccountTransfers#create
     class AccountTransfer < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The account transfer's identifier.
+      #   #/components/schemas/account_transfer/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The Account to which the transfer belongs.
+      #   #/components/schemas/account_transfer/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The transfer amount in the minor unit of the destination account currency. For
-      #   dollars, for example, this is cents.
+      #   #/components/schemas/account_transfer/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute approval
-      #   If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
+      #   #/components/schemas/account_transfer/properties/approval
       #
       #   @return [Increase::Models::AccountTransfer::Approval, nil]
       required :approval, -> { Increase::Models::AccountTransfer::Approval }, nil?: true
 
       # @!attribute cancellation
-      #   If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
+      #   #/components/schemas/account_transfer/properties/cancellation
       #
       #   @return [Increase::Models::AccountTransfer::Cancellation, nil]
       required :cancellation, -> { Increase::Models::AccountTransfer::Cancellation }, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      #   #/components/schemas/account_transfer/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute created_by
-      #   What object created the transfer, either via the API or the dashboard.
+      #   #/components/schemas/account_transfer/properties/created_by
       #
       #   @return [Increase::Models::AccountTransfer::CreatedBy, nil]
       required :created_by, -> { Increase::Models::AccountTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      #   account currency.
+      #   #/components/schemas/account_transfer/properties/currency
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Currency]
       required :currency, enum: -> { Increase::Models::AccountTransfer::Currency }
 
       # @!attribute description
-      #   The description that will show on the transactions.
+      #   #/components/schemas/account_transfer/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute destination_account_id
-      #   The destination account's identifier.
+      #   #/components/schemas/account_transfer/properties/destination_account_id
       #
       #   @return [String]
       required :destination_account_id, String
 
       # @!attribute destination_transaction_id
-      #   The ID for the transaction receiving the transfer.
+      #   #/components/schemas/account_transfer/properties/destination_transaction_id
       #
       #   @return [String, nil]
       required :destination_transaction_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/account_transfer/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute network
-      #   The transfer's network.
+      #   #/components/schemas/account_transfer/properties/network
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Network]
       required :network, enum: -> { Increase::Models::AccountTransfer::Network }
 
       # @!attribute pending_transaction_id
-      #   The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
+      #   #/components/schemas/account_transfer/properties/pending_transaction_id
       #
       #   @return [String, nil]
       required :pending_transaction_id, String, nil?: true
 
       # @!attribute status
-      #   The lifecycle status of the transfer.
+      #   #/components/schemas/account_transfer/properties/status
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Status]
       required :status, enum: -> { Increase::Models::AccountTransfer::Status }
 
       # @!attribute transaction_id
-      #   The ID for the transaction funding the transfer.
+      #   #/components/schemas/account_transfer/properties/transaction_id
       #
       #   @return [String, nil]
       required :transaction_id, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `account_transfer`.
+      #   #/components/schemas/account_transfer/properties/type
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Type]
       required :type, enum: -> { Increase::Models::AccountTransfer::Type }
 
       # @!parse
-      #   # Account transfers move funds between your own accounts at Increase.
+      #   # #/components/schemas/account_transfer
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -166,22 +155,19 @@ module Increase
       # @see Increase::Models::AccountTransfer#approval
       class Approval < Increase::Internal::Type::BaseModel
         # @!attribute approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
+        #   #/components/schemas/account_transfer/properties/approval/anyOf/0/properties/approved_at
         #
         #   @return [Time]
         required :approved_at, Time
 
         # @!attribute approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
+        #   #/components/schemas/account_transfer/properties/approval/anyOf/0/properties/approved_by
         #
         #   @return [String, nil]
         required :approved_by, String, nil?: true
 
         # @!parse
-        #   # If your account requires approvals for transfers and the transfer was approved,
-        #   # this will contain details of the approval.
+        #   # #/components/schemas/account_transfer/properties/approval
         #   #
         #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
@@ -194,22 +180,19 @@ module Increase
       # @see Increase::Models::AccountTransfer#cancellation
       class Cancellation < Increase::Internal::Type::BaseModel
         # @!attribute canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
+        #   #/components/schemas/account_transfer/properties/cancellation/anyOf/0/properties/canceled_at
         #
         #   @return [Time]
         required :canceled_at, Time
 
         # @!attribute canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
+        #   #/components/schemas/account_transfer/properties/cancellation/anyOf/0/properties/canceled_by
         #
         #   @return [String, nil]
         required :canceled_by, String, nil?: true
 
         # @!parse
-        #   # If your account requires approvals for transfers and the transfer was not
-        #   # approved, this will contain details of the cancellation.
+        #   # #/components/schemas/account_transfer/properties/cancellation
         #   #
         #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
@@ -222,19 +205,19 @@ module Increase
       # @see Increase::Models::AccountTransfer#created_by
       class CreatedBy < Increase::Internal::Type::BaseModel
         # @!attribute api_key
-        #   If present, details about the API key that created the transfer.
+        #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/api_key
         #
         #   @return [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil]
         required :api_key, -> { Increase::Models::AccountTransfer::CreatedBy::APIKey }, nil?: true
 
         # @!attribute category
-        #   The type of object that created this transfer.
+        #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/category
         #
         #   @return [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::AccountTransfer::CreatedBy::Category }
 
         # @!attribute oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
+        #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/oauth_application
         #
         #   @return [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil]
         required :oauth_application,
@@ -242,13 +225,13 @@ module Increase
                  nil?: true
 
         # @!attribute user
-        #   If present, details about the User that created the transfer.
+        #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/user
         #
         #   @return [Increase::Models::AccountTransfer::CreatedBy::User, nil]
         required :user, -> { Increase::Models::AccountTransfer::CreatedBy::User }, nil?: true
 
         # @!parse
-        #   # What object created the transfer, either via the API or the dashboard.
+        #   # #/components/schemas/account_transfer/properties/created_by
         #   #
         #   # @param api_key [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil]
         #   # @param category [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category]
@@ -262,13 +245,13 @@ module Increase
         # @see Increase::Models::AccountTransfer::CreatedBy#api_key
         class APIKey < Increase::Internal::Type::BaseModel
           # @!attribute description
-          #   The description set for the API key when it was created.
+          #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/api_key/anyOf/0/properties/description
           #
           #   @return [String, nil]
           required :description, String, nil?: true
 
           # @!parse
-          #   # If present, details about the API key that created the transfer.
+          #   # #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/api_key
           #   #
           #   # @param description [String, nil]
           #   #
@@ -277,7 +260,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The type of object that created this transfer.
+        # #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/category
         #
         # @see Increase::Models::AccountTransfer::CreatedBy#category
         module Category
@@ -302,13 +285,13 @@ module Increase
         # @see Increase::Models::AccountTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::Internal::Type::BaseModel
           # @!attribute name
-          #   The name of the OAuth Application.
+          #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/oauth_application/anyOf/0/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!parse
-          #   # If present, details about the OAuth Application that created the transfer.
+          #   # #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/oauth_application
           #   #
           #   # @param name [String]
           #   #
@@ -320,13 +303,13 @@ module Increase
         # @see Increase::Models::AccountTransfer::CreatedBy#user
         class User < Increase::Internal::Type::BaseModel
           # @!attribute email
-          #   The email address of the User.
+          #   #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/user/anyOf/0/properties/email
           #
           #   @return [String]
           required :email, String
 
           # @!parse
-          #   # If present, details about the User that created the transfer.
+          #   # #/components/schemas/account_transfer/properties/created_by/anyOf/0/properties/user
           #   #
           #   # @param email [String]
           #   #
@@ -336,8 +319,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      # account currency.
+      # #/components/schemas/account_transfer/properties/currency
       #
       # @see Increase::Models::AccountTransfer#currency
       module Currency
@@ -368,7 +350,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The transfer's network.
+      # #/components/schemas/account_transfer/properties/network
       #
       # @see Increase::Models::AccountTransfer#network
       module Network
@@ -383,7 +365,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/account_transfer/properties/status
       #
       # @see Increase::Models::AccountTransfer#status
       module Status
@@ -405,8 +387,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account_transfer`.
+      # #/components/schemas/account_transfer/properties/type
       #
       # @see Increase::Models::AccountTransfer#type
       module Type

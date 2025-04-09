@@ -6,18 +6,18 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The name you choose for the account.
+      # #/components/schemas/create_a_bookkeeping_account_parameters/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # The entity, if `compliance_category` is `commingled_cash`.
+      # #/components/schemas/create_a_bookkeeping_account_parameters/properties/account_id
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
 
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      # The account compliance category.
+      # #/components/schemas/create_a_bookkeeping_account_parameters/properties/compliance_category
       sig { returns(T.nilable(Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)) }
       attr_reader :compliance_category
 
@@ -29,7 +29,7 @@ module Increase
       end
       attr_writer :compliance_category
 
-      # The entity, if `compliance_category` is `customer_balance`.
+      # #/components/schemas/create_a_bookkeeping_account_parameters/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_reader :entity_id
 
@@ -62,7 +62,7 @@ module Increase
       end
       def to_hash; end
 
-      # The account compliance category.
+      # #/components/schemas/create_a_bookkeeping_account_parameters/properties/compliance_category
       module ComplianceCategory
         extend Increase::Internal::Type::Enum
 

@@ -6,23 +6,23 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier of the File containing the physical card's carrier image.
+      # #/components/schemas/create_a_physical_card_profile_parameters/properties/carrier_image_file_id
       sig { returns(String) }
       attr_accessor :carrier_image_file_id
 
-      # A phone number the user can contact to receive support for their card.
+      # #/components/schemas/create_a_physical_card_profile_parameters/properties/contact_phone
       sig { returns(String) }
       attr_accessor :contact_phone
 
-      # A description you can use to identify the Card Profile.
+      # #/components/schemas/create_a_physical_card_profile_parameters/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # The identifier of the File containing the physical card's front image.
+      # #/components/schemas/create_a_physical_card_profile_parameters/properties/front_image_file_id
       sig { returns(String) }
       attr_accessor :front_image_file_id
 
-      # The identifier for the Program that this Physical Card Profile falls under.
+      # #/components/schemas/create_a_physical_card_profile_parameters/properties/program_id
       sig { returns(String) }
       attr_accessor :program_id
 

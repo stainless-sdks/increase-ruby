@@ -3,12 +3,11 @@
 module Increase
   module Models
     class Entity < Increase::Internal::Type::BaseModel
-      # The entity's identifier.
+      # #/components/schemas/entity/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # Details of the corporation entity. Will be present if `structure` is equal to
-      # `corporation`.
+      # #/components/schemas/entity/properties/corporation
       sig { returns(T.nilable(Increase::Models::Entity::Corporation)) }
       attr_reader :corporation
 
@@ -18,22 +17,19 @@ module Increase
       end
       attr_writer :corporation
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      # was created.
+      # #/components/schemas/entity/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The entity's description for display purposes.
+      # #/components/schemas/entity/properties/description
       sig { returns(T.nilable(String)) }
       attr_accessor :description
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      # Entity's details were most recently confirmed.
+      # #/components/schemas/entity/properties/details_confirmed_at
       sig { returns(T.nilable(Time)) }
       attr_accessor :details_confirmed_at
 
-      # Details of the government authority entity. Will be present if `structure` is
-      # equal to `government_authority`.
+      # #/components/schemas/entity/properties/government_authority
       sig { returns(T.nilable(Increase::Models::Entity::GovernmentAuthority)) }
       attr_reader :government_authority
 
@@ -45,21 +41,18 @@ module Increase
       end
       attr_writer :government_authority
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/entity/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # Details of the joint entity. Will be present if `structure` is equal to `joint`.
+      # #/components/schemas/entity/properties/joint
       sig { returns(T.nilable(Increase::Models::Entity::Joint)) }
       attr_reader :joint
 
       sig { params(joint: T.nilable(T.any(Increase::Models::Entity::Joint, Increase::Internal::AnyHash))).void }
       attr_writer :joint
 
-      # Details of the natural person entity. Will be present if `structure` is equal to
-      # `natural_person`.
+      # #/components/schemas/entity/properties/natural_person
       sig { returns(T.nilable(Increase::Models::Entity::NaturalPerson)) }
       attr_reader :natural_person
 
@@ -71,22 +64,19 @@ module Increase
       end
       attr_writer :natural_person
 
-      # The status of the entity.
+      # #/components/schemas/entity/properties/status
       sig { returns(Increase::Models::Entity::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # The entity's legal structure.
+      # #/components/schemas/entity/properties/structure
       sig { returns(Increase::Models::Entity::Structure::TaggedSymbol) }
       attr_accessor :structure
 
-      # Additional documentation associated with the entity. This is limited to the
-      # first 10 documents for an entity. If an entity has more than 10 documents, use
-      # the GET /entity_supplemental_documents list endpoint to retrieve them.
+      # #/components/schemas/entity/properties/supplemental_documents
       sig { returns(T::Array[Increase::Models::EntitySupplementalDocument]) }
       attr_accessor :supplemental_documents
 
-      # A reference to data stored in a third-party verification service. Your
-      # integration may or may not use this field.
+      # #/components/schemas/entity/properties/third_party_verification
       sig { returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification)) }
       attr_reader :third_party_verification
 
@@ -98,20 +88,18 @@ module Increase
       end
       attr_writer :third_party_verification
 
-      # Details of the trust entity. Will be present if `structure` is equal to `trust`.
+      # #/components/schemas/entity/properties/trust
       sig { returns(T.nilable(Increase::Models::Entity::Trust)) }
       attr_reader :trust
 
       sig { params(trust: T.nilable(T.any(Increase::Models::Entity::Trust, Increase::Internal::AnyHash))).void }
       attr_writer :trust
 
-      # A constant representing the object's type. For this resource it will always be
-      # `entity`.
+      # #/components/schemas/entity/properties/type
       sig { returns(Increase::Models::Entity::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Entities are the legal entities that own accounts. They can be people,
-      # corporations, partnerships, government authorities, or trusts.
+      # #/components/schemas/entity
       sig do
         params(
           id: String,
@@ -174,42 +162,38 @@ module Increase
       def to_hash; end
 
       class Corporation < Increase::Internal::Type::BaseModel
-        # The corporation's address.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address
         sig { returns(Increase::Models::Entity::Corporation::Address) }
         attr_reader :address
 
         sig { params(address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Internal::AnyHash)).void }
         attr_writer :address
 
-        # The identifying details of anyone controlling or owning 25% or more of the
-        # corporation.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners
         sig { returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]) }
         attr_accessor :beneficial_owners
 
-        # The two-letter United States Postal Service (USPS) abbreviation for the
-        # corporation's state of incorporation.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/incorporation_state
         sig { returns(T.nilable(String)) }
         attr_accessor :incorporation_state
 
-        # The numeric North American Industry Classification System (NAICS) code submitted
-        # for the corporation.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/industry_code
         sig { returns(T.nilable(String)) }
         attr_accessor :industry_code
 
-        # The legal name of the corporation.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/name
         sig { returns(String) }
         attr_accessor :name
 
-        # The Employer Identification Number (EIN) for the corporation.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/tax_identifier
         sig { returns(T.nilable(String)) }
         attr_accessor :tax_identifier
 
-        # The website of the corporation.
+        # #/components/schemas/entity/properties/corporation/anyOf/0/properties/website
         sig { returns(T.nilable(String)) }
         attr_accessor :website
 
-        # Details of the corporation entity. Will be present if `structure` is equal to
-        # `corporation`.
+        # #/components/schemas/entity/properties/corporation
         sig do
           params(
             address: T.any(Increase::Models::Entity::Corporation::Address, Increase::Internal::AnyHash),
@@ -250,28 +234,27 @@ module Increase
         def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
-          # The city of the address.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The first line of the address.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address/properties/line1
           sig { returns(String) }
           attr_accessor :line1
 
-          # The second line of the address.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address/properties/line2
           sig { returns(T.nilable(String)) }
           attr_accessor :line2
 
-          # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          # the address.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The ZIP code of the address.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address/properties/zip
           sig { returns(String) }
           attr_accessor :zip
 
-          # The corporation's address.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/address
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -293,15 +276,15 @@ module Increase
         end
 
         class BeneficialOwner < Increase::Internal::Type::BaseModel
-          # The identifier of this beneficial owner.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/beneficial_owner_id
           sig { returns(String) }
           attr_accessor :beneficial_owner_id
 
-          # This person's role or title within the entity.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/company_title
           sig { returns(T.nilable(String)) }
           attr_accessor :company_title
 
-          # Personal details for the beneficial owner.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual
           sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual) }
           attr_reader :individual
 
@@ -313,10 +296,11 @@ module Increase
           end
           attr_writer :individual
 
-          # Why this person is considered a beneficial owner of the entity.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/prong
           sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
           attr_accessor :prong
 
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items
           sig do
             params(
               beneficial_owner_id: String,
@@ -342,7 +326,7 @@ module Increase
           def to_hash; end
 
           class Individual < Increase::Internal::Type::BaseModel
-            # The person's address.
+            # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address) }
             attr_reader :address
 
@@ -357,11 +341,11 @@ module Increase
             end
             attr_writer :address
 
-            # The person's date of birth in YYYY-MM-DD format.
+            # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/date_of_birth
             sig { returns(Date) }
             attr_accessor :date_of_birth
 
-            # A means of verifying the person's identity.
+            # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/identification
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification) }
             attr_reader :identification
 
@@ -376,11 +360,11 @@ module Increase
             end
             attr_writer :identification
 
-            # The person's legal name.
+            # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/name
             sig { returns(String) }
             attr_accessor :name
 
-            # Personal details for the beneficial owner.
+            # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual
             sig do
               params(
                 address: T.any(
@@ -412,32 +396,31 @@ module Increase
             def to_hash; end
 
             class Address < Increase::Internal::Type::BaseModel
-              # The city, district, town, or village of the address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address/properties/city
               sig { returns(T.nilable(String)) }
               attr_accessor :city
 
-              # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address/properties/country
               sig { returns(String) }
               attr_accessor :country
 
-              # The first line of the address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address/properties/line1
               sig { returns(String) }
               attr_accessor :line1
 
-              # The second line of the address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address/properties/line2
               sig { returns(T.nilable(String)) }
               attr_accessor :line2
 
-              # The two-letter United States Postal Service (USPS) abbreviation for the US
-              # state, province, or region of the address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address/properties/state
               sig { returns(T.nilable(String)) }
               attr_accessor :state
 
-              # The ZIP or postal code of the address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address/properties/zip
               sig { returns(T.nilable(String)) }
               attr_accessor :zip
 
-              # The person's address.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/address
               sig do
                 params(
                   city: T.nilable(String),
@@ -468,7 +451,7 @@ module Increase
             end
 
             class Identification < Increase::Internal::Type::BaseModel
-              # A method that can be used to verify the individual's identity.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/identification/properties/method
               sig do
                 returns(
                   Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
@@ -476,12 +459,11 @@ module Increase
               end
               attr_accessor :method_
 
-              # The last 4 digits of the identification number that can be used to verify the
-              # individual's identity.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/identification/properties/number_last4
               sig { returns(String) }
               attr_accessor :number_last4
 
-              # A means of verifying the person's identity.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/identification
               sig do
                 params(
                   method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
@@ -502,7 +484,7 @@ module Increase
               end
               def to_hash; end
 
-              # A method that can be used to verify the individual's identity.
+              # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/individual/properties/identification/properties/method
               module Method
                 extend Increase::Internal::Type::Enum
 
@@ -563,7 +545,7 @@ module Increase
             end
           end
 
-          # Why this person is considered a beneficial owner of the entity.
+          # #/components/schemas/entity/properties/corporation/anyOf/0/properties/beneficial_owners/items/properties/prong
           module Prong
             extend Increase::Internal::Type::Enum
 
@@ -586,7 +568,7 @@ module Increase
       end
 
       class GovernmentAuthority < Increase::Internal::Type::BaseModel
-        # The government authority's address.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address
         sig { returns(Increase::Models::Entity::GovernmentAuthority::Address) }
         attr_reader :address
 
@@ -598,28 +580,27 @@ module Increase
         end
         attr_writer :address
 
-        # The identifying details of authorized persons of the government authority.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/authorized_persons
         sig { returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]) }
         attr_accessor :authorized_persons
 
-        # The category of the government authority.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/category
         sig { returns(Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol) }
         attr_accessor :category
 
-        # The government authority's name.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/name
         sig { returns(String) }
         attr_accessor :name
 
-        # The Employer Identification Number (EIN) of the government authority.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/tax_identifier
         sig { returns(T.nilable(String)) }
         attr_accessor :tax_identifier
 
-        # The government authority's website.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/website
         sig { returns(T.nilable(String)) }
         attr_accessor :website
 
-        # Details of the government authority entity. Will be present if `structure` is
-        # equal to `government_authority`.
+        # #/components/schemas/entity/properties/government_authority
         sig do
           params(
             address: T.any(Increase::Models::Entity::GovernmentAuthority::Address, Increase::Internal::AnyHash),
@@ -649,28 +630,27 @@ module Increase
         def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
-          # The city of the address.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The first line of the address.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address/properties/line1
           sig { returns(String) }
           attr_accessor :line1
 
-          # The second line of the address.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address/properties/line2
           sig { returns(T.nilable(String)) }
           attr_accessor :line2
 
-          # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          # the address.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The ZIP code of the address.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address/properties/zip
           sig { returns(String) }
           attr_accessor :zip
 
-          # The government authority's address.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/address
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -692,14 +672,15 @@ module Increase
         end
 
         class AuthorizedPerson < Increase::Internal::Type::BaseModel
-          # The identifier of this authorized person.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/authorized_persons/items/properties/authorized_person_id
           sig { returns(String) }
           attr_accessor :authorized_person_id
 
-          # The person's legal name.
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/authorized_persons/items/properties/name
           sig { returns(String) }
           attr_accessor :name
 
+          # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/authorized_persons/items
           sig { params(authorized_person_id: String, name: String).returns(T.attached_class) }
           def self.new(authorized_person_id:, name:); end
 
@@ -707,7 +688,7 @@ module Increase
           def to_hash; end
         end
 
-        # The category of the government authority.
+        # #/components/schemas/entity/properties/government_authority/anyOf/0/properties/category
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -725,15 +706,15 @@ module Increase
       end
 
       class Joint < Increase::Internal::Type::BaseModel
-        # The two individuals that share control of the entity.
+        # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals
         sig { returns(T::Array[Increase::Models::Entity::Joint::Individual]) }
         attr_accessor :individuals
 
-        # The entity's name.
+        # #/components/schemas/entity/properties/joint/anyOf/0/properties/name
         sig { returns(String) }
         attr_accessor :name
 
-        # Details of the joint entity. Will be present if `structure` is equal to `joint`.
+        # #/components/schemas/entity/properties/joint
         sig do
           params(
             individuals: T::Array[T.any(Increase::Models::Entity::Joint::Individual, Increase::Internal::AnyHash)],
@@ -747,7 +728,7 @@ module Increase
         def to_hash; end
 
         class Individual < Increase::Internal::Type::BaseModel
-          # The person's address.
+          # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address
           sig { returns(Increase::Models::Entity::Joint::Individual::Address) }
           attr_reader :address
 
@@ -757,11 +738,11 @@ module Increase
           end
           attr_writer :address
 
-          # The person's date of birth in YYYY-MM-DD format.
+          # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/date_of_birth
           sig { returns(Date) }
           attr_accessor :date_of_birth
 
-          # A means of verifying the person's identity.
+          # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/identification
           sig { returns(Increase::Models::Entity::Joint::Individual::Identification) }
           attr_reader :identification
 
@@ -773,10 +754,11 @@ module Increase
           end
           attr_writer :identification
 
-          # The person's legal name.
+          # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/name
           sig { returns(String) }
           attr_accessor :name
 
+          # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items
           sig do
             params(
               address: T.any(Increase::Models::Entity::Joint::Individual::Address, Increase::Internal::AnyHash),
@@ -802,28 +784,27 @@ module Increase
           def to_hash; end
 
           class Address < Increase::Internal::Type::BaseModel
-            # The city of the address.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address/properties/city
             sig { returns(String) }
             attr_accessor :city
 
-            # The first line of the address.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address/properties/line1
             sig { returns(String) }
             attr_accessor :line1
 
-            # The second line of the address.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address/properties/line2
             sig { returns(T.nilable(String)) }
             attr_accessor :line2
 
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            # the address.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address/properties/state
             sig { returns(String) }
             attr_accessor :state
 
-            # The ZIP code of the address.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address/properties/zip
             sig { returns(String) }
             attr_accessor :zip
 
-            # The person's address.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/address
             sig do
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                 .returns(T.attached_class)
@@ -845,16 +826,15 @@ module Increase
           end
 
           class Identification < Increase::Internal::Type::BaseModel
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/identification/properties/method
             sig { returns(Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol) }
             attr_accessor :method_
 
-            # The last 4 digits of the identification number that can be used to verify the
-            # individual's identity.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/identification/properties/number_last4
             sig { returns(String) }
             attr_accessor :number_last4
 
-            # A means of verifying the person's identity.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/identification
             sig do
               params(
                 method_: Increase::Models::Entity::Joint::Individual::Identification::Method::OrSymbol,
@@ -875,7 +855,7 @@ module Increase
             end
             def to_hash; end
 
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/entity/properties/joint/anyOf/0/properties/individuals/items/properties/identification/properties/method
             module Method
               extend Increase::Internal::Type::Enum
 
@@ -920,18 +900,18 @@ module Increase
       end
 
       class NaturalPerson < Increase::Internal::Type::BaseModel
-        # The person's address.
+        # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address
         sig { returns(Increase::Models::Entity::NaturalPerson::Address) }
         attr_reader :address
 
         sig { params(address: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Internal::AnyHash)).void }
         attr_writer :address
 
-        # The person's date of birth in YYYY-MM-DD format.
+        # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/date_of_birth
         sig { returns(Date) }
         attr_accessor :date_of_birth
 
-        # A means of verifying the person's identity.
+        # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/identification
         sig { returns(Increase::Models::Entity::NaturalPerson::Identification) }
         attr_reader :identification
 
@@ -943,12 +923,11 @@ module Increase
         end
         attr_writer :identification
 
-        # The person's legal name.
+        # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/name
         sig { returns(String) }
         attr_accessor :name
 
-        # Details of the natural person entity. Will be present if `structure` is equal to
-        # `natural_person`.
+        # #/components/schemas/entity/properties/natural_person
         sig do
           params(
             address: T.any(Increase::Models::Entity::NaturalPerson::Address, Increase::Internal::AnyHash),
@@ -974,28 +953,27 @@ module Increase
         def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
-          # The city of the address.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The first line of the address.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address/properties/line1
           sig { returns(String) }
           attr_accessor :line1
 
-          # The second line of the address.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address/properties/line2
           sig { returns(T.nilable(String)) }
           attr_accessor :line2
 
-          # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          # the address.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The ZIP code of the address.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address/properties/zip
           sig { returns(String) }
           attr_accessor :zip
 
-          # The person's address.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/address
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -1017,16 +995,15 @@ module Increase
         end
 
         class Identification < Increase::Internal::Type::BaseModel
-          # A method that can be used to verify the individual's identity.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/identification/properties/method
           sig { returns(Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol) }
           attr_accessor :method_
 
-          # The last 4 digits of the identification number that can be used to verify the
-          # individual's identity.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/identification/properties/number_last4
           sig { returns(String) }
           attr_accessor :number_last4
 
-          # A means of verifying the person's identity.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/identification
           sig do
             params(
               method_: Increase::Models::Entity::NaturalPerson::Identification::Method::OrSymbol,
@@ -1044,7 +1021,7 @@ module Increase
           end
           def to_hash; end
 
-          # A method that can be used to verify the individual's identity.
+          # #/components/schemas/entity/properties/natural_person/anyOf/0/properties/identification/properties/method
           module Method
             extend Increase::Internal::Type::Enum
 
@@ -1084,7 +1061,7 @@ module Increase
         end
       end
 
-      # The status of the entity.
+      # #/components/schemas/entity/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -1104,7 +1081,7 @@ module Increase
         def self.values; end
       end
 
-      # The entity's legal structure.
+      # #/components/schemas/entity/properties/structure
       module Structure
         extend Increase::Internal::Type::Enum
 
@@ -1131,16 +1108,15 @@ module Increase
       end
 
       class ThirdPartyVerification < Increase::Internal::Type::BaseModel
-        # The reference identifier for the third party verification.
+        # #/components/schemas/entity/properties/third_party_verification/anyOf/0/properties/reference
         sig { returns(String) }
         attr_accessor :reference
 
-        # The vendor that was used to perform the verification.
+        # #/components/schemas/entity/properties/third_party_verification/anyOf/0/properties/vendor
         sig { returns(Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol) }
         attr_accessor :vendor
 
-        # A reference to data stored in a third-party verification service. Your
-        # integration may or may not use this field.
+        # #/components/schemas/entity/properties/third_party_verification
         sig do
           params(reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::OrSymbol)
             .returns(T.attached_class)
@@ -1155,7 +1131,7 @@ module Increase
         end
         def to_hash; end
 
-        # The vendor that was used to perform the verification.
+        # #/components/schemas/entity/properties/third_party_verification/anyOf/0/properties/vendor
         module Vendor
           extend Increase::Internal::Type::Enum
 
@@ -1175,27 +1151,26 @@ module Increase
       end
 
       class Trust < Increase::Internal::Type::BaseModel
-        # The trust's address.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/address
         sig { returns(Increase::Models::Entity::Trust::Address) }
         attr_reader :address
 
         sig { params(address: T.any(Increase::Models::Entity::Trust::Address, Increase::Internal::AnyHash)).void }
         attr_writer :address
 
-        # Whether the trust is `revocable` or `irrevocable`.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/category
         sig { returns(Increase::Models::Entity::Trust::Category::TaggedSymbol) }
         attr_accessor :category
 
-        # The ID for the File containing the formation document of the trust.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/formation_document_file_id
         sig { returns(T.nilable(String)) }
         attr_accessor :formation_document_file_id
 
-        # The two-letter United States Postal Service (USPS) abbreviation for the state in
-        # which the trust was formed.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/formation_state
         sig { returns(T.nilable(String)) }
         attr_accessor :formation_state
 
-        # The grantor of the trust. Will be present if the `category` is `revocable`.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor
         sig { returns(T.nilable(Increase::Models::Entity::Trust::Grantor)) }
         attr_reader :grantor
 
@@ -1205,19 +1180,19 @@ module Increase
         end
         attr_writer :grantor
 
-        # The trust's name.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/name
         sig { returns(String) }
         attr_accessor :name
 
-        # The Employer Identification Number (EIN) of the trust itself.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/tax_identifier
         sig { returns(T.nilable(String)) }
         attr_accessor :tax_identifier
 
-        # The trustees of the trust.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees
         sig { returns(T::Array[Increase::Models::Entity::Trust::Trustee]) }
         attr_accessor :trustees
 
-        # Details of the trust entity. Will be present if `structure` is equal to `trust`.
+        # #/components/schemas/entity/properties/trust
         sig do
           params(
             address: T.any(Increase::Models::Entity::Trust::Address, Increase::Internal::AnyHash),
@@ -1259,28 +1234,27 @@ module Increase
         def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
-          # The city of the address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/address/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The first line of the address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/address/properties/line1
           sig { returns(String) }
           attr_accessor :line1
 
-          # The second line of the address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/address/properties/line2
           sig { returns(T.nilable(String)) }
           attr_accessor :line2
 
-          # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          # the address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/address/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The ZIP code of the address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/address/properties/zip
           sig { returns(String) }
           attr_accessor :zip
 
-          # The trust's address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/address
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -1301,7 +1275,7 @@ module Increase
           def to_hash; end
         end
 
-        # Whether the trust is `revocable` or `irrevocable`.
+        # #/components/schemas/entity/properties/trust/anyOf/0/properties/category
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -1320,7 +1294,7 @@ module Increase
         end
 
         class Grantor < Increase::Internal::Type::BaseModel
-          # The person's address.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address
           sig { returns(Increase::Models::Entity::Trust::Grantor::Address) }
           attr_reader :address
 
@@ -1329,11 +1303,11 @@ module Increase
           end
           attr_writer :address
 
-          # The person's date of birth in YYYY-MM-DD format.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/date_of_birth
           sig { returns(Date) }
           attr_accessor :date_of_birth
 
-          # A means of verifying the person's identity.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/identification
           sig { returns(Increase::Models::Entity::Trust::Grantor::Identification) }
           attr_reader :identification
 
@@ -1345,11 +1319,11 @@ module Increase
           end
           attr_writer :identification
 
-          # The person's legal name.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/name
           sig { returns(String) }
           attr_accessor :name
 
-          # The grantor of the trust. Will be present if the `category` is `revocable`.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor
           sig do
             params(
               address: T.any(Increase::Models::Entity::Trust::Grantor::Address, Increase::Internal::AnyHash),
@@ -1375,28 +1349,27 @@ module Increase
           def to_hash; end
 
           class Address < Increase::Internal::Type::BaseModel
-            # The city of the address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address/properties/city
             sig { returns(String) }
             attr_accessor :city
 
-            # The first line of the address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address/properties/line1
             sig { returns(String) }
             attr_accessor :line1
 
-            # The second line of the address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address/properties/line2
             sig { returns(T.nilable(String)) }
             attr_accessor :line2
 
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            # the address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address/properties/state
             sig { returns(String) }
             attr_accessor :state
 
-            # The ZIP code of the address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address/properties/zip
             sig { returns(String) }
             attr_accessor :zip
 
-            # The person's address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/address
             sig do
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                 .returns(T.attached_class)
@@ -1418,16 +1391,15 @@ module Increase
           end
 
           class Identification < Increase::Internal::Type::BaseModel
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/identification/properties/method
             sig { returns(Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol) }
             attr_accessor :method_
 
-            # The last 4 digits of the identification number that can be used to verify the
-            # individual's identity.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/identification/properties/number_last4
             sig { returns(String) }
             attr_accessor :number_last4
 
-            # A means of verifying the person's identity.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/identification
             sig do
               params(
                 method_: Increase::Models::Entity::Trust::Grantor::Identification::Method::OrSymbol,
@@ -1448,7 +1420,7 @@ module Increase
             end
             def to_hash; end
 
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/grantor/anyOf/0/properties/identification/properties/method
             module Method
               extend Increase::Internal::Type::Enum
 
@@ -1489,8 +1461,7 @@ module Increase
         end
 
         class Trustee < Increase::Internal::Type::BaseModel
-          # The individual trustee of the trust. Will be present if the trustee's
-          # `structure` is equal to `individual`.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual
           sig { returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)) }
           attr_reader :individual
 
@@ -1502,10 +1473,11 @@ module Increase
           end
           attr_writer :individual
 
-          # The structure of the trustee. Will always be equal to `individual`.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/structure
           sig { returns(Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol) }
           attr_accessor :structure
 
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items
           sig do
             params(
               individual: T.nilable(T.any(Increase::Models::Entity::Trust::Trustee::Individual, Increase::Internal::AnyHash)),
@@ -1527,7 +1499,7 @@ module Increase
           def to_hash; end
 
           class Individual < Increase::Internal::Type::BaseModel
-            # The person's address.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Address) }
             attr_reader :address
 
@@ -1539,11 +1511,11 @@ module Increase
             end
             attr_writer :address
 
-            # The person's date of birth in YYYY-MM-DD format.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/date_of_birth
             sig { returns(Date) }
             attr_accessor :date_of_birth
 
-            # A means of verifying the person's identity.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/identification
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification) }
             attr_reader :identification
 
@@ -1555,12 +1527,11 @@ module Increase
             end
             attr_writer :identification
 
-            # The person's legal name.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/name
             sig { returns(String) }
             attr_accessor :name
 
-            # The individual trustee of the trust. Will be present if the trustee's
-            # `structure` is equal to `individual`.
+            # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual
             sig do
               params(
                 address: T.any(Increase::Models::Entity::Trust::Trustee::Individual::Address, Increase::Internal::AnyHash),
@@ -1586,28 +1557,27 @@ module Increase
             def to_hash; end
 
             class Address < Increase::Internal::Type::BaseModel
-              # The city of the address.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address/properties/city
               sig { returns(String) }
               attr_accessor :city
 
-              # The first line of the address.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address/properties/line1
               sig { returns(String) }
               attr_accessor :line1
 
-              # The second line of the address.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address/properties/line2
               sig { returns(T.nilable(String)) }
               attr_accessor :line2
 
-              # The two-letter United States Postal Service (USPS) abbreviation for the state of
-              # the address.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address/properties/state
               sig { returns(String) }
               attr_accessor :state
 
-              # The ZIP code of the address.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address/properties/zip
               sig { returns(String) }
               attr_accessor :zip
 
-              # The person's address.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/address
               sig do
                 params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                   .returns(T.attached_class)
@@ -1629,16 +1599,15 @@ module Increase
             end
 
             class Identification < Increase::Internal::Type::BaseModel
-              # A method that can be used to verify the individual's identity.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/identification/properties/method
               sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol) }
               attr_accessor :method_
 
-              # The last 4 digits of the identification number that can be used to verify the
-              # individual's identity.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/identification/properties/number_last4
               sig { returns(String) }
               attr_accessor :number_last4
 
-              # A means of verifying the person's identity.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/identification
               sig do
                 params(
                   method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::OrSymbol,
@@ -1659,7 +1628,7 @@ module Increase
               end
               def to_hash; end
 
-              # A method that can be used to verify the individual's identity.
+              # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/individual/anyOf/0/properties/identification/properties/method
               module Method
                 extend Increase::Internal::Type::Enum
 
@@ -1717,7 +1686,7 @@ module Increase
             end
           end
 
-          # The structure of the trustee. Will always be equal to `individual`.
+          # #/components/schemas/entity/properties/trust/anyOf/0/properties/trustees/items/properties/structure
           module Structure
             extend Increase::Internal::Type::Enum
 
@@ -1734,8 +1703,7 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `entity`.
+      # #/components/schemas/entity/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

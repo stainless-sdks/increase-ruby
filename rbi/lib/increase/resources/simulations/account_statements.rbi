@@ -14,7 +14,7 @@ module Increase
             .returns(Increase::Models::AccountStatement)
         end
         def create(
-          # The identifier of the Account the statement is for.
+          # #/components/schemas/sandbox_create_an_account_statement_parameters/properties/account_id
           account_id:,
           request_options: {}
         ); end

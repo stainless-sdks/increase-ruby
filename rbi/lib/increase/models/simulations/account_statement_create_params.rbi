@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account the statement is for.
+        # #/components/schemas/sandbox_create_an_account_statement_parameters/properties/account_id
         sig { returns(String) }
         attr_accessor :account_id
 

@@ -6,32 +6,28 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Return the page of entries after this one.
+      # #/paths//proof_of_authorization_request_submissions/get/parameters/0/schema
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      # Filter records to the one with the specified `idempotency_key` you chose for
-      # that object. This value is unique across Increase and is used to ensure that a
-      # request is only processed once. Learn more about
-      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/paths//proof_of_authorization_request_submissions/get/parameters/3/schema
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
       sig { params(idempotency_key: String).void }
       attr_writer :idempotency_key
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      # #/paths//proof_of_authorization_request_submissions/get/parameters/1/schema
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      # ID of the proof of authorization request.
+      # #/paths//proof_of_authorization_request_submissions/get/parameters/2/schema
       sig { returns(T.nilable(String)) }
       attr_reader :proof_of_authorization_request_id
 

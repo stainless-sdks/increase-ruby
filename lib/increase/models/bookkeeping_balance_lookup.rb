@@ -5,28 +5,25 @@ module Increase
     # @see Increase::Resources::BookkeepingAccounts#balance
     class BookkeepingBalanceLookup < Increase::Internal::Type::BaseModel
       # @!attribute balance
-      #   The Bookkeeping Account's current balance, representing the sum of all
-      #   Bookkeeping Entries on the Bookkeeping Account.
+      #   #/components/schemas/bookkeeping_balance_lookup/properties/balance
       #
       #   @return [Integer]
       required :balance, Integer
 
       # @!attribute bookkeeping_account_id
-      #   The identifier for the account for which the balance was queried.
+      #   #/components/schemas/bookkeeping_balance_lookup/properties/bookkeeping_account_id
       #
       #   @return [String]
       required :bookkeeping_account_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_balance_lookup`.
+      #   #/components/schemas/bookkeeping_balance_lookup/properties/type
       #
       #   @return [Symbol, Increase::Models::BookkeepingBalanceLookup::Type]
       required :type, enum: -> { Increase::Models::BookkeepingBalanceLookup::Type }
 
       # @!parse
-      #   # Represents a request to lookup the balance of an Bookkeeping Account at a given
-      #   # point in time.
+      #   # #/components/schemas/bookkeeping_balance_lookup
       #   #
       #   # @param balance [Integer]
       #   # @param bookkeeping_account_id [String]
@@ -36,8 +33,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_balance_lookup`.
+      # #/components/schemas/bookkeeping_balance_lookup/properties/type
       #
       # @see Increase::Models::BookkeepingBalanceLookup#type
       module Type

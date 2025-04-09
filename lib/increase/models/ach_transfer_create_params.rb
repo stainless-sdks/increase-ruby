@@ -9,32 +9,25 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The Increase identifier for the account that will send the transfer.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The transfer amount in USD cents. A positive amount originates a credit transfer
-      #   pushing funds to the receiving account. A negative amount originates a debit
-      #   transfer pulling funds from the receiving account.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute statement_descriptor
-      #   A description you choose to give the transfer. This will be saved with the
-      #   transfer details, displayed in the dashboard, and returned by the API. If
-      #   `individual_name` and `company_name` are not explicitly set by this API, the
-      #   `statement_descriptor` will be sent in those fields to the receiving bank to
-      #   help the customer recognize the transfer. You are highly encouraged to pass
-      #   `individual_name` and `company_name` instead of relying on this fallback.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/statement_descriptor
       #
       #   @return [String]
       required :statement_descriptor, String
 
       # @!attribute [r] account_number
-      #   The account number for the destination account.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/account_number
       #
       #   @return [String, nil]
       optional :account_number, String
@@ -44,8 +37,7 @@ module Increase
       #   attr_writer :account_number
 
       # @!attribute [r] addenda
-      #   Additional information that will be sent to the recipient. This is included in
-      #   the transfer data sent to the receiving bank.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda
       #
       #   @return [Increase::Models::ACHTransferCreateParams::Addenda, nil]
       optional :addenda, -> { Increase::Models::ACHTransferCreateParams::Addenda }
@@ -55,8 +47,7 @@ module Increase
       #   attr_writer :addenda
 
       # @!attribute [r] company_descriptive_date
-      #   The description of the date of the transfer, usually in the format `YYMMDD`.
-      #   This is included in the transfer data sent to the receiving bank.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/company_descriptive_date
       #
       #   @return [String, nil]
       optional :company_descriptive_date, String
@@ -66,8 +57,7 @@ module Increase
       #   attr_writer :company_descriptive_date
 
       # @!attribute [r] company_discretionary_data
-      #   The data you choose to associate with the transfer. This is included in the
-      #   transfer data sent to the receiving bank.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/company_discretionary_data
       #
       #   @return [String, nil]
       optional :company_discretionary_data, String
@@ -77,8 +67,7 @@ module Increase
       #   attr_writer :company_discretionary_data
 
       # @!attribute [r] company_entry_description
-      #   A description of the transfer. This is included in the transfer data sent to the
-      #   receiving bank.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/company_entry_description
       #
       #   @return [String, nil]
       optional :company_entry_description, String
@@ -88,8 +77,7 @@ module Increase
       #   attr_writer :company_entry_description
 
       # @!attribute [r] company_name
-      #   The name by which the recipient knows you. This is included in the transfer data
-      #   sent to the receiving bank.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/company_name
       #
       #   @return [String, nil]
       optional :company_name, String
@@ -99,8 +87,7 @@ module Increase
       #   attr_writer :company_name
 
       # @!attribute [r] destination_account_holder
-      #   The type of entity that owns the account to which the ACH Transfer is being
-      #   sent.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/destination_account_holder
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder, nil]
       optional :destination_account_holder,
@@ -111,8 +98,7 @@ module Increase
       #   attr_writer :destination_account_holder
 
       # @!attribute [r] external_account_id
-      #   The ID of an External Account to initiate a transfer to. If this parameter is
-      #   provided, `account_number`, `routing_number`, and `funding` must be absent.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/external_account_id
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -122,7 +108,7 @@ module Increase
       #   attr_writer :external_account_id
 
       # @!attribute [r] funding
-      #   The type of the account to which the transfer will be sent.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/funding
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::Funding, nil]
       optional :funding, enum: -> { Increase::Models::ACHTransferCreateParams::Funding }
@@ -132,7 +118,7 @@ module Increase
       #   attr_writer :funding
 
       # @!attribute [r] individual_id
-      #   Your identifier for the transfer recipient.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/individual_id
       #
       #   @return [String, nil]
       optional :individual_id, String
@@ -142,8 +128,7 @@ module Increase
       #   attr_writer :individual_id
 
       # @!attribute [r] individual_name
-      #   The name of the transfer recipient. This value is informational and not verified
-      #   by the recipient's bank.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/individual_name
       #
       #   @return [String, nil]
       optional :individual_name, String
@@ -153,10 +138,7 @@ module Increase
       #   attr_writer :individual_name
 
       # @!attribute [r] preferred_effective_date
-      #   Configuration for how the effective date of the transfer will be set. This
-      #   determines same-day vs future-dated settlement timing. If not set, defaults to a
-      #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-      #   must be set.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/preferred_effective_date
       #
       #   @return [Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, nil]
       optional :preferred_effective_date,
@@ -167,7 +149,7 @@ module Increase
       #   attr_writer :preferred_effective_date
 
       # @!attribute [r] require_approval
-      #   Whether the transfer requires explicit approval via the dashboard or API.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/require_approval
       #
       #   @return [Boolean, nil]
       optional :require_approval, Increase::Internal::Type::Boolean
@@ -177,8 +159,7 @@ module Increase
       #   attr_writer :require_approval
 
       # @!attribute [r] routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/routing_number
       #
       #   @return [String, nil]
       optional :routing_number, String
@@ -188,7 +169,7 @@ module Increase
       #   attr_writer :routing_number
 
       # @!attribute [r] standard_entry_class_code
-      #   The Standard Entry Class (SEC) code to use for the transfer.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/standard_entry_class_code
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode, nil]
       optional :standard_entry_class_code,
@@ -199,7 +180,7 @@ module Increase
       #   attr_writer :standard_entry_class_code
 
       # @!attribute [r] transaction_timing
-      #   The timing of the transaction.
+      #   #/components/schemas/create_an_ach_transfer_parameters/properties/transaction_timing
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming, nil]
       optional :transaction_timing, enum: -> { Increase::Models::ACHTransferCreateParams::TransactionTiming }
@@ -260,13 +241,13 @@ module Increase
 
       class Addenda < Increase::Internal::Type::BaseModel
         # @!attribute category
-        #   The type of addenda to pass with the transfer.
+        #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/category
         #
         #   @return [Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category]
         required :category, enum: -> { Increase::Models::ACHTransferCreateParams::Addenda::Category }
 
         # @!attribute [r] freeform
-        #   Unstructured `payment_related_information` passed through with the transfer.
+        #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/freeform
         #
         #   @return [Increase::Models::ACHTransferCreateParams::Addenda::Freeform, nil]
         optional :freeform, -> { Increase::Models::ACHTransferCreateParams::Addenda::Freeform }
@@ -276,8 +257,7 @@ module Increase
         #   attr_writer :freeform
 
         # @!attribute [r] payment_order_remittance_advice
-        #   Structured ASC X12 820 remittance advice records. Please reach out to
-        #   [support@increase.com](mailto:support@increase.com) for more information.
+        #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/payment_order_remittance_advice
         #
         #   @return [Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice, nil]
         optional :payment_order_remittance_advice,
@@ -288,8 +268,7 @@ module Increase
         #   attr_writer :payment_order_remittance_advice
 
         # @!parse
-        #   # Additional information that will be sent to the recipient. This is included in
-        #   # the transfer data sent to the receiving bank.
+        #   # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda
         #   #
         #   # @param category [Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category]
         #   # @param freeform [Increase::Models::ACHTransferCreateParams::Addenda::Freeform]
@@ -299,7 +278,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The type of addenda to pass with the transfer.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/category
         #
         # @see Increase::Models::ACHTransferCreateParams::Addenda#category
         module Category
@@ -321,16 +300,14 @@ module Increase
         # @see Increase::Models::ACHTransferCreateParams::Addenda#freeform
         class Freeform < Increase::Internal::Type::BaseModel
           # @!attribute entries
-          #   Each entry represents an addendum sent with the transfer. Please reach out to
-          #   [support@increase.com](mailto:support@increase.com) to send more than one
-          #   addendum.
+          #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/freeform/properties/entries
           #
           #   @return [Array<Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry>]
           required :entries,
                    -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry] }
 
           # @!parse
-          #   # Unstructured `payment_related_information` passed through with the transfer.
+          #   # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/freeform
           #   #
           #   # @param entries [Array<Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry>]
           #   #
@@ -340,12 +317,14 @@ module Increase
 
           class Entry < Increase::Internal::Type::BaseModel
             # @!attribute payment_related_information
-            #   The payment related information passed in the addendum.
+            #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/freeform/properties/entries/items/properties/payment_related_information
             #
             #   @return [String]
             required :payment_related_information, String
 
             # @!parse
+            #   # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/freeform/properties/entries/items
+            #   #
             #   # @param payment_related_information [String]
             #   #
             #   def initialize(payment_related_information:, **) = super
@@ -357,15 +336,14 @@ module Increase
         # @see Increase::Models::ACHTransferCreateParams::Addenda#payment_order_remittance_advice
         class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
           # @!attribute invoices
-          #   ASC X12 RMR records for this specific transfer.
+          #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/payment_order_remittance_advice/properties/invoices
           #
           #   @return [Array<Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
                    -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice] }
 
           # @!parse
-          #   # Structured ASC X12 820 remittance advice records. Please reach out to
-          #   # [support@increase.com](mailto:support@increase.com) for more information.
+          #   # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/payment_order_remittance_advice
           #   #
           #   # @param invoices [Array<Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           #   #
@@ -375,19 +353,20 @@ module Increase
 
           class Invoice < Increase::Internal::Type::BaseModel
             # @!attribute invoice_number
-            #   The invoice number for this reference, determined in advance with the receiver.
+            #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/payment_order_remittance_advice/properties/invoices/items/properties/invoice_number
             #
             #   @return [String]
             required :invoice_number, String
 
             # @!attribute paid_amount
-            #   The amount that was paid for this invoice in the minor unit of its currency. For
-            #   dollars, for example, this is cents.
+            #   #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/payment_order_remittance_advice/properties/invoices/items/properties/paid_amount
             #
             #   @return [Integer]
             required :paid_amount, Integer
 
             # @!parse
+            #   # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda/properties/payment_order_remittance_advice/properties/invoices/items
+            #   #
             #   # @param invoice_number [String]
             #   # @param paid_amount [Integer]
             #   #
@@ -398,8 +377,7 @@ module Increase
         end
       end
 
-      # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      # #/components/schemas/create_an_ach_transfer_parameters/properties/destination_account_holder
       module DestinationAccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -419,7 +397,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The type of the account to which the transfer will be sent.
+      # #/components/schemas/create_an_ach_transfer_parameters/properties/funding
       module Funding
         extend Increase::Internal::Type::Enum
 
@@ -438,8 +416,7 @@ module Increase
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
         # @!attribute [r] date
-        #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
-        #   use as the effective date when submitting this transfer.
+        #   #/components/schemas/create_an_ach_transfer_parameters/properties/preferred_effective_date/properties/date
         #
         #   @return [Date, nil]
         optional :date, Date
@@ -449,7 +426,7 @@ module Increase
         #   attr_writer :date
 
         # @!attribute [r] settlement_schedule
-        #   A schedule by which Increase will choose an effective date for the transfer.
+        #   #/components/schemas/create_an_ach_transfer_parameters/properties/preferred_effective_date/properties/settlement_schedule
         #
         #   @return [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule, nil]
         optional :settlement_schedule,
@@ -460,10 +437,7 @@ module Increase
         #   attr_writer :settlement_schedule
 
         # @!parse
-        #   # Configuration for how the effective date of the transfer will be set. This
-        #   # determines same-day vs future-dated settlement timing. If not set, defaults to a
-        #   # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-        #   # must be set.
+        #   # #/components/schemas/create_an_ach_transfer_parameters/properties/preferred_effective_date
         #   #
         #   # @param date [Date]
         #   # @param settlement_schedule [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule]
@@ -472,7 +446,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # A schedule by which Increase will choose an effective date for the transfer.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/preferred_effective_date/properties/settlement_schedule
         #
         # @see Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate#settlement_schedule
         module SettlementSchedule
@@ -492,7 +466,7 @@ module Increase
         end
       end
 
-      # The Standard Entry Class (SEC) code to use for the transfer.
+      # #/components/schemas/create_an_ach_transfer_parameters/properties/standard_entry_class_code
       module StandardEntryClassCode
         extend Increase::Internal::Type::Enum
 
@@ -515,7 +489,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The timing of the transaction.
+      # #/components/schemas/create_an_ach_transfer_parameters/properties/transaction_timing
       module TransactionTiming
         extend Increase::Internal::Type::Enum
 

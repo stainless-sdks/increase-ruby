@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] status
-      #   The status to update the Event Subscription with.
+      #   #/components/schemas/update_an_event_subscription_parameters/properties/status
       #
       #   @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::EventSubscriptionUpdateParams::Status }
@@ -26,7 +26,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The status to update the Event Subscription with.
+      # #/components/schemas/update_an_event_subscription_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

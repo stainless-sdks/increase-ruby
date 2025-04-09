@@ -18,15 +18,15 @@ module Increase
             .returns(Increase::Models::Transaction)
         end
         def create(
-          # The identifier of the Account the Interest Payment should be paid to is for.
+          # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/account_id
           account_id:,
-          # The interest amount in cents. Must be positive.
+          # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/amount
           amount:,
-          # The identifier of the Account the Interest accrued on. Defaults to `account_id`.
+          # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/accrued_on_account_id
           accrued_on_account_id: nil,
-          # The end of the interest period. If not provided, defaults to the current time.
+          # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/period_end
           period_end: nil,
-          # The start of the interest period. If not provided, defaults to the current time.
+          # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/period_start
           period_start: nil,
           request_options: {}
         ); end

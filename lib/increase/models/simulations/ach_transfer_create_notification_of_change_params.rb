@@ -10,14 +10,14 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute change_code
-        #   The reason for the notification of change.
+        #   #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/change_code
         #
         #   @return [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode]
         required :change_code,
                  enum: -> { Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode }
 
         # @!attribute corrected_data
-        #   The corrected data for the notification of change (e.g., a new routing number).
+        #   #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/corrected_data
         #
         #   @return [String]
         required :corrected_data, String
@@ -31,7 +31,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The reason for the notification of change.
+        # #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/change_code
         module ChangeCode
           extend Increase::Internal::Type::Enum
 

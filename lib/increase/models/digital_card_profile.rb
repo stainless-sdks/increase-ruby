@@ -5,97 +5,91 @@ module Increase
     # @see Increase::Resources::DigitalCardProfiles#create
     class DigitalCardProfile < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Card Profile identifier.
+      #   #/components/schemas/digital_card_profile/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute app_icon_file_id
-      #   The identifier of the File containing the card's icon image.
+      #   #/components/schemas/digital_card_profile/properties/app_icon_file_id
       #
       #   @return [String]
       required :app_icon_file_id, String
 
       # @!attribute background_image_file_id
-      #   The identifier of the File containing the card's front image.
+      #   #/components/schemas/digital_card_profile/properties/background_image_file_id
       #
       #   @return [String]
       required :background_image_file_id, String
 
       # @!attribute card_description
-      #   A user-facing description for the card itself.
+      #   #/components/schemas/digital_card_profile/properties/card_description
       #
       #   @return [String]
       required :card_description, String
 
       # @!attribute contact_email
-      #   An email address the user can contact to receive support for their card.
+      #   #/components/schemas/digital_card_profile/properties/contact_email
       #
       #   @return [String, nil]
       required :contact_email, String, nil?: true
 
       # @!attribute contact_phone
-      #   A phone number the user can contact to receive support for their card.
+      #   #/components/schemas/digital_card_profile/properties/contact_phone
       #
       #   @return [String, nil]
       required :contact_phone, String, nil?: true
 
       # @!attribute contact_website
-      #   A website the user can visit to view and receive support for their card.
+      #   #/components/schemas/digital_card_profile/properties/contact_website
       #
       #   @return [String, nil]
       required :contact_website, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
+      #   #/components/schemas/digital_card_profile/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute description
-      #   A description you can use to identify the Card Profile.
+      #   #/components/schemas/digital_card_profile/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/digital_card_profile/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute issuer_name
-      #   A user-facing description for whoever is issuing the card.
+      #   #/components/schemas/digital_card_profile/properties/issuer_name
       #
       #   @return [String]
       required :issuer_name, String
 
       # @!attribute status
-      #   The status of the Card Profile.
+      #   #/components/schemas/digital_card_profile/properties/status
       #
       #   @return [Symbol, Increase::Models::DigitalCardProfile::Status]
       required :status, enum: -> { Increase::Models::DigitalCardProfile::Status }
 
       # @!attribute text_color
-      #   The Card's text color, specified as an RGB triple.
+      #   #/components/schemas/digital_card_profile/properties/text_color
       #
       #   @return [Increase::Models::DigitalCardProfile::TextColor]
       required :text_color, -> { Increase::Models::DigitalCardProfile::TextColor }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `digital_card_profile`.
+      #   #/components/schemas/digital_card_profile/properties/type
       #
       #   @return [Symbol, Increase::Models::DigitalCardProfile::Type]
       required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
 
       # @!parse
-      #   # This contains artwork and metadata relating to a Card's appearance in digital
-      #   # wallet apps like Apple Pay and Google Pay. For more information, see our guide
-      #   # on [digital card artwork](https://increase.com/documentation/card-art).
+      #   # #/components/schemas/digital_card_profile
       #   #
       #   # @param id [String]
       #   # @param app_icon_file_id [String]
@@ -134,7 +128,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The status of the Card Profile.
+      # #/components/schemas/digital_card_profile/properties/status
       #
       # @see Increase::Models::DigitalCardProfile#status
       module Status
@@ -162,25 +156,25 @@ module Increase
       # @see Increase::Models::DigitalCardProfile#text_color
       class TextColor < Increase::Internal::Type::BaseModel
         # @!attribute blue
-        #   The value of the blue channel in the RGB color.
+        #   #/components/schemas/digital_card_profile/properties/text_color/properties/blue
         #
         #   @return [Integer]
         required :blue, Integer
 
         # @!attribute green
-        #   The value of the green channel in the RGB color.
+        #   #/components/schemas/digital_card_profile/properties/text_color/properties/green
         #
         #   @return [Integer]
         required :green, Integer
 
         # @!attribute red
-        #   The value of the red channel in the RGB color.
+        #   #/components/schemas/digital_card_profile/properties/text_color/properties/red
         #
         #   @return [Integer]
         required :red, Integer
 
         # @!parse
-        #   # The Card's text color, specified as an RGB triple.
+        #   # #/components/schemas/digital_card_profile/properties/text_color
         #   #
         #   # @param blue [Integer]
         #   # @param green [Integer]
@@ -191,8 +185,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `digital_card_profile`.
+      # #/components/schemas/digital_card_profile/properties/type
       #
       # @see Increase::Models::DigitalCardProfile#type
       module Type

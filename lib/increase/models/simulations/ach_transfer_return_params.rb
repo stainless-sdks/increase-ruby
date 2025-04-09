@@ -10,8 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute [r] reason
-        #   The reason why the Federal Reserve or destination bank returned this transfer.
-        #   Defaults to `no_account`.
+        #   #/components/schemas/sandbox_return_an_ach_transfer_parameters/properties/reason
         #
         #   @return [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason, nil]
         optional :reason, enum: -> { Increase::Models::Simulations::ACHTransferReturnParams::Reason }
@@ -28,8 +27,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The reason why the Federal Reserve or destination bank returned this transfer.
-        # Defaults to `no_account`.
+        # #/components/schemas/sandbox_return_an_ach_transfer_parameters/properties/reason
         module Reason
           extend Increase::Internal::Type::Enum
 

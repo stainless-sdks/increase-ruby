@@ -9,23 +9,19 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute disputed_transaction_id
-      #   The Transaction you wish to dispute. This Transaction must have a `source_type`
-      #   of `card_settlement`.
+      #   #/components/schemas/create_a_card_dispute_parameters/properties/disputed_transaction_id
       #
       #   @return [String]
       required :disputed_transaction_id, String
 
       # @!attribute explanation
-      #   Why you are disputing this Transaction.
+      #   #/components/schemas/create_a_card_dispute_parameters/properties/explanation
       #
       #   @return [String]
       required :explanation, String
 
       # @!attribute [r] amount
-      #   The monetary amount of the part of the transaction that is being disputed. This
-      #   is optional and will default to the full amount of the transaction if not
-      #   provided. If provided, the amount must be less than or equal to the amount of
-      #   the transaction.
+      #   #/components/schemas/create_a_card_dispute_parameters/properties/amount
       #
       #   @return [Integer, nil]
       optional :amount, Integer

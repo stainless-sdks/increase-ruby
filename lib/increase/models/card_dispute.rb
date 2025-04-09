@@ -5,88 +5,79 @@ module Increase
     # @see Increase::Resources::CardDisputes#create
     class CardDispute < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Card Dispute identifier.
+      #   #/components/schemas/card_dispute/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute acceptance
-      #   If the Card Dispute's status is `accepted`, this will contain details of the
-      #   successful dispute.
+      #   #/components/schemas/card_dispute/properties/acceptance
       #
       #   @return [Increase::Models::CardDispute::Acceptance, nil]
       required :acceptance, -> { Increase::Models::CardDispute::Acceptance }, nil?: true
 
       # @!attribute amount
-      #   The amount of the dispute, if provided, or the transaction amount otherwise.
+      #   #/components/schemas/card_dispute/properties/amount
       #
       #   @return [Integer, nil]
       required :amount, Integer, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
+      #   #/components/schemas/card_dispute/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute disputed_transaction_id
-      #   The identifier of the Transaction that was disputed.
+      #   #/components/schemas/card_dispute/properties/disputed_transaction_id
       #
       #   @return [String]
       required :disputed_transaction_id, String
 
       # @!attribute explanation
-      #   Why you disputed the Transaction in question.
+      #   #/components/schemas/card_dispute/properties/explanation
       #
       #   @return [String]
       required :explanation, String
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/card_dispute/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute loss
-      #   If the Card Dispute's status is `lost`, this will contain details of the lost
-      #   dispute.
+      #   #/components/schemas/card_dispute/properties/loss
       #
       #   @return [Increase::Models::CardDispute::Loss, nil]
       required :loss, -> { Increase::Models::CardDispute::Loss }, nil?: true
 
       # @!attribute rejection
-      #   If the Card Dispute's status is `rejected`, this will contain details of the
-      #   unsuccessful dispute.
+      #   #/components/schemas/card_dispute/properties/rejection
       #
       #   @return [Increase::Models::CardDispute::Rejection, nil]
       required :rejection, -> { Increase::Models::CardDispute::Rejection }, nil?: true
 
       # @!attribute status
-      #   The results of the Dispute investigation.
+      #   #/components/schemas/card_dispute/properties/status
       #
       #   @return [Symbol, Increase::Models::CardDispute::Status]
       required :status, enum: -> { Increase::Models::CardDispute::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `card_dispute`.
+      #   #/components/schemas/card_dispute/properties/type
       #
       #   @return [Symbol, Increase::Models::CardDispute::Type]
       required :type, enum: -> { Increase::Models::CardDispute::Type }
 
       # @!attribute win
-      #   If the Card Dispute's status is `won`, this will contain details of the won
-      #   dispute.
+      #   #/components/schemas/card_dispute/properties/win
       #
       #   @return [Increase::Models::CardDispute::Win, nil]
       required :win, -> { Increase::Models::CardDispute::Win }, nil?: true
 
       # @!parse
-      #   # If unauthorized activity occurs on a card, you can create a Card Dispute and
-      #   # we'll return the funds if appropriate.
+      #   # #/components/schemas/card_dispute
       #   #
       #   # @param id [String]
       #   # @param acceptance [Increase::Models::CardDispute::Acceptance, nil]
@@ -124,28 +115,25 @@ module Increase
       # @see Increase::Models::CardDispute#acceptance
       class Acceptance < Increase::Internal::Type::BaseModel
         # @!attribute accepted_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was accepted.
+        #   #/components/schemas/card_dispute/properties/acceptance/anyOf/0/properties/accepted_at
         #
         #   @return [Time]
         required :accepted_at, Time
 
         # @!attribute card_dispute_id
-        #   The identifier of the Card Dispute that was accepted.
+        #   #/components/schemas/card_dispute/properties/acceptance/anyOf/0/properties/card_dispute_id
         #
         #   @return [String]
         required :card_dispute_id, String
 
         # @!attribute transaction_id
-        #   The identifier of the Transaction that was created to return the disputed funds
-        #   to your account.
+        #   #/components/schemas/card_dispute/properties/acceptance/anyOf/0/properties/transaction_id
         #
         #   @return [String]
         required :transaction_id, String
 
         # @!parse
-        #   # If the Card Dispute's status is `accepted`, this will contain details of the
-        #   # successful dispute.
+        #   # #/components/schemas/card_dispute/properties/acceptance
         #   #
         #   # @param accepted_at [Time]
         #   # @param card_dispute_id [String]
@@ -159,34 +147,31 @@ module Increase
       # @see Increase::Models::CardDispute#loss
       class Loss < Increase::Internal::Type::BaseModel
         # @!attribute card_dispute_id
-        #   The identifier of the Card Dispute that was lost.
+        #   #/components/schemas/card_dispute/properties/loss/anyOf/0/properties/card_dispute_id
         #
         #   @return [String]
         required :card_dispute_id, String
 
         # @!attribute explanation
-        #   Why the Card Dispute was lost.
+        #   #/components/schemas/card_dispute/properties/loss/anyOf/0/properties/explanation
         #
         #   @return [String]
         required :explanation, String
 
         # @!attribute lost_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was lost.
+        #   #/components/schemas/card_dispute/properties/loss/anyOf/0/properties/lost_at
         #
         #   @return [Time]
         required :lost_at, Time
 
         # @!attribute transaction_id
-        #   The identifier of the Transaction that was created to debit the disputed funds
-        #   from your account.
+        #   #/components/schemas/card_dispute/properties/loss/anyOf/0/properties/transaction_id
         #
         #   @return [String]
         required :transaction_id, String
 
         # @!parse
-        #   # If the Card Dispute's status is `lost`, this will contain details of the lost
-        #   # dispute.
+        #   # #/components/schemas/card_dispute/properties/loss
         #   #
         #   # @param card_dispute_id [String]
         #   # @param explanation [String]
@@ -201,27 +186,25 @@ module Increase
       # @see Increase::Models::CardDispute#rejection
       class Rejection < Increase::Internal::Type::BaseModel
         # @!attribute card_dispute_id
-        #   The identifier of the Card Dispute that was rejected.
+        #   #/components/schemas/card_dispute/properties/rejection/anyOf/0/properties/card_dispute_id
         #
         #   @return [String]
         required :card_dispute_id, String
 
         # @!attribute explanation
-        #   Why the Card Dispute was rejected.
+        #   #/components/schemas/card_dispute/properties/rejection/anyOf/0/properties/explanation
         #
         #   @return [String]
         required :explanation, String
 
         # @!attribute rejected_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was rejected.
+        #   #/components/schemas/card_dispute/properties/rejection/anyOf/0/properties/rejected_at
         #
         #   @return [Time]
         required :rejected_at, Time
 
         # @!parse
-        #   # If the Card Dispute's status is `rejected`, this will contain details of the
-        #   # unsuccessful dispute.
+        #   # #/components/schemas/card_dispute/properties/rejection
         #   #
         #   # @param card_dispute_id [String]
         #   # @param explanation [String]
@@ -232,7 +215,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # The results of the Dispute investigation.
+      # #/components/schemas/card_dispute/properties/status
       #
       # @see Increase::Models::CardDispute#status
       module Status
@@ -263,8 +246,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card_dispute`.
+      # #/components/schemas/card_dispute/properties/type
       #
       # @see Increase::Models::CardDispute#type
       module Type
@@ -282,21 +264,19 @@ module Increase
       # @see Increase::Models::CardDispute#win
       class Win < Increase::Internal::Type::BaseModel
         # @!attribute card_dispute_id
-        #   The identifier of the Card Dispute that was won.
+        #   #/components/schemas/card_dispute/properties/win/anyOf/0/properties/card_dispute_id
         #
         #   @return [String]
         required :card_dispute_id, String
 
         # @!attribute won_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was won.
+        #   #/components/schemas/card_dispute/properties/win/anyOf/0/properties/won_at
         #
         #   @return [Time]
         required :won_at, Time
 
         # @!parse
-        #   # If the Card Dispute's status is `won`, this will contain details of the won
-        #   # dispute.
+        #   # #/components/schemas/card_dispute/properties/win
         #   #
         #   # @param card_dispute_id [String]
         #   # @param won_at [Time]

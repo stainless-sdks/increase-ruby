@@ -5,25 +5,25 @@ module Increase
     # @see Increase::Resources::CardPurchaseSupplements#retrieve
     class CardPurchaseSupplement < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Card Purchase Supplement identifier.
+      #   #/components/schemas/card_purchase_supplement/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute card_payment_id
-      #   The ID of the Card Payment this transaction belongs to.
+      #   #/components/schemas/card_purchase_supplement/properties/card_payment_id
       #
       #   @return [String, nil]
       required :card_payment_id, String, nil?: true
 
       # @!attribute invoice
-      #   Invoice-level information about the payment.
+      #   #/components/schemas/card_purchase_supplement/properties/invoice
       #
       #   @return [Increase::Models::CardPurchaseSupplement::Invoice, nil]
       required :invoice, -> { Increase::Models::CardPurchaseSupplement::Invoice }, nil?: true
 
       # @!attribute line_items
-      #   Line item information, such as individual products purchased.
+      #   #/components/schemas/card_purchase_supplement/properties/line_items
       #
       #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>, nil]
       required :line_items,
@@ -31,21 +31,19 @@ module Increase
                nil?: true
 
       # @!attribute transaction_id
-      #   The ID of the transaction.
+      #   #/components/schemas/card_purchase_supplement/properties/transaction_id
       #
       #   @return [String]
       required :transaction_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
+      #   #/components/schemas/card_purchase_supplement/properties/type
       #
       #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
 
       # @!parse
-      #   # Additional information about a card purchase (e.g., settlement or refund), such
-      #   # as level 3 line item data.
+      #   # #/components/schemas/card_purchase_supplement
       #   #
       #   # @param id [String]
       #   # @param card_payment_id [String, nil]
@@ -61,19 +59,19 @@ module Increase
       # @see Increase::Models::CardPurchaseSupplement#invoice
       class Invoice < Increase::Internal::Type::BaseModel
         # @!attribute discount_amount
-        #   Discount given to cardholder.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_amount
         #
         #   @return [Integer, nil]
         required :discount_amount, Integer, nil?: true
 
         # @!attribute discount_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_currency
         #
         #   @return [String, nil]
         required :discount_currency, String, nil?: true
 
         # @!attribute discount_treatment_code
-        #   Indicates how the merchant applied the discount.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_treatment_code
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode, nil]
         required :discount_treatment_code,
@@ -81,75 +79,73 @@ module Increase
                  nil?: true
 
         # @!attribute duty_tax_amount
-        #   Amount of duty taxes.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/duty_tax_amount
         #
         #   @return [Integer, nil]
         required :duty_tax_amount, Integer, nil?: true
 
         # @!attribute duty_tax_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/duty_tax_currency
         #
         #   @return [String, nil]
         required :duty_tax_currency, String, nil?: true
 
         # @!attribute order_date
-        #   Date the order was taken.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/order_date
         #
         #   @return [Date, nil]
         required :order_date, Date, nil?: true
 
         # @!attribute shipping_amount
-        #   The shipping cost.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_amount
         #
         #   @return [Integer, nil]
         required :shipping_amount, Integer, nil?: true
 
         # @!attribute shipping_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   cost.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_currency
         #
         #   @return [String, nil]
         required :shipping_currency, String, nil?: true
 
         # @!attribute shipping_destination_country_code
-        #   Country code of the shipping destination.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_destination_country_code
         #
         #   @return [String, nil]
         required :shipping_destination_country_code, String, nil?: true
 
         # @!attribute shipping_destination_postal_code
-        #   Postal code of the shipping destination.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_destination_postal_code
         #
         #   @return [String, nil]
         required :shipping_destination_postal_code, String, nil?: true
 
         # @!attribute shipping_source_postal_code
-        #   Postal code of the location being shipped from.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_source_postal_code
         #
         #   @return [String, nil]
         required :shipping_source_postal_code, String, nil?: true
 
         # @!attribute shipping_tax_amount
-        #   Taxes paid for freight and shipping.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_tax_amount
         #
         #   @return [Integer, nil]
         required :shipping_tax_amount, Integer, nil?: true
 
         # @!attribute shipping_tax_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   tax.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_tax_currency
         #
         #   @return [String, nil]
         required :shipping_tax_currency, String, nil?: true
 
         # @!attribute shipping_tax_rate
-        #   Tax rate for freight and shipping.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_tax_rate
         #
         #   @return [String, nil]
         required :shipping_tax_rate, String, nil?: true
 
         # @!attribute tax_treatments
-        #   Indicates how the merchant applied taxes.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/tax_treatments
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments, nil]
         required :tax_treatments,
@@ -157,13 +153,13 @@ module Increase
                  nil?: true
 
         # @!attribute unique_value_added_tax_invoice_reference
-        #   Value added tax invoice reference number.
+        #   #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/unique_value_added_tax_invoice_reference
         #
         #   @return [String, nil]
         required :unique_value_added_tax_invoice_reference, String, nil?: true
 
         # @!parse
-        #   # Invoice-level information about the payment.
+        #   # #/components/schemas/card_purchase_supplement/properties/invoice
         #   #
         #   # @param discount_amount [Integer, nil]
         #   # @param discount_currency [String, nil]
@@ -206,7 +202,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # Indicates how the merchant applied the discount.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_treatment_code
         #
         # @see Increase::Models::CardPurchaseSupplement::Invoice#discount_treatment_code
         module DiscountTreatmentCode
@@ -228,7 +224,7 @@ module Increase
           #   def self.values; end
         end
 
-        # Indicates how the merchant applied taxes.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/tax_treatments
         #
         # @see Increase::Models::CardPurchaseSupplement::Invoice#tax_treatments
         module TaxTreatments
@@ -259,13 +255,13 @@ module Increase
 
       class LineItem < Increase::Internal::Type::BaseModel
         # @!attribute id
-        #   The Card Purchase Supplement Line Item identifier.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/id
         #
         #   @return [String]
         required :id, String
 
         # @!attribute detail_indicator
-        #   Indicates the type of line item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/detail_indicator
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator, nil]
         required :detail_indicator,
@@ -273,19 +269,19 @@ module Increase
                  nil?: true
 
         # @!attribute discount_amount
-        #   Discount amount for this specific line item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_amount
         #
         #   @return [Integer, nil]
         required :discount_amount, Integer, nil?: true
 
         # @!attribute discount_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_currency
         #
         #   @return [String, nil]
         required :discount_currency, String, nil?: true
 
         # @!attribute discount_treatment_code
-        #   Indicates how the merchant applied the discount for this specific line item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_treatment_code
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode, nil]
         required :discount_treatment_code,
@@ -293,80 +289,80 @@ module Increase
                  nil?: true
 
         # @!attribute item_commodity_code
-        #   Code used to categorize the purchase item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/item_commodity_code
         #
         #   @return [String, nil]
         required :item_commodity_code, String, nil?: true
 
         # @!attribute item_descriptor
-        #   Description of the purchase item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/item_descriptor
         #
         #   @return [String, nil]
         required :item_descriptor, String, nil?: true
 
         # @!attribute item_quantity
-        #   The number of units of the product being purchased.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/item_quantity
         #
         #   @return [String, nil]
         required :item_quantity, String, nil?: true
 
         # @!attribute product_code
-        #   Code used to categorize the product being purchased.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/product_code
         #
         #   @return [String, nil]
         required :product_code, String, nil?: true
 
         # @!attribute sales_tax_amount
-        #   Sales tax amount for this line item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/sales_tax_amount
         #
         #   @return [Integer, nil]
         required :sales_tax_amount, Integer, nil?: true
 
         # @!attribute sales_tax_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        #   assessed.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/sales_tax_currency
         #
         #   @return [String, nil]
         required :sales_tax_currency, String, nil?: true
 
         # @!attribute sales_tax_rate
-        #   Sales tax rate for this line item.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/sales_tax_rate
         #
         #   @return [String, nil]
         required :sales_tax_rate, String, nil?: true
 
         # @!attribute total_amount
-        #   Total amount of all line items.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/total_amount
         #
         #   @return [Integer, nil]
         required :total_amount, Integer, nil?: true
 
         # @!attribute total_amount_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        #   amount.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/total_amount_currency
         #
         #   @return [String, nil]
         required :total_amount_currency, String, nil?: true
 
         # @!attribute unit_cost
-        #   Cost of line item per unit of measure, in major units.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/unit_cost
         #
         #   @return [String, nil]
         required :unit_cost, String, nil?: true
 
         # @!attribute unit_cost_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/unit_cost_currency
         #
         #   @return [String, nil]
         required :unit_cost_currency, String, nil?: true
 
         # @!attribute unit_of_measure_code
-        #   Code indicating unit of measure (gallons, etc.).
+        #   #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/unit_of_measure_code
         #
         #   @return [String, nil]
         required :unit_of_measure_code, String, nil?: true
 
         # @!parse
+        #   # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items
+        #   #
         #   # @param id [String]
         #   # @param detail_indicator [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator, nil]
         #   # @param discount_amount [Integer, nil]
@@ -410,7 +406,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # Indicates the type of line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/detail_indicator
         #
         # @see Increase::Models::CardPurchaseSupplement::LineItem#detail_indicator
         module DetailIndicator
@@ -432,7 +428,7 @@ module Increase
           #   def self.values; end
         end
 
-        # Indicates how the merchant applied the discount for this specific line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_treatment_code
         #
         # @see Increase::Models::CardPurchaseSupplement::LineItem#discount_treatment_code
         module DiscountTreatmentCode
@@ -455,8 +451,7 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card_purchase_supplement`.
+      # #/components/schemas/card_purchase_supplement/properties/type
       #
       # @see Increase::Models::CardPurchaseSupplement#type
       module Type

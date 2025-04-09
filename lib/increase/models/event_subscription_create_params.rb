@@ -9,14 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute url
-      #   The URL you'd like us to send webhooks to.
+      #   #/components/schemas/create_an_event_subscription_parameters/properties/url
       #
       #   @return [String]
       required :url, String
 
       # @!attribute [r] oauth_connection_id
-      #   If specified, this subscription will only receive webhooks for Events associated
-      #   with the specified OAuth Connection.
+      #   #/components/schemas/create_an_event_subscription_parameters/properties/oauth_connection_id
       #
       #   @return [String, nil]
       optional :oauth_connection_id, String
@@ -26,8 +25,7 @@ module Increase
       #   attr_writer :oauth_connection_id
 
       # @!attribute [r] selected_event_category
-      #   If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      #   #/components/schemas/create_an_event_subscription_parameters/properties/selected_event_category
       #
       #   @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory, nil]
       optional :selected_event_category,
@@ -38,8 +36,7 @@ module Increase
       #   attr_writer :selected_event_category
 
       # @!attribute [r] shared_secret
-      #   The key that will be used to sign webhooks. If no value is passed, a random
-      #   string will be used as default.
+      #   #/components/schemas/create_an_event_subscription_parameters/properties/shared_secret
       #
       #   @return [String, nil]
       optional :shared_secret, String
@@ -59,8 +56,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # #/components/schemas/create_an_event_subscription_parameters/properties/selected_event_category
       module SelectedEventCategory
         extend Increase::Internal::Type::Enum
 

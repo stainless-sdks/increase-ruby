@@ -9,21 +9,19 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute file
-      #   The file contents. This should follow the specifications of
-      #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-      #   transfers for the multipart/form-data protocol.
+      #   #/components/schemas/create_a_file_parameters/properties/file
       #
       #   @return [Pathname, StringIO]
       required :file, Increase::Internal::Type::IOLike
 
       # @!attribute purpose
-      #   What the File will be used for in Increase's systems.
+      #   #/components/schemas/create_a_file_parameters/properties/purpose
       #
       #   @return [Symbol, Increase::Models::FileCreateParams::Purpose]
       required :purpose, enum: -> { Increase::Models::FileCreateParams::Purpose }
 
       # @!attribute [r] description
-      #   The description you choose to give the File.
+      #   #/components/schemas/create_a_file_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -42,7 +40,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # What the File will be used for in Increase's systems.
+      # #/components/schemas/create_a_file_parameters/properties/purpose
       module Purpose
         extend Increase::Internal::Type::Enum
 

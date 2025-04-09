@@ -3,15 +3,15 @@
 module Increase
   module Models
     class CardPurchaseSupplement < Increase::Internal::Type::BaseModel
-      # The Card Purchase Supplement identifier.
+      # #/components/schemas/card_purchase_supplement/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The ID of the Card Payment this transaction belongs to.
+      # #/components/schemas/card_purchase_supplement/properties/card_payment_id
       sig { returns(T.nilable(String)) }
       attr_accessor :card_payment_id
 
-      # Invoice-level information about the payment.
+      # #/components/schemas/card_purchase_supplement/properties/invoice
       sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice)) }
       attr_reader :invoice
 
@@ -23,21 +23,19 @@ module Increase
       end
       attr_writer :invoice
 
-      # Line item information, such as individual products purchased.
+      # #/components/schemas/card_purchase_supplement/properties/line_items
       sig { returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem])) }
       attr_accessor :line_items
 
-      # The ID of the transaction.
+      # #/components/schemas/card_purchase_supplement/properties/transaction_id
       sig { returns(String) }
       attr_accessor :transaction_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card_purchase_supplement`.
+      # #/components/schemas/card_purchase_supplement/properties/type
       sig { returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Additional information about a card purchase (e.g., settlement or refund), such
-      # as level 3 line item data.
+      # #/components/schemas/card_purchase_supplement
       sig do
         params(
           id: String,
@@ -69,73 +67,71 @@ module Increase
       def to_hash; end
 
       class Invoice < Increase::Internal::Type::BaseModel
-        # Discount given to cardholder.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :discount_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :discount_currency
 
-        # Indicates how the merchant applied the discount.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_treatment_code
         sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol)) }
         attr_accessor :discount_treatment_code
 
-        # Amount of duty taxes.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/duty_tax_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :duty_tax_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/duty_tax_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :duty_tax_currency
 
-        # Date the order was taken.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/order_date
         sig { returns(T.nilable(Date)) }
         attr_accessor :order_date
 
-        # The shipping cost.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :shipping_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        # cost.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_currency
 
-        # Country code of the shipping destination.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_destination_country_code
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_destination_country_code
 
-        # Postal code of the shipping destination.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_destination_postal_code
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_destination_postal_code
 
-        # Postal code of the location being shipped from.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_source_postal_code
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_source_postal_code
 
-        # Taxes paid for freight and shipping.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_tax_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :shipping_tax_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        # tax.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_tax_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_tax_currency
 
-        # Tax rate for freight and shipping.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/shipping_tax_rate
         sig { returns(T.nilable(String)) }
         attr_accessor :shipping_tax_rate
 
-        # Indicates how the merchant applied taxes.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/tax_treatments
         sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol)) }
         attr_accessor :tax_treatments
 
-        # Value added tax invoice reference number.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/unique_value_added_tax_invoice_reference
         sig { returns(T.nilable(String)) }
         attr_accessor :unique_value_added_tax_invoice_reference
 
-        # Invoice-level information about the payment.
+        # #/components/schemas/card_purchase_supplement/properties/invoice
         sig do
           params(
             discount_amount: T.nilable(Integer),
@@ -200,7 +196,7 @@ module Increase
         end
         def to_hash; end
 
-        # Indicates how the merchant applied the discount.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/discount_treatment_code
         module DiscountTreatmentCode
           extend Increase::Internal::Type::Enum
 
@@ -243,7 +239,7 @@ module Increase
           def self.values; end
         end
 
-        # Indicates how the merchant applied taxes.
+        # #/components/schemas/card_purchase_supplement/properties/invoice/anyOf/0/properties/tax_treatments
         module TaxTreatments
           extend Increase::Internal::Type::Enum
 
@@ -290,23 +286,23 @@ module Increase
       end
 
       class LineItem < Increase::Internal::Type::BaseModel
-        # The Card Purchase Supplement Line Item identifier.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/id
         sig { returns(String) }
         attr_accessor :id
 
-        # Indicates the type of line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/detail_indicator
         sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol)) }
         attr_accessor :detail_indicator
 
-        # Discount amount for this specific line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :discount_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :discount_currency
 
-        # Indicates how the merchant applied the discount for this specific line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_treatment_code
         sig do
           returns(
             T.nilable(Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol)
@@ -314,56 +310,55 @@ module Increase
         end
         attr_accessor :discount_treatment_code
 
-        # Code used to categorize the purchase item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/item_commodity_code
         sig { returns(T.nilable(String)) }
         attr_accessor :item_commodity_code
 
-        # Description of the purchase item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/item_descriptor
         sig { returns(T.nilable(String)) }
         attr_accessor :item_descriptor
 
-        # The number of units of the product being purchased.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/item_quantity
         sig { returns(T.nilable(String)) }
         attr_accessor :item_quantity
 
-        # Code used to categorize the product being purchased.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/product_code
         sig { returns(T.nilable(String)) }
         attr_accessor :product_code
 
-        # Sales tax amount for this line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/sales_tax_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :sales_tax_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        # assessed.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/sales_tax_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :sales_tax_currency
 
-        # Sales tax rate for this line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/sales_tax_rate
         sig { returns(T.nilable(String)) }
         attr_accessor :sales_tax_rate
 
-        # Total amount of all line items.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/total_amount
         sig { returns(T.nilable(Integer)) }
         attr_accessor :total_amount
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        # amount.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/total_amount_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :total_amount_currency
 
-        # Cost of line item per unit of measure, in major units.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/unit_cost
         sig { returns(T.nilable(String)) }
         attr_accessor :unit_cost
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/unit_cost_currency
         sig { returns(T.nilable(String)) }
         attr_accessor :unit_cost_currency
 
-        # Code indicating unit of measure (gallons, etc.).
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/unit_of_measure_code
         sig { returns(T.nilable(String)) }
         attr_accessor :unit_of_measure_code
 
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items
         sig do
           params(
             id: String,
@@ -431,7 +426,7 @@ module Increase
         end
         def to_hash; end
 
-        # Indicates the type of line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/detail_indicator
         module DetailIndicator
           extend Increase::Internal::Type::Enum
 
@@ -459,7 +454,7 @@ module Increase
           def self.values; end
         end
 
-        # Indicates how the merchant applied the discount for this specific line item.
+        # #/components/schemas/card_purchase_supplement/properties/line_items/anyOf/0/items/properties/discount_treatment_code
         module DiscountTreatmentCode
           extend Increase::Internal::Type::Enum
 
@@ -503,8 +498,7 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card_purchase_supplement`.
+      # #/components/schemas/card_purchase_supplement/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

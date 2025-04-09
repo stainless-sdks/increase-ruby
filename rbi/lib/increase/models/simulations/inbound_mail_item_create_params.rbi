@@ -7,16 +7,15 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The amount of the check to be simulated, in cents.
+        # #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The identifier of the Lockbox to simulate inbound mail to.
+        # #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/lockbox_id
         sig { returns(String) }
         attr_accessor :lockbox_id
 
-        # The file containing the PDF contents. If not present, a default check image file
-        # will be used.
+        # #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/contents_file_id
         sig { returns(T.nilable(String)) }
         attr_reader :contents_file_id
 

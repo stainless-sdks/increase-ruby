@@ -13,10 +13,9 @@ module Increase
           .returns(Increase::Models::FileLink)
       end
       def create(
-        # The File to create a File Link for.
+        # #/components/schemas/create_a_file_link_parameters/properties/file_id
         file_id:,
-        # The time at which the File Link will expire. The default is 1 hour from the time
-        # of the request. The maxiumum is 1 day from the time of the request.
+        # #/components/schemas/create_a_file_link_parameters/properties/expires_at
         expires_at: nil,
         request_options: {}
       ); end

@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The card's updated billing address.
+      # #/components/schemas/update_a_card_parameters/properties/billing_address
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress)) }
       attr_reader :billing_address
 
@@ -18,16 +18,14 @@ module Increase
       end
       attr_writer :billing_address
 
-      # The description you choose to give the card.
+      # #/components/schemas/update_a_card_parameters/properties/description
       sig { returns(T.nilable(String)) }
       attr_reader :description
 
       sig { params(description: String).void }
       attr_writer :description
 
-      # The contact information used in the two-factor steps for digital wallet card
-      # creation. At least one field must be present to complete the digital wallet
-      # steps.
+      # #/components/schemas/update_a_card_parameters/properties/digital_wallet
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::DigitalWallet)) }
       attr_reader :digital_wallet
 
@@ -39,15 +37,14 @@ module Increase
       end
       attr_writer :digital_wallet
 
-      # The Entity the card belongs to. You only need to supply this in rare situations
-      # when the card is not for the Account holder.
+      # #/components/schemas/update_a_card_parameters/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_reader :entity_id
 
       sig { params(entity_id: String).void }
       attr_writer :entity_id
 
-      # The status to update the Card with.
+      # #/components/schemas/update_a_card_parameters/properties/status
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -89,30 +86,30 @@ module Increase
       def to_hash; end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        # The city of the billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address/properties/city
         sig { returns(String) }
         attr_accessor :city
 
-        # The first line of the billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address/properties/line1
         sig { returns(String) }
         attr_accessor :line1
 
-        # The postal code of the billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address/properties/postal_code
         sig { returns(String) }
         attr_accessor :postal_code
 
-        # The US state of the billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address/properties/state
         sig { returns(String) }
         attr_accessor :state
 
-        # The second line of the billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address/properties/line2
         sig { returns(T.nilable(String)) }
         attr_reader :line2
 
         sig { params(line2: String).void }
         attr_writer :line2
 
-        # The card's updated billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address
         sig do
           params(city: String, line1: String, postal_code: String, state: String, line2: String)
             .returns(T.attached_class)
@@ -126,32 +123,28 @@ module Increase
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        # The digital card profile assigned to this digital card.
+        # #/components/schemas/update_a_card_parameters/properties/digital_wallet/properties/digital_card_profile_id
         sig { returns(T.nilable(String)) }
         attr_reader :digital_card_profile_id
 
         sig { params(digital_card_profile_id: String).void }
         attr_writer :digital_card_profile_id
 
-        # An email address that can be used to verify the cardholder via one-time passcode
-        # over email.
+        # #/components/schemas/update_a_card_parameters/properties/digital_wallet/properties/email
         sig { returns(T.nilable(String)) }
         attr_reader :email
 
         sig { params(email: String).void }
         attr_writer :email
 
-        # A phone number that can be used to verify the cardholder via one-time passcode
-        # over SMS.
+        # #/components/schemas/update_a_card_parameters/properties/digital_wallet/properties/phone
         sig { returns(T.nilable(String)) }
         attr_reader :phone
 
         sig { params(phone: String).void }
         attr_writer :phone
 
-        # The contact information used in the two-factor steps for digital wallet card
-        # creation. At least one field must be present to complete the digital wallet
-        # steps.
+        # #/components/schemas/update_a_card_parameters/properties/digital_wallet
         sig do
           params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
         end
@@ -161,7 +154,7 @@ module Increase
         def to_hash; end
       end
 
-      # The status to update the Card with.
+      # #/components/schemas/update_a_card_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

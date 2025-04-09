@@ -5,69 +5,61 @@ module Increase
     # @see Increase::Resources::PhysicalCards#create
     class PhysicalCard < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The physical card identifier.
+      #   #/components/schemas/physical_card/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute card_id
-      #   The identifier for the Card this Physical Card represents.
+      #   #/components/schemas/physical_card/properties/card_id
       #
       #   @return [String]
       required :card_id, String
 
       # @!attribute cardholder
-      #   Details about the cardholder, as it appears on the printed card.
+      #   #/components/schemas/physical_card/properties/cardholder
       #
       #   @return [Increase::Models::PhysicalCard::Cardholder]
       required :cardholder, -> { Increase::Models::PhysicalCard::Cardholder }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Physical Card was created.
+      #   #/components/schemas/physical_card/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/physical_card/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute physical_card_profile_id
-      #   The Physical Card Profile used for this Physical Card.
+      #   #/components/schemas/physical_card/properties/physical_card_profile_id
       #
       #   @return [String, nil]
       required :physical_card_profile_id, String, nil?: true
 
       # @!attribute shipment
-      #   The details used to ship this physical card.
+      #   #/components/schemas/physical_card/properties/shipment
       #
       #   @return [Increase::Models::PhysicalCard::Shipment]
       required :shipment, -> { Increase::Models::PhysicalCard::Shipment }
 
       # @!attribute status
-      #   The status of the Physical Card.
+      #   #/components/schemas/physical_card/properties/status
       #
       #   @return [Symbol, Increase::Models::PhysicalCard::Status]
       required :status, enum: -> { Increase::Models::PhysicalCard::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `physical_card`.
+      #   #/components/schemas/physical_card/properties/type
       #
       #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
       # @!parse
-      #   # Custom physical Visa cards that are shipped to your customers. The artwork is
-      #   # configurable by a connected [Card Profile](/documentation/api#card-profiles).
-      #   # The same Card can be used for multiple Physical Cards. Printing cards incurs a
-      #   # fee. Please contact [support@increase.com](mailto:support@increase.com) for
-      #   # pricing!
+      #   # #/components/schemas/physical_card
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
@@ -99,19 +91,19 @@ module Increase
       # @see Increase::Models::PhysicalCard#cardholder
       class Cardholder < Increase::Internal::Type::BaseModel
         # @!attribute first_name
-        #   The cardholder's first name.
+        #   #/components/schemas/physical_card/properties/cardholder/properties/first_name
         #
         #   @return [String]
         required :first_name, String
 
         # @!attribute last_name
-        #   The cardholder's last name.
+        #   #/components/schemas/physical_card/properties/cardholder/properties/last_name
         #
         #   @return [String]
         required :last_name, String
 
         # @!parse
-        #   # Details about the cardholder, as it appears on the printed card.
+        #   # #/components/schemas/physical_card/properties/cardholder
         #   #
         #   # @param first_name [String]
         #   # @param last_name [String]
@@ -124,31 +116,31 @@ module Increase
       # @see Increase::Models::PhysicalCard#shipment
       class Shipment < Increase::Internal::Type::BaseModel
         # @!attribute address
-        #   The location to where the card's packing label is addressed.
+        #   #/components/schemas/physical_card/properties/shipment/properties/address
         #
         #   @return [Increase::Models::PhysicalCard::Shipment::Address]
         required :address, -> { Increase::Models::PhysicalCard::Shipment::Address }
 
         # @!attribute method_
-        #   The shipping method.
+        #   #/components/schemas/physical_card/properties/shipment/properties/method
         #
         #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
         required :method_, enum: -> { Increase::Models::PhysicalCard::Shipment::Method }, api_name: :method
 
         # @!attribute status
-        #   The status of this shipment.
+        #   #/components/schemas/physical_card/properties/shipment/properties/status
         #
         #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Status]
         required :status, enum: -> { Increase::Models::PhysicalCard::Shipment::Status }
 
         # @!attribute tracking
-        #   Tracking details for the shipment.
+        #   #/components/schemas/physical_card/properties/shipment/properties/tracking
         #
         #   @return [Increase::Models::PhysicalCard::Shipment::Tracking, nil]
         required :tracking, -> { Increase::Models::PhysicalCard::Shipment::Tracking }, nil?: true
 
         # @!parse
-        #   # The details used to ship this physical card.
+        #   # #/components/schemas/physical_card/properties/shipment
         #   #
         #   # @param address [Increase::Models::PhysicalCard::Shipment::Address]
         #   # @param method_ [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
@@ -162,49 +154,49 @@ module Increase
         # @see Increase::Models::PhysicalCard::Shipment#address
         class Address < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the shipping address.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The first line of the shipping address.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute line2
-          #   The second line of the shipping address.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/line2
           #
           #   @return [String, nil]
           required :line2, String, nil?: true
 
           # @!attribute line3
-          #   The third line of the shipping address.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/line3
           #
           #   @return [String, nil]
           required :line3, String, nil?: true
 
           # @!attribute name
-          #   The name of the recipient.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!attribute postal_code
-          #   The postal code of the shipping address.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/postal_code
           #
           #   @return [String]
           required :postal_code, String
 
           # @!attribute state
-          #   The US state of the shipping address.
+          #   #/components/schemas/physical_card/properties/shipment/properties/address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!parse
-          #   # The location to where the card's packing label is addressed.
+          #   # #/components/schemas/physical_card/properties/shipment/properties/address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -219,7 +211,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The shipping method.
+        # #/components/schemas/physical_card/properties/shipment/properties/method
         #
         # @see Increase::Models::PhysicalCard::Shipment#method_
         module Method
@@ -241,7 +233,7 @@ module Increase
           #   def self.values; end
         end
 
-        # The status of this shipment.
+        # #/components/schemas/physical_card/properties/shipment/properties/status
         #
         # @see Increase::Models::PhysicalCard::Shipment#status
         module Status
@@ -278,33 +270,31 @@ module Increase
         # @see Increase::Models::PhysicalCard::Shipment#tracking
         class Tracking < Increase::Internal::Type::BaseModel
           # @!attribute number
-          #   The tracking number.
+          #   #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/number
           #
           #   @return [String]
           required :number, String
 
           # @!attribute return_number
-          #   For returned shipments, the tracking number of the return shipment.
+          #   #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/return_number
           #
           #   @return [String, nil]
           required :return_number, String, nil?: true
 
           # @!attribute return_reason
-          #   For returned shipments, this describes why the package was returned.
+          #   #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/return_reason
           #
           #   @return [String, nil]
           required :return_reason, String, nil?: true
 
           # @!attribute shipped_at
-          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the fulfillment provider marked the card as ready for pick-up by the shipment
-          #   carrier.
+          #   #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/shipped_at
           #
           #   @return [Time]
           required :shipped_at, Time
 
           # @!parse
-          #   # Tracking details for the shipment.
+          #   # #/components/schemas/physical_card/properties/shipment/properties/tracking
           #   #
           #   # @param number [String]
           #   # @param return_number [String, nil]
@@ -317,7 +307,7 @@ module Increase
         end
       end
 
-      # The status of the Physical Card.
+      # #/components/schemas/physical_card/properties/status
       #
       # @see Increase::Models::PhysicalCard#status
       module Status
@@ -339,8 +329,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `physical_card`.
+      # #/components/schemas/physical_card/properties/type
       #
       # @see Increase::Models::PhysicalCard#type
       module Type

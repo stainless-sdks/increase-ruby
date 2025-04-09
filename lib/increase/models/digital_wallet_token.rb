@@ -5,65 +5,61 @@ module Increase
     # @see Increase::Resources::DigitalWalletTokens#retrieve
     class DigitalWalletToken < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Digital Wallet Token identifier.
+      #   #/components/schemas/digital_wallet_token/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute card_id
-      #   The identifier for the Card this Digital Wallet Token belongs to.
+      #   #/components/schemas/digital_wallet_token/properties/card_id
       #
       #   @return [String]
       required :card_id, String
 
       # @!attribute cardholder
-      #   The cardholder information given when the Digital Wallet Token was created.
+      #   #/components/schemas/digital_wallet_token/properties/cardholder
       #
       #   @return [Increase::Models::DigitalWalletToken::Cardholder]
       required :cardholder, -> { Increase::Models::DigitalWalletToken::Cardholder }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Digital Wallet Token was created.
+      #   #/components/schemas/digital_wallet_token/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute device
-      #   The device that was used to create the Digital Wallet Token.
+      #   #/components/schemas/digital_wallet_token/properties/device
       #
       #   @return [Increase::Models::DigitalWalletToken::Device]
       required :device, -> { Increase::Models::DigitalWalletToken::Device }
 
       # @!attribute status
-      #   This indicates if payments can be made with the Digital Wallet Token.
+      #   #/components/schemas/digital_wallet_token/properties/status
       #
       #   @return [Symbol, Increase::Models::DigitalWalletToken::Status]
       required :status, enum: -> { Increase::Models::DigitalWalletToken::Status }
 
       # @!attribute token_requestor
-      #   The digital wallet app being used.
+      #   #/components/schemas/digital_wallet_token/properties/token_requestor
       #
       #   @return [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor]
       required :token_requestor, enum: -> { Increase::Models::DigitalWalletToken::TokenRequestor }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
+      #   #/components/schemas/digital_wallet_token/properties/type
       #
       #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
 
       # @!attribute updates
-      #   Updates to the Digital Wallet Token.
+      #   #/components/schemas/digital_wallet_token/properties/updates
       #
       #   @return [Array<Increase::Models::DigitalWalletToken::Update>]
       required :updates, -> { Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update] }
 
       # @!parse
-      #   # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      #   # Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      #   # Card.
+      #   # #/components/schemas/digital_wallet_token
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
@@ -82,13 +78,13 @@ module Increase
       # @see Increase::Models::DigitalWalletToken#cardholder
       class Cardholder < Increase::Internal::Type::BaseModel
         # @!attribute name
-        #   Name of the cardholder, for example "John Smith".
+        #   #/components/schemas/digital_wallet_token/properties/cardholder/properties/name
         #
         #   @return [String, nil]
         required :name, String, nil?: true
 
         # @!parse
-        #   # The cardholder information given when the Digital Wallet Token was created.
+        #   # #/components/schemas/digital_wallet_token/properties/cardholder
         #   #
         #   # @param name [String, nil]
         #   #
@@ -100,31 +96,31 @@ module Increase
       # @see Increase::Models::DigitalWalletToken#device
       class Device < Increase::Internal::Type::BaseModel
         # @!attribute device_type
-        #   Device type.
+        #   #/components/schemas/digital_wallet_token/properties/device/properties/device_type
         #
         #   @return [Symbol, Increase::Models::DigitalWalletToken::Device::DeviceType, nil]
         required :device_type, enum: -> { Increase::Models::DigitalWalletToken::Device::DeviceType }, nil?: true
 
         # @!attribute identifier
-        #   ID assigned to the device by the digital wallet provider.
+        #   #/components/schemas/digital_wallet_token/properties/device/properties/identifier
         #
         #   @return [String, nil]
         required :identifier, String, nil?: true
 
         # @!attribute ip_address
-        #   IP address of the device.
+        #   #/components/schemas/digital_wallet_token/properties/device/properties/ip_address
         #
         #   @return [String, nil]
         required :ip_address, String, nil?: true
 
         # @!attribute name
-        #   Name of the device, for example "My Work Phone".
+        #   #/components/schemas/digital_wallet_token/properties/device/properties/name
         #
         #   @return [String, nil]
         required :name, String, nil?: true
 
         # @!parse
-        #   # The device that was used to create the Digital Wallet Token.
+        #   # #/components/schemas/digital_wallet_token/properties/device
         #   #
         #   # @param device_type [Symbol, Increase::Models::DigitalWalletToken::Device::DeviceType, nil]
         #   # @param identifier [String, nil]
@@ -135,7 +131,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # Device type.
+        # #/components/schemas/digital_wallet_token/properties/device/properties/device_type
         #
         # @see Increase::Models::DigitalWalletToken::Device#device_type
         module DeviceType
@@ -176,7 +172,7 @@ module Increase
         end
       end
 
-      # This indicates if payments can be made with the Digital Wallet Token.
+      # #/components/schemas/digital_wallet_token/properties/status
       #
       # @see Increase::Models::DigitalWalletToken#status
       module Status
@@ -201,7 +197,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The digital wallet app being used.
+      # #/components/schemas/digital_wallet_token/properties/token_requestor
       #
       # @see Increase::Models::DigitalWalletToken#token_requestor
       module TokenRequestor
@@ -226,8 +222,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `digital_wallet_token`.
+      # #/components/schemas/digital_wallet_token/properties/type
       #
       # @see Increase::Models::DigitalWalletToken#type
       module Type
@@ -244,19 +239,20 @@ module Increase
 
       class Update < Increase::Internal::Type::BaseModel
         # @!attribute status
-        #   The status the update changed this Digital Wallet Token to.
+        #   #/components/schemas/digital_wallet_token/properties/updates/items/properties/status
         #
         #   @return [Symbol, Increase::Models::DigitalWalletToken::Update::Status]
         required :status, enum: -> { Increase::Models::DigitalWalletToken::Update::Status }
 
         # @!attribute timestamp
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the update happened.
+        #   #/components/schemas/digital_wallet_token/properties/updates/items/properties/timestamp
         #
         #   @return [Time]
         required :timestamp, Time
 
         # @!parse
+        #   # #/components/schemas/digital_wallet_token/properties/updates/items
+        #   #
         #   # @param status [Symbol, Increase::Models::DigitalWalletToken::Update::Status]
         #   # @param timestamp [Time]
         #   #
@@ -264,7 +260,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The status the update changed this Digital Wallet Token to.
+        # #/components/schemas/digital_wallet_token/properties/updates/items/properties/status
         #
         # @see Increase::Models::DigitalWalletToken::Update#status
         module Status

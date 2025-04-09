@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Filter Account Numbers to those belonging to the specified Account.
+      # #/paths//account_numbers/get/parameters/4/schema
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
 
@@ -35,25 +35,21 @@ module Increase
       end
       attr_writer :created_at
 
-      # Return the page of entries after this one.
+      # #/paths//account_numbers/get/parameters/0/schema
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      # Filter records to the one with the specified `idempotency_key` you chose for
-      # that object. This value is unique across Increase and is used to ensure that a
-      # request is only processed once. Learn more about
-      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/paths//account_numbers/get/parameters/9/schema
       sig { returns(T.nilable(String)) }
       attr_reader :idempotency_key
 
       sig { params(idempotency_key: String).void }
       attr_writer :idempotency_key
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      # #/paths//account_numbers/get/parameters/1/schema
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -107,8 +103,7 @@ module Increase
       def to_hash; end
 
       class ACHDebitStatus < Increase::Internal::Type::BaseModel
-        # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
-        # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        # #/paths//account_numbers/get/parameters/3/schema
         sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])) }
         attr_reader :in_
 
@@ -124,6 +119,7 @@ module Increase
         sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol]}) }
         def to_hash; end
 
+        # #/paths//account_numbers/get/parameters/3/schema/items
         module In
           extend Increase::Internal::Type::Enum
 
@@ -144,32 +140,28 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        # #/paths//account_numbers/get/parameters/5/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
         sig { params(after: Time).void }
         attr_writer :after
 
-        # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        # #/paths//account_numbers/get/parameters/6/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
         sig { params(before: Time).void }
         attr_writer :before
 
-        # Return results on or after this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # #/paths//account_numbers/get/parameters/7/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
         sig { params(on_or_after: Time).void }
         attr_writer :on_or_after
 
-        # Return results on or before this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # #/paths//account_numbers/get/parameters/8/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 
@@ -186,8 +178,7 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        # The status to retrieve Account Numbers for. For GET requests, this should be
-        # encoded as a comma-delimited string, such as `?in=one,two,three`.
+        # #/paths//account_numbers/get/parameters/2/schema
         sig { returns(T.nilable(T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 
@@ -203,6 +194,7 @@ module Increase
         sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
+        # #/paths//account_numbers/get/parameters/2/schema/items
         module In
           extend Increase::Internal::Type::Enum
 

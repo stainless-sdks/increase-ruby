@@ -10,8 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute transaction_id
-        #   The identifier for the Transaction to refund. The Transaction's source must have
-        #   a category of card_settlement.
+        #   #/components/schemas/sandbox_refund_a_card_transaction_parameters/properties/transaction_id
         #
         #   @return [String]
         required :transaction_id, String

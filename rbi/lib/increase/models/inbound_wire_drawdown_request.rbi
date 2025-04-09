@@ -3,109 +3,99 @@
 module Increase
   module Models
     class InboundWireDrawdownRequest < Increase::Internal::Type::BaseModel
-      # The Wire drawdown request identifier.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The amount being requested in cents.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The drawdown request's beneficiary's account number.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/beneficiary_account_number
       sig { returns(String) }
       attr_accessor :beneficiary_account_number
 
-      # Line 1 of the drawdown request's beneficiary's address.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/beneficiary_address_line1
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_address_line1
 
-      # Line 2 of the drawdown request's beneficiary's address.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/beneficiary_address_line2
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_address_line2
 
-      # Line 3 of the drawdown request's beneficiary's address.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/beneficiary_address_line3
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_address_line3
 
-      # The drawdown request's beneficiary's name.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/beneficiary_name
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_name
 
-      # The drawdown request's beneficiary's routing number.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/beneficiary_routing_number
       sig { returns(String) }
       attr_accessor :beneficiary_routing_number
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the inbound wire drawdown requested was created.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      # requested. Will always be "USD".
+      # #/components/schemas/inbound_wire_drawdown_request/properties/currency
       sig { returns(String) }
       attr_accessor :currency
 
-      # A message from the drawdown request's originator.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/message_to_recipient
       sig { returns(T.nilable(String)) }
       attr_accessor :message_to_recipient
 
-      # The drawdown request's originator's account number.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_account_number
       sig { returns(String) }
       attr_accessor :originator_account_number
 
-      # Line 1 of the drawdown request's originator's address.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_address_line1
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_address_line1
 
-      # Line 2 of the drawdown request's originator's address.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_address_line2
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_address_line2
 
-      # Line 3 of the drawdown request's originator's address.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_address_line3
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_address_line3
 
-      # The drawdown request's originator's name.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_name
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_name
 
-      # The drawdown request's originator's routing number.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_routing_number
       sig { returns(String) }
       attr_accessor :originator_routing_number
 
-      # Line 1 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_to_beneficiary_information_line1
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line1
 
-      # Line 2 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_to_beneficiary_information_line2
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line2
 
-      # Line 3 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_to_beneficiary_information_line3
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line3
 
-      # Line 4 of the information conveyed from the originator of the message to the
-      # beneficiary.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/originator_to_beneficiary_information_line4
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line4
 
-      # The Account Number from which the recipient of this request is being requested
-      # to send funds.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/recipient_account_number_id
       sig { returns(String) }
       attr_accessor :recipient_account_number_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_drawdown_request`.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/type
       sig { returns(Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Inbound wire drawdown requests are requests from someone else to send them a
-      # wire. This feature is in beta; reach out to
-      # [support@increase.com](mailto:support@increase.com) to learn more.
+      # #/components/schemas/inbound_wire_drawdown_request
       sig do
         params(
           id: String,
@@ -191,8 +181,7 @@ module Increase
       end
       def to_hash; end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_drawdown_request`.
+      # #/components/schemas/inbound_wire_drawdown_request/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

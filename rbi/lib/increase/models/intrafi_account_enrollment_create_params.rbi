@@ -6,11 +6,11 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier for the account to be added to IntraFi.
+      # #/components/schemas/enroll_an_account_in_the_intrafi_deposit_sweep_network_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The contact email for the account owner, to be shared with IntraFi.
+      # #/components/schemas/enroll_an_account_in_the_intrafi_deposit_sweep_network_parameters/properties/email_address
       sig { returns(String) }
       attr_accessor :email_address
 

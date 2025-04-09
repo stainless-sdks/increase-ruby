@@ -5,19 +5,19 @@ module Increase
     # @see Increase::Resources::BookkeepingAccounts#create
     class BookkeepingAccount < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The account identifier.
+      #   #/components/schemas/bookkeeping_account/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The API Account associated with this bookkeeping account.
+      #   #/components/schemas/bookkeeping_account/properties/account_id
       #
       #   @return [String, nil]
       required :account_id, String, nil?: true
 
       # @!attribute compliance_category
-      #   The compliance category of the account.
+      #   #/components/schemas/bookkeeping_account/properties/compliance_category
       #
       #   @return [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil]
       required :compliance_category,
@@ -25,36 +25,31 @@ module Increase
                nil?: true
 
       # @!attribute entity_id
-      #   The Entity associated with this bookkeeping account.
+      #   #/components/schemas/bookkeeping_account/properties/entity_id
       #
       #   @return [String, nil]
       required :entity_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/bookkeeping_account/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute name
-      #   The name you choose for the account.
+      #   #/components/schemas/bookkeeping_account/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_account`.
+      #   #/components/schemas/bookkeeping_account/properties/type
       #
       #   @return [Symbol, Increase::Models::BookkeepingAccount::Type]
       required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
 
       # @!parse
-      #   # Accounts are T-accounts. They can store accounting entries. Your compliance
-      #   # setup might require annotating money movements using this API. Learn more in our
-      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   # #/components/schemas/bookkeeping_account
       #   #
       #   # @param id [String]
       #   # @param account_id [String, nil]
@@ -68,7 +63,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The compliance category of the account.
+      # #/components/schemas/bookkeeping_account/properties/compliance_category
       #
       # @see Increase::Models::BookkeepingAccount#compliance_category
       module ComplianceCategory
@@ -87,8 +82,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_account`.
+      # #/components/schemas/bookkeeping_account/properties/type
       #
       # @see Increase::Models::BookkeepingAccount#type
       module Type

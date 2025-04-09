@@ -6,106 +6,100 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier for the account that will send the transfer.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The transfer amount in USD cents.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The beneficiary's name.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_name
       sig { returns(String) }
       attr_accessor :beneficiary_name
 
-      # The message that will show on the recipient's bank statement.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/message_to_recipient
       sig { returns(String) }
       attr_accessor :message_to_recipient
 
-      # The account number for the destination account.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/account_number
       sig { returns(T.nilable(String)) }
       attr_reader :account_number
 
       sig { params(account_number: String).void }
       attr_writer :account_number
 
-      # The beneficiary's address line 1.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line1
       sig { returns(T.nilable(String)) }
       attr_reader :beneficiary_address_line1
 
       sig { params(beneficiary_address_line1: String).void }
       attr_writer :beneficiary_address_line1
 
-      # The beneficiary's address line 2.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line2
       sig { returns(T.nilable(String)) }
       attr_reader :beneficiary_address_line2
 
       sig { params(beneficiary_address_line2: String).void }
       attr_writer :beneficiary_address_line2
 
-      # The beneficiary's address line 3.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line3
       sig { returns(T.nilable(String)) }
       attr_reader :beneficiary_address_line3
 
       sig { params(beneficiary_address_line3: String).void }
       attr_writer :beneficiary_address_line3
 
-      # The ID of an External Account to initiate a transfer to. If this parameter is
-      # provided, `account_number` and `routing_number` must be absent.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/external_account_id
       sig { returns(T.nilable(String)) }
       attr_reader :external_account_id
 
       sig { params(external_account_id: String).void }
       attr_writer :external_account_id
 
-      # The originator's address line 1. This is only necessary if you're transferring
-      # from a commingled account. Otherwise, we'll use the associated entity's details.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line1
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line1
 
       sig { params(originator_address_line1: String).void }
       attr_writer :originator_address_line1
 
-      # The originator's address line 2. This is only necessary if you're transferring
-      # from a commingled account. Otherwise, we'll use the associated entity's details.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line2
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line2
 
       sig { params(originator_address_line2: String).void }
       attr_writer :originator_address_line2
 
-      # The originator's address line 3. This is only necessary if you're transferring
-      # from a commingled account. Otherwise, we'll use the associated entity's details.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line3
       sig { returns(T.nilable(String)) }
       attr_reader :originator_address_line3
 
       sig { params(originator_address_line3: String).void }
       attr_writer :originator_address_line3
 
-      # The originator's name. This is only necessary if you're transferring from a
-      # commingled account. Otherwise, we'll use the associated entity's details.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_name
       sig { returns(T.nilable(String)) }
       attr_reader :originator_name
 
       sig { params(originator_name: String).void }
       attr_writer :originator_name
 
-      # Whether the transfer requires explicit approval via the dashboard or API.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/require_approval
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :require_approval
 
       sig { params(require_approval: T::Boolean).void }
       attr_writer :require_approval
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      # destination account.
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/routing_number
       sig { returns(T.nilable(String)) }
       attr_reader :routing_number
 
       sig { params(routing_number: String).void }
       attr_writer :routing_number
 
-      # The ID of an Account Number that will be passed to the wire's recipient
+      # #/components/schemas/create_a_wire_transfer_parameters/properties/source_account_number_id
       sig { returns(T.nilable(String)) }
       attr_reader :source_account_number_id
 

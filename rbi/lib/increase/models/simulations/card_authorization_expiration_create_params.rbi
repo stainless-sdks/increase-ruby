@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Card Payment to expire.
+        # #/components/schemas/sandbox_expire_a_card_authorization_parameters/properties/card_payment_id
         sig { returns(String) }
         attr_accessor :card_payment_id
 

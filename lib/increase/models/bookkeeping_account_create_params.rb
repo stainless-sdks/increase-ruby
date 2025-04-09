@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute name
-      #   The name you choose for the account.
+      #   #/components/schemas/create_a_bookkeeping_account_parameters/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute [r] account_id
-      #   The entity, if `compliance_category` is `commingled_cash`.
+      #   #/components/schemas/create_a_bookkeeping_account_parameters/properties/account_id
       #
       #   @return [String, nil]
       optional :account_id, String
@@ -25,7 +25,7 @@ module Increase
       #   attr_writer :account_id
 
       # @!attribute [r] compliance_category
-      #   The account compliance category.
+      #   #/components/schemas/create_a_bookkeeping_account_parameters/properties/compliance_category
       #
       #   @return [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory, nil]
       optional :compliance_category,
@@ -36,7 +36,7 @@ module Increase
       #   attr_writer :compliance_category
 
       # @!attribute [r] entity_id
-      #   The entity, if `compliance_category` is `customer_balance`.
+      #   #/components/schemas/create_a_bookkeeping_account_parameters/properties/entity_id
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -56,7 +56,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The account compliance category.
+      # #/components/schemas/create_a_bookkeeping_account_parameters/properties/compliance_category
       module ComplianceCategory
         extend Increase::Internal::Type::Enum
 

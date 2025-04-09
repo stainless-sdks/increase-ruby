@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_id
-        #   The identifier of the Account the statement is for.
+        #   #/components/schemas/sandbox_create_an_account_statement_parameters/properties/account_id
         #
         #   @return [String]
         required :account_id, String

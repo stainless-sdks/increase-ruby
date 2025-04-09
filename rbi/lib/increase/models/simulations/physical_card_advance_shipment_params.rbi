@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The shipment status to move the Physical Card to.
+        # #/components/schemas/sandbox_advance_the_shipment_status_of_a_physical_card_parameters/properties/shipment_status
         sig { returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol) }
         attr_accessor :shipment_status
 
@@ -31,7 +31,7 @@ module Increase
         end
         def to_hash; end
 
-        # The shipment status to move the Physical Card to.
+        # #/components/schemas/sandbox_advance_the_shipment_status_of_a_physical_card_parameters/properties/shipment_status
         module ShipmentStatus
           extend Increase::Internal::Type::Enum
 

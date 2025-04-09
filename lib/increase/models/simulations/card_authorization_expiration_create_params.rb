@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute card_payment_id
-        #   The identifier of the Card Payment to expire.
+        #   #/components/schemas/sandbox_expire_a_card_authorization_parameters/properties/card_payment_id
         #
         #   @return [String]
         required :card_payment_id, String

@@ -16,7 +16,7 @@ module Increase
             .returns(Increase::Models::AccountTransfer)
         end
         def complete(
-          # The identifier of the Account Transfer you wish to complete.
+          # #/paths//simulations/account_transfers/{account_transfer_id}/complete/post/parameters/0/schema
           account_transfer_id,
           request_options: {}
         ); end

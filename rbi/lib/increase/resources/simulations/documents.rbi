@@ -13,7 +13,7 @@ module Increase
             .returns(Increase::Models::Document)
         end
         def create(
-          # The identifier of the Account the tax document is for.
+          # #/components/schemas/sandbox_create_a_tax_document_parameters/properties/account_id
           account_id:,
           request_options: {}
         ); end

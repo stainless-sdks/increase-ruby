@@ -9,15 +9,14 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute entries
-      #   The bookkeeping entries.
+      #   #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries
       #
       #   @return [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
       required :entries,
                -> { Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
 
       # @!attribute [r] date
-      #   The date of the transaction. Optional if `transaction_id` is provided, in which
-      #   case we use the `date` of that transaction. Required otherwise.
+      #   #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/date
       #
       #   @return [Time, nil]
       optional :date, Time
@@ -27,7 +26,7 @@ module Increase
       #   attr_writer :date
 
       # @!attribute [r] transaction_id
-      #   The identifier of the Transaction related to this entry set, if any.
+      #   #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/transaction_id
       #
       #   @return [String, nil]
       optional :transaction_id, String
@@ -48,20 +47,20 @@ module Increase
 
       class Entry < Increase::Internal::Type::BaseModel
         # @!attribute account_id
-        #   The identifier for the Bookkeeping Account impacted by this entry.
+        #   #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries/items/properties/account_id
         #
         #   @return [String]
         required :account_id, String
 
         # @!attribute amount
-        #   The entry amount in the minor unit of the account currency. For dollars, for
-        #   example, this is cents. Debit entries have positive amounts; credit entries have
-        #   negative amounts.
+        #   #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries/items/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!parse
+        #   # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries/items
+        #   #
         #   # @param account_id [String]
         #   # @param amount [Integer]
         #   #

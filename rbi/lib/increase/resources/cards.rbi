@@ -16,20 +16,15 @@ module Increase
           .returns(Increase::Models::Card)
       end
       def create(
-        # The Account the card should belong to.
+        # #/components/schemas/create_a_card_parameters/properties/account_id
         account_id:,
-        # The card's billing address.
+        # #/components/schemas/create_a_card_parameters/properties/billing_address
         billing_address: nil,
-        # The description you choose to give the card.
+        # #/components/schemas/create_a_card_parameters/properties/description
         description: nil,
-        # The contact information used in the two-factor steps for digital wallet card
-        # creation. To add the card to a digital wallet, you may supply an email or phone
-        # number with this request. Otherwise, subscribe and then action a Real Time
-        # Decision with the category `digital_wallet_token_requested` or
-        # `digital_wallet_authentication_requested`.
+        # #/components/schemas/create_a_card_parameters/properties/digital_wallet
         digital_wallet: nil,
-        # The Entity the card belongs to. You only need to supply this in rare situations
-        # when the card is not for the Account holder.
+        # #/components/schemas/create_a_card_parameters/properties/entity_id
         entity_id: nil,
         request_options: {}
       ); end
@@ -42,7 +37,7 @@ module Increase
           .returns(Increase::Models::Card)
       end
       def retrieve(
-        # The identifier of the Card.
+        # #/paths//cards/{card_id}/get/parameters/0/schema
         card_id,
         request_options: {}
       ); end
@@ -60,20 +55,17 @@ module Increase
           .returns(Increase::Models::Card)
       end
       def update(
-        # The card identifier.
+        # #/paths//cards/{card_id}/patch/parameters/0/schema
         card_id,
-        # The card's updated billing address.
+        # #/components/schemas/update_a_card_parameters/properties/billing_address
         billing_address: nil,
-        # The description you choose to give the card.
+        # #/components/schemas/update_a_card_parameters/properties/description
         description: nil,
-        # The contact information used in the two-factor steps for digital wallet card
-        # creation. At least one field must be present to complete the digital wallet
-        # steps.
+        # #/components/schemas/update_a_card_parameters/properties/digital_wallet
         digital_wallet: nil,
-        # The Entity the card belongs to. You only need to supply this in rare situations
-        # when the card is not for the Account holder.
+        # #/components/schemas/update_a_card_parameters/properties/entity_id
         entity_id: nil,
-        # The status to update the Card with.
+        # #/components/schemas/update_a_card_parameters/properties/status
         status: nil,
         request_options: {}
       ); end
@@ -91,18 +83,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::Card])
       end
       def list(
-        # Filter Cards to ones belonging to the specified Account.
+        # #/paths//cards/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//cards/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//cards/get/parameters/8/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//cards/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -116,7 +104,7 @@ module Increase
           .returns(Increase::Models::CardDetails)
       end
       def details(
-        # The identifier of the Card to retrieve details for.
+        # #/paths//cards/{card_id}/details/get/parameters/0/schema
         card_id,
         request_options: {}
       ); end

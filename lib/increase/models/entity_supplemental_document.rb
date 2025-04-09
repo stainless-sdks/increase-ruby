@@ -5,42 +5,37 @@ module Increase
     # @see Increase::Resources::SupplementalDocuments#create
     class EntitySupplementalDocument < Increase::Internal::Type::BaseModel
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Supplemental Document was created.
+      #   #/components/schemas/entity_supplemental_document/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute entity_id
-      #   The Entity the supplemental document is attached to.
+      #   #/components/schemas/entity_supplemental_document/properties/entity_id
       #
       #   @return [String]
       required :entity_id, String
 
       # @!attribute file_id
-      #   The File containing the document.
+      #   #/components/schemas/entity_supplemental_document/properties/file_id
       #
       #   @return [String]
       required :file_id, String
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/entity_supplemental_document/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `entity_supplemental_document`.
+      #   #/components/schemas/entity_supplemental_document/properties/type
       #
       #   @return [Symbol, Increase::Models::EntitySupplementalDocument::Type]
       required :type, enum: -> { Increase::Models::EntitySupplementalDocument::Type }
 
       # @!parse
-      #   # Supplemental Documents are uploaded files connected to an Entity during
-      #   # onboarding.
+      #   # #/components/schemas/entity_supplemental_document
       #   #
       #   # @param created_at [Time]
       #   # @param entity_id [String]
@@ -52,8 +47,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be
-      # `entity_supplemental_document`.
+      # #/components/schemas/entity_supplemental_document/properties/type
       #
       # @see Increase::Models::EntitySupplementalDocument#type
       module Type

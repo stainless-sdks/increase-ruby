@@ -16,16 +16,15 @@ module Increase
           .returns(Increase::Models::AccountTransfer)
       end
       def create(
-        # The identifier for the account that will send the transfer.
+        # #/components/schemas/create_an_account_transfer_parameters/properties/account_id
         account_id:,
-        # The transfer amount in the minor unit of the account currency. For dollars, for
-        # example, this is cents.
+        # #/components/schemas/create_an_account_transfer_parameters/properties/amount
         amount:,
-        # The description you choose to give the transfer.
+        # #/components/schemas/create_an_account_transfer_parameters/properties/description
         description:,
-        # The identifier for the account that will receive the transfer.
+        # #/components/schemas/create_an_account_transfer_parameters/properties/destination_account_id
         destination_account_id:,
-        # Whether the transfer requires explicit approval via the dashboard or API.
+        # #/components/schemas/create_an_account_transfer_parameters/properties/require_approval
         require_approval: nil,
         request_options: {}
       ); end
@@ -38,7 +37,7 @@ module Increase
           .returns(Increase::Models::AccountTransfer)
       end
       def retrieve(
-        # The identifier of the Account Transfer.
+        # #/paths//account_transfers/{account_transfer_id}/get/parameters/0/schema
         account_transfer_id,
         request_options: {}
       ); end
@@ -55,18 +54,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::AccountTransfer])
       end
       def list(
-        # Filter Account Transfers to those that originated from the specified Account.
+        # #/paths//account_transfers/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//account_transfers/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//account_transfers/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//account_transfers/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end
@@ -79,7 +74,7 @@ module Increase
           .returns(Increase::Models::AccountTransfer)
       end
       def approve(
-        # The identifier of the Account Transfer to approve.
+        # #/paths//account_transfers/{account_transfer_id}/approve/post/parameters/0/schema
         account_transfer_id,
         request_options: {}
       ); end
@@ -92,7 +87,7 @@ module Increase
           .returns(Increase::Models::AccountTransfer)
       end
       def cancel(
-        # The identifier of the pending Account Transfer to cancel.
+        # #/paths//account_transfers/{account_transfer_id}/cancel/post/parameters/0/schema
         account_transfer_id,
         request_options: {}
       ); end

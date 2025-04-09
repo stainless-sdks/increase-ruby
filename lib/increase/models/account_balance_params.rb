@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] at_time
-      #   The moment to query the balance at. If not set, returns the current balances.
+      #   #/paths//accounts/{account_id}/balance/get/parameters/1/schema
       #
       #   @return [Time, nil]
       optional :at_time, Time

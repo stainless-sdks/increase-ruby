@@ -7,128 +7,113 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account Number the inbound Wire Transfer is for.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/account_number_id
         sig { returns(String) }
         attr_accessor :account_number_id
 
-        # The transfer amount in cents. Must be positive.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The sending bank will set beneficiary_address_line1 in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line1
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line1
 
         sig { params(beneficiary_address_line1: String).void }
         attr_writer :beneficiary_address_line1
 
-        # The sending bank will set beneficiary_address_line2 in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line2
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line2
 
         sig { params(beneficiary_address_line2: String).void }
         attr_writer :beneficiary_address_line2
 
-        # The sending bank will set beneficiary_address_line3 in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line3
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line3
 
         sig { params(beneficiary_address_line3: String).void }
         attr_writer :beneficiary_address_line3
 
-        # The sending bank will set beneficiary_name in production. You can simulate any
-        # value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_name
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_name
 
         sig { params(beneficiary_name: String).void }
         attr_writer :beneficiary_name
 
-        # The sending bank will set beneficiary_reference in production. You can simulate
-        # any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_reference
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_reference
 
         sig { params(beneficiary_reference: String).void }
         attr_writer :beneficiary_reference
 
-        # The sending bank will set originator_address_line1 in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line1
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line1
 
         sig { params(originator_address_line1: String).void }
         attr_writer :originator_address_line1
 
-        # The sending bank will set originator_address_line2 in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line2
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line2
 
         sig { params(originator_address_line2: String).void }
         attr_writer :originator_address_line2
 
-        # The sending bank will set originator_address_line3 in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line3
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line3
 
         sig { params(originator_address_line3: String).void }
         attr_writer :originator_address_line3
 
-        # The sending bank will set originator_name in production. You can simulate any
-        # value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_name
         sig { returns(T.nilable(String)) }
         attr_reader :originator_name
 
         sig { params(originator_name: String).void }
         attr_writer :originator_name
 
-        # The sending bank will set originator_routing_number in production. You can
-        # simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_routing_number
         sig { returns(T.nilable(String)) }
         attr_reader :originator_routing_number
 
         sig { params(originator_routing_number: String).void }
         attr_writer :originator_routing_number
 
-        # The sending bank will set originator_to_beneficiary_information_line1 in
-        # production. You can simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line1
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line1
 
         sig { params(originator_to_beneficiary_information_line1: String).void }
         attr_writer :originator_to_beneficiary_information_line1
 
-        # The sending bank will set originator_to_beneficiary_information_line2 in
-        # production. You can simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line2
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line2
 
         sig { params(originator_to_beneficiary_information_line2: String).void }
         attr_writer :originator_to_beneficiary_information_line2
 
-        # The sending bank will set originator_to_beneficiary_information_line3 in
-        # production. You can simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line3
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line3
 
         sig { params(originator_to_beneficiary_information_line3: String).void }
         attr_writer :originator_to_beneficiary_information_line3
 
-        # The sending bank will set originator_to_beneficiary_information_line4 in
-        # production. You can simulate any value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line4
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line4
 
         sig { params(originator_to_beneficiary_information_line4: String).void }
         attr_writer :originator_to_beneficiary_information_line4
 
-        # The sending bank will set sender_reference in production. You can simulate any
-        # value here.
+        # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/sender_reference
         sig { returns(T.nilable(String)) }
         attr_reader :sender_reference
 

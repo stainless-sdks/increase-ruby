@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] reason
-      #   The reason why this transfer should be stopped.
+      #   #/components/schemas/request_a_stop_payment_on_a_check_transfer_parameters/properties/reason
       #
       #   @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason, nil]
       optional :reason, enum: -> { Increase::Models::CheckTransferStopPaymentParams::Reason }
@@ -26,7 +26,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The reason why this transfer should be stopped.
+      # #/components/schemas/request_a_stop_payment_on_a_check_transfer_parameters/properties/reason
       module Reason
         extend Increase::Internal::Type::Enum
 

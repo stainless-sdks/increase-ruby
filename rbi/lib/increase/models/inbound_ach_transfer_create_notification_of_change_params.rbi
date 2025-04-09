@@ -6,14 +6,14 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The updated account number to send in the notification of change.
+      # #/components/schemas/create_a_notification_of_change_for_an_inbound_ach_transfer_parameters/properties/updated_account_number
       sig { returns(T.nilable(String)) }
       attr_reader :updated_account_number
 
       sig { params(updated_account_number: String).void }
       attr_writer :updated_account_number
 
-      # The updated routing number to send in the notification of change.
+      # #/components/schemas/create_a_notification_of_change_for_an_inbound_ach_transfer_parameters/properties/updated_routing_number
       sig { returns(T.nilable(String)) }
       attr_reader :updated_routing_number
 

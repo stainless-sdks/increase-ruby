@@ -22,34 +22,27 @@ module Increase
           .returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def create(
-        # The transfer amount in USD cents. For Real-Time Payments transfers, must be
-        # positive.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/amount
         amount:,
-        # The name of the transfer's recipient.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/creditor_name
         creditor_name:,
-        # Unstructured information that will show on the recipient's bank statement.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/remittance_information
         remittance_information:,
-        # The identifier of the Account Number from which to send the transfer.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/source_account_number_id
         source_account_number_id:,
-        # The name of the transfer's sender. If not provided, defaults to the name of the
-        # account's entity.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/debtor_name
         debtor_name: nil,
-        # The destination account number.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/destination_account_number
         destination_account_number: nil,
-        # The destination American Bankers' Association (ABA) Routing Transit Number
-        # (RTN).
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/destination_routing_number
         destination_routing_number: nil,
-        # The ID of an External Account to initiate a transfer to. If this parameter is
-        # provided, `destination_account_number` and `destination_routing_number` must be
-        # absent.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/external_account_id
         external_account_id: nil,
-        # Whether the transfer requires explicit approval via the dashboard or API.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/require_approval
         require_approval: nil,
-        # The name of the ultimate recipient of the transfer. Set this if the creditor is
-        # an intermediary receiving the payment for someone else.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/ultimate_creditor_name
         ultimate_creditor_name: nil,
-        # The name of the ultimate sender of the transfer. Set this if the funds are being
-        # sent on behalf of someone who is not the account holder at Increase.
+        # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/ultimate_debtor_name
         ultimate_debtor_name: nil,
         request_options: {}
       ); end
@@ -62,7 +55,7 @@ module Increase
           .returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def retrieve(
-        # The identifier of the Real-Time Payments Transfer.
+        # #/paths//real_time_payments_transfers/{real_time_payments_transfer_id}/get/parameters/0/schema
         real_time_payments_transfer_id,
         request_options: {}
       ); end
@@ -81,21 +74,16 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::RealTimePaymentsTransfer])
       end
       def list(
-        # Filter Real-Time Payments Transfers to those belonging to the specified Account.
+        # #/paths//real_time_payments_transfers/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//real_time_payments_transfers/get/parameters/0/schema
         cursor: nil,
-        # Filter Real-Time Payments Transfers to those made to the specified External
-        # Account.
+        # #/paths//real_time_payments_transfers/get/parameters/3/schema
         external_account_id: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//real_time_payments_transfers/get/parameters/4/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//real_time_payments_transfers/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}

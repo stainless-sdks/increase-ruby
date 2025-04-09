@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # If set, the simulation will reject the transfer.
+        # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection
         sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
         attr_reader :rejection
 
@@ -46,7 +46,7 @@ module Increase
         def to_hash; end
 
         class Rejection < Increase::Internal::Type::BaseModel
-          # The reason code that the simulated rejection will have.
+          # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection/properties/reject_reason_code
           sig do
             returns(
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
@@ -54,7 +54,7 @@ module Increase
           end
           attr_accessor :reject_reason_code
 
-          # If set, the simulation will reject the transfer.
+          # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection
           sig do
             params(
               reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
@@ -73,7 +73,7 @@ module Increase
           end
           def to_hash; end
 
-          # The reason code that the simulated rejection will have.
+          # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection/properties/reject_reason_code
           module RejectReasonCode
             extend Increase::Internal::Type::Enum
 

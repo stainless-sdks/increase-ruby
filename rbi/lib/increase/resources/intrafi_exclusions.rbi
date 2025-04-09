@@ -13,9 +13,9 @@ module Increase
           .returns(Increase::Models::IntrafiExclusion)
       end
       def create(
-        # The name of the financial institution to be excluded.
+        # #/components/schemas/create_an_intrafi_exclusion_parameters/properties/bank_name
         bank_name:,
-        # The identifier of the Entity whose deposits will be excluded.
+        # #/components/schemas/create_an_intrafi_exclusion_parameters/properties/entity_id
         entity_id:,
         request_options: {}
       ); end
@@ -28,7 +28,7 @@ module Increase
           .returns(Increase::Models::IntrafiExclusion)
       end
       def retrieve(
-        # The identifier of the IntraFi Exclusion to retrieve.
+        # #/paths//intrafi_exclusions/{intrafi_exclusion_id}/get/parameters/0/schema
         intrafi_exclusion_id,
         request_options: {}
       ); end
@@ -44,17 +44,13 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::IntrafiExclusion])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//intrafi_exclusions/get/parameters/0/schema
         cursor: nil,
-        # Filter IntraFi Exclusions for those belonging to the specified Entity.
+        # #/paths//intrafi_exclusions/get/parameters/2/schema
         entity_id: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//intrafi_exclusions/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//intrafi_exclusions/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end
@@ -67,9 +63,7 @@ module Increase
           .returns(Increase::Models::IntrafiExclusion)
       end
       def archive(
-        # The identifier of the IntraFi Exclusion request to archive. It may take 5
-        # business days for an exclusion removal to be processed. Removing an exclusion
-        # does not guarantee that funds will be swept to the previously-excluded bank.
+        # #/paths//intrafi_exclusions/{intrafi_exclusion_id}/archive/post/parameters/0/schema
         intrafi_exclusion_id,
         request_options: {}
       ); end

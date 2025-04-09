@@ -10,13 +10,13 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute status
-        #   The status to move the dispute to.
+        #   #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/status
         #
         #   @return [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
         required :status, enum: -> { Increase::Models::Simulations::CardDisputeActionParams::Status }
 
         # @!attribute [r] explanation
-        #   Why the dispute was rejected. Not required for accepting disputes.
+        #   #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/explanation
         #
         #   @return [String, nil]
         optional :explanation, String
@@ -34,7 +34,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The status to move the dispute to.
+        # #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 

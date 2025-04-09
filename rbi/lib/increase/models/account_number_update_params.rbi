@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Options related to how this Account Number handles inbound ACH transfers.
+      # #/components/schemas/update_an_account_number_parameters/properties/inbound_ach
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH)) }
       attr_reader :inbound_ach
 
@@ -18,8 +18,7 @@ module Increase
       end
       attr_writer :inbound_ach
 
-      # Options related to how this Account Number should handle inbound check
-      # withdrawals.
+      # #/components/schemas/update_an_account_number_parameters/properties/inbound_checks
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundChecks)) }
       attr_reader :inbound_checks
 
@@ -31,14 +30,14 @@ module Increase
       end
       attr_writer :inbound_checks
 
-      # The name you choose for the Account Number.
+      # #/components/schemas/update_an_account_number_parameters/properties/name
       sig { returns(T.nilable(String)) }
       attr_reader :name
 
       sig { params(name: String).void }
       attr_writer :name
 
-      # This indicates if transfers can be made to the Account Number.
+      # #/components/schemas/update_an_account_number_parameters/properties/status
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -72,15 +71,14 @@ module Increase
       def to_hash; end
 
       class InboundACH < Increase::Internal::Type::BaseModel
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        # #/components/schemas/update_an_account_number_parameters/properties/inbound_ach/properties/debit_status
         sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)) }
         attr_reader :debit_status
 
         sig { params(debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol).void }
         attr_writer :debit_status
 
-        # Options related to how this Account Number handles inbound ACH transfers.
+        # #/components/schemas/update_an_account_number_parameters/properties/inbound_ach
         sig do
           params(debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus::OrSymbol)
             .returns(T.attached_class)
@@ -93,8 +91,7 @@ module Increase
         end
         def to_hash; end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        # #/components/schemas/update_an_account_number_parameters/properties/inbound_ach/properties/debit_status
         module DebitStatus
           extend Increase::Internal::Type::Enum
 
@@ -120,12 +117,11 @@ module Increase
       end
 
       class InboundChecks < Increase::Internal::Type::BaseModel
-        # How Increase should process checks with this account number printed on them.
+        # #/components/schemas/update_an_account_number_parameters/properties/inbound_checks/properties/status
         sig { returns(Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol) }
         attr_accessor :status
 
-        # Options related to how this Account Number should handle inbound check
-        # withdrawals.
+        # #/components/schemas/update_an_account_number_parameters/properties/inbound_checks
         sig do
           params(status: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol)
             .returns(T.attached_class)
@@ -135,7 +131,7 @@ module Increase
         sig { override.returns({status: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status::OrSymbol}) }
         def to_hash; end
 
-        # How Increase should process checks with this account number printed on them.
+        # #/components/schemas/update_an_account_number_parameters/properties/inbound_checks/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 
@@ -163,7 +159,7 @@ module Increase
         end
       end
 
-      # This indicates if transfers can be made to the Account Number.
+      # #/components/schemas/update_an_account_number_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

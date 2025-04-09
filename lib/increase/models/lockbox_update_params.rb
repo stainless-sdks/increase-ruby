@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] description
-      #   The description you choose for the Lockbox.
+      #   #/components/schemas/update_a_lockbox_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] recipient_name
-      #   The recipient name you choose for the Lockbox.
+      #   #/components/schemas/update_a_lockbox_parameters/properties/recipient_name
       #
       #   @return [String, nil]
       optional :recipient_name, String
@@ -29,7 +29,7 @@ module Increase
       #   attr_writer :recipient_name
 
       # @!attribute [r] status
-      #   This indicates if checks can be sent to the Lockbox.
+      #   #/components/schemas/update_a_lockbox_parameters/properties/status
       #
       #   @return [Symbol, Increase::Models::LockboxUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::LockboxUpdateParams::Status }
@@ -48,7 +48,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # This indicates if checks can be sent to the Lockbox.
+      # #/components/schemas/update_a_lockbox_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

@@ -16,7 +16,7 @@ module Increase
             .returns(Increase::Models::CheckTransfer)
         end
         def mail(
-          # The identifier of the Check Transfer you wish to mail.
+          # #/paths//simulations/check_transfers/{check_transfer_id}/mail/post/parameters/0/schema
           check_transfer_id,
           request_options: {}
         ); end

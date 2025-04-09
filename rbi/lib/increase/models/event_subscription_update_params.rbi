@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The status to update the Event Subscription with.
+      # #/components/schemas/update_an_event_subscription_parameters/properties/status
       sig { returns(T.nilable(Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -33,7 +33,7 @@ module Increase
       end
       def to_hash; end
 
-      # The status to update the Event Subscription with.
+      # #/components/schemas/update_an_event_subscription_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

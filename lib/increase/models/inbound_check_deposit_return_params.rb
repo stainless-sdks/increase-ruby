@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute reason
-      #   The reason to return the Inbound Check Deposit.
+      #   #/components/schemas/return_an_inbound_check_deposit_parameters/properties/reason
       #
       #   @return [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason]
       required :reason, enum: -> { Increase::Models::InboundCheckDepositReturnParams::Reason }
@@ -22,7 +22,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The reason to return the Inbound Check Deposit.
+      # #/components/schemas/return_an_inbound_check_deposit_parameters/properties/reason
       module Reason
         extend Increase::Internal::Type::Enum
 

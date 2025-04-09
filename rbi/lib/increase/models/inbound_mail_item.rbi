@@ -3,42 +3,39 @@
 module Increase
   module Models
     class InboundMailItem < Increase::Internal::Type::BaseModel
-      # The Inbound Mail Item identifier.
+      # #/components/schemas/inbound_mail_item/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      # Mail Item was created.
+      # #/components/schemas/inbound_mail_item/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The identifier for the File containing the scanned contents of the mail item.
+      # #/components/schemas/inbound_mail_item/properties/file_id
       sig { returns(String) }
       attr_accessor :file_id
 
-      # The identifier for the Lockbox that received this mail item. For mail items that
-      # could not be processed due to an invalid address, this will be null.
+      # #/components/schemas/inbound_mail_item/properties/lockbox_id
       sig { returns(T.nilable(String)) }
       attr_accessor :lockbox_id
 
-      # The recipient name as written on the mail item.
+      # #/components/schemas/inbound_mail_item/properties/recipient_name
       sig { returns(T.nilable(String)) }
       attr_accessor :recipient_name
 
-      # If the mail item has been rejected, why it was rejected.
+      # #/components/schemas/inbound_mail_item/properties/rejection_reason
       sig { returns(T.nilable(Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol)) }
       attr_accessor :rejection_reason
 
-      # If the mail item has been processed.
+      # #/components/schemas/inbound_mail_item/properties/status
       sig { returns(Increase::Models::InboundMailItem::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_mail_item`.
+      # #/components/schemas/inbound_mail_item/properties/type
       sig { returns(Increase::Models::InboundMailItem::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
+      # #/components/schemas/inbound_mail_item
       sig do
         params(
           id: String,
@@ -81,7 +78,7 @@ module Increase
       end
       def to_hash; end
 
-      # If the mail item has been rejected, why it was rejected.
+      # #/components/schemas/inbound_mail_item/properties/rejection_reason
       module RejectionReason
         extend Increase::Internal::Type::Enum
 
@@ -104,7 +101,7 @@ module Increase
         def self.values; end
       end
 
-      # If the mail item has been processed.
+      # #/components/schemas/inbound_mail_item/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -125,8 +122,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_mail_item`.
+      # #/components/schemas/inbound_mail_item/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

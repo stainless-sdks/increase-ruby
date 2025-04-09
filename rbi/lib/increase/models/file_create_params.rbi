@@ -6,17 +6,15 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The file contents. This should follow the specifications of
-      # [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-      # transfers for the multipart/form-data protocol.
+      # #/components/schemas/create_a_file_parameters/properties/file
       sig { returns(T.any(Pathname, StringIO)) }
       attr_accessor :file
 
-      # What the File will be used for in Increase's systems.
+      # #/components/schemas/create_a_file_parameters/properties/purpose
       sig { returns(Increase::Models::FileCreateParams::Purpose::OrSymbol) }
       attr_accessor :purpose
 
-      # The description you choose to give the File.
+      # #/components/schemas/create_a_file_parameters/properties/description
       sig { returns(T.nilable(String)) }
       attr_reader :description
 
@@ -47,7 +45,7 @@ module Increase
       end
       def to_hash; end
 
-      # What the File will be used for in Increase's systems.
+      # #/components/schemas/create_a_file_parameters/properties/purpose
       module Purpose
         extend Increase::Internal::Type::Enum
 

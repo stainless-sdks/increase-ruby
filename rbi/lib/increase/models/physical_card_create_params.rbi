@@ -6,11 +6,11 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The underlying card representing this physical card.
+      # #/components/schemas/create_a_physical_card_parameters/properties/card_id
       sig { returns(String) }
       attr_accessor :card_id
 
-      # Details about the cardholder, as it will appear on the physical card.
+      # #/components/schemas/create_a_physical_card_parameters/properties/cardholder
       sig { returns(Increase::Models::PhysicalCardCreateParams::Cardholder) }
       attr_reader :cardholder
 
@@ -22,7 +22,7 @@ module Increase
       end
       attr_writer :cardholder
 
-      # The details used to ship this physical card.
+      # #/components/schemas/create_a_physical_card_parameters/properties/shipment
       sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment) }
       attr_reader :shipment
 
@@ -32,8 +32,7 @@ module Increase
       end
       attr_writer :shipment
 
-      # The physical card profile to use for this physical card. The latest default
-      # physical card profile will be used if not provided.
+      # #/components/schemas/create_a_physical_card_parameters/properties/physical_card_profile_id
       sig { returns(T.nilable(String)) }
       attr_reader :physical_card_profile_id
 
@@ -67,15 +66,15 @@ module Increase
       def to_hash; end
 
       class Cardholder < Increase::Internal::Type::BaseModel
-        # The cardholder's first name.
+        # #/components/schemas/create_a_physical_card_parameters/properties/cardholder/properties/first_name
         sig { returns(String) }
         attr_accessor :first_name
 
-        # The cardholder's last name.
+        # #/components/schemas/create_a_physical_card_parameters/properties/cardholder/properties/last_name
         sig { returns(String) }
         attr_accessor :last_name
 
-        # Details about the cardholder, as it will appear on the physical card.
+        # #/components/schemas/create_a_physical_card_parameters/properties/cardholder
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
         def self.new(first_name:, last_name:); end
 
@@ -84,7 +83,7 @@ module Increase
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
-        # The address to where the card should be shipped.
+        # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address
         sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address) }
         attr_reader :address
 
@@ -96,11 +95,11 @@ module Increase
         end
         attr_writer :address
 
-        # The shipping method to use.
+        # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/method
         sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol) }
         attr_accessor :method_
 
-        # The details used to ship this physical card.
+        # #/components/schemas/create_a_physical_card_parameters/properties/shipment
         sig do
           params(
             address: T.any(Increase::Models::PhysicalCardCreateParams::Shipment::Address, Increase::Internal::AnyHash),
@@ -122,48 +121,48 @@ module Increase
         def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
-          # The city of the shipping address.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The first line of the shipping address.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/line1
           sig { returns(String) }
           attr_accessor :line1
 
-          # The name of the recipient.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/name
           sig { returns(String) }
           attr_accessor :name
 
-          # The postal code of the shipping address.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/postal_code
           sig { returns(String) }
           attr_accessor :postal_code
 
-          # The US state of the shipping address.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The second line of the shipping address.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/line2
           sig { returns(T.nilable(String)) }
           attr_reader :line2
 
           sig { params(line2: String).void }
           attr_writer :line2
 
-          # The third line of the shipping address.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/line3
           sig { returns(T.nilable(String)) }
           attr_reader :line3
 
           sig { params(line3: String).void }
           attr_writer :line3
 
-          # The phone number of the recipient.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/phone_number
           sig { returns(T.nilable(String)) }
           attr_reader :phone_number
 
           sig { params(phone_number: String).void }
           attr_writer :phone_number
 
-          # The address to where the card should be shipped.
+          # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address
           sig do
             params(
               city: String,
@@ -198,7 +197,7 @@ module Increase
           def to_hash; end
         end
 
-        # The shipping method to use.
+        # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/method
         module Method
           extend Increase::Internal::Type::Enum
 

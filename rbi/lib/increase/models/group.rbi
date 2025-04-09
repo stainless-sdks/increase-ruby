@@ -3,32 +3,27 @@
 module Increase
   module Models
     class Group < Increase::Internal::Type::BaseModel
-      # The Group identifier.
+      # #/components/schemas/group/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # If the Group is allowed to create ACH debits.
+      # #/components/schemas/group/properties/ach_debit_status
       sig { returns(Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
       attr_accessor :ach_debit_status
 
-      # If the Group is activated or not.
+      # #/components/schemas/group/properties/activation_status
       sig { returns(Increase::Models::Group::ActivationStatus::TaggedSymbol) }
       attr_accessor :activation_status
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
-      # was created.
+      # #/components/schemas/group/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # A constant representing the object's type. For this resource it will always be
-      # `group`.
+      # #/components/schemas/group/properties/type
       sig { returns(Increase::Models::Group::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Groups represent organizations using Increase. You can retrieve information
-      # about your own organization via the API. More commonly, OAuth platforms can
-      # retrieve information about the organizations that have granted them access.
-      # Learn more about OAuth [here](https://increase.com/documentation/oauth).
+      # #/components/schemas/group
       sig do
         params(
           id: String,
@@ -55,7 +50,7 @@ module Increase
       end
       def to_hash; end
 
-      # If the Group is allowed to create ACH debits.
+      # #/components/schemas/group/properties/ach_debit_status
       module ACHDebitStatus
         extend Increase::Internal::Type::Enum
 
@@ -72,7 +67,7 @@ module Increase
         def self.values; end
       end
 
-      # If the Group is activated or not.
+      # #/components/schemas/group/properties/activation_status
       module ActivationStatus
         extend Increase::Internal::Type::Enum
 
@@ -90,8 +85,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `group`.
+      # #/components/schemas/group/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

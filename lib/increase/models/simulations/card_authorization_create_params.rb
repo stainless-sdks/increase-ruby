@@ -10,14 +10,13 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
-        #   The authorization amount in cents.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute [r] authenticated_card_payment_id
-        #   The identifier of a Card Payment with a `card_authentication` if you want to
-        #   simulate an authenticated authorization.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/authenticated_card_payment_id
         #
         #   @return [String, nil]
         optional :authenticated_card_payment_id, String
@@ -27,7 +26,7 @@ module Increase
         #   attr_writer :authenticated_card_payment_id
 
         # @!attribute [r] card_id
-        #   The identifier of the Card to be authorized.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/card_id
         #
         #   @return [String, nil]
         optional :card_id, String
@@ -37,8 +36,7 @@ module Increase
         #   attr_writer :card_id
 
         # @!attribute [r] decline_reason
-        #   Forces a card decline with a specific reason. No real time decision will be
-        #   sent.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/decline_reason
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason, nil]
         optional :decline_reason,
@@ -49,7 +47,7 @@ module Increase
         #   attr_writer :decline_reason
 
         # @!attribute [r] digital_wallet_token_id
-        #   The identifier of the Digital Wallet Token to be authorized.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/digital_wallet_token_id
         #
         #   @return [String, nil]
         optional :digital_wallet_token_id, String
@@ -59,8 +57,7 @@ module Increase
         #   attr_writer :digital_wallet_token_id
 
         # @!attribute [r] direction
-        #   The direction describes the direction the funds will move, either from the
-        #   cardholder to the merchant or from the merchant to the cardholder.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/direction
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction, nil]
         optional :direction, enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::Direction }
@@ -70,10 +67,7 @@ module Increase
         #   attr_writer :direction
 
         # @!attribute [r] event_subscription_id
-        #   The identifier of the Event Subscription to use. If provided, will override the
-        #   default real time event subscription. Because you can only create one real time
-        #   decision event subscription, you can use this field to route events to any
-        #   specified event subscription for testing purposes.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/event_subscription_id
         #
         #   @return [String, nil]
         optional :event_subscription_id, String
@@ -83,8 +77,7 @@ module Increase
         #   attr_writer :event_subscription_id
 
         # @!attribute [r] merchant_acceptor_id
-        #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
-        #   is transacting with.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/merchant_acceptor_id
         #
         #   @return [String, nil]
         optional :merchant_acceptor_id, String
@@ -94,8 +87,7 @@ module Increase
         #   attr_writer :merchant_acceptor_id
 
         # @!attribute [r] merchant_category_code
-        #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-        #   card is transacting with.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/merchant_category_code
         #
         #   @return [String, nil]
         optional :merchant_category_code, String
@@ -105,7 +97,7 @@ module Increase
         #   attr_writer :merchant_category_code
 
         # @!attribute [r] merchant_city
-        #   The city the merchant resides in.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/merchant_city
         #
         #   @return [String, nil]
         optional :merchant_city, String
@@ -115,7 +107,7 @@ module Increase
         #   attr_writer :merchant_city
 
         # @!attribute [r] merchant_country
-        #   The country the merchant resides in.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/merchant_country
         #
         #   @return [String, nil]
         optional :merchant_country, String
@@ -125,7 +117,7 @@ module Increase
         #   attr_writer :merchant_country
 
         # @!attribute [r] merchant_descriptor
-        #   The merchant descriptor of the merchant the card is transacting with.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/merchant_descriptor
         #
         #   @return [String, nil]
         optional :merchant_descriptor, String
@@ -135,7 +127,7 @@ module Increase
         #   attr_writer :merchant_descriptor
 
         # @!attribute [r] merchant_state
-        #   The state the merchant resides in.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/merchant_state
         #
         #   @return [String, nil]
         optional :merchant_state, String
@@ -145,7 +137,7 @@ module Increase
         #   attr_writer :merchant_state
 
         # @!attribute [r] network_details
-        #   Fields specific to a given card network.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_details
         #
         #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails, nil]
         optional :network_details,
@@ -156,8 +148,7 @@ module Increase
         #   attr_writer :network_details
 
         # @!attribute [r] network_risk_score
-        #   The risk score generated by the card network. For Visa this is the Visa Advanced
-        #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_risk_score
         #
         #   @return [Integer, nil]
         optional :network_risk_score, Integer
@@ -167,7 +158,7 @@ module Increase
         #   attr_writer :network_risk_score
 
         # @!attribute [r] physical_card_id
-        #   The identifier of the Physical Card to be authorized.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/physical_card_id
         #
         #   @return [String, nil]
         optional :physical_card_id, String
@@ -177,8 +168,7 @@ module Increase
         #   attr_writer :physical_card_id
 
         # @!attribute [r] terminal_id
-        #   The terminal identifier (commonly abbreviated as TID) of the terminal the card
-        #   is transacting with.
+        #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/terminal_id
         #
         #   @return [String, nil]
         optional :terminal_id, String
@@ -233,8 +223,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # Forces a card decline with a specific reason. No real time decision will be
-        # sent.
+        # #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/decline_reason
         module DeclineReason
           extend Increase::Internal::Type::Enum
 
@@ -296,8 +285,7 @@ module Increase
           #   def self.values; end
         end
 
-        # The direction describes the direction the funds will move, either from the
-        # cardholder to the merchant or from the merchant to the cardholder.
+        # #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/direction
         module Direction
           extend Increase::Internal::Type::Enum
 
@@ -316,13 +304,13 @@ module Increase
 
         class NetworkDetails < Increase::Internal::Type::BaseModel
           # @!attribute visa
-          #   Fields specific to the Visa network.
+          #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_details/properties/visa
           #
           #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
           required :visa, -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa }
 
           # @!parse
-          #   # Fields specific to a given card network.
+          #   # #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_details
           #   #
           #   # @param visa [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
           #   #
@@ -333,7 +321,7 @@ module Increase
           # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails#visa
           class Visa < Increase::Internal::Type::BaseModel
             # @!attribute [r] stand_in_processing_reason
-            #   The reason code for the stand-in processing.
+            #   #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_details/properties/visa/properties/stand_in_processing_reason
             #
             #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason, nil]
             optional :stand_in_processing_reason,
@@ -344,7 +332,7 @@ module Increase
             #   attr_writer :stand_in_processing_reason
 
             # @!parse
-            #   # Fields specific to the Visa network.
+            #   # #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_details/properties/visa
             #   #
             #   # @param stand_in_processing_reason [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
             #   #
@@ -352,7 +340,7 @@ module Increase
 
             # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-            # The reason code for the stand-in processing.
+            # #/components/schemas/sandbox_create_a_card_authorization_parameters/properties/network_details/properties/visa/properties/stand_in_processing_reason
             #
             # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa#stand_in_processing_reason
             module StandInProcessingReason

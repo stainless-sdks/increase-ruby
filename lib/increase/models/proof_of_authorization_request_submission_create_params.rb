@@ -9,61 +9,61 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute authorization_terms
-      #   Terms of authorization.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/authorization_terms
       #
       #   @return [String]
       required :authorization_terms, String
 
       # @!attribute authorized_at
-      #   Time of authorization.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/authorized_at
       #
       #   @return [Time]
       required :authorized_at, Time
 
       # @!attribute authorizer_email
-      #   Email of the authorizer.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_email
       #
       #   @return [String]
       required :authorizer_email, String
 
       # @!attribute authorizer_name
-      #   Name of the authorizer.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_name
       #
       #   @return [String]
       required :authorizer_name, String
 
       # @!attribute customer_has_been_offboarded
-      #   Whether the customer has been offboarded or suspended.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/customer_has_been_offboarded
       #
       #   @return [Boolean]
       required :customer_has_been_offboarded, Increase::Internal::Type::Boolean
 
       # @!attribute proof_of_authorization_request_id
-      #   ID of the proof of authorization request.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/proof_of_authorization_request_id
       #
       #   @return [String]
       required :proof_of_authorization_request_id, String
 
       # @!attribute validated_account_ownership_via_credential
-      #   Whether the account ownership was validated via credential (e.g. Plaid).
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_via_credential
       #
       #   @return [Boolean]
       required :validated_account_ownership_via_credential, Increase::Internal::Type::Boolean
 
       # @!attribute validated_account_ownership_with_account_statement
-      #   Whether the account ownership was validated with an account statement.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_with_account_statement
       #
       #   @return [Boolean]
       required :validated_account_ownership_with_account_statement, Increase::Internal::Type::Boolean
 
       # @!attribute validated_account_ownership_with_microdeposit
-      #   Whether the account ownership was validated with a microdeposit.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_with_microdeposit
       #
       #   @return [Boolean]
       required :validated_account_ownership_with_microdeposit, Increase::Internal::Type::Boolean
 
       # @!attribute [r] additional_evidence_file_id
-      #   File containing additional evidence.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/additional_evidence_file_id
       #
       #   @return [String, nil]
       optional :additional_evidence_file_id, String
@@ -73,7 +73,7 @@ module Increase
       #   attr_writer :additional_evidence_file_id
 
       # @!attribute [r] authorizer_company
-      #   Company of the authorizer.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_company
       #
       #   @return [String, nil]
       optional :authorizer_company, String
@@ -83,7 +83,7 @@ module Increase
       #   attr_writer :authorizer_company
 
       # @!attribute [r] authorizer_ip_address
-      #   IP address of the authorizer.
+      #   #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_ip_address
       #
       #   @return [String, nil]
       optional :authorizer_ip_address, String

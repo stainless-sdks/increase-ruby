@@ -14,15 +14,11 @@ module Increase
           .returns(Increase::Models::CardDispute)
       end
       def create(
-        # The Transaction you wish to dispute. This Transaction must have a `source_type`
-        # of `card_settlement`.
+        # #/components/schemas/create_a_card_dispute_parameters/properties/disputed_transaction_id
         disputed_transaction_id:,
-        # Why you are disputing this Transaction.
+        # #/components/schemas/create_a_card_dispute_parameters/properties/explanation
         explanation:,
-        # The monetary amount of the part of the transaction that is being disputed. This
-        # is optional and will default to the full amount of the transaction if not
-        # provided. If provided, the amount must be less than or equal to the amount of
-        # the transaction.
+        # #/components/schemas/create_a_card_dispute_parameters/properties/amount
         amount: nil,
         request_options: {}
       ); end
@@ -35,7 +31,7 @@ module Increase
           .returns(Increase::Models::CardDispute)
       end
       def retrieve(
-        # The identifier of the Card Dispute.
+        # #/paths//card_disputes/{card_dispute_id}/get/parameters/0/schema
         card_dispute_id,
         request_options: {}
       ); end
@@ -53,15 +49,11 @@ module Increase
       end
       def list(
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//card_disputes/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//card_disputes/get/parameters/7/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//card_disputes/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}

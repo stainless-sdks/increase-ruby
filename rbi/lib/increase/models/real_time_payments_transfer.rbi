@@ -3,16 +3,15 @@
 module Increase
   module Models
     class RealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
-      # The Real-Time Payments Transfer's identifier.
+      # #/components/schemas/real_time_payments_transfer/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The Account from which the transfer was sent.
+      # #/components/schemas/real_time_payments_transfer/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # If the transfer is acknowledged by the recipient bank, this will contain
-      # supplemental details.
+      # #/components/schemas/real_time_payments_transfer/properties/acknowledgement
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement)) }
       attr_reader :acknowledgement
 
@@ -24,12 +23,11 @@ module Increase
       end
       attr_writer :acknowledgement
 
-      # The transfer amount in USD cents.
+      # #/components/schemas/real_time_payments_transfer/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # If your account requires approvals for transfers and the transfer was approved,
-      # this will contain details of the approval.
+      # #/components/schemas/real_time_payments_transfer/properties/approval
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval)) }
       attr_reader :approval
 
@@ -41,8 +39,7 @@ module Increase
       end
       attr_writer :approval
 
-      # If your account requires approvals for transfers and the transfer was not
-      # approved, this will contain details of the cancellation.
+      # #/components/schemas/real_time_payments_transfer/properties/cancellation
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation)) }
       attr_reader :cancellation
 
@@ -54,12 +51,11 @@ module Increase
       end
       attr_writer :cancellation
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the transfer was created.
+      # #/components/schemas/real_time_payments_transfer/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # What object created the transfer, either via the API or the dashboard.
+      # #/components/schemas/real_time_payments_transfer/properties/created_by
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy)) }
       attr_reader :created_by
 
@@ -71,49 +67,39 @@ module Increase
       end
       attr_writer :created_by
 
-      # The name of the transfer's recipient. This is set by the sender when creating
-      # the transfer.
+      # #/components/schemas/real_time_payments_transfer/properties/creditor_name
       sig { returns(String) }
       attr_accessor :creditor_name
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For real-time payments transfers this is always equal to `USD`.
+      # #/components/schemas/real_time_payments_transfer/properties/currency
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
-      # The name of the transfer's sender. If not provided, defaults to the name of the
-      # account's entity.
+      # #/components/schemas/real_time_payments_transfer/properties/debtor_name
       sig { returns(T.nilable(String)) }
       attr_accessor :debtor_name
 
-      # The destination account number.
+      # #/components/schemas/real_time_payments_transfer/properties/destination_account_number
       sig { returns(String) }
       attr_accessor :destination_account_number
 
-      # The destination American Bankers' Association (ABA) Routing Transit Number
-      # (RTN).
+      # #/components/schemas/real_time_payments_transfer/properties/destination_routing_number
       sig { returns(String) }
       attr_accessor :destination_routing_number
 
-      # The identifier of the External Account the transfer was made to, if any.
+      # #/components/schemas/real_time_payments_transfer/properties/external_account_id
       sig { returns(T.nilable(String)) }
       attr_accessor :external_account_id
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/real_time_payments_transfer/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The ID for the pending transaction representing the transfer. A pending
-      # transaction is created when the transfer
-      # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      # by someone else in your organization.
+      # #/components/schemas/real_time_payments_transfer/properties/pending_transaction_id
       sig { returns(T.nilable(String)) }
       attr_accessor :pending_transaction_id
 
-      # If the transfer is rejected by Real-Time Payments or the destination financial
-      # institution, this will contain supplemental details.
+      # #/components/schemas/real_time_payments_transfer/properties/rejection
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection)) }
       attr_reader :rejection
 
@@ -125,20 +111,19 @@ module Increase
       end
       attr_writer :rejection
 
-      # Unstructured information that will show on the recipient's bank statement.
+      # #/components/schemas/real_time_payments_transfer/properties/remittance_information
       sig { returns(String) }
       attr_accessor :remittance_information
 
-      # The Account Number the recipient will see as having sent the transfer.
+      # #/components/schemas/real_time_payments_transfer/properties/source_account_number_id
       sig { returns(String) }
       attr_accessor :source_account_number_id
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/real_time_payments_transfer/properties/status
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # After the transfer is submitted to Real-Time Payments, this will contain
-      # supplemental details.
+      # #/components/schemas/real_time_payments_transfer/properties/submission
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission)) }
       attr_reader :submission
 
@@ -150,27 +135,23 @@ module Increase
       end
       attr_writer :submission
 
-      # The Transaction funding the transfer once it is complete.
+      # #/components/schemas/real_time_payments_transfer/properties/transaction_id
       sig { returns(T.nilable(String)) }
       attr_accessor :transaction_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `real_time_payments_transfer`.
+      # #/components/schemas/real_time_payments_transfer/properties/type
       sig { returns(Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # The name of the ultimate recipient of the transfer. Set this if the creditor is
-      # an intermediary receiving the payment for someone else.
+      # #/components/schemas/real_time_payments_transfer/properties/ultimate_creditor_name
       sig { returns(T.nilable(String)) }
       attr_accessor :ultimate_creditor_name
 
-      # The name of the ultimate sender of the transfer. Set this if the funds are being
-      # sent on behalf of someone who is not the account holder at Increase.
+      # #/components/schemas/real_time_payments_transfer/properties/ultimate_debtor_name
       sig { returns(T.nilable(String)) }
       attr_accessor :ultimate_debtor_name
 
-      # Real-Time Payments transfers move funds, within seconds, between your Increase
-      # account and any other account on the Real-Time Payments network.
+      # #/components/schemas/real_time_payments_transfer
       sig do
         params(
           id: String,
@@ -263,12 +244,11 @@ module Increase
       def to_hash; end
 
       class Acknowledgement < Increase::Internal::Type::BaseModel
-        # When the transfer was acknowledged.
+        # #/components/schemas/real_time_payments_transfer/properties/acknowledgement/anyOf/0/properties/acknowledged_at
         sig { returns(Time) }
         attr_accessor :acknowledged_at
 
-        # If the transfer is acknowledged by the recipient bank, this will contain
-        # supplemental details.
+        # #/components/schemas/real_time_payments_transfer/properties/acknowledgement
         sig { params(acknowledged_at: Time).returns(T.attached_class) }
         def self.new(acknowledged_at:); end
 
@@ -277,18 +257,15 @@ module Increase
       end
 
       class Approval < Increase::Internal::Type::BaseModel
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was approved.
+        # #/components/schemas/real_time_payments_transfer/properties/approval/anyOf/0/properties/approved_at
         sig { returns(Time) }
         attr_accessor :approved_at
 
-        # If the Transfer was approved by a user in the dashboard, the email address of
-        # that user.
+        # #/components/schemas/real_time_payments_transfer/properties/approval/anyOf/0/properties/approved_by
         sig { returns(T.nilable(String)) }
         attr_accessor :approved_by
 
-        # If your account requires approvals for transfers and the transfer was approved,
-        # this will contain details of the approval.
+        # #/components/schemas/real_time_payments_transfer/properties/approval
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(approved_at:, approved_by:); end
 
@@ -297,18 +274,15 @@ module Increase
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Transfer was canceled.
+        # #/components/schemas/real_time_payments_transfer/properties/cancellation/anyOf/0/properties/canceled_at
         sig { returns(Time) }
         attr_accessor :canceled_at
 
-        # If the Transfer was canceled by a user in the dashboard, the email address of
-        # that user.
+        # #/components/schemas/real_time_payments_transfer/properties/cancellation/anyOf/0/properties/canceled_by
         sig { returns(T.nilable(String)) }
         attr_accessor :canceled_by
 
-        # If your account requires approvals for transfers and the transfer was not
-        # approved, this will contain details of the cancellation.
+        # #/components/schemas/real_time_payments_transfer/properties/cancellation
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
         def self.new(canceled_at:, canceled_by:); end
 
@@ -317,7 +291,7 @@ module Increase
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
-        # If present, details about the API key that created the transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/api_key
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey)) }
         attr_reader :api_key
 
@@ -331,11 +305,11 @@ module Increase
         end
         attr_writer :api_key
 
-        # The type of object that created this transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/category
         sig { returns(Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
         attr_accessor :category
 
-        # If present, details about the OAuth Application that created the transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/oauth_application
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication)) }
         attr_reader :oauth_application
 
@@ -352,7 +326,7 @@ module Increase
         end
         attr_writer :oauth_application
 
-        # If present, details about the User that created the transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/user
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)) }
         attr_reader :user
 
@@ -364,7 +338,7 @@ module Increase
         end
         attr_writer :user
 
-        # What object created the transfer, either via the API or the dashboard.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by
         sig do
           params(
             api_key: T.nilable(
@@ -397,11 +371,11 @@ module Increase
         def to_hash; end
 
         class APIKey < Increase::Internal::Type::BaseModel
-          # The description set for the API key when it was created.
+          # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/api_key/anyOf/0/properties/description
           sig { returns(T.nilable(String)) }
           attr_accessor :description
 
-          # If present, details about the API key that created the transfer.
+          # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/api_key
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
           def self.new(description:); end
 
@@ -409,7 +383,7 @@ module Increase
           def to_hash; end
         end
 
-        # The type of object that created this transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/category
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -433,11 +407,11 @@ module Increase
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
-          # The name of the OAuth Application.
+          # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/oauth_application/anyOf/0/properties/name
           sig { returns(String) }
           attr_accessor :name
 
-          # If present, details about the OAuth Application that created the transfer.
+          # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/oauth_application
           sig { params(name: String).returns(T.attached_class) }
           def self.new(name:); end
 
@@ -446,11 +420,11 @@ module Increase
         end
 
         class User < Increase::Internal::Type::BaseModel
-          # The email address of the User.
+          # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/user/anyOf/0/properties/email
           sig { returns(String) }
           attr_accessor :email
 
-          # If present, details about the User that created the transfer.
+          # #/components/schemas/real_time_payments_transfer/properties/created_by/anyOf/0/properties/user
           sig { params(email: String).returns(T.attached_class) }
           def self.new(email:); end
 
@@ -459,8 +433,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For real-time payments transfers this is always equal to `USD`.
+      # #/components/schemas/real_time_payments_transfer/properties/currency
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -491,23 +464,19 @@ module Increase
       end
 
       class Rejection < Increase::Internal::Type::BaseModel
-        # Additional information about the rejection provided by the recipient bank when
-        # the `reject_reason_code` is `NARRATIVE`.
+        # #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/reject_reason_additional_information
         sig { returns(T.nilable(String)) }
         attr_accessor :reject_reason_additional_information
 
-        # The reason the transfer was rejected as provided by the recipient bank or the
-        # Real-Time Payments network.
+        # #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/reject_reason_code
         sig { returns(Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol) }
         attr_accessor :reject_reason_code
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was rejected.
+        # #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/rejected_at
         sig { returns(T.nilable(Time)) }
         attr_accessor :rejected_at
 
-        # If the transfer is rejected by Real-Time Payments or the destination financial
-        # institution, this will contain supplemental details.
+        # #/components/schemas/real_time_payments_transfer/properties/rejection
         sig do
           params(
             reject_reason_additional_information: T.nilable(String),
@@ -530,8 +499,7 @@ module Increase
         end
         def to_hash; end
 
-        # The reason the transfer was rejected as provided by the recipient bank or the
-        # Real-Time Payments network.
+        # #/components/schemas/real_time_payments_transfer/properties/rejection/anyOf/0/properties/reject_reason_code
         module RejectReasonCode
           extend Increase::Internal::Type::Enum
 
@@ -692,7 +660,7 @@ module Increase
         end
       end
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/real_time_payments_transfer/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -733,17 +701,15 @@ module Increase
       end
 
       class Submission < Increase::Internal::Type::BaseModel
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was submitted to The Clearing House.
+        # #/components/schemas/real_time_payments_transfer/properties/submission/anyOf/0/properties/submitted_at
         sig { returns(T.nilable(Time)) }
         attr_accessor :submitted_at
 
-        # The Real-Time Payments network identification of the transfer.
+        # #/components/schemas/real_time_payments_transfer/properties/submission/anyOf/0/properties/transaction_identification
         sig { returns(String) }
         attr_accessor :transaction_identification
 
-        # After the transfer is submitted to Real-Time Payments, this will contain
-        # supplemental details.
+        # #/components/schemas/real_time_payments_transfer/properties/submission
         sig do
           params(submitted_at: T.nilable(Time), transaction_identification: String).returns(T.attached_class)
         end
@@ -753,8 +719,7 @@ module Increase
         def to_hash; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `real_time_payments_transfer`.
+      # #/components/schemas/real_time_payments_transfer/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -3,42 +3,35 @@
 module Increase
   module Models
     class OAuthApplication < Increase::Internal::Type::BaseModel
-      # The OAuth Application's identifier.
+      # #/components/schemas/oauth_application/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The OAuth Application's client_id. Use this to authenticate with the OAuth
-      # Application.
+      # #/components/schemas/oauth_application/properties/client_id
       sig { returns(String) }
       attr_accessor :client_id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      # Application was created.
+      # #/components/schemas/oauth_application/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      # Application was deleted.
+      # #/components/schemas/oauth_application/properties/deleted_at
       sig { returns(T.nilable(Time)) }
       attr_accessor :deleted_at
 
-      # The name you chose for this OAuth Application.
+      # #/components/schemas/oauth_application/properties/name
       sig { returns(T.nilable(String)) }
       attr_accessor :name
 
-      # Whether the application is active.
+      # #/components/schemas/oauth_application/properties/status
       sig { returns(Increase::Models::OAuthApplication::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `oauth_application`.
+      # #/components/schemas/oauth_application/properties/type
       sig { returns(Increase::Models::OAuthApplication::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # An OAuth Application lets you build an application for others to use with their
-      # Increase data. You can create an OAuth Application via the Dashboard and read
-      # information about it with the API. Learn more about OAuth
-      # [here](https://increase.com/documentation/oauth).
+      # #/components/schemas/oauth_application
       sig do
         params(
           id: String,
@@ -69,7 +62,7 @@ module Increase
       end
       def to_hash; end
 
-      # Whether the application is active.
+      # #/components/schemas/oauth_application/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -87,8 +80,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `oauth_application`.
+      # #/components/schemas/oauth_application/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::CardPurchaseSupplement)
       end
       def retrieve(
-        # The identifier of the Card Purchase Supplement.
+        # #/paths//card_purchase_supplements/{card_purchase_supplement_id}/get/parameters/0/schema
         card_purchase_supplement_id,
         request_options: {}
       ); end
@@ -28,14 +28,12 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::CardPurchaseSupplement])
       end
       def list(
-        # Filter Card Purchase Supplements to ones belonging to the specified Card
-        # Payment.
+        # #/paths//card_purchase_supplements/get/parameters/2/schema
         card_payment_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//card_purchase_supplements/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//card_purchase_supplements/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

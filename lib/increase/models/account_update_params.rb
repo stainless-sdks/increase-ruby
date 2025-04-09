@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] name
-      #   The new name of the Account.
+      #   #/components/schemas/update_an_account_parameters/properties/name
       #
       #   @return [String, nil]
       optional :name, String

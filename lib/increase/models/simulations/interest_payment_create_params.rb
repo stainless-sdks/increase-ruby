@@ -10,19 +10,19 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_id
-        #   The identifier of the Account the Interest Payment should be paid to is for.
+        #   #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/account_id
         #
         #   @return [String]
         required :account_id, String
 
         # @!attribute amount
-        #   The interest amount in cents. Must be positive.
+        #   #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute [r] accrued_on_account_id
-        #   The identifier of the Account the Interest accrued on. Defaults to `account_id`.
+        #   #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/accrued_on_account_id
         #
         #   @return [String, nil]
         optional :accrued_on_account_id, String
@@ -32,7 +32,7 @@ module Increase
         #   attr_writer :accrued_on_account_id
 
         # @!attribute [r] period_end
-        #   The end of the interest period. If not provided, defaults to the current time.
+        #   #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/period_end
         #
         #   @return [Time, nil]
         optional :period_end, Time
@@ -42,7 +42,7 @@ module Increase
         #   attr_writer :period_end
 
         # @!attribute [r] period_start
-        #   The start of the interest period. If not provided, defaults to the current time.
+        #   #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/period_start
         #
         #   @return [Time, nil]
         optional :period_start, Time

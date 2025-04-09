@@ -5,69 +5,61 @@ module Increase
     # @see Increase::Resources::Programs#retrieve
     class Program < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Program identifier.
+      #   #/components/schemas/program/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute bank
-      #   The Bank the Program is with.
+      #   #/components/schemas/program/properties/bank
       #
       #   @return [Symbol, Increase::Models::Program::Bank]
       required :bank, enum: -> { Increase::Models::Program::Bank }
 
       # @!attribute billing_account_id
-      #   The Program billing account.
+      #   #/components/schemas/program/properties/billing_account_id
       #
       #   @return [String, nil]
       required :billing_account_id, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was created.
+      #   #/components/schemas/program/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute default_digital_card_profile_id
-      #   The default configuration for digital cards attached to this Program.
+      #   #/components/schemas/program/properties/default_digital_card_profile_id
       #
       #   @return [String, nil]
       required :default_digital_card_profile_id, String, nil?: true
 
       # @!attribute interest_rate
-      #   The Interest Rate currently being earned on the accounts in this program, as a
-      #   string containing a decimal number. For example, a 1% interest rate would be
-      #   represented as "0.01".
+      #   #/components/schemas/program/properties/interest_rate
       #
       #   @return [String]
       required :interest_rate, String
 
       # @!attribute name
-      #   The name of the Program.
+      #   #/components/schemas/program/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `program`.
+      #   #/components/schemas/program/properties/type
       #
       #   @return [Symbol, Increase::Models::Program::Type]
       required :type, enum: -> { Increase::Models::Program::Type }
 
       # @!attribute updated_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was last updated.
+      #   #/components/schemas/program/properties/updated_at
       #
       #   @return [Time]
       required :updated_at, Time
 
       # @!parse
-      #   # Programs determine the compliance and commercial terms of Accounts. By default,
-      #   # you have a Commercial Banking program for managing your own funds. If you are
-      #   # lending or managing funds on behalf of your customers, or otherwise engaged in
-      #   # regulated activity, we will work together to create additional Programs for you.
+      #   # #/components/schemas/program
       #   #
       #   # @param id [String]
       #   # @param bank [Symbol, Increase::Models::Program::Bank]
@@ -96,7 +88,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The Bank the Program is with.
+      # #/components/schemas/program/properties/bank
       #
       # @see Increase::Models::Program#bank
       module Bank
@@ -118,8 +110,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `program`.
+      # #/components/schemas/program/properties/type
       #
       # @see Increase::Models::Program#type
       module Type

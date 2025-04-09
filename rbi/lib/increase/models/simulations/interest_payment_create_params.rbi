@@ -7,29 +7,29 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account the Interest Payment should be paid to is for.
+        # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/account_id
         sig { returns(String) }
         attr_accessor :account_id
 
-        # The interest amount in cents. Must be positive.
+        # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The identifier of the Account the Interest accrued on. Defaults to `account_id`.
+        # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/accrued_on_account_id
         sig { returns(T.nilable(String)) }
         attr_reader :accrued_on_account_id
 
         sig { params(accrued_on_account_id: String).void }
         attr_writer :accrued_on_account_id
 
-        # The end of the interest period. If not provided, defaults to the current time.
+        # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/period_end
         sig { returns(T.nilable(Time)) }
         attr_reader :period_end
 
         sig { params(period_end: Time).void }
         attr_writer :period_end
 
-        # The start of the interest period. If not provided, defaults to the current time.
+        # #/components/schemas/sandbox_create_an_interest_payment_parameters/properties/period_start
         sig { returns(T.nilable(Time)) }
         attr_reader :period_start
 

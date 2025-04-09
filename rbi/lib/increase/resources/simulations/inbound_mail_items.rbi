@@ -16,12 +16,11 @@ module Increase
             .returns(Increase::Models::InboundMailItem)
         end
         def create(
-          # The amount of the check to be simulated, in cents.
+          # #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/amount
           amount:,
-          # The identifier of the Lockbox to simulate inbound mail to.
+          # #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/lockbox_id
           lockbox_id:,
-          # The file containing the PDF contents. If not present, a default check image file
-          # will be used.
+          # #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/contents_file_id
           contents_file_id: nil,
           request_options: {}
         ); end

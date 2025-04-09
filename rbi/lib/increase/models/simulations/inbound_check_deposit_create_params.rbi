@@ -7,15 +7,15 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account Number the Inbound Check Deposit will be against.
+        # #/components/schemas/sandbox_create_an_inbound_check_deposit_parameters/properties/account_number_id
         sig { returns(String) }
         attr_accessor :account_number_id
 
-        # The check amount in cents.
+        # #/components/schemas/sandbox_create_an_inbound_check_deposit_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The check number on the check to be deposited.
+        # #/components/schemas/sandbox_create_an_inbound_check_deposit_parameters/properties/check_number
         sig { returns(String) }
         attr_accessor :check_number
 

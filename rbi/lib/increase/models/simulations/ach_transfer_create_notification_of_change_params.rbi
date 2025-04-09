@@ -7,11 +7,11 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The reason for the notification of change.
+        # #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/change_code
         sig { returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol) }
         attr_accessor :change_code
 
-        # The corrected data for the notification of change (e.g., a new routing number).
+        # #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/corrected_data
         sig { returns(String) }
         attr_accessor :corrected_data
 
@@ -37,7 +37,7 @@ module Increase
         end
         def to_hash; end
 
-        # The reason for the notification of change.
+        # #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/change_code
         module ChangeCode
           extend Increase::Internal::Type::Enum
 

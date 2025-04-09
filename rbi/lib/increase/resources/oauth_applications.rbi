@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::OAuthApplication)
       end
       def retrieve(
-        # The identifier of the OAuth Application.
+        # #/paths//oauth_applications/{oauth_application_id}/get/parameters/0/schema
         oauth_application_id,
         request_options: {}
       ); end
@@ -29,10 +29,9 @@ module Increase
       end
       def list(
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//oauth_applications/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//oauth_applications/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}

@@ -5,67 +5,61 @@ module Increase
     # @see Increase::Resources::Lockboxes#create
     class Lockbox < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Lockbox identifier.
+      #   #/components/schemas/lockbox/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The identifier for the Account checks sent to this lockbox will be deposited
-      #   into.
+      #   #/components/schemas/lockbox/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute address
-      #   The mailing address for the Lockbox.
+      #   #/components/schemas/lockbox/properties/address
       #
       #   @return [Increase::Models::Lockbox::Address]
       required :address, -> { Increase::Models::Lockbox::Address }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
-      #   was created.
+      #   #/components/schemas/lockbox/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute description
-      #   The description you choose for the Lockbox.
+      #   #/components/schemas/lockbox/properties/description
       #
       #   @return [String, nil]
       required :description, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/lockbox/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute recipient_name
-      #   The recipient name you choose for the Lockbox.
+      #   #/components/schemas/lockbox/properties/recipient_name
       #
       #   @return [String, nil]
       required :recipient_name, String, nil?: true
 
       # @!attribute status
-      #   This indicates if mail can be sent to this address.
+      #   #/components/schemas/lockbox/properties/status
       #
       #   @return [Symbol, Increase::Models::Lockbox::Status]
       required :status, enum: -> { Increase::Models::Lockbox::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `lockbox`.
+      #   #/components/schemas/lockbox/properties/type
       #
       #   @return [Symbol, Increase::Models::Lockbox::Type]
       required :type, enum: -> { Increase::Models::Lockbox::Type }
 
       # @!parse
-      #   # Lockboxes are physical locations that can receive mail containing paper checks.
-      #   # Increase will automatically create a Check Deposit for checks received this way.
+      #   # #/components/schemas/lockbox
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -97,47 +91,43 @@ module Increase
       # @see Increase::Models::Lockbox#address
       class Address < Increase::Internal::Type::BaseModel
         # @!attribute city
-        #   The city of the address.
+        #   #/components/schemas/lockbox/properties/address/properties/city
         #
         #   @return [String]
         required :city, String
 
         # @!attribute line1
-        #   The first line of the address.
+        #   #/components/schemas/lockbox/properties/address/properties/line1
         #
         #   @return [String]
         required :line1, String
 
         # @!attribute line2
-        #   The second line of the address.
+        #   #/components/schemas/lockbox/properties/address/properties/line2
         #
         #   @return [String]
         required :line2, String
 
         # @!attribute postal_code
-        #   The postal code of the address.
+        #   #/components/schemas/lockbox/properties/address/properties/postal_code
         #
         #   @return [String]
         required :postal_code, String
 
         # @!attribute recipient
-        #   The recipient line of the address. This will include the recipient name you
-        #   provide when creating the address, as well as an ATTN suffix to help route the
-        #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
-        #   at this Lockbox.
+        #   #/components/schemas/lockbox/properties/address/properties/recipient
         #
         #   @return [String, nil]
         required :recipient, String, nil?: true
 
         # @!attribute state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
+        #   #/components/schemas/lockbox/properties/address/properties/state
         #
         #   @return [String]
         required :state, String
 
         # @!parse
-        #   # The mailing address for the Lockbox.
+        #   # #/components/schemas/lockbox/properties/address
         #   #
         #   # @param city [String]
         #   # @param line1 [String]
@@ -151,7 +141,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # This indicates if mail can be sent to this address.
+      # #/components/schemas/lockbox/properties/status
       #
       # @see Increase::Models::Lockbox#status
       module Status
@@ -170,8 +160,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `lockbox`.
+      # #/components/schemas/lockbox/properties/type
       #
       # @see Increase::Models::Lockbox#type
       module Type

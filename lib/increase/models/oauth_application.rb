@@ -5,56 +5,49 @@ module Increase
     # @see Increase::Resources::OAuthApplications#retrieve
     class OAuthApplication < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The OAuth Application's identifier.
+      #   #/components/schemas/oauth_application/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute client_id
-      #   The OAuth Application's client_id. Use this to authenticate with the OAuth
-      #   Application.
+      #   #/components/schemas/oauth_application/properties/client_id
       #
       #   @return [String]
       required :client_id, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Application was created.
+      #   #/components/schemas/oauth_application/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute deleted_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Application was deleted.
+      #   #/components/schemas/oauth_application/properties/deleted_at
       #
       #   @return [Time, nil]
       required :deleted_at, Time, nil?: true
 
       # @!attribute name
-      #   The name you chose for this OAuth Application.
+      #   #/components/schemas/oauth_application/properties/name
       #
       #   @return [String, nil]
       required :name, String, nil?: true
 
       # @!attribute status
-      #   Whether the application is active.
+      #   #/components/schemas/oauth_application/properties/status
       #
       #   @return [Symbol, Increase::Models::OAuthApplication::Status]
       required :status, enum: -> { Increase::Models::OAuthApplication::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `oauth_application`.
+      #   #/components/schemas/oauth_application/properties/type
       #
       #   @return [Symbol, Increase::Models::OAuthApplication::Type]
       required :type, enum: -> { Increase::Models::OAuthApplication::Type }
 
       # @!parse
-      #   # An OAuth Application lets you build an application for others to use with their
-      #   # Increase data. You can create an OAuth Application via the Dashboard and read
-      #   # information about it with the API. Learn more about OAuth
-      #   # [here](https://increase.com/documentation/oauth).
+      #   # #/components/schemas/oauth_application
       #   #
       #   # @param id [String]
       #   # @param client_id [String]
@@ -68,7 +61,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # Whether the application is active.
+      # #/components/schemas/oauth_application/properties/status
       #
       # @see Increase::Models::OAuthApplication#status
       module Status
@@ -87,8 +80,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `oauth_application`.
+      # #/components/schemas/oauth_application/properties/type
       #
       # @see Increase::Models::OAuthApplication#type
       module Type

@@ -3,32 +3,31 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequest < Increase::Internal::Type::BaseModel
-      # The Proof of Authorization Request identifier.
+      # #/components/schemas/proof_of_authorization_request/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The ACH Transfers associated with the request.
+      # #/components/schemas/proof_of_authorization_request/properties/ach_transfers
       sig { returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]) }
       attr_accessor :ach_transfers
 
-      # The time the Proof of Authorization Request was created.
+      # #/components/schemas/proof_of_authorization_request/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The time the Proof of Authorization Request is due.
+      # #/components/schemas/proof_of_authorization_request/properties/due_on
       sig { returns(Time) }
       attr_accessor :due_on
 
-      # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request`.
+      # #/components/schemas/proof_of_authorization_request/properties/type
       sig { returns(Increase::Models::ProofOfAuthorizationRequest::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # The time the Proof of Authorization Request was last updated.
+      # #/components/schemas/proof_of_authorization_request/properties/updated_at
       sig { returns(Time) }
       attr_accessor :updated_at
 
-      # A request for proof of authorization for one or more ACH debit transfers.
+      # #/components/schemas/proof_of_authorization_request
       sig do
         params(
           id: String,
@@ -58,10 +57,11 @@ module Increase
       def to_hash; end
 
       class ACHTransfer < Increase::Internal::Type::BaseModel
-        # The ACH Transfer identifier.
+        # #/components/schemas/proof_of_authorization_request/properties/ach_transfers/items/properties/id
         sig { returns(String) }
         attr_accessor :id
 
+        # #/components/schemas/proof_of_authorization_request/properties/ach_transfers/items
         sig { params(id: String).returns(T.attached_class) }
         def self.new(id:); end
 
@@ -69,8 +69,7 @@ module Increase
         def to_hash; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request`.
+      # #/components/schemas/proof_of_authorization_request/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

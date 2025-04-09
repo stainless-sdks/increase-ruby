@@ -3,55 +3,47 @@
 module Increase
   module Models
     class IntrafiExclusion < Increase::Internal::Type::BaseModel
-      # The identifier of this exclusion request.
+      # #/components/schemas/intrafi_exclusion/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The name of the excluded institution.
+      # #/components/schemas/intrafi_exclusion/properties/bank_name
       sig { returns(String) }
       attr_accessor :bank_name
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the exclusion was created.
+      # #/components/schemas/intrafi_exclusion/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The entity for which this institution is excluded.
+      # #/components/schemas/intrafi_exclusion/properties/entity_id
       sig { returns(String) }
       attr_accessor :entity_id
 
-      # When this was exclusion was confirmed by IntraFi.
+      # #/components/schemas/intrafi_exclusion/properties/excluded_at
       sig { returns(T.nilable(Time)) }
       attr_accessor :excluded_at
 
-      # The Federal Deposit Insurance Corporation's certificate number for the
-      # institution.
+      # #/components/schemas/intrafi_exclusion/properties/fdic_certificate_number
       sig { returns(T.nilable(String)) }
       attr_accessor :fdic_certificate_number
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/intrafi_exclusion/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The status of the exclusion request.
+      # #/components/schemas/intrafi_exclusion/properties/status
       sig { returns(Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # When this was exclusion was submitted to IntraFi by Increase.
+      # #/components/schemas/intrafi_exclusion/properties/submitted_at
       sig { returns(T.nilable(Time)) }
       attr_accessor :submitted_at
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_exclusion`.
+      # #/components/schemas/intrafi_exclusion/properties/type
       sig { returns(Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Certain institutions may be excluded per Entity when sweeping funds into the
-      # IntraFi network. This is useful when an Entity already has deposits at a
-      # particular bank, and does not want to sweep additional funds to it. It may take
-      # 5 business days for an exclusion to be processed.
+      # #/components/schemas/intrafi_exclusion
       sig do
         params(
           id: String,
@@ -98,7 +90,7 @@ module Increase
       end
       def to_hash; end
 
-      # The status of the exclusion request.
+      # #/components/schemas/intrafi_exclusion/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -119,8 +111,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_exclusion`.
+      # #/components/schemas/intrafi_exclusion/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

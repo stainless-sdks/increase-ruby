@@ -5,65 +5,55 @@ module Increase
     # @see Increase::Resources::Exports#create
     class Export < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Export identifier.
+      #   #/components/schemas/export/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute category
-      #   The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
+      #   #/components/schemas/export/properties/category
       #
       #   @return [Symbol, Increase::Models::Export::Category]
       required :category, enum: -> { Increase::Models::Export::Category }
 
       # @!attribute created_at
-      #   The time the Export was created.
+      #   #/components/schemas/export/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute file_download_url
-      #   A URL at which the Export's file can be downloaded. This will be present when
-      #   the Export's status transitions to `complete`.
+      #   #/components/schemas/export/properties/file_download_url
       #
       #   @return [String, nil]
       required :file_download_url, String, nil?: true
 
       # @!attribute file_id
-      #   The File containing the contents of the Export. This will be present when the
-      #   Export's status transitions to `complete`.
+      #   #/components/schemas/export/properties/file_id
       #
       #   @return [String, nil]
       required :file_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/export/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute status
-      #   The status of the Export.
+      #   #/components/schemas/export/properties/status
       #
       #   @return [Symbol, Increase::Models::Export::Status]
       required :status, enum: -> { Increase::Models::Export::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `export`.
+      #   #/components/schemas/export/properties/type
       #
       #   @return [Symbol, Increase::Models::Export::Type]
       required :type, enum: -> { Increase::Models::Export::Type }
 
       # @!parse
-      #   # Exports are batch summaries of your Increase data. You can make them from the
-      #   # API or dashboard. Since they can take a while, they are generated
-      #   # asynchronously. We send a webhook when they are ready. For more information,
-      #   # please read our
-      #   # [Exports documentation](https://increase.com/documentation/exports).
+      #   # #/components/schemas/export
       #   #
       #   # @param id [String]
       #   # @param category [Symbol, Increase::Models::Export::Category]
@@ -78,8 +68,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The category of the Export. We may add additional possible values for this enum
-      # over time; your application should be able to handle that gracefully.
+      # #/components/schemas/export/properties/category
       #
       # @see Increase::Models::Export#category
       module Category
@@ -113,7 +102,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The status of the Export.
+      # #/components/schemas/export/properties/status
       #
       # @see Increase::Models::Export#status
       module Status
@@ -135,8 +124,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `export`.
+      # #/components/schemas/export/properties/type
       #
       # @see Increase::Models::Export#type
       module Type

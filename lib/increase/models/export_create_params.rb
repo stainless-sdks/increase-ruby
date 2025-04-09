@@ -9,14 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute category
-      #   The type of Export to create.
+      #   #/components/schemas/create_an_export_parameters/properties/category
       #
       #   @return [Symbol, Increase::Models::ExportCreateParams::Category]
       required :category, enum: -> { Increase::Models::ExportCreateParams::Category }
 
       # @!attribute [r] account_statement_ofx
-      #   Options for the created export. Required if `category` is equal to
-      #   `account_statement_ofx`.
+      #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx
       #
       #   @return [Increase::Models::ExportCreateParams::AccountStatementOfx, nil]
       optional :account_statement_ofx, -> { Increase::Models::ExportCreateParams::AccountStatementOfx }
@@ -26,8 +25,7 @@ module Increase
       #   attr_writer :account_statement_ofx
 
       # @!attribute [r] balance_csv
-      #   Options for the created export. Required if `category` is equal to
-      #   `balance_csv`.
+      #   #/components/schemas/create_an_export_parameters/properties/balance_csv
       #
       #   @return [Increase::Models::ExportCreateParams::BalanceCsv, nil]
       optional :balance_csv, -> { Increase::Models::ExportCreateParams::BalanceCsv }
@@ -37,8 +35,7 @@ module Increase
       #   attr_writer :balance_csv
 
       # @!attribute [r] bookkeeping_account_balance_csv
-      #   Options for the created export. Required if `category` is equal to
-      #   `bookkeeping_account_balance_csv`.
+      #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv
       #
       #   @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, nil]
       optional :bookkeeping_account_balance_csv,
@@ -49,7 +46,7 @@ module Increase
       #   attr_writer :bookkeeping_account_balance_csv
 
       # @!attribute [r] entity_csv
-      #   Options for the created export. Required if `category` is equal to `entity_csv`.
+      #   #/components/schemas/create_an_export_parameters/properties/entity_csv
       #
       #   @return [Increase::Models::ExportCreateParams::EntityCsv, nil]
       optional :entity_csv, -> { Increase::Models::ExportCreateParams::EntityCsv }
@@ -59,8 +56,7 @@ module Increase
       #   attr_writer :entity_csv
 
       # @!attribute [r] transaction_csv
-      #   Options for the created export. Required if `category` is equal to
-      #   `transaction_csv`.
+      #   #/components/schemas/create_an_export_parameters/properties/transaction_csv
       #
       #   @return [Increase::Models::ExportCreateParams::TransactionCsv, nil]
       optional :transaction_csv, -> { Increase::Models::ExportCreateParams::TransactionCsv }
@@ -70,7 +66,7 @@ module Increase
       #   attr_writer :transaction_csv
 
       # @!attribute [r] vendor_csv
-      #   Options for the created export. Required if `category` is equal to `vendor_csv`.
+      #   #/components/schemas/create_an_export_parameters/properties/vendor_csv
       #
       #   @return [Object, nil]
       optional :vendor_csv, Increase::Internal::Type::Unknown
@@ -105,7 +101,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The type of Export to create.
+      # #/components/schemas/create_an_export_parameters/properties/category
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -136,13 +132,13 @@ module Increase
 
       class AccountStatementOfx < Increase::Internal::Type::BaseModel
         # @!attribute account_id
-        #   The Account to create a statement for.
+        #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/account_id
         #
         #   @return [String]
         required :account_id, String
 
         # @!attribute [r] created_at
-        #   Filter results by time range on the `created_at` attribute.
+        #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/created_at
         #
         #   @return [Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, nil]
         optional :created_at, -> { Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt }
@@ -152,8 +148,7 @@ module Increase
         #   attr_writer :created_at
 
         # @!parse
-        #   # Options for the created export. Required if `category` is equal to
-        #   # `account_statement_ofx`.
+        #   # #/components/schemas/create_an_export_parameters/properties/account_statement_ofx
         #   #
         #   # @param account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt]
@@ -165,8 +160,7 @@ module Increase
         # @see Increase::Models::ExportCreateParams::AccountStatementOfx#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute [r] after
-          #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/created_at/properties/after
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -176,8 +170,7 @@ module Increase
           #   attr_writer :after
 
           # @!attribute [r] before
-          #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/created_at/properties/before
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -187,8 +180,7 @@ module Increase
           #   attr_writer :before
 
           # @!attribute [r] on_or_after
-          #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/created_at/properties/on_or_after
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -198,8 +190,7 @@ module Increase
           #   attr_writer :on_or_after
 
           # @!attribute [r] on_or_before
-          #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/created_at/properties/on_or_before
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -209,7 +200,7 @@ module Increase
           #   attr_writer :on_or_before
 
           # @!parse
-          #   # Filter results by time range on the `created_at` attribute.
+          #   # #/components/schemas/create_an_export_parameters/properties/account_statement_ofx/properties/created_at
           #   #
           #   # @param after [Time]
           #   # @param before [Time]
@@ -224,7 +215,7 @@ module Increase
 
       class BalanceCsv < Increase::Internal::Type::BaseModel
         # @!attribute [r] account_id
-        #   Filter exported Transactions to the specified Account.
+        #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/account_id
         #
         #   @return [String, nil]
         optional :account_id, String
@@ -234,7 +225,7 @@ module Increase
         #   attr_writer :account_id
 
         # @!attribute [r] created_at
-        #   Filter results by time range on the `created_at` attribute.
+        #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/created_at
         #
         #   @return [Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, nil]
         optional :created_at, -> { Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt }
@@ -244,7 +235,7 @@ module Increase
         #   attr_writer :created_at
 
         # @!attribute [r] program_id
-        #   Filter exported Transactions to the specified Program.
+        #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/program_id
         #
         #   @return [String, nil]
         optional :program_id, String
@@ -254,8 +245,7 @@ module Increase
         #   attr_writer :program_id
 
         # @!parse
-        #   # Options for the created export. Required if `category` is equal to
-        #   # `balance_csv`.
+        #   # #/components/schemas/create_an_export_parameters/properties/balance_csv
         #   #
         #   # @param account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt]
@@ -268,8 +258,7 @@ module Increase
         # @see Increase::Models::ExportCreateParams::BalanceCsv#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute [r] after
-          #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/created_at/properties/after
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -279,8 +268,7 @@ module Increase
           #   attr_writer :after
 
           # @!attribute [r] before
-          #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/created_at/properties/before
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -290,8 +278,7 @@ module Increase
           #   attr_writer :before
 
           # @!attribute [r] on_or_after
-          #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/created_at/properties/on_or_after
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -301,8 +288,7 @@ module Increase
           #   attr_writer :on_or_after
 
           # @!attribute [r] on_or_before
-          #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/created_at/properties/on_or_before
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -312,7 +298,7 @@ module Increase
           #   attr_writer :on_or_before
 
           # @!parse
-          #   # Filter results by time range on the `created_at` attribute.
+          #   # #/components/schemas/create_an_export_parameters/properties/balance_csv/properties/created_at
           #   #
           #   # @param after [Time]
           #   # @param before [Time]
@@ -327,7 +313,7 @@ module Increase
 
       class BookkeepingAccountBalanceCsv < Increase::Internal::Type::BaseModel
         # @!attribute [r] bookkeeping_account_id
-        #   Filter exported Transactions to the specified Bookkeeping Account.
+        #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/bookkeeping_account_id
         #
         #   @return [String, nil]
         optional :bookkeeping_account_id, String
@@ -337,7 +323,7 @@ module Increase
         #   attr_writer :bookkeeping_account_id
 
         # @!attribute [r] created_at
-        #   Filter results by time range on the `created_at` attribute.
+        #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/created_at
         #
         #   @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt, nil]
         optional :created_at, -> { Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt }
@@ -347,8 +333,7 @@ module Increase
         #   attr_writer :created_at
 
         # @!parse
-        #   # Options for the created export. Required if `category` is equal to
-        #   # `bookkeeping_account_balance_csv`.
+        #   # #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv
         #   #
         #   # @param bookkeeping_account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt]
@@ -360,8 +345,7 @@ module Increase
         # @see Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute [r] after
-          #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/created_at/properties/after
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -371,8 +355,7 @@ module Increase
           #   attr_writer :after
 
           # @!attribute [r] before
-          #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/created_at/properties/before
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -382,8 +365,7 @@ module Increase
           #   attr_writer :before
 
           # @!attribute [r] on_or_after
-          #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/created_at/properties/on_or_after
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -393,8 +375,7 @@ module Increase
           #   attr_writer :on_or_after
 
           # @!attribute [r] on_or_before
-          #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/created_at/properties/on_or_before
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -404,7 +385,7 @@ module Increase
           #   attr_writer :on_or_before
 
           # @!parse
-          #   # Filter results by time range on the `created_at` attribute.
+          #   # #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv/properties/created_at
           #   #
           #   # @param after [Time]
           #   # @param before [Time]
@@ -419,7 +400,7 @@ module Increase
 
       class EntityCsv < Increase::Internal::Type::BaseModel
         # @!attribute [r] status
-        #   Entity statuses to filter by.
+        #   #/components/schemas/create_an_export_parameters/properties/entity_csv/properties/status
         #
         #   @return [Increase::Models::ExportCreateParams::EntityCsv::Status, nil]
         optional :status, -> { Increase::Models::ExportCreateParams::EntityCsv::Status }
@@ -429,7 +410,7 @@ module Increase
         #   attr_writer :status
 
         # @!parse
-        #   # Options for the created export. Required if `category` is equal to `entity_csv`.
+        #   # #/components/schemas/create_an_export_parameters/properties/entity_csv
         #   #
         #   # @param status [Increase::Models::ExportCreateParams::EntityCsv::Status]
         #   #
@@ -440,8 +421,7 @@ module Increase
         # @see Increase::Models::ExportCreateParams::EntityCsv#status
         class Status < Increase::Internal::Type::BaseModel
           # @!attribute in_
-          #   Entity statuses to filter by. For GET requests, this should be encoded as a
-          #   comma-delimited string, such as `?in=one,two,three`.
+          #   #/components/schemas/create_an_export_parameters/properties/entity_csv/properties/status/properties/in
           #
           #   @return [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>]
           required :in_,
@@ -449,7 +429,7 @@ module Increase
                    api_name: :in
 
           # @!parse
-          #   # Entity statuses to filter by.
+          #   # #/components/schemas/create_an_export_parameters/properties/entity_csv/properties/status
           #   #
           #   # @param in_ [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>]
           #   #
@@ -457,6 +437,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
+          # #/components/schemas/create_an_export_parameters/properties/entity_csv/properties/status/properties/in/items
           module In
             extend Increase::Internal::Type::Enum
 
@@ -480,7 +461,7 @@ module Increase
 
       class TransactionCsv < Increase::Internal::Type::BaseModel
         # @!attribute [r] account_id
-        #   Filter exported Transactions to the specified Account.
+        #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/account_id
         #
         #   @return [String, nil]
         optional :account_id, String
@@ -490,7 +471,7 @@ module Increase
         #   attr_writer :account_id
 
         # @!attribute [r] created_at
-        #   Filter results by time range on the `created_at` attribute.
+        #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/created_at
         #
         #   @return [Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, nil]
         optional :created_at, -> { Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt }
@@ -500,7 +481,7 @@ module Increase
         #   attr_writer :created_at
 
         # @!attribute [r] program_id
-        #   Filter exported Transactions to the specified Program.
+        #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/program_id
         #
         #   @return [String, nil]
         optional :program_id, String
@@ -510,8 +491,7 @@ module Increase
         #   attr_writer :program_id
 
         # @!parse
-        #   # Options for the created export. Required if `category` is equal to
-        #   # `transaction_csv`.
+        #   # #/components/schemas/create_an_export_parameters/properties/transaction_csv
         #   #
         #   # @param account_id [String]
         #   # @param created_at [Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt]
@@ -524,8 +504,7 @@ module Increase
         # @see Increase::Models::ExportCreateParams::TransactionCsv#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute [r] after
-          #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/created_at/properties/after
           #
           #   @return [Time, nil]
           optional :after, Time
@@ -535,8 +514,7 @@ module Increase
           #   attr_writer :after
 
           # @!attribute [r] before
-          #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          #   timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/created_at/properties/before
           #
           #   @return [Time, nil]
           optional :before, Time
@@ -546,8 +524,7 @@ module Increase
           #   attr_writer :before
 
           # @!attribute [r] on_or_after
-          #   Return results on or after this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/created_at/properties/on_or_after
           #
           #   @return [Time, nil]
           optional :on_or_after, Time
@@ -557,8 +534,7 @@ module Increase
           #   attr_writer :on_or_after
 
           # @!attribute [r] on_or_before
-          #   Return results on or before this
-          #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          #   #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/created_at/properties/on_or_before
           #
           #   @return [Time, nil]
           optional :on_or_before, Time
@@ -568,7 +544,7 @@ module Increase
           #   attr_writer :on_or_before
 
           # @!parse
-          #   # Filter results by time range on the `created_at` attribute.
+          #   # #/components/schemas/create_an_export_parameters/properties/transaction_csv/properties/created_at
           #   #
           #   # @param after [Time]
           #   # @param before [Time]

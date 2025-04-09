@@ -5,86 +5,79 @@ module Increase
     # @see Increase::Resources::PhysicalCardProfiles#create
     class PhysicalCardProfile < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Card Profile identifier.
+      #   #/components/schemas/physical_card_profile/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute back_image_file_id
-      #   The identifier of the File containing the physical card's back image.
+      #   #/components/schemas/physical_card_profile/properties/back_image_file_id
       #
       #   @return [String, nil]
       required :back_image_file_id, String, nil?: true
 
       # @!attribute carrier_image_file_id
-      #   The identifier of the File containing the physical card's carrier image.
+      #   #/components/schemas/physical_card_profile/properties/carrier_image_file_id
       #
       #   @return [String, nil]
       required :carrier_image_file_id, String, nil?: true
 
       # @!attribute contact_phone
-      #   A phone number the user can contact to receive support for their card.
+      #   #/components/schemas/physical_card_profile/properties/contact_phone
       #
       #   @return [String, nil]
       required :contact_phone, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
+      #   #/components/schemas/physical_card_profile/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute creator
-      #   The creator of this Physical Card Profile.
+      #   #/components/schemas/physical_card_profile/properties/creator
       #
       #   @return [Symbol, Increase::Models::PhysicalCardProfile::Creator]
       required :creator, enum: -> { Increase::Models::PhysicalCardProfile::Creator }
 
       # @!attribute description
-      #   A description you can use to identify the Physical Card Profile.
+      #   #/components/schemas/physical_card_profile/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute front_image_file_id
-      #   The identifier of the File containing the physical card's front image.
+      #   #/components/schemas/physical_card_profile/properties/front_image_file_id
       #
       #   @return [String, nil]
       required :front_image_file_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/physical_card_profile/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute is_default
-      #   Whether this Physical Card Profile is the default for all cards in its Increase
-      #   group.
+      #   #/components/schemas/physical_card_profile/properties/is_default
       #
       #   @return [Boolean]
       required :is_default, Increase::Internal::Type::Boolean
 
       # @!attribute status
-      #   The status of the Physical Card Profile.
+      #   #/components/schemas/physical_card_profile/properties/status
       #
       #   @return [Symbol, Increase::Models::PhysicalCardProfile::Status]
       required :status, enum: -> { Increase::Models::PhysicalCardProfile::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `physical_card_profile`.
+      #   #/components/schemas/physical_card_profile/properties/type
       #
       #   @return [Symbol, Increase::Models::PhysicalCardProfile::Type]
       required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
 
       # @!parse
-      #   # This contains artwork and metadata relating to a Physical Card's appearance. For
-      #   # more information, see our guide on
-      #   # [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
+      #   # #/components/schemas/physical_card_profile
       #   #
       #   # @param id [String]
       #   # @param back_image_file_id [String, nil]
@@ -119,7 +112,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The creator of this Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/creator
       #
       # @see Increase::Models::PhysicalCardProfile#creator
       module Creator
@@ -138,7 +131,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The status of the Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/status
       #
       # @see Increase::Models::PhysicalCardProfile#status
       module Status
@@ -169,8 +162,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `physical_card_profile`.
+      # #/components/schemas/physical_card_profile/properties/type
       #
       # @see Increase::Models::PhysicalCardProfile#type
       module Type

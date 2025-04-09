@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::InboundWireDrawdownRequest)
       end
       def retrieve(
-        # The identifier of the Inbound Wire Drawdown Request to retrieve.
+        # #/paths//inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}/get/parameters/0/schema
         inbound_wire_drawdown_request_id,
         request_options: {}
       ); end
@@ -26,10 +26,9 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::InboundWireDrawdownRequest])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//inbound_wire_drawdown_requests/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//inbound_wire_drawdown_requests/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

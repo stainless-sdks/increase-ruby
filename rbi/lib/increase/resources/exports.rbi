@@ -18,23 +18,19 @@ module Increase
           .returns(Increase::Models::Export)
       end
       def create(
-        # The type of Export to create.
+        # #/components/schemas/create_an_export_parameters/properties/category
         category:,
-        # Options for the created export. Required if `category` is equal to
-        # `account_statement_ofx`.
+        # #/components/schemas/create_an_export_parameters/properties/account_statement_ofx
         account_statement_ofx: nil,
-        # Options for the created export. Required if `category` is equal to
-        # `balance_csv`.
+        # #/components/schemas/create_an_export_parameters/properties/balance_csv
         balance_csv: nil,
-        # Options for the created export. Required if `category` is equal to
-        # `bookkeeping_account_balance_csv`.
+        # #/components/schemas/create_an_export_parameters/properties/bookkeeping_account_balance_csv
         bookkeeping_account_balance_csv: nil,
-        # Options for the created export. Required if `category` is equal to `entity_csv`.
+        # #/components/schemas/create_an_export_parameters/properties/entity_csv
         entity_csv: nil,
-        # Options for the created export. Required if `category` is equal to
-        # `transaction_csv`.
+        # #/components/schemas/create_an_export_parameters/properties/transaction_csv
         transaction_csv: nil,
-        # Options for the created export. Required if `category` is equal to `vendor_csv`.
+        # #/components/schemas/create_an_export_parameters/properties/vendor_csv
         vendor_csv: nil,
         request_options: {}
       ); end
@@ -47,7 +43,7 @@ module Increase
           .returns(Increase::Models::Export)
       end
       def retrieve(
-        # The identifier of the Export to retrieve.
+        # #/paths//exports/{export_id}/get/parameters/0/schema
         export_id,
         request_options: {}
       ); end
@@ -67,15 +63,11 @@ module Increase
       def list(
         category: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//exports/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//exports/get/parameters/8/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//exports/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}

@@ -6,15 +6,14 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Return the page of entries after this one.
+      # #/paths//programs/get/parameters/0/schema
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      # #/paths//programs/get/parameters/1/schema
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 

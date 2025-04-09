@@ -3,32 +3,31 @@
 module Increase
   module Models
     class RoutingNumberListResponse < Increase::Internal::Type::BaseModel
-      # This routing number's support for ACH Transfers.
+      # #/components/schemas/routing_number/properties/ach_transfers
       sig { returns(Increase::Models::RoutingNumberListResponse::ACHTransfers::TaggedSymbol) }
       attr_accessor :ach_transfers
 
-      # The name of the financial institution belonging to a routing number.
+      # #/components/schemas/routing_number/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # This routing number's support for Real-Time Payments Transfers.
+      # #/components/schemas/routing_number/properties/real_time_payments_transfers
       sig { returns(Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers::TaggedSymbol) }
       attr_accessor :real_time_payments_transfers
 
-      # The nine digit routing number identifier.
+      # #/components/schemas/routing_number/properties/routing_number
       sig { returns(String) }
       attr_accessor :routing_number
 
-      # A constant representing the object's type. For this resource it will always be
-      # `routing_number`.
+      # #/components/schemas/routing_number/properties/type
       sig { returns(Increase::Models::RoutingNumberListResponse::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # This routing number's support for Wire Transfers.
+      # #/components/schemas/routing_number/properties/wire_transfers
       sig { returns(Increase::Models::RoutingNumberListResponse::WireTransfers::TaggedSymbol) }
       attr_accessor :wire_transfers
 
-      # Routing numbers are used to identify your bank in a financial transaction.
+      # #/components/schemas/routing_number_list/properties/data/items
       sig do
         params(
           ach_transfers: Increase::Models::RoutingNumberListResponse::ACHTransfers::OrSymbol,
@@ -65,7 +64,7 @@ module Increase
       end
       def to_hash; end
 
-      # This routing number's support for ACH Transfers.
+      # #/components/schemas/routing_number/properties/ach_transfers
       module ACHTransfers
         extend Increase::Internal::Type::Enum
 
@@ -84,7 +83,7 @@ module Increase
         def self.values; end
       end
 
-      # This routing number's support for Real-Time Payments Transfers.
+      # #/components/schemas/routing_number/properties/real_time_payments_transfers
       module RealTimePaymentsTransfers
         extend Increase::Internal::Type::Enum
 
@@ -117,8 +116,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `routing_number`.
+      # #/components/schemas/routing_number/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -132,7 +130,7 @@ module Increase
         def self.values; end
       end
 
-      # This routing number's support for Wire Transfers.
+      # #/components/schemas/routing_number/properties/wire_transfers
       module WireTransfers
         extend Increase::Internal::Type::Enum
 

@@ -3,51 +3,43 @@
 module Increase
   module Models
     class Program < Increase::Internal::Type::BaseModel
-      # The Program identifier.
+      # #/components/schemas/program/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The Bank the Program is with.
+      # #/components/schemas/program/properties/bank
       sig { returns(Increase::Models::Program::Bank::TaggedSymbol) }
       attr_accessor :bank
 
-      # The Program billing account.
+      # #/components/schemas/program/properties/billing_account_id
       sig { returns(T.nilable(String)) }
       attr_accessor :billing_account_id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      # was created.
+      # #/components/schemas/program/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The default configuration for digital cards attached to this Program.
+      # #/components/schemas/program/properties/default_digital_card_profile_id
       sig { returns(T.nilable(String)) }
       attr_accessor :default_digital_card_profile_id
 
-      # The Interest Rate currently being earned on the accounts in this program, as a
-      # string containing a decimal number. For example, a 1% interest rate would be
-      # represented as "0.01".
+      # #/components/schemas/program/properties/interest_rate
       sig { returns(String) }
       attr_accessor :interest_rate
 
-      # The name of the Program.
+      # #/components/schemas/program/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # A constant representing the object's type. For this resource it will always be
-      # `program`.
+      # #/components/schemas/program/properties/type
       sig { returns(Increase::Models::Program::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      # was last updated.
+      # #/components/schemas/program/properties/updated_at
       sig { returns(Time) }
       attr_accessor :updated_at
 
-      # Programs determine the compliance and commercial terms of Accounts. By default,
-      # you have a Commercial Banking program for managing your own funds. If you are
-      # lending or managing funds on behalf of your customers, or otherwise engaged in
-      # regulated activity, we will work together to create additional Programs for you.
+      # #/components/schemas/program
       sig do
         params(
           id: String,
@@ -91,7 +83,7 @@ module Increase
       end
       def to_hash; end
 
-      # The Bank the Program is with.
+      # #/components/schemas/program/properties/bank
       module Bank
         extend Increase::Internal::Type::Enum
 
@@ -111,8 +103,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `program`.
+      # #/components/schemas/program/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

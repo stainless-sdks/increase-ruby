@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute entity_id
-      #   The identifier of the Entity to associate with the supplemental document.
+      #   #/components/schemas/create_a_supplemental_document_for_an_entity_parameters/properties/entity_id
       #
       #   @return [String]
       required :entity_id, String
 
       # @!attribute file_id
-      #   The identifier of the File containing the document.
+      #   #/components/schemas/create_a_supplemental_document_for_an_entity_parameters/properties/file_id
       #
       #   @return [String]
       required :file_id, String

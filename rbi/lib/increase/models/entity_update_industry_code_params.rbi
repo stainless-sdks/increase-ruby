@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The North American Industry Classification System (NAICS) code for the
-      # corporation's primary line of business. This is a number, like `5132` for
-      # `Software Publishers`. A full list of classification codes is available
-      # [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+      # #/components/schemas/update_the_industry_code_for_a_corporate_entity_parameters/properties/industry_code
       sig { returns(String) }
       attr_accessor :industry_code
 

@@ -21,20 +21,19 @@ module Increase
             .returns(Increase::Models::InboundRealTimePaymentsTransfer)
         end
         def create(
-          # The identifier of the Account Number the inbound Real-Time Payments Transfer is
-          # for.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/account_number_id
           account_number_id:,
-          # The transfer amount in USD cents. Must be positive.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/amount
           amount:,
-          # The account number of the account that sent the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_account_number
           debtor_account_number: nil,
-          # The name provided by the sender of the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_name
           debtor_name: nil,
-          # The routing number of the account that sent the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_routing_number
           debtor_routing_number: nil,
-          # Additional information included with the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/remittance_information
           remittance_information: nil,
-          # The identifier of a pending Request for Payment that this transfer will fulfill.
+          # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/request_for_payment_id
           request_for_payment_id: nil,
           request_options: {}
         ); end

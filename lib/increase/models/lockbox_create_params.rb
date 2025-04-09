@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The Account checks sent to this Lockbox should be deposited into.
+      #   #/components/schemas/create_a_lockbox_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute [r] description
-      #   The description you choose for the Lockbox, for display purposes.
+      #   #/components/schemas/create_a_lockbox_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -25,7 +25,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] recipient_name
-      #   The name of the recipient that will receive mail at this location.
+      #   #/components/schemas/create_a_lockbox_parameters/properties/recipient_name
       #
       #   @return [String, nil]
       optional :recipient_name, String

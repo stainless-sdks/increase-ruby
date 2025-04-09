@@ -16,14 +16,11 @@ module Increase
             .returns(Increase::Models::CardPayment)
         end
         def create(
-          # The amount of the increment in minor units in the card authorization's currency.
+          # #/components/schemas/sandbox_increment_a_card_authorization_parameters/properties/amount
           amount:,
-          # The identifier of the Card Payment to create a increment on.
+          # #/components/schemas/sandbox_increment_a_card_authorization_parameters/properties/card_payment_id
           card_payment_id:,
-          # The identifier of the Event Subscription to use. If provided, will override the
-          # default real time event subscription. Because you can only create one real time
-          # decision event subscription, you can use this field to route events to any
-          # specified event subscription for testing purposes.
+          # #/components/schemas/sandbox_increment_a_card_authorization_parameters/properties/event_subscription_id
           event_subscription_id: nil,
           request_options: {}
         ); end

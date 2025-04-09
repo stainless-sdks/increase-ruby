@@ -4,53 +4,47 @@ module Increase
   module Models
     module Simulations
       class InboundFundsHoldReleaseResponse < Increase::Internal::Type::BaseModel
-        # The Inbound Funds Hold identifier.
+        # #/components/schemas/inbound_funds_hold/properties/id
         sig { returns(String) }
         attr_accessor :id
 
-        # The held amount in the minor unit of the account's currency. For dollars, for
-        # example, this is cents.
+        # #/components/schemas/inbound_funds_hold/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # When the hold will be released automatically. Certain conditions may cause it to
-        # be released before this time.
+        # #/components/schemas/inbound_funds_hold/properties/automatically_releases_at
         sig { returns(Time) }
         attr_accessor :automatically_releases_at
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        # was created.
+        # #/components/schemas/inbound_funds_hold/properties/created_at
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # #/components/schemas/inbound_funds_hold/properties/currency
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol) }
         attr_accessor :currency
 
-        # The ID of the Transaction for which funds were held.
+        # #/components/schemas/inbound_funds_hold/properties/held_transaction_id
         sig { returns(T.nilable(String)) }
         attr_accessor :held_transaction_id
 
-        # The ID of the Pending Transaction representing the held funds.
+        # #/components/schemas/inbound_funds_hold/properties/pending_transaction_id
         sig { returns(T.nilable(String)) }
         attr_accessor :pending_transaction_id
 
-        # When the hold was released (if it has been released).
+        # #/components/schemas/inbound_funds_hold/properties/released_at
         sig { returns(T.nilable(Time)) }
         attr_accessor :released_at
 
-        # The status of the hold.
+        # #/components/schemas/inbound_funds_hold/properties/status
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol) }
         attr_accessor :status
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_funds_hold`.
+        # #/components/schemas/inbound_funds_hold/properties/type
         sig { returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
         attr_accessor :type
 
-        # We hold funds for certain transaction types to account for return windows where
-        # funds might still be clawed back by the sending institution.
+        # #/paths//simulations/inbound_funds_holds/{inbound_funds_hold_id}/release/post/responses/200/content/application/json/schema
         sig do
           params(
             id: String,
@@ -97,8 +91,7 @@ module Increase
         end
         def to_hash; end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # #/components/schemas/inbound_funds_hold/properties/currency
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -138,7 +131,7 @@ module Increase
           def self.values; end
         end
 
-        # The status of the hold.
+        # #/components/schemas/inbound_funds_hold/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 
@@ -167,8 +160,7 @@ module Increase
           def self.values; end
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_funds_hold`.
+        # #/components/schemas/inbound_funds_hold/properties/type
         module Type
           extend Increase::Internal::Type::Enum
 

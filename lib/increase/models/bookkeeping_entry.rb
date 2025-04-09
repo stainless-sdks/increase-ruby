@@ -5,47 +5,43 @@ module Increase
     # @see Increase::Resources::BookkeepingEntries#retrieve
     class BookkeepingEntry < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The entry identifier.
+      #   #/components/schemas/bookkeeping_entry/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The identifier for the Account the Entry belongs to.
+      #   #/components/schemas/bookkeeping_entry/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The Entry amount in the minor unit of its currency. For dollars, for example,
-      #   this is cents.
+      #   #/components/schemas/bookkeeping_entry/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute created_at
-      #   When the entry set was created.
+      #   #/components/schemas/bookkeeping_entry/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute entry_set_id
-      #   The identifier for the Account the Entry belongs to.
+      #   #/components/schemas/bookkeeping_entry/properties/entry_set_id
       #
       #   @return [String]
       required :entry_set_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry`.
+      #   #/components/schemas/bookkeeping_entry/properties/type
       #
       #   @return [Symbol, Increase::Models::BookkeepingEntry::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntry::Type }
 
       # @!parse
-      #   # Entries are T-account entries recording debits and credits. Your compliance
-      #   # setup might require annotating money movements using this API. Learn more in our
-      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   # #/components/schemas/bookkeeping_entry
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -58,8 +54,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry`.
+      # #/components/schemas/bookkeeping_entry/properties/type
       #
       # @see Increase::Models::BookkeepingEntry#type
       module Type

@@ -6,12 +6,11 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The File to create a File Link for.
+      # #/components/schemas/create_a_file_link_parameters/properties/file_id
       sig { returns(String) }
       attr_accessor :file_id
 
-      # The time at which the File Link will expire. The default is 1 hour from the time
-      # of the request. The maxiumum is 1 day from the time of the request.
+      # #/components/schemas/create_a_file_link_parameters/properties/expires_at
       sig { returns(T.nilable(Time)) }
       attr_reader :expires_at
 

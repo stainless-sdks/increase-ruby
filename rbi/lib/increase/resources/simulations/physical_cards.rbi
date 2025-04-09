@@ -16,9 +16,9 @@ module Increase
             .returns(Increase::Models::PhysicalCard)
         end
         def advance_shipment(
-          # The Physical Card you would like to action.
+          # #/paths//simulations/physical_cards/{physical_card_id}/advance_shipment/post/parameters/0/schema
           physical_card_id,
-          # The shipment status to move the Physical Card to.
+          # #/components/schemas/sandbox_advance_the_shipment_status_of_a_physical_card_parameters/properties/shipment_status
           shipment_status:,
           request_options: {}
         ); end

@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_id
-        #   The identifier of the Account the tax document is for.
+        #   #/components/schemas/sandbox_create_a_tax_document_parameters/properties/account_id
         #
         #   @return [String]
         required :account_id, String

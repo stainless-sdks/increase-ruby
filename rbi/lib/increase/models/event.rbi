@@ -3,36 +3,31 @@
 module Increase
   module Models
     class Event < Increase::Internal::Type::BaseModel
-      # The Event identifier.
+      # #/components/schemas/event/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier of the object that generated this Event.
+      # #/components/schemas/event/properties/associated_object_id
       sig { returns(String) }
       attr_accessor :associated_object_id
 
-      # The type of the object that generated this Event.
+      # #/components/schemas/event/properties/associated_object_type
       sig { returns(String) }
       attr_accessor :associated_object_type
 
-      # The category of the Event. We may add additional possible values for this enum
-      # over time; your application should be able to handle such additions gracefully.
+      # #/components/schemas/event/properties/category
       sig { returns(Increase::Models::Event::Category::TaggedSymbol) }
       attr_accessor :category
 
-      # The time the Event was created.
+      # #/components/schemas/event/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # A constant representing the object's type. For this resource it will always be
-      # `event`.
+      # #/components/schemas/event/properties/type
       sig { returns(Increase::Models::Event::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Events are records of things that happened to objects at Increase. Events are
-      # accessible via the List Events endpoint and can be delivered to your application
-      # via webhooks. For more information, see our
-      # [webhooks guide](https://increase.com/documentation/webhooks).
+      # #/components/schemas/event
       sig do
         params(
           id: String,
@@ -61,8 +56,7 @@ module Increase
       end
       def to_hash; end
 
-      # The category of the Event. We may add additional possible values for this enum
-      # over time; your application should be able to handle such additions gracefully.
+      # #/components/schemas/event/properties/category
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -414,8 +408,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `event`.
+      # #/components/schemas/event/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::Document)
       end
       def retrieve(
-        # The identifier of the Document to retrieve.
+        # #/paths//documents/{document_id}/get/parameters/0/schema
         document_id,
         request_options: {}
       ); end
@@ -31,12 +31,11 @@ module Increase
       def list(
         category: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//documents/get/parameters/0/schema
         cursor: nil,
-        # Filter Documents to ones belonging to the specified Entity.
+        # #/paths//documents/get/parameters/2/schema
         entity_id: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//documents/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

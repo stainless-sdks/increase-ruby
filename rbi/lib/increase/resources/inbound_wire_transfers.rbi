@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(
-        # The identifier of the Inbound Wire Transfer to get details for.
+        # #/paths//inbound_wire_transfers/{inbound_wire_transfer_id}/get/parameters/0/schema
         inbound_wire_transfer_id,
         request_options: {}
       ); end
@@ -30,15 +30,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::InboundWireTransfer])
       end
       def list(
-        # Filter Inbound Wire Transfers to ones belonging to the specified Account.
+        # #/paths//inbound_wire_transfers/get/parameters/2/schema
         account_id: nil,
-        # Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
+        # #/paths//inbound_wire_transfers/get/parameters/3/schema
         account_number_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//inbound_wire_transfers/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//inbound_wire_transfers/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}

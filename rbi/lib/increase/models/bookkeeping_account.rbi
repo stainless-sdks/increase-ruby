@@ -3,40 +3,35 @@
 module Increase
   module Models
     class BookkeepingAccount < Increase::Internal::Type::BaseModel
-      # The account identifier.
+      # #/components/schemas/bookkeeping_account/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The API Account associated with this bookkeeping account.
+      # #/components/schemas/bookkeeping_account/properties/account_id
       sig { returns(T.nilable(String)) }
       attr_accessor :account_id
 
-      # The compliance category of the account.
+      # #/components/schemas/bookkeeping_account/properties/compliance_category
       sig { returns(T.nilable(Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol)) }
       attr_accessor :compliance_category
 
-      # The Entity associated with this bookkeeping account.
+      # #/components/schemas/bookkeeping_account/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_accessor :entity_id
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/bookkeeping_account/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The name you choose for the account.
+      # #/components/schemas/bookkeeping_account/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_account`.
+      # #/components/schemas/bookkeeping_account/properties/type
       sig { returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Accounts are T-accounts. They can store accounting entries. Your compliance
-      # setup might require annotating money movements using this API. Learn more in our
-      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      # #/components/schemas/bookkeeping_account
       sig do
         params(
           id: String,
@@ -67,7 +62,7 @@ module Increase
       end
       def to_hash; end
 
-      # The compliance category of the account.
+      # #/components/schemas/bookkeeping_account/properties/compliance_category
       module ComplianceCategory
         extend Increase::Internal::Type::Enum
 
@@ -87,8 +82,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_account`.
+      # #/components/schemas/bookkeeping_account/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

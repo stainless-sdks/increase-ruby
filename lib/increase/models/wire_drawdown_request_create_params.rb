@@ -9,45 +9,43 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_number_id
-      #   The Account Number to which the recipient should send funds.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/account_number_id
       #
       #   @return [String]
       required :account_number_id, String
 
       # @!attribute amount
-      #   The amount requested from the recipient, in USD cents.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute message_to_recipient
-      #   A message the recipient will see as part of the request.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/message_to_recipient
       #
       #   @return [String]
       required :message_to_recipient, String
 
       # @!attribute recipient_account_number
-      #   The drawdown request's recipient's account number.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_account_number
       #
       #   @return [String]
       required :recipient_account_number, String
 
       # @!attribute recipient_name
-      #   The drawdown request's recipient's name.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_name
       #
       #   @return [String]
       required :recipient_name, String
 
       # @!attribute recipient_routing_number
-      #   The drawdown request's recipient's routing number.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_routing_number
       #
       #   @return [String]
       required :recipient_routing_number, String
 
       # @!attribute [r] originator_address_line1
-      #   The drawdown request originator's address line 1. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_address_line1
       #
       #   @return [String, nil]
       optional :originator_address_line1, String
@@ -57,9 +55,7 @@ module Increase
       #   attr_writer :originator_address_line1
 
       # @!attribute [r] originator_address_line2
-      #   The drawdown request originator's address line 2. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_address_line2
       #
       #   @return [String, nil]
       optional :originator_address_line2, String
@@ -69,9 +65,7 @@ module Increase
       #   attr_writer :originator_address_line2
 
       # @!attribute [r] originator_address_line3
-      #   The drawdown request originator's address line 3. This is only necessary if
-      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_address_line3
       #
       #   @return [String, nil]
       optional :originator_address_line3, String
@@ -81,9 +75,7 @@ module Increase
       #   attr_writer :originator_address_line3
 
       # @!attribute [r] originator_name
-      #   The drawdown request originator's name. This is only necessary if you're
-      #   requesting a payment to a commingled account. Otherwise, we'll use the
-      #   associated entity's details.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_name
       #
       #   @return [String, nil]
       optional :originator_name, String
@@ -93,7 +85,7 @@ module Increase
       #   attr_writer :originator_name
 
       # @!attribute [r] recipient_address_line1
-      #   Line 1 of the drawdown request's recipient's address.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_address_line1
       #
       #   @return [String, nil]
       optional :recipient_address_line1, String
@@ -103,7 +95,7 @@ module Increase
       #   attr_writer :recipient_address_line1
 
       # @!attribute [r] recipient_address_line2
-      #   Line 2 of the drawdown request's recipient's address.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_address_line2
       #
       #   @return [String, nil]
       optional :recipient_address_line2, String
@@ -113,7 +105,7 @@ module Increase
       #   attr_writer :recipient_address_line2
 
       # @!attribute [r] recipient_address_line3
-      #   Line 3 of the drawdown request's recipient's address.
+      #   #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_address_line3
       #
       #   @return [String, nil]
       optional :recipient_address_line3, String

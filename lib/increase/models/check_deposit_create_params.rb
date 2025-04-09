@@ -9,31 +9,31 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The identifier for the Account to deposit the check in.
+      #   #/components/schemas/create_a_check_deposit_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The deposit amount in USD cents.
+      #   #/components/schemas/create_a_check_deposit_parameters/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute back_image_file_id
-      #   The File containing the check's back image.
+      #   #/components/schemas/create_a_check_deposit_parameters/properties/back_image_file_id
       #
       #   @return [String]
       required :back_image_file_id, String
 
       # @!attribute front_image_file_id
-      #   The File containing the check's front image.
+      #   #/components/schemas/create_a_check_deposit_parameters/properties/front_image_file_id
       #
       #   @return [String]
       required :front_image_file_id, String
 
       # @!attribute [r] description
-      #   The description you choose to give the Check Deposit, for display purposes only.
+      #   #/components/schemas/create_a_check_deposit_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String

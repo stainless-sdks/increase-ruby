@@ -9,8 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] card_payment_id
-      #   Filter Card Purchase Supplements to ones belonging to the specified Card
-      #   Payment.
+      #   #/paths//card_purchase_supplements/get/parameters/2/schema
       #
       #   @return [String, nil]
       optional :card_payment_id, String
@@ -29,7 +28,7 @@ module Increase
       #   attr_writer :created_at
 
       # @!attribute [r] cursor
-      #   Return the page of entries after this one.
+      #   #/paths//card_purchase_supplements/get/parameters/0/schema
       #
       #   @return [String, nil]
       optional :cursor, String
@@ -39,8 +38,7 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   #/paths//card_purchase_supplements/get/parameters/1/schema
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -62,8 +60,7 @@ module Increase
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # @!attribute [r] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        #   #/paths//card_purchase_supplements/get/parameters/3/schema
         #
         #   @return [Time, nil]
         optional :after, Time
@@ -73,8 +70,7 @@ module Increase
         #   attr_writer :after
 
         # @!attribute [r] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        #   #/paths//card_purchase_supplements/get/parameters/4/schema
         #
         #   @return [Time, nil]
         optional :before, Time
@@ -84,8 +80,7 @@ module Increase
         #   attr_writer :before
 
         # @!attribute [r] on_or_after
-        #   Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   #/paths//card_purchase_supplements/get/parameters/5/schema
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
@@ -95,8 +90,7 @@ module Increase
         #   attr_writer :on_or_after
 
         # @!attribute [r] on_or_before
-        #   Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   #/paths//card_purchase_supplements/get/parameters/6/schema
         #
         #   @return [Time, nil]
         optional :on_or_before, Time

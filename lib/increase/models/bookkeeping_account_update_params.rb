@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute name
-      #   The name you choose for the account.
+      #   #/components/schemas/update_a_bookkeeping_account_parameters/properties/name
       #
       #   @return [String]
       required :name, String

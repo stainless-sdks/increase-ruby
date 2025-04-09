@@ -3,34 +3,31 @@
 module Increase
   module Models
     class Document < Increase::Internal::Type::BaseModel
-      # The Document identifier.
+      # #/components/schemas/document/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The type of document.
+      # #/components/schemas/document/properties/category
       sig { returns(Increase::Models::Document::Category::TaggedSymbol) }
       attr_accessor :category
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      # Document was created.
+      # #/components/schemas/document/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The identifier of the Entity the document was generated for.
+      # #/components/schemas/document/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_accessor :entity_id
 
-      # The identifier of the File containing the Document's contents.
+      # #/components/schemas/document/properties/file_id
       sig { returns(String) }
       attr_accessor :file_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `document`.
+      # #/components/schemas/document/properties/type
       sig { returns(Increase::Models::Document::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Increase generates certain documents / forms automatically for your application;
-      # they can be listed here.
+      # #/components/schemas/document
       sig do
         params(
           id: String,
@@ -59,7 +56,7 @@ module Increase
       end
       def to_hash; end
 
-      # The type of document.
+      # #/components/schemas/document/properties/category
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -83,8 +80,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `document`.
+      # #/components/schemas/document/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

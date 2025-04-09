@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] billing_address
-      #   The card's updated billing address.
+      #   #/components/schemas/update_a_card_parameters/properties/billing_address
       #
       #   @return [Increase::Models::CardUpdateParams::BillingAddress, nil]
       optional :billing_address, -> { Increase::Models::CardUpdateParams::BillingAddress }
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :billing_address
 
       # @!attribute [r] description
-      #   The description you choose to give the card.
+      #   #/components/schemas/update_a_card_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -29,9 +29,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] digital_wallet
-      #   The contact information used in the two-factor steps for digital wallet card
-      #   creation. At least one field must be present to complete the digital wallet
-      #   steps.
+      #   #/components/schemas/update_a_card_parameters/properties/digital_wallet
       #
       #   @return [Increase::Models::CardUpdateParams::DigitalWallet, nil]
       optional :digital_wallet, -> { Increase::Models::CardUpdateParams::DigitalWallet }
@@ -41,8 +39,7 @@ module Increase
       #   attr_writer :digital_wallet
 
       # @!attribute [r] entity_id
-      #   The Entity the card belongs to. You only need to supply this in rare situations
-      #   when the card is not for the Account holder.
+      #   #/components/schemas/update_a_card_parameters/properties/entity_id
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -52,7 +49,7 @@ module Increase
       #   attr_writer :entity_id
 
       # @!attribute [r] status
-      #   The status to update the Card with.
+      #   #/components/schemas/update_a_card_parameters/properties/status
       #
       #   @return [Symbol, Increase::Models::CardUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::CardUpdateParams::Status }
@@ -85,31 +82,31 @@ module Increase
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         # @!attribute city
-        #   The city of the billing address.
+        #   #/components/schemas/update_a_card_parameters/properties/billing_address/properties/city
         #
         #   @return [String]
         required :city, String
 
         # @!attribute line1
-        #   The first line of the billing address.
+        #   #/components/schemas/update_a_card_parameters/properties/billing_address/properties/line1
         #
         #   @return [String]
         required :line1, String
 
         # @!attribute postal_code
-        #   The postal code of the billing address.
+        #   #/components/schemas/update_a_card_parameters/properties/billing_address/properties/postal_code
         #
         #   @return [String]
         required :postal_code, String
 
         # @!attribute state
-        #   The US state of the billing address.
+        #   #/components/schemas/update_a_card_parameters/properties/billing_address/properties/state
         #
         #   @return [String]
         required :state, String
 
         # @!attribute [r] line2
-        #   The second line of the billing address.
+        #   #/components/schemas/update_a_card_parameters/properties/billing_address/properties/line2
         #
         #   @return [String, nil]
         optional :line2, String
@@ -119,7 +116,7 @@ module Increase
         #   attr_writer :line2
 
         # @!parse
-        #   # The card's updated billing address.
+        #   # #/components/schemas/update_a_card_parameters/properties/billing_address
         #   #
         #   # @param city [String]
         #   # @param line1 [String]
@@ -134,7 +131,7 @@ module Increase
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
         # @!attribute [r] digital_card_profile_id
-        #   The digital card profile assigned to this digital card.
+        #   #/components/schemas/update_a_card_parameters/properties/digital_wallet/properties/digital_card_profile_id
         #
         #   @return [String, nil]
         optional :digital_card_profile_id, String
@@ -144,8 +141,7 @@ module Increase
         #   attr_writer :digital_card_profile_id
 
         # @!attribute [r] email
-        #   An email address that can be used to verify the cardholder via one-time passcode
-        #   over email.
+        #   #/components/schemas/update_a_card_parameters/properties/digital_wallet/properties/email
         #
         #   @return [String, nil]
         optional :email, String
@@ -155,8 +151,7 @@ module Increase
         #   attr_writer :email
 
         # @!attribute [r] phone
-        #   A phone number that can be used to verify the cardholder via one-time passcode
-        #   over SMS.
+        #   #/components/schemas/update_a_card_parameters/properties/digital_wallet/properties/phone
         #
         #   @return [String, nil]
         optional :phone, String
@@ -166,9 +161,7 @@ module Increase
         #   attr_writer :phone
 
         # @!parse
-        #   # The contact information used in the two-factor steps for digital wallet card
-        #   # creation. At least one field must be present to complete the digital wallet
-        #   # steps.
+        #   # #/components/schemas/update_a_card_parameters/properties/digital_wallet
         #   #
         #   # @param digital_card_profile_id [String]
         #   # @param email [String]
@@ -179,7 +172,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # The status to update the Card with.
+      # #/components/schemas/update_a_card_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

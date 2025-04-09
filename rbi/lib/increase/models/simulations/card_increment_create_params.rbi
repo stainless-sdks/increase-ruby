@@ -7,18 +7,15 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The amount of the increment in minor units in the card authorization's currency.
+        # #/components/schemas/sandbox_increment_a_card_authorization_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The identifier of the Card Payment to create a increment on.
+        # #/components/schemas/sandbox_increment_a_card_authorization_parameters/properties/card_payment_id
         sig { returns(String) }
         attr_accessor :card_payment_id
 
-        # The identifier of the Event Subscription to use. If provided, will override the
-        # default real time event subscription. Because you can only create one real time
-        # decision event subscription, you can use this field to route events to any
-        # specified event subscription for testing purposes.
+        # #/components/schemas/sandbox_increment_a_card_authorization_parameters/properties/event_subscription_id
         sig { returns(T.nilable(String)) }
         attr_reader :event_subscription_id
 

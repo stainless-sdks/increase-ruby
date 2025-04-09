@@ -18,11 +18,11 @@ module Increase
             .returns(Increase::Models::CardDispute)
         end
         def action(
-          # The dispute you would like to action.
+          # #/paths//simulations/card_disputes/{card_dispute_id}/action/post/parameters/0/schema
           card_dispute_id,
-          # The status to move the dispute to.
+          # #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/status
           status:,
-          # Why the dispute was rejected. Not required for accepting disputes.
+          # #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/explanation
           explanation: nil,
           request_options: {}
         ); end

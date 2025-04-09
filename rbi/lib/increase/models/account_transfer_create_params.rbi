@@ -6,24 +6,23 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier for the account that will send the transfer.
+      # #/components/schemas/create_an_account_transfer_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The transfer amount in the minor unit of the account currency. For dollars, for
-      # example, this is cents.
+      # #/components/schemas/create_an_account_transfer_parameters/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The description you choose to give the transfer.
+      # #/components/schemas/create_an_account_transfer_parameters/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # The identifier for the account that will receive the transfer.
+      # #/components/schemas/create_an_account_transfer_parameters/properties/destination_account_id
       sig { returns(String) }
       attr_accessor :destination_account_id
 
-      # Whether the transfer requires explicit approval via the dashboard or API.
+      # #/components/schemas/create_an_account_transfer_parameters/properties/require_approval
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :require_approval
 

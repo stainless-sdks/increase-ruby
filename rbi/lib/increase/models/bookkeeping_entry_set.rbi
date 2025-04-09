@@ -3,41 +3,35 @@
 module Increase
   module Models
     class BookkeepingEntrySet < Increase::Internal::Type::BaseModel
-      # The entry set identifier.
+      # #/components/schemas/bookkeeping_entry_set/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # When the entry set was created.
+      # #/components/schemas/bookkeeping_entry_set/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The timestamp of the entry set.
+      # #/components/schemas/bookkeeping_entry_set/properties/date
       sig { returns(Time) }
       attr_accessor :date
 
-      # The entries.
+      # #/components/schemas/bookkeeping_entry_set/properties/entries
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry]) }
       attr_accessor :entries
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/bookkeeping_entry_set/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The transaction identifier, if any.
+      # #/components/schemas/bookkeeping_entry_set/properties/transaction_id
       sig { returns(T.nilable(String)) }
       attr_accessor :transaction_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry_set`.
+      # #/components/schemas/bookkeeping_entry_set/properties/type
       sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Entry Sets are accounting entries that are transactionally applied. Your
-      # compliance setup might require annotating money movements using this API. Learn
-      # more in our
-      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      # #/components/schemas/bookkeeping_entry_set
       sig do
         params(
           id: String,
@@ -69,18 +63,19 @@ module Increase
       def to_hash; end
 
       class Entry < Increase::Internal::Type::BaseModel
-        # The entry identifier.
+        # #/components/schemas/bookkeeping_entry_set/properties/entries/items/properties/id
         sig { returns(String) }
         attr_accessor :id
 
-        # The bookkeeping account impacted by the entry.
+        # #/components/schemas/bookkeeping_entry_set/properties/entries/items/properties/account_id
         sig { returns(String) }
         attr_accessor :account_id
 
-        # The amount of the entry in minor units.
+        # #/components/schemas/bookkeeping_entry_set/properties/entries/items/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
+        # #/components/schemas/bookkeeping_entry_set/properties/entries/items
         sig { params(id: String, account_id: String, amount: Integer).returns(T.attached_class) }
         def self.new(id:, account_id:, amount:); end
 
@@ -88,8 +83,7 @@ module Increase
         def to_hash; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry_set`.
+      # #/components/schemas/bookkeeping_entry_set/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

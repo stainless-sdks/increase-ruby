@@ -3,23 +3,23 @@
 module Increase
   module Models
     class InboundRealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
-      # The inbound Real-Time Payments transfer's identifier.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The Account to which the transfer was sent.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The identifier of the Account Number to which this transfer was sent.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/account_number_id
       sig { returns(String) }
       attr_accessor :account_number_id
 
-      # The amount in USD cents.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # If your transfer is confirmed, this will contain details of the confirmation.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/confirmation
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation)) }
       attr_reader :confirmation
 
@@ -33,33 +33,31 @@ module Increase
       end
       attr_writer :confirmation
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the transfer was created.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The name the sender of the transfer specified as the recipient of the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/creditor_name
       sig { returns(String) }
       attr_accessor :creditor_name
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      # currency. This will always be "USD" for a Real-Time Payments transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/currency
       sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
-      # The account number of the account that sent the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/debtor_account_number
       sig { returns(String) }
       attr_accessor :debtor_account_number
 
-      # The name provided by the sender of the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/debtor_name
       sig { returns(String) }
       attr_accessor :debtor_name
 
-      # The routing number of the account that sent the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/debtor_routing_number
       sig { returns(String) }
       attr_accessor :debtor_routing_number
 
-      # If your transfer is declined, this will contain details of the decline.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/decline
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline)) }
       attr_reader :decline
 
@@ -71,25 +69,23 @@ module Increase
       end
       attr_writer :decline
 
-      # Additional information included with the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/remittance_information
       sig { returns(T.nilable(String)) }
       attr_accessor :remittance_information
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/status
       sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # The Real-Time Payments network identification of the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/transaction_identification
       sig { returns(String) }
       attr_accessor :transaction_identification
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_real_time_payments_transfer`.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/type
       sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
-      # initiated outside of Increase to your account.
+      # #/components/schemas/inbound_real_time_payments_transfer
       sig do
         params(
           id: String,
@@ -157,15 +153,15 @@ module Increase
       def to_hash; end
 
       class Confirmation < Increase::Internal::Type::BaseModel
-        # The time at which the transfer was confirmed.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/confirmation/anyOf/0/properties/confirmed_at
         sig { returns(Time) }
         attr_accessor :confirmed_at
 
-        # The id of the transaction for the confirmed transfer.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/confirmation/anyOf/0/properties/transaction_id
         sig { returns(String) }
         attr_accessor :transaction_id
 
-        # If your transfer is confirmed, this will contain details of the confirmation.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/confirmation
         sig { params(confirmed_at: Time, transaction_id: String).returns(T.attached_class) }
         def self.new(confirmed_at:, transaction_id:); end
 
@@ -173,8 +169,7 @@ module Increase
         def to_hash; end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      # currency. This will always be "USD" for a Real-Time Payments transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/currency
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -206,19 +201,19 @@ module Increase
       end
 
       class Decline < Increase::Internal::Type::BaseModel
-        # The time at which the transfer was declined.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/decline/anyOf/0/properties/declined_at
         sig { returns(Time) }
         attr_accessor :declined_at
 
-        # The id of the transaction for the declined transfer.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/decline/anyOf/0/properties/declined_transaction_id
         sig { returns(String) }
         attr_accessor :declined_transaction_id
 
-        # The reason for the transfer decline.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/decline/anyOf/0/properties/reason
         sig { returns(Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol) }
         attr_accessor :reason
 
-        # If your transfer is declined, this will contain details of the decline.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/decline
         sig do
           params(
             declined_at: Time,
@@ -241,7 +236,7 @@ module Increase
         end
         def to_hash; end
 
-        # The reason for the transfer decline.
+        # #/components/schemas/inbound_real_time_payments_transfer/properties/decline/anyOf/0/properties/reason
         module Reason
           extend Increase::Internal::Type::Enum
 
@@ -297,7 +292,7 @@ module Increase
         end
       end
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -322,8 +317,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_real_time_payments_transfer`.
+      # #/components/schemas/inbound_real_time_payments_transfer/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

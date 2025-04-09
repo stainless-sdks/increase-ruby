@@ -13,7 +13,7 @@ module Increase
             .returns(Increase::Models::CardPayment)
         end
         def create(
-          # The identifier of the Card Payment to expire.
+          # #/components/schemas/sandbox_expire_a_card_authorization_parameters/properties/card_payment_id
           card_payment_id:,
           request_options: {}
         ); end

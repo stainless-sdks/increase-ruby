@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The name of the program being added.
+        # #/components/schemas/sandbox_create_a_program_parameters/properties/name
         sig { returns(String) }
         attr_accessor :name
 

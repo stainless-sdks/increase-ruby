@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute bank_name
-      #   The name of the financial institution to be excluded.
+      #   #/components/schemas/create_an_intrafi_exclusion_parameters/properties/bank_name
       #
       #   @return [String]
       required :bank_name, String
 
       # @!attribute entity_id
-      #   The identifier of the Entity whose deposits will be excluded.
+      #   #/components/schemas/create_an_intrafi_exclusion_parameters/properties/entity_id
       #
       #   @return [String]
       required :entity_id, String

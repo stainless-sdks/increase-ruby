@@ -9,26 +9,25 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute card_id
-      #   The underlying card representing this physical card.
+      #   #/components/schemas/create_a_physical_card_parameters/properties/card_id
       #
       #   @return [String]
       required :card_id, String
 
       # @!attribute cardholder
-      #   Details about the cardholder, as it will appear on the physical card.
+      #   #/components/schemas/create_a_physical_card_parameters/properties/cardholder
       #
       #   @return [Increase::Models::PhysicalCardCreateParams::Cardholder]
       required :cardholder, -> { Increase::Models::PhysicalCardCreateParams::Cardholder }
 
       # @!attribute shipment
-      #   The details used to ship this physical card.
+      #   #/components/schemas/create_a_physical_card_parameters/properties/shipment
       #
       #   @return [Increase::Models::PhysicalCardCreateParams::Shipment]
       required :shipment, -> { Increase::Models::PhysicalCardCreateParams::Shipment }
 
       # @!attribute [r] physical_card_profile_id
-      #   The physical card profile to use for this physical card. The latest default
-      #   physical card profile will be used if not provided.
+      #   #/components/schemas/create_a_physical_card_parameters/properties/physical_card_profile_id
       #
       #   @return [String, nil]
       optional :physical_card_profile_id, String
@@ -50,19 +49,19 @@ module Increase
 
       class Cardholder < Increase::Internal::Type::BaseModel
         # @!attribute first_name
-        #   The cardholder's first name.
+        #   #/components/schemas/create_a_physical_card_parameters/properties/cardholder/properties/first_name
         #
         #   @return [String]
         required :first_name, String
 
         # @!attribute last_name
-        #   The cardholder's last name.
+        #   #/components/schemas/create_a_physical_card_parameters/properties/cardholder/properties/last_name
         #
         #   @return [String]
         required :last_name, String
 
         # @!parse
-        #   # Details about the cardholder, as it will appear on the physical card.
+        #   # #/components/schemas/create_a_physical_card_parameters/properties/cardholder
         #   #
         #   # @param first_name [String]
         #   # @param last_name [String]
@@ -74,13 +73,13 @@ module Increase
 
       class Shipment < Increase::Internal::Type::BaseModel
         # @!attribute address
-        #   The address to where the card should be shipped.
+        #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address
         #
         #   @return [Increase::Models::PhysicalCardCreateParams::Shipment::Address]
         required :address, -> { Increase::Models::PhysicalCardCreateParams::Shipment::Address }
 
         # @!attribute method_
-        #   The shipping method to use.
+        #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/method
         #
         #   @return [Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method]
         required :method_,
@@ -88,7 +87,7 @@ module Increase
                  api_name: :method
 
         # @!parse
-        #   # The details used to ship this physical card.
+        #   # #/components/schemas/create_a_physical_card_parameters/properties/shipment
         #   #
         #   # @param address [Increase::Models::PhysicalCardCreateParams::Shipment::Address]
         #   # @param method_ [Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method]
@@ -100,37 +99,37 @@ module Increase
         # @see Increase::Models::PhysicalCardCreateParams::Shipment#address
         class Address < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the shipping address.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The first line of the shipping address.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute name
-          #   The name of the recipient.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!attribute postal_code
-          #   The postal code of the shipping address.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/postal_code
           #
           #   @return [String]
           required :postal_code, String
 
           # @!attribute state
-          #   The US state of the shipping address.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!attribute [r] line2
-          #   The second line of the shipping address.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/line2
           #
           #   @return [String, nil]
           optional :line2, String
@@ -140,7 +139,7 @@ module Increase
           #   attr_writer :line2
 
           # @!attribute [r] line3
-          #   The third line of the shipping address.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/line3
           #
           #   @return [String, nil]
           optional :line3, String
@@ -150,7 +149,7 @@ module Increase
           #   attr_writer :line3
 
           # @!attribute [r] phone_number
-          #   The phone number of the recipient.
+          #   #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address/properties/phone_number
           #
           #   @return [String, nil]
           optional :phone_number, String
@@ -160,7 +159,7 @@ module Increase
           #   attr_writer :phone_number
 
           # @!parse
-          #   # The address to where the card should be shipped.
+          #   # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -176,7 +175,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The shipping method to use.
+        # #/components/schemas/create_a_physical_card_parameters/properties/shipment/properties/method
         #
         # @see Increase::Models::PhysicalCardCreateParams::Shipment#method_
         module Method

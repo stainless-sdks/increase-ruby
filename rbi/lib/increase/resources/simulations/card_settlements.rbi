@@ -19,13 +19,11 @@ module Increase
             .returns(Increase::Models::Transaction)
         end
         def create(
-          # The identifier of the Card to create a settlement on.
+          # #/components/schemas/sandbox_settle_a_card_authorization_parameters/properties/card_id
           card_id:,
-          # The identifier of the Pending Transaction for the Card Authorization you wish to
-          # settle.
+          # #/components/schemas/sandbox_settle_a_card_authorization_parameters/properties/pending_transaction_id
           pending_transaction_id:,
-          # The amount to be settled. This defaults to the amount of the Pending Transaction
-          # being settled.
+          # #/components/schemas/sandbox_settle_a_card_authorization_parameters/properties/amount
           amount: nil,
           request_options: {}
         ); end

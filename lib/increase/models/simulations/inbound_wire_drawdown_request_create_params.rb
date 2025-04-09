@@ -10,57 +10,55 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
-        #   The amount being requested in cents.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute beneficiary_account_number
-        #   The drawdown request's beneficiary's account number.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_account_number
         #
         #   @return [String]
         required :beneficiary_account_number, String
 
         # @!attribute beneficiary_routing_number
-        #   The drawdown request's beneficiary's routing number.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_routing_number
         #
         #   @return [String]
         required :beneficiary_routing_number, String
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-        #   requested. Will always be "USD".
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/currency
         #
         #   @return [String]
         required :currency, String
 
         # @!attribute message_to_recipient
-        #   A message from the drawdown request's originator.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/message_to_recipient
         #
         #   @return [String]
         required :message_to_recipient, String
 
         # @!attribute originator_account_number
-        #   The drawdown request's originator's account number.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_account_number
         #
         #   @return [String]
         required :originator_account_number, String
 
         # @!attribute originator_routing_number
-        #   The drawdown request's originator's routing number.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_routing_number
         #
         #   @return [String]
         required :originator_routing_number, String
 
         # @!attribute recipient_account_number_id
-        #   The Account Number to which the recipient of this request is being requested to
-        #   send funds from.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/recipient_account_number_id
         #
         #   @return [String]
         required :recipient_account_number_id, String
 
         # @!attribute [r] beneficiary_address_line1
-        #   Line 1 of the drawdown request's beneficiary's address.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_address_line1
         #
         #   @return [String, nil]
         optional :beneficiary_address_line1, String
@@ -70,7 +68,7 @@ module Increase
         #   attr_writer :beneficiary_address_line1
 
         # @!attribute [r] beneficiary_address_line2
-        #   Line 2 of the drawdown request's beneficiary's address.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_address_line2
         #
         #   @return [String, nil]
         optional :beneficiary_address_line2, String
@@ -80,7 +78,7 @@ module Increase
         #   attr_writer :beneficiary_address_line2
 
         # @!attribute [r] beneficiary_address_line3
-        #   Line 3 of the drawdown request's beneficiary's address.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_address_line3
         #
         #   @return [String, nil]
         optional :beneficiary_address_line3, String
@@ -90,7 +88,7 @@ module Increase
         #   attr_writer :beneficiary_address_line3
 
         # @!attribute [r] beneficiary_name
-        #   The drawdown request's beneficiary's name.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_name
         #
         #   @return [String, nil]
         optional :beneficiary_name, String
@@ -100,7 +98,7 @@ module Increase
         #   attr_writer :beneficiary_name
 
         # @!attribute [r] originator_address_line1
-        #   Line 1 of the drawdown request's originator's address.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_address_line1
         #
         #   @return [String, nil]
         optional :originator_address_line1, String
@@ -110,7 +108,7 @@ module Increase
         #   attr_writer :originator_address_line1
 
         # @!attribute [r] originator_address_line2
-        #   Line 2 of the drawdown request's originator's address.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_address_line2
         #
         #   @return [String, nil]
         optional :originator_address_line2, String
@@ -120,7 +118,7 @@ module Increase
         #   attr_writer :originator_address_line2
 
         # @!attribute [r] originator_address_line3
-        #   Line 3 of the drawdown request's originator's address.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_address_line3
         #
         #   @return [String, nil]
         optional :originator_address_line3, String
@@ -130,7 +128,7 @@ module Increase
         #   attr_writer :originator_address_line3
 
         # @!attribute [r] originator_name
-        #   The drawdown request's originator's name.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_name
         #
         #   @return [String, nil]
         optional :originator_name, String
@@ -140,8 +138,7 @@ module Increase
         #   attr_writer :originator_name
 
         # @!attribute [r] originator_to_beneficiary_information_line1
-        #   Line 1 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line1
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line1, String
@@ -151,8 +148,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line1
 
         # @!attribute [r] originator_to_beneficiary_information_line2
-        #   Line 2 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line2
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line2, String
@@ -162,8 +158,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line2
 
         # @!attribute [r] originator_to_beneficiary_information_line3
-        #   Line 3 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line3
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line3, String
@@ -173,8 +168,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line3
 
         # @!attribute [r] originator_to_beneficiary_information_line4
-        #   Line 4 of the information conveyed from the originator of the message to the
-        #   beneficiary.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line4
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line4, String

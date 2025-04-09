@@ -6,55 +6,54 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The Increase identifier for the account that will send the transfer.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The account number for the destination account.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/account_number
       sig { returns(String) }
       attr_accessor :account_number
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      # destination account.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/routing_number
       sig { returns(String) }
       attr_accessor :routing_number
 
-      # Additional information that will be sent to the recipient.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/addendum
       sig { returns(T.nilable(String)) }
       attr_reader :addendum
 
       sig { params(addendum: String).void }
       attr_writer :addendum
 
-      # The description of the date of the transfer.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/company_descriptive_date
       sig { returns(T.nilable(String)) }
       attr_reader :company_descriptive_date
 
       sig { params(company_descriptive_date: String).void }
       attr_writer :company_descriptive_date
 
-      # The data you choose to associate with the transfer.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/company_discretionary_data
       sig { returns(T.nilable(String)) }
       attr_reader :company_discretionary_data
 
       sig { params(company_discretionary_data: String).void }
       attr_writer :company_discretionary_data
 
-      # The description of the transfer you wish to be shown to the recipient.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/company_entry_description
       sig { returns(T.nilable(String)) }
       attr_reader :company_entry_description
 
       sig { params(company_entry_description: String).void }
       attr_writer :company_entry_description
 
-      # The name by which the recipient knows you.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/company_name
       sig { returns(T.nilable(String)) }
       attr_reader :company_name
 
       sig { params(company_name: String).void }
       attr_writer :company_name
 
-      # Whether the Prenotification is for a future debit or credit.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/credit_debit_indicator
       sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)) }
       attr_reader :credit_debit_indicator
 
@@ -66,30 +65,28 @@ module Increase
       end
       attr_writer :credit_debit_indicator
 
-      # The transfer effective date in
-      # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/effective_date
       sig { returns(T.nilable(Date)) }
       attr_reader :effective_date
 
       sig { params(effective_date: Date).void }
       attr_writer :effective_date
 
-      # Your identifier for the transfer recipient.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/individual_id
       sig { returns(T.nilable(String)) }
       attr_reader :individual_id
 
       sig { params(individual_id: String).void }
       attr_writer :individual_id
 
-      # The name of the transfer recipient. This value is information and not verified
-      # by the recipient's bank.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/individual_name
       sig { returns(T.nilable(String)) }
       attr_reader :individual_name
 
       sig { params(individual_name: String).void }
       attr_writer :individual_name
 
-      # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/standard_entry_class_code
       sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)) }
       attr_reader :standard_entry_class_code
 
@@ -159,7 +156,7 @@ module Increase
       end
       def to_hash; end
 
-      # Whether the Prenotification is for a future debit or credit.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/credit_debit_indicator
       module CreditDebitIndicator
         extend Increase::Internal::Type::Enum
 
@@ -189,7 +186,7 @@ module Increase
         def self.values; end
       end
 
-      # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      # #/components/schemas/create_an_ach_prenotification_parameters/properties/standard_entry_class_code
       module StandardEntryClassCode
         extend Increase::Internal::Type::Enum
 

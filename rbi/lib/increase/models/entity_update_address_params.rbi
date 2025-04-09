@@ -6,8 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      # are disallowed.
+      # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
@@ -35,32 +34,30 @@ module Increase
       def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
-        # The city of the address.
+        # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/city
         sig { returns(String) }
         attr_accessor :city
 
-        # The first line of the address. This is usually the street number and street.
+        # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/line1
         sig { returns(String) }
         attr_accessor :line1
 
-        # The two-letter United States Postal Service (USPS) abbreviation for the state of
-        # the address.
+        # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/state
         sig { returns(String) }
         attr_accessor :state
 
-        # The ZIP code of the address.
+        # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/zip
         sig { returns(String) }
         attr_accessor :zip
 
-        # The second line of the address. This might be the floor or room number.
+        # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address/properties/line2
         sig { returns(T.nilable(String)) }
         attr_reader :line2
 
         sig { params(line2: String).void }
         attr_writer :line2
 
-        # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        # are disallowed.
+        # #/components/schemas/update_a_natural_person_or_corporations_address_parameters/properties/address
         sig do
           params(
             city: String,

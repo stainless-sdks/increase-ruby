@@ -10,21 +10,19 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_number_id
-        #   The identifier of the Account Number the inbound ACH Transfer is for.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/account_number_id
         #
         #   @return [String]
         required :account_number_id, String
 
         # @!attribute amount
-        #   The transfer amount in cents. A positive amount originates a credit transfer
-        #   pushing funds to the receiving account. A negative amount originates a debit
-        #   transfer pulling funds from the receiving account.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute [r] company_descriptive_date
-        #   The description of the date of the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_descriptive_date
         #
         #   @return [String, nil]
         optional :company_descriptive_date, String
@@ -34,7 +32,7 @@ module Increase
         #   attr_writer :company_descriptive_date
 
         # @!attribute [r] company_discretionary_data
-        #   Data associated with the transfer set by the sender.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_discretionary_data
         #
         #   @return [String, nil]
         optional :company_discretionary_data, String
@@ -44,7 +42,7 @@ module Increase
         #   attr_writer :company_discretionary_data
 
         # @!attribute [r] company_entry_description
-        #   The description of the transfer set by the sender.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_entry_description
         #
         #   @return [String, nil]
         optional :company_entry_description, String
@@ -54,7 +52,7 @@ module Increase
         #   attr_writer :company_entry_description
 
         # @!attribute [r] company_id
-        #   The sender's company ID.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_id
         #
         #   @return [String, nil]
         optional :company_id, String
@@ -64,7 +62,7 @@ module Increase
         #   attr_writer :company_id
 
         # @!attribute [r] company_name
-        #   The name of the sender.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_name
         #
         #   @return [String, nil]
         optional :company_name, String
@@ -74,7 +72,7 @@ module Increase
         #   attr_writer :company_name
 
         # @!attribute [r] receiver_id_number
-        #   The ID of the receiver of the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/receiver_id_number
         #
         #   @return [String, nil]
         optional :receiver_id_number, String
@@ -84,7 +82,7 @@ module Increase
         #   attr_writer :receiver_id_number
 
         # @!attribute [r] receiver_name
-        #   The name of the receiver of the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/receiver_name
         #
         #   @return [String, nil]
         optional :receiver_name, String
@@ -94,8 +92,7 @@ module Increase
         #   attr_writer :receiver_name
 
         # @!attribute [r] resolve_at
-        #   The time at which the transfer should be resolved. If not provided will resolve
-        #   immediately.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/resolve_at
         #
         #   @return [Time, nil]
         optional :resolve_at, Time
@@ -105,7 +102,7 @@ module Increase
         #   attr_writer :resolve_at
 
         # @!attribute [r] standard_entry_class_code
-        #   The standard entry class code for the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/standard_entry_class_code
         #
         #   @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode, nil]
         optional :standard_entry_class_code,
@@ -149,7 +146,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The standard entry class code for the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/standard_entry_class_code
         module StandardEntryClassCode
           extend Increase::Internal::Type::Enum
 

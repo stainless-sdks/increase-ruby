@@ -15,15 +15,13 @@ module Increase
           .returns(Increase::Models::Account)
       end
       def create(
-        # The name you choose for the Account.
+        # #/components/schemas/create_an_account_parameters/properties/name
         name:,
-        # The identifier for the Entity that will own the Account.
+        # #/components/schemas/create_an_account_parameters/properties/entity_id
         entity_id: nil,
-        # The identifier of an Entity that, while not owning the Account, is associated
-        # with its activity. Its relationship to your group must be `informational`.
+        # #/components/schemas/create_an_account_parameters/properties/informational_entity_id
         informational_entity_id: nil,
-        # The identifier for the Program that this Account falls under. Required if you
-        # operate more than one Program.
+        # #/components/schemas/create_an_account_parameters/properties/program_id
         program_id: nil,
         request_options: {}
       ); end
@@ -36,7 +34,7 @@ module Increase
           .returns(Increase::Models::Account)
       end
       def retrieve(
-        # The identifier of the Account to retrieve.
+        # #/paths//accounts/{account_id}/get/parameters/0/schema
         account_id,
         request_options: {}
       ); end
@@ -50,9 +48,9 @@ module Increase
           .returns(Increase::Models::Account)
       end
       def update(
-        # The identifier of the Account to update.
+        # #/paths//accounts/{account_id}/patch/parameters/0/schema
         account_id,
-        # The new name of the Account.
+        # #/components/schemas/update_an_account_parameters/properties/name
         name: nil,
         request_options: {}
       ); end
@@ -73,21 +71,17 @@ module Increase
       end
       def list(
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//accounts/get/parameters/0/schema
         cursor: nil,
-        # Filter Accounts for those belonging to the specified Entity.
+        # #/paths//accounts/get/parameters/2/schema
         entity_id: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//accounts/get/parameters/10/schema
         idempotency_key: nil,
-        # Filter Accounts for those belonging to the specified Entity as informational.
+        # #/paths//accounts/get/parameters/3/schema
         informational_entity_id: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//accounts/get/parameters/1/schema
         limit: nil,
-        # Filter Accounts for those in a specific Program.
+        # #/paths//accounts/get/parameters/4/schema
         program_id: nil,
         status: nil,
         request_options: {}
@@ -103,9 +97,9 @@ module Increase
           .returns(Increase::Models::BalanceLookup)
       end
       def balance(
-        # The identifier of the Account to retrieve.
+        # #/paths//accounts/{account_id}/balance/get/parameters/0/schema
         account_id,
-        # The moment to query the balance at. If not set, returns the current balances.
+        # #/paths//accounts/{account_id}/balance/get/parameters/1/schema
         at_time: nil,
         request_options: {}
       ); end
@@ -118,7 +112,7 @@ module Increase
           .returns(Increase::Models::Account)
       end
       def close(
-        # The identifier of the Account to close. The account must have a zero balance.
+        # #/paths//accounts/{account_id}/close/post/parameters/0/schema
         account_id,
         request_options: {}
       ); end

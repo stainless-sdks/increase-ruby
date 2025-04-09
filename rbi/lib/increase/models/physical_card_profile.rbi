@@ -3,62 +3,55 @@
 module Increase
   module Models
     class PhysicalCardProfile < Increase::Internal::Type::BaseModel
-      # The Card Profile identifier.
+      # #/components/schemas/physical_card_profile/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier of the File containing the physical card's back image.
+      # #/components/schemas/physical_card_profile/properties/back_image_file_id
       sig { returns(T.nilable(String)) }
       attr_accessor :back_image_file_id
 
-      # The identifier of the File containing the physical card's carrier image.
+      # #/components/schemas/physical_card_profile/properties/carrier_image_file_id
       sig { returns(T.nilable(String)) }
       attr_accessor :carrier_image_file_id
 
-      # A phone number the user can contact to receive support for their card.
+      # #/components/schemas/physical_card_profile/properties/contact_phone
       sig { returns(T.nilable(String)) }
       attr_accessor :contact_phone
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Card Dispute was created.
+      # #/components/schemas/physical_card_profile/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The creator of this Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/creator
       sig { returns(Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
       attr_accessor :creator
 
-      # A description you can use to identify the Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # The identifier of the File containing the physical card's front image.
+      # #/components/schemas/physical_card_profile/properties/front_image_file_id
       sig { returns(T.nilable(String)) }
       attr_accessor :front_image_file_id
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/physical_card_profile/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # Whether this Physical Card Profile is the default for all cards in its Increase
-      # group.
+      # #/components/schemas/physical_card_profile/properties/is_default
       sig { returns(T::Boolean) }
       attr_accessor :is_default
 
-      # The status of the Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/status
       sig { returns(Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `physical_card_profile`.
+      # #/components/schemas/physical_card_profile/properties/type
       sig { returns(Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # This contains artwork and metadata relating to a Physical Card's appearance. For
-      # more information, see our guide on
-      # [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
+      # #/components/schemas/physical_card_profile
       sig do
         params(
           id: String,
@@ -111,7 +104,7 @@ module Increase
       end
       def to_hash; end
 
-      # The creator of this Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/creator
       module Creator
         extend Increase::Internal::Type::Enum
 
@@ -129,7 +122,7 @@ module Increase
         def self.values; end
       end
 
-      # The status of the Physical Card Profile.
+      # #/components/schemas/physical_card_profile/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -161,8 +154,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `physical_card_profile`.
+      # #/components/schemas/physical_card_profile/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

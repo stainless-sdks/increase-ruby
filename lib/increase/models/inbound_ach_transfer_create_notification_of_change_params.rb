@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] updated_account_number
-      #   The updated account number to send in the notification of change.
+      #   #/components/schemas/create_a_notification_of_change_for_an_inbound_ach_transfer_parameters/properties/updated_account_number
       #
       #   @return [String, nil]
       optional :updated_account_number, String
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :updated_account_number
 
       # @!attribute [r] updated_routing_number
-      #   The updated routing number to send in the notification of change.
+      #   #/components/schemas/create_a_notification_of_change_for_an_inbound_ach_transfer_parameters/properties/updated_routing_number
       #
       #   @return [String, nil]
       optional :updated_routing_number, String

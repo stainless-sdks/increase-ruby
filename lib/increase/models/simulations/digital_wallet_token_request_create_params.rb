@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute card_id
-        #   The identifier of the Card to be authorized.
+        #   #/components/schemas/sandbox_create_a_digital_wallet_token_request_parameters/properties/card_id
         #
         #   @return [String]
         required :card_id, String

@@ -27,43 +27,37 @@ module Increase
           .returns(Increase::Models::WireTransfer)
       end
       def create(
-        # The identifier for the account that will send the transfer.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/account_id
         account_id:,
-        # The transfer amount in USD cents.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/amount
         amount:,
-        # The beneficiary's name.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_name
         beneficiary_name:,
-        # The message that will show on the recipient's bank statement.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/message_to_recipient
         message_to_recipient:,
-        # The account number for the destination account.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/account_number
         account_number: nil,
-        # The beneficiary's address line 1.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line1
         beneficiary_address_line1: nil,
-        # The beneficiary's address line 2.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line2
         beneficiary_address_line2: nil,
-        # The beneficiary's address line 3.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line3
         beneficiary_address_line3: nil,
-        # The ID of an External Account to initiate a transfer to. If this parameter is
-        # provided, `account_number` and `routing_number` must be absent.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/external_account_id
         external_account_id: nil,
-        # The originator's address line 1. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line1
         originator_address_line1: nil,
-        # The originator's address line 2. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line2
         originator_address_line2: nil,
-        # The originator's address line 3. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line3
         originator_address_line3: nil,
-        # The originator's name. This is only necessary if you're transferring from a
-        # commingled account. Otherwise, we'll use the associated entity's details.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/originator_name
         originator_name: nil,
-        # Whether the transfer requires explicit approval via the dashboard or API.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/require_approval
         require_approval: nil,
-        # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        # destination account.
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/routing_number
         routing_number: nil,
-        # The ID of an Account Number that will be passed to the wire's recipient
+        # #/components/schemas/create_a_wire_transfer_parameters/properties/source_account_number_id
         source_account_number_id: nil,
         request_options: {}
       ); end
@@ -76,7 +70,7 @@ module Increase
           .returns(Increase::Models::WireTransfer)
       end
       def retrieve(
-        # The identifier of the Wire Transfer.
+        # #/paths//wire_transfers/{wire_transfer_id}/get/parameters/0/schema
         wire_transfer_id,
         request_options: {}
       ); end
@@ -94,20 +88,16 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::WireTransfer])
       end
       def list(
-        # Filter Wire Transfers to those belonging to the specified Account.
+        # #/paths//wire_transfers/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//wire_transfers/get/parameters/0/schema
         cursor: nil,
-        # Filter Wire Transfers to those made to the specified External Account.
+        # #/paths//wire_transfers/get/parameters/3/schema
         external_account_id: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//wire_transfers/get/parameters/4/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//wire_transfers/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end
@@ -120,7 +110,7 @@ module Increase
           .returns(Increase::Models::WireTransfer)
       end
       def approve(
-        # The identifier of the Wire Transfer to approve.
+        # #/paths//wire_transfers/{wire_transfer_id}/approve/post/parameters/0/schema
         wire_transfer_id,
         request_options: {}
       ); end
@@ -133,7 +123,7 @@ module Increase
           .returns(Increase::Models::WireTransfer)
       end
       def cancel(
-        # The identifier of the pending Wire Transfer to cancel.
+        # #/paths//wire_transfers/{wire_transfer_id}/cancel/post/parameters/0/schema
         wire_transfer_id,
         request_options: {}
       ); end

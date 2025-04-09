@@ -15,14 +15,13 @@ module Increase
           .returns(Increase::Models::PhysicalCard)
       end
       def create(
-        # The underlying card representing this physical card.
+        # #/components/schemas/create_a_physical_card_parameters/properties/card_id
         card_id:,
-        # Details about the cardholder, as it will appear on the physical card.
+        # #/components/schemas/create_a_physical_card_parameters/properties/cardholder
         cardholder:,
-        # The details used to ship this physical card.
+        # #/components/schemas/create_a_physical_card_parameters/properties/shipment
         shipment:,
-        # The physical card profile to use for this physical card. The latest default
-        # physical card profile will be used if not provided.
+        # #/components/schemas/create_a_physical_card_parameters/properties/physical_card_profile_id
         physical_card_profile_id: nil,
         request_options: {}
       ); end
@@ -35,7 +34,7 @@ module Increase
           .returns(Increase::Models::PhysicalCard)
       end
       def retrieve(
-        # The identifier of the Physical Card.
+        # #/paths//physical_cards/{physical_card_id}/get/parameters/0/schema
         physical_card_id,
         request_options: {}
       ); end
@@ -49,9 +48,9 @@ module Increase
           .returns(Increase::Models::PhysicalCard)
       end
       def update(
-        # The Physical Card identifier.
+        # #/paths//physical_cards/{physical_card_id}/patch/parameters/0/schema
         physical_card_id,
-        # The status to update the Physical Card to.
+        # #/components/schemas/update_a_physical_card_parameters/properties/status
         status:,
         request_options: {}
       ); end
@@ -68,18 +67,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::PhysicalCard])
       end
       def list(
-        # Filter Physical Cards to ones belonging to the specified Card.
+        # #/paths//physical_cards/get/parameters/2/schema
         card_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//physical_cards/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//physical_cards/get/parameters/7/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//physical_cards/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

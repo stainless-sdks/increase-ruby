@@ -6,8 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifying details of anyone controlling or owning 25% or more of the
-      # corporation.
+      # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner
       sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner) }
       attr_reader :beneficial_owner
 
@@ -40,7 +39,7 @@ module Increase
       def to_hash; end
 
       class BeneficialOwner < Increase::Internal::Type::BaseModel
-        # Personal details for the beneficial owner.
+        # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual
         sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual) }
         attr_reader :individual
 
@@ -55,21 +54,18 @@ module Increase
         end
         attr_writer :individual
 
-        # Why this person is considered a beneficial owner of the entity. At least one
-        # option is required, if a person is both a control person and owner, submit an
-        # array containing both.
+        # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/prongs
         sig { returns(T::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol]) }
         attr_accessor :prongs
 
-        # This person's role or title within the entity.
+        # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/company_title
         sig { returns(T.nilable(String)) }
         attr_reader :company_title
 
         sig { params(company_title: String).void }
         attr_writer :company_title
 
-        # The identifying details of anyone controlling or owning 25% or more of the
-        # corporation.
+        # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner
         sig do
           params(
             individual: T.any(
@@ -96,8 +92,7 @@ module Increase
         def to_hash; end
 
         class Individual < Increase::Internal::Type::BaseModel
-          # The individual's physical address. Mail receiving locations like PO Boxes and
-          # PMB's are disallowed.
+          # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address) }
           attr_reader :address
 
@@ -112,11 +107,11 @@ module Increase
           end
           attr_writer :address
 
-          # The person's date of birth in YYYY-MM-DD format.
+          # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/date_of_birth
           sig { returns(Date) }
           attr_accessor :date_of_birth
 
-          # A means of verifying the person's identity.
+          # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification) }
           attr_reader :identification
 
@@ -131,21 +126,18 @@ module Increase
           end
           attr_writer :identification
 
-          # The person's legal name.
+          # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/name
           sig { returns(String) }
           attr_accessor :name
 
-          # The identification method for an individual can only be a passport, driver's
-          # license, or other document if you've confirmed the individual does not have a US
-          # tax id (either a Social Security Number or Individual Taxpayer Identification
-          # Number).
+          # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/confirmed_no_us_tax_id
           sig { returns(T.nilable(T::Boolean)) }
           attr_reader :confirmed_no_us_tax_id
 
           sig { params(confirmed_no_us_tax_id: T::Boolean).void }
           attr_writer :confirmed_no_us_tax_id
 
-          # Personal details for the beneficial owner.
+          # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual
           sig do
             params(
               address: T.any(
@@ -179,46 +171,43 @@ module Increase
           def to_hash; end
 
           class Address < Increase::Internal::Type::BaseModel
-            # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/country
             sig { returns(String) }
             attr_accessor :country
 
-            # The first line of the address. This is usually the street number and street.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/line1
             sig { returns(String) }
             attr_accessor :line1
 
-            # The city, district, town, or village of the address. Required in certain
-            # countries.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/city
             sig { returns(T.nilable(String)) }
             attr_reader :city
 
             sig { params(city: String).void }
             attr_writer :city
 
-            # The second line of the address. This might be the floor or room number.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/line2
             sig { returns(T.nilable(String)) }
             attr_reader :line2
 
             sig { params(line2: String).void }
             attr_writer :line2
 
-            # The two-letter United States Postal Service (USPS) abbreviation for the US
-            # state, province, or region of the address. Required in certain countries.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/state
             sig { returns(T.nilable(String)) }
             attr_reader :state
 
             sig { params(state: String).void }
             attr_writer :state
 
-            # The ZIP or postal code of the address. Required in certain countries.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/zip
             sig { returns(T.nilable(String)) }
             attr_reader :zip
 
             sig { params(zip: String).void }
             attr_writer :zip
 
-            # The individual's physical address. Mail receiving locations like PO Boxes and
-            # PMB's are disallowed.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address
             sig do
               params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
                 .returns(T.attached_class)
@@ -241,7 +230,7 @@ module Increase
           end
 
           class Identification < Increase::Internal::Type::BaseModel
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/method
             sig do
               returns(
                 Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
@@ -249,13 +238,11 @@ module Increase
             end
             attr_accessor :method_
 
-            # An identification number that can be used to verify the individual's identity,
-            # such as a social security number.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/number
             sig { returns(String) }
             attr_accessor :number
 
-            # Information about the United States driver's license used for identification.
-            # Required if `method` is equal to `drivers_license`.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license
             sig do
               returns(
                 T.nilable(
@@ -276,8 +263,7 @@ module Increase
             end
             attr_writer :drivers_license
 
-            # Information about the identification document provided. Required if `method` is
-            # equal to `other`.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other
             sig do
               returns(
                 T.nilable(
@@ -298,8 +284,7 @@ module Increase
             end
             attr_writer :other
 
-            # Information about the passport used for identification. Required if `method` is
-            # equal to `passport`.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport
             sig do
               returns(
                 T.nilable(
@@ -320,7 +305,7 @@ module Increase
             end
             attr_writer :passport
 
-            # A means of verifying the person's identity.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification
             sig do
               params(
                 method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
@@ -356,7 +341,7 @@ module Increase
             end
             def to_hash; end
 
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/method
             module Method
               extend Increase::Internal::Type::Enum
 
@@ -420,27 +405,26 @@ module Increase
             end
 
             class DriversLicense < Increase::Internal::Type::BaseModel
-              # The driver's license's expiration date in YYYY-MM-DD format.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/expiration_date
               sig { returns(Date) }
               attr_accessor :expiration_date
 
-              # The identifier of the File containing the front of the driver's license.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/file_id
               sig { returns(String) }
               attr_accessor :file_id
 
-              # The state that issued the provided driver's license.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/state
               sig { returns(String) }
               attr_accessor :state
 
-              # The identifier of the File containing the back of the driver's license.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/back_file_id
               sig { returns(T.nilable(String)) }
               attr_reader :back_file_id
 
               sig { params(back_file_id: String).void }
               attr_writer :back_file_id
 
-              # Information about the United States driver's license used for identification.
-              # Required if `method` is equal to `drivers_license`.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license
               sig do
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
@@ -461,36 +445,33 @@ module Increase
             end
 
             class Other < Increase::Internal::Type::BaseModel
-              # The two-character ISO 3166-1 code representing the country that issued the
-              # document.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/country
               sig { returns(String) }
               attr_accessor :country
 
-              # A description of the document submitted.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/description
               sig { returns(String) }
               attr_accessor :description
 
-              # The identifier of the File containing the front of the document.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/file_id
               sig { returns(String) }
               attr_accessor :file_id
 
-              # The identifier of the File containing the back of the document. Not every
-              # document has a reverse side.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/back_file_id
               sig { returns(T.nilable(String)) }
               attr_reader :back_file_id
 
               sig { params(back_file_id: String).void }
               attr_writer :back_file_id
 
-              # The document's expiration date in YYYY-MM-DD format.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/expiration_date
               sig { returns(T.nilable(Date)) }
               attr_reader :expiration_date
 
               sig { params(expiration_date: Date).void }
               attr_writer :expiration_date
 
-              # Information about the identification document provided. Required if `method` is
-              # equal to `other`.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other
               sig do
                 params(
                   country: String,
@@ -519,20 +500,19 @@ module Increase
             end
 
             class Passport < Increase::Internal::Type::BaseModel
-              # The country that issued the passport.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport/properties/country
               sig { returns(String) }
               attr_accessor :country
 
-              # The passport's expiration date in YYYY-MM-DD format.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport/properties/expiration_date
               sig { returns(Date) }
               attr_accessor :expiration_date
 
-              # The identifier of the File containing the passport.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport/properties/file_id
               sig { returns(String) }
               attr_accessor :file_id
 
-              # Information about the passport used for identification. Required if `method` is
-              # equal to `passport`.
+              # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end
@@ -544,6 +524,7 @@ module Increase
           end
         end
 
+        # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/prongs/items
         module Prong
           extend Increase::Internal::Type::Enum
 

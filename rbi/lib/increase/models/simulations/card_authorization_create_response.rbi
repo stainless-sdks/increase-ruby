@@ -4,9 +4,7 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateResponse < Increase::Internal::Type::BaseModel
-        # If the authorization attempt fails, this will contain the resulting
-        # [Declined Transaction](#declined-transactions) object. The Declined
-        # Transaction's `source` will be of `category: card_decline`.
+        # #/components/schemas/inbound_card_authorization_simulation_result/properties/declined_transaction
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction)) }
         attr_reader :declined_transaction
 
@@ -18,9 +16,7 @@ module Increase
         end
         attr_writer :declined_transaction
 
-        # If the authorization attempt succeeds, this will contain the resulting Pending
-        # Transaction object. The Pending Transaction's `source` will be of
-        # `category: card_authorization`.
+        # #/components/schemas/inbound_card_authorization_simulation_result/properties/pending_transaction
         sig { returns(T.nilable(Increase::Models::PendingTransaction)) }
         attr_reader :pending_transaction
 
@@ -32,12 +28,11 @@ module Increase
         end
         attr_writer :pending_transaction
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_card_authorization_simulation_result`.
+        # #/components/schemas/inbound_card_authorization_simulation_result/properties/type
         sig { returns(Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol) }
         attr_accessor :type
 
-        # The results of a Card Authorization simulation.
+        # #/paths//simulations/card_authorizations/post/responses/200/content/application/json/schema
         sig do
           params(
             declined_transaction: T.nilable(T.any(Increase::Models::DeclinedTransaction, Increase::Internal::AnyHash)),
@@ -60,8 +55,7 @@ module Increase
         end
         def to_hash; end
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_card_authorization_simulation_result`.
+        # #/components/schemas/inbound_card_authorization_simulation_result/properties/type
         module Type
           extend Increase::Internal::Type::Enum
 

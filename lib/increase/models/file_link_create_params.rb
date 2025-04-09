@@ -9,14 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute file_id
-      #   The File to create a File Link for.
+      #   #/components/schemas/create_a_file_link_parameters/properties/file_id
       #
       #   @return [String]
       required :file_id, String
 
       # @!attribute [r] expires_at
-      #   The time at which the File Link will expire. The default is 1 hour from the time
-      #   of the request. The maxiumum is 1 day from the time of the request.
+      #   #/components/schemas/create_a_file_link_parameters/properties/expires_at
       #
       #   @return [Time, nil]
       optional :expires_at, Time

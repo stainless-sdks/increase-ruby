@@ -3,42 +3,35 @@
 module Increase
   module Models
     class FileLink < Increase::Internal::Type::BaseModel
-      # The File Link identifier.
+      # #/components/schemas/file_link/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-      # Link was created.
+      # #/components/schemas/file_link/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-      # Link will expire.
+      # #/components/schemas/file_link/properties/expires_at
       sig { returns(Time) }
       attr_accessor :expires_at
 
-      # The identifier of the File the File Link points to.
+      # #/components/schemas/file_link/properties/file_id
       sig { returns(String) }
       attr_accessor :file_id
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/file_link/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # A constant representing the object's type. For this resource it will always be
-      # `file_link`.
+      # #/components/schemas/file_link/properties/type
       sig { returns(Increase::Models::FileLink::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # A URL where the File can be downloaded. The URL will expire after the
-      # `expires_at` time. This URL is unauthenticated and can be used to download the
-      # File without an Increase API key.
+      # #/components/schemas/file_link/properties/unauthenticated_url
       sig { returns(String) }
       attr_accessor :unauthenticated_url
 
-      # File Links let you generate a URL that can be used to download a File.
+      # #/components/schemas/file_link
       sig do
         params(
           id: String,
@@ -70,8 +63,7 @@ module Increase
       end
       def to_hash; end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `file_link`.
+      # #/components/schemas/file_link/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The new name of the Account.
+      # #/components/schemas/update_an_account_parameters/properties/name
       sig { returns(T.nilable(String)) }
       attr_reader :name
 

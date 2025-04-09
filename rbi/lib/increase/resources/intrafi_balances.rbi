@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::IntrafiBalance)
       end
       def intrafi_balance(
-        # The identifier of the Account to get balances for.
+        # #/paths//accounts/{account_id}/intrafi_balance/get/parameters/0/schema
         account_id,
         request_options: {}
       ); end

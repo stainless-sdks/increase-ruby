@@ -6,8 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # When your user confirmed the Entity's details. If not provided, the current time
-      # will be used.
+      # #/components/schemas/confirm_an_entitys_details_are_correct_parameters/properties/confirmed_at
       sig { returns(T.nilable(Time)) }
       attr_reader :confirmed_at
 

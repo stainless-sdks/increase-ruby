@@ -14,12 +14,11 @@ module Increase
           .returns(Increase::Models::BookkeepingEntrySet)
       end
       def create(
-        # The bookkeeping entries.
+        # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries
         entries:,
-        # The date of the transaction. Optional if `transaction_id` is provided, in which
-        # case we use the `date` of that transaction. Required otherwise.
+        # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/date
         date: nil,
-        # The identifier of the Transaction related to this entry set, if any.
+        # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/transaction_id
         transaction_id: nil,
         request_options: {}
       ); end
@@ -32,7 +31,7 @@ module Increase
           .returns(Increase::Models::BookkeepingEntrySet)
       end
       def retrieve(
-        # The identifier of the Bookkeeping Entry Set.
+        # #/paths//bookkeeping_entry_sets/{bookkeeping_entry_set_id}/get/parameters/0/schema
         bookkeeping_entry_set_id,
         request_options: {}
       ); end
@@ -48,17 +47,13 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::BookkeepingEntrySet])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//bookkeeping_entry_sets/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//bookkeeping_entry_sets/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//bookkeeping_entry_sets/get/parameters/1/schema
         limit: nil,
-        # Filter to the Bookkeeping Entry Set that maps to this Transaction.
+        # #/paths//bookkeeping_entry_sets/get/parameters/2/schema
         transaction_id: nil,
         request_options: {}
       ); end

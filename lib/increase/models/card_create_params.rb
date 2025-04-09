@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The Account the card should belong to.
+      #   #/components/schemas/create_a_card_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute [r] billing_address
-      #   The card's billing address.
+      #   #/components/schemas/create_a_card_parameters/properties/billing_address
       #
       #   @return [Increase::Models::CardCreateParams::BillingAddress, nil]
       optional :billing_address, -> { Increase::Models::CardCreateParams::BillingAddress }
@@ -25,7 +25,7 @@ module Increase
       #   attr_writer :billing_address
 
       # @!attribute [r] description
-      #   The description you choose to give the card.
+      #   #/components/schemas/create_a_card_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -35,11 +35,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] digital_wallet
-      #   The contact information used in the two-factor steps for digital wallet card
-      #   creation. To add the card to a digital wallet, you may supply an email or phone
-      #   number with this request. Otherwise, subscribe and then action a Real Time
-      #   Decision with the category `digital_wallet_token_requested` or
-      #   `digital_wallet_authentication_requested`.
+      #   #/components/schemas/create_a_card_parameters/properties/digital_wallet
       #
       #   @return [Increase::Models::CardCreateParams::DigitalWallet, nil]
       optional :digital_wallet, -> { Increase::Models::CardCreateParams::DigitalWallet }
@@ -49,8 +45,7 @@ module Increase
       #   attr_writer :digital_wallet
 
       # @!attribute [r] entity_id
-      #   The Entity the card belongs to. You only need to supply this in rare situations
-      #   when the card is not for the Account holder.
+      #   #/components/schemas/create_a_card_parameters/properties/entity_id
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -83,31 +78,31 @@ module Increase
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         # @!attribute city
-        #   The city of the billing address.
+        #   #/components/schemas/create_a_card_parameters/properties/billing_address/properties/city
         #
         #   @return [String]
         required :city, String
 
         # @!attribute line1
-        #   The first line of the billing address.
+        #   #/components/schemas/create_a_card_parameters/properties/billing_address/properties/line1
         #
         #   @return [String]
         required :line1, String
 
         # @!attribute postal_code
-        #   The postal code of the billing address.
+        #   #/components/schemas/create_a_card_parameters/properties/billing_address/properties/postal_code
         #
         #   @return [String]
         required :postal_code, String
 
         # @!attribute state
-        #   The US state of the billing address.
+        #   #/components/schemas/create_a_card_parameters/properties/billing_address/properties/state
         #
         #   @return [String]
         required :state, String
 
         # @!attribute [r] line2
-        #   The second line of the billing address.
+        #   #/components/schemas/create_a_card_parameters/properties/billing_address/properties/line2
         #
         #   @return [String, nil]
         optional :line2, String
@@ -117,7 +112,7 @@ module Increase
         #   attr_writer :line2
 
         # @!parse
-        #   # The card's billing address.
+        #   # #/components/schemas/create_a_card_parameters/properties/billing_address
         #   #
         #   # @param city [String]
         #   # @param line1 [String]
@@ -132,7 +127,7 @@ module Increase
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
         # @!attribute [r] digital_card_profile_id
-        #   The digital card profile assigned to this digital card.
+        #   #/components/schemas/create_a_card_parameters/properties/digital_wallet/properties/digital_card_profile_id
         #
         #   @return [String, nil]
         optional :digital_card_profile_id, String
@@ -142,8 +137,7 @@ module Increase
         #   attr_writer :digital_card_profile_id
 
         # @!attribute [r] email
-        #   An email address that can be used to contact and verify the cardholder via
-        #   one-time passcode over email.
+        #   #/components/schemas/create_a_card_parameters/properties/digital_wallet/properties/email
         #
         #   @return [String, nil]
         optional :email, String
@@ -153,8 +147,7 @@ module Increase
         #   attr_writer :email
 
         # @!attribute [r] phone
-        #   A phone number that can be used to contact and verify the cardholder via
-        #   one-time passcode over SMS.
+        #   #/components/schemas/create_a_card_parameters/properties/digital_wallet/properties/phone
         #
         #   @return [String, nil]
         optional :phone, String
@@ -164,11 +157,7 @@ module Increase
         #   attr_writer :phone
 
         # @!parse
-        #   # The contact information used in the two-factor steps for digital wallet card
-        #   # creation. To add the card to a digital wallet, you may supply an email or phone
-        #   # number with this request. Otherwise, subscribe and then action a Real Time
-        #   # Decision with the category `digital_wallet_token_requested` or
-        #   # `digital_wallet_authentication_requested`.
+        #   # #/components/schemas/create_a_card_parameters/properties/digital_wallet
         #   #
         #   # @param digital_card_profile_id [String]
         #   # @param email [String]

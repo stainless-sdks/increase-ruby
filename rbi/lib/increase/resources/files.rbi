@@ -16,13 +16,11 @@ module Increase
           .returns(Increase::Models::File)
       end
       def create(
-        # The file contents. This should follow the specifications of
-        # [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-        # transfers for the multipart/form-data protocol.
+        # #/components/schemas/create_a_file_parameters/properties/file
         file:,
-        # What the File will be used for in Increase's systems.
+        # #/components/schemas/create_a_file_parameters/properties/purpose
         purpose:,
-        # The description you choose to give the File.
+        # #/components/schemas/create_a_file_parameters/properties/description
         description: nil,
         request_options: {}
       ); end
@@ -35,7 +33,7 @@ module Increase
           .returns(Increase::Models::File)
       end
       def retrieve(
-        # The identifier of the File.
+        # #/paths//files/{file_id}/get/parameters/0/schema
         file_id,
         request_options: {}
       ); end
@@ -53,15 +51,11 @@ module Increase
       end
       def list(
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//files/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//files/get/parameters/7/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//files/get/parameters/1/schema
         limit: nil,
         purpose: nil,
         request_options: {}

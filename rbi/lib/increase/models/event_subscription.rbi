@@ -3,49 +3,39 @@
 module Increase
   module Models
     class EventSubscription < Increase::Internal::Type::BaseModel
-      # The event subscription identifier.
+      # #/components/schemas/event_subscription/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The time the event subscription was created.
+      # #/components/schemas/event_subscription/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/event_subscription/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # If specified, this subscription will only receive webhooks for Events associated
-      # with this OAuth Connection.
+      # #/components/schemas/event_subscription/properties/oauth_connection_id
       sig { returns(T.nilable(String)) }
       attr_accessor :oauth_connection_id
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # #/components/schemas/event_subscription/properties/selected_event_category
       sig { returns(T.nilable(Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol)) }
       attr_accessor :selected_event_category
 
-      # This indicates if we'll send notifications to this subscription.
+      # #/components/schemas/event_subscription/properties/status
       sig { returns(Increase::Models::EventSubscription::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `event_subscription`.
+      # #/components/schemas/event_subscription/properties/type
       sig { returns(Increase::Models::EventSubscription::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # The webhook url where we'll send notifications.
+      # #/components/schemas/event_subscription/properties/url
       sig { returns(String) }
       attr_accessor :url
 
-      # Webhooks are event notifications we send to you by HTTPS POST requests. Event
-      # Subscriptions are how you configure your application to listen for them. You can
-      # create an Event Subscription through your
-      # [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
-      # API. For more information, see our
-      # [webhooks guide](https://increase.com/documentation/webhooks).
+      # #/components/schemas/event_subscription
       sig do
         params(
           id: String,
@@ -88,8 +78,7 @@ module Increase
       end
       def to_hash; end
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # #/components/schemas/event_subscription/properties/selected_event_category
       module SelectedEventCategory
         extend Increase::Internal::Type::Enum
 
@@ -618,7 +607,7 @@ module Increase
         def self.values; end
       end
 
-      # This indicates if we'll send notifications to this subscription.
+      # #/components/schemas/event_subscription/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -643,8 +632,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `event_subscription`.
+      # #/components/schemas/event_subscription/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

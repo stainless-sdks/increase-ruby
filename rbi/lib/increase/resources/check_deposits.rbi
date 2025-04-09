@@ -16,15 +16,15 @@ module Increase
           .returns(Increase::Models::CheckDeposit)
       end
       def create(
-        # The identifier for the Account to deposit the check in.
+        # #/components/schemas/create_a_check_deposit_parameters/properties/account_id
         account_id:,
-        # The deposit amount in USD cents.
+        # #/components/schemas/create_a_check_deposit_parameters/properties/amount
         amount:,
-        # The File containing the check's back image.
+        # #/components/schemas/create_a_check_deposit_parameters/properties/back_image_file_id
         back_image_file_id:,
-        # The File containing the check's front image.
+        # #/components/schemas/create_a_check_deposit_parameters/properties/front_image_file_id
         front_image_file_id:,
-        # The description you choose to give the Check Deposit, for display purposes only.
+        # #/components/schemas/create_a_check_deposit_parameters/properties/description
         description: nil,
         request_options: {}
       ); end
@@ -37,7 +37,7 @@ module Increase
           .returns(Increase::Models::CheckDeposit)
       end
       def retrieve(
-        # The identifier of the Check Deposit to retrieve.
+        # #/paths//check_deposits/{check_deposit_id}/get/parameters/0/schema
         check_deposit_id,
         request_options: {}
       ); end
@@ -54,18 +54,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::CheckDeposit])
       end
       def list(
-        # Filter Check Deposits to those belonging to the specified Account.
+        # #/paths//check_deposits/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//check_deposits/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//check_deposits/get/parameters/7/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//check_deposits/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

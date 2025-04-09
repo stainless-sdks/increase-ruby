@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Card to be authorized.
+        # #/components/schemas/sandbox_create_a_digital_wallet_token_request_parameters/properties/card_id
         sig { returns(String) }
         attr_accessor :card_id
 

@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] app_icon_file_id
-      #   The identifier of the File containing the card's icon image.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/app_icon_file_id
       #
       #   @return [String, nil]
       optional :app_icon_file_id, String
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :app_icon_file_id
 
       # @!attribute [r] background_image_file_id
-      #   The identifier of the File containing the card's front image.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/background_image_file_id
       #
       #   @return [String, nil]
       optional :background_image_file_id, String
@@ -29,7 +29,7 @@ module Increase
       #   attr_writer :background_image_file_id
 
       # @!attribute [r] card_description
-      #   A user-facing description for the card itself.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/card_description
       #
       #   @return [String, nil]
       optional :card_description, String
@@ -39,7 +39,7 @@ module Increase
       #   attr_writer :card_description
 
       # @!attribute [r] contact_email
-      #   An email address the user can contact to receive support for their card.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/contact_email
       #
       #   @return [String, nil]
       optional :contact_email, String
@@ -49,7 +49,7 @@ module Increase
       #   attr_writer :contact_email
 
       # @!attribute [r] contact_phone
-      #   A phone number the user can contact to receive support for their card.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/contact_phone
       #
       #   @return [String, nil]
       optional :contact_phone, String
@@ -59,7 +59,7 @@ module Increase
       #   attr_writer :contact_phone
 
       # @!attribute [r] contact_website
-      #   A website the user can visit to view and receive support for their card.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/contact_website
       #
       #   @return [String, nil]
       optional :contact_website, String
@@ -69,7 +69,7 @@ module Increase
       #   attr_writer :contact_website
 
       # @!attribute [r] description
-      #   A description you can use to identify the Card Profile.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -79,7 +79,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] issuer_name
-      #   A user-facing description for whoever is issuing the card.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/issuer_name
       #
       #   @return [String, nil]
       optional :issuer_name, String
@@ -89,7 +89,7 @@ module Increase
       #   attr_writer :issuer_name
 
       # @!attribute [r] text_color
-      #   The Card's text color, specified as an RGB triple. The default is white.
+      #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/text_color
       #
       #   @return [Increase::Models::DigitalCardProfileCloneParams::TextColor, nil]
       optional :text_color, -> { Increase::Models::DigitalCardProfileCloneParams::TextColor }
@@ -130,25 +130,25 @@ module Increase
 
       class TextColor < Increase::Internal::Type::BaseModel
         # @!attribute blue
-        #   The value of the blue channel in the RGB color.
+        #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/text_color/properties/blue
         #
         #   @return [Integer]
         required :blue, Integer
 
         # @!attribute green
-        #   The value of the green channel in the RGB color.
+        #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/text_color/properties/green
         #
         #   @return [Integer]
         required :green, Integer
 
         # @!attribute red
-        #   The value of the red channel in the RGB color.
+        #   #/components/schemas/clones_a_digital_card_profile_parameters/properties/text_color/properties/red
         #
         #   @return [Integer]
         required :red, Integer
 
         # @!parse
-        #   # The Card's text color, specified as an RGB triple. The default is white.
+        #   # #/components/schemas/clones_a_digital_card_profile_parameters/properties/text_color
         #   #
         #   # @param blue [Integer]
         #   # @param green [Integer]

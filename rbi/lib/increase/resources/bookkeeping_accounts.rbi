@@ -15,13 +15,13 @@ module Increase
           .returns(Increase::Models::BookkeepingAccount)
       end
       def create(
-        # The name you choose for the account.
+        # #/components/schemas/create_a_bookkeeping_account_parameters/properties/name
         name:,
-        # The entity, if `compliance_category` is `commingled_cash`.
+        # #/components/schemas/create_a_bookkeeping_account_parameters/properties/account_id
         account_id: nil,
-        # The account compliance category.
+        # #/components/schemas/create_a_bookkeeping_account_parameters/properties/compliance_category
         compliance_category: nil,
-        # The entity, if `compliance_category` is `customer_balance`.
+        # #/components/schemas/create_a_bookkeeping_account_parameters/properties/entity_id
         entity_id: nil,
         request_options: {}
       ); end
@@ -35,9 +35,9 @@ module Increase
           .returns(Increase::Models::BookkeepingAccount)
       end
       def update(
-        # The bookkeeping account you would like to update.
+        # #/paths//bookkeeping_accounts/{bookkeeping_account_id}/patch/parameters/0/schema
         bookkeeping_account_id,
-        # The name you choose for the account.
+        # #/components/schemas/update_a_bookkeeping_account_parameters/properties/name
         name:,
         request_options: {}
       ); end
@@ -52,15 +52,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::BookkeepingAccount])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//bookkeeping_accounts/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//bookkeeping_accounts/get/parameters/2/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//bookkeeping_accounts/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end
@@ -74,9 +70,9 @@ module Increase
           .returns(Increase::Models::BookkeepingBalanceLookup)
       end
       def balance(
-        # The identifier of the Bookkeeping Account to retrieve.
+        # #/paths//bookkeeping_accounts/{bookkeeping_account_id}/balance/get/parameters/0/schema
         bookkeeping_account_id,
-        # The moment to query the balance at. If not set, returns the current balances.
+        # #/paths//bookkeeping_accounts/{bookkeeping_account_id}/balance/get/parameters/1/schema
         at_time: nil,
         request_options: {}
       ); end

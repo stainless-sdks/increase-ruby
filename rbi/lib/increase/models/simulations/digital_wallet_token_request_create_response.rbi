@@ -4,8 +4,7 @@ module Increase
   module Models
     module Simulations
       class DigitalWalletTokenRequestCreateResponse < Increase::Internal::Type::BaseModel
-        # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/decline_reason
         sig do
           returns(
             T.nilable(
@@ -15,17 +14,15 @@ module Increase
         end
         attr_accessor :decline_reason
 
-        # If the simulated tokenization attempt was accepted, this field contains the id
-        # of the Digital Wallet Token that was created.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/digital_wallet_token_id
         sig { returns(T.nilable(String)) }
         attr_accessor :digital_wallet_token_id
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_digital_wallet_token_request_simulation_result`.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/type
         sig { returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
         attr_accessor :type
 
-        # The results of a Digital Wallet Token simulation.
+        # #/paths//simulations/digital_wallet_token_requests/post/responses/200/content/application/json/schema
         sig do
           params(
             decline_reason: T.nilable(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::OrSymbol),
@@ -50,8 +47,7 @@ module Increase
         end
         def to_hash; end
 
-        # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/decline_reason
         module DeclineReason
           extend Increase::Internal::Type::Enum
 
@@ -103,8 +99,7 @@ module Increase
           def self.values; end
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_digital_wallet_token_request_simulation_result`.
+        # #/components/schemas/inbound_digital_wallet_token_request_simulation_result/properties/type
         module Type
           extend Increase::Internal::Type::Enum
 

@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The reason to return the Inbound Check Deposit.
+      # #/components/schemas/return_an_inbound_check_deposit_parameters/properties/reason
       sig { returns(Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol) }
       attr_accessor :reason
 
@@ -30,7 +30,7 @@ module Increase
       end
       def to_hash; end
 
-      # The reason to return the Inbound Check Deposit.
+      # #/components/schemas/return_an_inbound_check_deposit_parameters/properties/reason
       module Reason
         extend Increase::Internal::Type::Enum
 

@@ -9,8 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute beneficial_owner_id
-      #   The identifying details of anyone controlling or owning 25% or more of the
-      #   corporation.
+      #   #/components/schemas/archive_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner_id
       #
       #   @return [String]
       required :beneficial_owner_id, String

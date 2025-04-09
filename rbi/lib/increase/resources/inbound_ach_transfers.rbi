@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::InboundACHTransfer)
       end
       def retrieve(
-        # The identifier of the Inbound ACH Transfer to get details for.
+        # #/paths//inbound_ach_transfers/{inbound_ach_transfer_id}/get/parameters/0/schema
         inbound_ach_transfer_id,
         request_options: {}
       ); end
@@ -30,15 +30,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::InboundACHTransfer])
       end
       def list(
-        # Filter Inbound ACH Transfers to ones belonging to the specified Account.
+        # #/paths//inbound_ach_transfers/get/parameters/2/schema
         account_id: nil,
-        # Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
+        # #/paths//inbound_ach_transfers/get/parameters/3/schema
         account_number_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//inbound_ach_transfers/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//inbound_ach_transfers/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -54,12 +53,11 @@ module Increase
           .returns(Increase::Models::InboundACHTransfer)
       end
       def create_notification_of_change(
-        # The identifier of the Inbound ACH Transfer for which to create a notification of
-        # change.
+        # #/paths//inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change/post/parameters/0/schema
         inbound_ach_transfer_id,
-        # The updated account number to send in the notification of change.
+        # #/components/schemas/create_a_notification_of_change_for_an_inbound_ach_transfer_parameters/properties/updated_account_number
         updated_account_number: nil,
-        # The updated routing number to send in the notification of change.
+        # #/components/schemas/create_a_notification_of_change_for_an_inbound_ach_transfer_parameters/properties/updated_routing_number
         updated_routing_number: nil,
         request_options: {}
       ); end
@@ -73,11 +71,9 @@ module Increase
           .returns(Increase::Models::InboundACHTransfer)
       end
       def decline(
-        # The identifier of the Inbound ACH Transfer to decline.
+        # #/paths//inbound_ach_transfers/{inbound_ach_transfer_id}/decline/post/parameters/0/schema
         inbound_ach_transfer_id,
-        # The reason why this transfer will be returned. If this parameter is unset, the
-        # return codes will be `payment_stopped` for debits and
-        # `credit_entry_refused_by_receiver` for credits.
+        # #/components/schemas/decline_an_inbound_ach_transfer_parameters/properties/reason
         reason: nil,
         request_options: {}
       ); end
@@ -91,11 +87,9 @@ module Increase
           .returns(Increase::Models::InboundACHTransfer)
       end
       def transfer_return(
-        # The identifier of the Inbound ACH Transfer to return to the originating
-        # financial institution.
+        # #/paths//inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return/post/parameters/0/schema
         inbound_ach_transfer_id,
-        # The reason why this transfer will be returned. The most usual return codes are
-        # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+        # #/components/schemas/return_an_inbound_ach_transfer_parameters/properties/reason
         reason:,
         request_options: {}
       ); end

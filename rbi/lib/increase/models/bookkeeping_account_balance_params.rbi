@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The moment to query the balance at. If not set, returns the current balances.
+      # #/paths//bookkeeping_accounts/{bookkeeping_account_id}/balance/get/parameters/1/schema
       sig { returns(T.nilable(Time)) }
       attr_reader :at_time
 

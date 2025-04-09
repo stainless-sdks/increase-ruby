@@ -3,37 +3,31 @@
 module Increase
   module Models
     class IntrafiBalance < Increase::Internal::Type::BaseModel
-      # The identifier of this balance.
+      # #/components/schemas/intrafi_balance/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # Each entry represents a balance held at a different bank. IntraFi separates the
-      # total balance across many participating banks in the network.
+      # #/components/schemas/intrafi_balance/properties/balances
       sig { returns(T::Array[Increase::Models::IntrafiBalance::Balance]) }
       attr_accessor :balances
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      # currency.
+      # #/components/schemas/intrafi_balance/properties/currency
       sig { returns(Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
       attr_accessor :currency
 
-      # The date this balance reflects.
+      # #/components/schemas/intrafi_balance/properties/effective_date
       sig { returns(Date) }
       attr_accessor :effective_date
 
-      # The total balance, in minor units of `currency`. Increase reports this balance
-      # to IntraFi daily.
+      # #/components/schemas/intrafi_balance/properties/total_balance
       sig { returns(Integer) }
       attr_accessor :total_balance
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_balance`.
+      # #/components/schemas/intrafi_balance/properties/type
       sig { returns(Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # When using IntraFi, each account's balance over the standard FDIC insurance
-      # amount are swept to various other institutions. Funds are rebalanced across
-      # banks as needed once per business day.
+      # #/components/schemas/intrafi_balance
       sig do
         params(
           id: String,
@@ -63,19 +57,19 @@ module Increase
       def to_hash; end
 
       class Balance < Increase::Internal::Type::BaseModel
-        # The identifier of this balance.
+        # #/components/schemas/intrafi_balance/properties/balances/items/properties/id
         sig { returns(String) }
         attr_accessor :id
 
-        # The balance, in minor units of `currency`, held with this bank.
+        # #/components/schemas/intrafi_balance/properties/balances/items/properties/balance
         sig { returns(Integer) }
         attr_accessor :balance
 
-        # The name of the bank holding these funds.
+        # #/components/schemas/intrafi_balance/properties/balances/items/properties/bank
         sig { returns(String) }
         attr_accessor :bank
 
-        # The primary location of the bank.
+        # #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location
         sig { returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation)) }
         attr_reader :bank_location
 
@@ -87,12 +81,11 @@ module Increase
         end
         attr_writer :bank_location
 
-        # The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-        # Because many banks have the same or similar names, this can be used to uniquely
-        # identify the institution.
+        # #/components/schemas/intrafi_balance/properties/balances/items/properties/fdic_certificate_number
         sig { returns(String) }
         attr_accessor :fdic_certificate_number
 
+        # #/components/schemas/intrafi_balance/properties/balances/items
         sig do
           params(
             id: String,
@@ -120,15 +113,15 @@ module Increase
         def to_hash; end
 
         class BankLocation < Increase::Internal::Type::BaseModel
-          # The bank's city.
+          # #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location/anyOf/0/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The bank's state.
+          # #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location/anyOf/0/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The primary location of the bank.
+          # #/components/schemas/intrafi_balance/properties/balances/items/properties/bank_location
           sig { params(city: String, state: String).returns(T.attached_class) }
           def self.new(city:, state:); end
 
@@ -137,8 +130,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      # currency.
+      # #/components/schemas/intrafi_balance/properties/currency
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -168,8 +160,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_balance`.
+      # #/components/schemas/intrafi_balance/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

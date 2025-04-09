@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] carrier_image_file_id
-      #   The identifier of the File containing the physical card's carrier image.
+      #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/carrier_image_file_id
       #
       #   @return [String, nil]
       optional :carrier_image_file_id, String
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :carrier_image_file_id
 
       # @!attribute [r] contact_phone
-      #   A phone number the user can contact to receive support for their card.
+      #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/contact_phone
       #
       #   @return [String, nil]
       optional :contact_phone, String
@@ -29,7 +29,7 @@ module Increase
       #   attr_writer :contact_phone
 
       # @!attribute [r] description
-      #   A description you can use to identify the Card Profile.
+      #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -39,7 +39,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] front_image_file_id
-      #   The identifier of the File containing the physical card's front image.
+      #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_image_file_id
       #
       #   @return [String, nil]
       optional :front_image_file_id, String
@@ -49,8 +49,7 @@ module Increase
       #   attr_writer :front_image_file_id
 
       # @!attribute [r] front_text
-      #   Text printed on the front of the card. Reach out to
-      #   [support@increase.com](mailto:support@increase.com) for more information.
+      #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_text
       #
       #   @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText, nil]
       optional :front_text, -> { Increase::Models::PhysicalCardProfileCloneParams::FrontText }
@@ -83,15 +82,13 @@ module Increase
 
       class FrontText < Increase::Internal::Type::BaseModel
         # @!attribute line1
-        #   The first line of text on the front of the card.
+        #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_text/properties/line1
         #
         #   @return [String]
         required :line1, String
 
         # @!attribute [r] line2
-        #   The second line of text on the front of the card. Providing a second line moves
-        #   the first line slightly higher and prints the second line in the spot where the
-        #   first line would have otherwise been printed.
+        #   #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_text/properties/line2
         #
         #   @return [String, nil]
         optional :line2, String
@@ -101,8 +98,7 @@ module Increase
         #   attr_writer :line2
 
         # @!parse
-        #   # Text printed on the front of the card. Reach out to
-        #   # [support@increase.com](mailto:support@increase.com) for more information.
+        #   # #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_text
         #   #
         #   # @param line1 [String]
         #   # @param line2 [String]

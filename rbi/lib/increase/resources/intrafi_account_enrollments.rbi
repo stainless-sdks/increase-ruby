@@ -13,9 +13,9 @@ module Increase
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def create(
-        # The identifier for the account to be added to IntraFi.
+        # #/components/schemas/enroll_an_account_in_the_intrafi_deposit_sweep_network_parameters/properties/account_id
         account_id:,
-        # The contact email for the account owner, to be shared with IntraFi.
+        # #/components/schemas/enroll_an_account_in_the_intrafi_deposit_sweep_network_parameters/properties/email_address
         email_address:,
         request_options: {}
       ); end
@@ -28,7 +28,7 @@ module Increase
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def retrieve(
-        # The identifier of the IntraFi Account Enrollment to retrieve.
+        # #/paths//intrafi_account_enrollments/{intrafi_account_enrollment_id}/get/parameters/0/schema
         intrafi_account_enrollment_id,
         request_options: {}
       ); end
@@ -45,17 +45,13 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::IntrafiAccountEnrollment])
       end
       def list(
-        # Filter IntraFi Account Enrollments to the one belonging to an account.
+        # #/paths//intrafi_account_enrollments/get/parameters/2/schema
         account_id: nil,
-        # Return the page of entries after this one.
+        # #/paths//intrafi_account_enrollments/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//intrafi_account_enrollments/get/parameters/4/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//intrafi_account_enrollments/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -69,7 +65,7 @@ module Increase
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def unenroll(
-        # The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
+        # #/paths//intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll/post/parameters/0/schema
         intrafi_account_enrollment_id,
         request_options: {}
       ); end

@@ -32,30 +32,27 @@ module Increase
             .returns(Increase::Models::InboundACHTransfer)
         end
         def create(
-          # The identifier of the Account Number the inbound ACH Transfer is for.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/account_number_id
           account_number_id:,
-          # The transfer amount in cents. A positive amount originates a credit transfer
-          # pushing funds to the receiving account. A negative amount originates a debit
-          # transfer pulling funds from the receiving account.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/amount
           amount:,
-          # The description of the date of the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_descriptive_date
           company_descriptive_date: nil,
-          # Data associated with the transfer set by the sender.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_discretionary_data
           company_discretionary_data: nil,
-          # The description of the transfer set by the sender.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_entry_description
           company_entry_description: nil,
-          # The sender's company ID.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_id
           company_id: nil,
-          # The name of the sender.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_name
           company_name: nil,
-          # The ID of the receiver of the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/receiver_id_number
           receiver_id_number: nil,
-          # The name of the receiver of the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/receiver_name
           receiver_name: nil,
-          # The time at which the transfer should be resolved. If not provided will resolve
-          # immediately.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/resolve_at
           resolve_at: nil,
-          # The standard entry class code for the transfer.
+          # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/standard_entry_class_code
           standard_entry_class_code: nil,
           request_options: {}
         ); end

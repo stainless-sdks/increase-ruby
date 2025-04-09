@@ -18,7 +18,7 @@ module Increase
             .returns(Increase::Models::ACHTransfer)
         end
         def acknowledge(
-          # The identifier of the ACH Transfer you wish to become acknowledged.
+          # #/paths//simulations/ach_transfers/{ach_transfer_id}/acknowledge/post/parameters/0/schema
           ach_transfer_id,
           request_options: {}
         ); end
@@ -34,12 +34,11 @@ module Increase
             .returns(Increase::Models::ACHTransfer)
         end
         def create_notification_of_change(
-          # The identifier of the ACH Transfer you wish to create a notification of change
-          # for.
+          # #/paths//simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change/post/parameters/0/schema
           ach_transfer_id,
-          # The reason for the notification of change.
+          # #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/change_code
           change_code:,
-          # The corrected data for the notification of change (e.g., a new routing number).
+          # #/components/schemas/sandbox_create_a_notification_of_change_for_an_ach_transfer_parameters/properties/corrected_data
           corrected_data:,
           request_options: {}
         ); end
@@ -55,10 +54,9 @@ module Increase
             .returns(Increase::Models::ACHTransfer)
         end
         def return_(
-          # The identifier of the ACH Transfer you wish to return.
+          # #/paths//simulations/ach_transfers/{ach_transfer_id}/return/post/parameters/0/schema
           ach_transfer_id,
-          # The reason why the Federal Reserve or destination bank returned this transfer.
-          # Defaults to `no_account`.
+          # #/components/schemas/sandbox_return_an_ach_transfer_parameters/properties/reason
           reason: nil,
           request_options: {}
         ); end
@@ -76,7 +74,7 @@ module Increase
             .returns(Increase::Models::ACHTransfer)
         end
         def settle(
-          # The identifier of the ACH Transfer you wish to become settled.
+          # #/paths//simulations/ach_transfers/{ach_transfer_id}/settle/post/parameters/0/schema
           ach_transfer_id,
           request_options: {}
         ); end
@@ -94,7 +92,7 @@ module Increase
             .returns(Increase::Models::ACHTransfer)
         end
         def submit(
-          # The identifier of the ACH Transfer you wish to submit.
+          # #/paths//simulations/ach_transfers/{ach_transfer_id}/submit/post/parameters/0/schema
           ach_transfer_id,
           request_options: {}
         ); end

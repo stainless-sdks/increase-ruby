@@ -3,11 +3,11 @@
 module Increase
   module Models
     class InboundACHTransfer < Increase::Internal::Type::BaseModel
-      # The inbound ACH transfer's identifier.
+      # #/components/schemas/inbound_ach_transfer/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # If your transfer is accepted, this will contain details of the acceptance.
+      # #/components/schemas/inbound_ach_transfer/properties/acceptance
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance)) }
       attr_reader :acceptance
 
@@ -19,15 +19,15 @@ module Increase
       end
       attr_writer :acceptance
 
-      # The Account to which the transfer belongs.
+      # #/components/schemas/inbound_ach_transfer/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The identifier of the Account Number to which this transfer was sent.
+      # #/components/schemas/inbound_ach_transfer/properties/account_number_id
       sig { returns(String) }
       attr_accessor :account_number_id
 
-      # Additional information sent from the originator.
+      # #/components/schemas/inbound_ach_transfer/properties/addenda
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda)) }
       attr_reader :addenda
 
@@ -39,20 +39,19 @@ module Increase
       end
       attr_writer :addenda
 
-      # The transfer amount in USD cents.
+      # #/components/schemas/inbound_ach_transfer/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The time at which the transfer will be automatically resolved.
+      # #/components/schemas/inbound_ach_transfer/properties/automatically_resolves_at
       sig { returns(Time) }
       attr_accessor :automatically_resolves_at
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the inbound ACH transfer was created.
+      # #/components/schemas/inbound_ach_transfer/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # If your transfer is declined, this will contain details of the decline.
+      # #/components/schemas/inbound_ach_transfer/properties/decline
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Decline)) }
       attr_reader :decline
 
@@ -64,21 +63,19 @@ module Increase
       end
       attr_writer :decline
 
-      # The direction of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/direction
       sig { returns(Increase::Models::InboundACHTransfer::Direction::TaggedSymbol) }
       attr_accessor :direction
 
-      # The effective date of the transfer. This is sent by the sending bank and is a
-      # factor in determining funds availability.
+      # #/components/schemas/inbound_ach_transfer/properties/effective_date
       sig { returns(Date) }
       attr_accessor :effective_date
 
-      # The settlement schedule the transfer is expected to follow.
+      # #/components/schemas/inbound_ach_transfer/properties/expected_settlement_schedule
       sig { returns(Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol) }
       attr_accessor :expected_settlement_schedule
 
-      # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
-      # contain fields pertaining to the International ACH Transaction.
+      # #/components/schemas/inbound_ach_transfer/properties/international_addenda
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)) }
       attr_reader :international_addenda
 
@@ -90,8 +87,7 @@ module Increase
       end
       attr_writer :international_addenda
 
-      # If you initiate a notification of change in response to the transfer, this will
-      # contain its details.
+      # #/components/schemas/inbound_ach_transfer/properties/notification_of_change
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)) }
       attr_reader :notification_of_change
 
@@ -103,55 +99,51 @@ module Increase
       end
       attr_writer :notification_of_change
 
-      # The descriptive date of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/originator_company_descriptive_date
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_company_descriptive_date
 
-      # The additional information included with the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/originator_company_discretionary_data
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_company_discretionary_data
 
-      # The description of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/originator_company_entry_description
       sig { returns(String) }
       attr_accessor :originator_company_entry_description
 
-      # The id of the company that initiated the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/originator_company_id
       sig { returns(String) }
       attr_accessor :originator_company_id
 
-      # The name of the company that initiated the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/originator_company_name
       sig { returns(String) }
       attr_accessor :originator_company_name
 
-      # The American Banking Association (ABA) routing number of the bank originating
-      # the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/originator_routing_number
       sig { returns(String) }
       attr_accessor :originator_routing_number
 
-      # The id of the receiver of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/receiver_id_number
       sig { returns(T.nilable(String)) }
       attr_accessor :receiver_id_number
 
-      # The name of the receiver of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/receiver_name
       sig { returns(T.nilable(String)) }
       attr_accessor :receiver_name
 
-      # The Standard Entry Class (SEC) code of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/standard_entry_class_code
       sig { returns(Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol) }
       attr_accessor :standard_entry_class_code
 
-      # The status of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/status
       sig { returns(Increase::Models::InboundACHTransfer::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A 15 digit number set by the sending bank and transmitted to the receiving bank.
-      # Along with the amount, date, and originating routing number, this can be used to
-      # identify the ACH transfer. ACH trace numbers are not unique, but are
-      # [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
+      # #/components/schemas/inbound_ach_transfer/properties/trace_number
       sig { returns(String) }
       attr_accessor :trace_number
 
-      # If your transfer is returned, this will contain details of the return.
+      # #/components/schemas/inbound_ach_transfer/properties/transfer_return
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn)) }
       attr_reader :transfer_return
 
@@ -163,13 +155,11 @@ module Increase
       end
       attr_writer :transfer_return
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_ach_transfer`.
+      # #/components/schemas/inbound_ach_transfer/properties/type
       sig { returns(Increase::Models::InboundACHTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
-      # account.
+      # #/components/schemas/inbound_ach_transfer
       sig do
         params(
           id: String,
@@ -268,15 +258,15 @@ module Increase
       def to_hash; end
 
       class Acceptance < Increase::Internal::Type::BaseModel
-        # The time at which the transfer was accepted.
+        # #/components/schemas/inbound_ach_transfer/properties/acceptance/anyOf/0/properties/accepted_at
         sig { returns(Time) }
         attr_accessor :accepted_at
 
-        # The id of the transaction for the accepted transfer.
+        # #/components/schemas/inbound_ach_transfer/properties/acceptance/anyOf/0/properties/transaction_id
         sig { returns(String) }
         attr_accessor :transaction_id
 
-        # If your transfer is accepted, this will contain details of the acceptance.
+        # #/components/schemas/inbound_ach_transfer/properties/acceptance
         sig { params(accepted_at: Time, transaction_id: String).returns(T.attached_class) }
         def self.new(accepted_at:, transaction_id:); end
 
@@ -285,11 +275,11 @@ module Increase
       end
 
       class Addenda < Increase::Internal::Type::BaseModel
-        # The type of addendum.
+        # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/category
         sig { returns(Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol) }
         attr_accessor :category
 
-        # Unstructured `payment_related_information` passed through by the originator.
+        # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/freeform
         sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)) }
         attr_reader :freeform
 
@@ -301,7 +291,7 @@ module Increase
         end
         attr_writer :freeform
 
-        # Additional information sent from the originator.
+        # #/components/schemas/inbound_ach_transfer/properties/addenda
         sig do
           params(
             category: Increase::Models::InboundACHTransfer::Addenda::Category::OrSymbol,
@@ -322,7 +312,7 @@ module Increase
         end
         def to_hash; end
 
-        # The type of addendum.
+        # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/category
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -338,11 +328,11 @@ module Increase
         end
 
         class Freeform < Increase::Internal::Type::BaseModel
-          # Each entry represents an addendum received from the originator.
+          # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/freeform/anyOf/0/properties/entries
           sig { returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]) }
           attr_accessor :entries
 
-          # Unstructured `payment_related_information` passed through by the originator.
+          # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/freeform
           sig do
             params(
               entries: T::Array[T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry, Increase::Internal::AnyHash)]
@@ -355,10 +345,11 @@ module Increase
           def to_hash; end
 
           class Entry < Increase::Internal::Type::BaseModel
-            # The payment related information passed in the addendum.
+            # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/freeform/anyOf/0/properties/entries/items/properties/payment_related_information
             sig { returns(String) }
             attr_accessor :payment_related_information
 
+            # #/components/schemas/inbound_ach_transfer/properties/addenda/anyOf/0/properties/freeform/anyOf/0/properties/entries/items
             sig { params(payment_related_information: String).returns(T.attached_class) }
             def self.new(payment_related_information:); end
 
@@ -369,19 +360,19 @@ module Increase
       end
 
       class Decline < Increase::Internal::Type::BaseModel
-        # The time at which the transfer was declined.
+        # #/components/schemas/inbound_ach_transfer/properties/decline/anyOf/0/properties/declined_at
         sig { returns(Time) }
         attr_accessor :declined_at
 
-        # The id of the transaction for the declined transfer.
+        # #/components/schemas/inbound_ach_transfer/properties/decline/anyOf/0/properties/declined_transaction_id
         sig { returns(String) }
         attr_accessor :declined_transaction_id
 
-        # The reason for the transfer decline.
+        # #/components/schemas/inbound_ach_transfer/properties/decline/anyOf/0/properties/reason
         sig { returns(Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol) }
         attr_accessor :reason
 
-        # If your transfer is declined, this will contain details of the decline.
+        # #/components/schemas/inbound_ach_transfer/properties/decline
         sig do
           params(
             declined_at: Time,
@@ -404,7 +395,7 @@ module Increase
         end
         def to_hash; end
 
-        # The reason for the transfer decline.
+        # #/components/schemas/inbound_ach_transfer/properties/decline/anyOf/0/properties/reason
         module Reason
           extend Increase::Internal::Type::Enum
 
@@ -502,7 +493,7 @@ module Increase
         end
       end
 
-      # The direction of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/direction
       module Direction
         extend Increase::Internal::Type::Enum
 
@@ -520,7 +511,7 @@ module Increase
         def self.values; end
       end
 
-      # The settlement schedule the transfer is expected to follow.
+      # #/components/schemas/inbound_ach_transfer/properties/expected_settlement_schedule
       module ExpectedSettlementSchedule
         extend Increase::Internal::Type::Enum
 
@@ -542,17 +533,15 @@ module Increase
       end
 
       class InternationalAddenda < Increase::Internal::Type::BaseModel
-        # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        # country code of the destination country.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/destination_country_code
         sig { returns(String) }
         attr_accessor :destination_country_code
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
-        # destination bank account.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/destination_currency_code
         sig { returns(String) }
         attr_accessor :destination_currency_code
 
-        # A description of how the foreign exchange rate was calculated.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_exchange_indicator
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol
@@ -560,13 +549,11 @@ module Increase
         end
         attr_accessor :foreign_exchange_indicator
 
-        # Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
-        # reference to a well-known rate.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_exchange_reference
         sig { returns(T.nilable(String)) }
         attr_accessor :foreign_exchange_reference
 
-        # An instruction of how to interpret the `foreign_exchange_reference` field for
-        # this Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_exchange_reference_indicator
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
@@ -574,16 +561,15 @@ module Increase
         end
         attr_accessor :foreign_exchange_reference_indicator
 
-        # The amount in the minor unit of the foreign payment currency. For dollars, for
-        # example, this is cents.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_payment_amount
         sig { returns(Integer) }
         attr_accessor :foreign_payment_amount
 
-        # A reference number in the foreign banking infrastructure.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_trace_number
         sig { returns(T.nilable(String)) }
         attr_accessor :foreign_trace_number
 
-        # The type of transfer. Set by the originator.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/international_transaction_type_code
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol
@@ -591,24 +577,19 @@ module Increase
         end
         attr_accessor :international_transaction_type_code
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
-        # originating bank account.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originating_currency_code
         sig { returns(String) }
         attr_accessor :originating_currency_code
 
-        # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        # country code of the originating branch country.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originating_depository_financial_institution_branch_country
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_branch_country
 
-        # An identifier for the originating bank. One of an International Bank Account
-        # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
-        # domestic identifier like a US Routing Number.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originating_depository_financial_institution_id
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_id
 
-        # An instruction of how to interpret the
-        # `originating_depository_financial_institution_id` field for this Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originating_depository_financial_institution_id_qualifier
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
@@ -616,93 +597,83 @@ module Increase
         end
         attr_accessor :originating_depository_financial_institution_id_qualifier
 
-        # The name of the originating bank. Sometimes this will refer to an American bank
-        # and obscure the correspondent foreign bank.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originating_depository_financial_institution_name
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_name
 
-        # A portion of the originator address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_city
         sig { returns(String) }
         attr_accessor :originator_city
 
-        # A portion of the originator address. The
-        # [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
-        # code of the originator country.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_country
         sig { returns(String) }
         attr_accessor :originator_country
 
-        # An identifier for the originating company. This is generally stable across
-        # multiple ACH transfers.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_identification
         sig { returns(String) }
         attr_accessor :originator_identification
 
-        # Either the name of the originator or an intermediary money transmitter.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_name
         sig { returns(String) }
         attr_accessor :originator_name
 
-        # A portion of the originator address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_postal_code
         sig { returns(T.nilable(String)) }
         attr_accessor :originator_postal_code
 
-        # A portion of the originator address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_state_or_province
         sig { returns(T.nilable(String)) }
         attr_accessor :originator_state_or_province
 
-        # A portion of the originator address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originator_street_address
         sig { returns(String) }
         attr_accessor :originator_street_address
 
-        # A description field set by the originator.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/payment_related_information
         sig { returns(T.nilable(String)) }
         attr_accessor :payment_related_information
 
-        # A description field set by the originator.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/payment_related_information2
         sig { returns(T.nilable(String)) }
         attr_accessor :payment_related_information2
 
-        # A portion of the receiver address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiver_city
         sig { returns(String) }
         attr_accessor :receiver_city
 
-        # A portion of the receiver address. The
-        # [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
-        # code of the receiver country.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiver_country
         sig { returns(String) }
         attr_accessor :receiver_country
 
-        # An identification number the originator uses for the receiver.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiver_identification_number
         sig { returns(T.nilable(String)) }
         attr_accessor :receiver_identification_number
 
-        # A portion of the receiver address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiver_postal_code
         sig { returns(T.nilable(String)) }
         attr_accessor :receiver_postal_code
 
-        # A portion of the receiver address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiver_state_or_province
         sig { returns(T.nilable(String)) }
         attr_accessor :receiver_state_or_province
 
-        # A portion of the receiver address. This may be incomplete.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiver_street_address
         sig { returns(String) }
         attr_accessor :receiver_street_address
 
-        # The name of the receiver of the transfer. This is not verified by Increase.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiving_company_or_individual_name
         sig { returns(String) }
         attr_accessor :receiving_company_or_individual_name
 
-        # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        # country code of the receiving bank country.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiving_depository_financial_institution_country
         sig { returns(String) }
         attr_accessor :receiving_depository_financial_institution_country
 
-        # An identifier for the receiving bank. One of an International Bank Account
-        # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
-        # domestic identifier like a US Routing Number.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiving_depository_financial_institution_id
         sig { returns(String) }
         attr_accessor :receiving_depository_financial_institution_id
 
-        # An instruction of how to interpret the
-        # `receiving_depository_financial_institution_id` field for this Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiving_depository_financial_institution_id_qualifier
         sig do
           returns(
             Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
@@ -710,12 +681,11 @@ module Increase
         end
         attr_accessor :receiving_depository_financial_institution_id_qualifier
 
-        # The name of the receiving bank, as set by the sending financial institution.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiving_depository_financial_institution_name
         sig { returns(String) }
         attr_accessor :receiving_depository_financial_institution_name
 
-        # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
-        # contain fields pertaining to the International ACH Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda
         sig do
           params(
             destination_country_code: String,
@@ -831,7 +801,7 @@ module Increase
         end
         def to_hash; end
 
-        # A description of how the foreign exchange rate was calculated.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_exchange_indicator
         module ForeignExchangeIndicator
           extend Increase::Internal::Type::Enum
 
@@ -876,8 +846,7 @@ module Increase
           def self.values; end
         end
 
-        # An instruction of how to interpret the `foreign_exchange_reference` field for
-        # this Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/foreign_exchange_reference_indicator
         module ForeignExchangeReferenceIndicator
           extend Increase::Internal::Type::Enum
 
@@ -926,7 +895,7 @@ module Increase
           def self.values; end
         end
 
-        # The type of transfer. Set by the originator.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/international_transaction_type_code
         module InternationalTransactionTypeCode
           extend Increase::Internal::Type::Enum
 
@@ -1092,8 +1061,7 @@ module Increase
           def self.values; end
         end
 
-        # An instruction of how to interpret the
-        # `originating_depository_financial_institution_id` field for this Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/originating_depository_financial_institution_id_qualifier
         module OriginatingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Internal::Type::Enum
 
@@ -1142,8 +1110,7 @@ module Increase
           def self.values; end
         end
 
-        # An instruction of how to interpret the
-        # `receiving_depository_financial_institution_id` field for this Transaction.
+        # #/components/schemas/inbound_ach_transfer/properties/international_addenda/anyOf/0/properties/receiving_depository_financial_institution_id_qualifier
         module ReceivingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Internal::Type::Enum
 
@@ -1194,16 +1161,15 @@ module Increase
       end
 
       class NotificationOfChange < Increase::Internal::Type::BaseModel
-        # The new account number provided in the notification of change.
+        # #/components/schemas/inbound_ach_transfer/properties/notification_of_change/anyOf/0/properties/updated_account_number
         sig { returns(T.nilable(String)) }
         attr_accessor :updated_account_number
 
-        # The new account number provided in the notification of change.
+        # #/components/schemas/inbound_ach_transfer/properties/notification_of_change/anyOf/0/properties/updated_routing_number
         sig { returns(T.nilable(String)) }
         attr_accessor :updated_routing_number
 
-        # If you initiate a notification of change in response to the transfer, this will
-        # contain its details.
+        # #/components/schemas/inbound_ach_transfer/properties/notification_of_change
         sig do
           params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String))
             .returns(T.attached_class)
@@ -1221,7 +1187,7 @@ module Increase
         def to_hash; end
       end
 
-      # The Standard Entry Class (SEC) code of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/standard_entry_class_code
       module StandardEntryClassCode
         extend Increase::Internal::Type::Enum
 
@@ -1313,7 +1279,7 @@ module Increase
         def self.values; end
       end
 
-      # The status of the transfer.
+      # #/components/schemas/inbound_ach_transfer/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -1338,19 +1304,19 @@ module Increase
       end
 
       class TransferReturn < Increase::Internal::Type::BaseModel
-        # The reason for the transfer return.
+        # #/components/schemas/inbound_ach_transfer/properties/transfer_return/anyOf/0/properties/reason
         sig { returns(Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol) }
         attr_accessor :reason
 
-        # The time at which the transfer was returned.
+        # #/components/schemas/inbound_ach_transfer/properties/transfer_return/anyOf/0/properties/returned_at
         sig { returns(Time) }
         attr_accessor :returned_at
 
-        # The id of the transaction for the returned transfer.
+        # #/components/schemas/inbound_ach_transfer/properties/transfer_return/anyOf/0/properties/transaction_id
         sig { returns(String) }
         attr_accessor :transaction_id
 
-        # If your transfer is returned, this will contain details of the return.
+        # #/components/schemas/inbound_ach_transfer/properties/transfer_return
         sig do
           params(
             reason: Increase::Models::InboundACHTransfer::TransferReturn::Reason::OrSymbol,
@@ -1373,7 +1339,7 @@ module Increase
         end
         def to_hash; end
 
-        # The reason for the transfer return.
+        # #/components/schemas/inbound_ach_transfer/properties/transfer_return/anyOf/0/properties/reason
         module Reason
           extend Increase::Internal::Type::Enum
 
@@ -1448,8 +1414,7 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_ach_transfer`.
+      # #/components/schemas/inbound_ach_transfer/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

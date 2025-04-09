@@ -3,49 +3,43 @@
 module Increase
   module Models
     class AccountStatement < Increase::Internal::Type::BaseModel
-      # The Account Statement identifier.
+      # #/components/schemas/account_statement/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier for the Account this Account Statement belongs to.
+      # #/components/schemas/account_statement/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      # Statement was created.
+      # #/components/schemas/account_statement/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The Account's balance at the start of its statement period.
+      # #/components/schemas/account_statement/properties/ending_balance
       sig { returns(Integer) }
       attr_accessor :ending_balance
 
-      # The identifier of the File containing a PDF of the statement.
+      # #/components/schemas/account_statement/properties/file_id
       sig { returns(String) }
       attr_accessor :file_id
 
-      # The Account's balance at the start of its statement period.
+      # #/components/schemas/account_statement/properties/starting_balance
       sig { returns(Integer) }
       attr_accessor :starting_balance
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-      # of the period the Account Statement covers.
+      # #/components/schemas/account_statement/properties/statement_period_end
       sig { returns(Time) }
       attr_accessor :statement_period_end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
-      # start of the period the Account Statement covers.
+      # #/components/schemas/account_statement/properties/statement_period_start
       sig { returns(Time) }
       attr_accessor :statement_period_start
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account_statement`.
+      # #/components/schemas/account_statement/properties/type
       sig { returns(Increase::Models::AccountStatement::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Account Statements are generated monthly for every active Account. You can
-      # access the statement's data via the API or retrieve a PDF with its details via
-      # its associated File.
+      # #/components/schemas/account_statement
       sig do
         params(
           id: String,
@@ -89,8 +83,7 @@ module Increase
       end
       def to_hash; end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account_statement`.
+      # #/components/schemas/account_statement/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

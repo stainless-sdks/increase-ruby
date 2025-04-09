@@ -16,15 +16,15 @@ module Increase
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def create(
-        # The identifier of the File containing the physical card's carrier image.
+        # #/components/schemas/create_a_physical_card_profile_parameters/properties/carrier_image_file_id
         carrier_image_file_id:,
-        # A phone number the user can contact to receive support for their card.
+        # #/components/schemas/create_a_physical_card_profile_parameters/properties/contact_phone
         contact_phone:,
-        # A description you can use to identify the Card Profile.
+        # #/components/schemas/create_a_physical_card_profile_parameters/properties/description
         description:,
-        # The identifier of the File containing the physical card's front image.
+        # #/components/schemas/create_a_physical_card_profile_parameters/properties/front_image_file_id
         front_image_file_id:,
-        # The identifier for the Program that this Physical Card Profile falls under.
+        # #/components/schemas/create_a_physical_card_profile_parameters/properties/program_id
         program_id:,
         request_options: {}
       ); end
@@ -37,7 +37,7 @@ module Increase
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def retrieve(
-        # The identifier of the Card Profile.
+        # #/paths//physical_card_profiles/{physical_card_profile_id}/get/parameters/0/schema
         physical_card_profile_id,
         request_options: {}
       ); end
@@ -53,15 +53,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::PhysicalCardProfile])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//physical_card_profiles/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//physical_card_profiles/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//physical_card_profiles/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -75,7 +71,7 @@ module Increase
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def archive(
-        # The identifier of the Physical Card Profile to archive.
+        # #/paths//physical_card_profiles/{physical_card_profile_id}/archive/post/parameters/0/schema
         physical_card_profile_id,
         request_options: {}
       ); end
@@ -93,18 +89,17 @@ module Increase
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def clone_(
-        # The identifier of the Physical Card Profile to clone.
+        # #/paths//physical_card_profiles/{physical_card_profile_id}/clone/post/parameters/0/schema
         physical_card_profile_id,
-        # The identifier of the File containing the physical card's carrier image.
+        # #/components/schemas/clone_a_physical_card_profile_parameters/properties/carrier_image_file_id
         carrier_image_file_id: nil,
-        # A phone number the user can contact to receive support for their card.
+        # #/components/schemas/clone_a_physical_card_profile_parameters/properties/contact_phone
         contact_phone: nil,
-        # A description you can use to identify the Card Profile.
+        # #/components/schemas/clone_a_physical_card_profile_parameters/properties/description
         description: nil,
-        # The identifier of the File containing the physical card's front image.
+        # #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_image_file_id
         front_image_file_id: nil,
-        # Text printed on the front of the card. Reach out to
-        # [support@increase.com](mailto:support@increase.com) for more information.
+        # #/components/schemas/clone_a_physical_card_profile_parameters/properties/front_text
         front_text: nil,
         request_options: {}
       ); end

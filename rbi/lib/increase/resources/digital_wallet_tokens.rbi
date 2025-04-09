@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::DigitalWalletToken)
       end
       def retrieve(
-        # The identifier of the Digital Wallet Token.
+        # #/paths//digital_wallet_tokens/{digital_wallet_token_id}/get/parameters/0/schema
         digital_wallet_token_id,
         request_options: {}
       ); end
@@ -28,13 +28,12 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::DigitalWalletToken])
       end
       def list(
-        # Filter Digital Wallet Tokens to ones belonging to the specified Card.
+        # #/paths//digital_wallet_tokens/get/parameters/2/schema
         card_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//digital_wallet_tokens/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//digital_wallet_tokens/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

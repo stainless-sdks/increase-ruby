@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::ProofOfAuthorizationRequest)
       end
       def retrieve(
-        # The identifier of the Proof of Authorization Request.
+        # #/paths//proof_of_authorization_requests/{proof_of_authorization_request_id}/get/parameters/0/schema
         proof_of_authorization_request_id,
         request_options: {}
       ); end
@@ -28,10 +28,9 @@ module Increase
       end
       def list(
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//proof_of_authorization_requests/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//proof_of_authorization_requests/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

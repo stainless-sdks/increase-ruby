@@ -29,54 +29,39 @@ module Increase
             .returns(Increase::Models::InboundWireTransfer)
         end
         def create(
-          # The identifier of the Account Number the inbound Wire Transfer is for.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/account_number_id
           account_number_id:,
-          # The transfer amount in cents. Must be positive.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/amount
           amount:,
-          # The sending bank will set beneficiary_address_line1 in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line1
           beneficiary_address_line1: nil,
-          # The sending bank will set beneficiary_address_line2 in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line2
           beneficiary_address_line2: nil,
-          # The sending bank will set beneficiary_address_line3 in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line3
           beneficiary_address_line3: nil,
-          # The sending bank will set beneficiary_name in production. You can simulate any
-          # value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_name
           beneficiary_name: nil,
-          # The sending bank will set beneficiary_reference in production. You can simulate
-          # any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_reference
           beneficiary_reference: nil,
-          # The sending bank will set originator_address_line1 in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line1
           originator_address_line1: nil,
-          # The sending bank will set originator_address_line2 in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line2
           originator_address_line2: nil,
-          # The sending bank will set originator_address_line3 in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line3
           originator_address_line3: nil,
-          # The sending bank will set originator_name in production. You can simulate any
-          # value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_name
           originator_name: nil,
-          # The sending bank will set originator_routing_number in production. You can
-          # simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_routing_number
           originator_routing_number: nil,
-          # The sending bank will set originator_to_beneficiary_information_line1 in
-          # production. You can simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line1
           originator_to_beneficiary_information_line1: nil,
-          # The sending bank will set originator_to_beneficiary_information_line2 in
-          # production. You can simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line2
           originator_to_beneficiary_information_line2: nil,
-          # The sending bank will set originator_to_beneficiary_information_line3 in
-          # production. You can simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line3
           originator_to_beneficiary_information_line3: nil,
-          # The sending bank will set originator_to_beneficiary_information_line4 in
-          # production. You can simulate any value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line4
           originator_to_beneficiary_information_line4: nil,
-          # The sending bank will set sender_reference in production. You can simulate any
-          # value here.
+          # #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/sender_reference
           sender_reference: nil,
           request_options: {}
         ); end

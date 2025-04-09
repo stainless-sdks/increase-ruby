@@ -6,8 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifying details of anyone controlling or owning 25% or more of the
-      # corporation.
+      # #/components/schemas/archive_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner_id
       sig { returns(String) }
       attr_accessor :beneficial_owner_id
 

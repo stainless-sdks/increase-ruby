@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute [r] rejection
-        #   If set, the simulation will reject the transfer.
+        #   #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection
         #
         #   @return [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection, nil]
         optional :rejection,
@@ -30,14 +30,14 @@ module Increase
 
         class Rejection < Increase::Internal::Type::BaseModel
           # @!attribute reject_reason_code
-          #   The reason code that the simulated rejection will have.
+          #   #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection/properties/reject_reason_code
           #
           #   @return [Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode]
           required :reject_reason_code,
                    enum: -> { Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode }
 
           # @!parse
-          #   # If set, the simulation will reject the transfer.
+          #   # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection
           #   #
           #   # @param reject_reason_code [Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode]
           #   #
@@ -45,7 +45,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # The reason code that the simulated rejection will have.
+          # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection/properties/reject_reason_code
           #
           # @see Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection#reject_reason_code
           module RejectReasonCode

@@ -3,35 +3,31 @@
 module Increase
   module Models
     class BookkeepingEntry < Increase::Internal::Type::BaseModel
-      # The entry identifier.
+      # #/components/schemas/bookkeeping_entry/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier for the Account the Entry belongs to.
+      # #/components/schemas/bookkeeping_entry/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The Entry amount in the minor unit of its currency. For dollars, for example,
-      # this is cents.
+      # #/components/schemas/bookkeeping_entry/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # When the entry set was created.
+      # #/components/schemas/bookkeeping_entry/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The identifier for the Account the Entry belongs to.
+      # #/components/schemas/bookkeeping_entry/properties/entry_set_id
       sig { returns(String) }
       attr_accessor :entry_set_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry`.
+      # #/components/schemas/bookkeeping_entry/properties/type
       sig { returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Entries are T-account entries recording debits and credits. Your compliance
-      # setup might require annotating money movements using this API. Learn more in our
-      # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      # #/components/schemas/bookkeeping_entry
       sig do
         params(
           id: String,
@@ -60,8 +56,7 @@ module Increase
       end
       def to_hash; end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_entry`.
+      # #/components/schemas/bookkeeping_entry/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

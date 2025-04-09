@@ -5,106 +5,103 @@ module Increase
     # @see Increase::Resources::ProofOfAuthorizationRequestSubmissions#create
     class ProofOfAuthorizationRequestSubmission < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Proof of Authorization Request Submission identifier.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute additional_evidence_file_id
-      #   File containing additional evidence.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/additional_evidence_file_id
       #
       #   @return [String, nil]
       required :additional_evidence_file_id, String, nil?: true
 
       # @!attribute authorization_terms
-      #   Terms of authorization.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/authorization_terms
       #
       #   @return [String]
       required :authorization_terms, String
 
       # @!attribute authorized_at
-      #   Time of authorization.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/authorized_at
       #
       #   @return [Time]
       required :authorized_at, Time
 
       # @!attribute authorizer_company
-      #   Company of the authorizer.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_company
       #
       #   @return [String, nil]
       required :authorizer_company, String, nil?: true
 
       # @!attribute authorizer_email
-      #   Email of the authorizer.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_email
       #
       #   @return [String, nil]
       required :authorizer_email, String, nil?: true
 
       # @!attribute authorizer_ip_address
-      #   IP address of the authorizer.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_ip_address
       #
       #   @return [String, nil]
       required :authorizer_ip_address, String, nil?: true
 
       # @!attribute authorizer_name
-      #   Name of the authorizer.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/authorizer_name
       #
       #   @return [String, nil]
       required :authorizer_name, String, nil?: true
 
       # @!attribute created_at
-      #   The time the Proof of Authorization Request Submission was created.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute customer_has_been_offboarded
-      #   Whether the customer has been offboarded.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/customer_has_been_offboarded
       #
       #   @return [Boolean, nil]
       required :customer_has_been_offboarded, Increase::Internal::Type::Boolean, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute proof_of_authorization_request_id
-      #   ID of the proof of authorization request.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/proof_of_authorization_request_id
       #
       #   @return [String]
       required :proof_of_authorization_request_id, String
 
       # @!attribute status
-      #   Status of the proof of authorization request submission.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/status
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status]
       required :status, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request_submission`.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/type
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
 
       # @!attribute updated_at
-      #   The time the Proof of Authorization Request Submission was last updated.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/updated_at
       #
       #   @return [Time]
       required :updated_at, Time
 
       # @!attribute validated_account_ownership_via_credential
-      #   Whether account ownership was validated via credential (for instance, Plaid).
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/validated_account_ownership_via_credential
       #
       #   @return [Boolean, nil]
       required :validated_account_ownership_via_credential, Increase::Internal::Type::Boolean, nil?: true
 
       # @!attribute validated_account_ownership_with_account_statement
-      #   Whether account ownership was validated with an account statement.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/validated_account_ownership_with_account_statement
       #
       #   @return [Boolean, nil]
       required :validated_account_ownership_with_account_statement,
@@ -112,17 +109,13 @@ module Increase
                nil?: true
 
       # @!attribute validated_account_ownership_with_microdeposit
-      #   Whether account ownership was validated with microdeposit.
+      #   #/components/schemas/proof_of_authorization_request_submission/properties/validated_account_ownership_with_microdeposit
       #
       #   @return [Boolean, nil]
       required :validated_account_ownership_with_microdeposit, Increase::Internal::Type::Boolean, nil?: true
 
       # @!parse
-      #   # Information submitted in response to a proof of authorization request. Per
-      #   # Nacha's guidance on proof of authorization, the originator must ensure that the
-      #   # authorization complies with applicable legal requirements, is readily
-      #   # identifiable as an authorization, and has clear and readily understandable
-      #   # terms.
+      #   # #/components/schemas/proof_of_authorization_request_submission
       #   #
       #   # @param id [String]
       #   # @param additional_evidence_file_id [String, nil]
@@ -169,7 +162,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # Status of the proof of authorization request submission.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/status
       #
       # @see Increase::Models::ProofOfAuthorizationRequestSubmission#status
       module Status
@@ -197,8 +190,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `proof_of_authorization_request_submission`.
+      # #/components/schemas/proof_of_authorization_request_submission/properties/type
       #
       # @see Increase::Models::ProofOfAuthorizationRequestSubmission#type
       module Type

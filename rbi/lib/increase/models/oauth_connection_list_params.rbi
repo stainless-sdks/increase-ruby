@@ -6,23 +6,21 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Return the page of entries after this one.
+      # #/paths//oauth_connections/get/parameters/0/schema
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      # #/paths//oauth_connections/get/parameters/1/schema
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      # Filter results to only include OAuth Connections for a specific OAuth
-      # Application.
+      # #/paths//oauth_connections/get/parameters/3/schema
       sig { returns(T.nilable(String)) }
       attr_reader :oauth_application_id
 
@@ -65,9 +63,7 @@ module Increase
       def to_hash; end
 
       class Status < Increase::Internal::Type::BaseModel
-        # Filter to OAuth Connections by their status. By default, return only the
-        # `active` ones. For GET requests, this should be encoded as a comma-delimited
-        # string, such as `?in=one,two,three`.
+        # #/paths//oauth_connections/get/parameters/2/schema
         sig { returns(T.nilable(T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 
@@ -83,6 +79,7 @@ module Increase
         sig { override.returns({in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
+        # #/paths//oauth_connections/get/parameters/2/schema/items
         module In
           extend Increase::Internal::Type::Enum
 

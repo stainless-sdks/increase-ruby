@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute name
-        #   The name of the program being added.
+        #   #/components/schemas/sandbox_create_a_program_parameters/properties/name
         #
         #   @return [String]
         required :name, String

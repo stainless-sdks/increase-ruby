@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::Program)
       end
       def retrieve(
-        # The identifier of the Program to retrieve.
+        # #/paths//programs/{program_id}/get/parameters/0/schema
         program_id,
         request_options: {}
       ); end
@@ -26,10 +26,9 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::Program])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//programs/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//programs/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

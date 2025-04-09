@@ -5,46 +5,43 @@ module Increase
     # @see Increase::Resources::Documents#retrieve
     class Document < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Document identifier.
+      #   #/components/schemas/document/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute category
-      #   The type of document.
+      #   #/components/schemas/document/properties/category
       #
       #   @return [Symbol, Increase::Models::Document::Category]
       required :category, enum: -> { Increase::Models::Document::Category }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Document was created.
+      #   #/components/schemas/document/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute entity_id
-      #   The identifier of the Entity the document was generated for.
+      #   #/components/schemas/document/properties/entity_id
       #
       #   @return [String, nil]
       required :entity_id, String, nil?: true
 
       # @!attribute file_id
-      #   The identifier of the File containing the Document's contents.
+      #   #/components/schemas/document/properties/file_id
       #
       #   @return [String]
       required :file_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `document`.
+      #   #/components/schemas/document/properties/type
       #
       #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
 
       # @!parse
-      #   # Increase generates certain documents / forms automatically for your application;
-      #   # they can be listed here.
+      #   # #/components/schemas/document
       #   #
       #   # @param id [String]
       #   # @param category [Symbol, Increase::Models::Document::Category]
@@ -57,7 +54,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The type of document.
+      # #/components/schemas/document/properties/category
       #
       # @see Increase::Models::Document#category
       module Category
@@ -82,8 +79,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `document`.
+      # #/components/schemas/document/properties/type
       #
       # @see Increase::Models::Document#type
       module Type

@@ -16,7 +16,7 @@ module Increase
             .returns(Increase::Models::WireTransfer)
         end
         def reverse(
-          # The identifier of the Wire Transfer you wish to reverse.
+          # #/paths//simulations/wire_transfers/{wire_transfer_id}/reverse/post/parameters/0/schema
           wire_transfer_id,
           request_options: {}
         ); end
@@ -31,7 +31,7 @@ module Increase
             .returns(Increase::Models::WireTransfer)
         end
         def submit(
-          # The identifier of the Wire Transfer you wish to submit.
+          # #/paths//simulations/wire_transfers/{wire_transfer_id}/submit/post/parameters/0/schema
           wire_transfer_id,
           request_options: {}
         ); end

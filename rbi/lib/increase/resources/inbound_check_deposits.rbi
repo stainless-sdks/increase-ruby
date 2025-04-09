@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::InboundCheckDeposit)
       end
       def retrieve(
-        # The identifier of the Inbound Check Deposit to get details for.
+        # #/paths//inbound_check_deposits/{inbound_check_deposit_id}/get/parameters/0/schema
         inbound_check_deposit_id,
         request_options: {}
       ); end
@@ -29,16 +29,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::InboundCheckDeposit])
       end
       def list(
-        # Filter Inbound Check Deposits to those belonging to the specified Account.
+        # #/paths//inbound_check_deposits/get/parameters/2/schema
         account_id: nil,
-        # Filter Inbound Check Deposits to those belonging to the specified Check
-        # Transfer.
+        # #/paths//inbound_check_deposits/get/parameters/3/schema
         check_transfer_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//inbound_check_deposits/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//inbound_check_deposits/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end
@@ -51,7 +49,7 @@ module Increase
           .returns(Increase::Models::InboundCheckDeposit)
       end
       def decline(
-        # The identifier of the Inbound Check Deposit to decline.
+        # #/paths//inbound_check_deposits/{inbound_check_deposit_id}/decline/post/parameters/0/schema
         inbound_check_deposit_id,
         request_options: {}
       ); end
@@ -65,9 +63,9 @@ module Increase
           .returns(Increase::Models::InboundCheckDeposit)
       end
       def return_(
-        # The identifier of the Inbound Check Deposit to return.
+        # #/paths//inbound_check_deposits/{inbound_check_deposit_id}/return/post/parameters/0/schema
         inbound_check_deposit_id,
-        # The reason to return the Inbound Check Deposit.
+        # #/components/schemas/return_an_inbound_check_deposit_parameters/properties/reason
         reason:,
         request_options: {}
       ); end

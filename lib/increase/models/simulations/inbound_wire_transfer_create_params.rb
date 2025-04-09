@@ -10,20 +10,19 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_number_id
-        #   The identifier of the Account Number the inbound Wire Transfer is for.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/account_number_id
         #
         #   @return [String]
         required :account_number_id, String
 
         # @!attribute amount
-        #   The transfer amount in cents. Must be positive.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute [r] beneficiary_address_line1
-        #   The sending bank will set beneficiary_address_line1 in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line1
         #
         #   @return [String, nil]
         optional :beneficiary_address_line1, String
@@ -33,8 +32,7 @@ module Increase
         #   attr_writer :beneficiary_address_line1
 
         # @!attribute [r] beneficiary_address_line2
-        #   The sending bank will set beneficiary_address_line2 in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line2
         #
         #   @return [String, nil]
         optional :beneficiary_address_line2, String
@@ -44,8 +42,7 @@ module Increase
         #   attr_writer :beneficiary_address_line2
 
         # @!attribute [r] beneficiary_address_line3
-        #   The sending bank will set beneficiary_address_line3 in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_address_line3
         #
         #   @return [String, nil]
         optional :beneficiary_address_line3, String
@@ -55,8 +52,7 @@ module Increase
         #   attr_writer :beneficiary_address_line3
 
         # @!attribute [r] beneficiary_name
-        #   The sending bank will set beneficiary_name in production. You can simulate any
-        #   value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_name
         #
         #   @return [String, nil]
         optional :beneficiary_name, String
@@ -66,8 +62,7 @@ module Increase
         #   attr_writer :beneficiary_name
 
         # @!attribute [r] beneficiary_reference
-        #   The sending bank will set beneficiary_reference in production. You can simulate
-        #   any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/beneficiary_reference
         #
         #   @return [String, nil]
         optional :beneficiary_reference, String
@@ -77,8 +72,7 @@ module Increase
         #   attr_writer :beneficiary_reference
 
         # @!attribute [r] originator_address_line1
-        #   The sending bank will set originator_address_line1 in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line1
         #
         #   @return [String, nil]
         optional :originator_address_line1, String
@@ -88,8 +82,7 @@ module Increase
         #   attr_writer :originator_address_line1
 
         # @!attribute [r] originator_address_line2
-        #   The sending bank will set originator_address_line2 in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line2
         #
         #   @return [String, nil]
         optional :originator_address_line2, String
@@ -99,8 +92,7 @@ module Increase
         #   attr_writer :originator_address_line2
 
         # @!attribute [r] originator_address_line3
-        #   The sending bank will set originator_address_line3 in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_address_line3
         #
         #   @return [String, nil]
         optional :originator_address_line3, String
@@ -110,8 +102,7 @@ module Increase
         #   attr_writer :originator_address_line3
 
         # @!attribute [r] originator_name
-        #   The sending bank will set originator_name in production. You can simulate any
-        #   value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_name
         #
         #   @return [String, nil]
         optional :originator_name, String
@@ -121,8 +112,7 @@ module Increase
         #   attr_writer :originator_name
 
         # @!attribute [r] originator_routing_number
-        #   The sending bank will set originator_routing_number in production. You can
-        #   simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_routing_number
         #
         #   @return [String, nil]
         optional :originator_routing_number, String
@@ -132,8 +122,7 @@ module Increase
         #   attr_writer :originator_routing_number
 
         # @!attribute [r] originator_to_beneficiary_information_line1
-        #   The sending bank will set originator_to_beneficiary_information_line1 in
-        #   production. You can simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line1
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line1, String
@@ -143,8 +132,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line1
 
         # @!attribute [r] originator_to_beneficiary_information_line2
-        #   The sending bank will set originator_to_beneficiary_information_line2 in
-        #   production. You can simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line2
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line2, String
@@ -154,8 +142,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line2
 
         # @!attribute [r] originator_to_beneficiary_information_line3
-        #   The sending bank will set originator_to_beneficiary_information_line3 in
-        #   production. You can simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line3
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line3, String
@@ -165,8 +152,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line3
 
         # @!attribute [r] originator_to_beneficiary_information_line4
-        #   The sending bank will set originator_to_beneficiary_information_line4 in
-        #   production. You can simulate any value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/originator_to_beneficiary_information_line4
         #
         #   @return [String, nil]
         optional :originator_to_beneficiary_information_line4, String
@@ -176,8 +162,7 @@ module Increase
         #   attr_writer :originator_to_beneficiary_information_line4
 
         # @!attribute [r] sender_reference
-        #   The sending bank will set sender_reference in production. You can simulate any
-        #   value here.
+        #   #/components/schemas/sandbox_create_an_inbound_wire_transfer_parameters/properties/sender_reference
         #
         #   @return [String, nil]
         optional :sender_reference, String

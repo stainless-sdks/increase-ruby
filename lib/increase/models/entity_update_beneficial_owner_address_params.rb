@@ -9,15 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute address
-      #   The individual's physical address. Mail receiving locations like PO Boxes and
-      #   PMB's are disallowed.
+      #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address
       #
       #   @return [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address }
 
       # @!attribute beneficial_owner_id
-      #   The identifying details of anyone controlling or owning 25% or more of the
-      #   corporation.
+      #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/beneficial_owner_id
       #
       #   @return [String]
       required :beneficial_owner_id, String
@@ -33,20 +31,19 @@ module Increase
 
       class Address < Increase::Internal::Type::BaseModel
         # @!attribute country
-        #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+        #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address/properties/country
         #
         #   @return [String]
         required :country, String
 
         # @!attribute line1
-        #   The first line of the address. This is usually the street number and street.
+        #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address/properties/line1
         #
         #   @return [String]
         required :line1, String
 
         # @!attribute [r] city
-        #   The city, district, town, or village of the address. Required in certain
-        #   countries.
+        #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address/properties/city
         #
         #   @return [String, nil]
         optional :city, String
@@ -56,7 +53,7 @@ module Increase
         #   attr_writer :city
 
         # @!attribute [r] line2
-        #   The second line of the address. This might be the floor or room number.
+        #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address/properties/line2
         #
         #   @return [String, nil]
         optional :line2, String
@@ -66,8 +63,7 @@ module Increase
         #   attr_writer :line2
 
         # @!attribute [r] state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the US
-        #   state, province, or region of the address. Required in certain countries.
+        #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address/properties/state
         #
         #   @return [String, nil]
         optional :state, String
@@ -77,7 +73,7 @@ module Increase
         #   attr_writer :state
 
         # @!attribute [r] zip
-        #   The ZIP or postal code of the address. Required in certain countries.
+        #   #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address/properties/zip
         #
         #   @return [String, nil]
         optional :zip, String
@@ -87,8 +83,7 @@ module Increase
         #   attr_writer :zip
 
         # @!parse
-        #   # The individual's physical address. Mail receiving locations like PO Boxes and
-        #   # PMB's are disallowed.
+        #   # #/components/schemas/update_the_address_for_a_beneficial_owner_belonging_to_a_corporate_entity_parameters/properties/address
         #   #
         #   # @param country [String]
         #   # @param line1 [String]

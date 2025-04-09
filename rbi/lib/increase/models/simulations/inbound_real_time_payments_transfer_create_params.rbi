@@ -7,44 +7,43 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        # for.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/account_number_id
         sig { returns(String) }
         attr_accessor :account_number_id
 
-        # The transfer amount in USD cents. Must be positive.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The account number of the account that sent the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_account_number
         sig { returns(T.nilable(String)) }
         attr_reader :debtor_account_number
 
         sig { params(debtor_account_number: String).void }
         attr_writer :debtor_account_number
 
-        # The name provided by the sender of the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_name
         sig { returns(T.nilable(String)) }
         attr_reader :debtor_name
 
         sig { params(debtor_name: String).void }
         attr_writer :debtor_name
 
-        # The routing number of the account that sent the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_routing_number
         sig { returns(T.nilable(String)) }
         attr_reader :debtor_routing_number
 
         sig { params(debtor_routing_number: String).void }
         attr_writer :debtor_routing_number
 
-        # Additional information included with the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/remittance_information
         sig { returns(T.nilable(String)) }
         attr_reader :remittance_information
 
         sig { params(remittance_information: String).void }
         attr_writer :remittance_information
 
-        # The identifier of a pending Request for Payment that this transfer will fulfill.
+        # #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/request_for_payment_id
         sig { returns(T.nilable(String)) }
         attr_reader :request_for_payment_id
 

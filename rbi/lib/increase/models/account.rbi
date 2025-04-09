@@ -3,80 +3,67 @@
 module Increase
   module Models
     class Account < Increase::Internal::Type::BaseModel
-      # The Account identifier.
+      # #/components/schemas/account/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The bank the Account is with.
+      # #/components/schemas/account/properties/bank
       sig { returns(Increase::Models::Account::Bank::TaggedSymbol) }
       attr_accessor :bank
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      # was closed.
+      # #/components/schemas/account/properties/closed_at
       sig { returns(T.nilable(Time)) }
       attr_accessor :closed_at
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      # was created.
+      # #/components/schemas/account/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      # currency.
+      # #/components/schemas/account/properties/currency
       sig { returns(Increase::Models::Account::Currency::TaggedSymbol) }
       attr_accessor :currency
 
-      # The identifier for the Entity the Account belongs to.
+      # #/components/schemas/account/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_accessor :entity_id
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/account/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The identifier of an Entity that, while not owning the Account, is associated
-      # with its activity.
+      # #/components/schemas/account/properties/informational_entity_id
       sig { returns(T.nilable(String)) }
       attr_accessor :informational_entity_id
 
-      # The interest accrued but not yet paid, expressed as a string containing a
-      # floating-point value.
+      # #/components/schemas/account/properties/interest_accrued
       sig { returns(String) }
       attr_accessor :interest_accrued
 
-      # The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-      # interest was accrued.
+      # #/components/schemas/account/properties/interest_accrued_at
       sig { returns(T.nilable(Date)) }
       attr_accessor :interest_accrued_at
 
-      # The Interest Rate currently being earned on the account, as a string containing
-      # a decimal number. For example, a 1% interest rate would be represented as
-      # "0.01".
+      # #/components/schemas/account/properties/interest_rate
       sig { returns(String) }
       attr_accessor :interest_rate
 
-      # The name you choose for the Account.
+      # #/components/schemas/account/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # The identifier of the Program determining the compliance and commercial terms of
-      # this Account.
+      # #/components/schemas/account/properties/program_id
       sig { returns(String) }
       attr_accessor :program_id
 
-      # The status of the Account.
+      # #/components/schemas/account/properties/status
       sig { returns(Increase::Models::Account::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account`.
+      # #/components/schemas/account/properties/type
       sig { returns(Increase::Models::Account::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Accounts are your bank accounts with Increase. They store money, receive
-      # transfers, and send payments. They earn interest and have depository insurance.
+      # #/components/schemas/account
       sig do
         params(
           id: String,
@@ -138,7 +125,7 @@ module Increase
       end
       def to_hash; end
 
-      # The bank the Account is with.
+      # #/components/schemas/account/properties/bank
       module Bank
         extend Increase::Internal::Type::Enum
 
@@ -158,8 +145,7 @@ module Increase
         def self.values; end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      # currency.
+      # #/components/schemas/account/properties/currency
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -188,7 +174,7 @@ module Increase
         def self.values; end
       end
 
-      # The status of the Account.
+      # #/components/schemas/account/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -205,8 +191,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account`.
+      # #/components/schemas/account/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

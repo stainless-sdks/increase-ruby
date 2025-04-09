@@ -10,14 +10,13 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
-        #   The amount of the fuel_confirmation in minor units in the card authorization's
-        #   currency.
+        #   #/components/schemas/sandbox_confirm_the_fuel_pump_amount_for_a_card_authorization_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute card_payment_id
-        #   The identifier of the Card Payment to create a fuel_confirmation on.
+        #   #/components/schemas/sandbox_confirm_the_fuel_pump_amount_for_a_card_authorization_parameters/properties/card_payment_id
         #
         #   @return [String]
         required :card_payment_id, String

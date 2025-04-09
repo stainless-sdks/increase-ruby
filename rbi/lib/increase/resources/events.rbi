@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::Event)
       end
       def retrieve(
-        # The identifier of the Event.
+        # #/paths//events/{event_id}/get/parameters/0/schema
         event_id,
         request_options: {}
       ); end
@@ -29,14 +29,13 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::Event])
       end
       def list(
-        # Filter Events to those belonging to the object with the provided identifier.
+        # #/paths//events/get/parameters/7/schema
         associated_object_id: nil,
         category: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//events/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//events/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

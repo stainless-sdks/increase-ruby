@@ -5,163 +5,157 @@ module Increase
     # @see Increase::Resources::InboundWireTransfers#retrieve
     class InboundWireTransfer < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The inbound wire transfer's identifier.
+      #   #/components/schemas/inbound_wire_transfer/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The Account to which the transfer belongs.
+      #   #/components/schemas/inbound_wire_transfer/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute account_number_id
-      #   The identifier of the Account Number to which this transfer was sent.
+      #   #/components/schemas/inbound_wire_transfer/properties/account_number_id
       #
       #   @return [String]
       required :account_number_id, String
 
       # @!attribute amount
-      #   The amount in USD cents.
+      #   #/components/schemas/inbound_wire_transfer/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute beneficiary_address_line1
-      #   A free-form address field set by the sender.
+      #   #/components/schemas/inbound_wire_transfer/properties/beneficiary_address_line1
       #
       #   @return [String, nil]
       required :beneficiary_address_line1, String, nil?: true
 
       # @!attribute beneficiary_address_line2
-      #   A free-form address field set by the sender.
+      #   #/components/schemas/inbound_wire_transfer/properties/beneficiary_address_line2
       #
       #   @return [String, nil]
       required :beneficiary_address_line2, String, nil?: true
 
       # @!attribute beneficiary_address_line3
-      #   A free-form address field set by the sender.
+      #   #/components/schemas/inbound_wire_transfer/properties/beneficiary_address_line3
       #
       #   @return [String, nil]
       required :beneficiary_address_line3, String, nil?: true
 
       # @!attribute beneficiary_name
-      #   A name set by the sender.
+      #   #/components/schemas/inbound_wire_transfer/properties/beneficiary_name
       #
       #   @return [String, nil]
       required :beneficiary_name, String, nil?: true
 
       # @!attribute beneficiary_reference
-      #   A free-form reference string set by the sender, to help identify the transfer.
+      #   #/components/schemas/inbound_wire_transfer/properties/beneficiary_reference
       #
       #   @return [String, nil]
       required :beneficiary_reference, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the inbound wire transfer was created.
+      #   #/components/schemas/inbound_wire_transfer/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute description
-      #   An Increase-constructed description of the transfer.
+      #   #/components/schemas/inbound_wire_transfer/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute input_message_accountability_data
-      #   A unique identifier available to the originating and receiving banks, commonly
-      #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-      #   service and is helpful when debugging wires with the originating bank.
+      #   #/components/schemas/inbound_wire_transfer/properties/input_message_accountability_data
       #
       #   @return [String, nil]
       required :input_message_accountability_data, String, nil?: true
 
       # @!attribute originator_address_line1
-      #   The address of the wire originator, set by the sending bank.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_address_line1
       #
       #   @return [String, nil]
       required :originator_address_line1, String, nil?: true
 
       # @!attribute originator_address_line2
-      #   The address of the wire originator, set by the sending bank.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_address_line2
       #
       #   @return [String, nil]
       required :originator_address_line2, String, nil?: true
 
       # @!attribute originator_address_line3
-      #   The address of the wire originator, set by the sending bank.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_address_line3
       #
       #   @return [String, nil]
       required :originator_address_line3, String, nil?: true
 
       # @!attribute originator_name
-      #   The originator of the wire, set by the sending bank.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_name
       #
       #   @return [String, nil]
       required :originator_name, String, nil?: true
 
       # @!attribute originator_routing_number
-      #   The American Banking Association (ABA) routing number of the bank originating
-      #   the transfer.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_routing_number
       #
       #   @return [String, nil]
       required :originator_routing_number, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information
-      #   An Increase-created concatenation of the Originator-to-Beneficiary lines.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line1
-      #   A free-form message set by the wire originator.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line1
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line1, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line2
-      #   A free-form message set by the wire originator.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line2
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line2, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line3
-      #   A free-form message set by the wire originator.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line3
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line3, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line4
-      #   A free-form message set by the wire originator.
+      #   #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line4
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line4, String, nil?: true
 
       # @!attribute sender_reference
-      #   The sending bank's reference number for the wire transfer.
+      #   #/components/schemas/inbound_wire_transfer/properties/sender_reference
       #
       #   @return [String, nil]
       required :sender_reference, String, nil?: true
 
       # @!attribute status
-      #   The status of the transfer.
+      #   #/components/schemas/inbound_wire_transfer/properties/status
       #
       #   @return [Symbol, Increase::Models::InboundWireTransfer::Status]
       required :status, enum: -> { Increase::Models::InboundWireTransfer::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_transfer`.
+      #   #/components/schemas/inbound_wire_transfer/properties/type
       #
       #   @return [Symbol, Increase::Models::InboundWireTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundWireTransfer::Type }
 
       # @!parse
-      #   # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
-      #   # your account.
+      #   # #/components/schemas/inbound_wire_transfer
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -222,7 +216,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The status of the transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/status
       #
       # @see Increase::Models::InboundWireTransfer#status
       module Status
@@ -247,8 +241,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_transfer`.
+      # #/components/schemas/inbound_wire_transfer/properties/type
       #
       # @see Increase::Models::InboundWireTransfer#type
       module Type

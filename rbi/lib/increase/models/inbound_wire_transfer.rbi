@@ -3,113 +3,107 @@
 module Increase
   module Models
     class InboundWireTransfer < Increase::Internal::Type::BaseModel
-      # The inbound wire transfer's identifier.
+      # #/components/schemas/inbound_wire_transfer/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The Account to which the transfer belongs.
+      # #/components/schemas/inbound_wire_transfer/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The identifier of the Account Number to which this transfer was sent.
+      # #/components/schemas/inbound_wire_transfer/properties/account_number_id
       sig { returns(String) }
       attr_accessor :account_number_id
 
-      # The amount in USD cents.
+      # #/components/schemas/inbound_wire_transfer/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # A free-form address field set by the sender.
+      # #/components/schemas/inbound_wire_transfer/properties/beneficiary_address_line1
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_address_line1
 
-      # A free-form address field set by the sender.
+      # #/components/schemas/inbound_wire_transfer/properties/beneficiary_address_line2
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_address_line2
 
-      # A free-form address field set by the sender.
+      # #/components/schemas/inbound_wire_transfer/properties/beneficiary_address_line3
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_address_line3
 
-      # A name set by the sender.
+      # #/components/schemas/inbound_wire_transfer/properties/beneficiary_name
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_name
 
-      # A free-form reference string set by the sender, to help identify the transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/beneficiary_reference
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_reference
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the inbound wire transfer was created.
+      # #/components/schemas/inbound_wire_transfer/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # An Increase-constructed description of the transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # A unique identifier available to the originating and receiving banks, commonly
-      # abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-      # service and is helpful when debugging wires with the originating bank.
+      # #/components/schemas/inbound_wire_transfer/properties/input_message_accountability_data
       sig { returns(T.nilable(String)) }
       attr_accessor :input_message_accountability_data
 
-      # The address of the wire originator, set by the sending bank.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_address_line1
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_address_line1
 
-      # The address of the wire originator, set by the sending bank.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_address_line2
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_address_line2
 
-      # The address of the wire originator, set by the sending bank.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_address_line3
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_address_line3
 
-      # The originator of the wire, set by the sending bank.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_name
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_name
 
-      # The American Banking Association (ABA) routing number of the bank originating
-      # the transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_routing_number
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_routing_number
 
-      # An Increase-created concatenation of the Originator-to-Beneficiary lines.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information
 
-      # A free-form message set by the wire originator.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line1
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line1
 
-      # A free-form message set by the wire originator.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line2
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line2
 
-      # A free-form message set by the wire originator.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line3
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line3
 
-      # A free-form message set by the wire originator.
+      # #/components/schemas/inbound_wire_transfer/properties/originator_to_beneficiary_information_line4
       sig { returns(T.nilable(String)) }
       attr_accessor :originator_to_beneficiary_information_line4
 
-      # The sending bank's reference number for the wire transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/sender_reference
       sig { returns(T.nilable(String)) }
       attr_accessor :sender_reference
 
-      # The status of the transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/status
       sig { returns(Increase::Models::InboundWireTransfer::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_transfer`.
+      # #/components/schemas/inbound_wire_transfer/properties/type
       sig { returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
-      # your account.
+      # #/components/schemas/inbound_wire_transfer
       sig do
         params(
           id: String,
@@ -201,7 +195,7 @@ module Increase
       end
       def to_hash; end
 
-      # The status of the transfer.
+      # #/components/schemas/inbound_wire_transfer/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -225,8 +219,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `inbound_wire_transfer`.
+      # #/components/schemas/inbound_wire_transfer/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

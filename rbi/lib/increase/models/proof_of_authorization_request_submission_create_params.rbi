@@ -6,57 +6,57 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Terms of authorization.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorization_terms
       sig { returns(String) }
       attr_accessor :authorization_terms
 
-      # Time of authorization.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorized_at
       sig { returns(Time) }
       attr_accessor :authorized_at
 
-      # Email of the authorizer.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_email
       sig { returns(String) }
       attr_accessor :authorizer_email
 
-      # Name of the authorizer.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_name
       sig { returns(String) }
       attr_accessor :authorizer_name
 
-      # Whether the customer has been offboarded or suspended.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/customer_has_been_offboarded
       sig { returns(T::Boolean) }
       attr_accessor :customer_has_been_offboarded
 
-      # ID of the proof of authorization request.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/proof_of_authorization_request_id
       sig { returns(String) }
       attr_accessor :proof_of_authorization_request_id
 
-      # Whether the account ownership was validated via credential (e.g. Plaid).
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_via_credential
       sig { returns(T::Boolean) }
       attr_accessor :validated_account_ownership_via_credential
 
-      # Whether the account ownership was validated with an account statement.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_with_account_statement
       sig { returns(T::Boolean) }
       attr_accessor :validated_account_ownership_with_account_statement
 
-      # Whether the account ownership was validated with a microdeposit.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_with_microdeposit
       sig { returns(T::Boolean) }
       attr_accessor :validated_account_ownership_with_microdeposit
 
-      # File containing additional evidence.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/additional_evidence_file_id
       sig { returns(T.nilable(String)) }
       attr_reader :additional_evidence_file_id
 
       sig { params(additional_evidence_file_id: String).void }
       attr_writer :additional_evidence_file_id
 
-      # Company of the authorizer.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_company
       sig { returns(T.nilable(String)) }
       attr_reader :authorizer_company
 
       sig { params(authorizer_company: String).void }
       attr_writer :authorizer_company
 
-      # IP address of the authorizer.
+      # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_ip_address
       sig { returns(T.nilable(String)) }
       attr_reader :authorizer_ip_address
 

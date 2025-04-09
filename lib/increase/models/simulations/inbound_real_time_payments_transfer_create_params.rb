@@ -10,20 +10,19 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_number_id
-        #   The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        #   for.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/account_number_id
         #
         #   @return [String]
         required :account_number_id, String
 
         # @!attribute amount
-        #   The transfer amount in USD cents. Must be positive.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute [r] debtor_account_number
-        #   The account number of the account that sent the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_account_number
         #
         #   @return [String, nil]
         optional :debtor_account_number, String
@@ -33,7 +32,7 @@ module Increase
         #   attr_writer :debtor_account_number
 
         # @!attribute [r] debtor_name
-        #   The name provided by the sender of the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_name
         #
         #   @return [String, nil]
         optional :debtor_name, String
@@ -43,7 +42,7 @@ module Increase
         #   attr_writer :debtor_name
 
         # @!attribute [r] debtor_routing_number
-        #   The routing number of the account that sent the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/debtor_routing_number
         #
         #   @return [String, nil]
         optional :debtor_routing_number, String
@@ -53,7 +52,7 @@ module Increase
         #   attr_writer :debtor_routing_number
 
         # @!attribute [r] remittance_information
-        #   Additional information included with the transfer.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/remittance_information
         #
         #   @return [String, nil]
         optional :remittance_information, String
@@ -63,7 +62,7 @@ module Increase
         #   attr_writer :remittance_information
 
         # @!attribute [r] request_for_payment_id
-        #   The identifier of a pending Request for Payment that this transfer will fulfill.
+        #   #/components/schemas/sandbox_create_an_inbound_real_time_payments_transfer_parameters/properties/request_for_payment_id
         #
         #   @return [String, nil]
         optional :request_for_payment_id, String

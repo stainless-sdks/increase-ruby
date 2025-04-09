@@ -5,75 +5,67 @@ module Increase
     # @see Increase::Resources::IntrafiExclusions#create
     class IntrafiExclusion < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The identifier of this exclusion request.
+      #   #/components/schemas/intrafi_exclusion/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute bank_name
-      #   The name of the excluded institution.
+      #   #/components/schemas/intrafi_exclusion/properties/bank_name
       #
       #   @return [String]
       required :bank_name, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the exclusion was created.
+      #   #/components/schemas/intrafi_exclusion/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute entity_id
-      #   The entity for which this institution is excluded.
+      #   #/components/schemas/intrafi_exclusion/properties/entity_id
       #
       #   @return [String]
       required :entity_id, String
 
       # @!attribute excluded_at
-      #   When this was exclusion was confirmed by IntraFi.
+      #   #/components/schemas/intrafi_exclusion/properties/excluded_at
       #
       #   @return [Time, nil]
       required :excluded_at, Time, nil?: true
 
       # @!attribute fdic_certificate_number
-      #   The Federal Deposit Insurance Corporation's certificate number for the
-      #   institution.
+      #   #/components/schemas/intrafi_exclusion/properties/fdic_certificate_number
       #
       #   @return [String, nil]
       required :fdic_certificate_number, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/intrafi_exclusion/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute status
-      #   The status of the exclusion request.
+      #   #/components/schemas/intrafi_exclusion/properties/status
       #
       #   @return [Symbol, Increase::Models::IntrafiExclusion::Status]
       required :status, enum: -> { Increase::Models::IntrafiExclusion::Status }
 
       # @!attribute submitted_at
-      #   When this was exclusion was submitted to IntraFi by Increase.
+      #   #/components/schemas/intrafi_exclusion/properties/submitted_at
       #
       #   @return [Time, nil]
       required :submitted_at, Time, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `intrafi_exclusion`.
+      #   #/components/schemas/intrafi_exclusion/properties/type
       #
       #   @return [Symbol, Increase::Models::IntrafiExclusion::Type]
       required :type, enum: -> { Increase::Models::IntrafiExclusion::Type }
 
       # @!parse
-      #   # Certain institutions may be excluded per Entity when sweeping funds into the
-      #   # IntraFi network. This is useful when an Entity already has deposits at a
-      #   # particular bank, and does not want to sweep additional funds to it. It may take
-      #   # 5 business days for an exclusion to be processed.
+      #   # #/components/schemas/intrafi_exclusion
       #   #
       #   # @param id [String]
       #   # @param bank_name [String]
@@ -104,7 +96,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The status of the exclusion request.
+      # #/components/schemas/intrafi_exclusion/properties/status
       #
       # @see Increase::Models::IntrafiExclusion#status
       module Status
@@ -126,8 +118,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_exclusion`.
+      # #/components/schemas/intrafi_exclusion/properties/type
       #
       # @see Increase::Models::IntrafiExclusion#type
       module Type

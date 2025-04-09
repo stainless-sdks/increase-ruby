@@ -3,33 +3,30 @@
 module Increase
   module Models
     class Card < Increase::Internal::Type::BaseModel
-      # The card identifier.
+      # #/components/schemas/card/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier for the account this card belongs to.
+      # #/components/schemas/card/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The Card's billing address.
+      # #/components/schemas/card/properties/billing_address
       sig { returns(Increase::Models::Card::BillingAddress) }
       attr_reader :billing_address
 
       sig { params(billing_address: T.any(Increase::Models::Card::BillingAddress, Increase::Internal::AnyHash)).void }
       attr_writer :billing_address
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Card was created.
+      # #/components/schemas/card/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The card's description for display purposes.
+      # #/components/schemas/card/properties/description
       sig { returns(T.nilable(String)) }
       attr_accessor :description
 
-      # The contact information used in the two-factor steps for digital wallet card
-      # creation. At least one field must be present to complete the digital wallet
-      # steps.
+      # #/components/schemas/card/properties/digital_wallet
       sig { returns(T.nilable(Increase::Models::Card::DigitalWallet)) }
       attr_reader :digital_wallet
 
@@ -41,41 +38,35 @@ module Increase
       end
       attr_writer :digital_wallet
 
-      # The identifier for the entity associated with this card.
+      # #/components/schemas/card/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_accessor :entity_id
 
-      # The month the card expires in M format (e.g., August is 8).
+      # #/components/schemas/card/properties/expiration_month
       sig { returns(Integer) }
       attr_accessor :expiration_month
 
-      # The year the card expires in YYYY format (e.g., 2025).
+      # #/components/schemas/card/properties/expiration_year
       sig { returns(Integer) }
       attr_accessor :expiration_year
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/card/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The last 4 digits of the Card's Primary Account Number.
+      # #/components/schemas/card/properties/last4
       sig { returns(String) }
       attr_accessor :last4
 
-      # This indicates if payments can be made with the card.
+      # #/components/schemas/card/properties/status
       sig { returns(Increase::Models::Card::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card`.
+      # #/components/schemas/card/properties/type
       sig { returns(Increase::Models::Card::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Cards are commercial credit cards. They'll immediately work for online purchases
-      # after you create them. All cards maintain a credit limit of 100% of the
-      # Account’s available balance at the time of transaction. Funds are deducted from
-      # the Account upon transaction settlement.
+      # #/components/schemas/card
       sig do
         params(
           id: String,
@@ -132,27 +123,27 @@ module Increase
       def to_hash; end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        # The city of the billing address.
+        # #/components/schemas/card/properties/billing_address/properties/city
         sig { returns(T.nilable(String)) }
         attr_accessor :city
 
-        # The first line of the billing address.
+        # #/components/schemas/card/properties/billing_address/properties/line1
         sig { returns(T.nilable(String)) }
         attr_accessor :line1
 
-        # The second line of the billing address.
+        # #/components/schemas/card/properties/billing_address/properties/line2
         sig { returns(T.nilable(String)) }
         attr_accessor :line2
 
-        # The postal code of the billing address.
+        # #/components/schemas/card/properties/billing_address/properties/postal_code
         sig { returns(T.nilable(String)) }
         attr_accessor :postal_code
 
-        # The US state of the billing address.
+        # #/components/schemas/card/properties/billing_address/properties/state
         sig { returns(T.nilable(String)) }
         attr_accessor :state
 
-        # The Card's billing address.
+        # #/components/schemas/card/properties/billing_address
         sig do
           params(
             city: T.nilable(String),
@@ -181,24 +172,19 @@ module Increase
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        # The digital card profile assigned to this digital card. Card profiles may also
-        # be assigned at the program level.
+        # #/components/schemas/card/properties/digital_wallet/anyOf/0/properties/digital_card_profile_id
         sig { returns(T.nilable(String)) }
         attr_accessor :digital_card_profile_id
 
-        # An email address that can be used to verify the cardholder via one-time passcode
-        # over email.
+        # #/components/schemas/card/properties/digital_wallet/anyOf/0/properties/email
         sig { returns(T.nilable(String)) }
         attr_accessor :email
 
-        # A phone number that can be used to verify the cardholder via one-time passcode
-        # over SMS.
+        # #/components/schemas/card/properties/digital_wallet/anyOf/0/properties/phone
         sig { returns(T.nilable(String)) }
         attr_accessor :phone
 
-        # The contact information used in the two-factor steps for digital wallet card
-        # creation. At least one field must be present to complete the digital wallet
-        # steps.
+        # #/components/schemas/card/properties/digital_wallet
         sig do
           params(
             digital_card_profile_id: T.nilable(String),
@@ -220,7 +206,7 @@ module Increase
         def to_hash; end
       end
 
-      # This indicates if payments can be made with the card.
+      # #/components/schemas/card/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -240,8 +226,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card`.
+      # #/components/schemas/card/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

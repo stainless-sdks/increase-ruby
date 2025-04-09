@@ -20,23 +20,23 @@ module Increase
           .returns(Increase::Models::DigitalCardProfile)
       end
       def create(
-        # The identifier of the File containing the card's icon image.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/app_icon_file_id
         app_icon_file_id:,
-        # The identifier of the File containing the card's front image.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/background_image_file_id
         background_image_file_id:,
-        # A user-facing description for the card itself.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/card_description
         card_description:,
-        # A description you can use to identify the Card Profile.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/description
         description:,
-        # A user-facing description for whoever is issuing the card.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/issuer_name
         issuer_name:,
-        # An email address the user can contact to receive support for their card.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/contact_email
         contact_email: nil,
-        # A phone number the user can contact to receive support for their card.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/contact_phone
         contact_phone: nil,
-        # A website the user can visit to view and receive support for their card.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/contact_website
         contact_website: nil,
-        # The Card's text color, specified as an RGB triple. The default is white.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/text_color
         text_color: nil,
         request_options: {}
       ); end
@@ -49,7 +49,7 @@ module Increase
           .returns(Increase::Models::DigitalCardProfile)
       end
       def retrieve(
-        # The identifier of the Digital Card Profile.
+        # #/paths//digital_card_profiles/{digital_card_profile_id}/get/parameters/0/schema
         digital_card_profile_id,
         request_options: {}
       ); end
@@ -65,15 +65,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::DigitalCardProfile])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//digital_card_profiles/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//digital_card_profiles/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//digital_card_profiles/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -87,7 +83,7 @@ module Increase
           .returns(Increase::Models::DigitalCardProfile)
       end
       def archive(
-        # The identifier of the Digital Card Profile to archive.
+        # #/paths//digital_card_profiles/{digital_card_profile_id}/archive/post/parameters/0/schema
         digital_card_profile_id,
         request_options: {}
       ); end
@@ -109,25 +105,25 @@ module Increase
           .returns(Increase::Models::DigitalCardProfile)
       end
       def clone_(
-        # The identifier of the Digital Card Profile to clone.
+        # #/paths//digital_card_profiles/{digital_card_profile_id}/clone/post/parameters/0/schema
         digital_card_profile_id,
-        # The identifier of the File containing the card's icon image.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/app_icon_file_id
         app_icon_file_id: nil,
-        # The identifier of the File containing the card's front image.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/background_image_file_id
         background_image_file_id: nil,
-        # A user-facing description for the card itself.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/card_description
         card_description: nil,
-        # An email address the user can contact to receive support for their card.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/contact_email
         contact_email: nil,
-        # A phone number the user can contact to receive support for their card.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/contact_phone
         contact_phone: nil,
-        # A website the user can visit to view and receive support for their card.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/contact_website
         contact_website: nil,
-        # A description you can use to identify the Card Profile.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/description
         description: nil,
-        # A user-facing description for whoever is issuing the card.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/issuer_name
         issuer_name: nil,
-        # The Card's text color, specified as an RGB triple. The default is white.
+        # #/components/schemas/clones_a_digital_card_profile_parameters/properties/text_color
         text_color: nil,
         request_options: {}
       ); end

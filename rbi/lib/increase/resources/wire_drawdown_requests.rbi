@@ -24,39 +24,31 @@ module Increase
           .returns(Increase::Models::WireDrawdownRequest)
       end
       def create(
-        # The Account Number to which the recipient should send funds.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/account_number_id
         account_number_id:,
-        # The amount requested from the recipient, in USD cents.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/amount
         amount:,
-        # A message the recipient will see as part of the request.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/message_to_recipient
         message_to_recipient:,
-        # The drawdown request's recipient's account number.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_account_number
         recipient_account_number:,
-        # The drawdown request's recipient's name.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_name
         recipient_name:,
-        # The drawdown request's recipient's routing number.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_routing_number
         recipient_routing_number:,
-        # The drawdown request originator's address line 1. This is only necessary if
-        # you're requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_address_line1
         originator_address_line1: nil,
-        # The drawdown request originator's address line 2. This is only necessary if
-        # you're requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_address_line2
         originator_address_line2: nil,
-        # The drawdown request originator's address line 3. This is only necessary if
-        # you're requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_address_line3
         originator_address_line3: nil,
-        # The drawdown request originator's name. This is only necessary if you're
-        # requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/originator_name
         originator_name: nil,
-        # Line 1 of the drawdown request's recipient's address.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_address_line1
         recipient_address_line1: nil,
-        # Line 2 of the drawdown request's recipient's address.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_address_line2
         recipient_address_line2: nil,
-        # Line 3 of the drawdown request's recipient's address.
+        # #/components/schemas/create_a_wire_drawdown_request_parameters/properties/recipient_address_line3
         recipient_address_line3: nil,
         request_options: {}
       ); end
@@ -69,7 +61,7 @@ module Increase
           .returns(Increase::Models::WireDrawdownRequest)
       end
       def retrieve(
-        # The identifier of the Wire Drawdown Request to retrieve.
+        # #/paths//wire_drawdown_requests/{wire_drawdown_request_id}/get/parameters/0/schema
         wire_drawdown_request_id,
         request_options: {}
       ); end
@@ -85,15 +77,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::WireDrawdownRequest])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//wire_drawdown_requests/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//wire_drawdown_requests/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//wire_drawdown_requests/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}

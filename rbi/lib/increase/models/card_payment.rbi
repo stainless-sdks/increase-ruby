@@ -3,49 +3,46 @@
 module Increase
   module Models
     class CardPayment < Increase::Internal::Type::BaseModel
-      # The Card Payment identifier.
+      # #/components/schemas/card_payment/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier for the Account the Transaction belongs to.
+      # #/components/schemas/card_payment/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The Card identifier for this payment.
+      # #/components/schemas/card_payment/properties/card_id
       sig { returns(String) }
       attr_accessor :card_id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-      # Payment was created.
+      # #/components/schemas/card_payment/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The Digital Wallet Token identifier for this payment.
+      # #/components/schemas/card_payment/properties/digital_wallet_token_id
       sig { returns(T.nilable(String)) }
       attr_accessor :digital_wallet_token_id
 
-      # The interactions related to this card payment.
+      # #/components/schemas/card_payment/properties/elements
       sig { returns(T::Array[Increase::Models::CardPayment::Element]) }
       attr_accessor :elements
 
-      # The Physical Card identifier for this payment.
+      # #/components/schemas/card_payment/properties/physical_card_id
       sig { returns(T.nilable(String)) }
       attr_accessor :physical_card_id
 
-      # The summarized state of this card payment.
+      # #/components/schemas/card_payment/properties/state
       sig { returns(Increase::Models::CardPayment::State) }
       attr_reader :state
 
       sig { params(state: T.any(Increase::Models::CardPayment::State, Increase::Internal::AnyHash)).void }
       attr_writer :state
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card_payment`.
+      # #/components/schemas/card_payment/properties/type
       sig { returns(Increase::Models::CardPayment::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Card Payments group together interactions related to a single card payment, such
-      # as an authorization and its corresponding settlement.
+      # #/components/schemas/card_payment
       sig do
         params(
           id: String,
@@ -90,9 +87,7 @@ module Increase
       def to_hash; end
 
       class Element < Increase::Internal::Type::BaseModel
-        # A Card Authentication object. This field will be present in the JSON response if
-        # and only if `category` is equal to `card_authentication`. Card Authentications
-        # are attempts to authenticate a transaction or a card with 3DS.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_authentication
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication)) }
         attr_reader :card_authentication
 
@@ -104,10 +99,7 @@ module Increase
         end
         attr_writer :card_authentication
 
-        # A Card Authorization object. This field will be present in the JSON response if
-        # and only if `category` is equal to `card_authorization`. Card Authorizations are
-        # temporary holds placed on a customers funds with the intent to later clear a
-        # transaction.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_authorization
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization)) }
         attr_reader :card_authorization
 
@@ -119,10 +111,7 @@ module Increase
         end
         attr_writer :card_authorization
 
-        # A Card Authorization Expiration object. This field will be present in the JSON
-        # response if and only if `category` is equal to `card_authorization_expiration`.
-        # Card Authorization Expirations are cancellations of authorizations that were
-        # never settled by the acquirer.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_authorization_expiration
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration)) }
         attr_reader :card_authorization_expiration
 
@@ -136,8 +125,7 @@ module Increase
         end
         attr_writer :card_authorization_expiration
 
-        # A Card Decline object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_decline`.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_decline
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline)) }
         attr_reader :card_decline
 
@@ -149,10 +137,7 @@ module Increase
         end
         attr_writer :card_decline
 
-        # A Card Fuel Confirmation object. This field will be present in the JSON response
-        # if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
-        # Confirmations update the amount of a Card Authorization after a fuel pump
-        # transaction is completed.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_fuel_confirmation
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation)) }
         attr_reader :card_fuel_confirmation
 
@@ -166,9 +151,7 @@ module Increase
         end
         attr_writer :card_fuel_confirmation
 
-        # A Card Increment object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_increment`. Card Increments increase the
-        # pending amount of an authorized transaction.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_increment
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardIncrement)) }
         attr_reader :card_increment
 
@@ -180,11 +163,7 @@ module Increase
         end
         attr_writer :card_increment
 
-        # A Card Refund object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_refund`. Card Refunds move money back to
-        # the cardholder. While they are usually connected to a Card Settlement an
-        # acquirer can also refund money directly to a card without relation to a
-        # transaction.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_refund
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund)) }
         attr_reader :card_refund
 
@@ -196,9 +175,7 @@ module Increase
         end
         attr_writer :card_refund
 
-        # A Card Reversal object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
-        # or the entirety of an existing Card Authorization.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_reversal
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal)) }
         attr_reader :card_reversal
 
@@ -210,11 +187,7 @@ module Increase
         end
         attr_writer :card_reversal
 
-        # A Card Settlement object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_settlement`. Card Settlements are card
-        # transactions that have cleared and settled. While a settlement is usually
-        # preceded by an authorization, an acquirer can also directly clear a transaction
-        # without first authorizing it.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_settlement
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement)) }
         attr_reader :card_settlement
 
@@ -226,10 +199,7 @@ module Increase
         end
         attr_writer :card_settlement
 
-        # A Card Validation object. This field will be present in the JSON response if and
-        # only if `category` is equal to `card_validation`. Card Validations are requests
-        # from a merchant to verify that a card number and optionally its address and/or
-        # Card Verification Value are valid.
+        # #/components/schemas/card_payment/properties/elements/items/properties/card_validation
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation)) }
         attr_reader :card_validation
 
@@ -241,21 +211,19 @@ module Increase
         end
         attr_writer :card_validation
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # #/components/schemas/card_payment/properties/elements/items/properties/category
         sig { returns(Increase::Models::CardPayment::Element::Category::TaggedSymbol) }
         attr_accessor :category
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the card payment element was created.
+        # #/components/schemas/card_payment/properties/elements/items/properties/created_at
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # If the category of this Transaction source is equal to `other`, this field will
-        # contain an empty object, otherwise it will contain null.
+        # #/components/schemas/card_payment/properties/elements/items/properties/other
         sig { returns(T.nilable(T.anything)) }
         attr_accessor :other
 
+        # #/components/schemas/card_payment/properties/elements/items
         sig do
           params(
             card_authentication: T.nilable(T.any(Increase::Models::CardPayment::Element::CardAuthentication, Increase::Internal::AnyHash)),
@@ -316,23 +284,23 @@ module Increase
         def to_hash; end
 
         class CardAuthentication < Increase::Internal::Type::BaseModel
-          # The Card Authentication identifier.
+          # #/components/schemas/card_authentication/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # The identifier of the Card.
+          # #/components/schemas/card_authentication/properties/card_id
           sig { returns(String) }
           attr_accessor :card_id
 
-          # The ID of the Card Payment this transaction belongs to.
+          # #/components/schemas/card_authentication/properties/card_payment_id
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The category of the card authentication attempt.
+          # #/components/schemas/card_authentication/properties/category
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol)) }
           attr_accessor :category
 
-          # Details about the challenge, if one was requested.
+          # #/components/schemas/card_authentication/properties/challenge
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge)) }
           attr_reader :challenge
 
@@ -346,16 +314,15 @@ module Increase
           end
           attr_writer :challenge
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-          # Authentication was attempted.
+          # #/components/schemas/card_authentication/properties/created_at
           sig { returns(Time) }
           attr_accessor :created_at
 
-          # The reason why this authentication attempt was denied, if it was.
+          # #/components/schemas/card_authentication/properties/deny_reason
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol)) }
           attr_accessor :deny_reason
 
-          # The device channel of the card authentication attempt.
+          # #/components/schemas/card_authentication/properties/device_channel
           sig do
             returns(
               T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol)
@@ -363,50 +330,43 @@ module Increase
           end
           attr_accessor :device_channel
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_authentication/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
+          # #/components/schemas/card_authentication/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_authentication/properties/merchant_country
           sig { returns(String) }
           attr_accessor :merchant_country
 
-          # The name of the merchant.
+          # #/components/schemas/card_authentication/properties/merchant_name
           sig { returns(String) }
           attr_accessor :merchant_name
 
-          # The purchase amount in minor units.
+          # #/components/schemas/card_authentication/properties/purchase_amount
           sig { returns(T.nilable(Integer)) }
           attr_accessor :purchase_amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # authentication attempt's purchase currency.
+          # #/components/schemas/card_authentication/properties/purchase_currency
           sig { returns(T.nilable(String)) }
           attr_accessor :purchase_currency
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          # authentication attempt.
+          # #/components/schemas/card_authentication/properties/real_time_decision_id
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
-          # The status of the card authentication.
+          # #/components/schemas/card_authentication/properties/status
           sig { returns(Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol) }
           attr_accessor :status
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_authentication`.
+          # #/components/schemas/card_authentication/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # A Card Authentication object. This field will be present in the JSON response if
-          # and only if `category` is equal to `card_authentication`. Card Authentications
-          # are attempts to authenticate a transaction or a card with 3DS.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_authentication
           sig do
             params(
               id: String,
@@ -476,7 +436,7 @@ module Increase
           end
           def to_hash; end
 
-          # The category of the card authentication attempt.
+          # #/components/schemas/card_authentication/properties/category
           module Category
             extend Increase::Internal::Type::Enum
 
@@ -507,20 +467,19 @@ module Increase
           end
 
           class Challenge < Increase::Internal::Type::BaseModel
-            # Details about the challenge verification attempts, if any happened.
+            # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/attempts
             sig { returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt]) }
             attr_accessor :attempts
 
-            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-            # Authentication Challenge was started.
+            # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/created_at
             sig { returns(Time) }
             attr_accessor :created_at
 
-            # The one-time code used for the Card Authentication Challenge.
+            # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/one_time_code
             sig { returns(String) }
             attr_accessor :one_time_code
 
-            # The method used to verify the Card Authentication Challenge.
+            # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/verification_method
             sig do
               returns(
                 Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
@@ -528,12 +487,11 @@ module Increase
             end
             attr_accessor :verification_method
 
-            # E.g., the email address or phone number used for the Card Authentication
-            # Challenge.
+            # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/verification_value
             sig { returns(T.nilable(String)) }
             attr_accessor :verification_value
 
-            # Details about the challenge, if one was requested.
+            # #/components/schemas/card_authentication/properties/challenge
             sig do
               params(
                 attempts: T::Array[
@@ -567,12 +525,11 @@ module Increase
             def to_hash; end
 
             class Attempt < Increase::Internal::Type::BaseModel
-              # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
-              # Authentication Challenge Attempt.
+              # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/attempts/items/properties/created_at
               sig { returns(Time) }
               attr_accessor :created_at
 
-              # The outcome of the Card Authentication Challenge Attempt.
+              # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/attempts/items/properties/outcome
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
@@ -580,6 +537,7 @@ module Increase
               end
               attr_accessor :outcome
 
+              # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/attempts/items
               sig do
                 params(
                   created_at: Time,
@@ -600,7 +558,7 @@ module Increase
               end
               def to_hash; end
 
-              # The outcome of the Card Authentication Challenge Attempt.
+              # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/attempts/items/properties/outcome
               module Outcome
                 extend Increase::Internal::Type::Enum
 
@@ -639,7 +597,7 @@ module Increase
               end
             end
 
-            # The method used to verify the Card Authentication Challenge.
+            # #/components/schemas/card_authentication/properties/challenge/anyOf/0/properties/verification_method
             module VerificationMethod
               extend Increase::Internal::Type::Enum
 
@@ -685,7 +643,7 @@ module Increase
             end
           end
 
-          # The reason why this authentication attempt was denied, if it was.
+          # #/components/schemas/card_authentication/properties/deny_reason
           module DenyReason
             extend Increase::Internal::Type::Enum
 
@@ -746,7 +704,7 @@ module Increase
             def self.values; end
           end
 
-          # The device channel of the card authentication attempt.
+          # #/components/schemas/card_authentication/properties/device_channel
           module DeviceChannel
             extend Increase::Internal::Type::Enum
 
@@ -783,7 +741,7 @@ module Increase
             def self.values; end
           end
 
-          # The status of the card authentication.
+          # #/components/schemas/card_authentication/properties/status
           module Status
             extend Increase::Internal::Type::Enum
 
@@ -852,8 +810,7 @@ module Increase
             def self.values; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_authentication`.
+          # #/components/schemas/card_authentication/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -874,76 +831,67 @@ module Increase
         end
 
         class CardAuthorization < Increase::Internal::Type::BaseModel
-          # The Card Authorization identifier.
+          # #/components/schemas/card_authorization/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_authorization/properties/actioner
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol) }
           attr_accessor :actioner
 
-          # The pending amount in the minor unit of the transaction's currency. For dollars,
-          # for example, this is cents.
+          # #/components/schemas/card_authorization/properties/amount
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The ID of the Card Payment this transaction belongs to.
+          # #/components/schemas/card_authorization/properties/card_payment_id
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # #/components/schemas/card_authorization/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          # purchase), the identifier of the token that was used.
+          # #/components/schemas/card_authorization/properties/digital_wallet_token_id
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # #/components/schemas/card_authorization/properties/direction
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol) }
           attr_accessor :direction
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-          # will expire and the pending transaction will be released.
+          # #/components/schemas/card_authorization/properties/expires_at
           sig { returns(Time) }
           attr_accessor :expires_at
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_authorization/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
+          # #/components/schemas/card_authorization/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The city the merchant resides in.
+          # #/components/schemas/card_authorization/properties/merchant_city
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_city
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_authorization/properties/merchant_country
           sig { returns(String) }
           attr_accessor :merchant_country
 
-          # The merchant descriptor of the merchant the card is transacting with.
+          # #/components/schemas/card_authorization/properties/merchant_descriptor
           sig { returns(String) }
           attr_accessor :merchant_descriptor
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          # ZIP code, where the first 5 and last 4 are separated by a dash.
+          # #/components/schemas/card_authorization/properties/merchant_postal_code
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
-          # The state the merchant resides in.
+          # #/components/schemas/card_authorization/properties/merchant_state
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_state
 
-          # Fields specific to the `network`.
+          # #/components/schemas/card_authorization/properties/network_details
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails) }
           attr_reader :network_details
 
@@ -958,7 +906,7 @@ module Increase
           end
           attr_writer :network_details
 
-          # Network-specific identifiers for a specific request or transaction.
+          # #/components/schemas/card_authorization/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -973,50 +921,43 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          # #/components/schemas/card_authorization/properties/network_risk_score
           sig { returns(T.nilable(Integer)) }
           attr_accessor :network_risk_score
 
-          # The identifier of the Pending Transaction associated with this Transaction.
+          # #/components/schemas/card_authorization/properties/pending_transaction_id
           sig { returns(T.nilable(String)) }
           attr_accessor :pending_transaction_id
 
-          # If the authorization was made in-person with a physical card, the Physical Card
-          # that was used.
+          # #/components/schemas/card_authorization/properties/physical_card_id
           sig { returns(T.nilable(String)) }
           attr_accessor :physical_card_id
 
-          # The pending amount in the minor unit of the transaction's presentment currency.
+          # #/components/schemas/card_authorization/properties/presentment_amount
           sig { returns(Integer) }
           attr_accessor :presentment_amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's presentment currency.
+          # #/components/schemas/card_authorization/properties/presentment_currency
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # #/components/schemas/card_authorization/properties/processing_category
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol) }
           attr_accessor :processing_category
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          # transaction.
+          # #/components/schemas/card_authorization/properties/real_time_decision_id
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          # is transacting with.
+          # #/components/schemas/card_authorization/properties/terminal_id
           sig { returns(T.nilable(String)) }
           attr_accessor :terminal_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_authorization`.
+          # #/components/schemas/card_authorization/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # Fields related to verification of cardholder-provided values.
+          # #/components/schemas/card_authorization/properties/verification
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification) }
           attr_reader :verification
 
@@ -1031,10 +972,7 @@ module Increase
           end
           attr_writer :verification
 
-          # A Card Authorization object. This field will be present in the JSON response if
-          # and only if `category` is equal to `card_authorization`. Card Authorizations are
-          # temporary holds placed on a customers funds with the intent to later clear a
-          # transaction.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_authorization
           sig do
             params(
               id: String,
@@ -1141,8 +1079,7 @@ module Increase
           end
           def to_hash; end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_authorization/properties/actioner
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -1169,8 +1106,7 @@ module Increase
             def self.values; end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # #/components/schemas/card_authorization/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -1204,8 +1140,7 @@ module Increase
             def self.values; end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # #/components/schemas/card_authorization/properties/direction
           module Direction
             extend Increase::Internal::Type::Enum
 
@@ -1230,11 +1165,11 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
-            # The payment network used to process this card authorization.
+            # #/components/schemas/card_authorization/properties/network_details/properties/category
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol) }
             attr_accessor :category
 
-            # Fields specific to the `visa` network.
+            # #/components/schemas/card_authorization/properties/network_details/properties/visa
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)) }
             attr_reader :visa
 
@@ -1251,7 +1186,7 @@ module Increase
             end
             attr_writer :visa
 
-            # Fields specific to the `network`.
+            # #/components/schemas/card_authorization/properties/network_details
             sig do
               params(
                 category: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::OrSymbol,
@@ -1277,7 +1212,7 @@ module Increase
             end
             def to_hash; end
 
-            # The payment network used to process this card authorization.
+            # #/components/schemas/card_authorization/properties/network_details/properties/category
             module Category
               extend Increase::Internal::Type::Enum
 
@@ -1309,9 +1244,7 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               sig do
                 returns(
                   T.nilable(
@@ -1321,8 +1254,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               sig do
                 returns(
                   T.nilable(
@@ -1332,8 +1264,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               sig do
                 returns(
                   T.nilable(
@@ -1343,7 +1274,7 @@ module Increase
               end
               attr_accessor :stand_in_processing_reason
 
-              # Fields specific to the `visa` network.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(
@@ -1383,9 +1314,7 @@ module Increase
               end
               def to_hash; end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -1469,8 +1398,7 @@ module Increase
                 def self.values; end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -1568,8 +1496,7 @@ module Increase
                 def self.values; end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/card_authorization/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -1649,23 +1576,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            # #/components/schemas/card_authorization/properties/network_identifiers/properties/retrieval_reference_number
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            # #/components/schemas/card_authorization/properties/network_identifiers/properties/trace_number
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_authorization/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for a specific request or transaction.
+            # #/components/schemas/card_authorization/properties/network_identifiers
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -1689,8 +1612,7 @@ module Increase
             def to_hash; end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # #/components/schemas/card_authorization/properties/processing_category
           module ProcessingCategory
             extend Increase::Internal::Type::Enum
 
@@ -1756,8 +1678,7 @@ module Increase
             def self.values; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_authorization`.
+          # #/components/schemas/card_authorization/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -1774,8 +1695,7 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            # the back of the card.
+            # #/components/schemas/card_authorization/properties/verification/properties/card_verification_code
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode) }
             attr_reader :card_verification_code
 
@@ -1790,8 +1710,7 @@ module Increase
             end
             attr_writer :card_verification_code
 
-            # Cardholder address provided in the authorization request and the address on file
-            # we verified it against.
+            # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress) }
             attr_reader :cardholder_address
 
@@ -1806,7 +1725,7 @@ module Increase
             end
             attr_writer :cardholder_address
 
-            # Fields related to verification of cardholder-provided values.
+            # #/components/schemas/card_authorization/properties/verification
             sig do
               params(
                 card_verification_code: T.any(
@@ -1834,7 +1753,7 @@ module Increase
             def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/card_authorization/properties/verification/properties/card_verification_code/properties/result
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
@@ -1842,8 +1761,7 @@ module Increase
               end
               attr_accessor :result
 
-              # Fields related to verification of the Card Verification Code, a 3-digit code on
-              # the back of the card.
+              # #/components/schemas/card_authorization/properties/verification/properties/card_verification_code
               sig do
                 params(
                   result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
@@ -1862,7 +1780,7 @@ module Increase
               end
               def to_hash; end
 
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/card_authorization/properties/verification/properties/card_verification_code/properties/result
               module Result
                 extend Increase::Internal::Type::Enum
 
@@ -1913,24 +1831,23 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
-              # Line 1 of the address on file for the cardholder.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address/properties/actual_line1
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
 
-              # The postal code of the address on file for the cardholder.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address/properties/actual_postal_code
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_postal_code
 
-              # The cardholder address line 1 provided for verification in the authorization
-              # request.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address/properties/provided_line1
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_line1
 
-              # The postal code provided for verification in the authorization request.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address/properties/provided_postal_code
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_postal_code
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address/properties/result
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
@@ -1938,8 +1855,7 @@ module Increase
               end
               attr_accessor :result
 
-              # Cardholder address provided in the authorization request and the address on file
-              # we verified it against.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -1973,7 +1889,7 @@ module Increase
               end
               def to_hash; end
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/card_authorization/properties/verification/properties/cardholder_address/properties/result
               module Result
                 extend Increase::Internal::Type::Enum
 
@@ -2047,37 +1963,31 @@ module Increase
         end
 
         class CardAuthorizationExpiration < Increase::Internal::Type::BaseModel
-          # The Card Authorization Expiration identifier.
+          # #/components/schemas/card_authorization_expiration/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # The identifier for the Card Authorization this reverses.
+          # #/components/schemas/card_authorization_expiration/properties/card_authorization_id
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # #/components/schemas/card_authorization_expiration/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # The amount of this authorization expiration in the minor unit of the
-          # transaction's currency. For dollars, for example, this is cents.
+          # #/components/schemas/card_authorization_expiration/properties/expired_amount
           sig { returns(Integer) }
           attr_accessor :expired_amount
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_authorization_expiration/properties/network
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol) }
           attr_accessor :network
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_authorization_expiration`.
+          # #/components/schemas/card_authorization_expiration/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # A Card Authorization Expiration object. This field will be present in the JSON
-          # response if and only if `category` is equal to `card_authorization_expiration`.
-          # Card Authorization Expirations are cancellations of authorizations that were
-          # never settled by the acquirer.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_authorization_expiration
           sig do
             params(
               id: String,
@@ -2106,8 +2016,7 @@ module Increase
           end
           def to_hash; end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # #/components/schemas/card_authorization_expiration/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2155,7 +2064,7 @@ module Increase
             def self.values; end
           end
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_authorization_expiration/properties/network
           module Network
             extend Increase::Internal::Type::Enum
 
@@ -2183,8 +2092,7 @@ module Increase
             def self.values; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_authorization_expiration`.
+          # #/components/schemas/card_authorization_expiration/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -2214,75 +2122,67 @@ module Increase
         end
 
         class CardDecline < Increase::Internal::Type::BaseModel
-          # The Card Decline identifier.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/actioner
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol) }
           attr_accessor :actioner
 
-          # The declined amount in the minor unit of the destination account currency. For
-          # dollars, for example, this is cents.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/amount
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The ID of the Card Payment this transaction belongs to.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/card_payment_id
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # The identifier of the declined transaction created for this Card Decline.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/declined_transaction_id
           sig { returns(String) }
           attr_accessor :declined_transaction_id
 
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          # purchase), the identifier of the token that was used.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/digital_wallet_token_id
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/direction
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol) }
           attr_accessor :direction
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The city the merchant resides in.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_city
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_city
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_country
           sig { returns(String) }
           attr_accessor :merchant_country
 
-          # The merchant descriptor of the merchant the card is transacting with.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_descriptor
           sig { returns(String) }
           attr_accessor :merchant_descriptor
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          # ZIP code, where the first 5 and last 4 are separated by a dash.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_postal_code
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
-          # The state the merchant resides in.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/merchant_state
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_state
 
-          # Fields specific to the `network`.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails) }
           attr_reader :network_details
 
@@ -2294,7 +2194,7 @@ module Increase
           end
           attr_writer :network_details
 
-          # Network-specific identifiers for a specific request or transaction.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -2309,37 +2209,31 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_risk_score
           sig { returns(T.nilable(Integer)) }
           attr_accessor :network_risk_score
 
-          # If the authorization was made in-person with a physical card, the Physical Card
-          # that was used.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/physical_card_id
           sig { returns(T.nilable(String)) }
           attr_accessor :physical_card_id
 
-          # The declined amount in the minor unit of the transaction's presentment currency.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/presentment_amount
           sig { returns(Integer) }
           attr_accessor :presentment_amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's presentment currency.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/presentment_currency
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/processing_category
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol) }
           attr_accessor :processing_category
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          # transaction.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/real_time_decision_id
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
-          # This is present if a specific decline reason was given in the real-time
-          # decision.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/real_time_decision_reason
           sig do
             returns(
               T.nilable(Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol)
@@ -2347,16 +2241,15 @@ module Increase
           end
           attr_accessor :real_time_decision_reason
 
-          # Why the transaction was declined.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/reason
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol) }
           attr_accessor :reason
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          # is transacting with.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/terminal_id
           sig { returns(T.nilable(String)) }
           attr_accessor :terminal_id
 
-          # Fields related to verification of cardholder-provided values.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification) }
           attr_reader :verification
 
@@ -2368,8 +2261,7 @@ module Increase
           end
           attr_writer :verification
 
-          # A Card Decline object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_decline`.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline
           sig do
             params(
               id: String,
@@ -2470,8 +2362,7 @@ module Increase
           end
           def to_hash; end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/actioner
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -2493,8 +2384,7 @@ module Increase
             def self.values; end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2525,8 +2415,7 @@ module Increase
             def self.values; end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/direction
           module Direction
             extend Increase::Internal::Type::Enum
 
@@ -2547,11 +2436,11 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
-            # The payment network used to process this card authorization.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/category
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol) }
             attr_accessor :category
 
-            # Fields specific to the `visa` network.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)) }
             attr_reader :visa
 
@@ -2568,7 +2457,7 @@ module Increase
             end
             attr_writer :visa
 
-            # Fields specific to the `network`.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details
             sig do
               params(
                 category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::OrSymbol,
@@ -2594,7 +2483,7 @@ module Increase
             end
             def to_hash; end
 
-            # The payment network used to process this card authorization.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/category
             module Category
               extend Increase::Internal::Type::Enum
 
@@ -2623,9 +2512,7 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               sig do
                 returns(
                   T.nilable(
@@ -2635,8 +2522,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               sig do
                 returns(
                   T.nilable(
@@ -2646,8 +2532,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               sig do
                 returns(
                   T.nilable(
@@ -2657,7 +2542,7 @@ module Increase
               end
               attr_accessor :stand_in_processing_reason
 
-              # Fields specific to the `visa` network.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(
@@ -2697,9 +2582,7 @@ module Increase
               end
               def to_hash; end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -2783,8 +2666,7 @@ module Increase
                 def self.values; end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -2882,8 +2764,7 @@ module Increase
                 def self.values; end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -2963,23 +2844,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_identifiers/properties/retrieval_reference_number
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_identifiers/properties/trace_number
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for a specific request or transaction.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/network_identifiers
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -3003,8 +2880,7 @@ module Increase
             def to_hash; end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/processing_category
           module ProcessingCategory
             extend Increase::Internal::Type::Enum
 
@@ -3059,8 +2935,7 @@ module Increase
             def self.values; end
           end
 
-          # This is present if a specific decline reason was given in the real-time
-          # decision.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/real_time_decision_reason
           module RealTimeDecisionReason
             extend Increase::Internal::Type::Enum
 
@@ -3123,7 +2998,7 @@ module Increase
             def self.values; end
           end
 
-          # Why the transaction was declined.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/reason
           module Reason
             extend Increase::Internal::Type::Enum
 
@@ -3217,8 +3092,7 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            # the back of the card.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode) }
             attr_reader :card_verification_code
 
@@ -3233,8 +3107,7 @@ module Increase
             end
             attr_writer :card_verification_code
 
-            # Cardholder address provided in the authorization request and the address on file
-            # we verified it against.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress) }
             attr_reader :cardholder_address
 
@@ -3249,7 +3122,7 @@ module Increase
             end
             attr_writer :cardholder_address
 
-            # Fields related to verification of cardholder-provided values.
+            # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification
             sig do
               params(
                 card_verification_code: T.any(
@@ -3277,7 +3150,7 @@ module Increase
             def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code/properties/result
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
@@ -3285,8 +3158,7 @@ module Increase
               end
               attr_accessor :result
 
-              # Fields related to verification of the Card Verification Code, a 3-digit code on
-              # the back of the card.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code
               sig do
                 params(
                   result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::OrSymbol
@@ -3305,7 +3177,7 @@ module Increase
               end
               def to_hash; end
 
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code/properties/result
               module Result
                 extend Increase::Internal::Type::Enum
 
@@ -3356,24 +3228,23 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
-              # Line 1 of the address on file for the cardholder.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/actual_line1
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
 
-              # The postal code of the address on file for the cardholder.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/actual_postal_code
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_postal_code
 
-              # The cardholder address line 1 provided for verification in the authorization
-              # request.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/provided_line1
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_line1
 
-              # The postal code provided for verification in the authorization request.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/provided_postal_code
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_postal_code
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/result
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
@@ -3381,8 +3252,7 @@ module Increase
               end
               attr_accessor :result
 
-              # Cardholder address provided in the authorization request and the address on file
-              # we verified it against.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -3416,7 +3286,7 @@ module Increase
               end
               def to_hash; end
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/card_payment/properties/elements/items/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/result
               module Result
                 extend Increase::Internal::Type::Enum
 
@@ -3488,24 +3358,23 @@ module Increase
         end
 
         class CardFuelConfirmation < Increase::Internal::Type::BaseModel
-          # The Card Fuel Confirmation identifier.
+          # #/components/schemas/card_fuel_confirmation/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # The identifier for the Card Authorization this updates.
+          # #/components/schemas/card_fuel_confirmation/properties/card_authorization_id
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # #/components/schemas/card_fuel_confirmation/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_fuel_confirmation/properties/network
           sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol) }
           attr_accessor :network
 
-          # Network-specific identifiers for a specific request or transaction.
+          # #/components/schemas/card_fuel_confirmation/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -3520,25 +3389,19 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The identifier of the Pending Transaction associated with this Card Fuel
-          # Confirmation.
+          # #/components/schemas/card_fuel_confirmation/properties/pending_transaction_id
           sig { returns(T.nilable(String)) }
           attr_accessor :pending_transaction_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_fuel_confirmation`.
+          # #/components/schemas/card_fuel_confirmation/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # The updated authorization amount after this fuel confirmation, in the minor unit
-          # of the transaction's currency. For dollars, for example, this is cents.
+          # #/components/schemas/card_fuel_confirmation/properties/updated_authorization_amount
           sig { returns(Integer) }
           attr_accessor :updated_authorization_amount
 
-          # A Card Fuel Confirmation object. This field will be present in the JSON response
-          # if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
-          # Confirmations update the amount of a Card Authorization after a fuel pump
-          # transaction is completed.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_fuel_confirmation
           sig do
             params(
               id: String,
@@ -3582,8 +3445,7 @@ module Increase
           end
           def to_hash; end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # #/components/schemas/card_fuel_confirmation/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -3623,7 +3485,7 @@ module Increase
             def self.values; end
           end
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_fuel_confirmation/properties/network
           module Network
             extend Increase::Internal::Type::Enum
 
@@ -3643,23 +3505,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            # #/components/schemas/card_fuel_confirmation/properties/network_identifiers/properties/retrieval_reference_number
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            # #/components/schemas/card_fuel_confirmation/properties/network_identifiers/properties/trace_number
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_fuel_confirmation/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for a specific request or transaction.
+            # #/components/schemas/card_fuel_confirmation/properties/network_identifiers
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -3683,8 +3541,7 @@ module Increase
             def to_hash; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_fuel_confirmation`.
+          # #/components/schemas/card_fuel_confirmation/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -3708,34 +3565,31 @@ module Increase
         end
 
         class CardIncrement < Increase::Internal::Type::BaseModel
-          # The Card Increment identifier.
+          # #/components/schemas/card_increment/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_increment/properties/actioner
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol) }
           attr_accessor :actioner
 
-          # The amount of this increment in the minor unit of the transaction's currency.
-          # For dollars, for example, this is cents.
+          # #/components/schemas/card_increment/properties/amount
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The identifier for the Card Authorization this increments.
+          # #/components/schemas/card_increment/properties/card_authorization_id
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # #/components/schemas/card_increment/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_increment/properties/network
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol) }
           attr_accessor :network
 
-          # Network-specific identifiers for a specific request or transaction.
+          # #/components/schemas/card_increment/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -3750,33 +3604,27 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          # #/components/schemas/card_increment/properties/network_risk_score
           sig { returns(T.nilable(Integer)) }
           attr_accessor :network_risk_score
 
-          # The identifier of the Pending Transaction associated with this Card Increment.
+          # #/components/schemas/card_increment/properties/pending_transaction_id
           sig { returns(T.nilable(String)) }
           attr_accessor :pending_transaction_id
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          # incremental authorization.
+          # #/components/schemas/card_increment/properties/real_time_decision_id
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_increment`.
+          # #/components/schemas/card_increment/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # The updated authorization amount after this increment, in the minor unit of the
-          # transaction's currency. For dollars, for example, this is cents.
+          # #/components/schemas/card_increment/properties/updated_authorization_amount
           sig { returns(Integer) }
           attr_accessor :updated_authorization_amount
 
-          # A Card Increment object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_increment`. Card Increments increase the
-          # pending amount of an authorized transaction.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_increment
           sig do
             params(
               id: String,
@@ -3832,8 +3680,7 @@ module Increase
           end
           def to_hash; end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_increment/properties/actioner
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -3856,8 +3703,7 @@ module Increase
             def self.values; end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # #/components/schemas/card_increment/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -3888,7 +3734,7 @@ module Increase
             def self.values; end
           end
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_increment/properties/network
           module Network
             extend Increase::Internal::Type::Enum
 
@@ -3905,23 +3751,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            # #/components/schemas/card_increment/properties/network_identifiers/properties/retrieval_reference_number
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            # #/components/schemas/card_increment/properties/network_identifiers/properties/trace_number
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_increment/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for a specific request or transaction.
+            # #/components/schemas/card_increment/properties/network_identifiers
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -3945,8 +3787,7 @@ module Increase
             def to_hash; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_increment`.
+          # #/components/schemas/card_increment/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -3964,21 +3805,19 @@ module Increase
         end
 
         class CardRefund < Increase::Internal::Type::BaseModel
-          # The Card Refund identifier.
+          # #/components/schemas/card_refund/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # The amount in the minor unit of the transaction's settlement currency. For
-          # dollars, for example, this is cents.
+          # #/components/schemas/card_refund/properties/amount
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The ID of the Card Payment this transaction belongs to.
+          # #/components/schemas/card_refund/properties/card_payment_id
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # Cashback debited for this transaction, if eligible. Cashback is paid out in
-          # aggregate, monthly.
+          # #/components/schemas/card_refund/properties/cashback
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback)) }
           attr_reader :cashback
 
@@ -3992,12 +3831,11 @@ module Increase
           end
           attr_writer :cashback
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # #/components/schemas/card_refund/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # Interchange assessed as a part of this transaciton.
+          # #/components/schemas/card_refund/properties/interchange
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange)) }
           attr_reader :interchange
 
@@ -4011,36 +3849,35 @@ module Increase
           end
           attr_writer :interchange
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_refund/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The 4-digit MCC describing the merchant's business.
+          # #/components/schemas/card_refund/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The city the merchant resides in.
+          # #/components/schemas/card_refund/properties/merchant_city
           sig { returns(String) }
           attr_accessor :merchant_city
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_refund/properties/merchant_country
           sig { returns(String) }
           attr_accessor :merchant_country
 
-          # The name of the merchant.
+          # #/components/schemas/card_refund/properties/merchant_name
           sig { returns(String) }
           attr_accessor :merchant_name
 
-          # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
+          # #/components/schemas/card_refund/properties/merchant_postal_code
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
-          # The state the merchant resides in.
+          # #/components/schemas/card_refund/properties/merchant_state
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_state
 
-          # Network-specific identifiers for this refund.
+          # #/components/schemas/card_refund/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -4052,17 +3889,15 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The amount in the minor unit of the transaction's presentment currency.
+          # #/components/schemas/card_refund/properties/presentment_amount
           sig { returns(Integer) }
           attr_accessor :presentment_amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's presentment currency.
+          # #/components/schemas/card_refund/properties/presentment_currency
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # Additional details about the card purchase, such as tax and industry-specific
-          # fields.
+          # #/components/schemas/card_refund/properties/purchase_details
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails)) }
           attr_reader :purchase_details
 
@@ -4076,20 +3911,15 @@ module Increase
           end
           attr_writer :purchase_details
 
-          # The identifier of the Transaction associated with this Transaction.
+          # #/components/schemas/card_refund/properties/transaction_id
           sig { returns(String) }
           attr_accessor :transaction_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_refund`.
+          # #/components/schemas/card_refund/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # A Card Refund object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_refund`. Card Refunds move money back to
-          # the cardholder. While they are usually connected to a Card Settlement an
-          # acquirer can also refund money directly to a card without relation to a
-          # transaction.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_refund
           sig do
             params(
               id: String,
@@ -4170,18 +4000,15 @@ module Increase
           def to_hash; end
 
           class Cashback < Increase::Internal::Type::BaseModel
-            # The cashback amount given as a string containing a decimal number. The amount is
-            # a positive number if it will be credited to you (e.g., settlements) and a
-            # negative number if it will be debited (e.g., refunds).
+            # #/components/schemas/card_refund/properties/cashback/anyOf/0/properties/amount
             sig { returns(String) }
             attr_accessor :amount
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            # #/components/schemas/card_refund/properties/cashback/anyOf/0/properties/currency
             sig { returns(Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol) }
             attr_accessor :currency
 
-            # Cashback debited for this transaction, if eligible. Cashback is paid out in
-            # aggregate, monthly.
+            # #/components/schemas/card_refund/properties/cashback
             sig do
               params(
                 amount: String,
@@ -4202,7 +4029,7 @@ module Increase
             end
             def to_hash; end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            # #/components/schemas/card_refund/properties/cashback/anyOf/0/properties/currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -4243,8 +4070,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # #/components/schemas/card_refund/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4276,22 +4102,19 @@ module Increase
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
-            # The interchange amount given as a string containing a decimal number. The amount
-            # is a positive number if it is credited to Increase (e.g., settlements) and a
-            # negative number if it is debited (e.g., refunds).
+            # #/components/schemas/card_refund/properties/interchange/anyOf/0/properties/amount
             sig { returns(String) }
             attr_accessor :amount
 
-            # The card network specific interchange code.
+            # #/components/schemas/card_refund/properties/interchange/anyOf/0/properties/code
             sig { returns(T.nilable(String)) }
             attr_accessor :code
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # #/components/schemas/card_refund/properties/interchange/anyOf/0/properties/currency
             sig { returns(Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol) }
             attr_accessor :currency
 
-            # Interchange assessed as a part of this transaciton.
+            # #/components/schemas/card_refund/properties/interchange
             sig do
               params(
                 amount: String,
@@ -4314,8 +4137,7 @@ module Increase
             end
             def to_hash; end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # #/components/schemas/card_refund/properties/interchange/anyOf/0/properties/currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -4363,21 +4185,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A network assigned business ID that identifies the acquirer that processed this
-            # transaction.
+            # #/components/schemas/card_refund/properties/network_identifiers/properties/acquirer_business_id
             sig { returns(String) }
             attr_accessor :acquirer_business_id
 
-            # A globally unique identifier for this settlement.
+            # #/components/schemas/card_refund/properties/network_identifiers/properties/acquirer_reference_number
             sig { returns(String) }
             attr_accessor :acquirer_reference_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_refund/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for this refund.
+            # #/components/schemas/card_refund/properties/network_identifiers
             sig do
               params(
                 acquirer_business_id: String,
@@ -4402,7 +4222,7 @@ module Increase
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
-            # Fields specific to car rentals.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental)) }
             attr_reader :car_rental
 
@@ -4419,20 +4239,19 @@ module Increase
             end
             attr_writer :car_rental
 
-            # An identifier from the merchant for the customer or consumer.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/customer_reference_identifier
             sig { returns(T.nilable(String)) }
             attr_accessor :customer_reference_identifier
 
-            # The state or provincial tax amount in minor units.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/local_tax_amount
             sig { returns(T.nilable(Integer)) }
             attr_accessor :local_tax_amount
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            # assessed.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/local_tax_currency
             sig { returns(T.nilable(String)) }
             attr_accessor :local_tax_currency
 
-            # Fields specific to lodging.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging)) }
             attr_reader :lodging
 
@@ -4449,20 +4268,19 @@ module Increase
             end
             attr_writer :lodging
 
-            # The national tax amount in minor units.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/national_tax_amount
             sig { returns(T.nilable(Integer)) }
             attr_accessor :national_tax_amount
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            # assessed.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/national_tax_currency
             sig { returns(T.nilable(String)) }
             attr_accessor :national_tax_currency
 
-            # An identifier from the merchant for the purchase to the issuer and cardholder.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/purchase_identifier
             sig { returns(T.nilable(String)) }
             attr_accessor :purchase_identifier
 
-            # The format of the purchase identifier.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/purchase_identifier_format
             sig do
               returns(
                 T.nilable(
@@ -4472,7 +4290,7 @@ module Increase
             end
             attr_accessor :purchase_identifier_format
 
-            # Fields specific to travel.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)) }
             attr_reader :travel
 
@@ -4489,8 +4307,7 @@ module Increase
             end
             attr_writer :travel
 
-            # Additional details about the card purchase, such as tax and industry-specific
-            # fields.
+            # #/components/schemas/card_refund/properties/purchase_details
             sig do
               params(
                 car_rental: T.nilable(
@@ -4557,29 +4374,27 @@ module Increase
             def to_hash; end
 
             class CarRental < Increase::Internal::Type::BaseModel
-              # Code indicating the vehicle's class.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/car_class_code
               sig { returns(T.nilable(String)) }
               attr_accessor :car_class_code
 
-              # Date the customer picked up the car or, in the case of a no-show or pre-pay
-              # transaction, the scheduled pick up date.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/checkout_date
               sig { returns(T.nilable(Date)) }
               attr_accessor :checkout_date
 
-              # Daily rate being charged for the vehicle.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/daily_rental_rate_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :daily_rental_rate_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              # rate.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/daily_rental_rate_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :daily_rental_rate_currency
 
-              # Number of days the vehicle was rented.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/days_rented
               sig { returns(T.nilable(Integer)) }
               attr_accessor :days_rented
 
-              # Additional charges (gas, late fee, etc.) being billed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/extra_charges
               sig do
                 returns(
                   T.nilable(
@@ -4589,26 +4404,23 @@ module Increase
               end
               attr_accessor :extra_charges
 
-              # Fuel charges for the vehicle.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/fuel_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :fuel_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              # assessed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/fuel_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :fuel_charges_currency
 
-              # Any insurance being charged for the vehicle.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/insurance_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :insurance_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              # charges assessed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/insurance_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :insurance_charges_currency
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/no_show_indicator
               sig do
                 returns(
                   T.nilable(
@@ -4618,30 +4430,27 @@ module Increase
               end
               attr_accessor :no_show_indicator
 
-              # Charges for returning the vehicle at a different location than where it was
-              # picked up.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/one_way_drop_off_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :one_way_drop_off_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              # drop-off charges assessed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/one_way_drop_off_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :one_way_drop_off_charges_currency
 
-              # Name of the person renting the vehicle.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/renter_name
               sig { returns(T.nilable(String)) }
               attr_accessor :renter_name
 
-              # Weekly rate being charged for the vehicle.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/weekly_rental_rate_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :weekly_rental_rate_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              # rental rate.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/weekly_rental_rate_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :weekly_rental_rate_currency
 
-              # Fields specific to car rentals.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental
               sig do
                 params(
                   car_class_code: T.nilable(String),
@@ -4714,7 +4523,7 @@ module Increase
               end
               def to_hash; end
 
-              # Additional charges (gas, late fee, etc.) being billed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -4782,8 +4591,7 @@ module Increase
                 def self.values; end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -4827,20 +4635,19 @@ module Increase
             end
 
             class Lodging < Increase::Internal::Type::BaseModel
-              # Date the customer checked in.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/check_in_date
               sig { returns(T.nilable(Date)) }
               attr_accessor :check_in_date
 
-              # Daily rate being charged for the room.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/daily_room_rate_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :daily_room_rate_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              # rate.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/daily_room_rate_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :daily_room_rate_currency
 
-              # Additional charges (phone, late check-out, etc.) being billed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/extra_charges
               sig do
                 returns(
                   T.nilable(
@@ -4850,26 +4657,23 @@ module Increase
               end
               attr_accessor :extra_charges
 
-              # Folio cash advances for the room.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/folio_cash_advances_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :folio_cash_advances_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              # advances.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/folio_cash_advances_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :folio_cash_advances_currency
 
-              # Food and beverage charges for the room.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/food_beverage_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :food_beverage_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              # beverage charges.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/food_beverage_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :food_beverage_charges_currency
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/no_show_indicator
               sig do
                 returns(
                   T.nilable(
@@ -4879,38 +4683,35 @@ module Increase
               end
               attr_accessor :no_show_indicator
 
-              # Prepaid expenses being charged for the room.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/prepaid_expenses_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :prepaid_expenses_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              # expenses.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/prepaid_expenses_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :prepaid_expenses_currency
 
-              # Number of nights the room was rented.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/room_nights
               sig { returns(T.nilable(Integer)) }
               attr_accessor :room_nights
 
-              # Total room tax being charged.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_room_tax_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :total_room_tax_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              # tax.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_room_tax_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :total_room_tax_currency
 
-              # Total tax being charged for the room.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_tax_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :total_tax_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              # assessed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_tax_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :total_tax_currency
 
-              # Fields specific to lodging.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging
               sig do
                 params(
                   check_in_date: T.nilable(Date),
@@ -4983,7 +4784,7 @@ module Increase
               end
               def to_hash; end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -5056,8 +4857,7 @@ module Increase
                 def self.values; end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -5100,7 +4900,7 @@ module Increase
               end
             end
 
-            # The format of the purchase identifier.
+            # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/purchase_identifier_format
             module PurchaseIdentifierFormat
               extend Increase::Internal::Type::Enum
 
@@ -5164,7 +4964,7 @@ module Increase
             end
 
             class Travel < Increase::Internal::Type::BaseModel
-              # Ancillary purchases in addition to the airfare.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary
               sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)) }
               attr_reader :ancillary
 
@@ -5181,11 +4981,11 @@ module Increase
               end
               attr_writer :ancillary
 
-              # Indicates the computerized reservation system used to book the ticket.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/computerized_reservation_system
               sig { returns(T.nilable(String)) }
               attr_accessor :computerized_reservation_system
 
-              # Indicates the reason for a credit to the cardholder.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/credit_reason_indicator
               sig do
                 returns(
                   T.nilable(
@@ -5195,19 +4995,19 @@ module Increase
               end
               attr_accessor :credit_reason_indicator
 
-              # Date of departure.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/departure_date
               sig { returns(T.nilable(Date)) }
               attr_accessor :departure_date
 
-              # Code for the originating city or airport.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/origination_city_airport_code
               sig { returns(T.nilable(String)) }
               attr_accessor :origination_city_airport_code
 
-              # Name of the passenger.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/passenger_name
               sig { returns(T.nilable(String)) }
               attr_accessor :passenger_name
 
-              # Indicates whether this ticket is non-refundable.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/restricted_ticket_indicator
               sig do
                 returns(
                   T.nilable(
@@ -5217,7 +5017,7 @@ module Increase
               end
               attr_accessor :restricted_ticket_indicator
 
-              # Indicates why a ticket was changed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ticket_change_indicator
               sig do
                 returns(
                   T.nilable(
@@ -5227,19 +5027,19 @@ module Increase
               end
               attr_accessor :ticket_change_indicator
 
-              # Ticket number.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ticket_number
               sig { returns(T.nilable(String)) }
               attr_accessor :ticket_number
 
-              # Code for the travel agency if the ticket was issued by a travel agency.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/travel_agency_code
               sig { returns(T.nilable(String)) }
               attr_accessor :travel_agency_code
 
-              # Name of the travel agency if the ticket was issued by a travel agency.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/travel_agency_name
               sig { returns(T.nilable(String)) }
               attr_accessor :travel_agency_name
 
-              # Fields specific to each leg of the journey.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs
               sig do
                 returns(
                   T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
@@ -5247,7 +5047,7 @@ module Increase
               end
               attr_accessor :trip_legs
 
-              # Fields specific to travel.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel
               sig do
                 params(
                   ancillary: T.nilable(
@@ -5325,13 +5125,11 @@ module Increase
               def to_hash; end
 
               class Ancillary < Increase::Internal::Type::BaseModel
-                # If this purchase has a connection or relationship to another purchase, such as a
-                # baggage fee for a passenger transport ticket, this field should contain the
-                # ticket document number for the other purchase.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/connected_ticket_document_number
                 sig { returns(T.nilable(String)) }
                 attr_accessor :connected_ticket_document_number
 
-                # Indicates the reason for a credit to the cardholder.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/credit_reason_indicator
                 sig do
                   returns(
                     T.nilable(
@@ -5341,11 +5139,11 @@ module Increase
                 end
                 attr_accessor :credit_reason_indicator
 
-                # Name of the passenger or description of the ancillary purchase.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/passenger_name_or_description
                 sig { returns(T.nilable(String)) }
                 attr_accessor :passenger_name_or_description
 
-                # Additional travel charges, such as baggage fees.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services
                 sig do
                   returns(
                     T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
@@ -5353,11 +5151,11 @@ module Increase
                 end
                 attr_accessor :services
 
-                # Ticket document number.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/ticket_document_number
                 sig { returns(T.nilable(String)) }
                 attr_accessor :ticket_document_number
 
-                # Ancillary purchases in addition to the airfare.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
@@ -5398,7 +5196,7 @@ module Increase
                 end
                 def to_hash; end
 
-                # Indicates the reason for a credit to the cardholder.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/credit_reason_indicator
                 module CreditReasonIndicator
                   extend Increase::Internal::Type::Enum
 
@@ -5455,7 +5253,7 @@ module Increase
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
-                  # Category of the ancillary service.
+                  # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items/properties/category
                   sig do
                     returns(
                       T.nilable(
@@ -5465,10 +5263,11 @@ module Increase
                   end
                   attr_accessor :category
 
-                  # Sub-category of the ancillary service, free-form.
+                  # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items/properties/sub_category
                   sig { returns(T.nilable(String)) }
                   attr_accessor :sub_category
 
+                  # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items
                   sig do
                     params(
                       category: T.nilable(
@@ -5493,7 +5292,7 @@ module Increase
                   end
                   def to_hash; end
 
-                  # Category of the ancillary service.
+                  # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items/properties/category
                   module Category
                     extend Increase::Internal::Type::Enum
 
@@ -5691,7 +5490,7 @@ module Increase
                 end
               end
 
-              # Indicates the reason for a credit to the cardholder.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/credit_reason_indicator
               module CreditReasonIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -5761,7 +5560,7 @@ module Increase
                 def self.values; end
               end
 
-              # Indicates whether this ticket is non-refundable.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/restricted_ticket_indicator
               module RestrictedTicketIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -5803,7 +5602,7 @@ module Increase
                 def self.values; end
               end
 
-              # Indicates why a ticket was changed.
+              # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ticket_change_indicator
               module TicketChangeIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -5853,27 +5652,27 @@ module Increase
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
-                # Carrier code (e.g., United Airlines, Jet Blue, etc.).
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/carrier_code
                 sig { returns(T.nilable(String)) }
                 attr_accessor :carrier_code
 
-                # Code for the destination city or airport.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/destination_city_airport_code
                 sig { returns(T.nilable(String)) }
                 attr_accessor :destination_city_airport_code
 
-                # Fare basis code.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/fare_basis_code
                 sig { returns(T.nilable(String)) }
                 attr_accessor :fare_basis_code
 
-                # Flight number.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/flight_number
                 sig { returns(T.nilable(String)) }
                 attr_accessor :flight_number
 
-                # Service class (e.g., first class, business class, etc.).
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/service_class
                 sig { returns(T.nilable(String)) }
                 attr_accessor :service_class
 
-                # Indicates whether a stopover is allowed on this ticket.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/stop_over_code
                 sig do
                   returns(
                     T.nilable(
@@ -5883,6 +5682,7 @@ module Increase
                 end
                 attr_accessor :stop_over_code
 
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items
                 sig do
                   params(
                     carrier_code: T.nilable(String),
@@ -5921,7 +5721,7 @@ module Increase
                 end
                 def to_hash; end
 
-                # Indicates whether a stopover is allowed on this ticket.
+                # #/components/schemas/card_refund/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/stop_over_code
                 module StopOverCode
                   extend Increase::Internal::Type::Enum
 
@@ -5973,8 +5773,7 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_refund`.
+          # #/components/schemas/card_refund/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -5990,55 +5789,51 @@ module Increase
         end
 
         class CardReversal < Increase::Internal::Type::BaseModel
-          # The Card Reversal identifier.
+          # #/components/schemas/card_reversal/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # The identifier for the Card Authorization this reverses.
+          # #/components/schemas/card_reversal/properties/card_authorization_id
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # #/components/schemas/card_reversal/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_reversal/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
+          # #/components/schemas/card_reversal/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The city the merchant resides in.
+          # #/components/schemas/card_reversal/properties/merchant_city
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_city
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_reversal/properties/merchant_country
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_country
 
-          # The merchant descriptor of the merchant the card is transacting with.
+          # #/components/schemas/card_reversal/properties/merchant_descriptor
           sig { returns(String) }
           attr_accessor :merchant_descriptor
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          # ZIP code, where the first 5 and last 4 are separated by a dash.
+          # #/components/schemas/card_reversal/properties/merchant_postal_code
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
-          # The state the merchant resides in.
+          # #/components/schemas/card_reversal/properties/merchant_state
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_state
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_reversal/properties/network
           sig { returns(Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol) }
           attr_accessor :network
 
-          # Network-specific identifiers for a specific request or transaction.
+          # #/components/schemas/card_reversal/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -6053,37 +5848,31 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The identifier of the Pending Transaction associated with this Card Reversal.
+          # #/components/schemas/card_reversal/properties/pending_transaction_id
           sig { returns(T.nilable(String)) }
           attr_accessor :pending_transaction_id
 
-          # The amount of this reversal in the minor unit of the transaction's currency. For
-          # dollars, for example, this is cents.
+          # #/components/schemas/card_reversal/properties/reversal_amount
           sig { returns(Integer) }
           attr_accessor :reversal_amount
 
-          # Why this reversal was initiated.
+          # #/components/schemas/card_reversal/properties/reversal_reason
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol)) }
           attr_accessor :reversal_reason
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          # is transacting with.
+          # #/components/schemas/card_reversal/properties/terminal_id
           sig { returns(T.nilable(String)) }
           attr_accessor :terminal_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_reversal`.
+          # #/components/schemas/card_reversal/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # The amount left pending on the Card Authorization in the minor unit of the
-          # transaction's currency. For dollars, for example, this is cents.
+          # #/components/schemas/card_reversal/properties/updated_authorization_amount
           sig { returns(Integer) }
           attr_accessor :updated_authorization_amount
 
-          # A Card Reversal object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
-          # or the entirety of an existing Card Authorization.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_reversal
           sig do
             params(
               id: String,
@@ -6157,8 +5946,7 @@ module Increase
           end
           def to_hash; end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # #/components/schemas/card_reversal/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -6189,7 +5977,7 @@ module Increase
             def self.values; end
           end
 
-          # The card network used to process this card authorization.
+          # #/components/schemas/card_reversal/properties/network
           module Network
             extend Increase::Internal::Type::Enum
 
@@ -6206,23 +5994,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            # #/components/schemas/card_reversal/properties/network_identifiers/properties/retrieval_reference_number
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            # #/components/schemas/card_reversal/properties/network_identifiers/properties/trace_number
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_reversal/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for a specific request or transaction.
+            # #/components/schemas/card_reversal/properties/network_identifiers
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -6246,7 +6030,7 @@ module Increase
             def to_hash; end
           end
 
-          # Why this reversal was initiated.
+          # #/components/schemas/card_reversal/properties/reversal_reason
           module ReversalReason
             extend Increase::Internal::Type::Enum
 
@@ -6290,8 +6074,7 @@ module Increase
             def self.values; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_reversal`.
+          # #/components/schemas/card_reversal/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -6308,26 +6091,23 @@ module Increase
         end
 
         class CardSettlement < Increase::Internal::Type::BaseModel
-          # The Card Settlement identifier.
+          # #/components/schemas/card_settlement/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # The amount in the minor unit of the transaction's settlement currency. For
-          # dollars, for example, this is cents.
+          # #/components/schemas/card_settlement/properties/amount
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The Card Authorization that was created prior to this Card Settlement, if one
-          # exists.
+          # #/components/schemas/card_settlement/properties/card_authorization
           sig { returns(T.nilable(String)) }
           attr_accessor :card_authorization
 
-          # The ID of the Card Payment this transaction belongs to.
+          # #/components/schemas/card_settlement/properties/card_payment_id
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # Cashback earned on this transaction, if eligible. Cashback is paid out in
-          # aggregate, monthly.
+          # #/components/schemas/card_settlement/properties/cashback
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback)) }
           attr_reader :cashback
 
@@ -6341,12 +6121,11 @@ module Increase
           end
           attr_writer :cashback
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # #/components/schemas/card_settlement/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # Interchange assessed as a part of this transaction.
+          # #/components/schemas/card_settlement/properties/interchange
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange)) }
           attr_reader :interchange
 
@@ -6360,36 +6139,35 @@ module Increase
           end
           attr_writer :interchange
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_settlement/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The 4-digit MCC describing the merchant's business.
+          # #/components/schemas/card_settlement/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The city the merchant resides in.
+          # #/components/schemas/card_settlement/properties/merchant_city
           sig { returns(String) }
           attr_accessor :merchant_city
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_settlement/properties/merchant_country
           sig { returns(String) }
           attr_accessor :merchant_country
 
-          # The name of the merchant.
+          # #/components/schemas/card_settlement/properties/merchant_name
           sig { returns(String) }
           attr_accessor :merchant_name
 
-          # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
+          # #/components/schemas/card_settlement/properties/merchant_postal_code
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
-          # The state the merchant resides in.
+          # #/components/schemas/card_settlement/properties/merchant_state
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_state
 
-          # Network-specific identifiers for this refund.
+          # #/components/schemas/card_settlement/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -6404,21 +6182,19 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The identifier of the Pending Transaction associated with this Transaction.
+          # #/components/schemas/card_settlement/properties/pending_transaction_id
           sig { returns(T.nilable(String)) }
           attr_accessor :pending_transaction_id
 
-          # The amount in the minor unit of the transaction's presentment currency.
+          # #/components/schemas/card_settlement/properties/presentment_amount
           sig { returns(Integer) }
           attr_accessor :presentment_amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's presentment currency.
+          # #/components/schemas/card_settlement/properties/presentment_currency
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # Additional details about the card purchase, such as tax and industry-specific
-          # fields.
+          # #/components/schemas/card_settlement/properties/purchase_details
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails)) }
           attr_reader :purchase_details
 
@@ -6435,20 +6211,15 @@ module Increase
           end
           attr_writer :purchase_details
 
-          # The identifier of the Transaction associated with this Transaction.
+          # #/components/schemas/card_settlement/properties/transaction_id
           sig { returns(String) }
           attr_accessor :transaction_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_settlement`.
+          # #/components/schemas/card_settlement/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # A Card Settlement object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_settlement`. Card Settlements are card
-          # transactions that have cleared and settled. While a settlement is usually
-          # preceded by an authorization, an acquirer can also directly clear a transaction
-          # without first authorizing it.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_settlement
           sig do
             params(
               id: String,
@@ -6541,18 +6312,15 @@ module Increase
           def to_hash; end
 
           class Cashback < Increase::Internal::Type::BaseModel
-            # The cashback amount given as a string containing a decimal number. The amount is
-            # a positive number if it will be credited to you (e.g., settlements) and a
-            # negative number if it will be debited (e.g., refunds).
+            # #/components/schemas/card_settlement/properties/cashback/anyOf/0/properties/amount
             sig { returns(String) }
             attr_accessor :amount
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            # #/components/schemas/card_settlement/properties/cashback/anyOf/0/properties/currency
             sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol) }
             attr_accessor :currency
 
-            # Cashback earned on this transaction, if eligible. Cashback is paid out in
-            # aggregate, monthly.
+            # #/components/schemas/card_settlement/properties/cashback
             sig do
               params(
                 amount: String,
@@ -6573,7 +6341,7 @@ module Increase
             end
             def to_hash; end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            # #/components/schemas/card_settlement/properties/cashback/anyOf/0/properties/currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -6622,8 +6390,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # #/components/schemas/card_settlement/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -6655,22 +6422,19 @@ module Increase
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
-            # The interchange amount given as a string containing a decimal number. The amount
-            # is a positive number if it is credited to Increase (e.g., settlements) and a
-            # negative number if it is debited (e.g., refunds).
+            # #/components/schemas/card_settlement/properties/interchange/anyOf/0/properties/amount
             sig { returns(String) }
             attr_accessor :amount
 
-            # The card network specific interchange code.
+            # #/components/schemas/card_settlement/properties/interchange/anyOf/0/properties/code
             sig { returns(T.nilable(String)) }
             attr_accessor :code
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # #/components/schemas/card_settlement/properties/interchange/anyOf/0/properties/currency
             sig { returns(Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol) }
             attr_accessor :currency
 
-            # Interchange assessed as a part of this transaction.
+            # #/components/schemas/card_settlement/properties/interchange
             sig do
               params(
                 amount: String,
@@ -6693,8 +6457,7 @@ module Increase
             end
             def to_hash; end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # #/components/schemas/card_settlement/properties/interchange/anyOf/0/properties/currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -6744,21 +6507,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A network assigned business ID that identifies the acquirer that processed this
-            # transaction.
+            # #/components/schemas/card_settlement/properties/network_identifiers/properties/acquirer_business_id
             sig { returns(String) }
             attr_accessor :acquirer_business_id
 
-            # A globally unique identifier for this settlement.
+            # #/components/schemas/card_settlement/properties/network_identifiers/properties/acquirer_reference_number
             sig { returns(String) }
             attr_accessor :acquirer_reference_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_settlement/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for this refund.
+            # #/components/schemas/card_settlement/properties/network_identifiers
             sig do
               params(
                 acquirer_business_id: String,
@@ -6783,7 +6544,7 @@ module Increase
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
-            # Fields specific to car rentals.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental)) }
             attr_reader :car_rental
 
@@ -6800,20 +6561,19 @@ module Increase
             end
             attr_writer :car_rental
 
-            # An identifier from the merchant for the customer or consumer.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/customer_reference_identifier
             sig { returns(T.nilable(String)) }
             attr_accessor :customer_reference_identifier
 
-            # The state or provincial tax amount in minor units.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/local_tax_amount
             sig { returns(T.nilable(Integer)) }
             attr_accessor :local_tax_amount
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            # assessed.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/local_tax_currency
             sig { returns(T.nilable(String)) }
             attr_accessor :local_tax_currency
 
-            # Fields specific to lodging.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging)) }
             attr_reader :lodging
 
@@ -6830,20 +6590,19 @@ module Increase
             end
             attr_writer :lodging
 
-            # The national tax amount in minor units.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/national_tax_amount
             sig { returns(T.nilable(Integer)) }
             attr_accessor :national_tax_amount
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            # assessed.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/national_tax_currency
             sig { returns(T.nilable(String)) }
             attr_accessor :national_tax_currency
 
-            # An identifier from the merchant for the purchase to the issuer and cardholder.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/purchase_identifier
             sig { returns(T.nilable(String)) }
             attr_accessor :purchase_identifier
 
-            # The format of the purchase identifier.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/purchase_identifier_format
             sig do
               returns(
                 T.nilable(
@@ -6853,7 +6612,7 @@ module Increase
             end
             attr_accessor :purchase_identifier_format
 
-            # Fields specific to travel.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)) }
             attr_reader :travel
 
@@ -6870,8 +6629,7 @@ module Increase
             end
             attr_writer :travel
 
-            # Additional details about the card purchase, such as tax and industry-specific
-            # fields.
+            # #/components/schemas/card_settlement/properties/purchase_details
             sig do
               params(
                 car_rental: T.nilable(
@@ -6938,29 +6696,27 @@ module Increase
             def to_hash; end
 
             class CarRental < Increase::Internal::Type::BaseModel
-              # Code indicating the vehicle's class.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/car_class_code
               sig { returns(T.nilable(String)) }
               attr_accessor :car_class_code
 
-              # Date the customer picked up the car or, in the case of a no-show or pre-pay
-              # transaction, the scheduled pick up date.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/checkout_date
               sig { returns(T.nilable(Date)) }
               attr_accessor :checkout_date
 
-              # Daily rate being charged for the vehicle.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/daily_rental_rate_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :daily_rental_rate_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              # rate.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/daily_rental_rate_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :daily_rental_rate_currency
 
-              # Number of days the vehicle was rented.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/days_rented
               sig { returns(T.nilable(Integer)) }
               attr_accessor :days_rented
 
-              # Additional charges (gas, late fee, etc.) being billed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/extra_charges
               sig do
                 returns(
                   T.nilable(
@@ -6970,26 +6726,23 @@ module Increase
               end
               attr_accessor :extra_charges
 
-              # Fuel charges for the vehicle.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/fuel_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :fuel_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              # assessed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/fuel_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :fuel_charges_currency
 
-              # Any insurance being charged for the vehicle.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/insurance_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :insurance_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              # charges assessed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/insurance_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :insurance_charges_currency
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/no_show_indicator
               sig do
                 returns(
                   T.nilable(
@@ -6999,30 +6752,27 @@ module Increase
               end
               attr_accessor :no_show_indicator
 
-              # Charges for returning the vehicle at a different location than where it was
-              # picked up.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/one_way_drop_off_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :one_way_drop_off_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              # drop-off charges assessed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/one_way_drop_off_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :one_way_drop_off_charges_currency
 
-              # Name of the person renting the vehicle.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/renter_name
               sig { returns(T.nilable(String)) }
               attr_accessor :renter_name
 
-              # Weekly rate being charged for the vehicle.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/weekly_rental_rate_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :weekly_rental_rate_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              # rental rate.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/weekly_rental_rate_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :weekly_rental_rate_currency
 
-              # Fields specific to car rentals.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental
               sig do
                 params(
                   car_class_code: T.nilable(String),
@@ -7095,7 +6845,7 @@ module Increase
               end
               def to_hash; end
 
-              # Additional charges (gas, late fee, etc.) being billed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -7165,8 +6915,7 @@ module Increase
                 def self.values; end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/car_rental/anyOf/0/properties/no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -7210,20 +6959,19 @@ module Increase
             end
 
             class Lodging < Increase::Internal::Type::BaseModel
-              # Date the customer checked in.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/check_in_date
               sig { returns(T.nilable(Date)) }
               attr_accessor :check_in_date
 
-              # Daily rate being charged for the room.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/daily_room_rate_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :daily_room_rate_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              # rate.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/daily_room_rate_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :daily_room_rate_currency
 
-              # Additional charges (phone, late check-out, etc.) being billed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/extra_charges
               sig do
                 returns(
                   T.nilable(
@@ -7233,26 +6981,23 @@ module Increase
               end
               attr_accessor :extra_charges
 
-              # Folio cash advances for the room.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/folio_cash_advances_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :folio_cash_advances_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              # advances.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/folio_cash_advances_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :folio_cash_advances_currency
 
-              # Food and beverage charges for the room.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/food_beverage_charges_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :food_beverage_charges_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              # beverage charges.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/food_beverage_charges_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :food_beverage_charges_currency
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/no_show_indicator
               sig do
                 returns(
                   T.nilable(
@@ -7262,38 +7007,35 @@ module Increase
               end
               attr_accessor :no_show_indicator
 
-              # Prepaid expenses being charged for the room.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/prepaid_expenses_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :prepaid_expenses_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              # expenses.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/prepaid_expenses_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :prepaid_expenses_currency
 
-              # Number of nights the room was rented.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/room_nights
               sig { returns(T.nilable(Integer)) }
               attr_accessor :room_nights
 
-              # Total room tax being charged.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_room_tax_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :total_room_tax_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              # tax.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_room_tax_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :total_room_tax_currency
 
-              # Total tax being charged for the room.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_tax_amount
               sig { returns(T.nilable(Integer)) }
               attr_accessor :total_tax_amount
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              # assessed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/total_tax_currency
               sig { returns(T.nilable(String)) }
               attr_accessor :total_tax_currency
 
-              # Fields specific to lodging.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging
               sig do
                 params(
                   check_in_date: T.nilable(Date),
@@ -7366,7 +7108,7 @@ module Increase
               end
               def to_hash; end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -7443,8 +7185,7 @@ module Increase
                 def self.values; end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/lodging/anyOf/0/properties/no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -7487,7 +7228,7 @@ module Increase
               end
             end
 
-            # The format of the purchase identifier.
+            # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/purchase_identifier_format
             module PurchaseIdentifierFormat
               extend Increase::Internal::Type::Enum
 
@@ -7551,7 +7292,7 @@ module Increase
             end
 
             class Travel < Increase::Internal::Type::BaseModel
-              # Ancillary purchases in addition to the airfare.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary
               sig do
                 returns(
                   T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
@@ -7572,11 +7313,11 @@ module Increase
               end
               attr_writer :ancillary
 
-              # Indicates the computerized reservation system used to book the ticket.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/computerized_reservation_system
               sig { returns(T.nilable(String)) }
               attr_accessor :computerized_reservation_system
 
-              # Indicates the reason for a credit to the cardholder.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/credit_reason_indicator
               sig do
                 returns(
                   T.nilable(
@@ -7586,19 +7327,19 @@ module Increase
               end
               attr_accessor :credit_reason_indicator
 
-              # Date of departure.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/departure_date
               sig { returns(T.nilable(Date)) }
               attr_accessor :departure_date
 
-              # Code for the originating city or airport.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/origination_city_airport_code
               sig { returns(T.nilable(String)) }
               attr_accessor :origination_city_airport_code
 
-              # Name of the passenger.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/passenger_name
               sig { returns(T.nilable(String)) }
               attr_accessor :passenger_name
 
-              # Indicates whether this ticket is non-refundable.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/restricted_ticket_indicator
               sig do
                 returns(
                   T.nilable(
@@ -7608,7 +7349,7 @@ module Increase
               end
               attr_accessor :restricted_ticket_indicator
 
-              # Indicates why a ticket was changed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ticket_change_indicator
               sig do
                 returns(
                   T.nilable(
@@ -7618,19 +7359,19 @@ module Increase
               end
               attr_accessor :ticket_change_indicator
 
-              # Ticket number.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ticket_number
               sig { returns(T.nilable(String)) }
               attr_accessor :ticket_number
 
-              # Code for the travel agency if the ticket was issued by a travel agency.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/travel_agency_code
               sig { returns(T.nilable(String)) }
               attr_accessor :travel_agency_code
 
-              # Name of the travel agency if the ticket was issued by a travel agency.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/travel_agency_name
               sig { returns(T.nilable(String)) }
               attr_accessor :travel_agency_name
 
-              # Fields specific to each leg of the journey.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs
               sig do
                 returns(
                   T.nilable(
@@ -7640,7 +7381,7 @@ module Increase
               end
               attr_accessor :trip_legs
 
-              # Fields specific to travel.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel
               sig do
                 params(
                   ancillary: T.nilable(
@@ -7720,13 +7461,11 @@ module Increase
               def to_hash; end
 
               class Ancillary < Increase::Internal::Type::BaseModel
-                # If this purchase has a connection or relationship to another purchase, such as a
-                # baggage fee for a passenger transport ticket, this field should contain the
-                # ticket document number for the other purchase.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/connected_ticket_document_number
                 sig { returns(T.nilable(String)) }
                 attr_accessor :connected_ticket_document_number
 
-                # Indicates the reason for a credit to the cardholder.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/credit_reason_indicator
                 sig do
                   returns(
                     T.nilable(
@@ -7736,11 +7475,11 @@ module Increase
                 end
                 attr_accessor :credit_reason_indicator
 
-                # Name of the passenger or description of the ancillary purchase.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/passenger_name_or_description
                 sig { returns(T.nilable(String)) }
                 attr_accessor :passenger_name_or_description
 
-                # Additional travel charges, such as baggage fees.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services
                 sig do
                   returns(
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
@@ -7748,11 +7487,11 @@ module Increase
                 end
                 attr_accessor :services
 
-                # Ticket document number.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/ticket_document_number
                 sig { returns(T.nilable(String)) }
                 attr_accessor :ticket_document_number
 
-                # Ancillary purchases in addition to the airfare.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
@@ -7793,7 +7532,7 @@ module Increase
                 end
                 def to_hash; end
 
-                # Indicates the reason for a credit to the cardholder.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/credit_reason_indicator
                 module CreditReasonIndicator
                   extend Increase::Internal::Type::Enum
 
@@ -7850,7 +7589,7 @@ module Increase
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
-                  # Category of the ancillary service.
+                  # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items/properties/category
                   sig do
                     returns(
                       T.nilable(
@@ -7860,10 +7599,11 @@ module Increase
                   end
                   attr_accessor :category
 
-                  # Sub-category of the ancillary service, free-form.
+                  # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items/properties/sub_category
                   sig { returns(T.nilable(String)) }
                   attr_accessor :sub_category
 
+                  # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items
                   sig do
                     params(
                       category: T.nilable(
@@ -7888,7 +7628,7 @@ module Increase
                   end
                   def to_hash; end
 
-                  # Category of the ancillary service.
+                  # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ancillary/anyOf/0/properties/services/items/properties/category
                   module Category
                     extend Increase::Internal::Type::Enum
 
@@ -8086,7 +7826,7 @@ module Increase
                 end
               end
 
-              # Indicates the reason for a credit to the cardholder.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/credit_reason_indicator
               module CreditReasonIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -8156,7 +7896,7 @@ module Increase
                 def self.values; end
               end
 
-              # Indicates whether this ticket is non-refundable.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/restricted_ticket_indicator
               module RestrictedTicketIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -8198,7 +7938,7 @@ module Increase
                 def self.values; end
               end
 
-              # Indicates why a ticket was changed.
+              # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/ticket_change_indicator
               module TicketChangeIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -8248,27 +7988,27 @@ module Increase
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
-                # Carrier code (e.g., United Airlines, Jet Blue, etc.).
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/carrier_code
                 sig { returns(T.nilable(String)) }
                 attr_accessor :carrier_code
 
-                # Code for the destination city or airport.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/destination_city_airport_code
                 sig { returns(T.nilable(String)) }
                 attr_accessor :destination_city_airport_code
 
-                # Fare basis code.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/fare_basis_code
                 sig { returns(T.nilable(String)) }
                 attr_accessor :fare_basis_code
 
-                # Flight number.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/flight_number
                 sig { returns(T.nilable(String)) }
                 attr_accessor :flight_number
 
-                # Service class (e.g., first class, business class, etc.).
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/service_class
                 sig { returns(T.nilable(String)) }
                 attr_accessor :service_class
 
-                # Indicates whether a stopover is allowed on this ticket.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/stop_over_code
                 sig do
                   returns(
                     T.nilable(
@@ -8278,6 +8018,7 @@ module Increase
                 end
                 attr_accessor :stop_over_code
 
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items
                 sig do
                   params(
                     carrier_code: T.nilable(String),
@@ -8316,7 +8057,7 @@ module Increase
                 end
                 def to_hash; end
 
-                # Indicates whether a stopover is allowed on this ticket.
+                # #/components/schemas/card_settlement/properties/purchase_details/anyOf/0/properties/travel/anyOf/0/properties/trip_legs/anyOf/0/items/properties/stop_over_code
                 module StopOverCode
                   extend Increase::Internal::Type::Enum
 
@@ -8368,8 +8109,7 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_settlement`.
+          # #/components/schemas/card_settlement/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -8387,61 +8127,55 @@ module Increase
         end
 
         class CardValidation < Increase::Internal::Type::BaseModel
-          # The Card Validation identifier.
+          # #/components/schemas/card_validation/properties/id
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_validation/properties/actioner
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol) }
           attr_accessor :actioner
 
-          # The ID of the Card Payment this transaction belongs to.
+          # #/components/schemas/card_validation/properties/card_payment_id
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # #/components/schemas/card_validation/properties/currency
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol) }
           attr_accessor :currency
 
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          # purchase), the identifier of the token that was used.
+          # #/components/schemas/card_validation/properties/digital_wallet_token_id
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
+          # #/components/schemas/card_validation/properties/merchant_acceptor_id
           sig { returns(String) }
           attr_accessor :merchant_acceptor_id
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
+          # #/components/schemas/card_validation/properties/merchant_category_code
           sig { returns(String) }
           attr_accessor :merchant_category_code
 
-          # The city the merchant resides in.
+          # #/components/schemas/card_validation/properties/merchant_city
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_city
 
-          # The country the merchant resides in.
+          # #/components/schemas/card_validation/properties/merchant_country
           sig { returns(String) }
           attr_accessor :merchant_country
 
-          # The merchant descriptor of the merchant the card is transacting with.
+          # #/components/schemas/card_validation/properties/merchant_descriptor
           sig { returns(String) }
           attr_accessor :merchant_descriptor
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          # ZIP code, where the first 5 and last 4 are separated by a dash.
+          # #/components/schemas/card_validation/properties/merchant_postal_code
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_postal_code
 
-          # The state the merchant resides in.
+          # #/components/schemas/card_validation/properties/merchant_state
           sig { returns(T.nilable(String)) }
           attr_accessor :merchant_state
 
-          # Fields specific to the `network`.
+          # #/components/schemas/card_validation/properties/network_details
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails) }
           attr_reader :network_details
 
@@ -8453,7 +8187,7 @@ module Increase
           end
           attr_writer :network_details
 
-          # Network-specific identifiers for a specific request or transaction.
+          # #/components/schemas/card_validation/properties/network_identifiers
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
@@ -8468,32 +8202,27 @@ module Increase
           end
           attr_writer :network_identifiers
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          # #/components/schemas/card_validation/properties/network_risk_score
           sig { returns(T.nilable(Integer)) }
           attr_accessor :network_risk_score
 
-          # If the authorization was made in-person with a physical card, the Physical Card
-          # that was used.
+          # #/components/schemas/card_validation/properties/physical_card_id
           sig { returns(T.nilable(String)) }
           attr_accessor :physical_card_id
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          # transaction.
+          # #/components/schemas/card_validation/properties/real_time_decision_id
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          # is transacting with.
+          # #/components/schemas/card_validation/properties/terminal_id
           sig { returns(T.nilable(String)) }
           attr_accessor :terminal_id
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_validation`.
+          # #/components/schemas/card_validation/properties/type
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol) }
           attr_accessor :type
 
-          # Fields related to verification of cardholder-provided values.
+          # #/components/schemas/card_validation/properties/verification
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification) }
           attr_reader :verification
 
@@ -8505,10 +8234,7 @@ module Increase
           end
           attr_writer :verification
 
-          # A Card Validation object. This field will be present in the JSON response if and
-          # only if `category` is equal to `card_validation`. Card Validations are requests
-          # from a merchant to verify that a card number and optionally its address and/or
-          # Card Verification Value are valid.
+          # #/components/schemas/card_payment/properties/elements/items/properties/card_validation
           sig do
             params(
               id: String,
@@ -8588,8 +8314,7 @@ module Increase
           end
           def to_hash; end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/card_validation/properties/actioner
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -8612,8 +8337,7 @@ module Increase
             def self.values; end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # #/components/schemas/card_validation/properties/currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -8645,11 +8369,11 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
-            # The payment network used to process this card authorization.
+            # #/components/schemas/card_validation/properties/network_details/properties/category
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol) }
             attr_accessor :category
 
-            # Fields specific to the `visa` network.
+            # #/components/schemas/card_validation/properties/network_details/properties/visa
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)) }
             attr_reader :visa
 
@@ -8666,7 +8390,7 @@ module Increase
             end
             attr_writer :visa
 
-            # Fields specific to the `network`.
+            # #/components/schemas/card_validation/properties/network_details
             sig do
               params(
                 category: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::OrSymbol,
@@ -8692,7 +8416,7 @@ module Increase
             end
             def to_hash; end
 
-            # The payment network used to process this card authorization.
+            # #/components/schemas/card_validation/properties/network_details/properties/category
             module Category
               extend Increase::Internal::Type::Enum
 
@@ -8724,9 +8448,7 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               sig do
                 returns(
                   T.nilable(
@@ -8736,8 +8458,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               sig do
                 returns(
                   T.nilable(
@@ -8747,8 +8468,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               sig do
                 returns(
                   T.nilable(
@@ -8758,7 +8478,7 @@ module Increase
               end
               attr_accessor :stand_in_processing_reason
 
-              # Fields specific to the `visa` network.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(
@@ -8798,9 +8518,7 @@ module Increase
               end
               def to_hash; end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -8884,8 +8602,7 @@ module Increase
                 def self.values; end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -8983,8 +8700,7 @@ module Increase
                 def self.values; end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/card_validation/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -9064,23 +8780,19 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
+            # #/components/schemas/card_validation/properties/network_identifiers/properties/retrieval_reference_number
             sig { returns(T.nilable(String)) }
             attr_accessor :retrieval_reference_number
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
+            # #/components/schemas/card_validation/properties/network_identifiers/properties/trace_number
             sig { returns(T.nilable(String)) }
             attr_accessor :trace_number
 
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
+            # #/components/schemas/card_validation/properties/network_identifiers/properties/transaction_id
             sig { returns(T.nilable(String)) }
             attr_accessor :transaction_id
 
-            # Network-specific identifiers for a specific request or transaction.
+            # #/components/schemas/card_validation/properties/network_identifiers
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -9104,8 +8816,7 @@ module Increase
             def to_hash; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `card_validation`.
+          # #/components/schemas/card_validation/properties/type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -9122,8 +8833,7 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            # the back of the card.
+            # #/components/schemas/card_validation/properties/verification/properties/card_verification_code
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode) }
             attr_reader :card_verification_code
 
@@ -9138,8 +8848,7 @@ module Increase
             end
             attr_writer :card_verification_code
 
-            # Cardholder address provided in the authorization request and the address on file
-            # we verified it against.
+            # #/components/schemas/card_validation/properties/verification/properties/cardholder_address
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress) }
             attr_reader :cardholder_address
 
@@ -9154,7 +8863,7 @@ module Increase
             end
             attr_writer :cardholder_address
 
-            # Fields related to verification of cardholder-provided values.
+            # #/components/schemas/card_validation/properties/verification
             sig do
               params(
                 card_verification_code: T.any(
@@ -9182,7 +8891,7 @@ module Increase
             def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/card_validation/properties/verification/properties/card_verification_code/properties/result
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
@@ -9190,8 +8899,7 @@ module Increase
               end
               attr_accessor :result
 
-              # Fields related to verification of the Card Verification Code, a 3-digit code on
-              # the back of the card.
+              # #/components/schemas/card_validation/properties/verification/properties/card_verification_code
               sig do
                 params(
                   result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::OrSymbol
@@ -9210,7 +8918,7 @@ module Increase
               end
               def to_hash; end
 
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/card_validation/properties/verification/properties/card_verification_code/properties/result
               module Result
                 extend Increase::Internal::Type::Enum
 
@@ -9261,24 +8969,23 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
-              # Line 1 of the address on file for the cardholder.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address/properties/actual_line1
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
 
-              # The postal code of the address on file for the cardholder.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address/properties/actual_postal_code
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_postal_code
 
-              # The cardholder address line 1 provided for verification in the authorization
-              # request.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address/properties/provided_line1
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_line1
 
-              # The postal code provided for verification in the authorization request.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address/properties/provided_postal_code
               sig { returns(T.nilable(String)) }
               attr_accessor :provided_postal_code
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address/properties/result
               sig do
                 returns(
                   Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
@@ -9286,8 +8993,7 @@ module Increase
               end
               attr_accessor :result
 
-              # Cardholder address provided in the authorization request and the address on file
-              # we verified it against.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -9321,7 +9027,7 @@ module Increase
               end
               def to_hash; end
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/card_validation/properties/verification/properties/cardholder_address/properties/result
               module Result
                 extend Increase::Internal::Type::Enum
 
@@ -9394,8 +9100,7 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # #/components/schemas/card_payment/properties/elements/items/properties/category
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -9446,32 +9151,27 @@ module Increase
       end
 
       class State < Increase::Internal::Type::BaseModel
-        # The total authorized amount in the minor unit of the transaction's currency. For
-        # dollars, for example, this is cents.
+        # #/components/schemas/card_payment/properties/state/properties/authorized_amount
         sig { returns(Integer) }
         attr_accessor :authorized_amount
 
-        # The total amount from fuel confirmations in the minor unit of the transaction's
-        # currency. For dollars, for example, this is cents.
+        # #/components/schemas/card_payment/properties/state/properties/fuel_confirmed_amount
         sig { returns(Integer) }
         attr_accessor :fuel_confirmed_amount
 
-        # The total incrementally updated authorized amount in the minor unit of the
-        # transaction's currency. For dollars, for example, this is cents.
+        # #/components/schemas/card_payment/properties/state/properties/incremented_amount
         sig { returns(Integer) }
         attr_accessor :incremented_amount
 
-        # The total reversed amount in the minor unit of the transaction's currency. For
-        # dollars, for example, this is cents.
+        # #/components/schemas/card_payment/properties/state/properties/reversed_amount
         sig { returns(Integer) }
         attr_accessor :reversed_amount
 
-        # The total settled or refunded amount in the minor unit of the transaction's
-        # currency. For dollars, for example, this is cents.
+        # #/components/schemas/card_payment/properties/state/properties/settled_amount
         sig { returns(Integer) }
         attr_accessor :settled_amount
 
-        # The summarized state of this card payment.
+        # #/components/schemas/card_payment/properties/state
         sig do
           params(
             authorized_amount: Integer,
@@ -9506,8 +9206,7 @@ module Increase
         def to_hash; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `card_payment`.
+      # #/components/schemas/card_payment/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

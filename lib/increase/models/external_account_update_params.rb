@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_holder
-      #   The type of entity that owns the External Account.
+      #   #/components/schemas/update_an_external_account_parameters/properties/account_holder
       #
       #   @return [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder, nil]
       optional :account_holder, enum: -> { Increase::Models::ExternalAccountUpdateParams::AccountHolder }
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :account_holder
 
       # @!attribute [r] description
-      #   The description you choose to give the external account.
+      #   #/components/schemas/update_an_external_account_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -29,7 +29,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] funding
-      #   The funding type of the External Account.
+      #   #/components/schemas/update_an_external_account_parameters/properties/funding
       #
       #   @return [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding, nil]
       optional :funding, enum: -> { Increase::Models::ExternalAccountUpdateParams::Funding }
@@ -39,7 +39,7 @@ module Increase
       #   attr_writer :funding
 
       # @!attribute [r] status
-      #   The status of the External Account.
+      #   #/components/schemas/update_an_external_account_parameters/properties/status
       #
       #   @return [Symbol, Increase::Models::ExternalAccountUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::ExternalAccountUpdateParams::Status }
@@ -59,7 +59,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/update_an_external_account_parameters/properties/account_holder
       module AccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -76,7 +76,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The funding type of the External Account.
+      # #/components/schemas/update_an_external_account_parameters/properties/funding
       module Funding
         extend Increase::Internal::Type::Enum
 
@@ -96,7 +96,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The status of the External Account.
+      # #/components/schemas/update_an_external_account_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

@@ -6,15 +6,15 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The Account the Account Number should belong to.
+      # #/components/schemas/create_an_account_number_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The name you choose for the Account Number.
+      # #/components/schemas/create_an_account_number_parameters/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # Options related to how this Account Number should handle inbound ACH transfers.
+      # #/components/schemas/create_an_account_number_parameters/properties/inbound_ach
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundACH)) }
       attr_reader :inbound_ach
 
@@ -26,8 +26,7 @@ module Increase
       end
       attr_writer :inbound_ach
 
-      # Options related to how this Account Number should handle inbound check
-      # withdrawals.
+      # #/components/schemas/create_an_account_number_parameters/properties/inbound_checks
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundChecks)) }
       attr_reader :inbound_checks
 
@@ -66,13 +65,11 @@ module Increase
       def to_hash; end
 
       class InboundACH < Increase::Internal::Type::BaseModel
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active. If
-        # you do not specify this field, the default is `allowed`.
+        # #/components/schemas/create_an_account_number_parameters/properties/inbound_ach/properties/debit_status
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol) }
         attr_accessor :debit_status
 
-        # Options related to how this Account Number should handle inbound ACH transfers.
+        # #/components/schemas/create_an_account_number_parameters/properties/inbound_ach
         sig do
           params(debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
             .returns(T.attached_class)
@@ -85,9 +82,7 @@ module Increase
         end
         def to_hash; end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active. If
-        # you do not specify this field, the default is `allowed`.
+        # #/components/schemas/create_an_account_number_parameters/properties/inbound_ach/properties/debit_status
         module DebitStatus
           extend Increase::Internal::Type::Enum
 
@@ -113,13 +108,11 @@ module Increase
       end
 
       class InboundChecks < Increase::Internal::Type::BaseModel
-        # How Increase should process checks with this account number printed on them. If
-        # you do not specify this field, the default is `check_transfers_only`.
+        # #/components/schemas/create_an_account_number_parameters/properties/inbound_checks/properties/status
         sig { returns(Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol) }
         attr_accessor :status
 
-        # Options related to how this Account Number should handle inbound check
-        # withdrawals.
+        # #/components/schemas/create_an_account_number_parameters/properties/inbound_checks
         sig do
           params(status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
             .returns(T.attached_class)
@@ -129,8 +122,7 @@ module Increase
         sig { override.returns({status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol}) }
         def to_hash; end
 
-        # How Increase should process checks with this account number printed on them. If
-        # you do not specify this field, the default is `check_transfers_only`.
+        # #/components/schemas/create_an_account_number_parameters/properties/inbound_checks/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 

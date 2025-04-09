@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The identifier for the account to be added to IntraFi.
+      #   #/components/schemas/enroll_an_account_in_the_intrafi_deposit_sweep_network_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute email_address
-      #   The contact email for the account owner, to be shared with IntraFi.
+      #   #/components/schemas/enroll_an_account_in_the_intrafi_deposit_sweep_network_parameters/properties/email_address
       #
       #   @return [String]
       required :email_address, String

@@ -7,7 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account the tax document is for.
+        # #/components/schemas/sandbox_create_a_tax_document_parameters/properties/account_id
         sig { returns(String) }
         attr_accessor :account_id
 

@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The status to update the Physical Card to.
+      # #/components/schemas/update_a_physical_card_parameters/properties/status
       sig { returns(Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol) }
       attr_accessor :status
 
@@ -30,7 +30,7 @@ module Increase
       end
       def to_hash; end
 
-      # The status to update the Physical Card to.
+      # #/components/schemas/update_a_physical_card_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

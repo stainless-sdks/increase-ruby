@@ -6,21 +6,21 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The description you choose for the Lockbox.
+      # #/components/schemas/update_a_lockbox_parameters/properties/description
       sig { returns(T.nilable(String)) }
       attr_reader :description
 
       sig { params(description: String).void }
       attr_writer :description
 
-      # The recipient name you choose for the Lockbox.
+      # #/components/schemas/update_a_lockbox_parameters/properties/recipient_name
       sig { returns(T.nilable(String)) }
       attr_reader :recipient_name
 
       sig { params(recipient_name: String).void }
       attr_writer :recipient_name
 
-      # This indicates if checks can be sent to the Lockbox.
+      # #/components/schemas/update_a_lockbox_parameters/properties/status
       sig { returns(T.nilable(Increase::Models::LockboxUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
@@ -51,7 +51,7 @@ module Increase
       end
       def to_hash; end
 
-      # This indicates if checks can be sent to the Lockbox.
+      # #/components/schemas/update_a_lockbox_parameters/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 

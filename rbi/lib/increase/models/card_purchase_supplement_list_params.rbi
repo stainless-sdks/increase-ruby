@@ -6,8 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # Filter Card Purchase Supplements to ones belonging to the specified Card
-      # Payment.
+      # #/paths//card_purchase_supplements/get/parameters/2/schema
       sig { returns(T.nilable(String)) }
       attr_reader :card_payment_id
 
@@ -25,15 +24,14 @@ module Increase
       end
       attr_writer :created_at
 
-      # Return the page of entries after this one.
+      # #/paths//card_purchase_supplements/get/parameters/0/schema
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      # #/paths//card_purchase_supplements/get/parameters/1/schema
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 
@@ -67,32 +65,28 @@ module Increase
       def to_hash; end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        # #/paths//card_purchase_supplements/get/parameters/3/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :after
 
         sig { params(after: Time).void }
         attr_writer :after
 
-        # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        # timestamp.
+        # #/paths//card_purchase_supplements/get/parameters/4/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :before
 
         sig { params(before: Time).void }
         attr_writer :before
 
-        # Return results on or after this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # #/paths//card_purchase_supplements/get/parameters/5/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_after
 
         sig { params(on_or_after: Time).void }
         attr_writer :on_or_after
 
-        # Return results on or before this
-        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        # #/paths//card_purchase_supplements/get/parameters/6/schema
         sig { returns(T.nilable(Time)) }
         attr_reader :on_or_before
 

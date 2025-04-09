@@ -6,27 +6,25 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The name you choose for the Account.
+      # #/components/schemas/create_an_account_parameters/properties/name
       sig { returns(String) }
       attr_accessor :name
 
-      # The identifier for the Entity that will own the Account.
+      # #/components/schemas/create_an_account_parameters/properties/entity_id
       sig { returns(T.nilable(String)) }
       attr_reader :entity_id
 
       sig { params(entity_id: String).void }
       attr_writer :entity_id
 
-      # The identifier of an Entity that, while not owning the Account, is associated
-      # with its activity. Its relationship to your group must be `informational`.
+      # #/components/schemas/create_an_account_parameters/properties/informational_entity_id
       sig { returns(T.nilable(String)) }
       attr_reader :informational_entity_id
 
       sig { params(informational_entity_id: String).void }
       attr_writer :informational_entity_id
 
-      # The identifier for the Program that this Account falls under. Required if you
-      # operate more than one Program.
+      # #/components/schemas/create_an_account_parameters/properties/program_id
       sig { returns(T.nilable(String)) }
       attr_reader :program_id
 

@@ -9,14 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute structure
-      #   The type of Entity to create.
+      #   #/components/schemas/create_an_entity_parameters/properties/structure
       #
       #   @return [Symbol, Increase::Models::EntityCreateParams::Structure]
       required :structure, enum: -> { Increase::Models::EntityCreateParams::Structure }
 
       # @!attribute [r] corporation
-      #   Details of the corporation entity to create. Required if `structure` is equal to
-      #   `corporation`.
+      #   #/components/schemas/create_an_entity_parameters/properties/corporation
       #
       #   @return [Increase::Models::EntityCreateParams::Corporation, nil]
       optional :corporation, -> { Increase::Models::EntityCreateParams::Corporation }
@@ -26,7 +25,7 @@ module Increase
       #   attr_writer :corporation
 
       # @!attribute [r] description
-      #   The description you choose to give the entity.
+      #   #/components/schemas/create_an_entity_parameters/properties/description
       #
       #   @return [String, nil]
       optional :description, String
@@ -36,8 +35,7 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] government_authority
-      #   Details of the Government Authority entity to create. Required if `structure` is
-      #   equal to `Government Authority`.
+      #   #/components/schemas/create_an_entity_parameters/properties/government_authority
       #
       #   @return [Increase::Models::EntityCreateParams::GovernmentAuthority, nil]
       optional :government_authority, -> { Increase::Models::EntityCreateParams::GovernmentAuthority }
@@ -47,8 +45,7 @@ module Increase
       #   attr_writer :government_authority
 
       # @!attribute [r] joint
-      #   Details of the joint entity to create. Required if `structure` is equal to
-      #   `joint`.
+      #   #/components/schemas/create_an_entity_parameters/properties/joint
       #
       #   @return [Increase::Models::EntityCreateParams::Joint, nil]
       optional :joint, -> { Increase::Models::EntityCreateParams::Joint }
@@ -58,10 +55,7 @@ module Increase
       #   attr_writer :joint
 
       # @!attribute [r] natural_person
-      #   Details of the natural person entity to create. Required if `structure` is equal
-      #   to `natural_person`. Natural people entities should be submitted with
-      #   `social_security_number` or `individual_taxpayer_identification_number`
-      #   identification methods.
+      #   #/components/schemas/create_an_entity_parameters/properties/natural_person
       #
       #   @return [Increase::Models::EntityCreateParams::NaturalPerson, nil]
       optional :natural_person, -> { Increase::Models::EntityCreateParams::NaturalPerson }
@@ -71,7 +65,7 @@ module Increase
       #   attr_writer :natural_person
 
       # @!attribute [r] supplemental_documents
-      #   Additional documentation associated with the entity.
+      #   #/components/schemas/create_an_entity_parameters/properties/supplemental_documents
       #
       #   @return [Array<Increase::Models::EntityCreateParams::SupplementalDocument>, nil]
       optional :supplemental_documents,
@@ -82,8 +76,7 @@ module Increase
       #   attr_writer :supplemental_documents
 
       # @!attribute [r] third_party_verification
-      #   A reference to data stored in a third-party verification service. Your
-      #   integration may or may not use this field.
+      #   #/components/schemas/create_an_entity_parameters/properties/third_party_verification
       #
       #   @return [Increase::Models::EntityCreateParams::ThirdPartyVerification, nil]
       optional :third_party_verification, -> { Increase::Models::EntityCreateParams::ThirdPartyVerification }
@@ -93,8 +86,7 @@ module Increase
       #   attr_writer :third_party_verification
 
       # @!attribute [r] trust
-      #   Details of the trust entity to create. Required if `structure` is equal to
-      #   `trust`.
+      #   #/components/schemas/create_an_entity_parameters/properties/trust
       #
       #   @return [Increase::Models::EntityCreateParams::Trust, nil]
       optional :trust, -> { Increase::Models::EntityCreateParams::Trust }
@@ -133,7 +125,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The type of Entity to create.
+      # #/components/schemas/create_an_entity_parameters/properties/structure
       module Structure
         extend Increase::Internal::Type::Enum
 
@@ -161,35 +153,32 @@ module Increase
 
       class Corporation < Increase::Internal::Type::BaseModel
         # @!attribute address
-        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address
         #
         #   @return [Increase::Models::EntityCreateParams::Corporation::Address]
         required :address, -> { Increase::Models::EntityCreateParams::Corporation::Address }
 
         # @!attribute beneficial_owners
-        #   The identifying details of anyone controlling or owning 25% or more of the
-        #   corporation.
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         required :beneficial_owners,
                  -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner] }
 
         # @!attribute name
-        #   The legal name of the corporation.
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/name
         #
         #   @return [String]
         required :name, String
 
         # @!attribute tax_identifier
-        #   The Employer Identification Number (EIN) for the corporation.
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/tax_identifier
         #
         #   @return [String]
         required :tax_identifier, String
 
         # @!attribute [r] incorporation_state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the
-        #   corporation's state of incorporation.
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/incorporation_state
         #
         #   @return [String, nil]
         optional :incorporation_state, String
@@ -199,10 +188,7 @@ module Increase
         #   attr_writer :incorporation_state
 
         # @!attribute [r] industry_code
-        #   The North American Industry Classification System (NAICS) code for the
-        #   corporation's primary line of business. This is a number, like `5132` for
-        #   `Software Publishers`. A full list of classification codes is available
-        #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/industry_code
         #
         #   @return [String, nil]
         optional :industry_code, String
@@ -212,7 +198,7 @@ module Increase
         #   attr_writer :industry_code
 
         # @!attribute [r] website
-        #   The website of the corporation.
+        #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/website
         #
         #   @return [String, nil]
         optional :website, String
@@ -222,8 +208,7 @@ module Increase
         #   attr_writer :website
 
         # @!parse
-        #   # Details of the corporation entity to create. Required if `structure` is equal to
-        #   # `corporation`.
+        #   # #/components/schemas/create_an_entity_parameters/properties/corporation
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::Corporation::Address]
         #   # @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
@@ -251,32 +236,31 @@ module Increase
         # @see Increase::Models::EntityCreateParams::Corporation#address
         class Address < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The first line of the address. This is usually the street number and street.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!attribute zip
-          #   The ZIP code of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address/properties/zip
           #
           #   @return [String]
           required :zip, String
 
           # @!attribute [r] line2
-          #   The second line of the address. This might be the floor or room number.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address/properties/line2
           #
           #   @return [String, nil]
           optional :line2, String
@@ -286,8 +270,7 @@ module Increase
           #   attr_writer :line2
 
           # @!parse
-          #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   # are disallowed.
+          #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -302,23 +285,21 @@ module Increase
 
         class BeneficialOwner < Increase::Internal::Type::BaseModel
           # @!attribute individual
-          #   Personal details for the beneficial owner.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual
           #
           #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual]
           required :individual,
                    -> { Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual }
 
           # @!attribute prongs
-          #   Why this person is considered a beneficial owner of the entity. At least one
-          #   option is required, if a person is both a control person and owner, submit an
-          #   array containing both.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/prongs
           #
           #   @return [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           required :prongs,
                    -> { Increase::Internal::Type::ArrayOf[enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong] }
 
           # @!attribute [r] company_title
-          #   This person's role or title within the entity.
+          #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/company_title
           #
           #   @return [String, nil]
           optional :company_title, String
@@ -328,6 +309,8 @@ module Increase
           #   attr_writer :company_title
 
           # @!parse
+          #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items
+          #   #
           #   # @param individual [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual]
           #   # @param prongs [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           #   # @param company_title [String]
@@ -339,37 +322,33 @@ module Increase
           # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner#individual
           class Individual < Increase::Internal::Type::BaseModel
             # @!attribute address
-            #   The individual's physical address. Mail receiving locations like PO Boxes and
-            #   PMB's are disallowed.
+            #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address
             #
             #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
             required :address,
                      -> { Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address }
 
             # @!attribute date_of_birth
-            #   The person's date of birth in YYYY-MM-DD format.
+            #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/date_of_birth
             #
             #   @return [Date]
             required :date_of_birth, Date
 
             # @!attribute identification
-            #   A means of verifying the person's identity.
+            #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification
             #
             #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification]
             required :identification,
                      -> { Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification }
 
             # @!attribute name
-            #   The person's legal name.
+            #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/name
             #
             #   @return [String]
             required :name, String
 
             # @!attribute [r] confirmed_no_us_tax_id
-            #   The identification method for an individual can only be a passport, driver's
-            #   license, or other document if you've confirmed the individual does not have a US
-            #   tax id (either a Social Security Number or Individual Taxpayer Identification
-            #   Number).
+            #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/confirmed_no_us_tax_id
             #
             #   @return [Boolean, nil]
             optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -379,7 +358,7 @@ module Increase
             #   attr_writer :confirmed_no_us_tax_id
 
             # @!parse
-            #   # Personal details for the beneficial owner.
+            #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual
             #   #
             #   # @param address [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
             #   # @param date_of_birth [Date]
@@ -394,20 +373,19 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#address
             class Address < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute line1
-              #   The first line of the address. This is usually the street number and street.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address/properties/line1
               #
               #   @return [String]
               required :line1, String
 
               # @!attribute [r] city
-              #   The city, district, town, or village of the address. Required in certain
-              #   countries.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address/properties/city
               #
               #   @return [String, nil]
               optional :city, String
@@ -417,7 +395,7 @@ module Increase
               #   attr_writer :city
 
               # @!attribute [r] line2
-              #   The second line of the address. This might be the floor or room number.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address/properties/line2
               #
               #   @return [String, nil]
               optional :line2, String
@@ -427,8 +405,7 @@ module Increase
               #   attr_writer :line2
 
               # @!attribute [r] state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the US
-              #   state, province, or region of the address. Required in certain countries.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address/properties/state
               #
               #   @return [String, nil]
               optional :state, String
@@ -438,7 +415,7 @@ module Increase
               #   attr_writer :state
 
               # @!attribute [r] zip
-              #   The ZIP or postal code of the address. Required in certain countries.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address/properties/zip
               #
               #   @return [String, nil]
               optional :zip, String
@@ -448,8 +425,7 @@ module Increase
               #   attr_writer :zip
 
               # @!parse
-              #   # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   # PMB's are disallowed.
+              #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/address
               #   #
               #   # @param country [String]
               #   # @param line1 [String]
@@ -466,7 +442,7 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#identification
             class Identification < Increase::Internal::Type::BaseModel
               # @!attribute method_
-              #   A method that can be used to verify the individual's identity.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/method
               #
               #   @return [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
@@ -474,15 +450,13 @@ module Increase
                        api_name: :method
 
               # @!attribute number
-              #   An identification number that can be used to verify the individual's identity,
-              #   such as a social security number.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/number
               #
               #   @return [String]
               required :number, String
 
               # @!attribute [r] drivers_license
-              #   Information about the United States driver's license used for identification.
-              #   Required if `method` is equal to `drivers_license`.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/drivers_license
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
@@ -493,8 +467,7 @@ module Increase
               #   attr_writer :drivers_license
 
               # @!attribute [r] other
-              #   Information about the identification document provided. Required if `method` is
-              #   equal to `other`.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other, nil]
               optional :other,
@@ -505,8 +478,7 @@ module Increase
               #   attr_writer :other
 
               # @!attribute [r] passport
-              #   Information about the passport used for identification. Required if `method` is
-              #   equal to `passport`.
+              #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/passport
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport, nil]
               optional :passport,
@@ -517,7 +489,7 @@ module Increase
               #   attr_writer :passport
 
               # @!parse
-              #   # A means of verifying the person's identity.
+              #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification
               #   #
               #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method]
               #   # @param number [String]
@@ -529,7 +501,7 @@ module Increase
 
               # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-              # A method that can be used to verify the individual's identity.
+              # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/method
               #
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#method_
               module Method
@@ -560,25 +532,25 @@ module Increase
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#drivers_license
               class DriversLicense < Increase::Internal::Type::BaseModel
                 # @!attribute expiration_date
-                #   The driver's license's expiration date in YYYY-MM-DD format.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/drivers_license/properties/expiration_date
                 #
                 #   @return [Date]
                 required :expiration_date, Date
 
                 # @!attribute file_id
-                #   The identifier of the File containing the front of the driver's license.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/drivers_license/properties/file_id
                 #
                 #   @return [String]
                 required :file_id, String
 
                 # @!attribute state
-                #   The state that issued the provided driver's license.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/drivers_license/properties/state
                 #
                 #   @return [String]
                 required :state, String
 
                 # @!attribute [r] back_file_id
-                #   The identifier of the File containing the back of the driver's license.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/drivers_license/properties/back_file_id
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -588,8 +560,7 @@ module Increase
                 #   attr_writer :back_file_id
 
                 # @!parse
-                #   # Information about the United States driver's license used for identification.
-                #   # Required if `method` is equal to `drivers_license`.
+                #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/drivers_license
                 #   #
                 #   # @param expiration_date [Date]
                 #   # @param file_id [String]
@@ -604,27 +575,25 @@ module Increase
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#other
               class Other < Increase::Internal::Type::BaseModel
                 # @!attribute country
-                #   The two-character ISO 3166-1 code representing the country that issued the
-                #   document.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other/properties/country
                 #
                 #   @return [String]
                 required :country, String
 
                 # @!attribute description
-                #   A description of the document submitted.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other/properties/description
                 #
                 #   @return [String]
                 required :description, String
 
                 # @!attribute file_id
-                #   The identifier of the File containing the front of the document.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other/properties/file_id
                 #
                 #   @return [String]
                 required :file_id, String
 
                 # @!attribute [r] back_file_id
-                #   The identifier of the File containing the back of the document. Not every
-                #   document has a reverse side.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other/properties/back_file_id
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -634,7 +603,7 @@ module Increase
                 #   attr_writer :back_file_id
 
                 # @!attribute [r] expiration_date
-                #   The document's expiration date in YYYY-MM-DD format.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other/properties/expiration_date
                 #
                 #   @return [Date, nil]
                 optional :expiration_date, Date
@@ -644,8 +613,7 @@ module Increase
                 #   attr_writer :expiration_date
 
                 # @!parse
-                #   # Information about the identification document provided. Required if `method` is
-                #   # equal to `other`.
+                #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/other
                 #   #
                 #   # @param country [String]
                 #   # @param description [String]
@@ -661,26 +629,25 @@ module Increase
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#passport
               class Passport < Increase::Internal::Type::BaseModel
                 # @!attribute country
-                #   The country that issued the passport.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/passport/properties/country
                 #
                 #   @return [String]
                 required :country, String
 
                 # @!attribute expiration_date
-                #   The passport's expiration date in YYYY-MM-DD format.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/passport/properties/expiration_date
                 #
                 #   @return [Date]
                 required :expiration_date, Date
 
                 # @!attribute file_id
-                #   The identifier of the File containing the passport.
+                #   #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/passport/properties/file_id
                 #
                 #   @return [String]
                 required :file_id, String
 
                 # @!parse
-                #   # Information about the passport used for identification. Required if `method` is
-                #   # equal to `passport`.
+                #   # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/individual/properties/identification/properties/passport
                 #   #
                 #   # @param country [String]
                 #   # @param expiration_date [Date]
@@ -693,6 +660,7 @@ module Increase
             end
           end
 
+          # #/components/schemas/create_an_entity_parameters/properties/corporation/properties/beneficial_owners/items/properties/prongs/items
           module Prong
             extend Increase::Internal::Type::Enum
 
@@ -713,39 +681,38 @@ module Increase
 
       class GovernmentAuthority < Increase::Internal::Type::BaseModel
         # @!attribute address
-        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address
         #
         #   @return [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
         required :address, -> { Increase::Models::EntityCreateParams::GovernmentAuthority::Address }
 
         # @!attribute authorized_persons
-        #   The identifying details of authorized officials acting on the entity's behalf.
+        #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/authorized_persons
         #
         #   @return [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
         required :authorized_persons,
                  -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] }
 
         # @!attribute category
-        #   The category of the government authority.
+        #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/category
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category]
         required :category, enum: -> { Increase::Models::EntityCreateParams::GovernmentAuthority::Category }
 
         # @!attribute name
-        #   The legal name of the government authority.
+        #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/name
         #
         #   @return [String]
         required :name, String
 
         # @!attribute tax_identifier
-        #   The Employer Identification Number (EIN) for the government authority.
+        #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/tax_identifier
         #
         #   @return [String]
         required :tax_identifier, String
 
         # @!attribute [r] website
-        #   The website of the government authority.
+        #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/website
         #
         #   @return [String, nil]
         optional :website, String
@@ -755,8 +722,7 @@ module Increase
         #   attr_writer :website
 
         # @!parse
-        #   # Details of the Government Authority entity to create. Required if `structure` is
-        #   # equal to `Government Authority`.
+        #   # #/components/schemas/create_an_entity_parameters/properties/government_authority
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
         #   # @param authorized_persons [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
@@ -772,32 +738,31 @@ module Increase
         # @see Increase::Models::EntityCreateParams::GovernmentAuthority#address
         class Address < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The first line of the address. This is usually the street number and street.
+          #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!attribute zip
-          #   The ZIP code of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address/properties/zip
           #
           #   @return [String]
           required :zip, String
 
           # @!attribute [r] line2
-          #   The second line of the address. This might be the floor or room number.
+          #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address/properties/line2
           #
           #   @return [String, nil]
           optional :line2, String
@@ -807,8 +772,7 @@ module Increase
           #   attr_writer :line2
 
           # @!parse
-          #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   # are disallowed.
+          #   # #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -823,12 +787,14 @@ module Increase
 
         class AuthorizedPerson < Increase::Internal::Type::BaseModel
           # @!attribute name
-          #   The person's legal name.
+          #   #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/authorized_persons/items/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!parse
+          #   # #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/authorized_persons/items
+          #   #
           #   # @param name [String]
           #   #
           #   def initialize(name:, **) = super
@@ -836,7 +802,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The category of the government authority.
+        # #/components/schemas/create_an_entity_parameters/properties/government_authority/properties/category
         #
         # @see Increase::Models::EntityCreateParams::GovernmentAuthority#category
         module Category
@@ -855,14 +821,14 @@ module Increase
 
       class Joint < Increase::Internal::Type::BaseModel
         # @!attribute individuals
-        #   The two individuals that share control of the entity.
+        #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
         required :individuals,
                  -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::Joint::Individual] }
 
         # @!attribute [r] name
-        #   The name of the joint entity.
+        #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/name
         #
         #   @return [String, nil]
         optional :name, String
@@ -872,8 +838,7 @@ module Increase
         #   attr_writer :name
 
         # @!parse
-        #   # Details of the joint entity to create. Required if `structure` is equal to
-        #   # `joint`.
+        #   # #/components/schemas/create_an_entity_parameters/properties/joint
         #   #
         #   # @param individuals [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
         #   # @param name [String]
@@ -884,35 +849,31 @@ module Increase
 
         class Individual < Increase::Internal::Type::BaseModel
           # @!attribute address
-          #   The individual's physical address. Mail receiving locations like PO Boxes and
-          #   PMB's are disallowed.
+          #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address
           #
           #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Address]
           required :address, -> { Increase::Models::EntityCreateParams::Joint::Individual::Address }
 
           # @!attribute date_of_birth
-          #   The person's date of birth in YYYY-MM-DD format.
+          #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/date_of_birth
           #
           #   @return [Date]
           required :date_of_birth, Date
 
           # @!attribute identification
-          #   A means of verifying the person's identity.
+          #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification
           #
           #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification]
           required :identification, -> { Increase::Models::EntityCreateParams::Joint::Individual::Identification }
 
           # @!attribute name
-          #   The person's legal name.
+          #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!attribute [r] confirmed_no_us_tax_id
-          #   The identification method for an individual can only be a passport, driver's
-          #   license, or other document if you've confirmed the individual does not have a US
-          #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   Number).
+          #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/confirmed_no_us_tax_id
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -922,6 +883,8 @@ module Increase
           #   attr_writer :confirmed_no_us_tax_id
 
           # @!parse
+          #   # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items
+          #   #
           #   # @param address [Increase::Models::EntityCreateParams::Joint::Individual::Address]
           #   # @param date_of_birth [Date]
           #   # @param identification [Increase::Models::EntityCreateParams::Joint::Individual::Identification]
@@ -935,32 +898,31 @@ module Increase
           # @see Increase::Models::EntityCreateParams::Joint::Individual#address
           class Address < Increase::Internal::Type::BaseModel
             # @!attribute city
-            #   The city of the address.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address/properties/city
             #
             #   @return [String]
             required :city, String
 
             # @!attribute line1
-            #   The first line of the address. This is usually the street number and street.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address/properties/line1
             #
             #   @return [String]
             required :line1, String
 
             # @!attribute state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address/properties/state
             #
             #   @return [String]
             required :state, String
 
             # @!attribute zip
-            #   The ZIP code of the address.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address/properties/zip
             #
             #   @return [String]
             required :zip, String
 
             # @!attribute [r] line2
-            #   The second line of the address. This might be the floor or room number.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address/properties/line2
             #
             #   @return [String, nil]
             optional :line2, String
@@ -970,8 +932,7 @@ module Increase
             #   attr_writer :line2
 
             # @!parse
-            #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   # PMB's are disallowed.
+            #   # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/address
             #   #
             #   # @param city [String]
             #   # @param line1 [String]
@@ -987,7 +948,7 @@ module Increase
           # @see Increase::Models::EntityCreateParams::Joint::Individual#identification
           class Identification < Increase::Internal::Type::BaseModel
             # @!attribute method_
-            #   A method that can be used to verify the individual's identity.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/method
             #
             #   @return [Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method]
             required :method_,
@@ -995,15 +956,13 @@ module Increase
                      api_name: :method
 
             # @!attribute number
-            #   An identification number that can be used to verify the individual's identity,
-            #   such as a social security number.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/number
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
-            #   Information about the United States driver's license used for identification.
-            #   Required if `method` is equal to `drivers_license`.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/drivers_license
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -1014,8 +973,7 @@ module Increase
             #   attr_writer :drivers_license
 
             # @!attribute [r] other
-            #   Information about the identification document provided. Required if `method` is
-            #   equal to `other`.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other, nil]
             optional :other, -> { Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other }
@@ -1025,8 +983,7 @@ module Increase
             #   attr_writer :other
 
             # @!attribute [r] passport
-            #   Information about the passport used for identification. Required if `method` is
-            #   equal to `passport`.
+            #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/passport
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport, nil]
             optional :passport,
@@ -1037,7 +994,7 @@ module Increase
             #   attr_writer :passport
 
             # @!parse
-            #   # A means of verifying the person's identity.
+            #   # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification
             #   #
             #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method]
             #   # @param number [String]
@@ -1049,7 +1006,7 @@ module Increase
 
             # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/method
             #
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#method_
             module Method
@@ -1080,25 +1037,25 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#drivers_license
             class DriversLicense < Increase::Internal::Type::BaseModel
               # @!attribute expiration_date
-              #   The driver's license's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/drivers_license/properties/expiration_date
               #
               #   @return [Date]
               required :expiration_date, Date
 
               # @!attribute file_id
-              #   The identifier of the File containing the front of the driver's license.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/drivers_license/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!attribute state
-              #   The state that issued the provided driver's license.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/drivers_license/properties/state
               #
               #   @return [String]
               required :state, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the driver's license.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/drivers_license/properties/back_file_id
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -1108,8 +1065,7 @@ module Increase
               #   attr_writer :back_file_id
 
               # @!parse
-              #   # Information about the United States driver's license used for identification.
-              #   # Required if `method` is equal to `drivers_license`.
+              #   # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/drivers_license
               #   #
               #   # @param expiration_date [Date]
               #   # @param file_id [String]
@@ -1124,27 +1080,25 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#other
             class Other < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The two-character ISO 3166-1 code representing the country that issued the
-              #   document.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute description
-              #   A description of the document submitted.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other/properties/description
               #
               #   @return [String]
               required :description, String
 
               # @!attribute file_id
-              #   The identifier of the File containing the front of the document.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the document. Not every
-              #   document has a reverse side.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other/properties/back_file_id
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -1154,7 +1108,7 @@ module Increase
               #   attr_writer :back_file_id
 
               # @!attribute [r] expiration_date
-              #   The document's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other/properties/expiration_date
               #
               #   @return [Date, nil]
               optional :expiration_date, Date
@@ -1164,8 +1118,7 @@ module Increase
               #   attr_writer :expiration_date
 
               # @!parse
-              #   # Information about the identification document provided. Required if `method` is
-              #   # equal to `other`.
+              #   # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/other
               #   #
               #   # @param country [String]
               #   # @param description [String]
@@ -1181,26 +1134,25 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#passport
             class Passport < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The country that issued the passport.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/passport/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute expiration_date
-              #   The passport's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/passport/properties/expiration_date
               #
               #   @return [Date]
               required :expiration_date, Date
 
               # @!attribute file_id
-              #   The identifier of the File containing the passport.
+              #   #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/passport/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!parse
-              #   # Information about the passport used for identification. Required if `method` is
-              #   # equal to `passport`.
+              #   # #/components/schemas/create_an_entity_parameters/properties/joint/properties/individuals/items/properties/identification/properties/passport
               #   #
               #   # @param country [String]
               #   # @param expiration_date [Date]
@@ -1216,35 +1168,31 @@ module Increase
 
       class NaturalPerson < Increase::Internal::Type::BaseModel
         # @!attribute address
-        #   The individual's physical address. Mail receiving locations like PO Boxes and
-        #   PMB's are disallowed.
+        #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address
         #
         #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Address]
         required :address, -> { Increase::Models::EntityCreateParams::NaturalPerson::Address }
 
         # @!attribute date_of_birth
-        #   The person's date of birth in YYYY-MM-DD format.
+        #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/date_of_birth
         #
         #   @return [Date]
         required :date_of_birth, Date
 
         # @!attribute identification
-        #   A means of verifying the person's identity.
+        #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification
         #
         #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification]
         required :identification, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification }
 
         # @!attribute name
-        #   The person's legal name.
+        #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/name
         #
         #   @return [String]
         required :name, String
 
         # @!attribute [r] confirmed_no_us_tax_id
-        #   The identification method for an individual can only be a passport, driver's
-        #   license, or other document if you've confirmed the individual does not have a US
-        #   tax id (either a Social Security Number or Individual Taxpayer Identification
-        #   Number).
+        #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/confirmed_no_us_tax_id
         #
         #   @return [Boolean, nil]
         optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -1254,10 +1202,7 @@ module Increase
         #   attr_writer :confirmed_no_us_tax_id
 
         # @!parse
-        #   # Details of the natural person entity to create. Required if `structure` is equal
-        #   # to `natural_person`. Natural people entities should be submitted with
-        #   # `social_security_number` or `individual_taxpayer_identification_number`
-        #   # identification methods.
+        #   # #/components/schemas/create_an_entity_parameters/properties/natural_person
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::NaturalPerson::Address]
         #   # @param date_of_birth [Date]
@@ -1272,32 +1217,31 @@ module Increase
         # @see Increase::Models::EntityCreateParams::NaturalPerson#address
         class Address < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The first line of the address. This is usually the street number and street.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!attribute zip
-          #   The ZIP code of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address/properties/zip
           #
           #   @return [String]
           required :zip, String
 
           # @!attribute [r] line2
-          #   The second line of the address. This might be the floor or room number.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address/properties/line2
           #
           #   @return [String, nil]
           optional :line2, String
@@ -1307,8 +1251,7 @@ module Increase
           #   attr_writer :line2
 
           # @!parse
-          #   # The individual's physical address. Mail receiving locations like PO Boxes and
-          #   # PMB's are disallowed.
+          #   # #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -1324,7 +1267,7 @@ module Increase
         # @see Increase::Models::EntityCreateParams::NaturalPerson#identification
         class Identification < Increase::Internal::Type::BaseModel
           # @!attribute method_
-          #   A method that can be used to verify the individual's identity.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/method
           #
           #   @return [Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method]
           required :method_,
@@ -1332,15 +1275,13 @@ module Increase
                    api_name: :method
 
           # @!attribute number
-          #   An identification number that can be used to verify the individual's identity,
-          #   such as a social security number.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/number
           #
           #   @return [String]
           required :number, String
 
           # @!attribute [r] drivers_license
-          #   Information about the United States driver's license used for identification.
-          #   Required if `method` is equal to `drivers_license`.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/drivers_license
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense, nil]
           optional :drivers_license,
@@ -1351,8 +1292,7 @@ module Increase
           #   attr_writer :drivers_license
 
           # @!attribute [r] other
-          #   Information about the identification document provided. Required if `method` is
-          #   equal to `other`.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, nil]
           optional :other, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other }
@@ -1362,8 +1302,7 @@ module Increase
           #   attr_writer :other
 
           # @!attribute [r] passport
-          #   Information about the passport used for identification. Required if `method` is
-          #   equal to `passport`.
+          #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/passport
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport, nil]
           optional :passport, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport }
@@ -1373,7 +1312,7 @@ module Increase
           #   attr_writer :passport
 
           # @!parse
-          #   # A means of verifying the person's identity.
+          #   # #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification
           #   #
           #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method]
           #   # @param number [String]
@@ -1385,7 +1324,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # A method that can be used to verify the individual's identity.
+          # #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/method
           #
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#method_
           module Method
@@ -1416,25 +1355,25 @@ module Increase
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#drivers_license
           class DriversLicense < Increase::Internal::Type::BaseModel
             # @!attribute expiration_date
-            #   The driver's license's expiration date in YYYY-MM-DD format.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/drivers_license/properties/expiration_date
             #
             #   @return [Date]
             required :expiration_date, Date
 
             # @!attribute file_id
-            #   The identifier of the File containing the front of the driver's license.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/drivers_license/properties/file_id
             #
             #   @return [String]
             required :file_id, String
 
             # @!attribute state
-            #   The state that issued the provided driver's license.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/drivers_license/properties/state
             #
             #   @return [String]
             required :state, String
 
             # @!attribute [r] back_file_id
-            #   The identifier of the File containing the back of the driver's license.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/drivers_license/properties/back_file_id
             #
             #   @return [String, nil]
             optional :back_file_id, String
@@ -1444,8 +1383,7 @@ module Increase
             #   attr_writer :back_file_id
 
             # @!parse
-            #   # Information about the United States driver's license used for identification.
-            #   # Required if `method` is equal to `drivers_license`.
+            #   # #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/drivers_license
             #   #
             #   # @param expiration_date [Date]
             #   # @param file_id [String]
@@ -1460,27 +1398,25 @@ module Increase
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#other
           class Other < Increase::Internal::Type::BaseModel
             # @!attribute country
-            #   The two-character ISO 3166-1 code representing the country that issued the
-            #   document.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other/properties/country
             #
             #   @return [String]
             required :country, String
 
             # @!attribute description
-            #   A description of the document submitted.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other/properties/description
             #
             #   @return [String]
             required :description, String
 
             # @!attribute file_id
-            #   The identifier of the File containing the front of the document.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other/properties/file_id
             #
             #   @return [String]
             required :file_id, String
 
             # @!attribute [r] back_file_id
-            #   The identifier of the File containing the back of the document. Not every
-            #   document has a reverse side.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other/properties/back_file_id
             #
             #   @return [String, nil]
             optional :back_file_id, String
@@ -1490,7 +1426,7 @@ module Increase
             #   attr_writer :back_file_id
 
             # @!attribute [r] expiration_date
-            #   The document's expiration date in YYYY-MM-DD format.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other/properties/expiration_date
             #
             #   @return [Date, nil]
             optional :expiration_date, Date
@@ -1500,8 +1436,7 @@ module Increase
             #   attr_writer :expiration_date
 
             # @!parse
-            #   # Information about the identification document provided. Required if `method` is
-            #   # equal to `other`.
+            #   # #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/other
             #   #
             #   # @param country [String]
             #   # @param description [String]
@@ -1517,26 +1452,25 @@ module Increase
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#passport
           class Passport < Increase::Internal::Type::BaseModel
             # @!attribute country
-            #   The country that issued the passport.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/passport/properties/country
             #
             #   @return [String]
             required :country, String
 
             # @!attribute expiration_date
-            #   The passport's expiration date in YYYY-MM-DD format.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/passport/properties/expiration_date
             #
             #   @return [Date]
             required :expiration_date, Date
 
             # @!attribute file_id
-            #   The identifier of the File containing the passport.
+            #   #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/passport/properties/file_id
             #
             #   @return [String]
             required :file_id, String
 
             # @!parse
-            #   # Information about the passport used for identification. Required if `method` is
-            #   # equal to `passport`.
+            #   # #/components/schemas/create_an_entity_parameters/properties/natural_person/properties/identification/properties/passport
             #   #
             #   # @param country [String]
             #   # @param expiration_date [Date]
@@ -1551,12 +1485,14 @@ module Increase
 
       class SupplementalDocument < Increase::Internal::Type::BaseModel
         # @!attribute file_id
-        #   The identifier of the File containing the document.
+        #   #/components/schemas/create_an_entity_parameters/properties/supplemental_documents/items/properties/file_id
         #
         #   @return [String]
         required :file_id, String
 
         # @!parse
+        #   # #/components/schemas/create_an_entity_parameters/properties/supplemental_documents/items
+        #   #
         #   # @param file_id [String]
         #   #
         #   def initialize(file_id:, **) = super
@@ -1566,20 +1502,19 @@ module Increase
 
       class ThirdPartyVerification < Increase::Internal::Type::BaseModel
         # @!attribute reference
-        #   The reference identifier for the third party verification.
+        #   #/components/schemas/create_an_entity_parameters/properties/third_party_verification/properties/reference
         #
         #   @return [String]
         required :reference, String
 
         # @!attribute vendor
-        #   The vendor that was used to perform the verification.
+        #   #/components/schemas/create_an_entity_parameters/properties/third_party_verification/properties/vendor
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor]
         required :vendor, enum: -> { Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor }
 
         # @!parse
-        #   # A reference to data stored in a third-party verification service. Your
-        #   # integration may or may not use this field.
+        #   # #/components/schemas/create_an_entity_parameters/properties/third_party_verification
         #   #
         #   # @param reference [String]
         #   # @param vendor [Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor]
@@ -1588,7 +1523,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The vendor that was used to perform the verification.
+        # #/components/schemas/create_an_entity_parameters/properties/third_party_verification/properties/vendor
         #
         # @see Increase::Models::EntityCreateParams::ThirdPartyVerification#vendor
         module Vendor
@@ -1610,35 +1545,32 @@ module Increase
 
       class Trust < Increase::Internal::Type::BaseModel
         # @!attribute address
-        #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   are disallowed.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/address
         #
         #   @return [Increase::Models::EntityCreateParams::Trust::Address]
         required :address, -> { Increase::Models::EntityCreateParams::Trust::Address }
 
         # @!attribute category
-        #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #   their own Employer Identification Number. Revocable trusts require information
-        #   about the individual `grantor` who created the trust.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/category
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
         required :category, enum: -> { Increase::Models::EntityCreateParams::Trust::Category }
 
         # @!attribute name
-        #   The legal name of the trust.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/name
         #
         #   @return [String]
         required :name, String
 
         # @!attribute trustees
-        #   The trustees of the trust.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Trust::Trustee>]
         required :trustees,
                  -> { Increase::Internal::Type::ArrayOf[Increase::Models::EntityCreateParams::Trust::Trustee] }
 
         # @!attribute [r] formation_document_file_id
-        #   The identifier of the File containing the formation document of the trust.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/formation_document_file_id
         #
         #   @return [String, nil]
         optional :formation_document_file_id, String
@@ -1648,8 +1580,7 @@ module Increase
         #   attr_writer :formation_document_file_id
 
         # @!attribute [r] formation_state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   which the trust was formed.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/formation_state
         #
         #   @return [String, nil]
         optional :formation_state, String
@@ -1659,7 +1590,7 @@ module Increase
         #   attr_writer :formation_state
 
         # @!attribute [r] grantor
-        #   The grantor of the trust. Required if `category` is equal to `revocable`.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor
         #
         #   @return [Increase::Models::EntityCreateParams::Trust::Grantor, nil]
         optional :grantor, -> { Increase::Models::EntityCreateParams::Trust::Grantor }
@@ -1669,8 +1600,7 @@ module Increase
         #   attr_writer :grantor
 
         # @!attribute [r] tax_identifier
-        #   The Employer Identification Number (EIN) for the trust. Required if `category`
-        #   is equal to `irrevocable`.
+        #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/tax_identifier
         #
         #   @return [String, nil]
         optional :tax_identifier, String
@@ -1680,8 +1610,7 @@ module Increase
         #   attr_writer :tax_identifier
 
         # @!parse
-        #   # Details of the trust entity to create. Required if `structure` is equal to
-        #   # `trust`.
+        #   # #/components/schemas/create_an_entity_parameters/properties/trust
         #   #
         #   # @param address [Increase::Models::EntityCreateParams::Trust::Address]
         #   # @param category [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
@@ -1711,32 +1640,31 @@ module Increase
         # @see Increase::Models::EntityCreateParams::Trust#address
         class Address < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The first line of the address. This is usually the street number and street.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!attribute zip
-          #   The ZIP code of the address.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/address/properties/zip
           #
           #   @return [String]
           required :zip, String
 
           # @!attribute [r] line2
-          #   The second line of the address. This might be the floor or room number.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/address/properties/line2
           #
           #   @return [String, nil]
           optional :line2, String
@@ -1746,8 +1674,7 @@ module Increase
           #   attr_writer :line2
 
           # @!parse
-          #   # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   # are disallowed.
+          #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -1760,9 +1687,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        # their own Employer Identification Number. Revocable trusts require information
-        # about the individual `grantor` who created the trust.
+        # #/components/schemas/create_an_entity_parameters/properties/trust/properties/category
         #
         # @see Increase::Models::EntityCreateParams::Trust#category
         module Category
@@ -1783,14 +1708,13 @@ module Increase
 
         class Trustee < Increase::Internal::Type::BaseModel
           # @!attribute structure
-          #   The structure of the trustee.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/structure
           #
           #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure]
           required :structure, enum: -> { Increase::Models::EntityCreateParams::Trust::Trustee::Structure }
 
           # @!attribute [r] individual
-          #   Details of the individual trustee. Required when the trustee `structure` is
-          #   equal to `individual`.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual, nil]
           optional :individual, -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual }
@@ -1800,6 +1724,8 @@ module Increase
           #   attr_writer :individual
 
           # @!parse
+          #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items
+          #   #
           #   # @param structure [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure]
           #   # @param individual [Increase::Models::EntityCreateParams::Trust::Trustee::Individual]
           #   #
@@ -1807,7 +1733,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # The structure of the trustee.
+          # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/structure
           #
           # @see Increase::Models::EntityCreateParams::Trust::Trustee#structure
           module Structure
@@ -1826,36 +1752,32 @@ module Increase
           # @see Increase::Models::EntityCreateParams::Trust::Trustee#individual
           class Individual < Increase::Internal::Type::BaseModel
             # @!attribute address
-            #   The individual's physical address. Mail receiving locations like PO Boxes and
-            #   PMB's are disallowed.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
             required :address, -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address }
 
             # @!attribute date_of_birth
-            #   The person's date of birth in YYYY-MM-DD format.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/date_of_birth
             #
             #   @return [Date]
             required :date_of_birth, Date
 
             # @!attribute identification
-            #   A means of verifying the person's identity.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification]
             required :identification,
                      -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification }
 
             # @!attribute name
-            #   The person's legal name.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/name
             #
             #   @return [String]
             required :name, String
 
             # @!attribute [r] confirmed_no_us_tax_id
-            #   The identification method for an individual can only be a passport, driver's
-            #   license, or other document if you've confirmed the individual does not have a US
-            #   tax id (either a Social Security Number or Individual Taxpayer Identification
-            #   Number).
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/confirmed_no_us_tax_id
             #
             #   @return [Boolean, nil]
             optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -1865,8 +1787,7 @@ module Increase
             #   attr_writer :confirmed_no_us_tax_id
 
             # @!parse
-            #   # Details of the individual trustee. Required when the trustee `structure` is
-            #   # equal to `individual`.
+            #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual
             #   #
             #   # @param address [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
             #   # @param date_of_birth [Date]
@@ -1881,32 +1802,31 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#address
             class Address < Increase::Internal::Type::BaseModel
               # @!attribute city
-              #   The city of the address.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address/properties/city
               #
               #   @return [String]
               required :city, String
 
               # @!attribute line1
-              #   The first line of the address. This is usually the street number and street.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address/properties/line1
               #
               #   @return [String]
               required :line1, String
 
               # @!attribute state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address/properties/state
               #
               #   @return [String]
               required :state, String
 
               # @!attribute zip
-              #   The ZIP code of the address.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address/properties/zip
               #
               #   @return [String]
               required :zip, String
 
               # @!attribute [r] line2
-              #   The second line of the address. This might be the floor or room number.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address/properties/line2
               #
               #   @return [String, nil]
               optional :line2, String
@@ -1916,8 +1836,7 @@ module Increase
               #   attr_writer :line2
 
               # @!parse
-              #   # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   # PMB's are disallowed.
+              #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/address
               #   #
               #   # @param city [String]
               #   # @param line1 [String]
@@ -1933,7 +1852,7 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#identification
             class Identification < Increase::Internal::Type::BaseModel
               # @!attribute method_
-              #   A method that can be used to verify the individual's identity.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/method
               #
               #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method]
               required :method_,
@@ -1941,15 +1860,13 @@ module Increase
                        api_name: :method
 
               # @!attribute number
-              #   An identification number that can be used to verify the individual's identity,
-              #   such as a social security number.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/number
               #
               #   @return [String]
               required :number, String
 
               # @!attribute [r] drivers_license
-              #   Information about the United States driver's license used for identification.
-              #   Required if `method` is equal to `drivers_license`.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/drivers_license
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
@@ -1960,8 +1877,7 @@ module Increase
               #   attr_writer :drivers_license
 
               # @!attribute [r] other
-              #   Information about the identification document provided. Required if `method` is
-              #   equal to `other`.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other, nil]
               optional :other,
@@ -1972,8 +1888,7 @@ module Increase
               #   attr_writer :other
 
               # @!attribute [r] passport
-              #   Information about the passport used for identification. Required if `method` is
-              #   equal to `passport`.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/passport
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport, nil]
               optional :passport,
@@ -1984,7 +1899,7 @@ module Increase
               #   attr_writer :passport
 
               # @!parse
-              #   # A means of verifying the person's identity.
+              #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification
               #   #
               #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method]
               #   # @param number [String]
@@ -1996,7 +1911,7 @@ module Increase
 
               # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-              # A method that can be used to verify the individual's identity.
+              # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/method
               #
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#method_
               module Method
@@ -2027,25 +1942,25 @@ module Increase
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#drivers_license
               class DriversLicense < Increase::Internal::Type::BaseModel
                 # @!attribute expiration_date
-                #   The driver's license's expiration date in YYYY-MM-DD format.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/drivers_license/properties/expiration_date
                 #
                 #   @return [Date]
                 required :expiration_date, Date
 
                 # @!attribute file_id
-                #   The identifier of the File containing the front of the driver's license.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/drivers_license/properties/file_id
                 #
                 #   @return [String]
                 required :file_id, String
 
                 # @!attribute state
-                #   The state that issued the provided driver's license.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/drivers_license/properties/state
                 #
                 #   @return [String]
                 required :state, String
 
                 # @!attribute [r] back_file_id
-                #   The identifier of the File containing the back of the driver's license.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/drivers_license/properties/back_file_id
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -2055,8 +1970,7 @@ module Increase
                 #   attr_writer :back_file_id
 
                 # @!parse
-                #   # Information about the United States driver's license used for identification.
-                #   # Required if `method` is equal to `drivers_license`.
+                #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/drivers_license
                 #   #
                 #   # @param expiration_date [Date]
                 #   # @param file_id [String]
@@ -2071,27 +1985,25 @@ module Increase
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#other
               class Other < Increase::Internal::Type::BaseModel
                 # @!attribute country
-                #   The two-character ISO 3166-1 code representing the country that issued the
-                #   document.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other/properties/country
                 #
                 #   @return [String]
                 required :country, String
 
                 # @!attribute description
-                #   A description of the document submitted.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other/properties/description
                 #
                 #   @return [String]
                 required :description, String
 
                 # @!attribute file_id
-                #   The identifier of the File containing the front of the document.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other/properties/file_id
                 #
                 #   @return [String]
                 required :file_id, String
 
                 # @!attribute [r] back_file_id
-                #   The identifier of the File containing the back of the document. Not every
-                #   document has a reverse side.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other/properties/back_file_id
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -2101,7 +2013,7 @@ module Increase
                 #   attr_writer :back_file_id
 
                 # @!attribute [r] expiration_date
-                #   The document's expiration date in YYYY-MM-DD format.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other/properties/expiration_date
                 #
                 #   @return [Date, nil]
                 optional :expiration_date, Date
@@ -2111,8 +2023,7 @@ module Increase
                 #   attr_writer :expiration_date
 
                 # @!parse
-                #   # Information about the identification document provided. Required if `method` is
-                #   # equal to `other`.
+                #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/other
                 #   #
                 #   # @param country [String]
                 #   # @param description [String]
@@ -2128,26 +2039,25 @@ module Increase
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#passport
               class Passport < Increase::Internal::Type::BaseModel
                 # @!attribute country
-                #   The country that issued the passport.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/passport/properties/country
                 #
                 #   @return [String]
                 required :country, String
 
                 # @!attribute expiration_date
-                #   The passport's expiration date in YYYY-MM-DD format.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/passport/properties/expiration_date
                 #
                 #   @return [Date]
                 required :expiration_date, Date
 
                 # @!attribute file_id
-                #   The identifier of the File containing the passport.
+                #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/passport/properties/file_id
                 #
                 #   @return [String]
                 required :file_id, String
 
                 # @!parse
-                #   # Information about the passport used for identification. Required if `method` is
-                #   # equal to `passport`.
+                #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/trustees/items/properties/individual/properties/identification/properties/passport
                 #   #
                 #   # @param country [String]
                 #   # @param expiration_date [Date]
@@ -2164,35 +2074,31 @@ module Increase
         # @see Increase::Models::EntityCreateParams::Trust#grantor
         class Grantor < Increase::Internal::Type::BaseModel
           # @!attribute address
-          #   The individual's physical address. Mail receiving locations like PO Boxes and
-          #   PMB's are disallowed.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
           required :address, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Address }
 
           # @!attribute date_of_birth
-          #   The person's date of birth in YYYY-MM-DD format.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/date_of_birth
           #
           #   @return [Date]
           required :date_of_birth, Date
 
           # @!attribute identification
-          #   A means of verifying the person's identity.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification]
           required :identification, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification }
 
           # @!attribute name
-          #   The person's legal name.
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!attribute [r] confirmed_no_us_tax_id
-          #   The identification method for an individual can only be a passport, driver's
-          #   license, or other document if you've confirmed the individual does not have a US
-          #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   Number).
+          #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/confirmed_no_us_tax_id
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -2202,7 +2108,7 @@ module Increase
           #   attr_writer :confirmed_no_us_tax_id
 
           # @!parse
-          #   # The grantor of the trust. Required if `category` is equal to `revocable`.
+          #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor
           #   #
           #   # @param address [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
           #   # @param date_of_birth [Date]
@@ -2217,32 +2123,31 @@ module Increase
           # @see Increase::Models::EntityCreateParams::Trust::Grantor#address
           class Address < Increase::Internal::Type::BaseModel
             # @!attribute city
-            #   The city of the address.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address/properties/city
             #
             #   @return [String]
             required :city, String
 
             # @!attribute line1
-            #   The first line of the address. This is usually the street number and street.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address/properties/line1
             #
             #   @return [String]
             required :line1, String
 
             # @!attribute state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address/properties/state
             #
             #   @return [String]
             required :state, String
 
             # @!attribute zip
-            #   The ZIP code of the address.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address/properties/zip
             #
             #   @return [String]
             required :zip, String
 
             # @!attribute [r] line2
-            #   The second line of the address. This might be the floor or room number.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address/properties/line2
             #
             #   @return [String, nil]
             optional :line2, String
@@ -2252,8 +2157,7 @@ module Increase
             #   attr_writer :line2
 
             # @!parse
-            #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   # PMB's are disallowed.
+            #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/address
             #   #
             #   # @param city [String]
             #   # @param line1 [String]
@@ -2269,7 +2173,7 @@ module Increase
           # @see Increase::Models::EntityCreateParams::Trust::Grantor#identification
           class Identification < Increase::Internal::Type::BaseModel
             # @!attribute method_
-            #   A method that can be used to verify the individual's identity.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/method
             #
             #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method]
             required :method_,
@@ -2277,15 +2181,13 @@ module Increase
                      api_name: :method
 
             # @!attribute number
-            #   An identification number that can be used to verify the individual's identity,
-            #   such as a social security number.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/number
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
-            #   Information about the United States driver's license used for identification.
-            #   Required if `method` is equal to `drivers_license`.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/drivers_license
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -2296,8 +2198,7 @@ module Increase
             #   attr_writer :drivers_license
 
             # @!attribute [r] other
-            #   Information about the identification document provided. Required if `method` is
-            #   equal to `other`.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other, nil]
             optional :other, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other }
@@ -2307,8 +2208,7 @@ module Increase
             #   attr_writer :other
 
             # @!attribute [r] passport
-            #   Information about the passport used for identification. Required if `method` is
-            #   equal to `passport`.
+            #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/passport
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport, nil]
             optional :passport, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport }
@@ -2318,7 +2218,7 @@ module Increase
             #   attr_writer :passport
 
             # @!parse
-            #   # A means of verifying the person's identity.
+            #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification
             #   #
             #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method]
             #   # @param number [String]
@@ -2330,7 +2230,7 @@ module Increase
 
             # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/method
             #
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#method_
             module Method
@@ -2361,25 +2261,25 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#drivers_license
             class DriversLicense < Increase::Internal::Type::BaseModel
               # @!attribute expiration_date
-              #   The driver's license's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/drivers_license/properties/expiration_date
               #
               #   @return [Date]
               required :expiration_date, Date
 
               # @!attribute file_id
-              #   The identifier of the File containing the front of the driver's license.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/drivers_license/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!attribute state
-              #   The state that issued the provided driver's license.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/drivers_license/properties/state
               #
               #   @return [String]
               required :state, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the driver's license.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/drivers_license/properties/back_file_id
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -2389,8 +2289,7 @@ module Increase
               #   attr_writer :back_file_id
 
               # @!parse
-              #   # Information about the United States driver's license used for identification.
-              #   # Required if `method` is equal to `drivers_license`.
+              #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/drivers_license
               #   #
               #   # @param expiration_date [Date]
               #   # @param file_id [String]
@@ -2405,27 +2304,25 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#other
             class Other < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The two-character ISO 3166-1 code representing the country that issued the
-              #   document.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute description
-              #   A description of the document submitted.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other/properties/description
               #
               #   @return [String]
               required :description, String
 
               # @!attribute file_id
-              #   The identifier of the File containing the front of the document.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the document. Not every
-              #   document has a reverse side.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other/properties/back_file_id
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -2435,7 +2332,7 @@ module Increase
               #   attr_writer :back_file_id
 
               # @!attribute [r] expiration_date
-              #   The document's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other/properties/expiration_date
               #
               #   @return [Date, nil]
               optional :expiration_date, Date
@@ -2445,8 +2342,7 @@ module Increase
               #   attr_writer :expiration_date
 
               # @!parse
-              #   # Information about the identification document provided. Required if `method` is
-              #   # equal to `other`.
+              #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/other
               #   #
               #   # @param country [String]
               #   # @param description [String]
@@ -2462,26 +2358,25 @@ module Increase
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#passport
             class Passport < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The country that issued the passport.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/passport/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute expiration_date
-              #   The passport's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/passport/properties/expiration_date
               #
               #   @return [Date]
               required :expiration_date, Date
 
               # @!attribute file_id
-              #   The identifier of the File containing the passport.
+              #   #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/passport/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!parse
-              #   # Information about the passport used for identification. Required if `method` is
-              #   # equal to `passport`.
+              #   # #/components/schemas/create_an_entity_parameters/properties/trust/properties/grantor/properties/identification/properties/passport
               #   #
               #   # @param country [String]
               #   # @param expiration_date [Date]

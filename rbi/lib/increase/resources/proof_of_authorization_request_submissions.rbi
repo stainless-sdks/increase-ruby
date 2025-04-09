@@ -23,29 +23,29 @@ module Increase
           .returns(Increase::Models::ProofOfAuthorizationRequestSubmission)
       end
       def create(
-        # Terms of authorization.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorization_terms
         authorization_terms:,
-        # Time of authorization.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorized_at
         authorized_at:,
-        # Email of the authorizer.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_email
         authorizer_email:,
-        # Name of the authorizer.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_name
         authorizer_name:,
-        # Whether the customer has been offboarded or suspended.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/customer_has_been_offboarded
         customer_has_been_offboarded:,
-        # ID of the proof of authorization request.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/proof_of_authorization_request_id
         proof_of_authorization_request_id:,
-        # Whether the account ownership was validated via credential (e.g. Plaid).
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_via_credential
         validated_account_ownership_via_credential:,
-        # Whether the account ownership was validated with an account statement.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_with_account_statement
         validated_account_ownership_with_account_statement:,
-        # Whether the account ownership was validated with a microdeposit.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/validated_account_ownership_with_microdeposit
         validated_account_ownership_with_microdeposit:,
-        # File containing additional evidence.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/additional_evidence_file_id
         additional_evidence_file_id: nil,
-        # Company of the authorizer.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_company
         authorizer_company: nil,
-        # IP address of the authorizer.
+        # #/components/schemas/submit_proof_of_authorization_parameters/properties/authorizer_ip_address
         authorizer_ip_address: nil,
         request_options: {}
       ); end
@@ -58,7 +58,7 @@ module Increase
           .returns(Increase::Models::ProofOfAuthorizationRequestSubmission)
       end
       def retrieve(
-        # The identifier of the Proof of Authorization Request Submission.
+        # #/paths//proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}/get/parameters/0/schema
         proof_of_authorization_request_submission_id,
         request_options: {}
       ); end
@@ -74,17 +74,13 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::ProofOfAuthorizationRequestSubmission])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//proof_of_authorization_request_submissions/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//proof_of_authorization_request_submissions/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//proof_of_authorization_request_submissions/get/parameters/1/schema
         limit: nil,
-        # ID of the proof of authorization request.
+        # #/paths//proof_of_authorization_request_submissions/get/parameters/2/schema
         proof_of_authorization_request_id: nil,
         request_options: {}
       ); end

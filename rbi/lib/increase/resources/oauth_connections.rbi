@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::OAuthConnection)
       end
       def retrieve(
-        # The identifier of the OAuth Connection.
+        # #/paths//oauth_connections/{oauth_connection_id}/get/parameters/0/schema
         oauth_connection_id,
         request_options: {}
       ); end
@@ -28,13 +28,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::OAuthConnection])
       end
       def list(
-        # Return the page of entries after this one.
+        # #/paths//oauth_connections/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//oauth_connections/get/parameters/1/schema
         limit: nil,
-        # Filter results to only include OAuth Connections for a specific OAuth
-        # Application.
+        # #/paths//oauth_connections/get/parameters/3/schema
         oauth_application_id: nil,
         status: nil,
         request_options: {}

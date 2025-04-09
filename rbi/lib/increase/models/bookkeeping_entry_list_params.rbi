@@ -6,22 +6,21 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier for the Bookkeeping Account to filter by.
+      # #/paths//bookkeeping_entries/get/parameters/2/schema
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
 
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      # Return the page of entries after this one.
+      # #/paths//bookkeeping_entries/get/parameters/0/schema
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
 
       sig { params(cursor: String).void }
       attr_writer :cursor
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      # objects.
+      # #/paths//bookkeeping_entries/get/parameters/1/schema
       sig { returns(T.nilable(Integer)) }
       attr_reader :limit
 

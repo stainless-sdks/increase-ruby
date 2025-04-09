@@ -3,22 +3,19 @@
 module Increase
   module Models
     class BookkeepingBalanceLookup < Increase::Internal::Type::BaseModel
-      # The Bookkeeping Account's current balance, representing the sum of all
-      # Bookkeeping Entries on the Bookkeeping Account.
+      # #/components/schemas/bookkeeping_balance_lookup/properties/balance
       sig { returns(Integer) }
       attr_accessor :balance
 
-      # The identifier for the account for which the balance was queried.
+      # #/components/schemas/bookkeeping_balance_lookup/properties/bookkeeping_account_id
       sig { returns(String) }
       attr_accessor :bookkeeping_account_id
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_balance_lookup`.
+      # #/components/schemas/bookkeeping_balance_lookup/properties/type
       sig { returns(Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Represents a request to lookup the balance of an Bookkeeping Account at a given
-      # point in time.
+      # #/components/schemas/bookkeeping_balance_lookup
       sig do
         params(
           balance: Integer,
@@ -41,8 +38,7 @@ module Increase
       end
       def to_hash; end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `bookkeeping_balance_lookup`.
+      # #/components/schemas/bookkeeping_balance_lookup/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

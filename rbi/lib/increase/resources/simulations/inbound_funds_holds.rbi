@@ -14,7 +14,7 @@ module Increase
             .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse)
         end
         def release(
-          # The inbound funds hold to release.
+          # #/paths//simulations/inbound_funds_holds/{inbound_funds_hold_id}/release/post/parameters/0/schema
           inbound_funds_hold_id,
           request_options: {}
         ); end

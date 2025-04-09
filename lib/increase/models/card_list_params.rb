@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_id
-      #   Filter Cards to ones belonging to the specified Account.
+      #   #/paths//cards/get/parameters/2/schema
       #
       #   @return [String, nil]
       optional :account_id, String
@@ -28,7 +28,7 @@ module Increase
       #   attr_writer :created_at
 
       # @!attribute [r] cursor
-      #   Return the page of entries after this one.
+      #   #/paths//cards/get/parameters/0/schema
       #
       #   @return [String, nil]
       optional :cursor, String
@@ -38,10 +38,7 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] idempotency_key
-      #   Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/paths//cards/get/parameters/8/schema
       #
       #   @return [String, nil]
       optional :idempotency_key, String
@@ -51,8 +48,7 @@ module Increase
       #   attr_writer :idempotency_key
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   #/paths//cards/get/parameters/1/schema
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -96,8 +92,7 @@ module Increase
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # @!attribute [r] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        #   #/paths//cards/get/parameters/3/schema
         #
         #   @return [Time, nil]
         optional :after, Time
@@ -107,8 +102,7 @@ module Increase
         #   attr_writer :after
 
         # @!attribute [r] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   timestamp.
+        #   #/paths//cards/get/parameters/4/schema
         #
         #   @return [Time, nil]
         optional :before, Time
@@ -118,8 +112,7 @@ module Increase
         #   attr_writer :before
 
         # @!attribute [r] on_or_after
-        #   Return results on or after this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   #/paths//cards/get/parameters/5/schema
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
@@ -129,8 +122,7 @@ module Increase
         #   attr_writer :on_or_after
 
         # @!attribute [r] on_or_before
-        #   Return results on or before this
-        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   #/paths//cards/get/parameters/6/schema
         #
         #   @return [Time, nil]
         optional :on_or_before, Time
@@ -152,8 +144,7 @@ module Increase
 
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
-        #   Filter Cards by status. For GET requests, this should be encoded as a
-        #   comma-delimited string, such as `?in=one,two,three`.
+        #   #/paths//cards/get/parameters/7/schema
         #
         #   @return [Array<Symbol, Increase::Models::CardListParams::Status::In>, nil]
         optional :in_,
@@ -171,6 +162,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
+        # #/paths//cards/get/parameters/7/schema/items
         module In
           extend Increase::Internal::Type::Enum
 

@@ -5,82 +5,73 @@ module Increase
     # @see Increase::Resources::AccountNumbers#create
     class AccountNumber < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Account Number identifier.
+      #   #/components/schemas/account_number/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The identifier for the account this Account Number belongs to.
+      #   #/components/schemas/account_number/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute account_number
-      #   The account number.
+      #   #/components/schemas/account_number/properties/account_number
       #
       #   @return [String]
       required :account_number, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   Number was created.
+      #   #/components/schemas/account_number/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/account_number/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute inbound_ach
-      #   Properties related to how this Account Number handles inbound ACH transfers.
+      #   #/components/schemas/account_number/properties/inbound_ach
       #
       #   @return [Increase::Models::AccountNumber::InboundACH]
       required :inbound_ach, -> { Increase::Models::AccountNumber::InboundACH }
 
       # @!attribute inbound_checks
-      #   Properties related to how this Account Number should handle inbound check
-      #   withdrawals.
+      #   #/components/schemas/account_number/properties/inbound_checks
       #
       #   @return [Increase::Models::AccountNumber::InboundChecks]
       required :inbound_checks, -> { Increase::Models::AccountNumber::InboundChecks }
 
       # @!attribute name
-      #   The name you choose for the Account Number.
+      #   #/components/schemas/account_number/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   #/components/schemas/account_number/properties/routing_number
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute status
-      #   This indicates if payments can be made to the Account Number.
+      #   #/components/schemas/account_number/properties/status
       #
       #   @return [Symbol, Increase::Models::AccountNumber::Status]
       required :status, enum: -> { Increase::Models::AccountNumber::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `account_number`.
+      #   #/components/schemas/account_number/properties/type
       #
       #   @return [Symbol, Increase::Models::AccountNumber::Type]
       required :type, enum: -> { Increase::Models::AccountNumber::Type }
 
       # @!parse
-      #   # Each account can have multiple account and routing numbers. We recommend that
-      #   # you use a set per vendor. This is similar to how you use different passwords for
-      #   # different websites. Account numbers can also be used to seamlessly reconcile
-      #   # inbound payments. Generating a unique account number per vendor ensures you
-      #   # always know the originator of an incoming payment.
+      #   # #/components/schemas/account_number
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -116,14 +107,13 @@ module Increase
       # @see Increase::Models::AccountNumber#inbound_ach
       class InboundACH < Increase::Internal::Type::BaseModel
         # @!attribute debit_status
-        #   Whether ACH debits are allowed against this Account Number. Note that they will
-        #   still be declined if this is `allowed` if the Account Number is not active.
+        #   #/components/schemas/account_number/properties/inbound_ach/properties/debit_status
         #
         #   @return [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         required :debit_status, enum: -> { Increase::Models::AccountNumber::InboundACH::DebitStatus }
 
         # @!parse
-        #   # Properties related to how this Account Number handles inbound ACH transfers.
+        #   # #/components/schemas/account_number/properties/inbound_ach
         #   #
         #   # @param debit_status [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         #   #
@@ -131,8 +121,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # Whether ACH debits are allowed against this Account Number. Note that they will
-        # still be declined if this is `allowed` if the Account Number is not active.
+        # #/components/schemas/account_number/properties/inbound_ach/properties/debit_status
         #
         # @see Increase::Models::AccountNumber::InboundACH#debit_status
         module DebitStatus
@@ -155,14 +144,13 @@ module Increase
       # @see Increase::Models::AccountNumber#inbound_checks
       class InboundChecks < Increase::Internal::Type::BaseModel
         # @!attribute status
-        #   How Increase should process checks with this account number printed on them.
+        #   #/components/schemas/account_number/properties/inbound_checks/properties/status
         #
         #   @return [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
         required :status, enum: -> { Increase::Models::AccountNumber::InboundChecks::Status }
 
         # @!parse
-        #   # Properties related to how this Account Number should handle inbound check
-        #   # withdrawals.
+        #   # #/components/schemas/account_number/properties/inbound_checks
         #   #
         #   # @param status [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
         #   #
@@ -170,7 +158,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # How Increase should process checks with this account number printed on them.
+        # #/components/schemas/account_number/properties/inbound_checks/properties/status
         #
         # @see Increase::Models::AccountNumber::InboundChecks#status
         module Status
@@ -190,7 +178,7 @@ module Increase
         end
       end
 
-      # This indicates if payments can be made to the Account Number.
+      # #/components/schemas/account_number/properties/status
       #
       # @see Increase::Models::AccountNumber#status
       module Status
@@ -212,8 +200,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account_number`.
+      # #/components/schemas/account_number/properties/type
       #
       # @see Increase::Models::AccountNumber#type
       module Type

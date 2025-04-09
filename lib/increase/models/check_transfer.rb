@@ -5,162 +5,145 @@ module Increase
     # @see Increase::Resources::CheckTransfers#create
     class CheckTransfer < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Check transfer's identifier.
+      #   #/components/schemas/check_transfer/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The identifier of the Account from which funds will be transferred.
+      #   #/components/schemas/check_transfer/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute account_number
-      #   The account number printed on the check.
+      #   #/components/schemas/check_transfer/properties/account_number
       #
       #   @return [String]
       required :account_number, String
 
       # @!attribute amount
-      #   The transfer amount in USD cents.
+      #   #/components/schemas/check_transfer/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute approval
-      #   If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
+      #   #/components/schemas/check_transfer/properties/approval
       #
       #   @return [Increase::Models::CheckTransfer::Approval, nil]
       required :approval, -> { Increase::Models::CheckTransfer::Approval }, nil?: true
 
       # @!attribute approved_inbound_check_deposit_id
-      #   If the Check Transfer was successfully deposited, this will contain the
-      #   identifier of the Inbound Check Deposit object with details of the deposit.
+      #   #/components/schemas/check_transfer/properties/approved_inbound_check_deposit_id
       #
       #   @return [String, nil]
       required :approved_inbound_check_deposit_id, String, nil?: true
 
       # @!attribute cancellation
-      #   If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
+      #   #/components/schemas/check_transfer/properties/cancellation
       #
       #   @return [Increase::Models::CheckTransfer::Cancellation, nil]
       required :cancellation, -> { Increase::Models::CheckTransfer::Cancellation }, nil?: true
 
       # @!attribute check_number
-      #   The check number printed on the check.
+      #   #/components/schemas/check_transfer/properties/check_number
       #
       #   @return [String]
       required :check_number, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
+      #   #/components/schemas/check_transfer/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute created_by
-      #   What object created the transfer, either via the API or the dashboard.
+      #   #/components/schemas/check_transfer/properties/created_by
       #
       #   @return [Increase::Models::CheckTransfer::CreatedBy, nil]
       required :created_by, -> { Increase::Models::CheckTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      #   currency.
+      #   #/components/schemas/check_transfer/properties/currency
       #
       #   @return [Symbol, Increase::Models::CheckTransfer::Currency]
       required :currency, enum: -> { Increase::Models::CheckTransfer::Currency }
 
       # @!attribute fulfillment_method
-      #   Whether Increase will print and mail the check or if you will do it yourself.
+      #   #/components/schemas/check_transfer/properties/fulfillment_method
       #
       #   @return [Symbol, Increase::Models::CheckTransfer::FulfillmentMethod]
       required :fulfillment_method, enum: -> { Increase::Models::CheckTransfer::FulfillmentMethod }
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/check_transfer/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute mailing
-      #   If the check has been mailed by Increase, this will contain details of the
-      #   shipment.
+      #   #/components/schemas/check_transfer/properties/mailing
       #
       #   @return [Increase::Models::CheckTransfer::Mailing, nil]
       required :mailing, -> { Increase::Models::CheckTransfer::Mailing }, nil?: true
 
       # @!attribute pending_transaction_id
-      #   The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
+      #   #/components/schemas/check_transfer/properties/pending_transaction_id
       #
       #   @return [String, nil]
       required :pending_transaction_id, String, nil?: true
 
       # @!attribute physical_check
-      #   Details relating to the physical check that Increase will print and mail. Will
-      #   be present if and only if `fulfillment_method` is equal to `physical_check`.
+      #   #/components/schemas/check_transfer/properties/physical_check
       #
       #   @return [Increase::Models::CheckTransfer::PhysicalCheck, nil]
       required :physical_check, -> { Increase::Models::CheckTransfer::PhysicalCheck }, nil?: true
 
       # @!attribute routing_number
-      #   The routing number printed on the check.
+      #   #/components/schemas/check_transfer/properties/routing_number
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute source_account_number_id
-      #   The identifier of the Account Number from which to send the transfer and print
-      #   on the check.
+      #   #/components/schemas/check_transfer/properties/source_account_number_id
       #
       #   @return [String, nil]
       required :source_account_number_id, String, nil?: true
 
       # @!attribute status
-      #   The lifecycle status of the transfer.
+      #   #/components/schemas/check_transfer/properties/status
       #
       #   @return [Symbol, Increase::Models::CheckTransfer::Status]
       required :status, enum: -> { Increase::Models::CheckTransfer::Status }
 
       # @!attribute stop_payment_request
-      #   After a stop-payment is requested on the check, this will contain supplemental
-      #   details.
+      #   #/components/schemas/check_transfer/properties/stop_payment_request
       #
       #   @return [Increase::Models::CheckTransfer::StopPaymentRequest, nil]
       required :stop_payment_request, -> { Increase::Models::CheckTransfer::StopPaymentRequest }, nil?: true
 
       # @!attribute submission
-      #   After the transfer is submitted, this will contain supplemental details.
+      #   #/components/schemas/check_transfer/properties/submission
       #
       #   @return [Increase::Models::CheckTransfer::Submission, nil]
       required :submission, -> { Increase::Models::CheckTransfer::Submission }, nil?: true
 
       # @!attribute third_party
-      #   Details relating to the custom fulfillment you will perform. Will be present if
-      #   and only if `fulfillment_method` is equal to `third_party`.
+      #   #/components/schemas/check_transfer/properties/third_party
       #
       #   @return [Increase::Models::CheckTransfer::ThirdParty, nil]
       required :third_party, -> { Increase::Models::CheckTransfer::ThirdParty }, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `check_transfer`.
+      #   #/components/schemas/check_transfer/properties/type
       #
       #   @return [Symbol, Increase::Models::CheckTransfer::Type]
       required :type, enum: -> { Increase::Models::CheckTransfer::Type }
 
       # @!parse
-      #   # Check Transfers move funds from your Increase account by mailing a physical
-      #   # check.
+      #   # #/components/schemas/check_transfer
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -220,22 +203,19 @@ module Increase
       # @see Increase::Models::CheckTransfer#approval
       class Approval < Increase::Internal::Type::BaseModel
         # @!attribute approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
+        #   #/components/schemas/check_transfer/properties/approval/anyOf/0/properties/approved_at
         #
         #   @return [Time]
         required :approved_at, Time
 
         # @!attribute approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
+        #   #/components/schemas/check_transfer/properties/approval/anyOf/0/properties/approved_by
         #
         #   @return [String, nil]
         required :approved_by, String, nil?: true
 
         # @!parse
-        #   # If your account requires approvals for transfers and the transfer was approved,
-        #   # this will contain details of the approval.
+        #   # #/components/schemas/check_transfer/properties/approval
         #   #
         #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
@@ -248,22 +228,19 @@ module Increase
       # @see Increase::Models::CheckTransfer#cancellation
       class Cancellation < Increase::Internal::Type::BaseModel
         # @!attribute canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
+        #   #/components/schemas/check_transfer/properties/cancellation/anyOf/0/properties/canceled_at
         #
         #   @return [Time]
         required :canceled_at, Time
 
         # @!attribute canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
+        #   #/components/schemas/check_transfer/properties/cancellation/anyOf/0/properties/canceled_by
         #
         #   @return [String, nil]
         required :canceled_by, String, nil?: true
 
         # @!parse
-        #   # If your account requires approvals for transfers and the transfer was not
-        #   # approved, this will contain details of the cancellation.
+        #   # #/components/schemas/check_transfer/properties/cancellation
         #   #
         #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
@@ -276,19 +253,19 @@ module Increase
       # @see Increase::Models::CheckTransfer#created_by
       class CreatedBy < Increase::Internal::Type::BaseModel
         # @!attribute api_key
-        #   If present, details about the API key that created the transfer.
+        #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/api_key
         #
         #   @return [Increase::Models::CheckTransfer::CreatedBy::APIKey, nil]
         required :api_key, -> { Increase::Models::CheckTransfer::CreatedBy::APIKey }, nil?: true
 
         # @!attribute category
-        #   The type of object that created this transfer.
+        #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/category
         #
         #   @return [Symbol, Increase::Models::CheckTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::CheckTransfer::CreatedBy::Category }
 
         # @!attribute oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
+        #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/oauth_application
         #
         #   @return [Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, nil]
         required :oauth_application,
@@ -296,13 +273,13 @@ module Increase
                  nil?: true
 
         # @!attribute user
-        #   If present, details about the User that created the transfer.
+        #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/user
         #
         #   @return [Increase::Models::CheckTransfer::CreatedBy::User, nil]
         required :user, -> { Increase::Models::CheckTransfer::CreatedBy::User }, nil?: true
 
         # @!parse
-        #   # What object created the transfer, either via the API or the dashboard.
+        #   # #/components/schemas/check_transfer/properties/created_by
         #   #
         #   # @param api_key [Increase::Models::CheckTransfer::CreatedBy::APIKey, nil]
         #   # @param category [Symbol, Increase::Models::CheckTransfer::CreatedBy::Category]
@@ -316,13 +293,13 @@ module Increase
         # @see Increase::Models::CheckTransfer::CreatedBy#api_key
         class APIKey < Increase::Internal::Type::BaseModel
           # @!attribute description
-          #   The description set for the API key when it was created.
+          #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/api_key/anyOf/0/properties/description
           #
           #   @return [String, nil]
           required :description, String, nil?: true
 
           # @!parse
-          #   # If present, details about the API key that created the transfer.
+          #   # #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/api_key
           #   #
           #   # @param description [String, nil]
           #   #
@@ -331,7 +308,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The type of object that created this transfer.
+        # #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/category
         #
         # @see Increase::Models::CheckTransfer::CreatedBy#category
         module Category
@@ -356,13 +333,13 @@ module Increase
         # @see Increase::Models::CheckTransfer::CreatedBy#oauth_application
         class OAuthApplication < Increase::Internal::Type::BaseModel
           # @!attribute name
-          #   The name of the OAuth Application.
+          #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/oauth_application/anyOf/0/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!parse
-          #   # If present, details about the OAuth Application that created the transfer.
+          #   # #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/oauth_application
           #   #
           #   # @param name [String]
           #   #
@@ -374,13 +351,13 @@ module Increase
         # @see Increase::Models::CheckTransfer::CreatedBy#user
         class User < Increase::Internal::Type::BaseModel
           # @!attribute email
-          #   The email address of the User.
+          #   #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/user/anyOf/0/properties/email
           #
           #   @return [String]
           required :email, String
 
           # @!parse
-          #   # If present, details about the User that created the transfer.
+          #   # #/components/schemas/check_transfer/properties/created_by/anyOf/0/properties/user
           #   #
           #   # @param email [String]
           #   #
@@ -390,8 +367,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      # currency.
+      # #/components/schemas/check_transfer/properties/currency
       #
       # @see Increase::Models::CheckTransfer#currency
       module Currency
@@ -422,7 +398,7 @@ module Increase
         #   def self.values; end
       end
 
-      # Whether Increase will print and mail the check or if you will do it yourself.
+      # #/components/schemas/check_transfer/properties/fulfillment_method
       #
       # @see Increase::Models::CheckTransfer#fulfillment_method
       module FulfillmentMethod
@@ -444,28 +420,25 @@ module Increase
       # @see Increase::Models::CheckTransfer#mailing
       class Mailing < Increase::Internal::Type::BaseModel
         # @!attribute image_id
-        #   The ID of the file corresponding to an image of the check that was mailed, if
-        #   available.
+        #   #/components/schemas/check_transfer/properties/mailing/anyOf/0/properties/image_id
         #
         #   @return [String, nil]
         required :image_id, String, nil?: true
 
         # @!attribute mailed_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the check was mailed.
+        #   #/components/schemas/check_transfer/properties/mailing/anyOf/0/properties/mailed_at
         #
         #   @return [Time]
         required :mailed_at, Time
 
         # @!attribute tracking_number
-        #   The tracking number of the shipment, if available for the shipping method.
+        #   #/components/schemas/check_transfer/properties/mailing/anyOf/0/properties/tracking_number
         #
         #   @return [String, nil]
         required :tracking_number, String, nil?: true
 
         # @!parse
-        #   # If the check has been mailed by Increase, this will contain details of the
-        #   # shipment.
+        #   # #/components/schemas/check_transfer/properties/mailing
         #   #
         #   # @param image_id [String, nil]
         #   # @param mailed_at [Time]
@@ -479,37 +452,37 @@ module Increase
       # @see Increase::Models::CheckTransfer#physical_check
       class PhysicalCheck < Increase::Internal::Type::BaseModel
         # @!attribute mailing_address
-        #   Details for where Increase will mail the check.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address
         #
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress]
         required :mailing_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress }
 
         # @!attribute memo
-        #   The descriptor that will be printed on the memo field on the check.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/memo
         #
         #   @return [String, nil]
         required :memo, String, nil?: true
 
         # @!attribute note
-        #   The descriptor that will be printed on the letter included with the check.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/note
         #
         #   @return [String, nil]
         required :note, String, nil?: true
 
         # @!attribute recipient_name
-        #   The name that will be printed on the check.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/recipient_name
         #
         #   @return [String]
         required :recipient_name, String
 
         # @!attribute return_address
-        #   The return address to be printed on the check.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address
         #
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, nil]
         required :return_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress }, nil?: true
 
         # @!attribute shipping_method
-        #   The shipping method for the check.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/shipping_method
         #
         #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod, nil]
         required :shipping_method,
@@ -517,22 +490,20 @@ module Increase
                  nil?: true
 
         # @!attribute signature_text
-        #   The text that will appear as the signature on the check in cursive font. If
-        #   blank, the check will be printed with 'No signature required'.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/signature_text
         #
         #   @return [String, nil]
         required :signature_text, String, nil?: true
 
         # @!attribute tracking_updates
-        #   Tracking updates relating to the physical check's delivery.
+        #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/tracking_updates
         #
         #   @return [Array<Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate>]
         required :tracking_updates,
                  -> { Increase::Internal::Type::ArrayOf[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate] }
 
         # @!parse
-        #   # Details relating to the physical check that Increase will print and mail. Will
-        #   # be present if and only if `fulfillment_method` is equal to `physical_check`.
+        #   # #/components/schemas/check_transfer/properties/physical_check
         #   #
         #   # @param mailing_address [Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress]
         #   # @param memo [String, nil]
@@ -562,43 +533,43 @@ module Increase
         # @see Increase::Models::CheckTransfer::PhysicalCheck#mailing_address
         class MailingAddress < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address/properties/city
           #
           #   @return [String, nil]
           required :city, String, nil?: true
 
           # @!attribute line1
-          #   The street address of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address/properties/line1
           #
           #   @return [String, nil]
           required :line1, String, nil?: true
 
           # @!attribute line2
-          #   The second line of the address of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address/properties/line2
           #
           #   @return [String, nil]
           required :line2, String, nil?: true
 
           # @!attribute name
-          #   The name component of the check's mailing address.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address/properties/name
           #
           #   @return [String, nil]
           required :name, String, nil?: true
 
           # @!attribute postal_code
-          #   The postal code of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address/properties/postal_code
           #
           #   @return [String, nil]
           required :postal_code, String, nil?: true
 
           # @!attribute state
-          #   The state of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address/properties/state
           #
           #   @return [String, nil]
           required :state, String, nil?: true
 
           # @!parse
-          #   # Details for where Increase will mail the check.
+          #   # #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/mailing_address
           #   #
           #   # @param city [String, nil]
           #   # @param line1 [String, nil]
@@ -615,43 +586,43 @@ module Increase
         # @see Increase::Models::CheckTransfer::PhysicalCheck#return_address
         class ReturnAddress < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The city of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address/anyOf/0/properties/city
           #
           #   @return [String, nil]
           required :city, String, nil?: true
 
           # @!attribute line1
-          #   The street address of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address/anyOf/0/properties/line1
           #
           #   @return [String, nil]
           required :line1, String, nil?: true
 
           # @!attribute line2
-          #   The second line of the address of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address/anyOf/0/properties/line2
           #
           #   @return [String, nil]
           required :line2, String, nil?: true
 
           # @!attribute name
-          #   The name component of the check's return address.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address/anyOf/0/properties/name
           #
           #   @return [String, nil]
           required :name, String, nil?: true
 
           # @!attribute postal_code
-          #   The postal code of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address/anyOf/0/properties/postal_code
           #
           #   @return [String, nil]
           required :postal_code, String, nil?: true
 
           # @!attribute state
-          #   The state of the check's destination.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address/anyOf/0/properties/state
           #
           #   @return [String, nil]
           required :state, String, nil?: true
 
           # @!parse
-          #   # The return address to be printed on the check.
+          #   # #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/return_address
           #   #
           #   # @param city [String, nil]
           #   # @param line1 [String, nil]
@@ -665,7 +636,7 @@ module Increase
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
-        # The shipping method for the check.
+        # #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/shipping_method
         #
         # @see Increase::Models::CheckTransfer::PhysicalCheck#shipping_method
         module ShippingMethod
@@ -686,25 +657,26 @@ module Increase
 
         class TrackingUpdate < Increase::Internal::Type::BaseModel
           # @!attribute category
-          #   The type of tracking event.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/tracking_updates/items/properties/category
           #
           #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
           required :category, enum: -> { Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category }
 
           # @!attribute created_at
-          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the tracking event took place.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/tracking_updates/items/properties/created_at
           #
           #   @return [Time]
           required :created_at, Time
 
           # @!attribute postal_code
-          #   The postal code where the event took place.
+          #   #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/tracking_updates/items/properties/postal_code
           #
           #   @return [String]
           required :postal_code, String
 
           # @!parse
+          #   # #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/tracking_updates/items
+          #   #
           #   # @param category [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
           #   # @param created_at [Time]
           #   # @param postal_code [String]
@@ -713,7 +685,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # The type of tracking event.
+          # #/components/schemas/check_transfer/properties/physical_check/anyOf/0/properties/tracking_updates/items/properties/category
           #
           # @see Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate#category
           module Category
@@ -740,7 +712,7 @@ module Increase
         end
       end
 
-      # The lifecycle status of the transfer.
+      # #/components/schemas/check_transfer/properties/status
       #
       # @see Increase::Models::CheckTransfer#status
       module Status
@@ -786,33 +758,31 @@ module Increase
       # @see Increase::Models::CheckTransfer#stop_payment_request
       class StopPaymentRequest < Increase::Internal::Type::BaseModel
         # @!attribute reason
-        #   The reason why this transfer was stopped.
+        #   #/components/schemas/check_transfer_stop_payment_request/properties/reason
         #
         #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason]
         required :reason, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Reason }
 
         # @!attribute requested_at
-        #   The time the stop-payment was requested.
+        #   #/components/schemas/check_transfer_stop_payment_request/properties/requested_at
         #
         #   @return [Time]
         required :requested_at, Time
 
         # @!attribute transfer_id
-        #   The ID of the check transfer that was stopped.
+        #   #/components/schemas/check_transfer_stop_payment_request/properties/transfer_id
         #
         #   @return [String]
         required :transfer_id, String
 
         # @!attribute type
-        #   A constant representing the object's type. For this resource it will always be
-        #   `check_transfer_stop_payment_request`.
+        #   #/components/schemas/check_transfer_stop_payment_request/properties/type
         #
         #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type]
         required :type, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Type }
 
         # @!parse
-        #   # After a stop-payment is requested on the check, this will contain supplemental
-        #   # details.
+        #   # #/components/schemas/check_transfer/properties/stop_payment_request
         #   #
         #   # @param reason [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason]
         #   # @param requested_at [Time]
@@ -823,7 +793,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The reason why this transfer was stopped.
+        # #/components/schemas/check_transfer_stop_payment_request/properties/reason
         #
         # @see Increase::Models::CheckTransfer::StopPaymentRequest#reason
         module Reason
@@ -848,8 +818,7 @@ module Increase
           #   def self.values; end
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        # `check_transfer_stop_payment_request`.
+        # #/components/schemas/check_transfer_stop_payment_request/properties/type
         #
         # @see Increase::Models::CheckTransfer::StopPaymentRequest#type
         module Type
@@ -868,30 +837,26 @@ module Increase
       # @see Increase::Models::CheckTransfer#submission
       class Submission < Increase::Internal::Type::BaseModel
         # @!attribute address_correction_action
-        #   Per USPS requirements, Increase will standardize the address to USPS standards
-        #   and check it against the USPS National Change of Address (NCOA) database before
-        #   mailing it. This indicates what modifications, if any, were made to the address
-        #   before printing and mailing the check.
+        #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/address_correction_action
         #
         #   @return [Symbol, Increase::Models::CheckTransfer::Submission::AddressCorrectionAction]
         required :address_correction_action,
                  enum: -> { Increase::Models::CheckTransfer::Submission::AddressCorrectionAction }
 
         # @!attribute submitted_address
-        #   The address we submitted to the printer. This is what is physically printed on
-        #   the check.
+        #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address
         #
         #   @return [Increase::Models::CheckTransfer::Submission::SubmittedAddress]
         required :submitted_address, -> { Increase::Models::CheckTransfer::Submission::SubmittedAddress }
 
         # @!attribute submitted_at
-        #   When this check transfer was submitted to our check printer.
+        #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_at
         #
         #   @return [Time]
         required :submitted_at, Time
 
         # @!parse
-        #   # After the transfer is submitted, this will contain supplemental details.
+        #   # #/components/schemas/check_transfer/properties/submission
         #   #
         #   # @param address_correction_action [Symbol, Increase::Models::CheckTransfer::Submission::AddressCorrectionAction]
         #   # @param submitted_address [Increase::Models::CheckTransfer::Submission::SubmittedAddress]
@@ -901,10 +866,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # Per USPS requirements, Increase will standardize the address to USPS standards
-        # and check it against the USPS National Change of Address (NCOA) database before
-        # mailing it. This indicates what modifications, if any, were made to the address
-        # before printing and mailing the check.
+        # #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/address_correction_action
         #
         # @see Increase::Models::CheckTransfer::Submission#address_correction_action
         module AddressCorrectionAction
@@ -932,44 +894,43 @@ module Increase
         # @see Increase::Models::CheckTransfer::Submission#submitted_address
         class SubmittedAddress < Increase::Internal::Type::BaseModel
           # @!attribute city
-          #   The submitted address city.
+          #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address/properties/city
           #
           #   @return [String]
           required :city, String
 
           # @!attribute line1
-          #   The submitted address line 1.
+          #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address/properties/line1
           #
           #   @return [String]
           required :line1, String
 
           # @!attribute line2
-          #   The submitted address line 2.
+          #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address/properties/line2
           #
           #   @return [String, nil]
           required :line2, String, nil?: true
 
           # @!attribute recipient_name
-          #   The submitted recipient name.
+          #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address/properties/recipient_name
           #
           #   @return [String]
           required :recipient_name, String
 
           # @!attribute state
-          #   The submitted address state.
+          #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address/properties/state
           #
           #   @return [String]
           required :state, String
 
           # @!attribute zip
-          #   The submitted address zip.
+          #   #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address/properties/zip
           #
           #   @return [String]
           required :zip, String
 
           # @!parse
-          #   # The address we submitted to the printer. This is what is physically printed on
-          #   # the check.
+          #   # #/components/schemas/check_transfer/properties/submission/anyOf/0/properties/submitted_address
           #   #
           #   # @param city [String]
           #   # @param line1 [String]
@@ -987,20 +948,19 @@ module Increase
       # @see Increase::Models::CheckTransfer#third_party
       class ThirdParty < Increase::Internal::Type::BaseModel
         # @!attribute check_number
-        #   The check number that you will print on the check.
+        #   #/components/schemas/check_transfer/properties/third_party/anyOf/0/properties/check_number
         #
         #   @return [String, nil]
         required :check_number, String, nil?: true
 
         # @!attribute recipient_name
-        #   The name that you will print on the check.
+        #   #/components/schemas/check_transfer/properties/third_party/anyOf/0/properties/recipient_name
         #
         #   @return [String, nil]
         required :recipient_name, String, nil?: true
 
         # @!parse
-        #   # Details relating to the custom fulfillment you will perform. Will be present if
-        #   # and only if `fulfillment_method` is equal to `third_party`.
+        #   # #/components/schemas/check_transfer/properties/third_party
         #   #
         #   # @param check_number [String, nil]
         #   # @param recipient_name [String, nil]
@@ -1010,8 +970,7 @@ module Increase
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `check_transfer`.
+      # #/components/schemas/check_transfer/properties/type
       #
       # @see Increase::Models::CheckTransfer#type
       module Type

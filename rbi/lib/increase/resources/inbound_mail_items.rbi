@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::InboundMailItem)
       end
       def retrieve(
-        # The identifier of the Inbound Mail Item to retrieve.
+        # #/paths//inbound_mail_items/{inbound_mail_item_id}/get/parameters/0/schema
         inbound_mail_item_id,
         request_options: {}
       ); end
@@ -29,12 +29,11 @@ module Increase
       end
       def list(
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//inbound_mail_items/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//inbound_mail_items/get/parameters/1/schema
         limit: nil,
-        # Filter Inbound Mail Items to ones sent to the provided Lockbox.
+        # #/paths//inbound_mail_items/get/parameters/2/schema
         lockbox_id: nil,
         request_options: {}
       ); end

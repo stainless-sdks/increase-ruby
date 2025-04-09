@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The reason why this transfer should be stopped.
+      # #/components/schemas/request_a_stop_payment_on_a_check_transfer_parameters/properties/reason
       sig { returns(T.nilable(Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol)) }
       attr_reader :reason
 
@@ -33,7 +33,7 @@ module Increase
       end
       def to_hash; end
 
-      # The reason why this transfer should be stopped.
+      # #/components/schemas/request_a_stop_payment_on_a_check_transfer_parameters/properties/reason
       module Reason
         extend Increase::Internal::Type::Enum
 

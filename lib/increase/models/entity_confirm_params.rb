@@ -9,8 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] confirmed_at
-      #   When your user confirmed the Entity's details. If not provided, the current time
-      #   will be used.
+      #   #/components/schemas/confirm_an_entitys_details_are_correct_parameters/properties/confirmed_at
       #
       #   @return [Time, nil]
       optional :confirmed_at, Time

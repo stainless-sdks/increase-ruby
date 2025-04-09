@@ -7,12 +7,11 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Card Payment to create a reversal on.
+        # #/components/schemas/sandbox_reverse_a_card_authorization_parameters/properties/card_payment_id
         sig { returns(String) }
         attr_accessor :card_payment_id
 
-        # The amount of the reversal in minor units in the card authorization's currency.
-        # This defaults to the authorization amount.
+        # #/components/schemas/sandbox_reverse_a_card_authorization_parameters/properties/amount
         sig { returns(T.nilable(Integer)) }
         attr_reader :amount
 

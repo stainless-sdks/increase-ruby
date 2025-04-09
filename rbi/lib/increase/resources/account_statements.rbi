@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::AccountStatement)
       end
       def retrieve(
-        # The identifier of the Account Statement to retrieve.
+        # #/paths//account_statements/{account_statement_id}/get/parameters/0/schema
         account_statement_id,
         request_options: {}
       ); end
@@ -28,12 +28,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::AccountStatement])
       end
       def list(
-        # Filter Account Statements to those belonging to the specified Account.
+        # #/paths//account_statements/get/parameters/2/schema
         account_id: nil,
-        # Return the page of entries after this one.
+        # #/paths//account_statements/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//account_statements/get/parameters/1/schema
         limit: nil,
         statement_period_start: nil,
         request_options: {}

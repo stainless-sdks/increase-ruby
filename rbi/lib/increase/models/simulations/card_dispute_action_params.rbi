@@ -7,11 +7,11 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The status to move the dispute to.
+        # #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/status
         sig { returns(Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol) }
         attr_accessor :status
 
-        # Why the dispute was rejected. Not required for accepting disputes.
+        # #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/explanation
         sig { returns(T.nilable(String)) }
         attr_reader :explanation
 
@@ -40,7 +40,7 @@ module Increase
         end
         def to_hash; end
 
-        # The status to move the dispute to.
+        # #/components/schemas/sandbox_advance_the_state_of_a_card_dispute_parameters/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 

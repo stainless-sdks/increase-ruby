@@ -30,62 +30,43 @@ module Increase
           .returns(Increase::Models::ACHTransfer)
       end
       def create(
-        # The Increase identifier for the account that will send the transfer.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/account_id
         account_id:,
-        # The transfer amount in USD cents. A positive amount originates a credit transfer
-        # pushing funds to the receiving account. A negative amount originates a debit
-        # transfer pulling funds from the receiving account.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/amount
         amount:,
-        # A description you choose to give the transfer. This will be saved with the
-        # transfer details, displayed in the dashboard, and returned by the API. If
-        # `individual_name` and `company_name` are not explicitly set by this API, the
-        # `statement_descriptor` will be sent in those fields to the receiving bank to
-        # help the customer recognize the transfer. You are highly encouraged to pass
-        # `individual_name` and `company_name` instead of relying on this fallback.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/statement_descriptor
         statement_descriptor:,
-        # The account number for the destination account.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/account_number
         account_number: nil,
-        # Additional information that will be sent to the recipient. This is included in
-        # the transfer data sent to the receiving bank.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/addenda
         addenda: nil,
-        # The description of the date of the transfer, usually in the format `YYMMDD`.
-        # This is included in the transfer data sent to the receiving bank.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/company_descriptive_date
         company_descriptive_date: nil,
-        # The data you choose to associate with the transfer. This is included in the
-        # transfer data sent to the receiving bank.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/company_discretionary_data
         company_discretionary_data: nil,
-        # A description of the transfer. This is included in the transfer data sent to the
-        # receiving bank.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/company_entry_description
         company_entry_description: nil,
-        # The name by which the recipient knows you. This is included in the transfer data
-        # sent to the receiving bank.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/company_name
         company_name: nil,
-        # The type of entity that owns the account to which the ACH Transfer is being
-        # sent.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/destination_account_holder
         destination_account_holder: nil,
-        # The ID of an External Account to initiate a transfer to. If this parameter is
-        # provided, `account_number`, `routing_number`, and `funding` must be absent.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/external_account_id
         external_account_id: nil,
-        # The type of the account to which the transfer will be sent.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/funding
         funding: nil,
-        # Your identifier for the transfer recipient.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/individual_id
         individual_id: nil,
-        # The name of the transfer recipient. This value is informational and not verified
-        # by the recipient's bank.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/individual_name
         individual_name: nil,
-        # Configuration for how the effective date of the transfer will be set. This
-        # determines same-day vs future-dated settlement timing. If not set, defaults to a
-        # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-        # must be set.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/preferred_effective_date
         preferred_effective_date: nil,
-        # Whether the transfer requires explicit approval via the dashboard or API.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/require_approval
         require_approval: nil,
-        # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        # destination account.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/routing_number
         routing_number: nil,
-        # The Standard Entry Class (SEC) code to use for the transfer.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/standard_entry_class_code
         standard_entry_class_code: nil,
-        # The timing of the transaction.
+        # #/components/schemas/create_an_ach_transfer_parameters/properties/transaction_timing
         transaction_timing: nil,
         request_options: {}
       ); end
@@ -98,7 +79,7 @@ module Increase
           .returns(Increase::Models::ACHTransfer)
       end
       def retrieve(
-        # The identifier of the ACH Transfer.
+        # #/paths//ach_transfers/{ach_transfer_id}/get/parameters/0/schema
         ach_transfer_id,
         request_options: {}
       ); end
@@ -117,20 +98,16 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::ACHTransfer])
       end
       def list(
-        # Filter ACH Transfers to those that originated from the specified Account.
+        # #/paths//ach_transfers/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//ach_transfers/get/parameters/0/schema
         cursor: nil,
-        # Filter ACH Transfers to those made to the specified External Account.
+        # #/paths//ach_transfers/get/parameters/3/schema
         external_account_id: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//ach_transfers/get/parameters/4/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//ach_transfers/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -144,7 +121,7 @@ module Increase
           .returns(Increase::Models::ACHTransfer)
       end
       def approve(
-        # The identifier of the ACH Transfer to approve.
+        # #/paths//ach_transfers/{ach_transfer_id}/approve/post/parameters/0/schema
         ach_transfer_id,
         request_options: {}
       ); end
@@ -157,7 +134,7 @@ module Increase
           .returns(Increase::Models::ACHTransfer)
       end
       def cancel(
-        # The identifier of the pending ACH Transfer to cancel.
+        # #/paths//ach_transfers/{ach_transfer_id}/cancel/post/parameters/0/schema
         ach_transfer_id,
         request_options: {}
       ); end

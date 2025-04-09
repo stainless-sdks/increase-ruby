@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::InboundRealTimePaymentsTransfer)
       end
       def retrieve(
-        # The identifier of the Inbound Real-Time Payments Transfer to get details for.
+        # #/paths//inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}/get/parameters/0/schema
         inbound_real_time_payments_transfer_id,
         request_options: {}
       ); end
@@ -29,17 +29,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::InboundRealTimePaymentsTransfer])
       end
       def list(
-        # Filter Inbound Real-Time Payments Transfers to those belonging to the specified
-        # Account.
+        # #/paths//inbound_real_time_payments_transfers/get/parameters/2/schema
         account_id: nil,
-        # Filter Inbound Real-Time Payments Transfers to ones belonging to the specified
-        # Account Number.
+        # #/paths//inbound_real_time_payments_transfers/get/parameters/3/schema
         account_number_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//inbound_real_time_payments_transfers/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//inbound_real_time_payments_transfers/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

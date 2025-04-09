@@ -9,8 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute beneficial_owner
-      #   The identifying details of anyone controlling or owning 25% or more of the
-      #   corporation.
+      #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner
       #
       #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner]
       required :beneficial_owner, -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner }
@@ -25,23 +24,21 @@ module Increase
 
       class BeneficialOwner < Increase::Internal::Type::BaseModel
         # @!attribute individual
-        #   Personal details for the beneficial owner.
+        #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual
         #
         #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual]
         required :individual,
                  -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual }
 
         # @!attribute prongs
-        #   Why this person is considered a beneficial owner of the entity. At least one
-        #   option is required, if a person is both a control person and owner, submit an
-        #   array containing both.
+        #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/prongs
         #
         #   @return [Array<Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>]
         required :prongs,
                  -> { Increase::Internal::Type::ArrayOf[enum: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong] }
 
         # @!attribute [r] company_title
-        #   This person's role or title within the entity.
+        #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/company_title
         #
         #   @return [String, nil]
         optional :company_title, String
@@ -51,8 +48,7 @@ module Increase
         #   attr_writer :company_title
 
         # @!parse
-        #   # The identifying details of anyone controlling or owning 25% or more of the
-        #   # corporation.
+        #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner
         #   #
         #   # @param individual [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual]
         #   # @param prongs [Array<Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>]
@@ -65,37 +61,33 @@ module Increase
         # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner#individual
         class Individual < Increase::Internal::Type::BaseModel
           # @!attribute address
-          #   The individual's physical address. Mail receiving locations like PO Boxes and
-          #   PMB's are disallowed.
+          #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address
           #
           #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address]
           required :address,
                    -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address }
 
           # @!attribute date_of_birth
-          #   The person's date of birth in YYYY-MM-DD format.
+          #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/date_of_birth
           #
           #   @return [Date]
           required :date_of_birth, Date
 
           # @!attribute identification
-          #   A means of verifying the person's identity.
+          #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification
           #
           #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification]
           required :identification,
                    -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification }
 
           # @!attribute name
-          #   The person's legal name.
+          #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/name
           #
           #   @return [String]
           required :name, String
 
           # @!attribute [r] confirmed_no_us_tax_id
-          #   The identification method for an individual can only be a passport, driver's
-          #   license, or other document if you've confirmed the individual does not have a US
-          #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   Number).
+          #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/confirmed_no_us_tax_id
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::Internal::Type::Boolean
@@ -105,7 +97,7 @@ module Increase
           #   attr_writer :confirmed_no_us_tax_id
 
           # @!parse
-          #   # Personal details for the beneficial owner.
+          #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual
           #   #
           #   # @param address [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address]
           #   # @param date_of_birth [Date]
@@ -120,20 +112,19 @@ module Increase
           # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#address
           class Address < Increase::Internal::Type::BaseModel
             # @!attribute country
-            #   The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/country
             #
             #   @return [String]
             required :country, String
 
             # @!attribute line1
-            #   The first line of the address. This is usually the street number and street.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/line1
             #
             #   @return [String]
             required :line1, String
 
             # @!attribute [r] city
-            #   The city, district, town, or village of the address. Required in certain
-            #   countries.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/city
             #
             #   @return [String, nil]
             optional :city, String
@@ -143,7 +134,7 @@ module Increase
             #   attr_writer :city
 
             # @!attribute [r] line2
-            #   The second line of the address. This might be the floor or room number.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/line2
             #
             #   @return [String, nil]
             optional :line2, String
@@ -153,8 +144,7 @@ module Increase
             #   attr_writer :line2
 
             # @!attribute [r] state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the US
-            #   state, province, or region of the address. Required in certain countries.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/state
             #
             #   @return [String, nil]
             optional :state, String
@@ -164,7 +154,7 @@ module Increase
             #   attr_writer :state
 
             # @!attribute [r] zip
-            #   The ZIP or postal code of the address. Required in certain countries.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address/properties/zip
             #
             #   @return [String, nil]
             optional :zip, String
@@ -174,8 +164,7 @@ module Increase
             #   attr_writer :zip
 
             # @!parse
-            #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   # PMB's are disallowed.
+            #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/address
             #   #
             #   # @param country [String]
             #   # @param line1 [String]
@@ -192,7 +181,7 @@ module Increase
           # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#identification
           class Identification < Increase::Internal::Type::BaseModel
             # @!attribute method_
-            #   A method that can be used to verify the individual's identity.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/method
             #
             #   @return [Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method]
             required :method_,
@@ -200,15 +189,13 @@ module Increase
                      api_name: :method
 
             # @!attribute number
-            #   An identification number that can be used to verify the individual's identity,
-            #   such as a social security number.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/number
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
-            #   Information about the United States driver's license used for identification.
-            #   Required if `method` is equal to `drivers_license`.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license
             #
             #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -219,8 +206,7 @@ module Increase
             #   attr_writer :drivers_license
 
             # @!attribute [r] other
-            #   Information about the identification document provided. Required if `method` is
-            #   equal to `other`.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other
             #
             #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other, nil]
             optional :other,
@@ -231,8 +217,7 @@ module Increase
             #   attr_writer :other
 
             # @!attribute [r] passport
-            #   Information about the passport used for identification. Required if `method` is
-            #   equal to `passport`.
+            #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport
             #
             #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport, nil]
             optional :passport,
@@ -243,7 +228,7 @@ module Increase
             #   attr_writer :passport
 
             # @!parse
-            #   # A means of verifying the person's identity.
+            #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification
             #   #
             #   # @param method_ [Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method]
             #   # @param number [String]
@@ -255,7 +240,7 @@ module Increase
 
             # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-            # A method that can be used to verify the individual's identity.
+            # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/method
             #
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#method_
             module Method
@@ -286,25 +271,25 @@ module Increase
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#drivers_license
             class DriversLicense < Increase::Internal::Type::BaseModel
               # @!attribute expiration_date
-              #   The driver's license's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/expiration_date
               #
               #   @return [Date]
               required :expiration_date, Date
 
               # @!attribute file_id
-              #   The identifier of the File containing the front of the driver's license.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!attribute state
-              #   The state that issued the provided driver's license.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/state
               #
               #   @return [String]
               required :state, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the driver's license.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license/properties/back_file_id
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -314,8 +299,7 @@ module Increase
               #   attr_writer :back_file_id
 
               # @!parse
-              #   # Information about the United States driver's license used for identification.
-              #   # Required if `method` is equal to `drivers_license`.
+              #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/drivers_license
               #   #
               #   # @param expiration_date [Date]
               #   # @param file_id [String]
@@ -330,27 +314,25 @@ module Increase
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#other
             class Other < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The two-character ISO 3166-1 code representing the country that issued the
-              #   document.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute description
-              #   A description of the document submitted.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/description
               #
               #   @return [String]
               required :description, String
 
               # @!attribute file_id
-              #   The identifier of the File containing the front of the document.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the document. Not every
-              #   document has a reverse side.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/back_file_id
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -360,7 +342,7 @@ module Increase
               #   attr_writer :back_file_id
 
               # @!attribute [r] expiration_date
-              #   The document's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other/properties/expiration_date
               #
               #   @return [Date, nil]
               optional :expiration_date, Date
@@ -370,8 +352,7 @@ module Increase
               #   attr_writer :expiration_date
 
               # @!parse
-              #   # Information about the identification document provided. Required if `method` is
-              #   # equal to `other`.
+              #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/other
               #   #
               #   # @param country [String]
               #   # @param description [String]
@@ -387,26 +368,25 @@ module Increase
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#passport
             class Passport < Increase::Internal::Type::BaseModel
               # @!attribute country
-              #   The country that issued the passport.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport/properties/country
               #
               #   @return [String]
               required :country, String
 
               # @!attribute expiration_date
-              #   The passport's expiration date in YYYY-MM-DD format.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport/properties/expiration_date
               #
               #   @return [Date]
               required :expiration_date, Date
 
               # @!attribute file_id
-              #   The identifier of the File containing the passport.
+              #   #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport/properties/file_id
               #
               #   @return [String]
               required :file_id, String
 
               # @!parse
-              #   # Information about the passport used for identification. Required if `method` is
-              #   # equal to `passport`.
+              #   # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/individual/properties/identification/properties/passport
               #   #
               #   # @param country [String]
               #   # @param expiration_date [Date]
@@ -419,6 +399,7 @@ module Increase
           end
         end
 
+        # #/components/schemas/create_a_beneficial_owner_for_a_corporate_entity_parameters/properties/beneficial_owner/properties/prongs/items
         module Prong
           extend Increase::Internal::Type::Enum
 

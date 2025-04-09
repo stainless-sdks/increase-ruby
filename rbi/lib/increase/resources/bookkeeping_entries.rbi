@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::BookkeepingEntry)
       end
       def retrieve(
-        # The identifier of the Bookkeeping Entry.
+        # #/paths//bookkeeping_entries/{bookkeeping_entry_id}/get/parameters/0/schema
         bookkeeping_entry_id,
         request_options: {}
       ); end
@@ -27,12 +27,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::BookkeepingEntry])
       end
       def list(
-        # The identifier for the Bookkeeping Account to filter by.
+        # #/paths//bookkeeping_entries/get/parameters/2/schema
         account_id: nil,
-        # Return the page of entries after this one.
+        # #/paths//bookkeeping_entries/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//bookkeeping_entries/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

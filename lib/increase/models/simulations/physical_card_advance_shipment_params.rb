@@ -10,7 +10,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute shipment_status
-        #   The shipment status to move the Physical Card to.
+        #   #/components/schemas/sandbox_advance_the_shipment_status_of_a_physical_card_parameters/properties/shipment_status
         #
         #   @return [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus]
         required :shipment_status,
@@ -24,7 +24,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # The shipment status to move the Physical Card to.
+        # #/components/schemas/sandbox_advance_the_shipment_status_of_a_physical_card_parameters/properties/shipment_status
         module ShipmentStatus
           extend Increase::Internal::Type::Enum
 

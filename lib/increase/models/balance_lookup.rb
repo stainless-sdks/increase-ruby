@@ -5,35 +5,31 @@ module Increase
     # @see Increase::Resources::Accounts#balance
     class BalanceLookup < Increase::Internal::Type::BaseModel
       # @!attribute account_id
-      #   The identifier for the account for which the balance was queried.
+      #   #/components/schemas/balance_lookup/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute available_balance
-      #   The Account's available balance, representing the current balance less any open
-      #   Pending Transactions on the Account.
+      #   #/components/schemas/balance_lookup/properties/available_balance
       #
       #   @return [Integer]
       required :available_balance, Integer
 
       # @!attribute current_balance
-      #   The Account's current balance, representing the sum of all posted Transactions
-      #   on the Account.
+      #   #/components/schemas/balance_lookup/properties/current_balance
       #
       #   @return [Integer]
       required :current_balance, Integer
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `balance_lookup`.
+      #   #/components/schemas/balance_lookup/properties/type
       #
       #   @return [Symbol, Increase::Models::BalanceLookup::Type]
       required :type, enum: -> { Increase::Models::BalanceLookup::Type }
 
       # @!parse
-      #   # Represents a request to lookup the balance of an Account at a given point in
-      #   # time.
+      #   # #/components/schemas/balance_lookup
       #   #
       #   # @param account_id [String]
       #   # @param available_balance [Integer]
@@ -44,8 +40,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be
-      # `balance_lookup`.
+      # #/components/schemas/balance_lookup/properties/type
       #
       # @see Increase::Models::BalanceLookup#type
       module Type

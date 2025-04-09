@@ -6,27 +6,26 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The account number for the destination account.
+      # #/components/schemas/create_an_external_account_parameters/properties/account_number
       sig { returns(String) }
       attr_accessor :account_number
 
-      # The name you choose for the Account.
+      # #/components/schemas/create_an_external_account_parameters/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      # destination account.
+      # #/components/schemas/create_an_external_account_parameters/properties/routing_number
       sig { returns(String) }
       attr_accessor :routing_number
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/create_an_external_account_parameters/properties/account_holder
       sig { returns(T.nilable(Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol)) }
       attr_reader :account_holder
 
       sig { params(account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol).void }
       attr_writer :account_holder
 
-      # The type of the destination account. Defaults to `checking`.
+      # #/components/schemas/create_an_external_account_parameters/properties/funding
       sig { returns(T.nilable(Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol)) }
       attr_reader :funding
 
@@ -69,7 +68,7 @@ module Increase
       end
       def to_hash; end
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/create_an_external_account_parameters/properties/account_holder
       module AccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -92,7 +91,7 @@ module Increase
         def self.values; end
       end
 
-      # The type of the destination account. Defaults to `checking`.
+      # #/components/schemas/create_an_external_account_parameters/properties/funding
       module Funding
         extend Increase::Internal::Type::Enum
 

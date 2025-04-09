@@ -5,79 +5,67 @@ module Increase
     # @see Increase::Resources::DeclinedTransactions#retrieve
     class DeclinedTransaction < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Declined Transaction identifier.
+      #   #/components/schemas/declined_transaction/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_id
-      #   The identifier for the Account the Declined Transaction belongs to.
+      #   #/components/schemas/declined_transaction/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The Declined Transaction amount in the minor unit of its currency. For dollars,
-      #   for example, this is cents.
+      #   #/components/schemas/declined_transaction/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-      #   Transaction occurred.
+      #   #/components/schemas/declined_transaction/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
-      #   Transaction's currency. This will match the currency on the Declined
-      #   Transaction's Account.
+      #   #/components/schemas/declined_transaction/properties/currency
       #
       #   @return [Symbol, Increase::Models::DeclinedTransaction::Currency]
       required :currency, enum: -> { Increase::Models::DeclinedTransaction::Currency }
 
       # @!attribute description
-      #   This is the description the vendor provides.
+      #   #/components/schemas/declined_transaction/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute route_id
-      #   The identifier for the route this Declined Transaction came through. Routes are
-      #   things like cards and ACH details.
+      #   #/components/schemas/declined_transaction/properties/route_id
       #
       #   @return [String, nil]
       required :route_id, String, nil?: true
 
       # @!attribute route_type
-      #   The type of the route this Declined Transaction came through.
+      #   #/components/schemas/declined_transaction/properties/route_type
       #
       #   @return [Symbol, Increase::Models::DeclinedTransaction::RouteType, nil]
       required :route_type, enum: -> { Increase::Models::DeclinedTransaction::RouteType }, nil?: true
 
       # @!attribute source
-      #   This is an object giving more details on the network-level event that caused the
-      #   Declined Transaction. For example, for a card transaction this lists the
-      #   merchant's industry and location. Note that for backwards compatibility reasons,
-      #   additional undocumented keys may appear in this object. These should be treated
-      #   as deprecated and will be removed in the future.
+      #   #/components/schemas/declined_transaction/properties/source
       #
       #   @return [Increase::Models::DeclinedTransaction::Source]
       required :source, -> { Increase::Models::DeclinedTransaction::Source }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `declined_transaction`.
+      #   #/components/schemas/declined_transaction/properties/type
       #
       #   @return [Symbol, Increase::Models::DeclinedTransaction::Type]
       required :type, enum: -> { Increase::Models::DeclinedTransaction::Type }
 
       # @!parse
-      #   # Declined Transactions are refused additions and removals of money from your bank
-      #   # account. For example, Declined Transactions are caused when your Account has an
-      #   # insufficient balance or your Limits are triggered.
+      #   # #/components/schemas/declined_transaction
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
@@ -108,9 +96,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
-      # Transaction's currency. This will match the currency on the Declined
-      # Transaction's Account.
+      # #/components/schemas/declined_transaction/properties/currency
       #
       # @see Increase::Models::DeclinedTransaction#currency
       module Currency
@@ -141,7 +127,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The type of the route this Declined Transaction came through.
+      # #/components/schemas/declined_transaction/properties/route_type
       #
       # @see Increase::Models::DeclinedTransaction#route_type
       module RouteType
@@ -166,36 +152,31 @@ module Increase
       # @see Increase::Models::DeclinedTransaction#source
       class Source < Increase::Internal::Type::BaseModel
         # @!attribute ach_decline
-        #   An ACH Decline object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `ach_decline`.
+        #   #/components/schemas/declined_transaction/properties/source/properties/ach_decline
         #
         #   @return [Increase::Models::DeclinedTransaction::Source::ACHDecline, nil]
         required :ach_decline, -> { Increase::Models::DeclinedTransaction::Source::ACHDecline }, nil?: true
 
         # @!attribute card_decline
-        #   A Card Decline object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_decline`.
+        #   #/components/schemas/declined_transaction/properties/source/properties/card_decline
         #
         #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline, nil]
         required :card_decline, -> { Increase::Models::DeclinedTransaction::Source::CardDecline }, nil?: true
 
         # @!attribute category
-        #   The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
+        #   #/components/schemas/declined_transaction/properties/source/properties/category
         #
         #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::Category]
         required :category, enum: -> { Increase::Models::DeclinedTransaction::Source::Category }
 
         # @!attribute check_decline
-        #   A Check Decline object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `check_decline`.
+        #   #/components/schemas/declined_transaction/properties/source/properties/check_decline
         #
         #   @return [Increase::Models::DeclinedTransaction::Source::CheckDecline, nil]
         required :check_decline, -> { Increase::Models::DeclinedTransaction::Source::CheckDecline }, nil?: true
 
         # @!attribute check_deposit_rejection
-        #   A Check Deposit Rejection object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `check_deposit_rejection`.
+        #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection
         #
         #   @return [Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, nil]
         required :check_deposit_rejection,
@@ -203,9 +184,7 @@ module Increase
                  nil?: true
 
         # @!attribute inbound_real_time_payments_transfer_decline
-        #   An Inbound Real-Time Payments Transfer Decline object. This field will be
-        #   present in the JSON response if and only if `category` is equal to
-        #   `inbound_real_time_payments_transfer_decline`.
+        #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline
         #
         #   @return [Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline, nil]
         required :inbound_real_time_payments_transfer_decline,
@@ -213,25 +192,19 @@ module Increase
                  nil?: true
 
         # @!attribute other
-        #   If the category of this Transaction source is equal to `other`, this field will
-        #   contain an empty object, otherwise it will contain null.
+        #   #/components/schemas/declined_transaction/properties/source/properties/other
         #
         #   @return [Object, nil]
         required :other, Increase::Internal::Type::Unknown, nil?: true
 
         # @!attribute wire_decline
-        #   A Wire Decline object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `wire_decline`.
+        #   #/components/schemas/declined_transaction/properties/source/properties/wire_decline
         #
         #   @return [Increase::Models::DeclinedTransaction::Source::WireDecline, nil]
         required :wire_decline, -> { Increase::Models::DeclinedTransaction::Source::WireDecline }, nil?: true
 
         # @!parse
-        #   # This is an object giving more details on the network-level event that caused the
-        #   # Declined Transaction. For example, for a card transaction this lists the
-        #   # merchant's industry and location. Note that for backwards compatibility reasons,
-        #   # additional undocumented keys may appear in this object. These should be treated
-        #   # as deprecated and will be removed in the future.
+        #   # #/components/schemas/declined_transaction/properties/source
         #   #
         #   # @param ach_decline [Increase::Models::DeclinedTransaction::Source::ACHDecline, nil]
         #   # @param card_decline [Increase::Models::DeclinedTransaction::Source::CardDecline, nil]
@@ -261,81 +234,79 @@ module Increase
         # @see Increase::Models::DeclinedTransaction::Source#ach_decline
         class ACHDecline < Increase::Internal::Type::BaseModel
           # @!attribute id
-          #   The ACH Decline's identifier.
+          #   #/components/schemas/ach_decline/properties/id
           #
           #   @return [String]
           required :id, String
 
           # @!attribute amount
-          #   The declined amount in USD cents.
+          #   #/components/schemas/ach_decline/properties/amount
           #
           #   @return [Integer]
           required :amount, Integer
 
           # @!attribute inbound_ach_transfer_id
-          #   The identifier of the Inbound ACH Transfer object associated with this decline.
+          #   #/components/schemas/ach_decline/properties/inbound_ach_transfer_id
           #
           #   @return [String]
           required :inbound_ach_transfer_id, String
 
           # @!attribute originator_company_descriptive_date
-          #   The descriptive date of the transfer.
+          #   #/components/schemas/ach_decline/properties/originator_company_descriptive_date
           #
           #   @return [String, nil]
           required :originator_company_descriptive_date, String, nil?: true
 
           # @!attribute originator_company_discretionary_data
-          #   The additional information included with the transfer.
+          #   #/components/schemas/ach_decline/properties/originator_company_discretionary_data
           #
           #   @return [String, nil]
           required :originator_company_discretionary_data, String, nil?: true
 
           # @!attribute originator_company_id
-          #   The identifier of the company that initiated the transfer.
+          #   #/components/schemas/ach_decline/properties/originator_company_id
           #
           #   @return [String]
           required :originator_company_id, String
 
           # @!attribute originator_company_name
-          #   The name of the company that initiated the transfer.
+          #   #/components/schemas/ach_decline/properties/originator_company_name
           #
           #   @return [String]
           required :originator_company_name, String
 
           # @!attribute reason
-          #   Why the ACH transfer was declined.
+          #   #/components/schemas/ach_decline/properties/reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason }
 
           # @!attribute receiver_id_number
-          #   The id of the receiver of the transfer.
+          #   #/components/schemas/ach_decline/properties/receiver_id_number
           #
           #   @return [String, nil]
           required :receiver_id_number, String, nil?: true
 
           # @!attribute receiver_name
-          #   The name of the receiver of the transfer.
+          #   #/components/schemas/ach_decline/properties/receiver_name
           #
           #   @return [String, nil]
           required :receiver_name, String, nil?: true
 
           # @!attribute trace_number
-          #   The trace number of the transfer.
+          #   #/components/schemas/ach_decline/properties/trace_number
           #
           #   @return [String]
           required :trace_number, String
 
           # @!attribute type
-          #   A constant representing the object's type. For this resource it will always be
-          #   `ach_decline`.
+          #   #/components/schemas/ach_decline/properties/type
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type]
           required :type, enum: -> { Increase::Models::DeclinedTransaction::Source::ACHDecline::Type }
 
           # @!parse
-          #   # An ACH Decline object. This field will be present in the JSON response if and
-          #   # only if `category` is equal to `ach_decline`.
+          #   # #/components/schemas/declined_transaction/properties/source/properties/ach_decline
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
@@ -370,7 +341,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # Why the ACH transfer was declined.
+          # #/components/schemas/ach_decline/properties/reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::ACHDecline#reason
           module Reason
@@ -436,8 +407,7 @@ module Increase
             #   def self.values; end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          # `ach_decline`.
+          # #/components/schemas/ach_decline/properties/type
           #
           # @see Increase::Models::DeclinedTransaction::Source::ACHDecline#type
           module Type
@@ -456,162 +426,148 @@ module Increase
         # @see Increase::Models::DeclinedTransaction::Source#card_decline
         class CardDecline < Increase::Internal::Type::BaseModel
           # @!attribute id
-          #   The Card Decline identifier.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/id
           #
           #   @return [String]
           required :id, String
 
           # @!attribute actioner
-          #   Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/actioner
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner]
           required :actioner, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner }
 
           # @!attribute amount
-          #   The declined amount in the minor unit of the destination account currency. For
-          #   dollars, for example, this is cents.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/amount
           #
           #   @return [Integer]
           required :amount, Integer
 
           # @!attribute card_payment_id
-          #   The ID of the Card Payment this transaction belongs to.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/card_payment_id
           #
           #   @return [String]
           required :card_payment_id, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/currency
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency]
           required :currency, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Currency }
 
           # @!attribute declined_transaction_id
-          #   The identifier of the declined transaction created for this Card Decline.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/declined_transaction_id
           #
           #   @return [String]
           required :declined_transaction_id, String
 
           # @!attribute digital_wallet_token_id
-          #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/digital_wallet_token_id
           #
           #   @return [String, nil]
           required :digital_wallet_token_id, String, nil?: true
 
           # @!attribute direction
-          #   The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/direction
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction]
           required :direction, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Direction }
 
           # @!attribute merchant_acceptor_id
-          #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_acceptor_id
           #
           #   @return [String]
           required :merchant_acceptor_id, String
 
           # @!attribute merchant_category_code
-          #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_category_code
           #
           #   @return [String]
           required :merchant_category_code, String
 
           # @!attribute merchant_city
-          #   The city the merchant resides in.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_city
           #
           #   @return [String, nil]
           required :merchant_city, String, nil?: true
 
           # @!attribute merchant_country
-          #   The country the merchant resides in.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_country
           #
           #   @return [String]
           required :merchant_country, String
 
           # @!attribute merchant_descriptor
-          #   The merchant descriptor of the merchant the card is transacting with.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_descriptor
           #
           #   @return [String]
           required :merchant_descriptor, String
 
           # @!attribute merchant_postal_code
-          #   The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_postal_code
           #
           #   @return [String, nil]
           required :merchant_postal_code, String, nil?: true
 
           # @!attribute merchant_state
-          #   The state the merchant resides in.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/merchant_state
           #
           #   @return [String, nil]
           required :merchant_state, String, nil?: true
 
           # @!attribute network_details
-          #   Fields specific to the `network`.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details
           #
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails]
           required :network_details,
                    -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails }
 
           # @!attribute network_identifiers
-          #   Network-specific identifiers for a specific request or transaction.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_identifiers
           #
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers]
           required :network_identifiers,
                    -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers }
 
           # @!attribute network_risk_score
-          #   The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_risk_score
           #
           #   @return [Integer, nil]
           required :network_risk_score, Integer, nil?: true
 
           # @!attribute physical_card_id
-          #   If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/physical_card_id
           #
           #   @return [String, nil]
           required :physical_card_id, String, nil?: true
 
           # @!attribute presentment_amount
-          #   The declined amount in the minor unit of the transaction's presentment currency.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/presentment_amount
           #
           #   @return [Integer]
           required :presentment_amount, Integer
 
           # @!attribute presentment_currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/presentment_currency
           #
           #   @return [String]
           required :presentment_currency, String
 
           # @!attribute processing_category
-          #   The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/processing_category
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory]
           required :processing_category,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory }
 
           # @!attribute real_time_decision_id
-          #   The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/real_time_decision_id
           #
           #   @return [String, nil]
           required :real_time_decision_id, String, nil?: true
 
           # @!attribute real_time_decision_reason
-          #   This is present if a specific decline reason was given in the real-time
-          #   decision.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/real_time_decision_reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason, nil]
           required :real_time_decision_reason,
@@ -619,27 +575,25 @@ module Increase
                    nil?: true
 
           # @!attribute reason
-          #   Why the transaction was declined.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Reason }
 
           # @!attribute terminal_id
-          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          #   is transacting with.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/terminal_id
           #
           #   @return [String, nil]
           required :terminal_id, String, nil?: true
 
           # @!attribute verification
-          #   Fields related to verification of cardholder-provided values.
+          #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification
           #
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
           required :verification, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification }
 
           # @!parse
-          #   # A Card Decline object. This field will be present in the JSON response if and
-          #   # only if `category` is equal to `card_decline`.
+          #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline
           #   #
           #   # @param id [String]
           #   # @param actioner [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner]
@@ -704,8 +658,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/actioner
           #
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#actioner
           module Actioner
@@ -727,8 +680,7 @@ module Increase
             #   def self.values; end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/currency
           #
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#currency
           module Currency
@@ -759,8 +711,7 @@ module Increase
             #   def self.values; end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/direction
           #
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#direction
           module Direction
@@ -782,14 +733,14 @@ module Increase
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#network_details
           class NetworkDetails < Increase::Internal::Type::BaseModel
             # @!attribute category
-            #   The payment network used to process this card authorization.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/category
             #
             #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category]
             required :category,
                      enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category }
 
             # @!attribute visa
-            #   Fields specific to the `visa` network.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa
             #
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa, nil]
             required :visa,
@@ -797,7 +748,7 @@ module Increase
                      nil?: true
 
             # @!parse
-            #   # Fields specific to the `network`.
+            #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details
             #   #
             #   # @param category [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category]
             #   # @param visa [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa, nil]
@@ -806,7 +757,7 @@ module Increase
 
             # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-            # The payment network used to process this card authorization.
+            # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/category
             #
             # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails#category
             module Category
@@ -825,9 +776,7 @@ module Increase
             # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails#visa
             class Visa < Increase::Internal::Type::BaseModel
               # @!attribute electronic_commerce_indicator
-              #   For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
               required :electronic_commerce_indicator,
@@ -835,8 +784,7 @@ module Increase
                        nil?: true
 
               # @!attribute point_of_service_entry_mode
-              #   The method used to enter the cardholder's primary account number and card
-              #   expiration date.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
               required :point_of_service_entry_mode,
@@ -844,8 +792,7 @@ module Increase
                        nil?: true
 
               # @!attribute stand_in_processing_reason
-              #   Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason, nil]
               required :stand_in_processing_reason,
@@ -853,7 +800,7 @@ module Increase
                        nil?: true
 
               # @!parse
-              #   # Fields specific to the `visa` network.
+              #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa
               #   #
               #   # @param electronic_commerce_indicator [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
               #   # @param point_of_service_entry_mode [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
@@ -863,9 +810,7 @@ module Increase
 
               # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/electronic_commerce_indicator
               #
               # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa#electronic_commerce_indicator
               module ElectronicCommerceIndicator
@@ -903,8 +848,7 @@ module Increase
                 #   def self.values; end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/point_of_service_entry_mode
               #
               # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa#point_of_service_entry_mode
               module PointOfServiceEntryMode
@@ -947,8 +891,7 @@ module Increase
                 #   def self.values; end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_details/properties/visa/anyOf/0/properties/stand_in_processing_reason
               #
               # @see Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa#stand_in_processing_reason
               module StandInProcessingReason
@@ -989,29 +932,25 @@ module Increase
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#network_identifiers
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             # @!attribute retrieval_reference_number
-            #   A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_identifiers/properties/retrieval_reference_number
             #
             #   @return [String, nil]
             required :retrieval_reference_number, String, nil?: true
 
             # @!attribute trace_number
-            #   A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_identifiers/properties/trace_number
             #
             #   @return [String, nil]
             required :trace_number, String, nil?: true
 
             # @!attribute transaction_id
-            #   A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_identifiers/properties/transaction_id
             #
             #   @return [String, nil]
             required :transaction_id, String, nil?: true
 
             # @!parse
-            #   # Network-specific identifiers for a specific request or transaction.
+            #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/network_identifiers
             #   #
             #   # @param retrieval_reference_number [String, nil]
             #   # @param trace_number [String, nil]
@@ -1022,8 +961,7 @@ module Increase
             # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/processing_category
           #
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#processing_category
           module ProcessingCategory
@@ -1054,8 +992,7 @@ module Increase
             #   def self.values; end
           end
 
-          # This is present if a specific decline reason was given in the real-time
-          # decision.
+          # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/real_time_decision_reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#real_time_decision_reason
           module RealTimeDecisionReason
@@ -1086,7 +1023,7 @@ module Increase
             #   def self.values; end
           end
 
-          # Why the transaction was declined.
+          # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#reason
           module Reason
@@ -1153,23 +1090,21 @@ module Increase
           # @see Increase::Models::DeclinedTransaction::Source::CardDecline#verification
           class Verification < Increase::Internal::Type::BaseModel
             # @!attribute card_verification_code
-            #   Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code
             #
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode]
             required :card_verification_code,
                      -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode }
 
             # @!attribute cardholder_address
-            #   Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
+            #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address
             #
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress]
             required :cardholder_address,
                      -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress }
 
             # @!parse
-            #   # Fields related to verification of cardholder-provided values.
+            #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification
             #   #
             #   # @param card_verification_code [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode]
             #   # @param cardholder_address [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress]
@@ -1181,15 +1116,14 @@ module Increase
             # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification#card_verification_code
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               # @!attribute result
-              #   The result of verifying the Card Verification Code.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code/properties/result
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
               required :result,
                        enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result }
 
               # @!parse
-              #   # Fields related to verification of the Card Verification Code, a 3-digit code on
-              #   # the back of the card.
+              #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code
               #   #
               #   # @param result [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
               #   #
@@ -1197,7 +1131,7 @@ module Increase
 
               # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-              # The result of verifying the Card Verification Code.
+              # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/card_verification_code/properties/result
               #
               # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode#result
               module Result
@@ -1223,40 +1157,38 @@ module Increase
             # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification#cardholder_address
             class CardholderAddress < Increase::Internal::Type::BaseModel
               # @!attribute actual_line1
-              #   Line 1 of the address on file for the cardholder.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/actual_line1
               #
               #   @return [String, nil]
               required :actual_line1, String, nil?: true
 
               # @!attribute actual_postal_code
-              #   The postal code of the address on file for the cardholder.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/actual_postal_code
               #
               #   @return [String, nil]
               required :actual_postal_code, String, nil?: true
 
               # @!attribute provided_line1
-              #   The cardholder address line 1 provided for verification in the authorization
-              #   request.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/provided_line1
               #
               #   @return [String, nil]
               required :provided_line1, String, nil?: true
 
               # @!attribute provided_postal_code
-              #   The postal code provided for verification in the authorization request.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/provided_postal_code
               #
               #   @return [String, nil]
               required :provided_postal_code, String, nil?: true
 
               # @!attribute result
-              #   The address verification result returned to the card network.
+              #   #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/result
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result]
               required :result,
                        enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result }
 
               # @!parse
-              #   # Cardholder address provided in the authorization request and the address on file
-              #   # we verified it against.
+              #   # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address
               #   #
               #   # @param actual_line1 [String, nil]
               #   # @param actual_postal_code [String, nil]
@@ -1268,7 +1200,7 @@ module Increase
 
               # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-              # The address verification result returned to the card network.
+              # #/components/schemas/declined_transaction/properties/source/properties/card_decline/anyOf/0/properties/verification/properties/cardholder_address/properties/result
               #
               # @see Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress#result
               module Result
@@ -1302,8 +1234,7 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # #/components/schemas/declined_transaction/properties/source/properties/category
         #
         # @see Increase::Models::DeclinedTransaction::Source#category
         module Category
@@ -1340,54 +1271,49 @@ module Increase
         # @see Increase::Models::DeclinedTransaction::Source#check_decline
         class CheckDecline < Increase::Internal::Type::BaseModel
           # @!attribute amount
-          #   The declined amount in USD cents.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/amount
           #
           #   @return [Integer]
           required :amount, Integer
 
           # @!attribute auxiliary_on_us
-          #   A computer-readable number printed on the MICR line of business checks, usually
-          #   the check number. This is useful for positive pay checks, but can be unreliably
-          #   transmitted by the bank of first deposit.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/auxiliary_on_us
           #
           #   @return [String, nil]
           required :auxiliary_on_us, String, nil?: true
 
           # @!attribute back_image_file_id
-          #   The identifier of the API File object containing an image of the back of the
-          #   declined check.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/back_image_file_id
           #
           #   @return [String, nil]
           required :back_image_file_id, String, nil?: true
 
           # @!attribute check_transfer_id
-          #   The identifier of the Check Transfer object associated with this decline.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/check_transfer_id
           #
           #   @return [String, nil]
           required :check_transfer_id, String, nil?: true
 
           # @!attribute front_image_file_id
-          #   The identifier of the API File object containing an image of the front of the
-          #   declined check.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/front_image_file_id
           #
           #   @return [String, nil]
           required :front_image_file_id, String, nil?: true
 
           # @!attribute inbound_check_deposit_id
-          #   The identifier of the Inbound Check Deposit object associated with this decline.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/inbound_check_deposit_id
           #
           #   @return [String, nil]
           required :inbound_check_deposit_id, String, nil?: true
 
           # @!attribute reason
-          #   Why the check was declined.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason }
 
           # @!parse
-          #   # A Check Decline object. This field will be present in the JSON response if and
-          #   # only if `category` is equal to `check_decline`.
+          #   # #/components/schemas/declined_transaction/properties/source/properties/check_decline
           #   #
           #   # @param amount [Integer]
           #   # @param auxiliary_on_us [String, nil]
@@ -1412,7 +1338,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # Why the check was declined.
+          # #/components/schemas/declined_transaction/properties/source/properties/check_decline/anyOf/0/properties/reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::CheckDecline#reason
           module Reason
@@ -1480,49 +1406,45 @@ module Increase
         # @see Increase::Models::DeclinedTransaction::Source#check_deposit_rejection
         class CheckDepositRejection < Increase::Internal::Type::BaseModel
           # @!attribute amount
-          #   The rejected amount in the minor unit of check's currency. For dollars, for
-          #   example, this is cents.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/amount
           #
           #   @return [Integer]
           required :amount, Integer
 
           # @!attribute check_deposit_id
-          #   The identifier of the Check Deposit that was rejected.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/check_deposit_id
           #
           #   @return [String]
           required :check_deposit_id, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          #   currency.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/currency
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency]
           required :currency,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency }
 
           # @!attribute declined_transaction_id
-          #   The identifier of the associated declined transaction.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/declined_transaction_id
           #
           #   @return [String]
           required :declined_transaction_id, String
 
           # @!attribute reason
-          #   Why the check deposit was rejected.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason]
           required :reason,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason }
 
           # @!attribute rejected_at
-          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the check deposit was rejected.
+          #   #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/rejected_at
           #
           #   @return [Time]
           required :rejected_at, Time
 
           # @!parse
-          #   # A Check Deposit Rejection object. This field will be present in the JSON
-          #   # response if and only if `category` is equal to `check_deposit_rejection`.
+          #   # #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection
           #   #
           #   # @param amount [Integer]
           #   # @param check_deposit_id [String]
@@ -1535,8 +1457,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          # #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/currency
           #
           # @see Increase::Models::DeclinedTransaction::Source::CheckDepositRejection#currency
           module Currency
@@ -1567,7 +1488,7 @@ module Increase
             #   def self.values; end
           end
 
-          # Why the check deposit was rejected.
+          # #/components/schemas/declined_transaction/properties/source/properties/check_deposit_rejection/anyOf/0/properties/reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::CheckDepositRejection#reason
           module Reason
@@ -1617,74 +1538,69 @@ module Increase
         # @see Increase::Models::DeclinedTransaction::Source#inbound_real_time_payments_transfer_decline
         class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
           # @!attribute amount
-          #   The declined amount in the minor unit of the destination account currency. For
-          #   dollars, for example, this is cents.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/amount
           #
           #   @return [Integer]
           required :amount, Integer
 
           # @!attribute creditor_name
-          #   The name the sender of the transfer specified as the recipient of the transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/creditor_name
           #
           #   @return [String]
           required :creditor_name, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          #   transfer's currency. This will always be "USD" for a Real-Time Payments
-          #   transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/currency
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
 
           # @!attribute debtor_account_number
-          #   The account number of the account that sent the transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/debtor_account_number
           #
           #   @return [String]
           required :debtor_account_number, String
 
           # @!attribute debtor_name
-          #   The name provided by the sender of the transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/debtor_name
           #
           #   @return [String]
           required :debtor_name, String
 
           # @!attribute debtor_routing_number
-          #   The routing number of the account that sent the transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/debtor_routing_number
           #
           #   @return [String]
           required :debtor_routing_number, String
 
           # @!attribute reason
-          #   Why the transfer was declined.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
 
           # @!attribute remittance_information
-          #   Additional information included with the transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/remittance_information
           #
           #   @return [String, nil]
           required :remittance_information, String, nil?: true
 
           # @!attribute transaction_identification
-          #   The Real-Time Payments network identification of the declined transfer.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/transaction_identification
           #
           #   @return [String]
           required :transaction_identification, String
 
           # @!attribute transfer_id
-          #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
+          #   #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/transfer_id
           #
           #   @return [String]
           required :transfer_id, String
 
           # @!parse
-          #   # An Inbound Real-Time Payments Transfer Decline object. This field will be
-          #   # present in the JSON response if and only if `category` is equal to
-          #   # `inbound_real_time_payments_transfer_decline`.
+          #   # #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline
           #   #
           #   # @param amount [Integer]
           #   # @param creditor_name [String]
@@ -1715,9 +1631,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          # transfer's currency. This will always be "USD" for a Real-Time Payments
-          # transfer.
+          # #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/currency
           #
           # @see Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline#currency
           module Currency
@@ -1748,7 +1662,7 @@ module Increase
             #   def self.values; end
           end
 
-          # Why the transfer was declined.
+          # #/components/schemas/declined_transaction/properties/source/properties/inbound_real_time_payments_transfer_decline/anyOf/0/properties/reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline#reason
           module Reason
@@ -1783,20 +1697,19 @@ module Increase
         # @see Increase::Models::DeclinedTransaction::Source#wire_decline
         class WireDecline < Increase::Internal::Type::BaseModel
           # @!attribute inbound_wire_transfer_id
-          #   The identifier of the Inbound Wire Transfer that was declined.
+          #   #/components/schemas/declined_transaction/properties/source/properties/wire_decline/anyOf/0/properties/inbound_wire_transfer_id
           #
           #   @return [String]
           required :inbound_wire_transfer_id, String
 
           # @!attribute reason
-          #   Why the wire transfer was declined.
+          #   #/components/schemas/declined_transaction/properties/source/properties/wire_decline/anyOf/0/properties/reason
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::WireDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::WireDecline::Reason }
 
           # @!parse
-          #   # A Wire Decline object. This field will be present in the JSON response if and
-          #   # only if `category` is equal to `wire_decline`.
+          #   # #/components/schemas/declined_transaction/properties/source/properties/wire_decline
           #   #
           #   # @param inbound_wire_transfer_id [String]
           #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::WireDecline::Reason]
@@ -1805,7 +1718,7 @@ module Increase
 
           # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-          # Why the wire transfer was declined.
+          # #/components/schemas/declined_transaction/properties/source/properties/wire_decline/anyOf/0/properties/reason
           #
           # @see Increase::Models::DeclinedTransaction::Source::WireDecline#reason
           module Reason
@@ -1838,8 +1751,7 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `declined_transaction`.
+      # #/components/schemas/declined_transaction/properties/type
       #
       # @see Increase::Models::DeclinedTransaction#type
       module Type

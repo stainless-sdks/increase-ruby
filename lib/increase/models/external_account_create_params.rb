@@ -9,26 +9,25 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_number
-      #   The account number for the destination account.
+      #   #/components/schemas/create_an_external_account_parameters/properties/account_number
       #
       #   @return [String]
       required :account_number, String
 
       # @!attribute description
-      #   The name you choose for the Account.
+      #   #/components/schemas/create_an_external_account_parameters/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      #   #/components/schemas/create_an_external_account_parameters/properties/routing_number
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute [r] account_holder
-      #   The type of entity that owns the External Account.
+      #   #/components/schemas/create_an_external_account_parameters/properties/account_holder
       #
       #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder, nil]
       optional :account_holder, enum: -> { Increase::Models::ExternalAccountCreateParams::AccountHolder }
@@ -38,7 +37,7 @@ module Increase
       #   attr_writer :account_holder
 
       # @!attribute [r] funding
-      #   The type of the destination account. Defaults to `checking`.
+      #   #/components/schemas/create_an_external_account_parameters/properties/funding
       #
       #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding, nil]
       optional :funding, enum: -> { Increase::Models::ExternalAccountCreateParams::Funding }
@@ -59,7 +58,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/create_an_external_account_parameters/properties/account_holder
       module AccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -79,7 +78,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The type of the destination account. Defaults to `checking`.
+      # #/components/schemas/create_an_external_account_parameters/properties/funding
       module Funding
         extend Increase::Internal::Type::Enum
 

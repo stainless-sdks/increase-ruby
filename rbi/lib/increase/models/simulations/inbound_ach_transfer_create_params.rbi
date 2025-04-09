@@ -7,74 +7,71 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The identifier of the Account Number the inbound ACH Transfer is for.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/account_number_id
         sig { returns(String) }
         attr_accessor :account_number_id
 
-        # The transfer amount in cents. A positive amount originates a credit transfer
-        # pushing funds to the receiving account. A negative amount originates a debit
-        # transfer pulling funds from the receiving account.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The description of the date of the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_descriptive_date
         sig { returns(T.nilable(String)) }
         attr_reader :company_descriptive_date
 
         sig { params(company_descriptive_date: String).void }
         attr_writer :company_descriptive_date
 
-        # Data associated with the transfer set by the sender.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_discretionary_data
         sig { returns(T.nilable(String)) }
         attr_reader :company_discretionary_data
 
         sig { params(company_discretionary_data: String).void }
         attr_writer :company_discretionary_data
 
-        # The description of the transfer set by the sender.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_entry_description
         sig { returns(T.nilable(String)) }
         attr_reader :company_entry_description
 
         sig { params(company_entry_description: String).void }
         attr_writer :company_entry_description
 
-        # The sender's company ID.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_id
         sig { returns(T.nilable(String)) }
         attr_reader :company_id
 
         sig { params(company_id: String).void }
         attr_writer :company_id
 
-        # The name of the sender.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/company_name
         sig { returns(T.nilable(String)) }
         attr_reader :company_name
 
         sig { params(company_name: String).void }
         attr_writer :company_name
 
-        # The ID of the receiver of the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/receiver_id_number
         sig { returns(T.nilable(String)) }
         attr_reader :receiver_id_number
 
         sig { params(receiver_id_number: String).void }
         attr_writer :receiver_id_number
 
-        # The name of the receiver of the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/receiver_name
         sig { returns(T.nilable(String)) }
         attr_reader :receiver_name
 
         sig { params(receiver_name: String).void }
         attr_writer :receiver_name
 
-        # The time at which the transfer should be resolved. If not provided will resolve
-        # immediately.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/resolve_at
         sig { returns(T.nilable(Time)) }
         attr_reader :resolve_at
 
         sig { params(resolve_at: Time).void }
         attr_writer :resolve_at
 
-        # The standard entry class code for the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/standard_entry_class_code
         sig do
           returns(
             T.nilable(Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
@@ -142,7 +139,7 @@ module Increase
         end
         def to_hash; end
 
-        # The standard entry class code for the transfer.
+        # #/components/schemas/sandbox_create_an_inbound_ach_transfer_parameters/properties/standard_entry_class_code
         module StandardEntryClassCode
           extend Increase::Internal::Type::Enum
 

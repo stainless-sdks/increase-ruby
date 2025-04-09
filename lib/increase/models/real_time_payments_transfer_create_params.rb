@@ -9,33 +9,31 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute amount
-      #   The transfer amount in USD cents. For Real-Time Payments transfers, must be
-      #   positive.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute creditor_name
-      #   The name of the transfer's recipient.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/creditor_name
       #
       #   @return [String]
       required :creditor_name, String
 
       # @!attribute remittance_information
-      #   Unstructured information that will show on the recipient's bank statement.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/remittance_information
       #
       #   @return [String]
       required :remittance_information, String
 
       # @!attribute source_account_number_id
-      #   The identifier of the Account Number from which to send the transfer.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/source_account_number_id
       #
       #   @return [String]
       required :source_account_number_id, String
 
       # @!attribute [r] debtor_name
-      #   The name of the transfer's sender. If not provided, defaults to the name of the
-      #   account's entity.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/debtor_name
       #
       #   @return [String, nil]
       optional :debtor_name, String
@@ -45,7 +43,7 @@ module Increase
       #   attr_writer :debtor_name
 
       # @!attribute [r] destination_account_number
-      #   The destination account number.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/destination_account_number
       #
       #   @return [String, nil]
       optional :destination_account_number, String
@@ -55,8 +53,7 @@ module Increase
       #   attr_writer :destination_account_number
 
       # @!attribute [r] destination_routing_number
-      #   The destination American Bankers' Association (ABA) Routing Transit Number
-      #   (RTN).
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/destination_routing_number
       #
       #   @return [String, nil]
       optional :destination_routing_number, String
@@ -66,9 +63,7 @@ module Increase
       #   attr_writer :destination_routing_number
 
       # @!attribute [r] external_account_id
-      #   The ID of an External Account to initiate a transfer to. If this parameter is
-      #   provided, `destination_account_number` and `destination_routing_number` must be
-      #   absent.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/external_account_id
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -78,7 +73,7 @@ module Increase
       #   attr_writer :external_account_id
 
       # @!attribute [r] require_approval
-      #   Whether the transfer requires explicit approval via the dashboard or API.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/require_approval
       #
       #   @return [Boolean, nil]
       optional :require_approval, Increase::Internal::Type::Boolean
@@ -88,8 +83,7 @@ module Increase
       #   attr_writer :require_approval
 
       # @!attribute [r] ultimate_creditor_name
-      #   The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #   an intermediary receiving the payment for someone else.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/ultimate_creditor_name
       #
       #   @return [String, nil]
       optional :ultimate_creditor_name, String
@@ -99,8 +93,7 @@ module Increase
       #   attr_writer :ultimate_creditor_name
 
       # @!attribute [r] ultimate_debtor_name
-      #   The name of the ultimate sender of the transfer. Set this if the funds are being
-      #   sent on behalf of someone who is not the account holder at Increase.
+      #   #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/ultimate_debtor_name
       #
       #   @return [String, nil]
       optional :ultimate_debtor_name, String

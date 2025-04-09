@@ -6,30 +6,25 @@ module Increase
       # @see Increase::Resources::Simulations::CardAuthorizations#create
       class CardAuthorizationCreateResponse < Increase::Internal::Type::BaseModel
         # @!attribute declined_transaction
-        #   If the authorization attempt fails, this will contain the resulting
-        #   [Declined Transaction](#declined-transactions) object. The Declined
-        #   Transaction's `source` will be of `category: card_decline`.
+        #   #/components/schemas/inbound_card_authorization_simulation_result/properties/declined_transaction
         #
         #   @return [Increase::Models::DeclinedTransaction, nil]
         required :declined_transaction, -> { Increase::Models::DeclinedTransaction }, nil?: true
 
         # @!attribute pending_transaction
-        #   If the authorization attempt succeeds, this will contain the resulting Pending
-        #   Transaction object. The Pending Transaction's `source` will be of
-        #   `category: card_authorization`.
+        #   #/components/schemas/inbound_card_authorization_simulation_result/properties/pending_transaction
         #
         #   @return [Increase::Models::PendingTransaction, nil]
         required :pending_transaction, -> { Increase::Models::PendingTransaction }, nil?: true
 
         # @!attribute type
-        #   A constant representing the object's type. For this resource it will always be
-        #   `inbound_card_authorization_simulation_result`.
+        #   #/components/schemas/inbound_card_authorization_simulation_result/properties/type
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type]
         required :type, enum: -> { Increase::Models::Simulations::CardAuthorizationCreateResponse::Type }
 
         # @!parse
-        #   # The results of a Card Authorization simulation.
+        #   # #/paths//simulations/card_authorizations/post/responses/200/content/application/json/schema
         #   #
         #   # @param declined_transaction [Increase::Models::DeclinedTransaction, nil]
         #   # @param pending_transaction [Increase::Models::PendingTransaction, nil]
@@ -39,8 +34,7 @@ module Increase
 
         # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_card_authorization_simulation_result`.
+        # #/components/schemas/inbound_card_authorization_simulation_result/properties/type
         #
         # @see Increase::Models::Simulations::CardAuthorizationCreateResponse#type
         module Type

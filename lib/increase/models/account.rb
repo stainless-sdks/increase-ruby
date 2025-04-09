@@ -5,110 +5,97 @@ module Increase
     # @see Increase::Resources::Accounts#create
     class Account < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The Account identifier.
+      #   #/components/schemas/account/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute bank
-      #   The bank the Account is with.
+      #   #/components/schemas/account/properties/bank
       #
       #   @return [Symbol, Increase::Models::Account::Bank]
       required :bank, enum: -> { Increase::Models::Account::Bank }
 
       # @!attribute closed_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   was closed.
+      #   #/components/schemas/account/properties/closed_at
       #
       #   @return [Time, nil]
       required :closed_at, Time, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   was created.
+      #   #/components/schemas/account/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   currency.
+      #   #/components/schemas/account/properties/currency
       #
       #   @return [Symbol, Increase::Models::Account::Currency]
       required :currency, enum: -> { Increase::Models::Account::Currency }
 
       # @!attribute entity_id
-      #   The identifier for the Entity the Account belongs to.
+      #   #/components/schemas/account/properties/entity_id
       #
       #   @return [String, nil]
       required :entity_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/account/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute informational_entity_id
-      #   The identifier of an Entity that, while not owning the Account, is associated
-      #   with its activity.
+      #   #/components/schemas/account/properties/informational_entity_id
       #
       #   @return [String, nil]
       required :informational_entity_id, String, nil?: true
 
       # @!attribute interest_accrued
-      #   The interest accrued but not yet paid, expressed as a string containing a
-      #   floating-point value.
+      #   #/components/schemas/account/properties/interest_accrued
       #
       #   @return [String]
       required :interest_accrued, String
 
       # @!attribute interest_accrued_at
-      #   The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-      #   interest was accrued.
+      #   #/components/schemas/account/properties/interest_accrued_at
       #
       #   @return [Date, nil]
       required :interest_accrued_at, Date, nil?: true
 
       # @!attribute interest_rate
-      #   The Interest Rate currently being earned on the account, as a string containing
-      #   a decimal number. For example, a 1% interest rate would be represented as
-      #   "0.01".
+      #   #/components/schemas/account/properties/interest_rate
       #
       #   @return [String]
       required :interest_rate, String
 
       # @!attribute name
-      #   The name you choose for the Account.
+      #   #/components/schemas/account/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute program_id
-      #   The identifier of the Program determining the compliance and commercial terms of
-      #   this Account.
+      #   #/components/schemas/account/properties/program_id
       #
       #   @return [String]
       required :program_id, String
 
       # @!attribute status
-      #   The status of the Account.
+      #   #/components/schemas/account/properties/status
       #
       #   @return [Symbol, Increase::Models::Account::Status]
       required :status, enum: -> { Increase::Models::Account::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `account`.
+      #   #/components/schemas/account/properties/type
       #
       #   @return [Symbol, Increase::Models::Account::Type]
       required :type, enum: -> { Increase::Models::Account::Type }
 
       # @!parse
-      #   # Accounts are your bank accounts with Increase. They store money, receive
-      #   # transfers, and send payments. They earn interest and have depository insurance.
+      #   # #/components/schemas/account
       #   #
       #   # @param id [String]
       #   # @param bank [Symbol, Increase::Models::Account::Bank]
@@ -149,7 +136,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The bank the Account is with.
+      # #/components/schemas/account/properties/bank
       #
       # @see Increase::Models::Account#bank
       module Bank
@@ -171,8 +158,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      # currency.
+      # #/components/schemas/account/properties/currency
       #
       # @see Increase::Models::Account#currency
       module Currency
@@ -203,7 +189,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The status of the Account.
+      # #/components/schemas/account/properties/status
       #
       # @see Increase::Models::Account#status
       module Status
@@ -222,8 +208,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `account`.
+      # #/components/schemas/account/properties/type
       #
       # @see Increase::Models::Account#type
       module Type

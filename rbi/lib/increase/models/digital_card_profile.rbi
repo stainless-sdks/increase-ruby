@@ -3,58 +3,55 @@
 module Increase
   module Models
     class DigitalCardProfile < Increase::Internal::Type::BaseModel
-      # The Card Profile identifier.
+      # #/components/schemas/digital_card_profile/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier of the File containing the card's icon image.
+      # #/components/schemas/digital_card_profile/properties/app_icon_file_id
       sig { returns(String) }
       attr_accessor :app_icon_file_id
 
-      # The identifier of the File containing the card's front image.
+      # #/components/schemas/digital_card_profile/properties/background_image_file_id
       sig { returns(String) }
       attr_accessor :background_image_file_id
 
-      # A user-facing description for the card itself.
+      # #/components/schemas/digital_card_profile/properties/card_description
       sig { returns(String) }
       attr_accessor :card_description
 
-      # An email address the user can contact to receive support for their card.
+      # #/components/schemas/digital_card_profile/properties/contact_email
       sig { returns(T.nilable(String)) }
       attr_accessor :contact_email
 
-      # A phone number the user can contact to receive support for their card.
+      # #/components/schemas/digital_card_profile/properties/contact_phone
       sig { returns(T.nilable(String)) }
       attr_accessor :contact_phone
 
-      # A website the user can visit to view and receive support for their card.
+      # #/components/schemas/digital_card_profile/properties/contact_website
       sig { returns(T.nilable(String)) }
       attr_accessor :contact_website
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Card Dispute was created.
+      # #/components/schemas/digital_card_profile/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # A description you can use to identify the Card Profile.
+      # #/components/schemas/digital_card_profile/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/digital_card_profile/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # A user-facing description for whoever is issuing the card.
+      # #/components/schemas/digital_card_profile/properties/issuer_name
       sig { returns(String) }
       attr_accessor :issuer_name
 
-      # The status of the Card Profile.
+      # #/components/schemas/digital_card_profile/properties/status
       sig { returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # The Card's text color, specified as an RGB triple.
+      # #/components/schemas/digital_card_profile/properties/text_color
       sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
       attr_reader :text_color
 
@@ -64,14 +61,11 @@ module Increase
       end
       attr_writer :text_color
 
-      # A constant representing the object's type. For this resource it will always be
-      # `digital_card_profile`.
+      # #/components/schemas/digital_card_profile/properties/type
       sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # This contains artwork and metadata relating to a Card's appearance in digital
-      # wallet apps like Apple Pay and Google Pay. For more information, see our guide
-      # on [digital card artwork](https://increase.com/documentation/card-art).
+      # #/components/schemas/digital_card_profile
       sig do
         params(
           id: String,
@@ -130,7 +124,7 @@ module Increase
       end
       def to_hash; end
 
-      # The status of the Card Profile.
+      # #/components/schemas/digital_card_profile/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -155,19 +149,19 @@ module Increase
       end
 
       class TextColor < Increase::Internal::Type::BaseModel
-        # The value of the blue channel in the RGB color.
+        # #/components/schemas/digital_card_profile/properties/text_color/properties/blue
         sig { returns(Integer) }
         attr_accessor :blue
 
-        # The value of the green channel in the RGB color.
+        # #/components/schemas/digital_card_profile/properties/text_color/properties/green
         sig { returns(Integer) }
         attr_accessor :green
 
-        # The value of the red channel in the RGB color.
+        # #/components/schemas/digital_card_profile/properties/text_color/properties/red
         sig { returns(Integer) }
         attr_accessor :red
 
-        # The Card's text color, specified as an RGB triple.
+        # #/components/schemas/digital_card_profile/properties/text_color
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
         def self.new(blue:, green:, red:); end
 
@@ -175,8 +169,7 @@ module Increase
         def to_hash; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `digital_card_profile`.
+      # #/components/schemas/digital_card_profile/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

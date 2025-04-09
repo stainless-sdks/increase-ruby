@@ -9,31 +9,31 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The identifier for the account that will send the transfer.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The transfer amount in USD cents.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute beneficiary_name
-      #   The beneficiary's name.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_name
       #
       #   @return [String]
       required :beneficiary_name, String
 
       # @!attribute message_to_recipient
-      #   The message that will show on the recipient's bank statement.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/message_to_recipient
       #
       #   @return [String]
       required :message_to_recipient, String
 
       # @!attribute [r] account_number
-      #   The account number for the destination account.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/account_number
       #
       #   @return [String, nil]
       optional :account_number, String
@@ -43,7 +43,7 @@ module Increase
       #   attr_writer :account_number
 
       # @!attribute [r] beneficiary_address_line1
-      #   The beneficiary's address line 1.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line1
       #
       #   @return [String, nil]
       optional :beneficiary_address_line1, String
@@ -53,7 +53,7 @@ module Increase
       #   attr_writer :beneficiary_address_line1
 
       # @!attribute [r] beneficiary_address_line2
-      #   The beneficiary's address line 2.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line2
       #
       #   @return [String, nil]
       optional :beneficiary_address_line2, String
@@ -63,7 +63,7 @@ module Increase
       #   attr_writer :beneficiary_address_line2
 
       # @!attribute [r] beneficiary_address_line3
-      #   The beneficiary's address line 3.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/beneficiary_address_line3
       #
       #   @return [String, nil]
       optional :beneficiary_address_line3, String
@@ -73,8 +73,7 @@ module Increase
       #   attr_writer :beneficiary_address_line3
 
       # @!attribute [r] external_account_id
-      #   The ID of an External Account to initiate a transfer to. If this parameter is
-      #   provided, `account_number` and `routing_number` must be absent.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/external_account_id
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -84,8 +83,7 @@ module Increase
       #   attr_writer :external_account_id
 
       # @!attribute [r] originator_address_line1
-      #   The originator's address line 1. This is only necessary if you're transferring
-      #   from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line1
       #
       #   @return [String, nil]
       optional :originator_address_line1, String
@@ -95,8 +93,7 @@ module Increase
       #   attr_writer :originator_address_line1
 
       # @!attribute [r] originator_address_line2
-      #   The originator's address line 2. This is only necessary if you're transferring
-      #   from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line2
       #
       #   @return [String, nil]
       optional :originator_address_line2, String
@@ -106,8 +103,7 @@ module Increase
       #   attr_writer :originator_address_line2
 
       # @!attribute [r] originator_address_line3
-      #   The originator's address line 3. This is only necessary if you're transferring
-      #   from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/originator_address_line3
       #
       #   @return [String, nil]
       optional :originator_address_line3, String
@@ -117,8 +113,7 @@ module Increase
       #   attr_writer :originator_address_line3
 
       # @!attribute [r] originator_name
-      #   The originator's name. This is only necessary if you're transferring from a
-      #   commingled account. Otherwise, we'll use the associated entity's details.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/originator_name
       #
       #   @return [String, nil]
       optional :originator_name, String
@@ -128,7 +123,7 @@ module Increase
       #   attr_writer :originator_name
 
       # @!attribute [r] require_approval
-      #   Whether the transfer requires explicit approval via the dashboard or API.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/require_approval
       #
       #   @return [Boolean, nil]
       optional :require_approval, Increase::Internal::Type::Boolean
@@ -138,8 +133,7 @@ module Increase
       #   attr_writer :require_approval
 
       # @!attribute [r] routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/routing_number
       #
       #   @return [String, nil]
       optional :routing_number, String
@@ -149,7 +143,7 @@ module Increase
       #   attr_writer :routing_number
 
       # @!attribute [r] source_account_number_id
-      #   The ID of an Account Number that will be passed to the wire's recipient
+      #   #/components/schemas/create_a_wire_transfer_parameters/properties/source_account_number_id
       #
       #   @return [String, nil]
       optional :source_account_number_id, String

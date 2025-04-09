@@ -6,48 +6,48 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier of the File containing the card's icon image.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/app_icon_file_id
       sig { returns(String) }
       attr_accessor :app_icon_file_id
 
-      # The identifier of the File containing the card's front image.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/background_image_file_id
       sig { returns(String) }
       attr_accessor :background_image_file_id
 
-      # A user-facing description for the card itself.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/card_description
       sig { returns(String) }
       attr_accessor :card_description
 
-      # A description you can use to identify the Card Profile.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # A user-facing description for whoever is issuing the card.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/issuer_name
       sig { returns(String) }
       attr_accessor :issuer_name
 
-      # An email address the user can contact to receive support for their card.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/contact_email
       sig { returns(T.nilable(String)) }
       attr_reader :contact_email
 
       sig { params(contact_email: String).void }
       attr_writer :contact_email
 
-      # A phone number the user can contact to receive support for their card.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/contact_phone
       sig { returns(T.nilable(String)) }
       attr_reader :contact_phone
 
       sig { params(contact_phone: String).void }
       attr_writer :contact_phone
 
-      # A website the user can visit to view and receive support for their card.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/contact_website
       sig { returns(T.nilable(String)) }
       attr_reader :contact_website
 
       sig { params(contact_website: String).void }
       attr_writer :contact_website
 
-      # The Card's text color, specified as an RGB triple. The default is white.
+      # #/components/schemas/create_a_digital_card_profile_parameters/properties/text_color
       sig { returns(T.nilable(Increase::Models::DigitalCardProfileCreateParams::TextColor)) }
       attr_reader :text_color
 
@@ -106,19 +106,19 @@ module Increase
       def to_hash; end
 
       class TextColor < Increase::Internal::Type::BaseModel
-        # The value of the blue channel in the RGB color.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/text_color/properties/blue
         sig { returns(Integer) }
         attr_accessor :blue
 
-        # The value of the green channel in the RGB color.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/text_color/properties/green
         sig { returns(Integer) }
         attr_accessor :green
 
-        # The value of the red channel in the RGB color.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/text_color/properties/red
         sig { returns(Integer) }
         attr_accessor :red
 
-        # The Card's text color, specified as an RGB triple. The default is white.
+        # #/components/schemas/create_a_digital_card_profile_parameters/properties/text_color
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
         def self.new(blue:, green:, red:); end
 

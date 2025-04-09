@@ -7,122 +7,116 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # The amount being requested in cents.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
-        # The drawdown request's beneficiary's account number.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_account_number
         sig { returns(String) }
         attr_accessor :beneficiary_account_number
 
-        # The drawdown request's beneficiary's routing number.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_routing_number
         sig { returns(String) }
         attr_accessor :beneficiary_routing_number
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-        # requested. Will always be "USD".
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/currency
         sig { returns(String) }
         attr_accessor :currency
 
-        # A message from the drawdown request's originator.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/message_to_recipient
         sig { returns(String) }
         attr_accessor :message_to_recipient
 
-        # The drawdown request's originator's account number.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_account_number
         sig { returns(String) }
         attr_accessor :originator_account_number
 
-        # The drawdown request's originator's routing number.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_routing_number
         sig { returns(String) }
         attr_accessor :originator_routing_number
 
-        # The Account Number to which the recipient of this request is being requested to
-        # send funds from.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/recipient_account_number_id
         sig { returns(String) }
         attr_accessor :recipient_account_number_id
 
-        # Line 1 of the drawdown request's beneficiary's address.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_address_line1
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line1
 
         sig { params(beneficiary_address_line1: String).void }
         attr_writer :beneficiary_address_line1
 
-        # Line 2 of the drawdown request's beneficiary's address.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_address_line2
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line2
 
         sig { params(beneficiary_address_line2: String).void }
         attr_writer :beneficiary_address_line2
 
-        # Line 3 of the drawdown request's beneficiary's address.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_address_line3
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_address_line3
 
         sig { params(beneficiary_address_line3: String).void }
         attr_writer :beneficiary_address_line3
 
-        # The drawdown request's beneficiary's name.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/beneficiary_name
         sig { returns(T.nilable(String)) }
         attr_reader :beneficiary_name
 
         sig { params(beneficiary_name: String).void }
         attr_writer :beneficiary_name
 
-        # Line 1 of the drawdown request's originator's address.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_address_line1
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line1
 
         sig { params(originator_address_line1: String).void }
         attr_writer :originator_address_line1
 
-        # Line 2 of the drawdown request's originator's address.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_address_line2
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line2
 
         sig { params(originator_address_line2: String).void }
         attr_writer :originator_address_line2
 
-        # Line 3 of the drawdown request's originator's address.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_address_line3
         sig { returns(T.nilable(String)) }
         attr_reader :originator_address_line3
 
         sig { params(originator_address_line3: String).void }
         attr_writer :originator_address_line3
 
-        # The drawdown request's originator's name.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_name
         sig { returns(T.nilable(String)) }
         attr_reader :originator_name
 
         sig { params(originator_name: String).void }
         attr_writer :originator_name
 
-        # Line 1 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line1
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line1
 
         sig { params(originator_to_beneficiary_information_line1: String).void }
         attr_writer :originator_to_beneficiary_information_line1
 
-        # Line 2 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line2
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line2
 
         sig { params(originator_to_beneficiary_information_line2: String).void }
         attr_writer :originator_to_beneficiary_information_line2
 
-        # Line 3 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line3
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line3
 
         sig { params(originator_to_beneficiary_information_line3: String).void }
         attr_writer :originator_to_beneficiary_information_line3
 
-        # Line 4 of the information conveyed from the originator of the message to the
-        # beneficiary.
+        # #/components/schemas/sandbox_create_an_inbound_wire_drawdown_request_parameters/properties/originator_to_beneficiary_information_line4
         sig { returns(T.nilable(String)) }
         attr_reader :originator_to_beneficiary_information_line4
 

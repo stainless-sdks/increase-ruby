@@ -6,19 +6,18 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The bookkeeping entries.
+      # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
       attr_accessor :entries
 
-      # The date of the transaction. Optional if `transaction_id` is provided, in which
-      # case we use the `date` of that transaction. Required otherwise.
+      # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/date
       sig { returns(T.nilable(Time)) }
       attr_reader :date
 
       sig { params(date: Time).void }
       attr_writer :date
 
-      # The identifier of the Transaction related to this entry set, if any.
+      # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/transaction_id
       sig { returns(T.nilable(String)) }
       attr_reader :transaction_id
 
@@ -50,16 +49,15 @@ module Increase
       def to_hash; end
 
       class Entry < Increase::Internal::Type::BaseModel
-        # The identifier for the Bookkeeping Account impacted by this entry.
+        # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries/items/properties/account_id
         sig { returns(String) }
         attr_accessor :account_id
 
-        # The entry amount in the minor unit of the account currency. For dollars, for
-        # example, this is cents. Debit entries have positive amounts; credit entries have
-        # negative amounts.
+        # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries/items/properties/amount
         sig { returns(Integer) }
         attr_accessor :amount
 
+        # #/components/schemas/create_a_bookkeeping_entry_set_parameters/properties/entries/items
         sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
         def self.new(account_id:, amount:); end
 

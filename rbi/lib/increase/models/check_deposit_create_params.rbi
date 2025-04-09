@@ -6,23 +6,23 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The identifier for the Account to deposit the check in.
+      # #/components/schemas/create_a_check_deposit_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The deposit amount in USD cents.
+      # #/components/schemas/create_a_check_deposit_parameters/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The File containing the check's back image.
+      # #/components/schemas/create_a_check_deposit_parameters/properties/back_image_file_id
       sig { returns(String) }
       attr_accessor :back_image_file_id
 
-      # The File containing the check's front image.
+      # #/components/schemas/create_a_check_deposit_parameters/properties/front_image_file_id
       sig { returns(String) }
       attr_accessor :front_image_file_id
 
-      # The description you choose to give the Check Deposit, for display purposes only.
+      # #/components/schemas/create_a_check_deposit_parameters/properties/description
       sig { returns(T.nilable(String)) }
       attr_reader :description
 

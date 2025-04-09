@@ -3,57 +3,49 @@
 module Increase
   module Models
     class PhysicalCard < Increase::Internal::Type::BaseModel
-      # The physical card identifier.
+      # #/components/schemas/physical_card/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier for the Card this Physical Card represents.
+      # #/components/schemas/physical_card/properties/card_id
       sig { returns(String) }
       attr_accessor :card_id
 
-      # Details about the cardholder, as it appears on the printed card.
+      # #/components/schemas/physical_card/properties/cardholder
       sig { returns(Increase::Models::PhysicalCard::Cardholder) }
       attr_reader :cardholder
 
       sig { params(cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Internal::AnyHash)).void }
       attr_writer :cardholder
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the Physical Card was created.
+      # #/components/schemas/physical_card/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/physical_card/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The Physical Card Profile used for this Physical Card.
+      # #/components/schemas/physical_card/properties/physical_card_profile_id
       sig { returns(T.nilable(String)) }
       attr_accessor :physical_card_profile_id
 
-      # The details used to ship this physical card.
+      # #/components/schemas/physical_card/properties/shipment
       sig { returns(Increase::Models::PhysicalCard::Shipment) }
       attr_reader :shipment
 
       sig { params(shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Internal::AnyHash)).void }
       attr_writer :shipment
 
-      # The status of the Physical Card.
+      # #/components/schemas/physical_card/properties/status
       sig { returns(Increase::Models::PhysicalCard::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `physical_card`.
+      # #/components/schemas/physical_card/properties/type
       sig { returns(Increase::Models::PhysicalCard::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Custom physical Visa cards that are shipped to your customers. The artwork is
-      # configurable by a connected [Card Profile](/documentation/api#card-profiles).
-      # The same Card can be used for multiple Physical Cards. Printing cards incurs a
-      # fee. Please contact [support@increase.com](mailto:support@increase.com) for
-      # pricing!
+      # #/components/schemas/physical_card
       sig do
         params(
           id: String,
@@ -98,15 +90,15 @@ module Increase
       def to_hash; end
 
       class Cardholder < Increase::Internal::Type::BaseModel
-        # The cardholder's first name.
+        # #/components/schemas/physical_card/properties/cardholder/properties/first_name
         sig { returns(String) }
         attr_accessor :first_name
 
-        # The cardholder's last name.
+        # #/components/schemas/physical_card/properties/cardholder/properties/last_name
         sig { returns(String) }
         attr_accessor :last_name
 
-        # Details about the cardholder, as it appears on the printed card.
+        # #/components/schemas/physical_card/properties/cardholder
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
         def self.new(first_name:, last_name:); end
 
@@ -115,7 +107,7 @@ module Increase
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
-        # The location to where the card's packing label is addressed.
+        # #/components/schemas/physical_card/properties/shipment/properties/address
         sig { returns(Increase::Models::PhysicalCard::Shipment::Address) }
         attr_reader :address
 
@@ -124,15 +116,15 @@ module Increase
         end
         attr_writer :address
 
-        # The shipping method.
+        # #/components/schemas/physical_card/properties/shipment/properties/method
         sig { returns(Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
         attr_accessor :method_
 
-        # The status of this shipment.
+        # #/components/schemas/physical_card/properties/shipment/properties/status
         sig { returns(Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
         attr_accessor :status
 
-        # Tracking details for the shipment.
+        # #/components/schemas/physical_card/properties/shipment/properties/tracking
         sig { returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)) }
         attr_reader :tracking
 
@@ -144,7 +136,7 @@ module Increase
         end
         attr_writer :tracking
 
-        # The details used to ship this physical card.
+        # #/components/schemas/physical_card/properties/shipment
         sig do
           params(
             address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::AnyHash),
@@ -170,35 +162,35 @@ module Increase
         def to_hash; end
 
         class Address < Increase::Internal::Type::BaseModel
-          # The city of the shipping address.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/city
           sig { returns(String) }
           attr_accessor :city
 
-          # The first line of the shipping address.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/line1
           sig { returns(String) }
           attr_accessor :line1
 
-          # The second line of the shipping address.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/line2
           sig { returns(T.nilable(String)) }
           attr_accessor :line2
 
-          # The third line of the shipping address.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/line3
           sig { returns(T.nilable(String)) }
           attr_accessor :line3
 
-          # The name of the recipient.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/name
           sig { returns(String) }
           attr_accessor :name
 
-          # The postal code of the shipping address.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/postal_code
           sig { returns(String) }
           attr_accessor :postal_code
 
-          # The US state of the shipping address.
+          # #/components/schemas/physical_card/properties/shipment/properties/address/properties/state
           sig { returns(String) }
           attr_accessor :state
 
-          # The location to where the card's packing label is addressed.
+          # #/components/schemas/physical_card/properties/shipment/properties/address
           sig do
             params(
               city: String,
@@ -230,7 +222,7 @@ module Increase
           def to_hash; end
         end
 
-        # The shipping method.
+        # #/components/schemas/physical_card/properties/shipment/properties/method
         module Method
           extend Increase::Internal::Type::Enum
 
@@ -252,7 +244,7 @@ module Increase
           def self.values; end
         end
 
-        # The status of this shipment.
+        # #/components/schemas/physical_card/properties/shipment/properties/status
         module Status
           extend Increase::Internal::Type::Enum
 
@@ -286,25 +278,23 @@ module Increase
         end
 
         class Tracking < Increase::Internal::Type::BaseModel
-          # The tracking number.
+          # #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/number
           sig { returns(String) }
           attr_accessor :number
 
-          # For returned shipments, the tracking number of the return shipment.
+          # #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/return_number
           sig { returns(T.nilable(String)) }
           attr_accessor :return_number
 
-          # For returned shipments, this describes why the package was returned.
+          # #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/return_reason
           sig { returns(T.nilable(String)) }
           attr_accessor :return_reason
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the fulfillment provider marked the card as ready for pick-up by the shipment
-          # carrier.
+          # #/components/schemas/physical_card/properties/shipment/properties/tracking/anyOf/0/properties/shipped_at
           sig { returns(Time) }
           attr_accessor :shipped_at
 
-          # Tracking details for the shipment.
+          # #/components/schemas/physical_card/properties/shipment/properties/tracking
           sig do
             params(
               number: String,
@@ -331,7 +321,7 @@ module Increase
         end
       end
 
-      # The status of the Physical Card.
+      # #/components/schemas/physical_card/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -351,8 +341,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `physical_card`.
+      # #/components/schemas/physical_card/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

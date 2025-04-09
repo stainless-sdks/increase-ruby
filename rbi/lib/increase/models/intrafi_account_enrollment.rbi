@@ -3,47 +3,35 @@
 module Increase
   module Models
     class IntrafiAccountEnrollment < Increase::Internal::Type::BaseModel
-      # The identifier of this enrollment at IntraFi.
+      # #/components/schemas/intrafi_account_enrollment/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The identifier of the Increase Account being swept into the network.
+      # #/components/schemas/intrafi_account_enrollment/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the enrollment was created.
+      # #/components/schemas/intrafi_account_enrollment/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/intrafi_account_enrollment/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The identifier of the account in IntraFi's system. This identifier will be
-      # printed on any IntraFi statements or documents.
+      # #/components/schemas/intrafi_account_enrollment/properties/intrafi_id
       sig { returns(String) }
       attr_accessor :intrafi_id
 
-      # The status of the account in the network. An account takes about one business
-      # day to go from `pending_enrolling` to `enrolled`.
+      # #/components/schemas/intrafi_account_enrollment/properties/status
       sig { returns(Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_account_enrollment`.
+      # #/components/schemas/intrafi_account_enrollment/properties/type
       sig { returns(Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # IntraFi is a
-      # [network of financial institutions](https://www.intrafi.com/network-banks) that
-      # allows Increase users to sweep funds to multiple banks, in addition to
-      # Increase's main bank partners. This enables accounts to become eligible for
-      # additional Federal Deposit Insurance Corporation (FDIC) insurance. An IntraFi
-      # Account Enrollment object represents the status of an account in the network.
-      # Sweeping an account to IntraFi doesn't affect funds availability.
+      # #/components/schemas/intrafi_account_enrollment
       sig do
         params(
           id: String,
@@ -74,8 +62,7 @@ module Increase
       end
       def to_hash; end
 
-      # The status of the account in the network. An account takes about one business
-      # day to go from `pending_enrolling` to `enrolled`.
+      # #/components/schemas/intrafi_account_enrollment/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -105,8 +92,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `intrafi_account_enrollment`.
+      # #/components/schemas/intrafi_account_enrollment/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

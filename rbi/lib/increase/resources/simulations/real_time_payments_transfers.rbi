@@ -20,9 +20,9 @@ module Increase
             .returns(Increase::Models::RealTimePaymentsTransfer)
         end
         def complete(
-          # The identifier of the Real-Time Payments Transfer you wish to complete.
+          # #/paths//simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete/post/parameters/0/schema
           real_time_payments_transfer_id,
-          # If set, the simulation will reject the transfer.
+          # #/components/schemas/sandbox_complete_a_real_time_payments_transfer_parameters/properties/rejection
           rejection: nil,
           request_options: {}
         ); end

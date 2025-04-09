@@ -20,11 +20,11 @@ module Increase
             .returns(Increase::Models::InboundCheckDeposit)
         end
         def create(
-          # The identifier of the Account Number the Inbound Check Deposit will be against.
+          # #/components/schemas/sandbox_create_an_inbound_check_deposit_parameters/properties/account_number_id
           account_number_id:,
-          # The check amount in cents.
+          # #/components/schemas/sandbox_create_an_inbound_check_deposit_parameters/properties/amount
           amount:,
-          # The check number on the check to be deposited.
+          # #/components/schemas/sandbox_create_an_inbound_check_deposit_parameters/properties/check_number
           check_number:,
           request_options: {}
         ); end

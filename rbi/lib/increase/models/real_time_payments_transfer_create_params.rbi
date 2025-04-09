@@ -6,72 +6,65 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The transfer amount in USD cents. For Real-Time Payments transfers, must be
-      # positive.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/amount
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # The name of the transfer's recipient.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/creditor_name
       sig { returns(String) }
       attr_accessor :creditor_name
 
-      # Unstructured information that will show on the recipient's bank statement.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/remittance_information
       sig { returns(String) }
       attr_accessor :remittance_information
 
-      # The identifier of the Account Number from which to send the transfer.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/source_account_number_id
       sig { returns(String) }
       attr_accessor :source_account_number_id
 
-      # The name of the transfer's sender. If not provided, defaults to the name of the
-      # account's entity.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/debtor_name
       sig { returns(T.nilable(String)) }
       attr_reader :debtor_name
 
       sig { params(debtor_name: String).void }
       attr_writer :debtor_name
 
-      # The destination account number.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/destination_account_number
       sig { returns(T.nilable(String)) }
       attr_reader :destination_account_number
 
       sig { params(destination_account_number: String).void }
       attr_writer :destination_account_number
 
-      # The destination American Bankers' Association (ABA) Routing Transit Number
-      # (RTN).
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/destination_routing_number
       sig { returns(T.nilable(String)) }
       attr_reader :destination_routing_number
 
       sig { params(destination_routing_number: String).void }
       attr_writer :destination_routing_number
 
-      # The ID of an External Account to initiate a transfer to. If this parameter is
-      # provided, `destination_account_number` and `destination_routing_number` must be
-      # absent.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/external_account_id
       sig { returns(T.nilable(String)) }
       attr_reader :external_account_id
 
       sig { params(external_account_id: String).void }
       attr_writer :external_account_id
 
-      # Whether the transfer requires explicit approval via the dashboard or API.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/require_approval
       sig { returns(T.nilable(T::Boolean)) }
       attr_reader :require_approval
 
       sig { params(require_approval: T::Boolean).void }
       attr_writer :require_approval
 
-      # The name of the ultimate recipient of the transfer. Set this if the creditor is
-      # an intermediary receiving the payment for someone else.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/ultimate_creditor_name
       sig { returns(T.nilable(String)) }
       attr_reader :ultimate_creditor_name
 
       sig { params(ultimate_creditor_name: String).void }
       attr_writer :ultimate_creditor_name
 
-      # The name of the ultimate sender of the transfer. Set this if the funds are being
-      # sent on behalf of someone who is not the account holder at Increase.
+      # #/components/schemas/create_a_real_time_payments_transfer_parameters/properties/ultimate_debtor_name
       sig { returns(T.nilable(String)) }
       attr_reader :ultimate_debtor_name
 

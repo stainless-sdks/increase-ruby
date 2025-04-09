@@ -3,40 +3,35 @@
 module Increase
   module Models
     class OAuthConnection < Increase::Internal::Type::BaseModel
-      # The OAuth Connection's identifier.
+      # #/components/schemas/oauth_connection/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      # Connection was created.
+      # #/components/schemas/oauth_connection/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      # Connection was deleted.
+      # #/components/schemas/oauth_connection/properties/deleted_at
       sig { returns(T.nilable(Time)) }
       attr_accessor :deleted_at
 
-      # The identifier of the Group that has authorized your OAuth application.
+      # #/components/schemas/oauth_connection/properties/group_id
       sig { returns(String) }
       attr_accessor :group_id
 
-      # The identifier of the OAuth application this connection is for.
+      # #/components/schemas/oauth_connection/properties/oauth_application_id
       sig { returns(String) }
       attr_accessor :oauth_application_id
 
-      # Whether the connection is active.
+      # #/components/schemas/oauth_connection/properties/status
       sig { returns(Increase::Models::OAuthConnection::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `oauth_connection`.
+      # #/components/schemas/oauth_connection/properties/type
       sig { returns(Increase::Models::OAuthConnection::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # When a user authorizes your OAuth application, an OAuth Connection object is
-      # created. Learn more about OAuth
-      # [here](https://increase.com/documentation/oauth).
+      # #/components/schemas/oauth_connection
       sig do
         params(
           id: String,
@@ -67,7 +62,7 @@ module Increase
       end
       def to_hash; end
 
-      # Whether the connection is active.
+      # #/components/schemas/oauth_connection/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -85,8 +80,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `oauth_connection`.
+      # #/components/schemas/oauth_connection/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

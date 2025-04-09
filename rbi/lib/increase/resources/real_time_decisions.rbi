@@ -12,7 +12,7 @@ module Increase
           .returns(Increase::Models::RealTimeDecision)
       end
       def retrieve(
-        # The identifier of the Real-Time Decision.
+        # #/paths//real_time_decisions/{real_time_decision_id}/get/parameters/0/schema
         real_time_decision_id,
         request_options: {}
       ); end
@@ -36,22 +36,17 @@ module Increase
           .returns(Increase::Models::RealTimeDecision)
       end
       def action(
-        # The identifier of the Real-Time Decision.
+        # #/paths//real_time_decisions/{real_time_decision_id}/action/post/parameters/0/schema
         real_time_decision_id,
-        # If the Real-Time Decision relates to a 3DS card authentication attempt, this
-        # object contains your response to the authentication.
+        # #/components/schemas/action_a_real_time_decision_parameters/properties/card_authentication
         card_authentication: nil,
-        # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-        # this object contains your response.
+        # #/components/schemas/action_a_real_time_decision_parameters/properties/card_authentication_challenge
         card_authentication_challenge: nil,
-        # If the Real-Time Decision relates to a card authorization attempt, this object
-        # contains your response to the authorization.
+        # #/components/schemas/action_a_real_time_decision_parameters/properties/card_authorization
         card_authorization: nil,
-        # If the Real-Time Decision relates to a digital wallet authentication attempt,
-        # this object contains your response to the authentication.
+        # #/components/schemas/action_a_real_time_decision_parameters/properties/digital_wallet_authentication
         digital_wallet_authentication: nil,
-        # If the Real-Time Decision relates to a digital wallet token provisioning
-        # attempt, this object contains your response to the attempt.
+        # #/components/schemas/action_a_real_time_decision_parameters/properties/digital_wallet_token
         digital_wallet_token: nil,
         request_options: {}
       ); end

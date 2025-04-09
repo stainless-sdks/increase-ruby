@@ -6,7 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The name you choose for the account.
+      # #/components/schemas/update_a_bookkeeping_account_parameters/properties/name
       sig { returns(String) }
       attr_accessor :name
 

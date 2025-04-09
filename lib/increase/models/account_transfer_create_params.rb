@@ -9,32 +9,31 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
-      #   The identifier for the account that will send the transfer.
+      #   #/components/schemas/create_an_account_transfer_parameters/properties/account_id
       #
       #   @return [String]
       required :account_id, String
 
       # @!attribute amount
-      #   The transfer amount in the minor unit of the account currency. For dollars, for
-      #   example, this is cents.
+      #   #/components/schemas/create_an_account_transfer_parameters/properties/amount
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute description
-      #   The description you choose to give the transfer.
+      #   #/components/schemas/create_an_account_transfer_parameters/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute destination_account_id
-      #   The identifier for the account that will receive the transfer.
+      #   #/components/schemas/create_an_account_transfer_parameters/properties/destination_account_id
       #
       #   @return [String]
       required :destination_account_id, String
 
       # @!attribute [r] require_approval
-      #   Whether the transfer requires explicit approval via the dashboard or API.
+      #   #/components/schemas/create_an_account_transfer_parameters/properties/require_approval
       #
       #   @return [Boolean, nil]
       optional :require_approval, Increase::Internal::Type::Boolean

@@ -6,11 +6,11 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The name of the financial institution to be excluded.
+      # #/components/schemas/create_an_intrafi_exclusion_parameters/properties/bank_name
       sig { returns(String) }
       attr_accessor :bank_name
 
-      # The identifier of the Entity whose deposits will be excluded.
+      # #/components/schemas/create_an_intrafi_exclusion_parameters/properties/entity_id
       sig { returns(String) }
       attr_accessor :entity_id
 

@@ -14,11 +14,11 @@ module Increase
           .returns(Increase::Models::Lockbox)
       end
       def create(
-        # The Account checks sent to this Lockbox should be deposited into.
+        # #/components/schemas/create_a_lockbox_parameters/properties/account_id
         account_id:,
-        # The description you choose for the Lockbox, for display purposes.
+        # #/components/schemas/create_a_lockbox_parameters/properties/description
         description: nil,
-        # The name of the recipient that will receive mail at this location.
+        # #/components/schemas/create_a_lockbox_parameters/properties/recipient_name
         recipient_name: nil,
         request_options: {}
       ); end
@@ -31,7 +31,7 @@ module Increase
           .returns(Increase::Models::Lockbox)
       end
       def retrieve(
-        # The identifier of the Lockbox to retrieve.
+        # #/paths//lockboxes/{lockbox_id}/get/parameters/0/schema
         lockbox_id,
         request_options: {}
       ); end
@@ -47,13 +47,13 @@ module Increase
           .returns(Increase::Models::Lockbox)
       end
       def update(
-        # The identifier of the Lockbox.
+        # #/paths//lockboxes/{lockbox_id}/patch/parameters/0/schema
         lockbox_id,
-        # The description you choose for the Lockbox.
+        # #/components/schemas/update_a_lockbox_parameters/properties/description
         description: nil,
-        # The recipient name you choose for the Lockbox.
+        # #/components/schemas/update_a_lockbox_parameters/properties/recipient_name
         recipient_name: nil,
-        # This indicates if checks can be sent to the Lockbox.
+        # #/components/schemas/update_a_lockbox_parameters/properties/status
         status: nil,
         request_options: {}
       ); end
@@ -70,18 +70,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::Lockbox])
       end
       def list(
-        # Filter Lockboxes to those associated with the provided Account.
+        # #/paths//lockboxes/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//lockboxes/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//lockboxes/get/parameters/7/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//lockboxes/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

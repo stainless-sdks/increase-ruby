@@ -14,8 +14,7 @@ module Increase
             .returns(Increase::Models::Transaction)
         end
         def create(
-          # The identifier for the Transaction to refund. The Transaction's source must have
-          # a category of card_settlement.
+          # #/components/schemas/sandbox_refund_a_card_transaction_parameters/properties/transaction_id
           transaction_id:,
           request_options: {}
         ); end

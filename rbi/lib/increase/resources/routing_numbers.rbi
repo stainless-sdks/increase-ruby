@@ -17,12 +17,11 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::RoutingNumberListResponse])
       end
       def list(
-        # Filter financial institutions by routing number.
+        # #/paths//routing_numbers/get/parameters/2/schema
         routing_number:,
-        # Return the page of entries after this one.
+        # #/paths//routing_numbers/get/parameters/0/schema
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//routing_numbers/get/parameters/1/schema
         limit: nil,
         request_options: {}
       ); end

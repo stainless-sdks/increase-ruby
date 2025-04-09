@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] cursor
-      #   Return the page of entries after this one.
+      #   #/paths//event_subscriptions/get/parameters/0/schema
       #
       #   @return [String, nil]
       optional :cursor, String
@@ -19,10 +19,7 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] idempotency_key
-      #   Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/paths//event_subscriptions/get/parameters/2/schema
       #
       #   @return [String, nil]
       optional :idempotency_key, String
@@ -32,8 +29,7 @@ module Increase
       #   attr_writer :idempotency_key
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   #/paths//event_subscriptions/get/parameters/1/schema
       #
       #   @return [Integer, nil]
       optional :limit, Integer

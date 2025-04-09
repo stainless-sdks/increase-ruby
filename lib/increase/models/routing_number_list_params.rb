@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute routing_number
-      #   Filter financial institutions by routing number.
+      #   #/paths//routing_numbers/get/parameters/2/schema
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute [r] cursor
-      #   Return the page of entries after this one.
+      #   #/paths//routing_numbers/get/parameters/0/schema
       #
       #   @return [String, nil]
       optional :cursor, String
@@ -25,8 +25,7 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   #/paths//routing_numbers/get/parameters/1/schema
       #
       #   @return [Integer, nil]
       optional :limit, Integer

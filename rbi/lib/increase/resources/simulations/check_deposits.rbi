@@ -15,7 +15,7 @@ module Increase
             .returns(Increase::Models::CheckDeposit)
         end
         def reject(
-          # The identifier of the Check Deposit you wish to reject.
+          # #/paths//simulations/check_deposits/{check_deposit_id}/reject/post/parameters/0/schema
           check_deposit_id,
           request_options: {}
         ); end
@@ -29,7 +29,7 @@ module Increase
             .returns(Increase::Models::CheckDeposit)
         end
         def return_(
-          # The identifier of the Check Deposit you wish to return.
+          # #/paths//simulations/check_deposits/{check_deposit_id}/return/post/parameters/0/schema
           check_deposit_id,
           request_options: {}
         ); end
@@ -43,7 +43,7 @@ module Increase
             .returns(Increase::Models::CheckDeposit)
         end
         def submit(
-          # The identifier of the Check Deposit you wish to submit.
+          # #/paths//simulations/check_deposits/{check_deposit_id}/submit/post/parameters/0/schema
           check_deposit_id,
           request_options: {}
         ); end

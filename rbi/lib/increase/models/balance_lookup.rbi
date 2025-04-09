@@ -3,27 +3,23 @@
 module Increase
   module Models
     class BalanceLookup < Increase::Internal::Type::BaseModel
-      # The identifier for the account for which the balance was queried.
+      # #/components/schemas/balance_lookup/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The Account's available balance, representing the current balance less any open
-      # Pending Transactions on the Account.
+      # #/components/schemas/balance_lookup/properties/available_balance
       sig { returns(Integer) }
       attr_accessor :available_balance
 
-      # The Account's current balance, representing the sum of all posted Transactions
-      # on the Account.
+      # #/components/schemas/balance_lookup/properties/current_balance
       sig { returns(Integer) }
       attr_accessor :current_balance
 
-      # A constant representing the object's type. For this resource it will always be
-      # `balance_lookup`.
+      # #/components/schemas/balance_lookup/properties/type
       sig { returns(Increase::Models::BalanceLookup::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Represents a request to lookup the balance of an Account at a given point in
-      # time.
+      # #/components/schemas/balance_lookup
       sig do
         params(
           account_id: String,
@@ -48,8 +44,7 @@ module Increase
       end
       def to_hash; end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `balance_lookup`.
+      # #/components/schemas/balance_lookup/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

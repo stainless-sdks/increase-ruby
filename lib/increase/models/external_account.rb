@@ -5,78 +5,73 @@ module Increase
     # @see Increase::Resources::ExternalAccounts#create
     class ExternalAccount < Increase::Internal::Type::BaseModel
       # @!attribute id
-      #   The External Account's identifier.
+      #   #/components/schemas/external_account/properties/id
       #
       #   @return [String]
       required :id, String
 
       # @!attribute account_holder
-      #   The type of entity that owns the External Account.
+      #   #/components/schemas/external_account/properties/account_holder
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::AccountHolder]
       required :account_holder, enum: -> { Increase::Models::ExternalAccount::AccountHolder }
 
       # @!attribute account_number
-      #   The destination account number.
+      #   #/components/schemas/external_account/properties/account_number
       #
       #   @return [String]
       required :account_number, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the External Account was created.
+      #   #/components/schemas/external_account/properties/created_at
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute description
-      #   The External Account's description for display purposes.
+      #   #/components/schemas/external_account/properties/description
       #
       #   @return [String]
       required :description, String
 
       # @!attribute funding
-      #   The type of the account to which the transfer will be sent.
+      #   #/components/schemas/external_account/properties/funding
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::Funding]
       required :funding, enum: -> { Increase::Models::ExternalAccount::Funding }
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #/components/schemas/external_account/properties/idempotency_key
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   #/components/schemas/external_account/properties/routing_number
       #
       #   @return [String]
       required :routing_number, String
 
       # @!attribute status
-      #   The External Account's status.
+      #   #/components/schemas/external_account/properties/status
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::Status]
       required :status, enum: -> { Increase::Models::ExternalAccount::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be
-      #   `external_account`.
+      #   #/components/schemas/external_account/properties/type
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::Type]
       required :type, enum: -> { Increase::Models::ExternalAccount::Type }
 
       # @!attribute verification_status
-      #   If you have verified ownership of the External Account.
+      #   #/components/schemas/external_account/properties/verification_status
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::VerificationStatus]
       required :verification_status, enum: -> { Increase::Models::ExternalAccount::VerificationStatus }
 
       # @!parse
-      #   # External Accounts represent accounts at financial institutions other than
-      #   # Increase. You can use this API to store their details for reuse.
+      #   # #/components/schemas/external_account
       #   #
       #   # @param id [String]
       #   # @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder]
@@ -109,7 +104,7 @@ module Increase
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/external_account/properties/account_holder
       #
       # @see Increase::Models::ExternalAccount#account_holder
       module AccountHolder
@@ -131,7 +126,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The type of the account to which the transfer will be sent.
+      # #/components/schemas/external_account/properties/funding
       #
       # @see Increase::Models::ExternalAccount#funding
       module Funding
@@ -153,7 +148,7 @@ module Increase
         #   def self.values; end
       end
 
-      # The External Account's status.
+      # #/components/schemas/external_account/properties/status
       #
       # @see Increase::Models::ExternalAccount#status
       module Status
@@ -172,8 +167,7 @@ module Increase
         #   def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `external_account`.
+      # #/components/schemas/external_account/properties/type
       #
       # @see Increase::Models::ExternalAccount#type
       module Type
@@ -188,7 +182,7 @@ module Increase
         #   def self.values; end
       end
 
-      # If you have verified ownership of the External Account.
+      # #/components/schemas/external_account/properties/verification_status
       #
       # @see Increase::Models::ExternalAccount#verification_status
       module VerificationStatus

@@ -3,49 +3,39 @@
 module Increase
   module Models
     class Export < Increase::Internal::Type::BaseModel
-      # The Export identifier.
+      # #/components/schemas/export/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The category of the Export. We may add additional possible values for this enum
-      # over time; your application should be able to handle that gracefully.
+      # #/components/schemas/export/properties/category
       sig { returns(Increase::Models::Export::Category::TaggedSymbol) }
       attr_accessor :category
 
-      # The time the Export was created.
+      # #/components/schemas/export/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # A URL at which the Export's file can be downloaded. This will be present when
-      # the Export's status transitions to `complete`.
+      # #/components/schemas/export/properties/file_download_url
       sig { returns(T.nilable(String)) }
       attr_accessor :file_download_url
 
-      # The File containing the contents of the Export. This will be present when the
-      # Export's status transitions to `complete`.
+      # #/components/schemas/export/properties/file_id
       sig { returns(T.nilable(String)) }
       attr_accessor :file_id
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/export/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The status of the Export.
+      # #/components/schemas/export/properties/status
       sig { returns(Increase::Models::Export::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `export`.
+      # #/components/schemas/export/properties/type
       sig { returns(Increase::Models::Export::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # Exports are batch summaries of your Increase data. You can make them from the
-      # API or dashboard. Since they can take a while, they are generated
-      # asynchronously. We send a webhook when they are ready. For more information,
-      # please read our
-      # [Exports documentation](https://increase.com/documentation/exports).
+      # #/components/schemas/export
       sig do
         params(
           id: String,
@@ -88,8 +78,7 @@ module Increase
       end
       def to_hash; end
 
-      # The category of the Export. We may add additional possible values for this enum
-      # over time; your application should be able to handle that gracefully.
+      # #/components/schemas/export/properties/category
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -122,7 +111,7 @@ module Increase
         def self.values; end
       end
 
-      # The status of the Export.
+      # #/components/schemas/export/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -142,8 +131,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `export`.
+      # #/components/schemas/export/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -3,56 +3,51 @@
 module Increase
   module Models
     class ExternalAccount < Increase::Internal::Type::BaseModel
-      # The External Account's identifier.
+      # #/components/schemas/external_account/properties/id
       sig { returns(String) }
       attr_accessor :id
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/external_account/properties/account_holder
       sig { returns(Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
       attr_accessor :account_holder
 
-      # The destination account number.
+      # #/components/schemas/external_account/properties/account_number
       sig { returns(String) }
       attr_accessor :account_number
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      # the External Account was created.
+      # #/components/schemas/external_account/properties/created_at
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The External Account's description for display purposes.
+      # #/components/schemas/external_account/properties/description
       sig { returns(String) }
       attr_accessor :description
 
-      # The type of the account to which the transfer will be sent.
+      # #/components/schemas/external_account/properties/funding
       sig { returns(Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
       attr_accessor :funding
 
-      # The idempotency key you chose for this object. This value is unique across
-      # Increase and is used to ensure that a request is only processed once. Learn more
-      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # #/components/schemas/external_account/properties/idempotency_key
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      # #/components/schemas/external_account/properties/routing_number
       sig { returns(String) }
       attr_accessor :routing_number
 
-      # The External Account's status.
+      # #/components/schemas/external_account/properties/status
       sig { returns(Increase::Models::ExternalAccount::Status::TaggedSymbol) }
       attr_accessor :status
 
-      # A constant representing the object's type. For this resource it will always be
-      # `external_account`.
+      # #/components/schemas/external_account/properties/type
       sig { returns(Increase::Models::ExternalAccount::Type::TaggedSymbol) }
       attr_accessor :type
 
-      # If you have verified ownership of the External Account.
+      # #/components/schemas/external_account/properties/verification_status
       sig { returns(Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
       attr_accessor :verification_status
 
-      # External Accounts represent accounts at financial institutions other than
-      # Increase. You can use this API to store their details for reuse.
+      # #/components/schemas/external_account
       sig do
         params(
           id: String,
@@ -102,7 +97,7 @@ module Increase
       end
       def to_hash; end
 
-      # The type of entity that owns the External Account.
+      # #/components/schemas/external_account/properties/account_holder
       module AccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -123,7 +118,7 @@ module Increase
         def self.values; end
       end
 
-      # The type of the account to which the transfer will be sent.
+      # #/components/schemas/external_account/properties/funding
       module Funding
         extend Increase::Internal::Type::Enum
 
@@ -144,7 +139,7 @@ module Increase
         def self.values; end
       end
 
-      # The External Account's status.
+      # #/components/schemas/external_account/properties/status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -162,8 +157,7 @@ module Increase
         def self.values; end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      # `external_account`.
+      # #/components/schemas/external_account/properties/type
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -176,7 +170,7 @@ module Increase
         def self.values; end
       end
 
-      # If you have verified ownership of the External Account.
+      # #/components/schemas/external_account/properties/verification_status
       module VerificationStatus
         extend Increase::Internal::Type::Enum
 

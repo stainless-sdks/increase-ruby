@@ -10,20 +10,19 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
-        #   The amount of the check to be simulated, in cents.
+        #   #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/amount
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute lockbox_id
-        #   The identifier of the Lockbox to simulate inbound mail to.
+        #   #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/lockbox_id
         #
         #   @return [String]
         required :lockbox_id, String
 
         # @!attribute [r] contents_file_id
-        #   The file containing the PDF contents. If not present, a default check image file
-        #   will be used.
+        #   #/components/schemas/sandbox_create_an_inbound_mail_item_parameters/properties/contents_file_id
         #
         #   @return [String, nil]
         optional :contents_file_id, String

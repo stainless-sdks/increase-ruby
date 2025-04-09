@@ -9,7 +9,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute [r] account_id
-      #   The identifier for the Bookkeeping Account to filter by.
+      #   #/paths//bookkeeping_entries/get/parameters/2/schema
       #
       #   @return [String, nil]
       optional :account_id, String
@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :account_id
 
       # @!attribute [r] cursor
-      #   Return the page of entries after this one.
+      #   #/paths//bookkeeping_entries/get/parameters/0/schema
       #
       #   @return [String, nil]
       optional :cursor, String
@@ -29,8 +29,7 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   #/paths//bookkeeping_entries/get/parameters/1/schema
       #
       #   @return [Integer, nil]
       optional :limit, Integer

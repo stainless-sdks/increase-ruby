@@ -18,24 +18,19 @@ module Increase
           .returns(Increase::Models::CheckTransfer)
       end
       def create(
-        # The identifier for the account that will send the transfer.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/account_id
         account_id:,
-        # The transfer amount in USD cents.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/amount
         amount:,
-        # Whether Increase will print and mail the check or if you will do it yourself.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/fulfillment_method
         fulfillment_method:,
-        # The identifier of the Account Number from which to send the transfer and print
-        # on the check.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/source_account_number_id
         source_account_number_id:,
-        # Details relating to the physical check that Increase will print and mail. This
-        # is required if `fulfillment_method` is equal to `physical_check`. It must not be
-        # included if any other `fulfillment_method` is provided.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/physical_check
         physical_check: nil,
-        # Whether the transfer requires explicit approval via the dashboard or API.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/require_approval
         require_approval: nil,
-        # Details relating to the custom fulfillment you will perform. This is required if
-        # `fulfillment_method` is equal to `third_party`. It must not be included if any
-        # other `fulfillment_method` is provided.
+        # #/components/schemas/create_a_check_transfer_parameters/properties/third_party
         third_party: nil,
         request_options: {}
       ); end
@@ -48,7 +43,7 @@ module Increase
           .returns(Increase::Models::CheckTransfer)
       end
       def retrieve(
-        # The identifier of the Check Transfer.
+        # #/paths//check_transfers/{check_transfer_id}/get/parameters/0/schema
         check_transfer_id,
         request_options: {}
       ); end
@@ -66,18 +61,14 @@ module Increase
           .returns(Increase::Internal::Page[Increase::Models::CheckTransfer])
       end
       def list(
-        # Filter Check Transfers to those that originated from the specified Account.
+        # #/paths//check_transfers/get/parameters/2/schema
         account_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
+        # #/paths//check_transfers/get/parameters/0/schema
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        # #/paths//check_transfers/get/parameters/3/schema
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
+        # #/paths//check_transfers/get/parameters/1/schema
         limit: nil,
         status: nil,
         request_options: {}
@@ -91,7 +82,7 @@ module Increase
           .returns(Increase::Models::CheckTransfer)
       end
       def approve(
-        # The identifier of the Check Transfer to approve.
+        # #/paths//check_transfers/{check_transfer_id}/approve/post/parameters/0/schema
         check_transfer_id,
         request_options: {}
       ); end
@@ -104,7 +95,7 @@ module Increase
           .returns(Increase::Models::CheckTransfer)
       end
       def cancel(
-        # The identifier of the pending Check Transfer to cancel.
+        # #/paths//check_transfers/{check_transfer_id}/cancel/post/parameters/0/schema
         check_transfer_id,
         request_options: {}
       ); end
@@ -118,9 +109,9 @@ module Increase
           .returns(Increase::Models::CheckTransfer)
       end
       def stop_payment(
-        # The identifier of the Check Transfer.
+        # #/paths//check_transfers/{check_transfer_id}/stop_payment/post/parameters/0/schema
         check_transfer_id,
-        # The reason why this transfer should be stopped.
+        # #/components/schemas/request_a_stop_payment_on_a_check_transfer_parameters/properties/reason
         reason: nil,
         request_options: {}
       ); end

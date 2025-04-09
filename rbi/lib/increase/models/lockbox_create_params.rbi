@@ -6,18 +6,18 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # The Account checks sent to this Lockbox should be deposited into.
+      # #/components/schemas/create_a_lockbox_parameters/properties/account_id
       sig { returns(String) }
       attr_accessor :account_id
 
-      # The description you choose for the Lockbox, for display purposes.
+      # #/components/schemas/create_a_lockbox_parameters/properties/description
       sig { returns(T.nilable(String)) }
       attr_reader :description
 
       sig { params(description: String).void }
       attr_writer :description
 
-      # The name of the recipient that will receive mail at this location.
+      # #/components/schemas/create_a_lockbox_parameters/properties/recipient_name
       sig { returns(T.nilable(String)) }
       attr_reader :recipient_name
 

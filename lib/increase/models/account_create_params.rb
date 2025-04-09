@@ -9,13 +9,13 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute name
-      #   The name you choose for the Account.
+      #   #/components/schemas/create_an_account_parameters/properties/name
       #
       #   @return [String]
       required :name, String
 
       # @!attribute [r] entity_id
-      #   The identifier for the Entity that will own the Account.
+      #   #/components/schemas/create_an_account_parameters/properties/entity_id
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -25,8 +25,7 @@ module Increase
       #   attr_writer :entity_id
 
       # @!attribute [r] informational_entity_id
-      #   The identifier of an Entity that, while not owning the Account, is associated
-      #   with its activity. Its relationship to your group must be `informational`.
+      #   #/components/schemas/create_an_account_parameters/properties/informational_entity_id
       #
       #   @return [String, nil]
       optional :informational_entity_id, String
@@ -36,8 +35,7 @@ module Increase
       #   attr_writer :informational_entity_id
 
       # @!attribute [r] program_id
-      #   The identifier for the Program that this Account falls under. Required if you
-      #   operate more than one Program.
+      #   #/components/schemas/create_an_account_parameters/properties/program_id
       #
       #   @return [String, nil]
       optional :program_id, String
