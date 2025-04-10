@@ -54,3 +54,4 @@ fi
 
 echo "==> Running tests"
 bundle exec rake test "$@"
+
