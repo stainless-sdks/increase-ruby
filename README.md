@@ -16,12 +16,6 @@ To use this gem, install via Bundler by adding the following to your application
 gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
 
-To fetch an initial copy of the gem:
-
-```sh
-bundle install
-```
-
 ## Usage
 
 ```ruby
@@ -33,12 +27,11 @@ increase = Increase::Client.new(
   environment: "sandbox" # defaults to "production"
 )
 
-account =
-  increase.accounts.create(
-    name: "New Account!",
-    entity_id: "entity_n8y8tnk2p9339ti393yi",
-    program_id: "program_i2v2os4mwza1oetokh9i"
-  )
+account = increase.accounts.create(
+  name: "New Account!",
+  entity_id: "entity_n8y8tnk2p9339ti393yi",
+  program_id: "program_i2v2os4mwza1oetokh9i"
+)
 
 puts(account.id)
 ```
@@ -81,7 +74,7 @@ puts(file.id)
 
 ### Errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Increase::Error` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Increase::Errors::Error` will be thrown:
 
 ```ruby
 begin
@@ -188,12 +181,11 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-params =
-  Increase::Models::AccountCreateParams.new(
-    name: "New Account!",
-    entity_id: "entity_n8y8tnk2p9339ti393yi",
-    program_id: "program_i2v2os4mwza1oetokh9i"
-  )
+params = Increase::Models::AccountCreateParams.new(
+  name: "New Account!",
+  entity_id: "entity_n8y8tnk2p9339ti393yi",
+  program_id: "program_i2v2os4mwza1oetokh9i"
+)
 
 increase.accounts.create(**params)
 ```
