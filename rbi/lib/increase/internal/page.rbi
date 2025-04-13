@@ -13,6 +13,7 @@ module Increase
       sig { returns(T.nilable(String)) }
       attr_accessor :next_cursor
 
+      # @api private
       sig { returns(String) }
       def inspect; end
     end

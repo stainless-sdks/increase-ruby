@@ -11,6 +11,8 @@ module Increase
       class Boolean
         extend Increase::Internal::Type::Converter
 
+        private_class_method :new
+
         # @param other [Object]
         #
         # @return [Boolean]
