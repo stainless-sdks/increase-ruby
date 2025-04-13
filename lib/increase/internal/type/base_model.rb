@@ -63,7 +63,7 @@ module Increase
 
             setter = "#{name_sym}="
             api_name = info.fetch(:api_name, name_sym)
-            nilable = info[:nil?]
+            nilable = info.fetch(:nil?, false)
             const = if required && !nilable
               info.fetch(
                 :const,
@@ -368,6 +368,23 @@ module Increase
           end
         end
 
+        class << self
+          # @api private
+          #
+          # @param depth [Integer]
+          #
+          # @return [String]
+          def inspect(depth: 0)
+            # rubocop:disable Layout/LineLength
+            return super() if depth.positive?
+
+            "#{name}[#{fields.transform_values { Increase::Internal::Type::Converter.inspect(_1.fetch(:type), depth: depth.succ) }.inspect}]"
+            # rubocop:enable Layout/LineLength
+          end
+        end
+
+        # @api private
+        #
         # @return [String]
         def inspect
           rows = self.class.known_fields.keys.map do
@@ -375,7 +392,7 @@ module Increase
           rescue Increase::Errors::ConversionError
             "#{_1}=#{@data.fetch(_1)}"
           end
-          "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
+          "#<#{self.class}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
         end
       end
     end

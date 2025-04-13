@@ -30,7 +30,6 @@ module Increase
       # @param page_data [Hash{Symbol=>Object}]
       def initialize(client:, req:, headers:, page_data:)
         super
-        model = req.fetch(:model)
 
         case page_data
         in {data: Array | nil => data}
@@ -77,9 +76,13 @@ module Increase
         end
       end
 
+      # @api private
+      #
       # @return [String]
       def inspect
-        "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
+        # rubocop:disable Layout/LineLength
+        "#<#{self.class}[#{Increase::Internal::Type::Converter.inspect(@model, depth: 1)}]:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
+        # rubocop:enable Layout/LineLength
       end
     end
   end

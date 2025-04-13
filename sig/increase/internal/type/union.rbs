@@ -39,6 +39,8 @@ module Increase
           top value,
           state: Increase::Internal::Type::Converter::dump_state
         ) -> top
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end

@@ -21,6 +21,8 @@ module Increase
           Symbol | top value,
           state: Increase::Internal::Type::Converter::dump_state
         ) -> (Symbol | top)
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end
