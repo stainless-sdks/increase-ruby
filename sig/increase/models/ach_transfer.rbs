@@ -13,6 +13,7 @@ module Increase
         company_descriptive_date: String?,
         company_discretionary_data: String?,
         company_entry_description: String?,
+        company_id: String,
         company_name: String?,
         created_at: Time,
         created_by: Increase::Models::ACHTransfer::CreatedBy?,
@@ -61,6 +62,8 @@ module Increase
       attr_accessor company_discretionary_data: String?
 
       attr_accessor company_entry_description: String?
+
+      attr_accessor company_id: String
 
       attr_accessor company_name: String?
 
@@ -122,6 +125,7 @@ module Increase
         company_descriptive_date: String?,
         company_discretionary_data: String?,
         company_entry_description: String?,
+        company_id: String,
         company_name: String?,
         created_at: Time,
         created_by: Increase::Models::ACHTransfer::CreatedBy?,

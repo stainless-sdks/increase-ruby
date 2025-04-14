@@ -76,6 +76,12 @@ module Increase
       #   @return [String, nil]
       required :company_entry_description, String, nil?: true
 
+      # @!attribute company_id
+      #   The company ID associated with the transfer.
+      #
+      #   @return [String]
+      required :company_id, String
+
       # @!attribute company_name
       #   The name by which the recipient knows you.
       #
@@ -256,6 +262,7 @@ module Increase
       #   # @param company_descriptive_date [String, nil]
       #   # @param company_discretionary_data [String, nil]
       #   # @param company_entry_description [String, nil]
+      #   # @param company_id [String]
       #   # @param company_name [String, nil]
       #   # @param created_at [Time]
       #   # @param created_by [Increase::Models::ACHTransfer::CreatedBy, nil]
@@ -293,6 +300,7 @@ module Increase
       #     company_descriptive_date:,
       #     company_discretionary_data:,
       #     company_entry_description:,
+      #     company_id:,
       #     company_name:,
       #     created_at:,
       #     created_by:,
