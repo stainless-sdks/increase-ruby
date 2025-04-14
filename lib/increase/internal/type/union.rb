@@ -100,7 +100,9 @@ module Increase
         #
         # @return [Boolean]
         def ==(other)
-          Increase::Internal::Type::Union === other && other.derefed_variants == derefed_variants
+          # rubocop:disable Layout/LineLength
+          other.is_a?(Module) && other.singleton_class <= Increase::Internal::Type::Union && other.derefed_variants == derefed_variants
+          # rubocop:enable Layout/LineLength
         end
 
         # @api private
@@ -183,19 +185,6 @@ module Increase
 
         # rubocop:enable Style/CaseEquality
         # rubocop:enable Style/HashEachMethods
-
-        # @api private
-        #
-        # @param depth [Integer]
-        #
-        # @return [String]
-        def inspect(depth: 0)
-          return super() if depth.positive?
-
-          members = variants.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
-
-          "#{name}[#{members.join(' | ')}]"
-        end
       end
     end
   end
