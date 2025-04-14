@@ -11,8 +11,6 @@ module Increase
       class IOLike
         extend Increase::Internal::Type::Converter
 
-        private_class_method :new
-
         # @param other [Object]
         #
         # @return [Boolean]

@@ -22,6 +22,29 @@ module Increase
       # @return [String, nil]
       attr_accessor :next_cursor
 
+      # @api private
+      #
+      # @param client [Increase::Internal::Transport::BaseClient]
+      # @param req [Hash{Symbol=>Object}]
+      # @param headers [Hash{String=>String}, Net::HTTPHeader]
+      # @param page_data [Hash{Symbol=>Object}]
+      def initialize(client:, req:, headers:, page_data:)
+        super
+        model = req.fetch(:model)
+
+        case page_data
+        in {data: Array | nil => data}
+          @data = data&.map { Increase::Internal::Type::Converter.coerce(model, _1) }
+        else
+        end
+
+        case page_data
+        in {next_cursor: String | nil => next_cursor}
+          @next_cursor = next_cursor
+        else
+        end
+      end
+
       # @return [Boolean]
       def next_page?
         !next_cursor.nil?
@@ -46,40 +69,17 @@ module Increase
         unless block_given?
           raise ArgumentError.new("A block must be given to ##{__method__}")
         end
-
         page = self
         loop do
-          page.data&.each(&blk)
-
+          page.data&.each { blk.call(_1) }
           break unless page.next_page?
           page = page.next_page
         end
       end
 
-      # @api private
-      #
-      # @param client [Increase::Internal::Transport::BaseClient]
-      # @param req [Hash{Symbol=>Object}]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
-      # @param page_data [Hash{Symbol=>Object}]
-      def initialize(client:, req:, headers:, page_data:)
-        super
-
-        case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { Increase::Internal::Type::Converter.coerce(@model, _1) }
-        else
-        end
-        @next_cursor = page_data[:next_cursor]
-      end
-
-      # @api private
-      #
       # @return [String]
       def inspect
-        model = Increase::Internal::Type::Converter.inspect(@model, depth: 1)
-
-        "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)} next_cursor=#{next_cursor.inspect}>"
+        "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
       end
     end
   end

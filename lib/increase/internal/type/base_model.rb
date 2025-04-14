@@ -63,7 +63,7 @@ module Increase
 
             setter = "#{name_sym}="
             api_name = info.fetch(:api_name, name_sym)
-            nilable = info.fetch(:nil?, false)
+            nilable = info[:nil?]
             const = if required && !nilable
               info.fetch(
                 :const,
@@ -368,42 +368,14 @@ module Increase
           end
         end
 
-        class << self
-          # @api private
-          #
-          # @param depth [Integer]
-          #
-          # @return [String]
-          def inspect(depth: 0)
-            return super() if depth.positive?
-
-            depth = depth.succ
-            deferred = fields.transform_values do |field|
-              type, required, nilable = field.fetch_values(:type, :required, :nilable)
-              -> do
-                [
-                  Increase::Internal::Type::Converter.inspect(type, depth: depth),
-                  !required || nilable ? "nil" : nil
-                ].compact.join(" | ")
-              end
-                .tap { _1.define_singleton_method(:inspect) { call } }
-            end
-
-            "#{name}[#{deferred.inspect}]"
-          end
-        end
-
-        # @api private
-        #
         # @return [String]
         def inspect
-          rows = @data.map do
-            "#{_1}=#{self.class.known_fields.key?(_1) ? public_send(_1).inspect : ''}"
+          rows = self.class.known_fields.keys.map do
+            "#{_1}=#{@data.key?(_1) ? public_send(_1) : ''}"
           rescue Increase::Errors::ConversionError
-            "#{_1}=#{_2.inspect}"
+            "#{_1}=#{@data.fetch(_1)}"
           end
-
-          "#<#{self.class}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
+          "#<#{self.class.name}:0x#{object_id.to_s(16)} #{rows.join(' ')}>"
         end
       end
     end

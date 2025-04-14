@@ -37,9 +37,9 @@ module Increase
         #
         # @return [Boolean]
         def ==(other)
-          # rubocop:disable Style/CaseEquality
-          Increase::Internal::Type::Enum === other && other.values.to_set == values.to_set
-          # rubocop:enable Style/CaseEquality
+          # rubocop:disable Layout/LineLength
+          other.is_a?(Module) && other.singleton_class <= Increase::Internal::Type::Enum && other.values.to_set == values.to_set
+          # rubocop:enable Layout/LineLength
         end
 
         # @api private
@@ -82,20 +82,6 @@ module Increase
         #   #
         #   # @return [Symbol, Object]
         #   def dump(value, state:) = super
-
-        # @api private
-        #
-        # @param depth [Integer]
-        #
-        # @return [String]
-        def inspect(depth: 0)
-          return super() if depth.positive?
-
-          members = values.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
-          prefix = is_a?(Module) ? name : self.class.name
-
-          "#{prefix}[#{members.join(' | ')}]"
-        end
       end
     end
   end
