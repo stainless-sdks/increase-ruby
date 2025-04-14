@@ -80,6 +80,10 @@ module Increase
       sig { returns(T.nilable(String)) }
       attr_accessor :company_entry_description
 
+      # The company ID associated with the transfer.
+      sig { returns(String) }
+      attr_accessor :company_id
+
       # The name by which the recipient knows you.
       sig { returns(T.nilable(String)) }
       attr_accessor :company_name
@@ -254,6 +258,7 @@ module Increase
           company_descriptive_date: T.nilable(String),
           company_discretionary_data: T.nilable(String),
           company_entry_description: T.nilable(String),
+          company_id: String,
           company_name: T.nilable(String),
           created_at: Time,
           created_by: T.nilable(T.any(Increase::Models::ACHTransfer::CreatedBy, Increase::Internal::AnyHash)),
@@ -293,6 +298,7 @@ module Increase
         company_descriptive_date:,
         company_discretionary_data:,
         company_entry_description:,
+        company_id:,
         company_name:,
         created_at:,
         created_by:,
@@ -333,6 +339,7 @@ module Increase
               company_descriptive_date: T.nilable(String),
               company_discretionary_data: T.nilable(String),
               company_entry_description: T.nilable(String),
+              company_id: String,
               company_name: T.nilable(String),
               created_at: Time,
               created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
