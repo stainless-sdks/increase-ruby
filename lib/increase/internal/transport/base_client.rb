@@ -93,11 +93,7 @@ module Increase
                 URI.join(url, response_headers["location"])
               rescue ArgumentError
                 message = "Server responded with status #{status} but no valid location header."
-                raise Increase::Errors::APIConnectionError.new(
-                  url: url,
-                  response: response_headers,
-                  message: message
-                )
+                raise Increase::Errors::APIConnectionError.new(url: url, message: message)
               end
 
             request = {**request, url: location}
@@ -105,11 +101,7 @@ module Increase
             case [url.scheme, location.scheme]
             in ["https", "http"]
               message = "Tried to redirect to a insecure URL"
-              raise Increase::Errors::APIConnectionError.new(
-                url: url,
-                response: response_headers,
-                message: message
-              )
+              raise Increase::Errors::APIConnectionError.new(url: url, message: message)
             else
               nil
             end
@@ -358,7 +350,7 @@ module Increase
             self.class.reap_connection!(status, stream: stream)
 
             message = "Failed to complete the request within #{self.class::MAX_REDIRECTS} redirects."
-            raise Increase::Errors::APIConnectionError.new(url: url, response: response, message: message)
+            raise Increase::Errors::APIConnectionError.new(url: url, message: message)
           in 300..399
             self.class.reap_connection!(status, stream: stream)
 
@@ -468,8 +460,6 @@ module Increase
           end
         end
 
-        # @api private
-        #
         # @return [String]
         def inspect
           # rubocop:disable Layout/LineLength

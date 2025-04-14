@@ -10,10 +10,11 @@ module Increase
         include Increase::Internal::Type::Converter
 
         abstract!
+        final!
 
         Elem = type_member(:out)
 
-        sig do
+        sig(:final) do
           params(
             type_info: T.any(
               Increase::Internal::AnyHash,
@@ -26,14 +27,14 @@ module Increase
         end
         def self.[](type_info, spec = {}); end
 
-        sig { params(other: T.anything).returns(T::Boolean) }
+        sig(:final) { params(other: T.anything).returns(T::Boolean) }
         def ===(other); end
 
-        sig { params(other: T.anything).returns(T::Boolean) }
+        sig(:final) { params(other: T.anything).returns(T::Boolean) }
         def ==(other); end
 
         # @api private
-        sig do
+        sig(:final) do
           override
             .params(
               value: T.any(T::Array[T.anything], T.anything),
@@ -44,7 +45,7 @@ module Increase
         def coerce(value, state:); end
 
         # @api private
-        sig do
+        sig(:final) do
           override
             .params(
               value: T.any(T::Array[T.anything], T.anything),
@@ -55,15 +56,15 @@ module Increase
         def dump(value, state:); end
 
         # @api private
-        sig { returns(Elem) }
+        sig(:final) { returns(Elem) }
         protected def item_type; end
 
         # @api private
-        sig { returns(T::Boolean) }
+        sig(:final) { returns(T::Boolean) }
         protected def nilable?; end
 
         # @api private
-        sig do
+        sig(:final) do
           params(
             type_info: T.any(
               Increase::Internal::AnyHash,
@@ -75,10 +76,6 @@ module Increase
             .void
         end
         def initialize(type_info, spec = {}); end
-
-        # @api private
-        sig { params(depth: Integer).returns(String) }
-        def inspect(depth: 0); end
       end
     end
   end
