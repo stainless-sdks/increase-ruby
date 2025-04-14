@@ -100,7 +100,9 @@ module Increase
         #
         # @return [Boolean]
         def ==(other)
-          Increase::Internal::Type::Union === other && other.derefed_variants == derefed_variants
+          # rubocop:disable Layout/LineLength
+          other.is_a?(Module) && other.singleton_class <= Increase::Internal::Type::Union && other.derefed_variants == derefed_variants
+          # rubocop:enable Layout/LineLength
         end
 
         # @api private
