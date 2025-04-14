@@ -154,6 +154,12 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
 end
 
 class Increase::Test::EnumModelTest < Minitest::Test
+  class E0
+    include Increase::Internal::Type::Enum
+
+    def initialize(*values) = (@values = values)
+  end
+
   module E1
     extend Increase::Internal::Type::Enum
 
@@ -183,6 +189,10 @@ class Increase::Test::EnumModelTest < Minitest::Test
 
   def test_coerce
     cases = {
+      [E0.new, "one"] => [{no: 1}, "one"],
+      [E0.new(:one), "one"] => [{yes: 1}, :one],
+      [E0.new(:two), "one"] => [{maybe: 1}, "one"],
+
       # rubocop:disable Lint/BooleanSymbol
       [E1, true] => [{yes: 1}, true],
       [E1, false] => [{no: 1}, false],
@@ -432,8 +442,10 @@ class Increase::Test::BaseModelTest < Minitest::Test
 end
 
 class Increase::Test::UnionTest < Minitest::Test
-  module U0
-    extend Increase::Internal::Type::Union
+  class U0
+    include Increase::Internal::Type::Union
+
+    def initialize(*variants) = variants.each { variant(_1) }
   end
 
   module U1
@@ -519,6 +531,11 @@ class Increase::Test::UnionTest < Minitest::Test
     cases = {
       [U0, :""] => [{no: 1}, 0, :""],
 
+      [U0.new(Integer, Float), "one"] => [{no: 1}, 2, "one"],
+      [U0.new(Integer, Float), 1.0] => [{yes: 1}, 2, 1.0],
+      [U0.new({const: :a}), "a"] => [{yes: 1}, 1, :a],
+      [U0.new({const: :a}), "2"] => [{maybe: 1}, 1, "2"],
+
       [U1, "a"] => [{yes: 1}, 1, :a],
       [U1, "2"] => [{maybe: 1}, 2, "2"],
       [U1, :b] => [{maybe: 1}, 2, :b],
@@ -556,6 +573,12 @@ class Increase::Test::UnionTest < Minitest::Test
 end
 
 class Increase::Test::BaseModelQoLTest < Minitest::Test
+  class E0
+    include Increase::Internal::Type::Enum
+
+    def initialize(*values) = (@values = values)
+  end
+
   module E1
     extend Increase::Internal::Type::Enum
 
@@ -575,6 +598,26 @@ class Increase::Test::BaseModelQoLTest < Minitest::Test
     B = 3
   end
 
+  class U0
+    include Increase::Internal::Type::Union
+
+    def initialize(*variants) = variants.each { variant(_1) }
+  end
+
+  module U1
+    extend Increase::Internal::Type::Union
+
+    variant String
+    variant Integer
+  end
+
+  module U2
+    extend Increase::Internal::Type::Union
+
+    variant String
+    variant Integer
+  end
+
   class M1 < Increase::Internal::Type::BaseModel
     required :a, Integer
   end
@@ -592,8 +635,15 @@ class Increase::Test::BaseModelQoLTest < Minitest::Test
       [Increase::Internal::Type::Unknown, Increase::Internal::Type::Unknown] => true,
       [Increase::Internal::Type::Boolean, Increase::Internal::Type::Boolean] => true,
       [Increase::Internal::Type::Unknown, Increase::Internal::Type::Boolean] => false,
+      [E0.new(:a, :b), E0.new(:a, :b)] => true,
+      [E0.new(:a, :b), E0.new(:b, :a)] => true,
+      [E0.new(:a, :b), E0.new(:b, :c)] => false,
       [E1, E2] => true,
       [E1, E3] => false,
+      [U0.new(String, Integer), U0.new(String, Integer)] => true,
+      [U0.new(String, Integer), U0.new(Integer, String)] => false,
+      [U0.new(String, Float), U0.new(String, Integer)] => false,
+      [U1, U2] => true,
       [M1, M2] => false,
       [M1, M3] => true
     }
