@@ -92,9 +92,8 @@ module Increase
           return super() if depth.positive?
 
           members = values.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
-          prefix = is_a?(Module) ? name : self.class.name
 
-          "#{prefix}[#{members.join(' | ')}]"
+          "#{name}[#{members.join(' | ')}]"
         end
       end
     end
