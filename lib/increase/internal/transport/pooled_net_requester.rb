@@ -149,7 +149,7 @@ module Increase
                 break if finished
 
                 rsp.read_body do |bytes|
-                  y << bytes.force_encoding(Encoding::BINARY)
+                  y << bytes
                   break if finished
 
                   self.class.calibrate_socket_timeout(conn, deadline)
