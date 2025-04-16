@@ -209,9 +209,8 @@ module Increase
       # - `production` corresponds to `https://api.increase.com`
       # - `sandbox` corresponds to `https://sandbox.increase.com`
       environment: nil,
-      # Override the default base URL for the API, e.g.,
-      # `"https://api.example.com/v2/"`. Defaults to `ENV["INCREASE_BASE_URL"]`
-      base_url: ENV["INCREASE_BASE_URL"],
+      # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+      base_url: nil,
       # Max number of retries to attempt after a failed retryable request.
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
