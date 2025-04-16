@@ -59,19 +59,12 @@ multitask(:syntax_tree) do
   #   2. at label `l1`, join previously annotated line with `class | module` information.
   pst = sed + [subst, "--"]
 
-  success = false
-
   # transform class aliases to type aliases, which syntax tree has no trouble with
   sh("#{find.shelljoin} | #{pre.shelljoin}")
   # run syntax tree to format `*.rbs` files
-  sh("#{find.shelljoin} | #{fmt.shelljoin}") do
-    success = _1
-  end
+  sh("#{find.shelljoin} | #{fmt.shelljoin}")
   # transform type aliases back to class aliases
   sh("#{find.shelljoin} | #{pst.shelljoin}")
-
-  # always run post-processing to remove comment marker
-  fail unless success
 end
 
 multitask(format: [:ruboformat, :syntax_tree])

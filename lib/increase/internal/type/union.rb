@@ -190,9 +190,7 @@ module Increase
         #
         # @return [String]
         def inspect(depth: 0)
-          if depth.positive?
-            return is_a?(Module) ? super() : self.class.name
-          end
+          return super() if depth.positive?
 
           members = variants.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
           prefix = is_a?(Module) ? name : self.class.name
