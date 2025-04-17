@@ -227,8 +227,9 @@ module Increase
       max_retry_delay: DEFAULT_MAX_RETRY_DELAY,
       idempotency_header: "Idempotency-Key"
     )
-      base_url ||= ENVIRONMENTS.fetch(environment || :production) do
-        raise ArgumentError.new("environment must be one of #{ENVIRONMENTS.keys}, got #{environment}")
+      base_url ||= Increase::Client::ENVIRONMENTS.fetch(environment&.to_sym || :production) do
+        message = "environment must be one of #{Increase::Client::ENVIRONMENTS.keys}, got #{environment}"
+        raise ArgumentError.new(message)
       end
 
       if api_key.nil?
