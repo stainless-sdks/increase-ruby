@@ -10,11 +10,12 @@ module Increase
       #   @return [String]
       required :id, String
 
-      # @!attribute additional_evidence_file_id
-      #   File containing additional evidence.
+      # @!attribute additional_evidence_files
+      #   Files containing additional evidence.
       #
-      #   @return [String, nil]
-      required :additional_evidence_file_id, String, nil?: true
+      #   @return [Array<Increase::Models::ProofOfAuthorizationRequestSubmission::AdditionalEvidenceFile>]
+      required :additional_evidence_files,
+               -> { Increase::Internal::Type::ArrayOf[Increase::Models::ProofOfAuthorizationRequestSubmission::AdditionalEvidenceFile] }
 
       # @!attribute authorization_terms
       #   Terms of authorization.
@@ -125,7 +126,7 @@ module Increase
       #   # terms.
       #   #
       #   # @param id [String]
-      #   # @param additional_evidence_file_id [String, nil]
+      #   # @param additional_evidence_files [Array<Increase::Models::ProofOfAuthorizationRequestSubmission::AdditionalEvidenceFile>]
       #   # @param authorization_terms [String]
       #   # @param authorized_at [Time]
       #   # @param authorizer_company [String, nil]
@@ -145,7 +146,7 @@ module Increase
       #   #
       #   def initialize(
       #     id:,
-      #     additional_evidence_file_id:,
+      #     additional_evidence_files:,
       #     authorization_terms:,
       #     authorized_at:,
       #     authorizer_company:,
@@ -168,6 +169,21 @@ module Increase
       #   end
 
       # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+
+      class AdditionalEvidenceFile < Increase::Internal::Type::BaseModel
+        # @!attribute file_id
+        #   The File identifier.
+        #
+        #   @return [String]
+        required :file_id, String
+
+        # @!parse
+        #   # @param file_id [String]
+        #   #
+        #   def initialize(file_id:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      end
 
       # Status of the proof of authorization request submission.
       #
