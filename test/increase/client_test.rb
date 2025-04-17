@@ -13,7 +13,8 @@ class IncreaseTest < Minitest::Test
 
   def test_raises_on_unknown_environment
     e = assert_raises(ArgumentError) do
-      Increase::Client.new(environment: "wrong")
+      v = Increase::Client.new(environment: "wrong")
+      puts(v.base_url)
     end
     assert_match(/environment must be one of/, e.message)
   end
