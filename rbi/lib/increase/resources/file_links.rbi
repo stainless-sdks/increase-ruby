@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class FileLinks
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a File Link
       sig do
         params(

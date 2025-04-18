@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class OAuthConnections
+      private def initialize_resources: -> void
+
       def retrieve: (
         String oauth_connection_id,
         ?request_options: Increase::request_opts

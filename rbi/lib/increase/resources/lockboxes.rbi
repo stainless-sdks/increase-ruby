@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Lockboxes
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Lockbox
       sig do
         params(

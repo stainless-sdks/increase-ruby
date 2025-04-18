@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequests
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve a Proof of Authorization Request
       #
       # @overload retrieve(proof_of_authorization_request_id, request_options: {})
@@ -51,6 +54,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

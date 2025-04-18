@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class IntrafiBalances
+      private def initialize_resources: -> void
+
       def intrafi_balance: (
         String account_id,
         ?request_options: Increase::request_opts

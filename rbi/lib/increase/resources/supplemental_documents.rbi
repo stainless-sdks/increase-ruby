@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class SupplementalDocuments
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a supplemental document for an Entity
       sig do
         params(

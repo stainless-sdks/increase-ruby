@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class IntrafiExclusions
+      private def initialize_resources: -> void
+
       def create: (
         bank_name: String,
         entity_id: String,

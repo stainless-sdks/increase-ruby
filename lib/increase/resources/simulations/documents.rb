@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class Documents
+        # @api private
+        private def initialize_resources; end
+
         # Simulates an tax document being created for an account.
         #
         # @overload create(account_id:, request_options: {})
@@ -30,6 +33,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

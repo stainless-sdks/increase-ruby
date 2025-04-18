@@ -19,6 +19,10 @@ module Increase
     sig { returns(String) }
     attr_reader :api_key
 
+    # @api private
+    sig { void }
+    private def initialize_resources; end
+
     sig { returns(Increase::Resources::Accounts) }
     attr_reader :accounts
 

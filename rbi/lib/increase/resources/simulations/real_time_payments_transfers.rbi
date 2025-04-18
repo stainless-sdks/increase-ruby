@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class RealTimePaymentsTransfers
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates submission of a
         # [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
         # response from the destination financial institution. This transfer must first

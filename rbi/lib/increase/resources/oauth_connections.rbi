@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class OAuthConnections
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an OAuth Connection
       sig do
         params(

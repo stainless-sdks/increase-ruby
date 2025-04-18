@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class CardPurchaseSupplements
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Card Purchase Supplement
       sig do
         params(

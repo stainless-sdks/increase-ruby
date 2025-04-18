@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class AccountStatements
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates an [Account Statement](#account-statements) being created for an
         # account. In production, Account Statements are generated once per month.
         sig do

@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Groups
+      # @api private
+      private def initialize_resources; end
+
       # Returns details for the currently authenticated Group.
       #
       # @overload retrieve(request_options: {})
@@ -26,6 +29,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class InboundACHTransfers
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates an inbound ACH transfer to your account. This imitates initiating a
         # transfer to an Increase account from a different financial institution. The
         # transfer may be either a credit or a debit depending on if the `amount` is

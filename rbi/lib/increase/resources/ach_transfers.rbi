@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class ACHTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an ACH Transfer
       sig do
         params(

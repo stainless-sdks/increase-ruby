@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class BookkeepingEntrySets
+      private def initialize_resources: -> void
+
       def create: (
         entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
         ?date: Time,

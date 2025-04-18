@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizationExpirations
+        # @api private
+        private def initialize_resources; end
+
         # Simulates expiring a Card Authorization immediately.
         #
         # @overload create(card_payment_id:, request_options: {})
@@ -31,6 +34,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

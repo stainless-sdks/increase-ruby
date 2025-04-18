@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class Entities
+      private def initialize_resources: -> void
+
       def create: (
         structure: Increase::Models::EntityCreateParams::structure,
         ?corporation: Increase::Models::EntityCreateParams::Corporation,

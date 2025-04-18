@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class PhysicalCards
+      private def initialize_resources: -> void
+
       def create: (
         card_id: String,
         cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,

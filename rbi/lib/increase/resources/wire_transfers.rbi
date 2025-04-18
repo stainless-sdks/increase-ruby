@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class WireTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Wire Transfer
       sig do
         params(

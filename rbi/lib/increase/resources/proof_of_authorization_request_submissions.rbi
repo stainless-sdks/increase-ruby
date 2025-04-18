@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequestSubmissions
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Submit Proof of Authorization
       sig do
         params(

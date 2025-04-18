@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
+      # @api private
+      private def initialize_resources; end
+
       # Create a Physical Card Profile
       #
       # @overload create(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, program_id:, request_options: {})
@@ -122,6 +125,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

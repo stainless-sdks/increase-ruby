@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class AccountTransfers
+      # @api private
+      private def initialize_resources; end
+
       # Create an Account Transfer
       #
       # @overload create(account_id:, amount:, description:, destination_account_id:, require_approval: nil, request_options: {})
@@ -116,6 +119,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

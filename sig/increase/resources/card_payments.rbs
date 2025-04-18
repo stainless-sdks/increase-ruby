@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class CardPayments
+      private def initialize_resources: -> void
+
       def retrieve: (
         String card_payment_id,
         ?request_options: Increase::request_opts

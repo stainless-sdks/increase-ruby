@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Physical Card Profile
       sig do
         params(

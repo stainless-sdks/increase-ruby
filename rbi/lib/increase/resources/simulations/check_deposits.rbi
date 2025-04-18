@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CheckDeposits
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
         # factors like poor image quality. This Check Deposit must first have a `status`
         # of `pending`.

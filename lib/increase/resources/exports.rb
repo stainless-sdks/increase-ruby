@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Exports
+      # @api private
+      private def initialize_resources; end
+
       # Create an Export
       #
       # @overload create(category:, account_statement_ofx: nil, balance_csv: nil, bookkeeping_account_balance_csv: nil, entity_csv: nil, transaction_csv: nil, vendor_csv: nil, request_options: {})
@@ -81,6 +84,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Programs
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Program
       sig do
         params(

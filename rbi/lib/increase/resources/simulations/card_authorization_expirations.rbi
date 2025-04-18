@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizationExpirations
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates expiring a Card Authorization immediately.
         sig do
           params(

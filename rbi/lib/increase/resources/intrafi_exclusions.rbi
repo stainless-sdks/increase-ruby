@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class IntrafiExclusions
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an IntraFi Exclusion
       sig do
         params(

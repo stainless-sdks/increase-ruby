@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class ExternalAccounts
+      # @api private
+      private def initialize_resources; end
+
       # Create an External Account
       #
       # @overload create(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
@@ -103,6 +106,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

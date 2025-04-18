@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardRefunds
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates refunding a card transaction. The full value of the original sandbox
         # transaction is refunded.
         sig do

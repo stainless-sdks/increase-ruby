@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class Events
+      private def initialize_resources: -> void
+
       def retrieve: (
         String event_id,
         ?request_options: Increase::request_opts

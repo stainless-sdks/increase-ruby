@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class CardPayments
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Card Payment
       sig do
         params(

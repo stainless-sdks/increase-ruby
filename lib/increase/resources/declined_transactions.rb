@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class DeclinedTransactions
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve a Declined Transaction
       #
       # @overload retrieve(declined_transaction_id, request_options: {})
@@ -54,6 +57,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

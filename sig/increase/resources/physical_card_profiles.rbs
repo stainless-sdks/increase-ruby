@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
+      private def initialize_resources: -> void
+
       def create: (
         carrier_image_file_id: String,
         contact_phone: String,

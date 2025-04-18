@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequests
+      private def initialize_resources: -> void
+
       def retrieve: (
         String proof_of_authorization_request_id,
         ?request_options: Increase::request_opts

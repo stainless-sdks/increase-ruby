@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Groups
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Returns details for the currently authenticated Group.
       sig do
         params(request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash)))

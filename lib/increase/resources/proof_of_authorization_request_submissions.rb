@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequestSubmissions
+      # @api private
+      private def initialize_resources; end
+
       # Submit Proof of Authorization
       #
       # @overload create(authorization_terms:, authorized_at:, authorizer_email:, authorizer_name:, customer_has_been_offboarded:, proof_of_authorization_request_id:, validated_account_ownership_via_credential:, validated_account_ownership_with_account_statement:, validated_account_ownership_with_microdeposit:, additional_evidence_file_id: nil, authorizer_company: nil, authorizer_ip_address: nil, request_options: {})
@@ -88,6 +91,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

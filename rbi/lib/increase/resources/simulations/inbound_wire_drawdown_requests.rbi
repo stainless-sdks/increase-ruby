@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class InboundWireDrawdownRequests
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates receiving an
         # [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         sig do

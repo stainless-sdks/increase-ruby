@@ -2,6 +2,8 @@ module Increase
   module Resources
     class Simulations
       class AccountTransfers
+        private def initialize_resources: -> void
+
         def complete: (
           String account_transfer_id,
           ?request_options: Increase::request_opts

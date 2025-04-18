@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class DigitalWalletTokens
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Digital Wallet Token
       sig do
         params(

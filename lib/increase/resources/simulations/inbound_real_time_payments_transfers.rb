@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class InboundRealTimePaymentsTransfers
+        # @api private
+        private def initialize_resources; end
+
         # Simulates an
         # [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
         # your account. Real-Time Payments are a beta feature.
@@ -39,6 +42,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

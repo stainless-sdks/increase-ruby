@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class InboundWireDrawdownRequests
+        # @api private
+        private def initialize_resources; end
+
         # Simulates receiving an
         # [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         #
@@ -51,6 +54,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class CheckTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Check Transfer
       sig do
         params(

@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Entities
+      # @api private
+      private def initialize_resources; end
+
       # Create an Entity
       #
       # @overload create(structure:, corporation: nil, description: nil, government_authority: nil, joint: nil, natural_person: nil, supplemental_documents: nil, third_party_verification: nil, trust: nil, request_options: {})
@@ -236,6 +239,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

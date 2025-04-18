@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardDisputes
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # After a [Card Dispute](#card-disputes) is created in production, the dispute
         # will be reviewed. Since no review happens in sandbox, this endpoint simulates
         # moving a Card Dispute into a rejected or accepted state. A Card Dispute can only

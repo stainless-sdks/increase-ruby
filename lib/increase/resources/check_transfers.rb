@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class CheckTransfers
+      # @api private
+      private def initialize_resources; end
+
       # Create a Check Transfer
       #
       # @overload create(account_id:, amount:, fulfillment_method:, source_account_number_id:, physical_check: nil, require_approval: nil, third_party: nil, request_options: {})
@@ -141,6 +144,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

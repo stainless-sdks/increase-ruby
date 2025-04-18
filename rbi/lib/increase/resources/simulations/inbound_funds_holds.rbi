@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class InboundFundsHolds
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # This endpoint simulates immediately releasing an Inbound Funds Hold, which might
         # be created as a result of e.g., an ACH debit.
         sig do

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Exports
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an Export
       sig do
         params(

@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CheckTransfers
+        # @api private
+        private def initialize_resources; end
+
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         # periodically throughout the day in production but can be sped up in sandbox.
         # This transfer must first have a `status` of `pending_approval` or
@@ -31,6 +34,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

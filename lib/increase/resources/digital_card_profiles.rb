@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class DigitalCardProfiles
+      # @api private
+      private def initialize_resources; end
+
       # Create a Digital Card Profile
       #
       # @overload create(app_icon_file_id:, background_image_file_id:, card_description:, description:, issuer_name:, contact_email: nil, contact_phone: nil, contact_website: nil, text_color: nil, request_options: {})
@@ -130,6 +133,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

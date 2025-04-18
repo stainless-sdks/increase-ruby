@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class FileLinks
+      # @api private
+      private def initialize_resources; end
+
       # Create a File Link
       #
       # @overload create(file_id:, expires_at: nil, request_options: {})
@@ -30,6 +33,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class InboundWireTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an Inbound Wire Transfer
       sig do
         params(

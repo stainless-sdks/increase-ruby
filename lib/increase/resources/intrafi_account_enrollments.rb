@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class IntrafiAccountEnrollments
+      # @api private
+      private def initialize_resources; end
+
       # Enroll an account in the IntraFi deposit sweep network
       #
       # @overload create(account_id:, email_address:, request_options: {})
@@ -94,6 +97,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

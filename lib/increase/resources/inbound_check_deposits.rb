@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class InboundCheckDeposits
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve an Inbound Check Deposit
       #
       # @overload retrieve(inbound_check_deposit_id, request_options: {})
@@ -94,6 +97,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

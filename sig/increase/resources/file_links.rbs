@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class FileLinks
+      private def initialize_resources: -> void
+
       def create: (
         file_id: String,
         ?expires_at: Time,

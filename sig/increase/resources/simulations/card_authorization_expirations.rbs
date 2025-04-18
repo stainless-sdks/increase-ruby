@@ -2,6 +2,8 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizationExpirations
+        private def initialize_resources: -> void
+
         def create: (
           card_payment_id: String,
           ?request_options: Increase::request_opts

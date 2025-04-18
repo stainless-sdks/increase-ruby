@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class InboundCheckDeposits
+      private def initialize_resources: -> void
+
       def retrieve: (
         String inbound_check_deposit_id,
         ?request_options: Increase::request_opts

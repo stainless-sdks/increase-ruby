@@ -2,6 +2,8 @@ module Increase
   module Resources
     class Simulations
       class InboundWireTransfers
+        private def initialize_resources: -> void
+
         def create: (
           account_number_id: String,
           amount: Integer,

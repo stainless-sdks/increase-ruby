@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class ACHTransfers
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
         # Federal Reserve. This transfer must first have a `status` of `submitted` . In
         # production, the Federal Reserve generally acknowledges submitted ACH files

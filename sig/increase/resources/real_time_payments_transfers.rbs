@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class RealTimePaymentsTransfers
+      private def initialize_resources: -> void
+
       def create: (
         amount: Integer,
         creditor_name: String,

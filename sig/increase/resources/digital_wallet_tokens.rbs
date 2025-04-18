@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class DigitalWalletTokens
+      private def initialize_resources: -> void
+
       def retrieve: (
         String digital_wallet_token_id,
         ?request_options: Increase::request_opts

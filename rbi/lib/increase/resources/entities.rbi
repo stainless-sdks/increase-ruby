@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Entities
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an Entity
       sig do
         params(

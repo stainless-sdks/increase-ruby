@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class WireTransfers
+        # @api private
+        private def initialize_resources; end
+
         # Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
         # Reserve due to error conditions. This will also create a
         # [Transaction](#transaction) to account for the returned funds. This Wire
@@ -52,6 +55,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

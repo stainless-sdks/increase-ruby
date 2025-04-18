@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class RoutingNumbers
+      private def initialize_resources: -> void
+
       def list: (
         routing_number: String,
         ?cursor: String,

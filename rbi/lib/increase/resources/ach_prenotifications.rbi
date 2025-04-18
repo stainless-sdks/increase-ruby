@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class ACHPrenotifications
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an ACH Prenotification
       sig do
         params(

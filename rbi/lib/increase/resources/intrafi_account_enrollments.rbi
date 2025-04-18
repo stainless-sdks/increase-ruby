@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class IntrafiAccountEnrollments
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Enroll an account in the IntraFi deposit sweep network
       sig do
         params(

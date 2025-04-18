@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class DeclinedTransactions
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Declined Transaction
       sig do
         params(

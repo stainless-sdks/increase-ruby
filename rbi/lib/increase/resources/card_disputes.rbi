@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class CardDisputes
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Card Dispute
       sig do
         params(

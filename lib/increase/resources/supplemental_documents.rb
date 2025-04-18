@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class SupplementalDocuments
+      # @api private
+      private def initialize_resources; end
+
       # Create a supplemental document for an Entity
       #
       # @overload create(entity_id:, file_id:, request_options: {})
@@ -55,6 +58,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

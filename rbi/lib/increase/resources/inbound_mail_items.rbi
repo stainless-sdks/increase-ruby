@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class InboundMailItems
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an Inbound Mail Item
       sig do
         params(

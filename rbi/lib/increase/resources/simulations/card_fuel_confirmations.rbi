@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardFuelConfirmations
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates the fuel confirmation of an authorization by a card acquirer. This
         # happens asynchronously right after a fuel pump transaction is completed. A fuel
         # confirmation can only happen once per authorization.

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class InboundRealTimePaymentsTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an Inbound Real-Time Payments Transfer
       sig do
         params(

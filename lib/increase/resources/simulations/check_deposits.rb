@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CheckDeposits
+        # @api private
+        private def initialize_resources; end
+
         # Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
         # factors like poor image quality. This Check Deposit must first have a `status`
         # of `pending`.
@@ -70,6 +73,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

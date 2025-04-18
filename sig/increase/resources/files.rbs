@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class Files
+      private def initialize_resources: -> void
+
       def create: (
         file: Pathname | StringIO,
         purpose: Increase::Models::FileCreateParams::purpose,

@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class PhysicalCards
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # This endpoint allows you to simulate advancing the shipment status of a Physical
         # Card, to simulate e.g., that a physical card was attempted shipped but then
         # failed delivery.

@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Accounts
+      # @api private
+      private def initialize_resources; end
+
       # Create an Account
       #
       # @overload create(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
@@ -144,6 +147,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

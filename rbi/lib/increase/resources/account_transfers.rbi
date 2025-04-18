@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class AccountTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an Account Transfer
       sig do
         params(

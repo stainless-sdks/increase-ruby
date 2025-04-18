@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class InboundRealTimePaymentsTransfers
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve an Inbound Real-Time Payments Transfer
       #
       # @overload retrieve(inbound_real_time_payments_transfer_id, request_options: {})
@@ -53,6 +56,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class BookkeepingEntries
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Bookkeeping Entry
       sig do
         params(

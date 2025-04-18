@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Documents
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Document
       sig do
         params(

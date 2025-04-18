@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class InboundWireTransfers
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve an Inbound Wire Transfer
       #
       # @overload retrieve(inbound_wire_transfer_id, request_options: {})
@@ -54,6 +57,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

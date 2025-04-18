@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Programs
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve a Program
       #
       # @overload retrieve(program_id, request_options: {})
@@ -50,6 +53,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

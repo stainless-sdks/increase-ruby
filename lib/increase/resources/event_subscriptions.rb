@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class EventSubscriptions
+      # @api private
+      private def initialize_resources; end
+
       # Create an Event Subscription
       #
       # @overload create(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
@@ -97,6 +100,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class RealTimeDecisions
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Real-Time Decision
       sig do
         params(

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class CheckDeposits
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Check Deposit
       sig do
         params(

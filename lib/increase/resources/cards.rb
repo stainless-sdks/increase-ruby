@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Cards
+      # @api private
+      private def initialize_resources; end
+
       # Create a Card
       #
       # @overload create(account_id:, billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, request_options: {})
@@ -124,6 +127,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

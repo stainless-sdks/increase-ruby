@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequestSubmissions
+      private def initialize_resources: -> void
+
       def create: (
         authorization_terms: String,
         authorized_at: Time,

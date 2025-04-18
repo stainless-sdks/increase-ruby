@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class IntrafiBalances
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Get IntraFi balances by bank
       sig do
         params(

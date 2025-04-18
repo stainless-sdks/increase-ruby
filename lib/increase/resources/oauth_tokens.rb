@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class OAuthTokens
+      # @api private
+      private def initialize_resources; end
+
       # Create an OAuth Token
       #
       # @overload create(grant_type:, client_id: nil, client_secret: nil, code: nil, production_token: nil, request_options: {})
@@ -33,6 +36,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class AccountNumbers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an Account Number
       sig do
         params(

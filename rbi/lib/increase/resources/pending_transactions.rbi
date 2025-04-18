@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class PendingTransactions
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve a Pending Transaction
       sig do
         params(

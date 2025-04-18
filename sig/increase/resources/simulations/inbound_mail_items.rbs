@@ -2,6 +2,8 @@ module Increase
   module Resources
     class Simulations
       class InboundMailItems
+        private def initialize_resources: -> void
+
         def create: (
           amount: Integer,
           lockbox_id: String,

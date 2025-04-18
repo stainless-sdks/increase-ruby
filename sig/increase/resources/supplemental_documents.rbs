@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class SupplementalDocuments
+      private def initialize_resources: -> void
+
       def create: (
         entity_id: String,
         file_id: String,

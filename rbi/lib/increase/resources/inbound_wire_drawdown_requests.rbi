@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class InboundWireDrawdownRequests
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an Inbound Wire Drawdown Request
       sig do
         params(

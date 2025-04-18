@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class BookkeepingAccounts
+      # @api private
+      private def initialize_resources; end
+
       # Create a Bookkeeping Account
       #
       # @overload create(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
@@ -100,6 +103,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

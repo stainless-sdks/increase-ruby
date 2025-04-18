@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Files
+      # @api private
+      private def initialize_resources; end
+
       # To upload a file to Increase, you'll need to send a request of Content-Type
       # `multipart/form-data`. The request should contain the file you would like to
       # upload, as well as the parameters for creating a file.
@@ -79,6 +82,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

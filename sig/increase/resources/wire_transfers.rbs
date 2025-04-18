@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class WireTransfers
+      private def initialize_resources: -> void
+
       def create: (
         account_id: String,
         amount: Integer,

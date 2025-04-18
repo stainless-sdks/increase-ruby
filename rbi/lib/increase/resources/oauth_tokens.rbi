@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class OAuthTokens
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an OAuth Token
       sig do
         params(

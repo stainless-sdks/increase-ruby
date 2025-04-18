@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class RoutingNumbers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # You can use this API to confirm if a routing number is valid, such as when a
       # user is providing you with bank account details. Since routing numbers uniquely
       # identify a bank, this will always return 0 or 1 entry. In Sandbox, the only

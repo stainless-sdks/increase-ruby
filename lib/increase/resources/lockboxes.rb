@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Lockboxes
+      # @api private
+      private def initialize_resources; end
+
       # Create a Lockbox
       #
       # @overload create(account_id:, description: nil, recipient_name: nil, request_options: {})
@@ -100,6 +103,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

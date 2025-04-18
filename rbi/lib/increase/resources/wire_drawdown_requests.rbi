@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class WireDrawdownRequests
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Wire Drawdown Request
       sig do
         params(

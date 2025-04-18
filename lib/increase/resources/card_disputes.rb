@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class CardDisputes
+      # @api private
+      private def initialize_resources; end
+
       # Create a Card Dispute
       #
       # @overload create(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
@@ -76,6 +79,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

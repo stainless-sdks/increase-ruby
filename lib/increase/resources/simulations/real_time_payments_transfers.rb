@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class RealTimePaymentsTransfers
+        # @api private
+        private def initialize_resources; end
+
         # Simulates submission of a
         # [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
         # response from the destination financial institution. This transfer must first
@@ -35,6 +38,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

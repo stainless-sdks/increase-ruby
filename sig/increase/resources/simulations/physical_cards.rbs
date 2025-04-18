@@ -2,6 +2,8 @@ module Increase
   module Resources
     class Simulations
       class PhysicalCards
+        private def initialize_resources: -> void
+
         def advance_shipment: (
           String physical_card_id,
           shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,

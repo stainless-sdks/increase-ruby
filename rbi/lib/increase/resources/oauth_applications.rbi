@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class OAuthApplications
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an OAuth Application
       sig do
         params(

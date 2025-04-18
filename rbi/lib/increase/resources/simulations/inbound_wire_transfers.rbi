@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class InboundWireTransfers
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
         sig do
           params(

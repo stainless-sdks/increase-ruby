@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class DigitalWalletTokenRequests
+        # @api private
+        private def initialize_resources; end
+
         # Simulates a user attempting add a [Card](#cards) to a digital wallet such as
         # Apple Pay.
         #
@@ -32,6 +35,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class Transactions
+      private def initialize_resources: -> void
+
       def retrieve: (
         String transaction_id,
         ?request_options: Increase::request_opts

@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardIncrements
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates the increment of an authorization by a card acquirer. An authorization
         # can be incremented multiple times.
         sig do

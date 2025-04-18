@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class BookkeepingEntrySets
+      # @api private
+      private def initialize_resources; end
+
       # Create a Bookkeeping Entry Set
       #
       # @overload create(entries:, date: nil, transaction_id: nil, request_options: {})
@@ -75,6 +78,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

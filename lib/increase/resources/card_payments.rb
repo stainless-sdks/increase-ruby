@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class CardPayments
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve a Card Payment
       #
       # @overload retrieve(card_payment_id, request_options: {})
@@ -53,6 +56,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

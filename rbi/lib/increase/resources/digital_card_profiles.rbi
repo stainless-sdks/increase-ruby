@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class DigitalCardProfiles
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Digital Card Profile
       sig do
         params(

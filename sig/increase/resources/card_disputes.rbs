@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class CardDisputes
+      private def initialize_resources: -> void
+
       def create: (
         disputed_transaction_id: String,
         explanation: String,

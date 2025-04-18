@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Files
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # To upload a file to Increase, you'll need to send a request of Content-Type
       # `multipart/form-data`. The request should contain the file you would like to
       # upload, as well as the parameters for creating a file.

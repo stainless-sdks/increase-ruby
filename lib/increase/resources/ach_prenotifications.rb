@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class ACHPrenotifications
+      # @api private
+      private def initialize_resources; end
+
       # Create an ACH Prenotification
       #
       # @overload create(account_id:, account_number:, routing_number:, addendum: nil, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_name: nil, credit_debit_indicator: nil, effective_date: nil, individual_id: nil, individual_name: nil, standard_entry_class_code: nil, request_options: {})
@@ -85,6 +88,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class InboundFundsHolds
+        # @api private
+        private def initialize_resources; end
+
         # This endpoint simulates immediately releasing an Inbound Funds Hold, which might
         # be created as a result of e.g., an ACH debit.
         #
@@ -29,6 +32,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

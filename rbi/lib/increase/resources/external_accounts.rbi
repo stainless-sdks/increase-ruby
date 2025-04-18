@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class ExternalAccounts
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create an External Account
       sig do
         params(

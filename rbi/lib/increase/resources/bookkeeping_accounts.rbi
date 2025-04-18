@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class BookkeepingAccounts
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Bookkeeping Account
       sig do
         params(

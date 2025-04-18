@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardIncrements
+        # @api private
+        private def initialize_resources; end
+
         # Simulates the increment of an authorization by a card acquirer. An authorization
         # can be incremented multiple times.
         #
@@ -33,6 +36,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

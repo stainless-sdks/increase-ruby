@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class InboundMailItems
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates an inbound mail item to your account, as if someone had mailed a
         # physical check to one of your account's Lockboxes.
         sig do

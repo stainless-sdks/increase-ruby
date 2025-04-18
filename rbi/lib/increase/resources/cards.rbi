@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Cards
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Create a Card
       sig do
         params(

@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class InboundWireDrawdownRequests
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve an Inbound Wire Drawdown Request
       #
       # @overload retrieve(inbound_wire_drawdown_request_id, request_options: {})
@@ -50,6 +53,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

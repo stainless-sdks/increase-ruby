@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class WireDrawdownRequests
+      # @api private
+      private def initialize_resources; end
+
       # Create a Wire Drawdown Request
       #
       # @overload create(account_number_id:, amount:, message_to_recipient:, recipient_account_number:, recipient_name:, recipient_routing_number:, originator_address_line1: nil, originator_address_line2: nil, originator_address_line3: nil, originator_name: nil, recipient_address_line1: nil, recipient_address_line2: nil, recipient_address_line3: nil, request_options: {})
@@ -85,6 +88,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

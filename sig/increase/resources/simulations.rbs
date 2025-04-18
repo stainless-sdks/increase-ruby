@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class Simulations
+      private def initialize_resources: -> void
+
       attr_reader interest_payments: Increase::Resources::Simulations::InterestPayments
 
       attr_reader card_authorizations: Increase::Resources::Simulations::CardAuthorizations

@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardReversals
+        # @api private
+        private def initialize_resources; end
+
         # Simulates the reversal of an authorization by a card acquirer. An authorization
         # can be partially reversed multiple times, up until the total authorized amount.
         # Marks the pending transaction as complete if the authorization is fully
@@ -34,6 +37,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

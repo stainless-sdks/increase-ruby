@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizations
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates a purchase authorization on a [Card](#cards). Depending on the balance
         # available to the card and the `amount` submitted, the authorization activity
         # will result in a [Pending Transaction](#pending-transactions) of type

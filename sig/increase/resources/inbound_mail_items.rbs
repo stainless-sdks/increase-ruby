@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class InboundMailItems
+      private def initialize_resources: -> void
+
       def retrieve: (
         String inbound_mail_item_id,
         ?request_options: Increase::request_opts

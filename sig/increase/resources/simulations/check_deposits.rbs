@@ -2,6 +2,8 @@ module Increase
   module Resources
     class Simulations
       class CheckDeposits
+        private def initialize_resources: -> void
+
         def reject: (
           String check_deposit_id,
           ?request_options: Increase::request_opts

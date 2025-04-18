@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class InboundACHTransfers
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an Inbound ACH Transfer
       sig do
         params(

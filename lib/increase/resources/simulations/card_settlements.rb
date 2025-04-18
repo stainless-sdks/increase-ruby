@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardSettlements
+        # @api private
+        private def initialize_resources; end
+
         # Simulates the settlement of an authorization by a card acquirer. After a card
         # authorization is created, the merchant will eventually send a settlement. This
         # simulates that event, which may occur many days after the purchase in
@@ -36,6 +39,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

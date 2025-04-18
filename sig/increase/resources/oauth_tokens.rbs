@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class OAuthTokens
+      private def initialize_resources: -> void
+
       def create: (
         grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
         ?client_id: String,

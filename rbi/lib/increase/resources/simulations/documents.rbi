@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class Documents
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates an tax document being created for an account.
         sig do
           params(

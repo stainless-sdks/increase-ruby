@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class RealTimePaymentsTransfers
+      # @api private
+      private def initialize_resources; end
+
       # Create a Real-Time Payments Transfer
       #
       # @overload create(amount:, creditor_name:, remittance_information:, source_account_number_id:, debtor_name: nil, destination_account_number: nil, destination_routing_number: nil, external_account_id: nil, require_approval: nil, ultimate_creditor_name: nil, ultimate_debtor_name: nil, request_options: {})
@@ -86,6 +89,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

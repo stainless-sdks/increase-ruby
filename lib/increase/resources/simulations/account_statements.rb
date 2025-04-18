@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class AccountStatements
+        # @api private
+        private def initialize_resources; end
+
         # Simulates an [Account Statement](#account-statements) being created for an
         # account. In production, Account Statements are generated once per month.
         #
@@ -31,6 +34,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

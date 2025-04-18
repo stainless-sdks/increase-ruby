@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CheckTransfers
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         # periodically throughout the day in production but can be sped up in sandbox.
         # This transfer must first have a `status` of `pending_approval` or

@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardRefunds
+        # @api private
+        private def initialize_resources; end
+
         # Simulates refunding a card transaction. The full value of the original sandbox
         # transaction is refunded.
         #
@@ -31,6 +34,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end

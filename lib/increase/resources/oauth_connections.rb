@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class OAuthConnections
+      # @api private
+      private def initialize_resources; end
+
       # Retrieve an OAuth Connection
       #
       # @overload retrieve(oauth_connection_id, request_options: {})
@@ -52,6 +55,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class CheckDeposits
+      # @api private
+      private def initialize_resources; end
+
       # Create a Check Deposit
       #
       # @overload create(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
@@ -78,6 +81,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
+        initialize_resources
       end
     end
   end

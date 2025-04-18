@@ -1,6 +1,8 @@
 module Increase
   module Resources
     class Exports
+      private def initialize_resources: -> void
+
       def create: (
         category: Increase::Models::ExportCreateParams::category,
         ?account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,

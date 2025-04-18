@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Events
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       # Retrieve an Event
       sig do
         params(

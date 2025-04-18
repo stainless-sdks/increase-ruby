@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class InterestPayments
+        # @api private
+        sig { void }
+        private def initialize_resources; end
+
         # Simulates an interest payment to your account. In production, this happens
         # automatically on the first of each month.
         sig do

@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class InboundMailItems
+        # @api private
+        private def initialize_resources; end
+
         # Simulates an inbound mail item to your account, as if someone had mailed a
         # physical check to one of your account's Lockboxes.
         #
@@ -33,6 +36,7 @@ module Increase
         # @param client [Increase::Client]
         def initialize(client:)
           @client = client
+          initialize_resources
         end
       end
     end
