@@ -98,35 +98,17 @@ module Increase
       #   # @return [Increase::Models::DigitalCardProfileCloneParams::TextColor]
       #   attr_writer :text_color
 
-      # @!parse
-      #   # @param app_icon_file_id [String]
-      #   # @param background_image_file_id [String]
-      #   # @param card_description [String]
-      #   # @param contact_email [String]
-      #   # @param contact_phone [String]
-      #   # @param contact_website [String]
-      #   # @param description [String]
-      #   # @param issuer_name [String]
-      #   # @param text_color [Increase::Models::DigitalCardProfileCloneParams::TextColor]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     app_icon_file_id: nil,
-      #     background_image_file_id: nil,
-      #     card_description: nil,
-      #     contact_email: nil,
-      #     contact_phone: nil,
-      #     contact_website: nil,
-      #     description: nil,
-      #     issuer_name: nil,
-      #     text_color: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(app_icon_file_id: nil, background_image_file_id: nil, card_description: nil, contact_email: nil, contact_phone: nil, contact_website: nil, description: nil, issuer_name: nil, text_color: nil, request_options: {})
+      #   @param app_icon_file_id [String]
+      #   @param background_image_file_id [String]
+      #   @param card_description [String]
+      #   @param contact_email [String]
+      #   @param contact_phone [String]
+      #   @param contact_website [String]
+      #   @param description [String]
+      #   @param issuer_name [String]
+      #   @param text_color [Increase::Models::DigitalCardProfileCloneParams::TextColor]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class TextColor < Increase::Internal::Type::BaseModel
         # @!attribute blue
@@ -147,16 +129,12 @@ module Increase
         #   @return [Integer]
         required :red, Integer
 
-        # @!parse
-        #   # The Card's text color, specified as an RGB triple. The default is white.
-        #   #
-        #   # @param blue [Integer]
-        #   # @param green [Integer]
-        #   # @param red [Integer]
-        #   #
-        #   def initialize(blue:, green:, red:, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(blue:, green:, red:)
+        #   The Card's text color, specified as an RGB triple. The default is white.
+        #
+        #   @param blue [Integer]
+        #   @param green [Integer]
+        #   @param red [Integer]
       end
     end
   end

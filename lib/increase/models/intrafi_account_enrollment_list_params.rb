@@ -61,17 +61,13 @@ module Increase
       #   # @return [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param status [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      #   @param account_id [String]
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param status [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
@@ -88,12 +84,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -113,11 +105,8 @@ module Increase
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION = :requires_attention
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

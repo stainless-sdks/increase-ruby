@@ -103,35 +103,17 @@ module Increase
       #   # @return [Increase::Models::EntityCreateParams::Trust]
       #   attr_writer :trust
 
-      # @!parse
-      #   # @param structure [Symbol, Increase::Models::EntityCreateParams::Structure]
-      #   # @param corporation [Increase::Models::EntityCreateParams::Corporation]
-      #   # @param description [String]
-      #   # @param government_authority [Increase::Models::EntityCreateParams::GovernmentAuthority]
-      #   # @param joint [Increase::Models::EntityCreateParams::Joint]
-      #   # @param natural_person [Increase::Models::EntityCreateParams::NaturalPerson]
-      #   # @param supplemental_documents [Array<Increase::Models::EntityCreateParams::SupplementalDocument>]
-      #   # @param third_party_verification [Increase::Models::EntityCreateParams::ThirdPartyVerification]
-      #   # @param trust [Increase::Models::EntityCreateParams::Trust]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     structure:,
-      #     corporation: nil,
-      #     description: nil,
-      #     government_authority: nil,
-      #     joint: nil,
-      #     natural_person: nil,
-      #     supplemental_documents: nil,
-      #     third_party_verification: nil,
-      #     trust: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(structure:, corporation: nil, description: nil, government_authority: nil, joint: nil, natural_person: nil, supplemental_documents: nil, third_party_verification: nil, trust: nil, request_options: {})
+      #   @param structure [Symbol, Increase::Models::EntityCreateParams::Structure]
+      #   @param corporation [Increase::Models::EntityCreateParams::Corporation]
+      #   @param description [String]
+      #   @param government_authority [Increase::Models::EntityCreateParams::GovernmentAuthority]
+      #   @param joint [Increase::Models::EntityCreateParams::Joint]
+      #   @param natural_person [Increase::Models::EntityCreateParams::NaturalPerson]
+      #   @param supplemental_documents [Array<Increase::Models::EntityCreateParams::SupplementalDocument>]
+      #   @param third_party_verification [Increase::Models::EntityCreateParams::ThirdPartyVerification]
+      #   @param trust [Increase::Models::EntityCreateParams::Trust]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of Entity to create.
       module Structure
@@ -152,11 +134,8 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY = :government_authority
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Corporation < Increase::Internal::Type::BaseModel
@@ -221,32 +200,17 @@ module Increase
         #   # @return [String]
         #   attr_writer :website
 
-        # @!parse
-        #   # Details of the corporation entity to create. Required if `structure` is equal to
-        #   # `corporation`.
-        #   #
-        #   # @param address [Increase::Models::EntityCreateParams::Corporation::Address]
-        #   # @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
-        #   # @param name [String]
-        #   # @param tax_identifier [String]
-        #   # @param incorporation_state [String]
-        #   # @param industry_code [String]
-        #   # @param website [String]
-        #   #
-        #   def initialize(
-        #     address:,
-        #     beneficial_owners:,
-        #     name:,
-        #     tax_identifier:,
-        #     incorporation_state: nil,
-        #     industry_code: nil,
-        #     website: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, beneficial_owners:, name:, tax_identifier:, incorporation_state: nil, industry_code: nil, website: nil)
+        #   Details of the corporation entity to create. Required if `structure` is equal to
+        #   `corporation`.
+        #
+        #   @param address [Increase::Models::EntityCreateParams::Corporation::Address]
+        #   @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
+        #   @param name [String]
+        #   @param tax_identifier [String]
+        #   @param incorporation_state [String]
+        #   @param industry_code [String]
+        #   @param website [String]
 
         # @see Increase::Models::EntityCreateParams::Corporation#address
         class Address < Increase::Internal::Type::BaseModel
@@ -285,19 +249,15 @@ module Increase
           #   # @return [String]
           #   attr_writer :line2
 
-          # @!parse
-          #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   # are disallowed.
-          #   #
-          #   # @param city [String]
-          #   # @param line1 [String]
-          #   # @param state [String]
-          #   # @param zip [String]
-          #   # @param line2 [String]
-          #   #
-          #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+          #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+          #   are disallowed.
+          #
+          #   @param city [String]
+          #   @param line1 [String]
+          #   @param state [String]
+          #   @param zip [String]
+          #   @param line2 [String]
         end
 
         class BeneficialOwner < Increase::Internal::Type::BaseModel
@@ -327,14 +287,10 @@ module Increase
           #   # @return [String]
           #   attr_writer :company_title
 
-          # @!parse
-          #   # @param individual [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual]
-          #   # @param prongs [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
-          #   # @param company_title [String]
-          #   #
-          #   def initialize(individual:, prongs:, company_title: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(individual:, prongs:, company_title: nil)
+          #   @param individual [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual]
+          #   @param prongs [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
+          #   @param company_title [String]
 
           # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner#individual
           class Individual < Increase::Internal::Type::BaseModel
@@ -378,18 +334,14 @@ module Increase
             #   # @return [Boolean]
             #   attr_writer :confirmed_no_us_tax_id
 
-            # @!parse
-            #   # Personal details for the beneficial owner.
-            #   #
-            #   # @param address [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
-            #   # @param date_of_birth [Date]
-            #   # @param identification [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification]
-            #   # @param name [String]
-            #   # @param confirmed_no_us_tax_id [Boolean]
-            #   #
-            #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+            #   Personal details for the beneficial owner.
+            #
+            #   @param address [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
+            #   @param date_of_birth [Date]
+            #   @param identification [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification]
+            #   @param name [String]
+            #   @param confirmed_no_us_tax_id [Boolean]
 
             # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#address
             class Address < Increase::Internal::Type::BaseModel
@@ -447,20 +399,16 @@ module Increase
               #   # @return [String]
               #   attr_writer :zip
 
-              # @!parse
-              #   # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   # PMB's are disallowed.
-              #   #
-              #   # @param country [String]
-              #   # @param line1 [String]
-              #   # @param city [String]
-              #   # @param line2 [String]
-              #   # @param state [String]
-              #   # @param zip [String]
-              #   #
-              #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
+              #   The individual's physical address. Mail receiving locations like PO Boxes and
+              #   PMB's are disallowed.
+              #
+              #   @param country [String]
+              #   @param line1 [String]
+              #   @param city [String]
+              #   @param line2 [String]
+              #   @param state [String]
+              #   @param zip [String]
             end
 
             # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual#identification
@@ -516,18 +464,14 @@ module Increase
               #   # @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport]
               #   attr_writer :passport
 
-              # @!parse
-              #   # A means of verifying the person's identity.
-              #   #
-              #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method]
-              #   # @param number [String]
-              #   # @param drivers_license [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense]
-              #   # @param other [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other]
-              #   # @param passport [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport]
-              #   #
-              #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+              #   A means of verifying the person's identity.
+              #
+              #   @param method_ [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method]
+              #   @param number [String]
+              #   @param drivers_license [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense]
+              #   @param other [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other]
+              #   @param passport [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport]
 
               # A method that can be used to verify the individual's identity.
               #
@@ -550,11 +494,8 @@ module Increase
                 # Another identifying document.
                 OTHER = :other
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#drivers_license
@@ -587,18 +528,14 @@ module Increase
                 #   # @return [String]
                 #   attr_writer :back_file_id
 
-                # @!parse
-                #   # Information about the United States driver's license used for identification.
-                #   # Required if `method` is equal to `drivers_license`.
-                #   #
-                #   # @param expiration_date [Date]
-                #   # @param file_id [String]
-                #   # @param state [String]
-                #   # @param back_file_id [String]
-                #   #
-                #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
-
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # @!method initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+                #   Information about the United States driver's license used for identification.
+                #   Required if `method` is equal to `drivers_license`.
+                #
+                #   @param expiration_date [Date]
+                #   @param file_id [String]
+                #   @param state [String]
+                #   @param back_file_id [String]
               end
 
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#other
@@ -643,19 +580,15 @@ module Increase
                 #   # @return [Date]
                 #   attr_writer :expiration_date
 
-                # @!parse
-                #   # Information about the identification document provided. Required if `method` is
-                #   # equal to `other`.
-                #   #
-                #   # @param country [String]
-                #   # @param description [String]
-                #   # @param file_id [String]
-                #   # @param back_file_id [String]
-                #   # @param expiration_date [Date]
-                #   #
-                #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
-
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # @!method initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+                #   Information about the identification document provided. Required if `method` is
+                #   equal to `other`.
+                #
+                #   @param country [String]
+                #   @param description [String]
+                #   @param file_id [String]
+                #   @param back_file_id [String]
+                #   @param expiration_date [Date]
               end
 
               # @see Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification#passport
@@ -678,17 +611,13 @@ module Increase
                 #   @return [String]
                 required :file_id, String
 
-                # @!parse
-                #   # Information about the passport used for identification. Required if `method` is
-                #   # equal to `passport`.
-                #   #
-                #   # @param country [String]
-                #   # @param expiration_date [Date]
-                #   # @param file_id [String]
-                #   #
-                #   def initialize(country:, expiration_date:, file_id:, **) = super
-
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # @!method initialize(country:, expiration_date:, file_id:)
+                #   Information about the passport used for identification. Required if `method` is
+                #   equal to `passport`.
+                #
+                #   @param country [String]
+                #   @param expiration_date [Date]
+                #   @param file_id [String]
               end
             end
           end
@@ -702,11 +631,8 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL = :control
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end
@@ -754,20 +680,16 @@ module Increase
         #   # @return [String]
         #   attr_writer :website
 
-        # @!parse
-        #   # Details of the Government Authority entity to create. Required if `structure` is
-        #   # equal to `Government Authority`.
-        #   #
-        #   # @param address [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
-        #   # @param authorized_persons [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
-        #   # @param category [Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category]
-        #   # @param name [String]
-        #   # @param tax_identifier [String]
-        #   # @param website [String]
-        #   #
-        #   def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil)
+        #   Details of the Government Authority entity to create. Required if `structure` is
+        #   equal to `Government Authority`.
+        #
+        #   @param address [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
+        #   @param authorized_persons [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
+        #   @param category [Symbol, Increase::Models::EntityCreateParams::GovernmentAuthority::Category]
+        #   @param name [String]
+        #   @param tax_identifier [String]
+        #   @param website [String]
 
         # @see Increase::Models::EntityCreateParams::GovernmentAuthority#address
         class Address < Increase::Internal::Type::BaseModel
@@ -806,19 +728,15 @@ module Increase
           #   # @return [String]
           #   attr_writer :line2
 
-          # @!parse
-          #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   # are disallowed.
-          #   #
-          #   # @param city [String]
-          #   # @param line1 [String]
-          #   # @param state [String]
-          #   # @param zip [String]
-          #   # @param line2 [String]
-          #   #
-          #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+          #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+          #   are disallowed.
+          #
+          #   @param city [String]
+          #   @param line1 [String]
+          #   @param state [String]
+          #   @param zip [String]
+          #   @param line2 [String]
         end
 
         class AuthorizedPerson < Increase::Internal::Type::BaseModel
@@ -828,12 +746,8 @@ module Increase
           #   @return [String]
           required :name, String
 
-          # @!parse
-          #   # @param name [String]
-          #   #
-          #   def initialize(name:, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(name:)
+          #   @param name [String]
         end
 
         # The category of the government authority.
@@ -845,11 +759,8 @@ module Increase
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -871,16 +782,12 @@ module Increase
         #   # @return [String]
         #   attr_writer :name
 
-        # @!parse
-        #   # Details of the joint entity to create. Required if `structure` is equal to
-        #   # `joint`.
-        #   #
-        #   # @param individuals [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
-        #   # @param name [String]
-        #   #
-        #   def initialize(individuals:, name: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(individuals:, name: nil)
+        #   Details of the joint entity to create. Required if `structure` is equal to
+        #   `joint`.
+        #
+        #   @param individuals [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
+        #   @param name [String]
 
         class Individual < Increase::Internal::Type::BaseModel
           # @!attribute address
@@ -921,16 +828,12 @@ module Increase
           #   # @return [Boolean]
           #   attr_writer :confirmed_no_us_tax_id
 
-          # @!parse
-          #   # @param address [Increase::Models::EntityCreateParams::Joint::Individual::Address]
-          #   # @param date_of_birth [Date]
-          #   # @param identification [Increase::Models::EntityCreateParams::Joint::Individual::Identification]
-          #   # @param name [String]
-          #   # @param confirmed_no_us_tax_id [Boolean]
-          #   #
-          #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          #   @param address [Increase::Models::EntityCreateParams::Joint::Individual::Address]
+          #   @param date_of_birth [Date]
+          #   @param identification [Increase::Models::EntityCreateParams::Joint::Individual::Identification]
+          #   @param name [String]
+          #   @param confirmed_no_us_tax_id [Boolean]
 
           # @see Increase::Models::EntityCreateParams::Joint::Individual#address
           class Address < Increase::Internal::Type::BaseModel
@@ -969,19 +872,15 @@ module Increase
             #   # @return [String]
             #   attr_writer :line2
 
-            # @!parse
-            #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   # PMB's are disallowed.
-            #   #
-            #   # @param city [String]
-            #   # @param line1 [String]
-            #   # @param state [String]
-            #   # @param zip [String]
-            #   # @param line2 [String]
-            #   #
-            #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+            #   The individual's physical address. Mail receiving locations like PO Boxes and
+            #   PMB's are disallowed.
+            #
+            #   @param city [String]
+            #   @param line1 [String]
+            #   @param state [String]
+            #   @param zip [String]
+            #   @param line2 [String]
           end
 
           # @see Increase::Models::EntityCreateParams::Joint::Individual#identification
@@ -1036,18 +935,14 @@ module Increase
             #   # @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport]
             #   attr_writer :passport
 
-            # @!parse
-            #   # A means of verifying the person's identity.
-            #   #
-            #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method]
-            #   # @param number [String]
-            #   # @param drivers_license [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense]
-            #   # @param other [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other]
-            #   # @param passport [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport]
-            #   #
-            #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            #   A means of verifying the person's identity.
+            #
+            #   @param method_ [Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method]
+            #   @param number [String]
+            #   @param drivers_license [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense]
+            #   @param other [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other]
+            #   @param passport [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport]
 
             # A method that can be used to verify the individual's identity.
             #
@@ -1070,11 +965,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#drivers_license
@@ -1107,18 +999,14 @@ module Increase
               #   # @return [String]
               #   attr_writer :back_file_id
 
-              # @!parse
-              #   # Information about the United States driver's license used for identification.
-              #   # Required if `method` is equal to `drivers_license`.
-              #   #
-              #   # @param expiration_date [Date]
-              #   # @param file_id [String]
-              #   # @param state [String]
-              #   # @param back_file_id [String]
-              #   #
-              #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+              #   Information about the United States driver's license used for identification.
+              #   Required if `method` is equal to `drivers_license`.
+              #
+              #   @param expiration_date [Date]
+              #   @param file_id [String]
+              #   @param state [String]
+              #   @param back_file_id [String]
             end
 
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#other
@@ -1163,19 +1051,15 @@ module Increase
               #   # @return [Date]
               #   attr_writer :expiration_date
 
-              # @!parse
-              #   # Information about the identification document provided. Required if `method` is
-              #   # equal to `other`.
-              #   #
-              #   # @param country [String]
-              #   # @param description [String]
-              #   # @param file_id [String]
-              #   # @param back_file_id [String]
-              #   # @param expiration_date [Date]
-              #   #
-              #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              #   Information about the identification document provided. Required if `method` is
+              #   equal to `other`.
+              #
+              #   @param country [String]
+              #   @param description [String]
+              #   @param file_id [String]
+              #   @param back_file_id [String]
+              #   @param expiration_date [Date]
             end
 
             # @see Increase::Models::EntityCreateParams::Joint::Individual::Identification#passport
@@ -1198,17 +1082,13 @@ module Increase
               #   @return [String]
               required :file_id, String
 
-              # @!parse
-              #   # Information about the passport used for identification. Required if `method` is
-              #   # equal to `passport`.
-              #   #
-              #   # @param country [String]
-              #   # @param expiration_date [Date]
-              #   # @param file_id [String]
-              #   #
-              #   def initialize(country:, expiration_date:, file_id:, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, expiration_date:, file_id:)
+              #   Information about the passport used for identification. Required if `method` is
+              #   equal to `passport`.
+              #
+              #   @param country [String]
+              #   @param expiration_date [Date]
+              #   @param file_id [String]
             end
           end
         end
@@ -1253,21 +1133,17 @@ module Increase
         #   # @return [Boolean]
         #   attr_writer :confirmed_no_us_tax_id
 
-        # @!parse
-        #   # Details of the natural person entity to create. Required if `structure` is equal
-        #   # to `natural_person`. Natural people entities should be submitted with
-        #   # `social_security_number` or `individual_taxpayer_identification_number`
-        #   # identification methods.
-        #   #
-        #   # @param address [Increase::Models::EntityCreateParams::NaturalPerson::Address]
-        #   # @param date_of_birth [Date]
-        #   # @param identification [Increase::Models::EntityCreateParams::NaturalPerson::Identification]
-        #   # @param name [String]
-        #   # @param confirmed_no_us_tax_id [Boolean]
-        #   #
-        #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+        #   Details of the natural person entity to create. Required if `structure` is equal
+        #   to `natural_person`. Natural people entities should be submitted with
+        #   `social_security_number` or `individual_taxpayer_identification_number`
+        #   identification methods.
+        #
+        #   @param address [Increase::Models::EntityCreateParams::NaturalPerson::Address]
+        #   @param date_of_birth [Date]
+        #   @param identification [Increase::Models::EntityCreateParams::NaturalPerson::Identification]
+        #   @param name [String]
+        #   @param confirmed_no_us_tax_id [Boolean]
 
         # @see Increase::Models::EntityCreateParams::NaturalPerson#address
         class Address < Increase::Internal::Type::BaseModel
@@ -1306,19 +1182,15 @@ module Increase
           #   # @return [String]
           #   attr_writer :line2
 
-          # @!parse
-          #   # The individual's physical address. Mail receiving locations like PO Boxes and
-          #   # PMB's are disallowed.
-          #   #
-          #   # @param city [String]
-          #   # @param line1 [String]
-          #   # @param state [String]
-          #   # @param zip [String]
-          #   # @param line2 [String]
-          #   #
-          #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+          #   The individual's physical address. Mail receiving locations like PO Boxes and
+          #   PMB's are disallowed.
+          #
+          #   @param city [String]
+          #   @param line1 [String]
+          #   @param state [String]
+          #   @param zip [String]
+          #   @param line2 [String]
         end
 
         # @see Increase::Models::EntityCreateParams::NaturalPerson#identification
@@ -1372,18 +1244,14 @@ module Increase
           #   # @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport]
           #   attr_writer :passport
 
-          # @!parse
-          #   # A means of verifying the person's identity.
-          #   #
-          #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method]
-          #   # @param number [String]
-          #   # @param drivers_license [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense]
-          #   # @param other [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other]
-          #   # @param passport [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport]
-          #   #
-          #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+          #   A means of verifying the person's identity.
+          #
+          #   @param method_ [Symbol, Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method]
+          #   @param number [String]
+          #   @param drivers_license [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense]
+          #   @param other [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other]
+          #   @param passport [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport]
 
           # A method that can be used to verify the individual's identity.
           #
@@ -1406,11 +1274,8 @@ module Increase
             # Another identifying document.
             OTHER = :other
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#drivers_license
@@ -1443,18 +1308,14 @@ module Increase
             #   # @return [String]
             #   attr_writer :back_file_id
 
-            # @!parse
-            #   # Information about the United States driver's license used for identification.
-            #   # Required if `method` is equal to `drivers_license`.
-            #   #
-            #   # @param expiration_date [Date]
-            #   # @param file_id [String]
-            #   # @param state [String]
-            #   # @param back_file_id [String]
-            #   #
-            #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+            #   Information about the United States driver's license used for identification.
+            #   Required if `method` is equal to `drivers_license`.
+            #
+            #   @param expiration_date [Date]
+            #   @param file_id [String]
+            #   @param state [String]
+            #   @param back_file_id [String]
           end
 
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#other
@@ -1499,19 +1360,15 @@ module Increase
             #   # @return [Date]
             #   attr_writer :expiration_date
 
-            # @!parse
-            #   # Information about the identification document provided. Required if `method` is
-            #   # equal to `other`.
-            #   #
-            #   # @param country [String]
-            #   # @param description [String]
-            #   # @param file_id [String]
-            #   # @param back_file_id [String]
-            #   # @param expiration_date [Date]
-            #   #
-            #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+            #   Information about the identification document provided. Required if `method` is
+            #   equal to `other`.
+            #
+            #   @param country [String]
+            #   @param description [String]
+            #   @param file_id [String]
+            #   @param back_file_id [String]
+            #   @param expiration_date [Date]
           end
 
           # @see Increase::Models::EntityCreateParams::NaturalPerson::Identification#passport
@@ -1534,17 +1391,13 @@ module Increase
             #   @return [String]
             required :file_id, String
 
-            # @!parse
-            #   # Information about the passport used for identification. Required if `method` is
-            #   # equal to `passport`.
-            #   #
-            #   # @param country [String]
-            #   # @param expiration_date [Date]
-            #   # @param file_id [String]
-            #   #
-            #   def initialize(country:, expiration_date:, file_id:, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(country:, expiration_date:, file_id:)
+            #   Information about the passport used for identification. Required if `method` is
+            #   equal to `passport`.
+            #
+            #   @param country [String]
+            #   @param expiration_date [Date]
+            #   @param file_id [String]
           end
         end
       end
@@ -1556,12 +1409,8 @@ module Increase
         #   @return [String]
         required :file_id, String
 
-        # @!parse
-        #   # @param file_id [String]
-        #   #
-        #   def initialize(file_id:, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(file_id:)
+        #   @param file_id [String]
       end
 
       class ThirdPartyVerification < Increase::Internal::Type::BaseModel
@@ -1577,16 +1426,12 @@ module Increase
         #   @return [Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor]
         required :vendor, enum: -> { Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor }
 
-        # @!parse
-        #   # A reference to data stored in a third-party verification service. Your
-        #   # integration may or may not use this field.
-        #   #
-        #   # @param reference [String]
-        #   # @param vendor [Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor]
-        #   #
-        #   def initialize(reference:, vendor:, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(reference:, vendor:)
+        #   A reference to data stored in a third-party verification service. Your
+        #   integration may or may not use this field.
+        #
+        #   @param reference [String]
+        #   @param vendor [Symbol, Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor]
 
         # The vendor that was used to perform the verification.
         #
@@ -1600,11 +1445,8 @@ module Increase
           # Middesk. See https://middesk.com for more information.
           MIDDESK = :middesk
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -1679,34 +1521,18 @@ module Increase
         #   # @return [String]
         #   attr_writer :tax_identifier
 
-        # @!parse
-        #   # Details of the trust entity to create. Required if `structure` is equal to
-        #   # `trust`.
-        #   #
-        #   # @param address [Increase::Models::EntityCreateParams::Trust::Address]
-        #   # @param category [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
-        #   # @param name [String]
-        #   # @param trustees [Array<Increase::Models::EntityCreateParams::Trust::Trustee>]
-        #   # @param formation_document_file_id [String]
-        #   # @param formation_state [String]
-        #   # @param grantor [Increase::Models::EntityCreateParams::Trust::Grantor]
-        #   # @param tax_identifier [String]
-        #   #
-        #   def initialize(
-        #     address:,
-        #     category:,
-        #     name:,
-        #     trustees:,
-        #     formation_document_file_id: nil,
-        #     formation_state: nil,
-        #     grantor: nil,
-        #     tax_identifier: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(address:, category:, name:, trustees:, formation_document_file_id: nil, formation_state: nil, grantor: nil, tax_identifier: nil)
+        #   Details of the trust entity to create. Required if `structure` is equal to
+        #   `trust`.
+        #
+        #   @param address [Increase::Models::EntityCreateParams::Trust::Address]
+        #   @param category [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
+        #   @param name [String]
+        #   @param trustees [Array<Increase::Models::EntityCreateParams::Trust::Trustee>]
+        #   @param formation_document_file_id [String]
+        #   @param formation_state [String]
+        #   @param grantor [Increase::Models::EntityCreateParams::Trust::Grantor]
+        #   @param tax_identifier [String]
 
         # @see Increase::Models::EntityCreateParams::Trust#address
         class Address < Increase::Internal::Type::BaseModel
@@ -1745,19 +1571,15 @@ module Increase
           #   # @return [String]
           #   attr_writer :line2
 
-          # @!parse
-          #   # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-          #   # are disallowed.
-          #   #
-          #   # @param city [String]
-          #   # @param line1 [String]
-          #   # @param state [String]
-          #   # @param zip [String]
-          #   # @param line2 [String]
-          #   #
-          #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+          #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's
+          #   are disallowed.
+          #
+          #   @param city [String]
+          #   @param line1 [String]
+          #   @param state [String]
+          #   @param zip [String]
+          #   @param line2 [String]
         end
 
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
@@ -1774,11 +1596,8 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE = :irrevocable
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         class Trustee < Increase::Internal::Type::BaseModel
@@ -1799,13 +1618,9 @@ module Increase
           #   # @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual]
           #   attr_writer :individual
 
-          # @!parse
-          #   # @param structure [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure]
-          #   # @param individual [Increase::Models::EntityCreateParams::Trust::Trustee::Individual]
-          #   #
-          #   def initialize(structure:, individual: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(structure:, individual: nil)
+          #   @param structure [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Structure]
+          #   @param individual [Increase::Models::EntityCreateParams::Trust::Trustee::Individual]
 
           # The structure of the trustee.
           #
@@ -1816,11 +1631,8 @@ module Increase
             # The trustee is an individual.
             INDIVIDUAL = :individual
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
 
           # @see Increase::Models::EntityCreateParams::Trust::Trustee#individual
@@ -1864,19 +1676,15 @@ module Increase
             #   # @return [Boolean]
             #   attr_writer :confirmed_no_us_tax_id
 
-            # @!parse
-            #   # Details of the individual trustee. Required when the trustee `structure` is
-            #   # equal to `individual`.
-            #   #
-            #   # @param address [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
-            #   # @param date_of_birth [Date]
-            #   # @param identification [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification]
-            #   # @param name [String]
-            #   # @param confirmed_no_us_tax_id [Boolean]
-            #   #
-            #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+            #   Details of the individual trustee. Required when the trustee `structure` is
+            #   equal to `individual`.
+            #
+            #   @param address [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
+            #   @param date_of_birth [Date]
+            #   @param identification [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification]
+            #   @param name [String]
+            #   @param confirmed_no_us_tax_id [Boolean]
 
             # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#address
             class Address < Increase::Internal::Type::BaseModel
@@ -1915,19 +1723,15 @@ module Increase
               #   # @return [String]
               #   attr_writer :line2
 
-              # @!parse
-              #   # The individual's physical address. Mail receiving locations like PO Boxes and
-              #   # PMB's are disallowed.
-              #   #
-              #   # @param city [String]
-              #   # @param line1 [String]
-              #   # @param state [String]
-              #   # @param zip [String]
-              #   # @param line2 [String]
-              #   #
-              #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+              #   The individual's physical address. Mail receiving locations like PO Boxes and
+              #   PMB's are disallowed.
+              #
+              #   @param city [String]
+              #   @param line1 [String]
+              #   @param state [String]
+              #   @param zip [String]
+              #   @param line2 [String]
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual#identification
@@ -1983,18 +1787,14 @@ module Increase
               #   # @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport]
               #   attr_writer :passport
 
-              # @!parse
-              #   # A means of verifying the person's identity.
-              #   #
-              #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method]
-              #   # @param number [String]
-              #   # @param drivers_license [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense]
-              #   # @param other [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other]
-              #   # @param passport [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport]
-              #   #
-              #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+              #   A means of verifying the person's identity.
+              #
+              #   @param method_ [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method]
+              #   @param number [String]
+              #   @param drivers_license [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense]
+              #   @param other [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other]
+              #   @param passport [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport]
 
               # A method that can be used to verify the individual's identity.
               #
@@ -2017,11 +1817,8 @@ module Increase
                 # Another identifying document.
                 OTHER = :other
 
-                finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   def self.values; end
+                # @!method self.values
+                #   @return [Array<Symbol>]
               end
 
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#drivers_license
@@ -2054,18 +1851,14 @@ module Increase
                 #   # @return [String]
                 #   attr_writer :back_file_id
 
-                # @!parse
-                #   # Information about the United States driver's license used for identification.
-                #   # Required if `method` is equal to `drivers_license`.
-                #   #
-                #   # @param expiration_date [Date]
-                #   # @param file_id [String]
-                #   # @param state [String]
-                #   # @param back_file_id [String]
-                #   #
-                #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
-
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # @!method initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+                #   Information about the United States driver's license used for identification.
+                #   Required if `method` is equal to `drivers_license`.
+                #
+                #   @param expiration_date [Date]
+                #   @param file_id [String]
+                #   @param state [String]
+                #   @param back_file_id [String]
               end
 
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#other
@@ -2110,19 +1903,15 @@ module Increase
                 #   # @return [Date]
                 #   attr_writer :expiration_date
 
-                # @!parse
-                #   # Information about the identification document provided. Required if `method` is
-                #   # equal to `other`.
-                #   #
-                #   # @param country [String]
-                #   # @param description [String]
-                #   # @param file_id [String]
-                #   # @param back_file_id [String]
-                #   # @param expiration_date [Date]
-                #   #
-                #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
-
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # @!method initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+                #   Information about the identification document provided. Required if `method` is
+                #   equal to `other`.
+                #
+                #   @param country [String]
+                #   @param description [String]
+                #   @param file_id [String]
+                #   @param back_file_id [String]
+                #   @param expiration_date [Date]
               end
 
               # @see Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification#passport
@@ -2145,17 +1934,13 @@ module Increase
                 #   @return [String]
                 required :file_id, String
 
-                # @!parse
-                #   # Information about the passport used for identification. Required if `method` is
-                #   # equal to `passport`.
-                #   #
-                #   # @param country [String]
-                #   # @param expiration_date [Date]
-                #   # @param file_id [String]
-                #   #
-                #   def initialize(country:, expiration_date:, file_id:, **) = super
-
-                # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+                # @!method initialize(country:, expiration_date:, file_id:)
+                #   Information about the passport used for identification. Required if `method` is
+                #   equal to `passport`.
+                #
+                #   @param country [String]
+                #   @param expiration_date [Date]
+                #   @param file_id [String]
               end
             end
           end
@@ -2201,18 +1986,14 @@ module Increase
           #   # @return [Boolean]
           #   attr_writer :confirmed_no_us_tax_id
 
-          # @!parse
-          #   # The grantor of the trust. Required if `category` is equal to `revocable`.
-          #   #
-          #   # @param address [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
-          #   # @param date_of_birth [Date]
-          #   # @param identification [Increase::Models::EntityCreateParams::Trust::Grantor::Identification]
-          #   # @param name [String]
-          #   # @param confirmed_no_us_tax_id [Boolean]
-          #   #
-          #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          #   The grantor of the trust. Required if `category` is equal to `revocable`.
+          #
+          #   @param address [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
+          #   @param date_of_birth [Date]
+          #   @param identification [Increase::Models::EntityCreateParams::Trust::Grantor::Identification]
+          #   @param name [String]
+          #   @param confirmed_no_us_tax_id [Boolean]
 
           # @see Increase::Models::EntityCreateParams::Trust::Grantor#address
           class Address < Increase::Internal::Type::BaseModel
@@ -2251,19 +2032,15 @@ module Increase
             #   # @return [String]
             #   attr_writer :line2
 
-            # @!parse
-            #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   # PMB's are disallowed.
-            #   #
-            #   # @param city [String]
-            #   # @param line1 [String]
-            #   # @param state [String]
-            #   # @param zip [String]
-            #   # @param line2 [String]
-            #   #
-            #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+            #   The individual's physical address. Mail receiving locations like PO Boxes and
+            #   PMB's are disallowed.
+            #
+            #   @param city [String]
+            #   @param line1 [String]
+            #   @param state [String]
+            #   @param zip [String]
+            #   @param line2 [String]
           end
 
           # @see Increase::Models::EntityCreateParams::Trust::Grantor#identification
@@ -2317,18 +2094,14 @@ module Increase
             #   # @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport]
             #   attr_writer :passport
 
-            # @!parse
-            #   # A means of verifying the person's identity.
-            #   #
-            #   # @param method_ [Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method]
-            #   # @param number [String]
-            #   # @param drivers_license [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense]
-            #   # @param other [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other]
-            #   # @param passport [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport]
-            #   #
-            #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            #   A means of verifying the person's identity.
+            #
+            #   @param method_ [Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method]
+            #   @param number [String]
+            #   @param drivers_license [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense]
+            #   @param other [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other]
+            #   @param passport [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport]
 
             # A method that can be used to verify the individual's identity.
             #
@@ -2351,11 +2124,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#drivers_license
@@ -2388,18 +2158,14 @@ module Increase
               #   # @return [String]
               #   attr_writer :back_file_id
 
-              # @!parse
-              #   # Information about the United States driver's license used for identification.
-              #   # Required if `method` is equal to `drivers_license`.
-              #   #
-              #   # @param expiration_date [Date]
-              #   # @param file_id [String]
-              #   # @param state [String]
-              #   # @param back_file_id [String]
-              #   #
-              #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+              #   Information about the United States driver's license used for identification.
+              #   Required if `method` is equal to `drivers_license`.
+              #
+              #   @param expiration_date [Date]
+              #   @param file_id [String]
+              #   @param state [String]
+              #   @param back_file_id [String]
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#other
@@ -2444,19 +2210,15 @@ module Increase
               #   # @return [Date]
               #   attr_writer :expiration_date
 
-              # @!parse
-              #   # Information about the identification document provided. Required if `method` is
-              #   # equal to `other`.
-              #   #
-              #   # @param country [String]
-              #   # @param description [String]
-              #   # @param file_id [String]
-              #   # @param back_file_id [String]
-              #   # @param expiration_date [Date]
-              #   #
-              #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              #   Information about the identification document provided. Required if `method` is
+              #   equal to `other`.
+              #
+              #   @param country [String]
+              #   @param description [String]
+              #   @param file_id [String]
+              #   @param back_file_id [String]
+              #   @param expiration_date [Date]
             end
 
             # @see Increase::Models::EntityCreateParams::Trust::Grantor::Identification#passport
@@ -2479,17 +2241,13 @@ module Increase
               #   @return [String]
               required :file_id, String
 
-              # @!parse
-              #   # Information about the passport used for identification. Required if `method` is
-              #   # equal to `passport`.
-              #   #
-              #   # @param country [String]
-              #   # @param expiration_date [Date]
-              #   # @param file_id [String]
-              #   #
-              #   def initialize(country:, expiration_date:, file_id:, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, expiration_date:, file_id:)
+              #   Information about the passport used for identification. Required if `method` is
+              #   equal to `passport`.
+              #
+              #   @param country [String]
+              #   @param expiration_date [Date]
+              #   @param file_id [String]
             end
           end
         end

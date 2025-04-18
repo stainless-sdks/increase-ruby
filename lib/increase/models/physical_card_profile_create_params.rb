@@ -38,27 +38,13 @@ module Increase
       #   @return [String]
       required :program_id, String
 
-      # @!parse
-      #   # @param carrier_image_file_id [String]
-      #   # @param contact_phone [String]
-      #   # @param description [String]
-      #   # @param front_image_file_id [String]
-      #   # @param program_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     carrier_image_file_id:,
-      #     contact_phone:,
-      #     description:,
-      #     front_image_file_id:,
-      #     program_id:,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, program_id:, request_options: {})
+      #   @param carrier_image_file_id [String]
+      #   @param contact_phone [String]
+      #   @param description [String]
+      #   @param front_image_file_id [String]
+      #   @param program_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

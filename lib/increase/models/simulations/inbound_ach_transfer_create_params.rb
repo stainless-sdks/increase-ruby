@@ -115,39 +115,19 @@ module Increase
         #   # @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
         #   attr_writer :standard_entry_class_code
 
-        # @!parse
-        #   # @param account_number_id [String]
-        #   # @param amount [Integer]
-        #   # @param company_descriptive_date [String]
-        #   # @param company_discretionary_data [String]
-        #   # @param company_entry_description [String]
-        #   # @param company_id [String]
-        #   # @param company_name [String]
-        #   # @param receiver_id_number [String]
-        #   # @param receiver_name [String]
-        #   # @param resolve_at [Time]
-        #   # @param standard_entry_class_code [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     account_number_id:,
-        #     amount:,
-        #     company_descriptive_date: nil,
-        #     company_discretionary_data: nil,
-        #     company_entry_description: nil,
-        #     company_id: nil,
-        #     company_name: nil,
-        #     receiver_id_number: nil,
-        #     receiver_name: nil,
-        #     resolve_at: nil,
-        #     standard_entry_class_code: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_number_id:, amount:, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_id: nil, company_name: nil, receiver_id_number: nil, receiver_name: nil, resolve_at: nil, standard_entry_class_code: nil, request_options: {})
+        #   @param account_number_id [String]
+        #   @param amount [Integer]
+        #   @param company_descriptive_date [String]
+        #   @param company_discretionary_data [String]
+        #   @param company_entry_description [String]
+        #   @param company_id [String]
+        #   @param company_name [String]
+        #   @param receiver_id_number [String]
+        #   @param receiver_name [String]
+        #   @param resolve_at [Time]
+        #   @param standard_entry_class_code [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
         # The standard entry class code for the transfer.
         module StandardEntryClassCode
@@ -201,11 +181,8 @@ module Increase
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

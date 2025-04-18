@@ -22,14 +22,10 @@ module Increase
         #   @return [String]
         required :card_payment_id, String
 
-        # @!parse
-        #   # @param amount [Integer]
-        #   # @param card_payment_id [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(amount:, card_payment_id:, request_options: {}, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, card_payment_id:, request_options: {})
+        #   @param amount [Integer]
+        #   @param card_payment_id [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

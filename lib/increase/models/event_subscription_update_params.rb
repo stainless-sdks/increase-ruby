@@ -18,13 +18,9 @@ module Increase
       #   # @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(status: nil, request_options: {})
+      #   @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The status to update the Event Subscription with.
       module Status
@@ -39,11 +35,8 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED = :deleted
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

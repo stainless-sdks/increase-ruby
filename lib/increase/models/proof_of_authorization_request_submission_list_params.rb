@@ -52,25 +52,12 @@ module Increase
       #   # @return [String]
       #   attr_writer :proof_of_authorization_request_id
 
-      # @!parse
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param proof_of_authorization_request_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     cursor: nil,
-      #     idempotency_key: nil,
-      #     limit: nil,
-      #     proof_of_authorization_request_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, proof_of_authorization_request_id: nil, request_options: {})
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param proof_of_authorization_request_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

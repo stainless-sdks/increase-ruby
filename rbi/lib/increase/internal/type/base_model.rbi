@@ -180,6 +180,7 @@ module Increase
         def deconstruct_keys(keys); end
 
         class << self
+          # @api private
           sig { params(model: Increase::Internal::Type::BaseModel).returns(Increase::Internal::AnyHash) }
           def walk(model); end
         end

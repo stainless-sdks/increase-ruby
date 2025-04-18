@@ -35,15 +35,11 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :limit
 
-      # @!parse
-      #   # @param routing_number [String]
-      #   # @param cursor [String]
-      #   # @param limit [Integer]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(routing_number:, cursor: nil, limit: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(routing_number:, cursor: nil, limit: nil, request_options: {})
+      #   @param routing_number [String]
+      #   @param cursor [String]
+      #   @param limit [Integer]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

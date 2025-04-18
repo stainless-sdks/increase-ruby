@@ -48,16 +48,12 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :limit
 
-      # @!parse
-      #   # @param entity_id [String]
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      #   @param entity_id [String]
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

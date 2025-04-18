@@ -346,6 +346,8 @@ module Increase
         end
 
         class << self
+          # @api private
+          #
           # @param model [Increase::Internal::Type::BaseModel]
           #
           # @return [Hash{Symbol=>Object}]

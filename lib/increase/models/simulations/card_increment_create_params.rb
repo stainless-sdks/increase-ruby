@@ -34,15 +34,11 @@ module Increase
         #   # @return [String]
         #   attr_writer :event_subscription_id
 
-        # @!parse
-        #   # @param amount [Integer]
-        #   # @param card_payment_id [String]
-        #   # @param event_subscription_id [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
+        #   @param amount [Integer]
+        #   @param card_payment_id [String]
+        #   @param event_subscription_id [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

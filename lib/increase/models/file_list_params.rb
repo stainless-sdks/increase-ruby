@@ -60,17 +60,13 @@ module Increase
       #   # @return [Increase::Models::FileListParams::Purpose]
       #   attr_writer :purpose
 
-      # @!parse
-      #   # @param created_at [Increase::Models::FileListParams::CreatedAt]
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param purpose [Increase::Models::FileListParams::Purpose]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, request_options: {})
+      #   @param created_at [Increase::Models::FileListParams::CreatedAt]
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param purpose [Increase::Models::FileListParams::Purpose]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # @!attribute [r] after
@@ -117,15 +113,11 @@ module Increase
         #   # @return [Time]
         #   attr_writer :on_or_before
 
-        # @!parse
-        #   # @param after [Time]
-        #   # @param before [Time]
-        #   # @param on_or_after [Time]
-        #   # @param on_or_before [Time]
-        #   #
-        #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
 
       class Purpose < Increase::Internal::Type::BaseModel
@@ -142,12 +134,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -227,11 +215,8 @@ module Increase
           # A file containing additional evidence for a Proof of Authorization Request Submission.
           PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

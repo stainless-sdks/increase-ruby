@@ -45,16 +45,12 @@ module Increase
       #   # @return [String]
       #   attr_writer :entity_id
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param account_id [String]
-      #   # @param compliance_category [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
-      #   # @param entity_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
+      #   @param name [String]
+      #   @param account_id [String]
+      #   @param compliance_category [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
+      #   @param entity_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The account compliance category.
       module ComplianceCategory
@@ -66,11 +62,8 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE = :customer_balance
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

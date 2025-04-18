@@ -20,14 +20,10 @@ module Increase
       #   @return [String]
       required :file_id, String
 
-      # @!parse
-      #   # @param entity_id [String]
-      #   # @param file_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(entity_id:, file_id:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(entity_id:, file_id:, request_options: {})
+      #   @param entity_id [String]
+      #   @param file_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

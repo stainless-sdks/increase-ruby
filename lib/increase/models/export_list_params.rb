@@ -69,29 +69,14 @@ module Increase
       #   # @return [Increase::Models::ExportListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param category [Increase::Models::ExportListParams::Category]
-      #   # @param created_at [Increase::Models::ExportListParams::CreatedAt]
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param status [Increase::Models::ExportListParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     category: nil,
-      #     created_at: nil,
-      #     cursor: nil,
-      #     idempotency_key: nil,
-      #     limit: nil,
-      #     status: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(category: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      #   @param category [Increase::Models::ExportListParams::Category]
+      #   @param created_at [Increase::Models::ExportListParams::CreatedAt]
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param status [Increase::Models::ExportListParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Category < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
@@ -108,12 +93,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::ExportListParams::Category::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::ExportListParams::Category::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::ExportListParams::Category::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -139,11 +120,8 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -192,15 +170,11 @@ module Increase
         #   # @return [Time]
         #   attr_writer :on_or_before
 
-        # @!parse
-        #   # @param after [Time]
-        #   # @param before [Time]
-        #   # @param on_or_after [Time]
-        #   # @param on_or_before [Time]
-        #   #
-        #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -218,12 +192,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::ExportListParams::Status::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::ExportListParams::Status::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::ExportListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -237,11 +207,8 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED = :failed
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -38,15 +38,11 @@ module Increase
       #   # @return [Symbol, Increase::Models::LockboxUpdateParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param description [String]
-      #   # @param recipient_name [String]
-      #   # @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(description: nil, recipient_name: nil, status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(description: nil, recipient_name: nil, status: nil, request_options: {})
+      #   @param description [String]
+      #   @param recipient_name [String]
+      #   @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # This indicates if checks can be sent to the Lockbox.
       module Status
@@ -58,11 +54,8 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = :inactive
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

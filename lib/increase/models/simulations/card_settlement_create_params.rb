@@ -33,15 +33,11 @@ module Increase
         #   # @return [Integer]
         #   attr_writer :amount
 
-        # @!parse
-        #   # @param card_id [String]
-        #   # @param pending_transaction_id [String]
-        #   # @param amount [Integer]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(card_id:, pending_transaction_id:, amount: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(card_id:, pending_transaction_id:, amount: nil, request_options: {})
+        #   @param card_id [String]
+        #   @param pending_transaction_id [String]
+        #   @param amount [Integer]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end
