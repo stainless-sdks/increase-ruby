@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::AccountNumbers#create
     class AccountNumberCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
@@ -20,26 +19,18 @@ module Increase
       #   @return [String]
       required :name, String
 
-      # @!attribute [r] inbound_ach
+      # @!attribute inbound_ach
       #   Options related to how this Account Number should handle inbound ACH transfers.
       #
       #   @return [Increase::Models::AccountNumberCreateParams::InboundACH, nil]
       optional :inbound_ach, -> { Increase::Models::AccountNumberCreateParams::InboundACH }
 
-      # @!parse
-      #   # @return [Increase::Models::AccountNumberCreateParams::InboundACH]
-      #   attr_writer :inbound_ach
-
-      # @!attribute [r] inbound_checks
+      # @!attribute inbound_checks
       #   Options related to how this Account Number should handle inbound check
       #   withdrawals.
       #
       #   @return [Increase::Models::AccountNumberCreateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberCreateParams::InboundChecks }
-
-      # @!parse
-      #   # @return [Increase::Models::AccountNumberCreateParams::InboundChecks]
-      #   attr_writer :inbound_checks
 
       # @!method initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       #   @param account_id [String]

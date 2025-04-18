@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::Entities#update_address
     class EntityUpdateAddressParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute address
@@ -45,15 +44,11 @@ module Increase
         #   @return [String]
         required :zip, String
 
-        # @!attribute [r] line2
+        # @!attribute line2
         #   The second line of the address. This might be the floor or room number.
         #
         #   @return [String, nil]
         optional :line2, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :line2
 
         # @!method initialize(city:, line1:, state:, zip:, line2: nil)
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's

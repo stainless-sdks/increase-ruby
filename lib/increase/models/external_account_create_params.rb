@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::ExternalAccounts#create
     class ExternalAccountCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_number
@@ -27,25 +26,17 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
-      # @!attribute [r] account_holder
+      # @!attribute account_holder
       #   The type of entity that owns the External Account.
       #
       #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder, nil]
       optional :account_holder, enum: -> { Increase::Models::ExternalAccountCreateParams::AccountHolder }
 
-      # @!parse
-      #   # @return [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
-      #   attr_writer :account_holder
-
-      # @!attribute [r] funding
+      # @!attribute funding
       #   The type of the destination account. Defaults to `checking`.
       #
       #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding, nil]
       optional :funding, enum: -> { Increase::Models::ExternalAccountCreateParams::Funding }
-
-      # @!parse
-      #   # @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
-      #   attr_writer :funding
 
       # @!method initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
       #   @param account_number [String]

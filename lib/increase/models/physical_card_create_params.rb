@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::PhysicalCards#create
     class PhysicalCardCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute card_id
@@ -26,16 +25,12 @@ module Increase
       #   @return [Increase::Models::PhysicalCardCreateParams::Shipment]
       required :shipment, -> { Increase::Models::PhysicalCardCreateParams::Shipment }
 
-      # @!attribute [r] physical_card_profile_id
+      # @!attribute physical_card_profile_id
       #   The physical card profile to use for this physical card. The latest default
       #   physical card profile will be used if not provided.
       #
       #   @return [String, nil]
       optional :physical_card_profile_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :physical_card_profile_id
 
       # @!method initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
       #   @param card_id [String]
@@ -117,35 +112,23 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # @!attribute [r] line2
+          # @!attribute line2
           #   The second line of the shipping address.
           #
           #   @return [String, nil]
           optional :line2, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :line2
-
-          # @!attribute [r] line3
+          # @!attribute line3
           #   The third line of the shipping address.
           #
           #   @return [String, nil]
           optional :line3, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :line3
-
-          # @!attribute [r] phone_number
+          # @!attribute phone_number
           #   The phone number of the recipient.
           #
           #   @return [String, nil]
           optional :phone_number, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :phone_number
 
           # @!method initialize(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil)
           #   The address to where the card should be shipped.

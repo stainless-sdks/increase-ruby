@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::Files#create
     class FileCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute file
@@ -22,15 +21,11 @@ module Increase
       #   @return [Symbol, Increase::Models::FileCreateParams::Purpose]
       required :purpose, enum: -> { Increase::Models::FileCreateParams::Purpose }
 
-      # @!attribute [r] description
+      # @!attribute description
       #   The description you choose to give the File.
       #
       #   @return [String, nil]
       optional :description, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :description
 
       # @!method initialize(file:, purpose:, description: nil, request_options: {})
       #   @param file [Pathname, StringIO]
