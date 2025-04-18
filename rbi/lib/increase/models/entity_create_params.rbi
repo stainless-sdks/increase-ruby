@@ -184,8 +184,9 @@ module Increase
         end
         attr_writer :address
 
-        # The identifying details of anyone controlling or owning 25% or more of the
-        # corporation.
+        # The identifying details of each person who owns 25% or more of the business and
+        # one control person, like the CEO, CFO, or other executive. You can submit
+        # between 1 and 5 people to this list.
         sig { returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner]) }
         attr_accessor :beneficial_owners
 
@@ -196,6 +197,24 @@ module Increase
         # The Employer Identification Number (EIN) for the corporation.
         sig { returns(String) }
         attr_accessor :tax_identifier
+
+        # If the entity is exempt from the requirement to submit beneficial owners,
+        # provide the justification. If a reason is provided, you do not need to submit a
+        # list of beneficial owners.
+        sig do
+          returns(
+            T.nilable(Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol)
+          )
+        end
+        attr_reader :beneficial_ownership_exemption_reason
+
+        sig do
+          params(
+            beneficial_ownership_exemption_reason: Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol
+          )
+            .void
+        end
+        attr_writer :beneficial_ownership_exemption_reason
 
         # The two-letter United States Postal Service (USPS) abbreviation for the
         # corporation's state of incorporation.
@@ -230,6 +249,7 @@ module Increase
             beneficial_owners: T::Array[T.any(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner, Increase::Internal::AnyHash)],
             name: String,
             tax_identifier: String,
+            beneficial_ownership_exemption_reason: Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol,
             incorporation_state: String,
             industry_code: String,
             website: String
@@ -241,6 +261,7 @@ module Increase
           beneficial_owners:,
           name:,
           tax_identifier:,
+          beneficial_ownership_exemption_reason: nil,
           incorporation_state: nil,
           industry_code: nil,
           website: nil
@@ -253,6 +274,7 @@ module Increase
                 beneficial_owners: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
                 name: String,
                 tax_identifier: String,
+                beneficial_ownership_exemption_reason: Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol,
                 incorporation_state: String,
                 industry_code: String,
                 website: String
@@ -827,6 +849,46 @@ module Increase
             end
             def self.values; end
           end
+        end
+
+        # If the entity is exempt from the requirement to submit beneficial owners,
+        # provide the justification. If a reason is provided, you do not need to submit a
+        # list of beneficial owners.
+        module BeneficialOwnershipExemptionReason
+          extend Increase::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          # A regulated financial institution.
+          REGULATED_FINANCIAL_INSTITUTION =
+            T.let(
+              :regulated_financial_institution,
+              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+            )
+
+          # A publicly traded company.
+          PUBLICLY_TRADED_COMPANY =
+            T.let(
+              :publicly_traded_company,
+              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+            )
+
+          # A public entity acting on behalf of the federal or a state government.
+          PUBLIC_ENTITY =
+            T.let(
+              :public_entity,
+              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+            )
+
+          sig do
+            override
+              .returns(
+                T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol]
+              )
+          end
+          def self.values; end
         end
       end
 

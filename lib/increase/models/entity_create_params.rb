@@ -114,8 +114,9 @@ module Increase
         required :address, -> { Increase::Models::EntityCreateParams::Corporation::Address }
 
         # @!attribute beneficial_owners
-        #   The identifying details of anyone controlling or owning 25% or more of the
-        #   corporation.
+        #   The identifying details of each person who owns 25% or more of the business and
+        #   one control person, like the CEO, CFO, or other executive. You can submit
+        #   between 1 and 5 people to this list.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         required :beneficial_owners,
@@ -132,6 +133,15 @@ module Increase
         #
         #   @return [String]
         required :tax_identifier, String
+
+        # @!attribute beneficial_ownership_exemption_reason
+        #   If the entity is exempt from the requirement to submit beneficial owners,
+        #   provide the justification. If a reason is provided, you do not need to submit a
+        #   list of beneficial owners.
+        #
+        #   @return [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason, nil]
+        optional :beneficial_ownership_exemption_reason,
+                 enum: -> { Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason }
 
         # @!attribute incorporation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the
@@ -155,7 +165,7 @@ module Increase
         #   @return [String, nil]
         optional :website, String
 
-        # @!method initialize(address:, beneficial_owners:, name:, tax_identifier:, incorporation_state: nil, industry_code: nil, website: nil)
+        # @!method initialize(address:, beneficial_owners:, name:, tax_identifier:, beneficial_ownership_exemption_reason: nil, incorporation_state: nil, industry_code: nil, website: nil)
         #   Details of the corporation entity to create. Required if `structure` is equal to
         #   `corporation`.
         #
@@ -163,6 +173,7 @@ module Increase
         #   @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         #   @param name [String]
         #   @param tax_identifier [String]
+        #   @param beneficial_ownership_exemption_reason [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason]
         #   @param incorporation_state [String]
         #   @param industry_code [String]
         #   @param website [String]
@@ -537,6 +548,27 @@ module Increase
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+        end
+
+        # If the entity is exempt from the requirement to submit beneficial owners,
+        # provide the justification. If a reason is provided, you do not need to submit a
+        # list of beneficial owners.
+        #
+        # @see Increase::Models::EntityCreateParams::Corporation#beneficial_ownership_exemption_reason
+        module BeneficialOwnershipExemptionReason
+          extend Increase::Internal::Type::Enum
+
+          # A regulated financial institution.
+          REGULATED_FINANCIAL_INSTITUTION = :regulated_financial_institution
+
+          # A publicly traded company.
+          PUBLICLY_TRADED_COMPANY = :publicly_traded_company
+
+          # A public entity acting on behalf of the federal or a state government.
+          PUBLIC_ENTITY = :public_entity
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
