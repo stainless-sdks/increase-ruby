@@ -1140,6 +1140,9 @@ module Increase
             # The original card authorization for this incremental authorization does not exist.
             MISSING_ORIGINAL_AUTHORIZATION = :missing_original_authorization
 
+            # The transaction was declined because the 3DS authentication failed.
+            FAILED_3DS_AUTHENTICATION = :failed_3ds_authentication
+
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD = :suspected_fraud
 
