@@ -3208,6 +3208,13 @@ module Increase
                 Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
+            # The transaction was declined because the 3DS authentication failed.
+            FAILED_3DS_AUTHENTICATION =
+              T.let(
+                :failed_3ds_authentication,
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+              )
+
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD =
               T.let(:suspected_fraud, Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol)
