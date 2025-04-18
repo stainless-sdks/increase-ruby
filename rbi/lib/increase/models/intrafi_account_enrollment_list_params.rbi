@@ -112,7 +112,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol) }
 
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING =

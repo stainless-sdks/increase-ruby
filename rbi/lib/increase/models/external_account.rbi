@@ -107,7 +107,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::AccountHolder) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccount::AccountHolder::TaggedSymbol)
@@ -127,7 +128,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Funding) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccount::Funding::TaggedSymbol) }
 
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccount::Funding::TaggedSymbol)
@@ -147,7 +149,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccount::Status::TaggedSymbol) }
 
         # The External Account is active.
         ACTIVE = T.let(:active, Increase::Models::ExternalAccount::Status::TaggedSymbol)
@@ -165,7 +168,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccount::Type::TaggedSymbol) }
 
         EXTERNAL_ACCOUNT = T.let(:external_account, Increase::Models::ExternalAccount::Type::TaggedSymbol)
 
@@ -178,7 +181,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccount::VerificationStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol) }
 
         # The External Account has not been verified.
         UNVERIFIED = T.let(:unverified, Increase::Models::ExternalAccount::VerificationStatus::TaggedSymbol)

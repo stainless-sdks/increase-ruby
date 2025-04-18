@@ -104,7 +104,8 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol) }
 
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK =
@@ -359,7 +360,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
+              )
+            end
 
           # USPS First Class
           USPS_FIRST_CLASS =

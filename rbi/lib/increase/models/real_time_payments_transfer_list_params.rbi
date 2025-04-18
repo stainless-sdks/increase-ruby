@@ -176,7 +176,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol) }
 
           # The transfer is pending approval.
           PENDING_APPROVAL =

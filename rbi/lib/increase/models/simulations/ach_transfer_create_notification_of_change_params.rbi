@@ -43,7 +43,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
+              )
+            end
 
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER =

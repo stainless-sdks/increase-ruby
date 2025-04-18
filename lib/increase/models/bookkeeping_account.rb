@@ -51,18 +51,22 @@ module Increase
       #   @return [Symbol, Increase::Models::BookkeepingAccount::Type]
       required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
 
-      # @!method initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
-      #   Accounts are T-accounts. They can store accounting entries. Your compliance
-      #   setup might require annotating money movements using this API. Learn more in our
-      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
-      #
-      #   @param id [String]
-      #   @param account_id [String, nil]
-      #   @param compliance_category [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil]
-      #   @param entity_id [String, nil]
-      #   @param idempotency_key [String, nil]
-      #   @param name [String]
-      #   @param type [Symbol, Increase::Models::BookkeepingAccount::Type]
+      # @!parse
+      #   # Accounts are T-accounts. They can store accounting entries. Your compliance
+      #   # setup might require annotating money movements using this API. Learn more in our
+      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   #
+      #   # @param id [String]
+      #   # @param account_id [String, nil]
+      #   # @param compliance_category [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil]
+      #   # @param entity_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param name [String]
+      #   # @param type [Symbol, Increase::Models::BookkeepingAccount::Type]
+      #   #
+      #   def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The compliance category of the account.
       #
@@ -76,8 +80,11 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE = :customer_balance
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -89,8 +96,11 @@ module Increase
 
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

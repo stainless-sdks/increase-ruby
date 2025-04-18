@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::InboundCheckDeposits#return_
     class InboundCheckDepositReturnParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute reason
@@ -13,9 +14,13 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason]
       required :reason, enum: -> { Increase::Models::InboundCheckDepositReturnParams::Reason }
 
-      # @!method initialize(reason:, request_options: {})
-      #   @param reason [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason]
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @param reason [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(reason:, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The reason to return the Inbound Check Deposit.
       module Reason
@@ -36,8 +41,11 @@ module Increase
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

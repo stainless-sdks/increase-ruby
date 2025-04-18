@@ -53,16 +53,20 @@ module Increase
       #   @return [String]
       required :unauthenticated_url, String
 
-      # @!method initialize(id:, created_at:, expires_at:, file_id:, idempotency_key:, type:, unauthenticated_url:)
-      #   File Links let you generate a URL that can be used to download a File.
-      #
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param expires_at [Time]
-      #   @param file_id [String]
-      #   @param idempotency_key [String, nil]
-      #   @param type [Symbol, Increase::Models::FileLink::Type]
-      #   @param unauthenticated_url [String]
+      # @!parse
+      #   # File Links let you generate a URL that can be used to download a File.
+      #   #
+      #   # @param id [String]
+      #   # @param created_at [Time]
+      #   # @param expires_at [Time]
+      #   # @param file_id [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param type [Symbol, Increase::Models::FileLink::Type]
+      #   # @param unauthenticated_url [String]
+      #   #
+      #   def initialize(id:, created_at:, expires_at:, file_id:, idempotency_key:, type:, unauthenticated_url:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
       # `file_link`.
@@ -73,8 +77,11 @@ module Increase
 
         FILE_LINK = :file_link
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

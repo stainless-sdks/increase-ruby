@@ -4,32 +4,49 @@ module Increase
   module Models
     # @see Increase::Resources::Lockboxes#update
     class LockboxUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute description
+      # @!attribute [r] description
       #   The description you choose for the Lockbox.
       #
       #   @return [String, nil]
       optional :description, String
 
-      # @!attribute recipient_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] recipient_name
       #   The recipient name you choose for the Lockbox.
       #
       #   @return [String, nil]
       optional :recipient_name, String
 
-      # @!attribute status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :recipient_name
+
+      # @!attribute [r] status
       #   This indicates if checks can be sent to the Lockbox.
       #
       #   @return [Symbol, Increase::Models::LockboxUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::LockboxUpdateParams::Status }
 
-      # @!method initialize(description: nil, recipient_name: nil, status: nil, request_options: {})
-      #   @param description [String]
-      #   @param recipient_name [String]
-      #   @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [Symbol, Increase::Models::LockboxUpdateParams::Status]
+      #   attr_writer :status
+
+      # @!parse
+      #   # @param description [String]
+      #   # @param recipient_name [String]
+      #   # @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(description: nil, recipient_name: nil, status: nil, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # This indicates if checks can be sent to the Lockbox.
       module Status
@@ -41,8 +58,11 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = :inactive
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

@@ -49,19 +49,23 @@ module Increase
       #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
-      # @!method initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)
-      #   Entry Sets are accounting entries that are transactionally applied. Your
-      #   compliance setup might require annotating money movements using this API. Learn
-      #   more in our
-      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
-      #
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param date [Time]
-      #   @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>]
-      #   @param idempotency_key [String, nil]
-      #   @param transaction_id [String, nil]
-      #   @param type [Symbol, Increase::Models::BookkeepingEntrySet::Type]
+      # @!parse
+      #   # Entry Sets are accounting entries that are transactionally applied. Your
+      #   # compliance setup might require annotating money movements using this API. Learn
+      #   # more in our
+      #   # [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+      #   #
+      #   # @param id [String]
+      #   # @param created_at [Time]
+      #   # @param date [Time]
+      #   # @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>]
+      #   # @param idempotency_key [String, nil]
+      #   # @param transaction_id [String, nil]
+      #   # @param type [Symbol, Increase::Models::BookkeepingEntrySet::Type]
+      #   #
+      #   def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       class Entry < Increase::Internal::Type::BaseModel
         # @!attribute id
@@ -82,10 +86,14 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!method initialize(id:, account_id:, amount:)
-        #   @param id [String]
-        #   @param account_id [String]
-        #   @param amount [Integer]
+        # @!parse
+        #   # @param id [String]
+        #   # @param account_id [String]
+        #   # @param amount [Integer]
+        #   #
+        #   def initialize(id:, account_id:, amount:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -97,8 +105,11 @@ module Increase
 
         BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

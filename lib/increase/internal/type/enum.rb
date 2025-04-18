@@ -21,7 +21,12 @@ module Increase
         # All of the valid Symbol values for this enum.
         #
         # @return [Array<NilClass, Boolean, Integer, Float, Symbol>]
-        def values = constants.map { const_get(_1) }
+        def values = (@values ||= constants.map { const_get(_1) })
+
+        # @api private
+        #
+        # Guard against thread safety issues by instantiating `@values`.
+        private def finalize! = values
 
         # @param other [Object]
         #
@@ -36,9 +41,6 @@ module Increase
           Increase::Internal::Type::Enum === other && other.values.to_set == values.to_set
           # rubocop:enable Style/CaseEquality
         end
-
-        # @return [Integer]
-        def hash = values.to_set.hash
 
         # @api private
         #

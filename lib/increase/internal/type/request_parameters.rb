@@ -12,8 +12,9 @@ module Increase
 
         # @param mod [Module]
         def self.included(mod)
-          raise ArgumentError.new(mod) unless mod <= Increase::Internal::Type::BaseModel
+          return unless mod <= Increase::Internal::Type::BaseModel
 
+          mod.extend(Increase::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, Increase::RequestOptions)
         end
 

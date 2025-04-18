@@ -35,7 +35,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundCheckDepositReturnParams::Reason::TaggedSymbol) }
 
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS =
