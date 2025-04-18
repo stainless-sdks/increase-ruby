@@ -17,13 +17,9 @@ module Increase
       #   @return [String]
       required :industry_code, String
 
-      # @!parse
-      #   # @param industry_code [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(industry_code:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(industry_code:, request_options: {})
+      #   @param industry_code [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

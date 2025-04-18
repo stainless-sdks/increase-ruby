@@ -20,14 +20,10 @@ module Increase
       #   @return [String]
       required :email_address, String
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param email_address [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_id:, email_address:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id:, email_address:, request_options: {})
+      #   @param account_id [String]
+      #   @param email_address [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

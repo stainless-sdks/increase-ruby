@@ -36,15 +36,11 @@ module Increase
       #   # @return [String]
       #   attr_writer :transaction_id
 
-      # @!parse
-      #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
-      #   # @param date [Time]
-      #   # @param transaction_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(entries:, date: nil, transaction_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(entries:, date: nil, transaction_id: nil, request_options: {})
+      #   @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
+      #   @param date [Time]
+      #   @param transaction_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Entry < Increase::Internal::Type::BaseModel
         # @!attribute account_id
@@ -61,13 +57,9 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!parse
-        #   # @param account_id [String]
-        #   # @param amount [Integer]
-        #   #
-        #   def initialize(account_id:, amount:, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_id:, amount:)
+        #   @param account_id [String]
+        #   @param amount [Integer]
       end
     end
   end

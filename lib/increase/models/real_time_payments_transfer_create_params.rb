@@ -109,39 +109,19 @@ module Increase
       #   # @return [String]
       #   attr_writer :ultimate_debtor_name
 
-      # @!parse
-      #   # @param amount [Integer]
-      #   # @param creditor_name [String]
-      #   # @param remittance_information [String]
-      #   # @param source_account_number_id [String]
-      #   # @param debtor_name [String]
-      #   # @param destination_account_number [String]
-      #   # @param destination_routing_number [String]
-      #   # @param external_account_id [String]
-      #   # @param require_approval [Boolean]
-      #   # @param ultimate_creditor_name [String]
-      #   # @param ultimate_debtor_name [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     amount:,
-      #     creditor_name:,
-      #     remittance_information:,
-      #     source_account_number_id:,
-      #     debtor_name: nil,
-      #     destination_account_number: nil,
-      #     destination_routing_number: nil,
-      #     external_account_id: nil,
-      #     require_approval: nil,
-      #     ultimate_creditor_name: nil,
-      #     ultimate_debtor_name: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(amount:, creditor_name:, remittance_information:, source_account_number_id:, debtor_name: nil, destination_account_number: nil, destination_routing_number: nil, external_account_id: nil, require_approval: nil, ultimate_creditor_name: nil, ultimate_debtor_name: nil, request_options: {})
+      #   @param amount [Integer]
+      #   @param creditor_name [String]
+      #   @param remittance_information [String]
+      #   @param source_account_number_id [String]
+      #   @param debtor_name [String]
+      #   @param destination_account_number [String]
+      #   @param destination_routing_number [String]
+      #   @param external_account_id [String]
+      #   @param require_approval [Boolean]
+      #   @param ultimate_creditor_name [String]
+      #   @param ultimate_debtor_name [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -51,16 +51,12 @@ module Increase
       #   # @return [Increase::Models::WireDrawdownRequestListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param status [Increase::Models::WireDrawdownRequestListParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param status [Increase::Models::WireDrawdownRequestListParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
@@ -77,12 +73,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -99,11 +91,8 @@ module Increase
           # The drawdown request has been refused by the recipient.
           REFUSED = :refused
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

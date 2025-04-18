@@ -22,14 +22,10 @@ module Increase
       #   @return [String]
       required :beneficial_owner_id, String
 
-      # @!parse
-      #   # @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
-      #   # @param beneficial_owner_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(address:, beneficial_owner_id:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(address:, beneficial_owner_id:, request_options: {})
+      #   @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
+      #   @param beneficial_owner_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Address < Increase::Internal::Type::BaseModel
         # @!attribute country
@@ -86,20 +82,16 @@ module Increase
         #   # @return [String]
         #   attr_writer :zip
 
-        # @!parse
-        #   # The individual's physical address. Mail receiving locations like PO Boxes and
-        #   # PMB's are disallowed.
-        #   #
-        #   # @param country [String]
-        #   # @param line1 [String]
-        #   # @param city [String]
-        #   # @param line2 [String]
-        #   # @param state [String]
-        #   # @param zip [String]
-        #   #
-        #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
+        #   The individual's physical address. Mail receiving locations like PO Boxes and
+        #   PMB's are disallowed.
+        #
+        #   @param country [String]
+        #   @param line1 [String]
+        #   @param city [String]
+        #   @param line2 [String]
+        #   @param state [String]
+        #   @param zip [String]
       end
     end
   end

@@ -15,13 +15,9 @@ module Increase
       #   @return [Increase::Models::EntityUpdateAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateAddressParams::Address }
 
-      # @!parse
-      #   # @param address [Increase::Models::EntityUpdateAddressParams::Address]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(address:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(address:, request_options: {})
+      #   @param address [Increase::Models::EntityUpdateAddressParams::Address]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Address < Increase::Internal::Type::BaseModel
         # @!attribute city
@@ -59,19 +55,15 @@ module Increase
         #   # @return [String]
         #   attr_writer :line2
 
-        # @!parse
-        #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   # are disallowed.
-        #   #
-        #   # @param city [String]
-        #   # @param line1 [String]
-        #   # @param state [String]
-        #   # @param zip [String]
-        #   # @param line2 [String]
-        #   #
-        #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+        #   are disallowed.
+        #
+        #   @param city [String]
+        #   @param line1 [String]
+        #   @param state [String]
+        #   @param zip [String]
+        #   @param line2 [String]
       end
     end
   end

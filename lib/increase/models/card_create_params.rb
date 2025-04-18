@@ -59,27 +59,13 @@ module Increase
       #   # @return [String]
       #   attr_writer :entity_id
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param billing_address [Increase::Models::CardCreateParams::BillingAddress]
-      #   # @param description [String]
-      #   # @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet]
-      #   # @param entity_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_id:,
-      #     billing_address: nil,
-      #     description: nil,
-      #     digital_wallet: nil,
-      #     entity_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id:, billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, request_options: {})
+      #   @param account_id [String]
+      #   @param billing_address [Increase::Models::CardCreateParams::BillingAddress]
+      #   @param description [String]
+      #   @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet]
+      #   @param entity_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         # @!attribute city
@@ -116,18 +102,14 @@ module Increase
         #   # @return [String]
         #   attr_writer :line2
 
-        # @!parse
-        #   # The card's billing address.
-        #   #
-        #   # @param city [String]
-        #   # @param line1 [String]
-        #   # @param postal_code [String]
-        #   # @param state [String]
-        #   # @param line2 [String]
-        #   #
-        #   def initialize(city:, line1:, postal_code:, state:, line2: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(city:, line1:, postal_code:, state:, line2: nil)
+        #   The card's billing address.
+        #
+        #   @param city [String]
+        #   @param line1 [String]
+        #   @param postal_code [String]
+        #   @param state [String]
+        #   @param line2 [String]
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
@@ -163,20 +145,16 @@ module Increase
         #   # @return [String]
         #   attr_writer :phone
 
-        # @!parse
-        #   # The contact information used in the two-factor steps for digital wallet card
-        #   # creation. To add the card to a digital wallet, you may supply an email or phone
-        #   # number with this request. Otherwise, subscribe and then action a Real Time
-        #   # Decision with the category `digital_wallet_token_requested` or
-        #   # `digital_wallet_authentication_requested`.
-        #   #
-        #   # @param digital_card_profile_id [String]
-        #   # @param email [String]
-        #   # @param phone [String]
-        #   #
-        #   def initialize(digital_card_profile_id: nil, email: nil, phone: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(digital_card_profile_id: nil, email: nil, phone: nil)
+        #   The contact information used in the two-factor steps for digital wallet card
+        #   creation. To add the card to a digital wallet, you may supply an email or phone
+        #   number with this request. Otherwise, subscribe and then action a Real Time
+        #   Decision with the category `digital_wallet_token_requested` or
+        #   `digital_wallet_authentication_requested`.
+        #
+        #   @param digital_card_profile_id [String]
+        #   @param email [String]
+        #   @param phone [String]
       end
     end
   end

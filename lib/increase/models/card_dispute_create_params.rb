@@ -34,15 +34,11 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :amount
 
-      # @!parse
-      #   # @param disputed_transaction_id [String]
-      #   # @param explanation [String]
-      #   # @param amount [Integer]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
+      #   @param disputed_transaction_id [String]
+      #   @param explanation [String]
+      #   @param amount [Integer]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

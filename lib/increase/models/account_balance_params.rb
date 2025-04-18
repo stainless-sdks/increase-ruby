@@ -18,13 +18,9 @@ module Increase
       #   # @return [Time]
       #   attr_writer :at_time
 
-      # @!parse
-      #   # @param at_time [Time]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(at_time: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(at_time: nil, request_options: {})
+      #   @param at_time [Time]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -47,17 +47,13 @@ module Increase
       #   # @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
       #   attr_writer :funding
 
-      # @!parse
-      #   # @param account_number [String]
-      #   # @param description [String]
-      #   # @param routing_number [String]
-      #   # @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
-      #   # @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
+      #   @param account_number [String]
+      #   @param description [String]
+      #   @param routing_number [String]
+      #   @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
+      #   @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of entity that owns the External Account.
       module AccountHolder
@@ -72,11 +68,8 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The type of the destination account. Defaults to `checking`.
@@ -92,11 +85,8 @@ module Increase
         # A different type of account.
         OTHER = :other
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

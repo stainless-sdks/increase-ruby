@@ -57,27 +57,13 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :limit
 
-      # @!parse
-      #   # @param associated_object_id [String]
-      #   # @param category [Increase::Models::EventListParams::Category]
-      #   # @param created_at [Increase::Models::EventListParams::CreatedAt]
-      #   # @param cursor [String]
-      #   # @param limit [Integer]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     associated_object_id: nil,
-      #     category: nil,
-      #     created_at: nil,
-      #     cursor: nil,
-      #     limit: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(associated_object_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
+      #   @param associated_object_id [String]
+      #   @param category [Increase::Models::EventListParams::Category]
+      #   @param created_at [Increase::Models::EventListParams::CreatedAt]
+      #   @param cursor [String]
+      #   @param limit [Integer]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Category < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
@@ -94,12 +80,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::EventListParams::Category::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::EventListParams::Category::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::EventListParams::Category::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -370,11 +352,8 @@ module Increase
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -423,15 +402,11 @@ module Increase
         #   # @return [Time]
         #   attr_writer :on_or_before
 
-        # @!parse
-        #   # @param after [Time]
-        #   # @param before [Time]
-        #   # @param on_or_after [Time]
-        #   # @param on_or_before [Time]
-        #   #
-        #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
     end
   end

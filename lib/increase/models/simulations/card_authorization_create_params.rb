@@ -187,51 +187,25 @@ module Increase
         #   # @return [String]
         #   attr_writer :terminal_id
 
-        # @!parse
-        #   # @param amount [Integer]
-        #   # @param authenticated_card_payment_id [String]
-        #   # @param card_id [String]
-        #   # @param decline_reason [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason]
-        #   # @param digital_wallet_token_id [String]
-        #   # @param direction [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction]
-        #   # @param event_subscription_id [String]
-        #   # @param merchant_acceptor_id [String]
-        #   # @param merchant_category_code [String]
-        #   # @param merchant_city [String]
-        #   # @param merchant_country [String]
-        #   # @param merchant_descriptor [String]
-        #   # @param merchant_state [String]
-        #   # @param network_details [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails]
-        #   # @param network_risk_score [Integer]
-        #   # @param physical_card_id [String]
-        #   # @param terminal_id [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     amount:,
-        #     authenticated_card_payment_id: nil,
-        #     card_id: nil,
-        #     decline_reason: nil,
-        #     digital_wallet_token_id: nil,
-        #     direction: nil,
-        #     event_subscription_id: nil,
-        #     merchant_acceptor_id: nil,
-        #     merchant_category_code: nil,
-        #     merchant_city: nil,
-        #     merchant_country: nil,
-        #     merchant_descriptor: nil,
-        #     merchant_state: nil,
-        #     network_details: nil,
-        #     network_risk_score: nil,
-        #     physical_card_id: nil,
-        #     terminal_id: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, authenticated_card_payment_id: nil, card_id: nil, decline_reason: nil, digital_wallet_token_id: nil, direction: nil, event_subscription_id: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_state: nil, network_details: nil, network_risk_score: nil, physical_card_id: nil, terminal_id: nil, request_options: {})
+        #   @param amount [Integer]
+        #   @param authenticated_card_payment_id [String]
+        #   @param card_id [String]
+        #   @param decline_reason [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason]
+        #   @param digital_wallet_token_id [String]
+        #   @param direction [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction]
+        #   @param event_subscription_id [String]
+        #   @param merchant_acceptor_id [String]
+        #   @param merchant_category_code [String]
+        #   @param merchant_city [String]
+        #   @param merchant_country [String]
+        #   @param merchant_descriptor [String]
+        #   @param merchant_state [String]
+        #   @param network_details [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails]
+        #   @param network_risk_score [Integer]
+        #   @param physical_card_id [String]
+        #   @param terminal_id [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
         # Forces a card decline with a specific reason. No real time decision will be
         # sent.
@@ -292,11 +266,8 @@ module Increase
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD = :suspected_fraud
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -310,11 +281,8 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -324,14 +292,10 @@ module Increase
           #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
           required :visa, -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa }
 
-          # @!parse
-          #   # Fields specific to a given card network.
-          #   #
-          #   # @param visa [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
-          #   #
-          #   def initialize(visa:, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(visa:)
+          #   Fields specific to a given card network.
+          #
+          #   @param visa [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
 
           # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails#visa
           class Visa < Increase::Internal::Type::BaseModel
@@ -346,14 +310,10 @@ module Increase
             #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
             #   attr_writer :stand_in_processing_reason
 
-            # @!parse
-            #   # Fields specific to the Visa network.
-            #   #
-            #   # @param stand_in_processing_reason [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
-            #   #
-            #   def initialize(stand_in_processing_reason: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(stand_in_processing_reason: nil)
+            #   Fields specific to the Visa network.
+            #
+            #   @param stand_in_processing_reason [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
 
             # The reason code for the stand-in processing.
             #
@@ -384,11 +344,8 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER = :other
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
           end
         end

@@ -60,17 +60,13 @@ module Increase
       #   # @return [String]
       #   attr_writer :production_token
 
-      # @!parse
-      #   # @param grant_type [Symbol, Increase::Models::OAuthTokenCreateParams::GrantType]
-      #   # @param client_id [String]
-      #   # @param client_secret [String]
-      #   # @param code [String]
-      #   # @param production_token [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(grant_type:, client_id: nil, client_secret: nil, code: nil, production_token: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(grant_type:, client_id: nil, client_secret: nil, code: nil, production_token: nil, request_options: {})
+      #   @param grant_type [Symbol, Increase::Models::OAuthTokenCreateParams::GrantType]
+      #   @param client_id [String]
+      #   @param client_secret [String]
+      #   @param code [String]
+      #   @param production_token [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The credential you request in exchange for the code. In Production, this is
       # always `authorization_code`. In Sandbox, you can pass either enum value.
@@ -83,11 +79,8 @@ module Increase
         # An OAuth production token.
         PRODUCTION_TOKEN = :production_token
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

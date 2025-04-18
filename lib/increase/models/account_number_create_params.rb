@@ -41,16 +41,12 @@ module Increase
       #   # @return [Increase::Models::AccountNumberCreateParams::InboundChecks]
       #   attr_writer :inbound_checks
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param name [String]
-      #   # @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH]
-      #   # @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
+      #   @param account_id [String]
+      #   @param name [String]
+      #   @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH]
+      #   @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class InboundACH < Increase::Internal::Type::BaseModel
         # @!attribute debit_status
@@ -61,14 +57,10 @@ module Increase
         #   @return [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus]
         required :debit_status, enum: -> { Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus }
 
-        # @!parse
-        #   # Options related to how this Account Number should handle inbound ACH transfers.
-        #   #
-        #   # @param debit_status [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus]
-        #   #
-        #   def initialize(debit_status:, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(debit_status:)
+        #   Options related to how this Account Number should handle inbound ACH transfers.
+        #
+        #   @param debit_status [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus]
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active. If
@@ -84,11 +76,8 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED = :blocked
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -100,15 +89,11 @@ module Increase
         #   @return [Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status]
         required :status, enum: -> { Increase::Models::AccountNumberCreateParams::InboundChecks::Status }
 
-        # @!parse
-        #   # Options related to how this Account Number should handle inbound check
-        #   # withdrawals.
-        #   #
-        #   # @param status [Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status]
-        #   #
-        #   def initialize(status:, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(status:)
+        #   Options related to how this Account Number should handle inbound check
+        #   withdrawals.
+        #
+        #   @param status [Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status]
 
         # How Increase should process checks with this account number printed on them. If
         # you do not specify this field, the default is `check_transfers_only`.
@@ -123,11 +108,8 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

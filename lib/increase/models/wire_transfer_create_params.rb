@@ -158,49 +158,24 @@ module Increase
       #   # @return [String]
       #   attr_writer :source_account_number_id
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param amount [Integer]
-      #   # @param beneficiary_name [String]
-      #   # @param message_to_recipient [String]
-      #   # @param account_number [String]
-      #   # @param beneficiary_address_line1 [String]
-      #   # @param beneficiary_address_line2 [String]
-      #   # @param beneficiary_address_line3 [String]
-      #   # @param external_account_id [String]
-      #   # @param originator_address_line1 [String]
-      #   # @param originator_address_line2 [String]
-      #   # @param originator_address_line3 [String]
-      #   # @param originator_name [String]
-      #   # @param require_approval [Boolean]
-      #   # @param routing_number [String]
-      #   # @param source_account_number_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_id:,
-      #     amount:,
-      #     beneficiary_name:,
-      #     message_to_recipient:,
-      #     account_number: nil,
-      #     beneficiary_address_line1: nil,
-      #     beneficiary_address_line2: nil,
-      #     beneficiary_address_line3: nil,
-      #     external_account_id: nil,
-      #     originator_address_line1: nil,
-      #     originator_address_line2: nil,
-      #     originator_address_line3: nil,
-      #     originator_name: nil,
-      #     require_approval: nil,
-      #     routing_number: nil,
-      #     source_account_number_id: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id:, amount:, beneficiary_name:, message_to_recipient:, account_number: nil, beneficiary_address_line1: nil, beneficiary_address_line2: nil, beneficiary_address_line3: nil, external_account_id: nil, originator_address_line1: nil, originator_address_line2: nil, originator_address_line3: nil, originator_name: nil, require_approval: nil, routing_number: nil, source_account_number_id: nil, request_options: {})
+      #   @param account_id [String]
+      #   @param amount [Integer]
+      #   @param beneficiary_name [String]
+      #   @param message_to_recipient [String]
+      #   @param account_number [String]
+      #   @param beneficiary_address_line1 [String]
+      #   @param beneficiary_address_line2 [String]
+      #   @param beneficiary_address_line3 [String]
+      #   @param external_account_id [String]
+      #   @param originator_address_line1 [String]
+      #   @param originator_address_line2 [String]
+      #   @param originator_address_line3 [String]
+      #   @param originator_name [String]
+      #   @param require_approval [Boolean]
+      #   @param routing_number [String]
+      #   @param source_account_number_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

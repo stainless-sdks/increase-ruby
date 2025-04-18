@@ -25,14 +25,10 @@ module Increase
       #   # @return [Time]
       #   attr_writer :expires_at
 
-      # @!parse
-      #   # @param file_id [String]
-      #   # @param expires_at [Time]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(file_id:, expires_at: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(file_id:, expires_at: nil, request_options: {})
+      #   @param file_id [String]
+      #   @param expires_at [Time]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end
