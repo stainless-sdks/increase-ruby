@@ -4,21 +4,16 @@ module Increase
   module Models
     # @see Increase::Resources::InboundACHTransfers#decline
     class InboundACHTransferDeclineParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute [r] reason
+      # @!attribute reason
       #   The reason why this transfer will be returned. If this parameter is unset, the
       #   return codes will be `payment_stopped` for debits and
       #   `credit_entry_refused_by_receiver` for credits.
       #
       #   @return [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason, nil]
       optional :reason, enum: -> { Increase::Models::InboundACHTransferDeclineParams::Reason }
-
-      # @!parse
-      #   # @return [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason]
-      #   attr_writer :reason
 
       # @!method initialize(reason: nil, request_options: {})
       #   @param reason [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason]

@@ -4,22 +4,17 @@ module Increase
   module Models
     # @see Increase::Resources::RealTimeDecisions#action
     class RealTimeDecisionActionParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute [r] card_authentication
+      # @!attribute card_authentication
       #   If the Real-Time Decision relates to a 3DS card authentication attempt, this
       #   object contains your response to the authentication.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::CardAuthentication, nil]
       optional :card_authentication, -> { Increase::Models::RealTimeDecisionActionParams::CardAuthentication }
 
-      # @!parse
-      #   # @return [Increase::Models::RealTimeDecisionActionParams::CardAuthentication]
-      #   attr_writer :card_authentication
-
-      # @!attribute [r] card_authentication_challenge
+      # @!attribute card_authentication_challenge
       #   If the Real-Time Decision relates to 3DS card authentication challenge delivery,
       #   this object contains your response.
       #
@@ -27,22 +22,14 @@ module Increase
       optional :card_authentication_challenge,
                -> { Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge }
 
-      # @!parse
-      #   # @return [Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge]
-      #   attr_writer :card_authentication_challenge
-
-      # @!attribute [r] card_authorization
+      # @!attribute card_authorization
       #   If the Real-Time Decision relates to a card authorization attempt, this object
       #   contains your response to the authorization.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::CardAuthorization, nil]
       optional :card_authorization, -> { Increase::Models::RealTimeDecisionActionParams::CardAuthorization }
 
-      # @!parse
-      #   # @return [Increase::Models::RealTimeDecisionActionParams::CardAuthorization]
-      #   attr_writer :card_authorization
-
-      # @!attribute [r] digital_wallet_authentication
+      # @!attribute digital_wallet_authentication
       #   If the Real-Time Decision relates to a digital wallet authentication attempt,
       #   this object contains your response to the authentication.
       #
@@ -50,20 +37,12 @@ module Increase
       optional :digital_wallet_authentication,
                -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication }
 
-      # @!parse
-      #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication]
-      #   attr_writer :digital_wallet_authentication
-
-      # @!attribute [r] digital_wallet_token
+      # @!attribute digital_wallet_token
       #   If the Real-Time Decision relates to a digital wallet token provisioning
       #   attempt, this object contains your response to the attempt.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, nil]
       optional :digital_wallet_token, -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken }
-
-      # @!parse
-      #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken]
-      #   attr_writer :digital_wallet_token
 
       # @!method initialize(card_authentication: nil, card_authentication_challenge: nil, card_authorization: nil, digital_wallet_authentication: nil, digital_wallet_token: nil, request_options: {})
       #   @param card_authentication [Increase::Models::RealTimeDecisionActionParams::CardAuthentication]
@@ -148,17 +127,13 @@ module Increase
         required :decision,
                  enum: -> { Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision }
 
-        # @!attribute [r] decline_reason
+        # @!attribute decline_reason
         #   The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason, nil]
         optional :decline_reason,
                  enum: -> { Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason }
-
-        # @!parse
-        #   # @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason]
-        #   attr_writer :decline_reason
 
         # @!method initialize(decision:, decline_reason: nil)
         #   If the Real-Time Decision relates to a card authorization attempt, this object
@@ -221,15 +196,11 @@ module Increase
         required :result,
                  enum: -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result }
 
-        # @!attribute [r] success
+        # @!attribute success
         #
         #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success, nil]
         optional :success,
                  -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success }
-
-        # @!parse
-        #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success]
-        #   attr_writer :success
 
         # @!method initialize(result:, success: nil)
         #   If the Real-Time Decision relates to a digital wallet authentication attempt,
@@ -256,26 +227,18 @@ module Increase
 
         # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication#success
         class Success < Increase::Internal::Type::BaseModel
-          # @!attribute [r] email
+          # @!attribute email
           #   The email address that was used to verify the cardholder via one-time passcode.
           #
           #   @return [String, nil]
           optional :email, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :email
-
-          # @!attribute [r] phone
+          # @!attribute phone
           #   The phone number that was used to verify the cardholder via one-time passcode
           #   over SMS.
           #
           #   @return [String, nil]
           optional :phone, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :phone
 
           # @!method initialize(email: nil, phone: nil)
           #   @param email [String]
@@ -284,27 +247,19 @@ module Increase
       end
 
       class DigitalWalletToken < Increase::Internal::Type::BaseModel
-        # @!attribute [r] approval
+        # @!attribute approval
         #   If your application approves the provisioning attempt, this contains metadata
         #   about the digital wallet token that will be generated.
         #
         #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval, nil]
         optional :approval, -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval }
 
-        # @!parse
-        #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval]
-        #   attr_writer :approval
-
-        # @!attribute [r] decline
+        # @!attribute decline
         #   If your application declines the provisioning attempt, this contains details
         #   about the decline.
         #
         #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline, nil]
         optional :decline, -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline }
-
-        # @!parse
-        #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline]
-        #   attr_writer :decline
 
         # @!method initialize(approval: nil, decline: nil)
         #   If the Real-Time Decision relates to a digital wallet token provisioning
@@ -315,27 +270,19 @@ module Increase
 
         # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken#approval
         class Approval < Increase::Internal::Type::BaseModel
-          # @!attribute [r] email
+          # @!attribute email
           #   An email address that can be used to verify the cardholder via one-time
           #   passcode.
           #
           #   @return [String, nil]
           optional :email, String
 
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :email
-
-          # @!attribute [r] phone
+          # @!attribute phone
           #   A phone number that can be used to verify the cardholder via one-time passcode
           #   over SMS.
           #
           #   @return [String, nil]
           optional :phone, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :phone
 
           # @!method initialize(email: nil, phone: nil)
           #   If your application approves the provisioning attempt, this contains metadata
@@ -347,16 +294,12 @@ module Increase
 
         # @see Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken#decline
         class Decline < Increase::Internal::Type::BaseModel
-          # @!attribute [r] reason
+          # @!attribute reason
           #   Why the tokenization attempt was declined. This is for logging purposes only and
           #   is not displayed to the end-user.
           #
           #   @return [String, nil]
           optional :reason, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :reason
 
           # @!method initialize(reason: nil)
           #   If your application declines the provisioning attempt, this contains details

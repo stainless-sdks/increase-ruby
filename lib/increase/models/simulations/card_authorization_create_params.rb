@@ -5,8 +5,7 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::CardAuthorizations#create
       class CardAuthorizationCreateParams < Increase::Internal::Type::BaseModel
-        # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
+        extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
@@ -15,28 +14,20 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute [r] authenticated_card_payment_id
+        # @!attribute authenticated_card_payment_id
         #   The identifier of a Card Payment with a `card_authentication` if you want to
         #   simulate an authenticated authorization.
         #
         #   @return [String, nil]
         optional :authenticated_card_payment_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :authenticated_card_payment_id
-
-        # @!attribute [r] card_id
+        # @!attribute card_id
         #   The identifier of the Card to be authorized.
         #
         #   @return [String, nil]
         optional :card_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :card_id
-
-        # @!attribute [r] decline_reason
+        # @!attribute decline_reason
         #   Forces a card decline with a specific reason. No real time decision will be
         #   sent.
         #
@@ -44,32 +35,20 @@ module Increase
         optional :decline_reason,
                  enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason }
 
-        # @!parse
-        #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason]
-        #   attr_writer :decline_reason
-
-        # @!attribute [r] digital_wallet_token_id
+        # @!attribute digital_wallet_token_id
         #   The identifier of the Digital Wallet Token to be authorized.
         #
         #   @return [String, nil]
         optional :digital_wallet_token_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :digital_wallet_token_id
-
-        # @!attribute [r] direction
+        # @!attribute direction
         #   The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction, nil]
         optional :direction, enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::Direction }
 
-        # @!parse
-        #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction]
-        #   attr_writer :direction
-
-        # @!attribute [r] event_subscription_id
+        # @!attribute event_subscription_id
         #   The identifier of the Event Subscription to use. If provided, will override the
         #   default real time event subscription. Because you can only create one real time
         #   decision event subscription, you can use this field to route events to any
@@ -78,114 +57,70 @@ module Increase
         #   @return [String, nil]
         optional :event_subscription_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :event_subscription_id
-
-        # @!attribute [r] merchant_acceptor_id
+        # @!attribute merchant_acceptor_id
         #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
         #   is transacting with.
         #
         #   @return [String, nil]
         optional :merchant_acceptor_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :merchant_acceptor_id
-
-        # @!attribute [r] merchant_category_code
+        # @!attribute merchant_category_code
         #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
         #   card is transacting with.
         #
         #   @return [String, nil]
         optional :merchant_category_code, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :merchant_category_code
-
-        # @!attribute [r] merchant_city
+        # @!attribute merchant_city
         #   The city the merchant resides in.
         #
         #   @return [String, nil]
         optional :merchant_city, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :merchant_city
-
-        # @!attribute [r] merchant_country
+        # @!attribute merchant_country
         #   The country the merchant resides in.
         #
         #   @return [String, nil]
         optional :merchant_country, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :merchant_country
-
-        # @!attribute [r] merchant_descriptor
+        # @!attribute merchant_descriptor
         #   The merchant descriptor of the merchant the card is transacting with.
         #
         #   @return [String, nil]
         optional :merchant_descriptor, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :merchant_descriptor
-
-        # @!attribute [r] merchant_state
+        # @!attribute merchant_state
         #   The state the merchant resides in.
         #
         #   @return [String, nil]
         optional :merchant_state, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :merchant_state
-
-        # @!attribute [r] network_details
+        # @!attribute network_details
         #   Fields specific to a given card network.
         #
         #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails, nil]
         optional :network_details,
                  -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails }
 
-        # @!parse
-        #   # @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails]
-        #   attr_writer :network_details
-
-        # @!attribute [r] network_risk_score
+        # @!attribute network_risk_score
         #   The risk score generated by the card network. For Visa this is the Visa Advanced
         #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
         #
         #   @return [Integer, nil]
         optional :network_risk_score, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :network_risk_score
-
-        # @!attribute [r] physical_card_id
+        # @!attribute physical_card_id
         #   The identifier of the Physical Card to be authorized.
         #
         #   @return [String, nil]
         optional :physical_card_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :physical_card_id
-
-        # @!attribute [r] terminal_id
+        # @!attribute terminal_id
         #   The terminal identifier (commonly abbreviated as TID) of the terminal the card
         #   is transacting with.
         #
         #   @return [String, nil]
         optional :terminal_id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :terminal_id
 
         # @!method initialize(amount:, authenticated_card_payment_id: nil, card_id: nil, decline_reason: nil, digital_wallet_token_id: nil, direction: nil, event_subscription_id: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_state: nil, network_details: nil, network_risk_score: nil, physical_card_id: nil, terminal_id: nil, request_options: {})
         #   @param amount [Integer]
@@ -299,16 +234,12 @@ module Increase
 
           # @see Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails#visa
           class Visa < Increase::Internal::Type::BaseModel
-            # @!attribute [r] stand_in_processing_reason
+            # @!attribute stand_in_processing_reason
             #   The reason code for the stand-in processing.
             #
             #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason, nil]
             optional :stand_in_processing_reason,
                      enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason }
-
-            # @!parse
-            #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
-            #   attr_writer :stand_in_processing_reason
 
             # @!method initialize(stand_in_processing_reason: nil)
             #   Fields specific to the Visa network.

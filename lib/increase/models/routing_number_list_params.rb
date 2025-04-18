@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::RoutingNumbers#list
     class RoutingNumberListParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute routing_number
@@ -14,26 +13,18 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
-      # @!attribute [r] cursor
+      # @!attribute cursor
       #   Return the page of entries after this one.
       #
       #   @return [String, nil]
       optional :cursor, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :cursor
-
-      # @!attribute [r] limit
+      # @!attribute limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
 
       # @!method initialize(routing_number:, cursor: nil, limit: nil, request_options: {})
       #   @param routing_number [String]

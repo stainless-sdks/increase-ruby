@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::SupplementalDocuments#create
     class SupplementalDocumentCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute entity_id

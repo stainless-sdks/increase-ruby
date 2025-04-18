@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::IntrafiExclusions#create
     class IntrafiExclusionCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute bank_name
