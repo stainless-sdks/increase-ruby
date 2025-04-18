@@ -72,31 +72,15 @@ module Increase
         #   # @return [String]
         #   attr_writer :request_for_payment_id
 
-        # @!parse
-        #   # @param account_number_id [String]
-        #   # @param amount [Integer]
-        #   # @param debtor_account_number [String]
-        #   # @param debtor_name [String]
-        #   # @param debtor_routing_number [String]
-        #   # @param remittance_information [String]
-        #   # @param request_for_payment_id [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(
-        #     account_number_id:,
-        #     amount:,
-        #     debtor_account_number: nil,
-        #     debtor_name: nil,
-        #     debtor_routing_number: nil,
-        #     remittance_information: nil,
-        #     request_for_payment_id: nil,
-        #     request_options: {},
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(account_number_id:, amount:, debtor_account_number: nil, debtor_name: nil, debtor_routing_number: nil, remittance_information: nil, request_for_payment_id: nil, request_options: {})
+        #   @param account_number_id [String]
+        #   @param amount [Integer]
+        #   @param debtor_account_number [String]
+        #   @param debtor_name [String]
+        #   @param debtor_routing_number [String]
+        #   @param remittance_information [String]
+        #   @param request_for_payment_id [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

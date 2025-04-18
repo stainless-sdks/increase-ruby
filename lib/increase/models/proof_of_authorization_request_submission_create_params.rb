@@ -92,41 +92,20 @@ module Increase
       #   # @return [String]
       #   attr_writer :authorizer_ip_address
 
-      # @!parse
-      #   # @param authorization_terms [String]
-      #   # @param authorized_at [Time]
-      #   # @param authorizer_email [String]
-      #   # @param authorizer_name [String]
-      #   # @param customer_has_been_offboarded [Boolean]
-      #   # @param proof_of_authorization_request_id [String]
-      #   # @param validated_account_ownership_via_credential [Boolean]
-      #   # @param validated_account_ownership_with_account_statement [Boolean]
-      #   # @param validated_account_ownership_with_microdeposit [Boolean]
-      #   # @param additional_evidence_file_id [String]
-      #   # @param authorizer_company [String]
-      #   # @param authorizer_ip_address [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     authorization_terms:,
-      #     authorized_at:,
-      #     authorizer_email:,
-      #     authorizer_name:,
-      #     customer_has_been_offboarded:,
-      #     proof_of_authorization_request_id:,
-      #     validated_account_ownership_via_credential:,
-      #     validated_account_ownership_with_account_statement:,
-      #     validated_account_ownership_with_microdeposit:,
-      #     additional_evidence_file_id: nil,
-      #     authorizer_company: nil,
-      #     authorizer_ip_address: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(authorization_terms:, authorized_at:, authorizer_email:, authorizer_name:, customer_has_been_offboarded:, proof_of_authorization_request_id:, validated_account_ownership_via_credential:, validated_account_ownership_with_account_statement:, validated_account_ownership_with_microdeposit:, additional_evidence_file_id: nil, authorizer_company: nil, authorizer_ip_address: nil, request_options: {})
+      #   @param authorization_terms [String]
+      #   @param authorized_at [Time]
+      #   @param authorizer_email [String]
+      #   @param authorizer_name [String]
+      #   @param customer_has_been_offboarded [Boolean]
+      #   @param proof_of_authorization_request_id [String]
+      #   @param validated_account_ownership_via_credential [Boolean]
+      #   @param validated_account_ownership_with_account_statement [Boolean]
+      #   @param validated_account_ownership_with_microdeposit [Boolean]
+      #   @param additional_evidence_file_id [String]
+      #   @param authorizer_company [String]
+      #   @param authorizer_ip_address [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

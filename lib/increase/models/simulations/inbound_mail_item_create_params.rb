@@ -32,15 +32,11 @@ module Increase
         #   # @return [String]
         #   attr_writer :contents_file_id
 
-        # @!parse
-        #   # @param amount [Integer]
-        #   # @param lockbox_id [String]
-        #   # @param contents_file_id [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(amount:, lockbox_id:, contents_file_id: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
+        #   @param amount [Integer]
+        #   @param lockbox_id [String]
+        #   @param contents_file_id [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

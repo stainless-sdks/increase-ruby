@@ -32,15 +32,11 @@ module Increase
       #   # @return [String]
       #   attr_writer :description
 
-      # @!parse
-      #   # @param file [Pathname, StringIO]
-      #   # @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose]
-      #   # @param description [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(file:, purpose:, description: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(file:, purpose:, description: nil, request_options: {})
+      #   @param file [Pathname, StringIO]
+      #   @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose]
+      #   @param description [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # What the File will be used for in Increase's systems.
       module Purpose
@@ -94,11 +90,8 @@ module Increase
         # A file containing additional evidence for a Proof of Authorization Request Submission.
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

@@ -131,43 +131,21 @@ module Increase
       #   # @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
       #   attr_writer :standard_entry_class_code
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param account_number [String]
-      #   # @param routing_number [String]
-      #   # @param addendum [String]
-      #   # @param company_descriptive_date [String]
-      #   # @param company_discretionary_data [String]
-      #   # @param company_entry_description [String]
-      #   # @param company_name [String]
-      #   # @param credit_debit_indicator [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator]
-      #   # @param effective_date [Date]
-      #   # @param individual_id [String]
-      #   # @param individual_name [String]
-      #   # @param standard_entry_class_code [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_id:,
-      #     account_number:,
-      #     routing_number:,
-      #     addendum: nil,
-      #     company_descriptive_date: nil,
-      #     company_discretionary_data: nil,
-      #     company_entry_description: nil,
-      #     company_name: nil,
-      #     credit_debit_indicator: nil,
-      #     effective_date: nil,
-      #     individual_id: nil,
-      #     individual_name: nil,
-      #     standard_entry_class_code: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id:, account_number:, routing_number:, addendum: nil, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_name: nil, credit_debit_indicator: nil, effective_date: nil, individual_id: nil, individual_name: nil, standard_entry_class_code: nil, request_options: {})
+      #   @param account_id [String]
+      #   @param account_number [String]
+      #   @param routing_number [String]
+      #   @param addendum [String]
+      #   @param company_descriptive_date [String]
+      #   @param company_discretionary_data [String]
+      #   @param company_entry_description [String]
+      #   @param company_name [String]
+      #   @param credit_debit_indicator [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator]
+      #   @param effective_date [Date]
+      #   @param individual_id [String]
+      #   @param individual_name [String]
+      #   @param standard_entry_class_code [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
@@ -179,11 +157,8 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT = :debit
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
@@ -202,11 +177,8 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

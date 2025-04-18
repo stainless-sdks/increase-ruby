@@ -46,16 +46,12 @@ module Increase
       #   # @return [String]
       #   attr_writer :program_id
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param entity_id [String]
-      #   # @param informational_entity_id [String]
-      #   # @param program_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
+      #   @param name [String]
+      #   @param entity_id [String]
+      #   @param informational_entity_id [String]
+      #   @param program_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

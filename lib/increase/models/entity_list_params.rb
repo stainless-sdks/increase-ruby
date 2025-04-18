@@ -60,17 +60,13 @@ module Increase
       #   # @return [Increase::Models::EntityListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param created_at [Increase::Models::EntityListParams::CreatedAt]
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param status [Increase::Models::EntityListParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      #   @param created_at [Increase::Models::EntityListParams::CreatedAt]
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param status [Increase::Models::EntityListParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # @!attribute [r] after
@@ -117,15 +113,11 @@ module Increase
         #   # @return [Time]
         #   attr_writer :on_or_before
 
-        # @!parse
-        #   # @param after [Time]
-        #   # @param before [Time]
-        #   # @param on_or_after [Time]
-        #   # @param on_or_before [Time]
-        #   #
-        #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -143,12 +135,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::EntityListParams::Status::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::EntityListParams::Status::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::EntityListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -162,11 +150,8 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED = :disabled
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

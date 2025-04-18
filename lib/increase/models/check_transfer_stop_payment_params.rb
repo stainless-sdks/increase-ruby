@@ -18,13 +18,9 @@ module Increase
       #   # @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
       #   attr_writer :reason
 
-      # @!parse
-      #   # @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(reason: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(reason: nil, request_options: {})
+      #   @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The reason why this transfer should be stopped.
       module Reason
@@ -39,11 +35,8 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN = :unknown
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

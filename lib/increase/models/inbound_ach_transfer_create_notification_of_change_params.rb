@@ -28,14 +28,10 @@ module Increase
       #   # @return [String]
       #   attr_writer :updated_routing_number
 
-      # @!parse
-      #   # @param updated_account_number [String]
-      #   # @param updated_routing_number [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(updated_account_number: nil, updated_routing_number: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(updated_account_number: nil, updated_routing_number: nil, request_options: {})
+      #   @param updated_account_number [String]
+      #   @param updated_routing_number [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

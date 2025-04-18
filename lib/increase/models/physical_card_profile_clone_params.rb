@@ -59,27 +59,13 @@ module Increase
       #   # @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
       #   attr_writer :front_text
 
-      # @!parse
-      #   # @param carrier_image_file_id [String]
-      #   # @param contact_phone [String]
-      #   # @param description [String]
-      #   # @param front_image_file_id [String]
-      #   # @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     carrier_image_file_id: nil,
-      #     contact_phone: nil,
-      #     description: nil,
-      #     front_image_file_id: nil,
-      #     front_text: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(carrier_image_file_id: nil, contact_phone: nil, description: nil, front_image_file_id: nil, front_text: nil, request_options: {})
+      #   @param carrier_image_file_id [String]
+      #   @param contact_phone [String]
+      #   @param description [String]
+      #   @param front_image_file_id [String]
+      #   @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class FrontText < Increase::Internal::Type::BaseModel
         # @!attribute line1
@@ -100,16 +86,12 @@ module Increase
         #   # @return [String]
         #   attr_writer :line2
 
-        # @!parse
-        #   # Text printed on the front of the card. Reach out to
-        #   # [support@increase.com](mailto:support@increase.com) for more information.
-        #   #
-        #   # @param line1 [String]
-        #   # @param line2 [String]
-        #   #
-        #   def initialize(line1:, line2: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(line1:, line2: nil)
+        #   Text printed on the front of the card. Reach out to
+        #   [support@increase.com](mailto:support@increase.com) for more information.
+        #
+        #   @param line1 [String]
+        #   @param line2 [String]
       end
     end
   end

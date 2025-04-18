@@ -18,13 +18,9 @@ module Increase
       #   # @return [String]
       #   attr_writer :name
 
-      # @!parse
-      #   # @param name [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(name: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(name: nil, request_options: {})
+      #   @param name [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

@@ -25,14 +25,10 @@ module Increase
         #   # @return [String]
         #   attr_writer :explanation
 
-        # @!parse
-        #   # @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
-        #   # @param explanation [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(status:, explanation: nil, request_options: {}, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(status:, explanation: nil, request_options: {})
+        #   @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
+        #   @param explanation [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
         # The status to move the dispute to.
         module Status
@@ -53,11 +49,8 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON = :won
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

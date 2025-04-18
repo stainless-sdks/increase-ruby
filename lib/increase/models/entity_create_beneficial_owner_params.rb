@@ -15,13 +15,9 @@ module Increase
       #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner]
       required :beneficial_owner, -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner }
 
-      # @!parse
-      #   # @param beneficial_owner [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(beneficial_owner:, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(beneficial_owner:, request_options: {})
+      #   @param beneficial_owner [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class BeneficialOwner < Increase::Internal::Type::BaseModel
         # @!attribute individual
@@ -50,17 +46,13 @@ module Increase
         #   # @return [String]
         #   attr_writer :company_title
 
-        # @!parse
-        #   # The identifying details of anyone controlling or owning 25% or more of the
-        #   # corporation.
-        #   #
-        #   # @param individual [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual]
-        #   # @param prongs [Array<Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>]
-        #   # @param company_title [String]
-        #   #
-        #   def initialize(individual:, prongs:, company_title: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(individual:, prongs:, company_title: nil)
+        #   The identifying details of anyone controlling or owning 25% or more of the
+        #   corporation.
+        #
+        #   @param individual [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual]
+        #   @param prongs [Array<Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>]
+        #   @param company_title [String]
 
         # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner#individual
         class Individual < Increase::Internal::Type::BaseModel
@@ -104,18 +96,14 @@ module Increase
           #   # @return [Boolean]
           #   attr_writer :confirmed_no_us_tax_id
 
-          # @!parse
-          #   # Personal details for the beneficial owner.
-          #   #
-          #   # @param address [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address]
-          #   # @param date_of_birth [Date]
-          #   # @param identification [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification]
-          #   # @param name [String]
-          #   # @param confirmed_no_us_tax_id [Boolean]
-          #   #
-          #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
-
-          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+          # @!method initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          #   Personal details for the beneficial owner.
+          #
+          #   @param address [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address]
+          #   @param date_of_birth [Date]
+          #   @param identification [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification]
+          #   @param name [String]
+          #   @param confirmed_no_us_tax_id [Boolean]
 
           # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#address
           class Address < Increase::Internal::Type::BaseModel
@@ -173,20 +161,16 @@ module Increase
             #   # @return [String]
             #   attr_writer :zip
 
-            # @!parse
-            #   # The individual's physical address. Mail receiving locations like PO Boxes and
-            #   # PMB's are disallowed.
-            #   #
-            #   # @param country [String]
-            #   # @param line1 [String]
-            #   # @param city [String]
-            #   # @param line2 [String]
-            #   # @param state [String]
-            #   # @param zip [String]
-            #   #
-            #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
+            #   The individual's physical address. Mail receiving locations like PO Boxes and
+            #   PMB's are disallowed.
+            #
+            #   @param country [String]
+            #   @param line1 [String]
+            #   @param city [String]
+            #   @param line2 [String]
+            #   @param state [String]
+            #   @param zip [String]
           end
 
           # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#identification
@@ -242,18 +226,14 @@ module Increase
             #   # @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport]
             #   attr_writer :passport
 
-            # @!parse
-            #   # A means of verifying the person's identity.
-            #   #
-            #   # @param method_ [Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method]
-            #   # @param number [String]
-            #   # @param drivers_license [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense]
-            #   # @param other [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other]
-            #   # @param passport [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport]
-            #   #
-            #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
-
-            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+            # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            #   A means of verifying the person's identity.
+            #
+            #   @param method_ [Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method]
+            #   @param number [String]
+            #   @param drivers_license [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense]
+            #   @param other [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other]
+            #   @param passport [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport]
 
             # A method that can be used to verify the individual's identity.
             #
@@ -276,11 +256,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   def self.values; end
+              # @!method self.values
+              #   @return [Array<Symbol>]
             end
 
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#drivers_license
@@ -313,18 +290,14 @@ module Increase
               #   # @return [String]
               #   attr_writer :back_file_id
 
-              # @!parse
-              #   # Information about the United States driver's license used for identification.
-              #   # Required if `method` is equal to `drivers_license`.
-              #   #
-              #   # @param expiration_date [Date]
-              #   # @param file_id [String]
-              #   # @param state [String]
-              #   # @param back_file_id [String]
-              #   #
-              #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+              #   Information about the United States driver's license used for identification.
+              #   Required if `method` is equal to `drivers_license`.
+              #
+              #   @param expiration_date [Date]
+              #   @param file_id [String]
+              #   @param state [String]
+              #   @param back_file_id [String]
             end
 
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#other
@@ -369,19 +342,15 @@ module Increase
               #   # @return [Date]
               #   attr_writer :expiration_date
 
-              # @!parse
-              #   # Information about the identification document provided. Required if `method` is
-              #   # equal to `other`.
-              #   #
-              #   # @param country [String]
-              #   # @param description [String]
-              #   # @param file_id [String]
-              #   # @param back_file_id [String]
-              #   # @param expiration_date [Date]
-              #   #
-              #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              #   Information about the identification document provided. Required if `method` is
+              #   equal to `other`.
+              #
+              #   @param country [String]
+              #   @param description [String]
+              #   @param file_id [String]
+              #   @param back_file_id [String]
+              #   @param expiration_date [Date]
             end
 
             # @see Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification#passport
@@ -404,17 +373,13 @@ module Increase
               #   @return [String]
               required :file_id, String
 
-              # @!parse
-              #   # Information about the passport used for identification. Required if `method` is
-              #   # equal to `passport`.
-              #   #
-              #   # @param country [String]
-              #   # @param expiration_date [Date]
-              #   # @param file_id [String]
-              #   #
-              #   def initialize(country:, expiration_date:, file_id:, **) = super
-
-              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+              # @!method initialize(country:, expiration_date:, file_id:)
+              #   Information about the passport used for identification. Required if `method` is
+              #   equal to `passport`.
+              #
+              #   @param country [String]
+              #   @param expiration_date [Date]
+              #   @param file_id [String]
             end
           end
         end
@@ -428,11 +393,8 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL = :control
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

@@ -52,16 +52,12 @@ module Increase
       #   # @return [String]
       #   attr_writer :transaction_id
 
-      # @!parse
-      #   # @param cursor [String]
-      #   # @param idempotency_key [String]
-      #   # @param limit [Integer]
-      #   # @param transaction_id [String]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {})
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
+      #   @param transaction_id [String]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

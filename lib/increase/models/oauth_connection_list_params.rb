@@ -49,16 +49,12 @@ module Increase
       #   # @return [Increase::Models::OAuthConnectionListParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param cursor [String]
-      #   # @param limit [Integer]
-      #   # @param oauth_application_id [String]
-      #   # @param status [Increase::Models::OAuthConnectionListParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
+      #   @param cursor [String]
+      #   @param limit [Integer]
+      #   @param oauth_application_id [String]
+      #   @param status [Increase::Models::OAuthConnectionListParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
         # @!attribute [r] in_
@@ -75,12 +71,8 @@ module Increase
         #   # @return [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>]
         #   attr_writer :in_
 
-        # @!parse
-        #   # @param in_ [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>]
-        #   #
-        #   def initialize(in_: nil, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(in_: nil)
+        #   @param in_ [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -91,11 +83,8 @@ module Increase
           # The OAuth connection is permanently deactivated.
           INACTIVE = :inactive
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

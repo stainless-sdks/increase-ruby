@@ -16,13 +16,9 @@ module Increase
         #   @return [String]
         required :transaction_id, String
 
-        # @!parse
-        #   # @param transaction_id [String]
-        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-        #   #
-        #   def initialize(transaction_id:, request_options: {}, **) = super
-
-        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+        # @!method initialize(transaction_id:, request_options: {})
+        #   @param transaction_id [String]
+        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
   end

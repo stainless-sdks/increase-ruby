@@ -48,16 +48,12 @@ module Increase
       #   # @return [Symbol, Increase::Models::ExternalAccountUpdateParams::Status]
       #   attr_writer :status
 
-      # @!parse
-      #   # @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder]
-      #   # @param description [String]
-      #   # @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding]
-      #   # @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
+      #   @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder]
+      #   @param description [String]
+      #   @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding]
+      #   @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of entity that owns the External Account.
       module AccountHolder
@@ -69,11 +65,8 @@ module Increase
         # The External Account is owned by an individual.
         INDIVIDUAL = :individual
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The funding type of the External Account.
@@ -89,11 +82,8 @@ module Increase
         # A different type of account.
         OTHER = :other
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The status of the External Account.
@@ -106,11 +96,8 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = :archived
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

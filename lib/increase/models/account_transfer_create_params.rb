@@ -43,27 +43,13 @@ module Increase
       #   # @return [Boolean]
       #   attr_writer :require_approval
 
-      # @!parse
-      #   # @param account_id [String]
-      #   # @param amount [Integer]
-      #   # @param description [String]
-      #   # @param destination_account_id [String]
-      #   # @param require_approval [Boolean]
-      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     account_id:,
-      #     amount:,
-      #     description:,
-      #     destination_account_id:,
-      #     require_approval: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
+      # @!method initialize(account_id:, amount:, description:, destination_account_id:, require_approval: nil, request_options: {})
+      #   @param account_id [String]
+      #   @param amount [Integer]
+      #   @param description [String]
+      #   @param destination_account_id [String]
+      #   @param require_approval [Boolean]
+      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end
