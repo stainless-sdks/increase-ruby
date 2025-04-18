@@ -50,7 +50,7 @@ module Increase
       attr_accessor :message_to_recipient
 
       # The drawdown request's originator's account number.
-      sig { returns(String) }
+      sig { returns(T.nilable(String)) }
       attr_accessor :originator_account_number
 
       # Line 1 of the drawdown request's originator's address.
@@ -119,7 +119,7 @@ module Increase
           created_at: Time,
           currency: String,
           message_to_recipient: T.nilable(String),
-          originator_account_number: String,
+          originator_account_number: T.nilable(String),
           originator_address_line1: T.nilable(String),
           originator_address_line2: T.nilable(String),
           originator_address_line3: T.nilable(String),
@@ -174,7 +174,7 @@ module Increase
               created_at: Time,
               currency: String,
               message_to_recipient: T.nilable(String),
-              originator_account_number: String,
+              originator_account_number: T.nilable(String),
               originator_address_line1: T.nilable(String),
               originator_address_line2: T.nilable(String),
               originator_address_line3: T.nilable(String),

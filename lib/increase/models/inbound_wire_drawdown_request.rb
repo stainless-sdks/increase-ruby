@@ -75,8 +75,8 @@ module Increase
       # @!attribute originator_account_number
       #   The drawdown request's originator's account number.
       #
-      #   @return [String]
-      required :originator_account_number, String
+      #   @return [String, nil]
+      required :originator_account_number, String, nil?: true
 
       # @!attribute originator_address_line1
       #   Line 1 of the drawdown request's originator's address.
@@ -166,7 +166,7 @@ module Increase
       #   @param created_at [Time]
       #   @param currency [String]
       #   @param message_to_recipient [String, nil]
-      #   @param originator_account_number [String]
+      #   @param originator_account_number [String, nil]
       #   @param originator_address_line1 [String, nil]
       #   @param originator_address_line2 [String, nil]
       #   @param originator_address_line3 [String, nil]
