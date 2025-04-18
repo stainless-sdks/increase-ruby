@@ -3,6 +3,42 @@
 module Increase
   module Resources
     class Simulations
+      # @api private
+      private def initialize_resources
+        @interest_payments = Increase::Resources::Simulations::InterestPayments.new(client: @client)
+        @card_authorizations = Increase::Resources::Simulations::CardAuthorizations.new(client: @client)
+        @card_authorization_expirations =
+          Increase::Resources::Simulations::CardAuthorizationExpirations.new(client: @client)
+        @card_settlements = Increase::Resources::Simulations::CardSettlements.new(client: @client)
+        @card_reversals = Increase::Resources::Simulations::CardReversals.new(client: @client)
+        @card_increments = Increase::Resources::Simulations::CardIncrements.new(client: @client)
+        @card_fuel_confirmations = Increase::Resources::Simulations::CardFuelConfirmations.new(client: @client)
+        @card_refunds = Increase::Resources::Simulations::CardRefunds.new(client: @client)
+        @card_disputes = Increase::Resources::Simulations::CardDisputes.new(client: @client)
+        @physical_cards = Increase::Resources::Simulations::PhysicalCards.new(client: @client)
+        @digital_wallet_token_requests =
+          Increase::Resources::Simulations::DigitalWalletTokenRequests.new(client: @client)
+        @inbound_funds_holds = Increase::Resources::Simulations::InboundFundsHolds.new(client: @client)
+        @account_transfers = Increase::Resources::Simulations::AccountTransfers.new(client: @client)
+        @ach_transfers = Increase::Resources::Simulations::ACHTransfers.new(client: @client)
+        @inbound_ach_transfers = Increase::Resources::Simulations::InboundACHTransfers.new(client: @client)
+        @wire_transfers = Increase::Resources::Simulations::WireTransfers.new(client: @client)
+        @inbound_wire_transfers = Increase::Resources::Simulations::InboundWireTransfers.new(client: @client)
+        @inbound_wire_drawdown_requests =
+          Increase::Resources::Simulations::InboundWireDrawdownRequests.new(client: @client)
+        @check_transfers = Increase::Resources::Simulations::CheckTransfers.new(client: @client)
+        @inbound_check_deposits = Increase::Resources::Simulations::InboundCheckDeposits.new(client: @client)
+        @real_time_payments_transfers =
+          Increase::Resources::Simulations::RealTimePaymentsTransfers.new(client: @client)
+        @inbound_real_time_payments_transfers =
+          Increase::Resources::Simulations::InboundRealTimePaymentsTransfers.new(client: @client)
+        @check_deposits = Increase::Resources::Simulations::CheckDeposits.new(client: @client)
+        @inbound_mail_items = Increase::Resources::Simulations::InboundMailItems.new(client: @client)
+        @programs = Increase::Resources::Simulations::Programs.new(client: @client)
+        @account_statements = Increase::Resources::Simulations::AccountStatements.new(client: @client)
+        @documents = Increase::Resources::Simulations::Documents.new(client: @client)
+      end
+
       # @return [Increase::Resources::Simulations::InterestPayments]
       attr_reader :interest_payments
 
@@ -89,38 +125,7 @@ module Increase
       # @param client [Increase::Client]
       def initialize(client:)
         @client = client
-        @interest_payments = Increase::Resources::Simulations::InterestPayments.new(client: client)
-        @card_authorizations = Increase::Resources::Simulations::CardAuthorizations.new(client: client)
-        @card_authorization_expirations =
-          Increase::Resources::Simulations::CardAuthorizationExpirations.new(client: client)
-        @card_settlements = Increase::Resources::Simulations::CardSettlements.new(client: client)
-        @card_reversals = Increase::Resources::Simulations::CardReversals.new(client: client)
-        @card_increments = Increase::Resources::Simulations::CardIncrements.new(client: client)
-        @card_fuel_confirmations = Increase::Resources::Simulations::CardFuelConfirmations.new(client: client)
-        @card_refunds = Increase::Resources::Simulations::CardRefunds.new(client: client)
-        @card_disputes = Increase::Resources::Simulations::CardDisputes.new(client: client)
-        @physical_cards = Increase::Resources::Simulations::PhysicalCards.new(client: client)
-        @digital_wallet_token_requests =
-          Increase::Resources::Simulations::DigitalWalletTokenRequests.new(client: client)
-        @inbound_funds_holds = Increase::Resources::Simulations::InboundFundsHolds.new(client: client)
-        @account_transfers = Increase::Resources::Simulations::AccountTransfers.new(client: client)
-        @ach_transfers = Increase::Resources::Simulations::ACHTransfers.new(client: client)
-        @inbound_ach_transfers = Increase::Resources::Simulations::InboundACHTransfers.new(client: client)
-        @wire_transfers = Increase::Resources::Simulations::WireTransfers.new(client: client)
-        @inbound_wire_transfers = Increase::Resources::Simulations::InboundWireTransfers.new(client: client)
-        @inbound_wire_drawdown_requests =
-          Increase::Resources::Simulations::InboundWireDrawdownRequests.new(client: client)
-        @check_transfers = Increase::Resources::Simulations::CheckTransfers.new(client: client)
-        @inbound_check_deposits = Increase::Resources::Simulations::InboundCheckDeposits.new(client: client)
-        @real_time_payments_transfers =
-          Increase::Resources::Simulations::RealTimePaymentsTransfers.new(client: client)
-        @inbound_real_time_payments_transfers =
-          Increase::Resources::Simulations::InboundRealTimePaymentsTransfers.new(client: client)
-        @check_deposits = Increase::Resources::Simulations::CheckDeposits.new(client: client)
-        @inbound_mail_items = Increase::Resources::Simulations::InboundMailItems.new(client: client)
-        @programs = Increase::Resources::Simulations::Programs.new(client: client)
-        @account_statements = Increase::Resources::Simulations::AccountStatements.new(client: client)
-        @documents = Increase::Resources::Simulations::Documents.new(client: client)
+        initialize_resources
       end
     end
   end

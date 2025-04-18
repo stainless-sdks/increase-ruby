@@ -15,6 +15,8 @@ module Increase
 
     attr_reader api_key: String
 
+    private def initialize_resources: -> void
+
     attr_reader accounts: Increase::Resources::Accounts
 
     attr_reader account_numbers: Increase::Resources::AccountNumbers

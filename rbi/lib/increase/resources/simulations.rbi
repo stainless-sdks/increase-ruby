@@ -3,6 +3,10 @@
 module Increase
   module Resources
     class Simulations
+      # @api private
+      sig { void }
+      private def initialize_resources; end
+
       sig { returns(Increase::Resources::Simulations::InterestPayments) }
       attr_reader :interest_payments
 
