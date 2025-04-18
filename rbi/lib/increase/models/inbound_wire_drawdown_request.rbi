@@ -197,8 +197,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundWireDrawdownRequest::Type) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         INBOUND_WIRE_DRAWDOWN_REQUEST =
           T.let(:inbound_wire_drawdown_request, Increase::Models::InboundWireDrawdownRequest::Type::TaggedSymbol)
