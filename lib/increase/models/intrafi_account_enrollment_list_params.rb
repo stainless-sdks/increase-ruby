@@ -4,31 +4,22 @@ module Increase
   module Models
     # @see Increase::Resources::IntrafiAccountEnrollments#list
     class IntrafiAccountEnrollmentListParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute [r] account_id
+      # @!attribute account_id
       #   Filter IntraFi Account Enrollments to the one belonging to an account.
       #
       #   @return [String, nil]
       optional :account_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_id
-
-      # @!attribute [r] cursor
+      # @!attribute cursor
       #   Return the page of entries after this one.
       #
       #   @return [String, nil]
       optional :cursor, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :cursor
-
-      # @!attribute [r] idempotency_key
+      # @!attribute idempotency_key
       #   Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
@@ -37,29 +28,17 @@ module Increase
       #   @return [String, nil]
       optional :idempotency_key, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :idempotency_key
-
-      # @!attribute [r] limit
+      # @!attribute limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :limit
-
-      # @!attribute [r] status
+      # @!attribute status
       #
       #   @return [Increase::Models::IntrafiAccountEnrollmentListParams::Status, nil]
       optional :status, -> { Increase::Models::IntrafiAccountEnrollmentListParams::Status }
-
-      # @!parse
-      #   # @return [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
-      #   attr_writer :status
 
       # @!method initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #   @param account_id [String]
@@ -70,7 +49,7 @@ module Increase
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
-        # @!attribute [r] in_
+        # @!attribute in_
         #   Filter IntraFi Account Enrollments for those with the specified status or
         #   statuses. For GET requests, this should be encoded as a comma-delimited string,
         #   such as `?in=one,two,three`.
@@ -79,10 +58,6 @@ module Increase
         optional :in_,
                  -> { Increase::Internal::Type::ArrayOf[enum: Increase::Models::IntrafiAccountEnrollmentListParams::Status::In] },
                  api_name: :in
-
-        # @!parse
-        #   # @return [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
-        #   attr_writer :in_
 
         # @!method initialize(in_: nil)
         #   @param in_ [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]

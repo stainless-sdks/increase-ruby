@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::CardDisputes#create
     class CardDisputeCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute disputed_transaction_id
@@ -21,7 +20,7 @@ module Increase
       #   @return [String]
       required :explanation, String
 
-      # @!attribute [r] amount
+      # @!attribute amount
       #   The monetary amount of the part of the transaction that is being disputed. This
       #   is optional and will default to the full amount of the transaction if not
       #   provided. If provided, the amount must be less than or equal to the amount of
@@ -29,10 +28,6 @@ module Increase
       #
       #   @return [Integer, nil]
       optional :amount, Integer
-
-      # @!parse
-      #   # @return [Integer]
-      #   attr_writer :amount
 
       # @!method initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       #   @param disputed_transaction_id [String]

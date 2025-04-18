@@ -5,8 +5,7 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::CardRefunds#create
       class CardRefundCreateParams < Increase::Internal::Type::BaseModel
-        # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
+        extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute transaction_id

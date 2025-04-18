@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::PhysicalCardProfiles#create
     class PhysicalCardProfileCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute carrier_image_file_id

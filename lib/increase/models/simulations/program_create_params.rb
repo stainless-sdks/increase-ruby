@@ -5,8 +5,7 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::Programs#create
       class ProgramCreateParams < Increase::Internal::Type::BaseModel
-        # @!parse
-        #   extend Increase::Internal::Type::RequestParameters::Converter
+        extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute name

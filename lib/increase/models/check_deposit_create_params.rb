@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::CheckDeposits#create
     class CheckDepositCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
@@ -32,15 +31,11 @@ module Increase
       #   @return [String]
       required :front_image_file_id, String
 
-      # @!attribute [r] description
+      # @!attribute description
       #   The description you choose to give the Check Deposit, for display purposes only.
       #
       #   @return [String, nil]
       optional :description, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :description
 
       # @!method initialize(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
       #   @param account_id [String]

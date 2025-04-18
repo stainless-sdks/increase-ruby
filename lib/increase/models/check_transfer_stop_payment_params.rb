@@ -4,19 +4,14 @@ module Increase
   module Models
     # @see Increase::Resources::CheckTransfers#stop_payment
     class CheckTransferStopPaymentParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute [r] reason
+      # @!attribute reason
       #   The reason why this transfer should be stopped.
       #
       #   @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason, nil]
       optional :reason, enum: -> { Increase::Models::CheckTransferStopPaymentParams::Reason }
-
-      # @!parse
-      #   # @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
-      #   attr_writer :reason
 
       # @!method initialize(reason: nil, request_options: {})
       #   @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]

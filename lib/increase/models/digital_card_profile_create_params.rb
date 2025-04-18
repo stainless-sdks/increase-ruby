@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::DigitalCardProfiles#create
     class DigitalCardProfileCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute app_icon_file_id
@@ -38,45 +37,29 @@ module Increase
       #   @return [String]
       required :issuer_name, String
 
-      # @!attribute [r] contact_email
+      # @!attribute contact_email
       #   An email address the user can contact to receive support for their card.
       #
       #   @return [String, nil]
       optional :contact_email, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :contact_email
-
-      # @!attribute [r] contact_phone
+      # @!attribute contact_phone
       #   A phone number the user can contact to receive support for their card.
       #
       #   @return [String, nil]
       optional :contact_phone, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :contact_phone
-
-      # @!attribute [r] contact_website
+      # @!attribute contact_website
       #   A website the user can visit to view and receive support for their card.
       #
       #   @return [String, nil]
       optional :contact_website, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :contact_website
-
-      # @!attribute [r] text_color
+      # @!attribute text_color
       #   The Card's text color, specified as an RGB triple. The default is white.
       #
       #   @return [Increase::Models::DigitalCardProfileCreateParams::TextColor, nil]
       optional :text_color, -> { Increase::Models::DigitalCardProfileCreateParams::TextColor }
-
-      # @!parse
-      #   # @return [Increase::Models::DigitalCardProfileCreateParams::TextColor]
-      #   attr_writer :text_color
 
       # @!method initialize(app_icon_file_id:, background_image_file_id:, card_description:, description:, issuer_name:, contact_email: nil, contact_phone: nil, contact_website: nil, text_color: nil, request_options: {})
       #   @param app_icon_file_id [String]

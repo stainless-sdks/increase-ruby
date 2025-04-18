@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::ACHTransfers#create
     class ACHTransferCreateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
@@ -33,72 +32,48 @@ module Increase
       #   @return [String]
       required :statement_descriptor, String
 
-      # @!attribute [r] account_number
+      # @!attribute account_number
       #   The account number for the destination account.
       #
       #   @return [String, nil]
       optional :account_number, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :account_number
-
-      # @!attribute [r] addenda
+      # @!attribute addenda
       #   Additional information that will be sent to the recipient. This is included in
       #   the transfer data sent to the receiving bank.
       #
       #   @return [Increase::Models::ACHTransferCreateParams::Addenda, nil]
       optional :addenda, -> { Increase::Models::ACHTransferCreateParams::Addenda }
 
-      # @!parse
-      #   # @return [Increase::Models::ACHTransferCreateParams::Addenda]
-      #   attr_writer :addenda
-
-      # @!attribute [r] company_descriptive_date
+      # @!attribute company_descriptive_date
       #   The description of the date of the transfer, usually in the format `YYMMDD`.
       #   This is included in the transfer data sent to the receiving bank.
       #
       #   @return [String, nil]
       optional :company_descriptive_date, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :company_descriptive_date
-
-      # @!attribute [r] company_discretionary_data
+      # @!attribute company_discretionary_data
       #   The data you choose to associate with the transfer. This is included in the
       #   transfer data sent to the receiving bank.
       #
       #   @return [String, nil]
       optional :company_discretionary_data, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :company_discretionary_data
-
-      # @!attribute [r] company_entry_description
+      # @!attribute company_entry_description
       #   A description of the transfer. This is included in the transfer data sent to the
       #   receiving bank.
       #
       #   @return [String, nil]
       optional :company_entry_description, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :company_entry_description
-
-      # @!attribute [r] company_name
+      # @!attribute company_name
       #   The name by which the recipient knows you. This is included in the transfer data
       #   sent to the receiving bank.
       #
       #   @return [String, nil]
       optional :company_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :company_name
-
-      # @!attribute [r] destination_account_holder
+      # @!attribute destination_account_holder
       #   The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
       #
@@ -106,53 +81,33 @@ module Increase
       optional :destination_account_holder,
                enum: -> { Increase::Models::ACHTransferCreateParams::DestinationAccountHolder }
 
-      # @!parse
-      #   # @return [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder]
-      #   attr_writer :destination_account_holder
-
-      # @!attribute [r] external_account_id
+      # @!attribute external_account_id
       #   The ID of an External Account to initiate a transfer to. If this parameter is
       #   provided, `account_number`, `routing_number`, and `funding` must be absent.
       #
       #   @return [String, nil]
       optional :external_account_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :external_account_id
-
-      # @!attribute [r] funding
+      # @!attribute funding
       #   The type of the account to which the transfer will be sent.
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::Funding, nil]
       optional :funding, enum: -> { Increase::Models::ACHTransferCreateParams::Funding }
 
-      # @!parse
-      #   # @return [Symbol, Increase::Models::ACHTransferCreateParams::Funding]
-      #   attr_writer :funding
-
-      # @!attribute [r] individual_id
+      # @!attribute individual_id
       #   Your identifier for the transfer recipient.
       #
       #   @return [String, nil]
       optional :individual_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :individual_id
-
-      # @!attribute [r] individual_name
+      # @!attribute individual_name
       #   The name of the transfer recipient. This value is informational and not verified
       #   by the recipient's bank.
       #
       #   @return [String, nil]
       optional :individual_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :individual_name
-
-      # @!attribute [r] preferred_effective_date
+      # @!attribute preferred_effective_date
       #   Configuration for how the effective date of the transfer will be set. This
       #   determines same-day vs future-dated settlement timing. If not set, defaults to a
       #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
@@ -162,51 +117,31 @@ module Increase
       optional :preferred_effective_date,
                -> { Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate }
 
-      # @!parse
-      #   # @return [Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate]
-      #   attr_writer :preferred_effective_date
-
-      # @!attribute [r] require_approval
+      # @!attribute require_approval
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
       #   @return [Boolean, nil]
       optional :require_approval, Increase::Internal::Type::Boolean
 
-      # @!parse
-      #   # @return [Boolean]
-      #   attr_writer :require_approval
-
-      # @!attribute [r] routing_number
+      # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       #
       #   @return [String, nil]
       optional :routing_number, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :routing_number
-
-      # @!attribute [r] standard_entry_class_code
+      # @!attribute standard_entry_class_code
       #   The Standard Entry Class (SEC) code to use for the transfer.
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode, nil]
       optional :standard_entry_class_code,
                enum: -> { Increase::Models::ACHTransferCreateParams::StandardEntryClassCode }
 
-      # @!parse
-      #   # @return [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode]
-      #   attr_writer :standard_entry_class_code
-
-      # @!attribute [r] transaction_timing
+      # @!attribute transaction_timing
       #   The timing of the transaction.
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming, nil]
       optional :transaction_timing, enum: -> { Increase::Models::ACHTransferCreateParams::TransactionTiming }
-
-      # @!parse
-      #   # @return [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming]
-      #   attr_writer :transaction_timing
 
       # @!method initialize(account_id:, amount:, statement_descriptor:, account_number: nil, addenda: nil, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_name: nil, destination_account_holder: nil, external_account_id: nil, funding: nil, individual_id: nil, individual_name: nil, preferred_effective_date: nil, require_approval: nil, routing_number: nil, standard_entry_class_code: nil, transaction_timing: nil, request_options: {})
       #   @param account_id [String]
@@ -237,27 +172,19 @@ module Increase
         #   @return [Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category]
         required :category, enum: -> { Increase::Models::ACHTransferCreateParams::Addenda::Category }
 
-        # @!attribute [r] freeform
+        # @!attribute freeform
         #   Unstructured `payment_related_information` passed through with the transfer.
         #
         #   @return [Increase::Models::ACHTransferCreateParams::Addenda::Freeform, nil]
         optional :freeform, -> { Increase::Models::ACHTransferCreateParams::Addenda::Freeform }
 
-        # @!parse
-        #   # @return [Increase::Models::ACHTransferCreateParams::Addenda::Freeform]
-        #   attr_writer :freeform
-
-        # @!attribute [r] payment_order_remittance_advice
+        # @!attribute payment_order_remittance_advice
         #   Structured ASC X12 820 remittance advice records. Please reach out to
         #   [support@increase.com](mailto:support@increase.com) for more information.
         #
         #   @return [Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice, nil]
         optional :payment_order_remittance_advice,
                  -> { Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice }
-
-        # @!parse
-        #   # @return [Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice]
-        #   attr_writer :payment_order_remittance_advice
 
         # @!method initialize(category:, freeform: nil, payment_order_remittance_advice: nil)
         #   Additional information that will be sent to the recipient. This is included in
@@ -380,27 +307,19 @@ module Increase
       end
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
-        # @!attribute [r] date
+        # @!attribute date
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
         #   use as the effective date when submitting this transfer.
         #
         #   @return [Date, nil]
         optional :date, Date
 
-        # @!parse
-        #   # @return [Date]
-        #   attr_writer :date
-
-        # @!attribute [r] settlement_schedule
+        # @!attribute settlement_schedule
         #   A schedule by which Increase will choose an effective date for the transfer.
         #
         #   @return [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule, nil]
         optional :settlement_schedule,
                  enum: -> { Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule }
-
-        # @!parse
-        #   # @return [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule]
-        #   attr_writer :settlement_schedule
 
         # @!method initialize(date: nil, settlement_schedule: nil)
         #   Configuration for how the effective date of the transfer will be set. This

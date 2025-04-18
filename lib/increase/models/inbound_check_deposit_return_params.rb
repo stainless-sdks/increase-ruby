@@ -4,8 +4,7 @@ module Increase
   module Models
     # @see Increase::Resources::InboundCheckDeposits#return_
     class InboundCheckDepositReturnParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute reason

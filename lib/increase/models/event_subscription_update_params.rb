@@ -4,19 +4,14 @@ module Increase
   module Models
     # @see Increase::Resources::EventSubscriptions#update
     class EventSubscriptionUpdateParams < Increase::Internal::Type::BaseModel
-      # @!parse
-      #   extend Increase::Internal::Type::RequestParameters::Converter
+      extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute [r] status
+      # @!attribute status
       #   The status to update the Event Subscription with.
       #
       #   @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::EventSubscriptionUpdateParams::Status }
-
-      # @!parse
-      #   # @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
-      #   attr_writer :status
 
       # @!method initialize(status: nil, request_options: {})
       #   @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
