@@ -55,17 +55,21 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundMailItem::Type]
       required :type, enum: -> { Increase::Models::InboundMailItem::Type }
 
-      # @!method initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:)
-      #   Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
-      #
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param file_id [String]
-      #   @param lockbox_id [String, nil]
-      #   @param recipient_name [String, nil]
-      #   @param rejection_reason [Symbol, Increase::Models::InboundMailItem::RejectionReason, nil]
-      #   @param status [Symbol, Increase::Models::InboundMailItem::Status]
-      #   @param type [Symbol, Increase::Models::InboundMailItem::Type]
+      # @!parse
+      #   # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
+      #   #
+      #   # @param id [String]
+      #   # @param created_at [Time]
+      #   # @param file_id [String]
+      #   # @param lockbox_id [String, nil]
+      #   # @param recipient_name [String, nil]
+      #   # @param rejection_reason [Symbol, Increase::Models::InboundMailItem::RejectionReason, nil]
+      #   # @param status [Symbol, Increase::Models::InboundMailItem::Status]
+      #   # @param type [Symbol, Increase::Models::InboundMailItem::Type]
+      #   #
+      #   def initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # If the mail item has been rejected, why it was rejected.
       #
@@ -82,8 +86,11 @@ module Increase
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE = :lockbox_not_active
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # If the mail item has been processed.
@@ -101,8 +108,11 @@ module Increase
         # The mail item has been rejected.
         REJECTED = :rejected
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -114,8 +124,11 @@ module Increase
 
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

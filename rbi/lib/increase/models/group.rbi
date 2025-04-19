@@ -60,7 +60,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ACHDebitStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
 
         # The Group cannot make ACH debits.
         DISABLED = T.let(:disabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
@@ -77,7 +77,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ActivationStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::Group::ActivationStatus::TaggedSymbol) }
 
         # The Group is not activated.
         UNACTIVATED = T.let(:unactivated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
@@ -95,7 +96,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Group::Type::TaggedSymbol) }
 
         GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 

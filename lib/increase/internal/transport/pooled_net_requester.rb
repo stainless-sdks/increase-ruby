@@ -61,7 +61,7 @@ module Increase
               method.to_s.upcase,
               !body.nil?,
               method != :head,
-              URI(url.to_s) # ensure we construct a URI class of the right scheme
+              url.to_s
             )
 
             headers.each { req[_1] = _2 }

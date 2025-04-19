@@ -15,8 +15,6 @@ module Increase
 
         def ==: (top other) -> bool
 
-        def hash: -> Integer
-
         def coerce: (
           ::Hash[top, top] | top value,
           state: Increase::Internal::Type::Converter::coerce_state

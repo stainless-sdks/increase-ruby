@@ -50,19 +50,23 @@ module Increase
       #   @return [Symbol, Increase::Models::OAuthApplication::Type]
       required :type, enum: -> { Increase::Models::OAuthApplication::Type }
 
-      # @!method initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)
-      #   An OAuth Application lets you build an application for others to use with their
-      #   Increase data. You can create an OAuth Application via the Dashboard and read
-      #   information about it with the API. Learn more about OAuth
-      #   [here](https://increase.com/documentation/oauth).
-      #
-      #   @param id [String]
-      #   @param client_id [String]
-      #   @param created_at [Time]
-      #   @param deleted_at [Time, nil]
-      #   @param name [String, nil]
-      #   @param status [Symbol, Increase::Models::OAuthApplication::Status]
-      #   @param type [Symbol, Increase::Models::OAuthApplication::Type]
+      # @!parse
+      #   # An OAuth Application lets you build an application for others to use with their
+      #   # Increase data. You can create an OAuth Application via the Dashboard and read
+      #   # information about it with the API. Learn more about OAuth
+      #   # [here](https://increase.com/documentation/oauth).
+      #   #
+      #   # @param id [String]
+      #   # @param client_id [String]
+      #   # @param created_at [Time]
+      #   # @param deleted_at [Time, nil]
+      #   # @param name [String, nil]
+      #   # @param status [Symbol, Increase::Models::OAuthApplication::Status]
+      #   # @param type [Symbol, Increase::Models::OAuthApplication::Type]
+      #   #
+      #   def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # Whether the application is active.
       #
@@ -76,8 +80,11 @@ module Increase
         # The application is deleted.
         DELETED = :deleted
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -89,8 +96,11 @@ module Increase
 
         OAUTH_APPLICATION = :oauth_application
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

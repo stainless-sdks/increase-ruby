@@ -5,7 +5,8 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::InboundCheckDeposits#create
       class InboundCheckDepositCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
+        # @!parse
+        #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute account_number_id
@@ -26,11 +27,15 @@ module Increase
         #   @return [String]
         required :check_number, String
 
-        # @!method initialize(account_number_id:, amount:, check_number:, request_options: {})
-        #   @param account_number_id [String]
-        #   @param amount [Integer]
-        #   @param check_number [String]
-        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        # @!parse
+        #   # @param account_number_id [String]
+        #   # @param amount [Integer]
+        #   # @param check_number [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        #   #
+        #   def initialize(account_number_id:, amount:, check_number:, request_options: {}, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
     end
   end

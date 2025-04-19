@@ -117,7 +117,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::DeclinedTransactionListParams::Category::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol) }
 
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE =

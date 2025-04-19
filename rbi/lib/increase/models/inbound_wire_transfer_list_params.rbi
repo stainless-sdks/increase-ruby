@@ -160,7 +160,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::InboundWireTransferListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol) }
 
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = T.let(:pending, Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol)

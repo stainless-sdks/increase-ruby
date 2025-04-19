@@ -77,23 +77,42 @@ module Increase
       #   @return [Symbol, Increase::Models::RealTimeDecision::Type]
       required :type, enum: -> { Increase::Models::RealTimeDecision::Type }
 
-      # @!method initialize(id:, card_authentication:, card_authentication_challenge:, card_authorization:, category:, created_at:, digital_wallet_authentication:, digital_wallet_token:, status:, timeout_at:, type:)
-      #   Real Time Decisions are created when your application needs to take action in
-      #   real-time to some event such as a card authorization. For more information, see
-      #   our
-      #   [Real-Time Decisions guide](https://increase.com/documentation/real-time-decisions).
-      #
-      #   @param id [String]
-      #   @param card_authentication [Increase::Models::RealTimeDecision::CardAuthentication, nil]
-      #   @param card_authentication_challenge [Increase::Models::RealTimeDecision::CardAuthenticationChallenge, nil]
-      #   @param card_authorization [Increase::Models::RealTimeDecision::CardAuthorization, nil]
-      #   @param category [Symbol, Increase::Models::RealTimeDecision::Category]
-      #   @param created_at [Time]
-      #   @param digital_wallet_authentication [Increase::Models::RealTimeDecision::DigitalWalletAuthentication, nil]
-      #   @param digital_wallet_token [Increase::Models::RealTimeDecision::DigitalWalletToken, nil]
-      #   @param status [Symbol, Increase::Models::RealTimeDecision::Status]
-      #   @param timeout_at [Time]
-      #   @param type [Symbol, Increase::Models::RealTimeDecision::Type]
+      # @!parse
+      #   # Real Time Decisions are created when your application needs to take action in
+      #   # real-time to some event such as a card authorization. For more information, see
+      #   # our
+      #   # [Real-Time Decisions guide](https://increase.com/documentation/real-time-decisions).
+      #   #
+      #   # @param id [String]
+      #   # @param card_authentication [Increase::Models::RealTimeDecision::CardAuthentication, nil]
+      #   # @param card_authentication_challenge [Increase::Models::RealTimeDecision::CardAuthenticationChallenge, nil]
+      #   # @param card_authorization [Increase::Models::RealTimeDecision::CardAuthorization, nil]
+      #   # @param category [Symbol, Increase::Models::RealTimeDecision::Category]
+      #   # @param created_at [Time]
+      #   # @param digital_wallet_authentication [Increase::Models::RealTimeDecision::DigitalWalletAuthentication, nil]
+      #   # @param digital_wallet_token [Increase::Models::RealTimeDecision::DigitalWalletToken, nil]
+      #   # @param status [Symbol, Increase::Models::RealTimeDecision::Status]
+      #   # @param timeout_at [Time]
+      #   # @param type [Symbol, Increase::Models::RealTimeDecision::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     card_authentication:,
+      #     card_authentication_challenge:,
+      #     card_authorization:,
+      #     category:,
+      #     created_at:,
+      #     digital_wallet_authentication:,
+      #     digital_wallet_token:,
+      #     status:,
+      #     timeout_at:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # @see Increase::Models::RealTimeDecision#card_authentication
       class CardAuthentication < Increase::Internal::Type::BaseModel
@@ -124,13 +143,17 @@ module Increase
         #   @return [String]
         required :upcoming_card_payment_id, String
 
-        # @!method initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:)
-        #   Fields related to a 3DS authentication attempt.
-        #
-        #   @param account_id [String]
-        #   @param card_id [String]
-        #   @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision, nil]
-        #   @param upcoming_card_payment_id [String]
+        # @!parse
+        #   # Fields related to a 3DS authentication attempt.
+        #   #
+        #   # @param account_id [String]
+        #   # @param card_id [String]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision, nil]
+        #   # @param upcoming_card_payment_id [String]
+        #   #
+        #   def initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether or not the authentication attempt was approved.
         #
@@ -147,8 +170,11 @@ module Increase
           # Deny the authentication attempt.
           DENY = :deny
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -187,14 +213,18 @@ module Increase
                  enum: -> { Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result },
                  nil?: true
 
-        # @!method initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
-        #   Fields related to a 3DS authentication attempt.
-        #
-        #   @param account_id [String]
-        #   @param card_id [String]
-        #   @param card_payment_id [String]
-        #   @param one_time_code [String]
-        #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result, nil]
+        # @!parse
+        #   # Fields related to a 3DS authentication attempt.
+        #   #
+        #   # @param account_id [String]
+        #   # @param card_id [String]
+        #   # @param card_payment_id [String]
+        #   # @param one_time_code [String]
+        #   # @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result, nil]
+        #   #
+        #   def initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether or not the challenge was delivered to the cardholder.
         #
@@ -208,8 +238,11 @@ module Increase
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = :failure
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -384,34 +417,67 @@ module Increase
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
         required :verification, -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification }
 
-        # @!method initialize(account_id:, card_id:, decision:, digital_wallet_token_id:, direction:, merchant_acceptor_id:, merchant_category_code:, merchant_city:, merchant_country:, merchant_descriptor:, merchant_postal_code:, merchant_state:, network_details:, network_identifiers:, network_risk_score:, physical_card_id:, presentment_amount:, presentment_currency:, processing_category:, request_details:, settlement_amount:, settlement_currency:, terminal_id:, upcoming_card_payment_id:, verification:)
-        #   Fields related to a card authorization.
-        #
-        #   @param account_id [String]
-        #   @param card_id [String]
-        #   @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision, nil]
-        #   @param digital_wallet_token_id [String, nil]
-        #   @param direction [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
-        #   @param merchant_acceptor_id [String]
-        #   @param merchant_category_code [String]
-        #   @param merchant_city [String, nil]
-        #   @param merchant_country [String]
-        #   @param merchant_descriptor [String]
-        #   @param merchant_postal_code [String, nil]
-        #   @param merchant_state [String, nil]
-        #   @param network_details [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
-        #   @param network_identifiers [Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers]
-        #   @param network_risk_score [Integer, nil]
-        #   @param physical_card_id [String, nil]
-        #   @param presentment_amount [Integer]
-        #   @param presentment_currency [String]
-        #   @param processing_category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory]
-        #   @param request_details [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
-        #   @param settlement_amount [Integer]
-        #   @param settlement_currency [String]
-        #   @param terminal_id [String, nil]
-        #   @param upcoming_card_payment_id [String]
-        #   @param verification [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
+        # @!parse
+        #   # Fields related to a card authorization.
+        #   #
+        #   # @param account_id [String]
+        #   # @param card_id [String]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision, nil]
+        #   # @param digital_wallet_token_id [String, nil]
+        #   # @param direction [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
+        #   # @param merchant_acceptor_id [String]
+        #   # @param merchant_category_code [String]
+        #   # @param merchant_city [String, nil]
+        #   # @param merchant_country [String]
+        #   # @param merchant_descriptor [String]
+        #   # @param merchant_postal_code [String, nil]
+        #   # @param merchant_state [String, nil]
+        #   # @param network_details [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
+        #   # @param network_identifiers [Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers]
+        #   # @param network_risk_score [Integer, nil]
+        #   # @param physical_card_id [String, nil]
+        #   # @param presentment_amount [Integer]
+        #   # @param presentment_currency [String]
+        #   # @param processing_category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory]
+        #   # @param request_details [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
+        #   # @param settlement_amount [Integer]
+        #   # @param settlement_currency [String]
+        #   # @param terminal_id [String, nil]
+        #   # @param upcoming_card_payment_id [String]
+        #   # @param verification [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
+        #   #
+        #   def initialize(
+        #     account_id:,
+        #     card_id:,
+        #     decision:,
+        #     digital_wallet_token_id:,
+        #     direction:,
+        #     merchant_acceptor_id:,
+        #     merchant_category_code:,
+        #     merchant_city:,
+        #     merchant_country:,
+        #     merchant_descriptor:,
+        #     merchant_postal_code:,
+        #     merchant_state:,
+        #     network_details:,
+        #     network_identifiers:,
+        #     network_risk_score:,
+        #     physical_card_id:,
+        #     presentment_amount:,
+        #     presentment_currency:,
+        #     processing_category:,
+        #     request_details:,
+        #     settlement_amount:,
+        #     settlement_currency:,
+        #     terminal_id:,
+        #     upcoming_card_payment_id:,
+        #     verification:,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether or not the authorization was approved.
         #
@@ -425,8 +491,11 @@ module Increase
           # Decline the authorization.
           DECLINE = :decline
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # The direction describes the direction the funds will move, either from the
@@ -442,8 +511,11 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # @see Increase::Models::RealTimeDecision::CardAuthorization#network_details
@@ -463,11 +535,15 @@ module Increase
                    -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa },
                    nil?: true
 
-          # @!method initialize(category:, visa:)
-          #   Fields specific to the `network`.
-          #
-          #   @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
-          #   @param visa [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa, nil]
+          # @!parse
+          #   # Fields specific to the `network`.
+          #   #
+          #   # @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
+          #   # @param visa [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa, nil]
+          #   #
+          #   def initialize(category:, visa:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # The payment network used to process this card authorization.
           #
@@ -478,8 +554,11 @@ module Increase
             # Visa
             VISA = :visa
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
 
           # @see Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails#visa
@@ -512,12 +591,16 @@ module Increase
                      enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason },
                      nil?: true
 
-            # @!method initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
-            #   Fields specific to the `visa` network.
-            #
-            #   @param electronic_commerce_indicator [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
-            #   @param point_of_service_entry_mode [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
-            #   @param stand_in_processing_reason [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
+            # @!parse
+            #   # Fields specific to the `visa` network.
+            #   #
+            #   # @param electronic_commerce_indicator [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+            #   # @param point_of_service_entry_mode [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+            #   # @param stand_in_processing_reason [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
+            #   #
+            #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # For electronic commerce transactions, this identifies the level of security used
             # in obtaining the customer's payment credential. For mail or telephone order
@@ -552,8 +635,11 @@ module Increase
               # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
               NON_SECURE_TRANSACTION = :non_secure_transaction
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
 
             # The method used to enter the cardholder's primary account number and card
@@ -593,8 +679,11 @@ module Increase
               # Contact chip card, without card verification value
               INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
 
             # Only present when `actioner: network`. Describes why a card authorization was
@@ -627,8 +716,11 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER = :other
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -657,12 +749,16 @@ module Increase
           #   @return [String, nil]
           required :transaction_id, String, nil?: true
 
-          # @!method initialize(retrieval_reference_number:, trace_number:, transaction_id:)
-          #   Network-specific identifiers for a specific request or transaction.
-          #
-          #   @param retrieval_reference_number [String, nil]
-          #   @param trace_number [String, nil]
-          #   @param transaction_id [String, nil]
+          # @!parse
+          #   # Network-specific identifiers for a specific request or transaction.
+          #   #
+          #   # @param retrieval_reference_number [String, nil]
+          #   # @param trace_number [String, nil]
+          #   # @param transaction_id [String, nil]
+          #   #
+          #   def initialize(retrieval_reference_number:, trace_number:, transaction_id:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         # The processing category describes the intent behind the authorization, such as
@@ -690,8 +786,11 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # @see Increase::Models::RealTimeDecision::CardAuthorization#request_details
@@ -718,12 +817,16 @@ module Increase
           #   @return [Object, nil]
           required :initial_authorization, Increase::Internal::Type::Unknown, nil?: true
 
-          # @!method initialize(category:, incremental_authorization:, initial_authorization:)
-          #   Fields specific to the type of request, such as an incremental authorization.
-          #
-          #   @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
-          #   @param incremental_authorization [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization, nil]
-          #   @param initial_authorization [Object, nil]
+          # @!parse
+          #   # Fields specific to the type of request, such as an incremental authorization.
+          #   #
+          #   # @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
+          #   # @param incremental_authorization [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization, nil]
+          #   # @param initial_authorization [Object, nil]
+          #   #
+          #   def initialize(category:, incremental_authorization:, initial_authorization:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # The type of this request (e.g., an initial authorization or an incremental
           # authorization).
@@ -738,8 +841,11 @@ module Increase
             # An incremental request to increase the amount of an existing authorization.
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
 
           # @see Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails#incremental_authorization
@@ -757,11 +863,15 @@ module Increase
             #   @return [String]
             required :original_card_authorization_id, String
 
-            # @!method initialize(card_payment_id:, original_card_authorization_id:)
-            #   Fields specific to the category `incremental_authorization`.
-            #
-            #   @param card_payment_id [String]
-            #   @param original_card_authorization_id [String]
+            # @!parse
+            #   # Fields specific to the category `incremental_authorization`.
+            #   #
+            #   # @param card_payment_id [String]
+            #   # @param original_card_authorization_id [String]
+            #   #
+            #   def initialize(card_payment_id:, original_card_authorization_id:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
           end
         end
 
@@ -783,11 +893,15 @@ module Increase
           required :cardholder_address,
                    -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress }
 
-          # @!method initialize(card_verification_code:, cardholder_address:)
-          #   Fields related to verification of cardholder-provided values.
-          #
-          #   @param card_verification_code [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode]
-          #   @param cardholder_address [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress]
+          # @!parse
+          #   # Fields related to verification of cardholder-provided values.
+          #   #
+          #   # @param card_verification_code [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode]
+          #   # @param cardholder_address [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress]
+          #   #
+          #   def initialize(card_verification_code:, cardholder_address:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # @see Increase::Models::RealTimeDecision::CardAuthorization::Verification#card_verification_code
           class CardVerificationCode < Increase::Internal::Type::BaseModel
@@ -798,11 +912,15 @@ module Increase
             required :result,
                      enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result }
 
-            # @!method initialize(result:)
-            #   Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
-            #
-            #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
+            # @!parse
+            #   # Fields related to verification of the Card Verification Code, a 3-digit code on
+            #   # the back of the card.
+            #   #
+            #   # @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
+            #   #
+            #   def initialize(result:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # The result of verifying the Card Verification Code.
             #
@@ -819,8 +937,11 @@ module Increase
               # The card verification code did not match the one on file.
               NO_MATCH = :no_match
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
 
@@ -858,15 +979,19 @@ module Increase
             required :result,
                      enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result }
 
-            # @!method initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
-            #   Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
-            #
-            #   @param actual_line1 [String, nil]
-            #   @param actual_postal_code [String, nil]
-            #   @param provided_line1 [String, nil]
-            #   @param provided_postal_code [String, nil]
-            #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
+            # @!parse
+            #   # Cardholder address provided in the authorization request and the address on file
+            #   # we verified it against.
+            #   #
+            #   # @param actual_line1 [String, nil]
+            #   # @param actual_postal_code [String, nil]
+            #   # @param provided_line1 [String, nil]
+            #   # @param provided_postal_code [String, nil]
+            #   # @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
+            #   #
+            #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # The address verification result returned to the card network.
             #
@@ -892,8 +1017,11 @@ module Increase
               # Postal code and street address do not match.
               NO_MATCH = :no_match
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -920,8 +1048,11 @@ module Increase
         # A card is being loaded into a digital wallet and requires cardholder authentication.
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # @see Increase::Models::RealTimeDecision#digital_wallet_authentication
@@ -972,16 +1103,20 @@ module Increase
                  enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result },
                  nil?: true
 
-        # @!method initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
-        #   Fields related to a digital wallet authentication attempt.
-        #
-        #   @param card_id [String]
-        #   @param channel [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
-        #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet]
-        #   @param email [String, nil]
-        #   @param one_time_passcode [String]
-        #   @param phone [String, nil]
-        #   @param result [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result, nil]
+        # @!parse
+        #   # Fields related to a digital wallet authentication attempt.
+        #   #
+        #   # @param card_id [String]
+        #   # @param channel [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
+        #   # @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet]
+        #   # @param email [String, nil]
+        #   # @param one_time_passcode [String]
+        #   # @param phone [String, nil]
+        #   # @param result [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result, nil]
+        #   #
+        #   def initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # The channel to send the card user their one-time passcode.
         #
@@ -995,8 +1130,11 @@ module Increase
           # Send one-time passcodes over email.
           EMAIL = :email
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # The digital wallet app being used.
@@ -1017,8 +1155,11 @@ module Increase
           # Unknown
           UNKNOWN = :unknown
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # Whether your application successfully delivered the one-time passcode.
@@ -1033,8 +1174,11 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = :failure
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -1076,14 +1220,18 @@ module Increase
         required :digital_wallet,
                  enum: -> { Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet }
 
-        # @!method initialize(card_id:, card_profile_id:, decision:, device:, digital_wallet:)
-        #   Fields related to a digital wallet token provisioning attempt.
-        #
-        #   @param card_id [String]
-        #   @param card_profile_id [String, nil]
-        #   @param decision [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision, nil]
-        #   @param device [Increase::Models::RealTimeDecision::DigitalWalletToken::Device]
-        #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet]
+        # @!parse
+        #   # Fields related to a digital wallet token provisioning attempt.
+        #   #
+        #   # @param card_id [String]
+        #   # @param card_profile_id [String, nil]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision, nil]
+        #   # @param device [Increase::Models::RealTimeDecision::DigitalWalletToken::Device]
+        #   # @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet]
+        #   #
+        #   def initialize(card_id:, card_profile_id:, decision:, device:, digital_wallet:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether or not the provisioning request was approved. This will be null until
         # the real time decision is responded to.
@@ -1098,8 +1246,11 @@ module Increase
           # Decline the provisioning request.
           DECLINE = :decline
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # @see Increase::Models::RealTimeDecision::DigitalWalletToken#device
@@ -1110,10 +1261,14 @@ module Increase
           #   @return [String, nil]
           required :identifier, String, nil?: true
 
-          # @!method initialize(identifier:)
-          #   Device that is being used to provision the digital wallet token.
-          #
-          #   @param identifier [String, nil]
+          # @!parse
+          #   # Device that is being used to provision the digital wallet token.
+          #   #
+          #   # @param identifier [String, nil]
+          #   #
+          #   def initialize(identifier:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         # The digital wallet app being used.
@@ -1134,8 +1289,11 @@ module Increase
           # Unknown
           UNKNOWN = :unknown
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -1154,8 +1312,11 @@ module Increase
         # Your webhook failed to respond to the authorization in time.
         TIMED_OUT = :timed_out
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1167,8 +1328,11 @@ module Increase
 
         REAL_TIME_DECISION = :real_time_decision
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

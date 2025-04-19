@@ -176,7 +176,8 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ProofOfAuthorizationRequestSubmission::Status::TaggedSymbol) }
 
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW =
@@ -208,7 +209,8 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ProofOfAuthorizationRequestSubmission::Type::TaggedSymbol) }
 
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION =
           T.let(

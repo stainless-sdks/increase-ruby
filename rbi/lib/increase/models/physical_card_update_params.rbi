@@ -35,7 +35,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardUpdateParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol) }
 
         # The physical card is active.
         ACTIVE = T.let(:active, Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol)

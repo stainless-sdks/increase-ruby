@@ -204,7 +204,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol) }
 
           # USPS Post with tracking.
           USPS = T.let(:usps, Increase::Models::PhysicalCardCreateParams::Shipment::Method::TaggedSymbol)

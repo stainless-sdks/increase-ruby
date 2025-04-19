@@ -159,35 +159,68 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundWireTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundWireTransfer::Type }
 
-      # @!method initialize(id:, account_id:, account_number_id:, amount:, beneficiary_address_line1:, beneficiary_address_line2:, beneficiary_address_line3:, beneficiary_name:, beneficiary_reference:, created_at:, description:, input_message_accountability_data:, originator_address_line1:, originator_address_line2:, originator_address_line3:, originator_name:, originator_routing_number:, originator_to_beneficiary_information:, originator_to_beneficiary_information_line1:, originator_to_beneficiary_information_line2:, originator_to_beneficiary_information_line3:, originator_to_beneficiary_information_line4:, sender_reference:, status:, type:)
-      #   An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
-      #   your account.
-      #
-      #   @param id [String]
-      #   @param account_id [String]
-      #   @param account_number_id [String]
-      #   @param amount [Integer]
-      #   @param beneficiary_address_line1 [String, nil]
-      #   @param beneficiary_address_line2 [String, nil]
-      #   @param beneficiary_address_line3 [String, nil]
-      #   @param beneficiary_name [String, nil]
-      #   @param beneficiary_reference [String, nil]
-      #   @param created_at [Time]
-      #   @param description [String]
-      #   @param input_message_accountability_data [String, nil]
-      #   @param originator_address_line1 [String, nil]
-      #   @param originator_address_line2 [String, nil]
-      #   @param originator_address_line3 [String, nil]
-      #   @param originator_name [String, nil]
-      #   @param originator_routing_number [String, nil]
-      #   @param originator_to_beneficiary_information [String, nil]
-      #   @param originator_to_beneficiary_information_line1 [String, nil]
-      #   @param originator_to_beneficiary_information_line2 [String, nil]
-      #   @param originator_to_beneficiary_information_line3 [String, nil]
-      #   @param originator_to_beneficiary_information_line4 [String, nil]
-      #   @param sender_reference [String, nil]
-      #   @param status [Symbol, Increase::Models::InboundWireTransfer::Status]
-      #   @param type [Symbol, Increase::Models::InboundWireTransfer::Type]
+      # @!parse
+      #   # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
+      #   # your account.
+      #   #
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param account_number_id [String]
+      #   # @param amount [Integer]
+      #   # @param beneficiary_address_line1 [String, nil]
+      #   # @param beneficiary_address_line2 [String, nil]
+      #   # @param beneficiary_address_line3 [String, nil]
+      #   # @param beneficiary_name [String, nil]
+      #   # @param beneficiary_reference [String, nil]
+      #   # @param created_at [Time]
+      #   # @param description [String]
+      #   # @param input_message_accountability_data [String, nil]
+      #   # @param originator_address_line1 [String, nil]
+      #   # @param originator_address_line2 [String, nil]
+      #   # @param originator_address_line3 [String, nil]
+      #   # @param originator_name [String, nil]
+      #   # @param originator_routing_number [String, nil]
+      #   # @param originator_to_beneficiary_information [String, nil]
+      #   # @param originator_to_beneficiary_information_line1 [String, nil]
+      #   # @param originator_to_beneficiary_information_line2 [String, nil]
+      #   # @param originator_to_beneficiary_information_line3 [String, nil]
+      #   # @param originator_to_beneficiary_information_line4 [String, nil]
+      #   # @param sender_reference [String, nil]
+      #   # @param status [Symbol, Increase::Models::InboundWireTransfer::Status]
+      #   # @param type [Symbol, Increase::Models::InboundWireTransfer::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     account_id:,
+      #     account_number_id:,
+      #     amount:,
+      #     beneficiary_address_line1:,
+      #     beneficiary_address_line2:,
+      #     beneficiary_address_line3:,
+      #     beneficiary_name:,
+      #     beneficiary_reference:,
+      #     created_at:,
+      #     description:,
+      #     input_message_accountability_data:,
+      #     originator_address_line1:,
+      #     originator_address_line2:,
+      #     originator_address_line3:,
+      #     originator_name:,
+      #     originator_routing_number:,
+      #     originator_to_beneficiary_information:,
+      #     originator_to_beneficiary_information_line1:,
+      #     originator_to_beneficiary_information_line2:,
+      #     originator_to_beneficiary_information_line3:,
+      #     originator_to_beneficiary_information_line4:,
+      #     sender_reference:,
+      #     status:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The status of the transfer.
       #
@@ -207,8 +240,11 @@ module Increase
         # The Inbound Wire Transfer was reversed.
         REVERSED = :reversed
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -220,8 +256,11 @@ module Increase
 
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end
