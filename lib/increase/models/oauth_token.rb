@@ -24,14 +24,18 @@ module Increase
       #   @return [Symbol, Increase::Models::OAuthToken::Type]
       required :type, enum: -> { Increase::Models::OAuthToken::Type }
 
-      # @!method initialize(access_token:, token_type:, type:)
-      #   A token that is returned to your application when a user completes the OAuth
-      #   flow and may be used to authenticate requests. Learn more about OAuth
-      #   [here](/documentation/oauth).
-      #
-      #   @param access_token [String]
-      #   @param token_type [Symbol, Increase::Models::OAuthToken::TokenType]
-      #   @param type [Symbol, Increase::Models::OAuthToken::Type]
+      # @!parse
+      #   # A token that is returned to your application when a user completes the OAuth
+      #   # flow and may be used to authenticate requests. Learn more about OAuth
+      #   # [here](/documentation/oauth).
+      #   #
+      #   # @param access_token [String]
+      #   # @param token_type [Symbol, Increase::Models::OAuthToken::TokenType]
+      #   # @param type [Symbol, Increase::Models::OAuthToken::Type]
+      #   #
+      #   def initialize(access_token:, token_type:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The type of OAuth token.
       #
@@ -41,8 +45,11 @@ module Increase
 
         BEARER = :bearer
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -54,8 +61,11 @@ module Increase
 
         OAUTH_TOKEN = :oauth_token
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

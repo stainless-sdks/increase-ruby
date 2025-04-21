@@ -13,8 +13,6 @@ module Increase
 
         private_class_method :new
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -27,8 +25,6 @@ module Increase
           end
         end
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]

@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::CheckDeposits#create
     class CheckDepositCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute account_id
@@ -31,19 +32,27 @@ module Increase
       #   @return [String]
       required :front_image_file_id, String
 
-      # @!attribute description
+      # @!attribute [r] description
       #   The description you choose to give the Check Deposit, for display purposes only.
       #
       #   @return [String, nil]
       optional :description, String
 
-      # @!method initialize(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param amount [Integer]
-      #   @param back_image_file_id [String]
-      #   @param front_image_file_id [String]
-      #   @param description [String]
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!parse
+      #   # @param account_id [String]
+      #   # @param amount [Integer]
+      #   # @param back_image_file_id [String]
+      #   # @param front_image_file_id [String]
+      #   # @param description [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
     end
   end
 end

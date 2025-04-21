@@ -42,15 +42,19 @@ module Increase
       #   @return [Time]
       required :updated_at, Time
 
-      # @!method initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
-      #   A request for proof of authorization for one or more ACH debit transfers.
-      #
-      #   @param id [String]
-      #   @param ach_transfers [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
-      #   @param created_at [Time]
-      #   @param due_on [Time]
-      #   @param type [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
-      #   @param updated_at [Time]
+      # @!parse
+      #   # A request for proof of authorization for one or more ACH debit transfers.
+      #   #
+      #   # @param id [String]
+      #   # @param ach_transfers [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
+      #   # @param created_at [Time]
+      #   # @param due_on [Time]
+      #   # @param type [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
+      #   # @param updated_at [Time]
+      #   #
+      #   def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       class ACHTransfer < Increase::Internal::Type::BaseModel
         # @!attribute id
@@ -59,8 +63,12 @@ module Increase
         #   @return [String]
         required :id, String
 
-        # @!method initialize(id:)
-        #   @param id [String]
+        # @!parse
+        #   # @param id [String]
+        #   #
+        #   def initialize(id:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -72,8 +80,11 @@ module Increase
 
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

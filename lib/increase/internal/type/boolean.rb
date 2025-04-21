@@ -13,15 +13,11 @@ module Increase
 
         private_class_method :new
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
         def self.===(other) = other == true || other == false
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]

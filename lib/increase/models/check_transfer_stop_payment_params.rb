@@ -4,18 +4,27 @@ module Increase
   module Models
     # @see Increase::Resources::CheckTransfers#stop_payment
     class CheckTransferStopPaymentParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute reason
+      # @!attribute [r] reason
       #   The reason why this transfer should be stopped.
       #
       #   @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason, nil]
       optional :reason, enum: -> { Increase::Models::CheckTransferStopPaymentParams::Reason }
 
-      # @!method initialize(reason: nil, request_options: {})
-      #   @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
+      #   attr_writer :reason
+
+      # @!parse
+      #   # @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(reason: nil, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The reason why this transfer should be stopped.
       module Reason
@@ -30,8 +39,11 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN = :unknown
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

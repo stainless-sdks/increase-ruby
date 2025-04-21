@@ -79,7 +79,14 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias do
+            T.any(
+              Symbol,
+              String,
+              Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
+            )
+          end
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED =

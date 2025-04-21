@@ -38,7 +38,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol) }
 
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED =

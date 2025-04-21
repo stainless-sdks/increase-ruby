@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::EventSubscriptions#create
     class EventSubscriptionCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute url
@@ -13,14 +14,18 @@ module Increase
       #   @return [String]
       required :url, String
 
-      # @!attribute oauth_connection_id
+      # @!attribute [r] oauth_connection_id
       #   If specified, this subscription will only receive webhooks for Events associated
       #   with the specified OAuth Connection.
       #
       #   @return [String, nil]
       optional :oauth_connection_id, String
 
-      # @!attribute selected_event_category
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :oauth_connection_id
+
+      # @!attribute [r] selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
       #
@@ -28,19 +33,31 @@ module Increase
       optional :selected_event_category,
                enum: -> { Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory }
 
-      # @!attribute shared_secret
+      # @!parse
+      #   # @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
+      #   attr_writer :selected_event_category
+
+      # @!attribute [r] shared_secret
       #   The key that will be used to sign webhooks. If no value is passed, a random
       #   string will be used as default.
       #
       #   @return [String, nil]
       optional :shared_secret, String
 
-      # @!method initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
-      #   @param url [String]
-      #   @param oauth_connection_id [String]
-      #   @param selected_event_category [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
-      #   @param shared_secret [String]
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :shared_secret
+
+      # @!parse
+      #   # @param url [String]
+      #   # @param oauth_connection_id [String]
+      #   # @param selected_event_category [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
+      #   # @param shared_secret [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # If specified, this subscription will only receive webhooks for Events with the
       # specified `category`.
@@ -313,8 +330,11 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

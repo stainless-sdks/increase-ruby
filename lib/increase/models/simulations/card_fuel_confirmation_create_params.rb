@@ -5,7 +5,8 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::CardFuelConfirmations#create
       class CardFuelConfirmationCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
+        # @!parse
+        #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
@@ -21,10 +22,14 @@ module Increase
         #   @return [String]
         required :card_payment_id, String
 
-        # @!method initialize(amount:, card_payment_id:, request_options: {})
-        #   @param amount [Integer]
-        #   @param card_payment_id [String]
-        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        # @!parse
+        #   # @param amount [Integer]
+        #   # @param card_payment_id [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        #   #
+        #   def initialize(amount:, card_payment_id:, request_options: {}, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
     end
   end

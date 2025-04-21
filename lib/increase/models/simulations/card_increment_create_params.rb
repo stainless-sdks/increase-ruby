@@ -5,7 +5,8 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::CardIncrements#create
       class CardIncrementCreateParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
+        # @!parse
+        #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute amount
@@ -20,7 +21,7 @@ module Increase
         #   @return [String]
         required :card_payment_id, String
 
-        # @!attribute event_subscription_id
+        # @!attribute [r] event_subscription_id
         #   The identifier of the Event Subscription to use. If provided, will override the
         #   default real time event subscription. Because you can only create one real time
         #   decision event subscription, you can use this field to route events to any
@@ -29,11 +30,19 @@ module Increase
         #   @return [String, nil]
         optional :event_subscription_id, String
 
-        # @!method initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
-        #   @param amount [Integer]
-        #   @param card_payment_id [String]
-        #   @param event_subscription_id [String]
-        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :event_subscription_id
+
+        # @!parse
+        #   # @param amount [Integer]
+        #   # @param card_payment_id [String]
+        #   # @param event_subscription_id [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        #   #
+        #   def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {}, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
     end
   end
