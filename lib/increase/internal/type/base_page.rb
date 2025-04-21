@@ -19,7 +19,7 @@ module Increase
         # @api public
         #
         # @raise [Increase::Errors::APIError]
-        # @return [self]
+        # @return [Increase::Internal::Type::BasePage]
         def next_page = (raise NotImplementedError)
 
         # @api public
