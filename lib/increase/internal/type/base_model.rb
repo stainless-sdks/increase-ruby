@@ -396,7 +396,7 @@ module Increase
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, Increase::Internal::Type::BaseModel]
+        # @param data [Hash{Symbol=>Object}, self]
         def initialize(data = {})
           case Increase::Internal::Util.coerce_hash(data)
           in Hash => coerced

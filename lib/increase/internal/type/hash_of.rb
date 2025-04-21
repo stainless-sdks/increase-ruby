@@ -28,6 +28,8 @@ module Increase
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
+        #
+        # @return [Increase::Internal::Type::HashOf]
         def self.[](...) = new(...)
 
         # @api public
