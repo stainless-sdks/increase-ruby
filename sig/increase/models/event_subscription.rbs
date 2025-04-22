@@ -115,8 +115,6 @@ module Increase
         | :"physical_card_profile.updated"
         | :"proof_of_authorization_request.created"
         | :"proof_of_authorization_request.updated"
-        | :"proof_of_authorization_request_submission.created"
-        | :"proof_of_authorization_request_submission.updated"
         | :"real_time_decision.card_authorization_requested"
         | :"real_time_decision.digital_wallet_token_requested"
         | :"real_time_decision.digital_wallet_authentication_requested"
@@ -350,12 +348,6 @@ module Increase
 
         # Occurs whenever a Proof of Authorization Request is updated.
         PROOF_OF_AUTHORIZATION_REQUEST_UPDATED: :"proof_of_authorization_request.updated"
-
-        # Occurs whenever a Proof of Authorization Request Submission is created.
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_CREATED: :"proof_of_authorization_request_submission.created"
-
-        # Occurs whenever a Proof of Authorization Request Submission is updated.
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_UPDATED: :"proof_of_authorization_request_submission.updated"
 
         # Occurs whenever a Real-Time Decision is created in response to a card authorization.
         REAL_TIME_DECISION_CARD_AUTHORIZATION_REQUESTED: :"real_time_decision.card_authorization_requested"
