@@ -81,10 +81,6 @@ module Increase
 
     attr_reader programs: Increase::Resources::Programs
 
-    attr_reader proof_of_authorization_requests: Increase::Resources::ProofOfAuthorizationRequests
-
-    attr_reader proof_of_authorization_request_submissions: Increase::Resources::ProofOfAuthorizationRequestSubmissions
-
     attr_reader account_statements: Increase::Resources::AccountStatements
 
     attr_reader files: Increase::Resources::Files

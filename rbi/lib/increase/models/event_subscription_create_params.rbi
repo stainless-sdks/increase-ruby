@@ -585,20 +585,6 @@ module Increase
             Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
           )
 
-        # Occurs whenever a Proof of Authorization Request Submission is created.
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_CREATED =
-          T.let(
-            :"proof_of_authorization_request_submission.created",
-            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
-
-        # Occurs whenever a Proof of Authorization Request Submission is updated.
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_UPDATED =
-          T.let(
-            :"proof_of_authorization_request_submission.updated",
-            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
-
         # Occurs whenever a Real-Time Decision is created in response to a card authorization.
         REAL_TIME_DECISION_CARD_AUTHORIZATION_REQUESTED =
           T.let(
