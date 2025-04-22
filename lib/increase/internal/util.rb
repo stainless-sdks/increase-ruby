@@ -563,7 +563,7 @@ module Increase
           body = body.inner if body.is_a?(Increase::Internal::Util::SerializationAdapter)
 
           case [content_type, body]
-          in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array | -> { primitive?(_1) }]
+          in [%r{^application/(?:vnd(?:\.[^.]+)*\+)?json}, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.fast_generate(body)]
           in [%r{^application/(?:x-)?jsonl}, Enumerable] unless body.is_a?(StringIO) || body.is_a?(IO)
             [headers, body.lazy.map { JSON.fast_generate(_1) }]
@@ -611,7 +611,7 @@ module Increase
         # @return [Object]
         def decode_content(headers, stream:, suppress_error: false)
           case (content_type = headers["content-type"])
-          in %r{^application/(?:vnd\.api\+)?json}
+          in %r{^application/(?:vnd(?:\.[^.]+)*\+)?json}
             json = stream.to_a.join
             begin
               JSON.parse(json, symbolize_names: true)
