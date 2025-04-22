@@ -118,12 +118,6 @@ module Increase
     sig { returns(Increase::Resources::Programs) }
     attr_reader :programs
 
-    sig { returns(Increase::Resources::ProofOfAuthorizationRequests) }
-    attr_reader :proof_of_authorization_requests
-
-    sig { returns(Increase::Resources::ProofOfAuthorizationRequestSubmissions) }
-    attr_reader :proof_of_authorization_request_submissions
-
     sig { returns(Increase::Resources::AccountStatements) }
     attr_reader :account_statements
 
