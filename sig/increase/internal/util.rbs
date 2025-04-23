@@ -73,16 +73,6 @@ module Increase
         | ::Array[(String | Integer)?])?] headers
       ) -> ::Hash[String, String]
 
-      class SerializationAdapter
-        attr_reader inner: Pathname | IO
-
-        def to_json: (*top a) -> String
-
-        def to_yaml: (*top a) -> String
-
-        def initialize: (Pathname | IO inner) -> void
-      end
-
       class ReadIOAdapter
         def close?: -> bool?
 
@@ -102,6 +92,13 @@ module Increase
       def self?.writable_enum: {
         (Enumerator::Yielder y) -> void
       } -> Enumerable[String]
+
+      def self?.write_multipart_content: (
+        Enumerator::Yielder y,
+        val: top,
+        closing: ::Array[^-> void],
+        ?content_type: String?
+      ) -> void
 
       def self?.write_multipart_chunk: (
         Enumerator::Yielder y,
