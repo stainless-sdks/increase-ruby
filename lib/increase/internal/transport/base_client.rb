@@ -153,7 +153,7 @@ module Increase
 
         # @api private
         # @return [Increase::Internal::Transport::PooledNetRequester]
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         #

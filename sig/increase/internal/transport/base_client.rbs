@@ -53,7 +53,7 @@ module Increase
         ) -> void
 
         # @api private
-        attr_accessor requester: Increase::Internal::Transport::PooledNetRequester
+        attr_reader requester: Increase::Internal::Transport::PooledNetRequester
 
         def initialize: (
           base_url: String,
