@@ -90,7 +90,7 @@ module Increase
 
         # @api private
         sig { returns(Increase::Internal::Transport::PooledNetRequester) }
-        attr_reader :requester
+        attr_accessor :requester
 
         # @api private
         sig do

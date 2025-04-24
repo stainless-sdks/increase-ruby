@@ -8,8 +8,7 @@ module Increase
         #
         # @overload create(card_payment_id:, request_options: {})
         #
-        # @param card_payment_id [String] The identifier of the Card Payment to expire.
-        #
+        # @param card_payment_id [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardPayment]

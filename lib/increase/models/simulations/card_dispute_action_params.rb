@@ -21,10 +21,8 @@ module Increase
         optional :explanation, String
 
         # @!method initialize(status:, explanation: nil, request_options: {})
-        #   @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status] The status to move the dispute to.
-        #
-        #   @param explanation [String] Why the dispute was rejected. Not required for accepting disputes.
-        #
+        #   @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
+        #   @param explanation [String]
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
         # The status to move the dispute to.

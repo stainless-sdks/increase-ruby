@@ -7,12 +7,9 @@ module Increase
       #
       # @overload create(account_id:, description: nil, recipient_name: nil, request_options: {})
       #
-      # @param account_id [String] The Account checks sent to this Lockbox should be deposited into.
-      #
-      # @param description [String] The description you choose for the Lockbox, for display purposes.
-      #
-      # @param recipient_name [String] The name of the recipient that will receive mail at this location.
-      #
+      # @param account_id [String]
+      # @param description [String]
+      # @param recipient_name [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Lockbox]
@@ -33,8 +30,7 @@ module Increase
       #
       # @overload retrieve(lockbox_id, request_options: {})
       #
-      # @param lockbox_id [String] The identifier of the Lockbox to retrieve.
-      #
+      # @param lockbox_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Lockbox]
@@ -53,14 +49,10 @@ module Increase
       #
       # @overload update(lockbox_id, description: nil, recipient_name: nil, status: nil, request_options: {})
       #
-      # @param lockbox_id [String] The identifier of the Lockbox.
-      #
-      # @param description [String] The description you choose for the Lockbox.
-      #
-      # @param recipient_name [String] The recipient name you choose for the Lockbox.
-      #
-      # @param status [Symbol, Increase::Models::LockboxUpdateParams::Status] This indicates if checks can be sent to the Lockbox.
-      #
+      # @param lockbox_id [String]
+      # @param description [String]
+      # @param recipient_name [String]
+      # @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Lockbox]
@@ -77,25 +69,15 @@ module Increase
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Increase::Models::LockboxListParams} for more details.
-      #
       # List Lockboxes
       #
       # @overload list(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      # @param account_id [String] Filter Lockboxes to those associated with the provided Account.
-      #
+      # @param account_id [String]
       # @param created_at [Increase::Models::LockboxListParams::CreatedAt]
-      #
-      # @param cursor [String] Return the page of entries after this one.
-      #
-      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
-      #
-      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
-      #
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::Lockbox>]

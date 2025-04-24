@@ -20,10 +20,8 @@ module Increase
       required :entity_id, String
 
       # @!method initialize(bank_name:, entity_id:, request_options: {})
-      #   @param bank_name [String] The name of the financial institution to be excluded.
-      #
-      #   @param entity_id [String] The identifier of the Entity whose deposits will be excluded.
-      #
+      #   @param bank_name [String]
+      #   @param entity_id [String]
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -11,8 +11,7 @@ module Increase
         #
         # @overload create(name:, request_options: {})
         #
-        # @param name [String] The name of the program being added.
-        #
+        # @param name [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Program]
