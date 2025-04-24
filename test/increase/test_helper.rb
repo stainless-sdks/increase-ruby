@@ -15,6 +15,7 @@ require "minitest/focus"
 require "minitest/hooks/test"
 require "minitest/proveit"
 require "minitest/rg"
+require "webmock"
 
 require_relative "../../lib/increase"
 require_relative "resource_namespaces"
@@ -44,8 +45,10 @@ end
 class Increase::Test::SingletonClient < Increase::Client
   include Singleton
 
+  TEST_API_BASE_URL = ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010")
+
   def initialize
-    super(base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"), api_key: "My API Key")
+    super(base_url: Increase::Test::SingletonClient::TEST_API_BASE_URL, api_key: "My API Key")
   end
 end
 
@@ -72,3 +75,5 @@ class Increase::Test::ResourceTest < Minitest::Test
 
   def around = async? ? Async { super }.wait : super
 end
+
+WebMock.disable_net_connect!(allow: Increase::Test::SingletonClient::TEST_API_BASE_URL)
