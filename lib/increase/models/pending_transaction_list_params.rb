@@ -115,6 +115,9 @@ module Increase
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
 
+          # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
+          SWIFT_TRANSFER_INSTRUCTION = :swift_transfer_instruction
+
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
 
