@@ -92,19 +92,37 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Card Profile identifier.
         id:,
+        # The identifier of the File containing the card's icon image.
         app_icon_file_id:,
+        # The identifier of the File containing the card's front image.
         background_image_file_id:,
+        # A user-facing description for the card itself.
         card_description:,
+        # An email address the user can contact to receive support for their card.
         contact_email:,
+        # A phone number the user can contact to receive support for their card.
         contact_phone:,
+        # A website the user can visit to view and receive support for their card.
         contact_website:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the Card Dispute was created.
         created_at:,
+        # A description you can use to identify the Card Profile.
         description:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # A user-facing description for whoever is issuing the card.
         issuer_name:,
+        # The status of the Card Profile.
         status:,
+        # The Card's text color, specified as an RGB triple.
         text_color:,
+        # A constant representing the object's type. For this resource it will always be
+        # `digital_card_profile`.
         type:
       ); end
       sig do
@@ -168,8 +186,14 @@ module Increase
 
         # The Card's text color, specified as an RGB triple.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:); end
-
+        def self.new(
+          # The value of the blue channel in the RGB color.
+          blue:,
+          # The value of the green channel in the RGB color.
+          green:,
+          # The value of the red channel in the RGB color.
+          red:
+        ); end
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
         def to_hash; end
       end

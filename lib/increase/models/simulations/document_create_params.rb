@@ -15,7 +15,8 @@ module Increase
         required :account_id, String
 
         # @!method initialize(account_id:, request_options: {})
-        #   @param account_id [String]
+        #   @param account_id [String] The identifier of the Account the tax document is for.
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

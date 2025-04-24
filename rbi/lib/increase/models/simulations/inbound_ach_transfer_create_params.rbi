@@ -108,16 +108,30 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The identifier of the Account Number the inbound ACH Transfer is for.
           account_number_id:,
+          # The transfer amount in cents. A positive amount originates a credit transfer
+          # pushing funds to the receiving account. A negative amount originates a debit
+          # transfer pulling funds from the receiving account.
           amount:,
+          # The description of the date of the transfer.
           company_descriptive_date: nil,
+          # Data associated with the transfer set by the sender.
           company_discretionary_data: nil,
+          # The description of the transfer set by the sender.
           company_entry_description: nil,
+          # The sender's company ID.
           company_id: nil,
+          # The name of the sender.
           company_name: nil,
+          # The ID of the receiver of the transfer.
           receiver_id_number: nil,
+          # The name of the receiver of the transfer.
           receiver_name: nil,
+          # The time at which the transfer should be resolved. If not provided will resolve
+          # immediately.
           resolve_at: nil,
+          # The standard entry class code for the transfer.
           standard_entry_class_code: nil,
           request_options: {}
         ); end

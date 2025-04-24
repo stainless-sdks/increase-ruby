@@ -22,8 +22,10 @@ module Increase
         required :corrected_data, String
 
         # @!method initialize(change_code:, corrected_data:, request_options: {})
-        #   @param change_code [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode]
-        #   @param corrected_data [String]
+        #   @param change_code [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode] The reason for the notification of change.
+        #
+        #   @param corrected_data [String] The corrected data for the notification of change (e.g., a new routing number).
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
         # The reason for the notification of change.

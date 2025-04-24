@@ -3,15 +3,22 @@
 module Increase
   module Resources
     class Files
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::FileCreateParams} for more details.
+      #
       # To upload a file to Increase, you'll need to send a request of Content-Type
       # `multipart/form-data`. The request should contain the file you would like to
       # upload, as well as the parameters for creating a file.
       #
       # @overload create(file:, purpose:, description: nil, request_options: {})
       #
-      # @param file [Pathname, StringIO]
-      # @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose]
-      # @param description [String]
+      # @param file [Pathname, StringIO] The file contents. This should follow the specifications of [RFC 7578](https://d
+      # ...
+      #
+      # @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
+      #
+      # @param description [String] The description you choose to give the File.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::File]
@@ -33,7 +40,8 @@ module Increase
       #
       # @overload retrieve(file_id, request_options: {})
       #
-      # @param file_id [String]
+      # @param file_id [String] The identifier of the File.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::File]
@@ -48,15 +56,25 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::FileListParams} for more details.
+      #
       # List Files
       #
       # @overload list(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, request_options: {})
       #
       # @param created_at [Increase::Models::FileListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param purpose [Increase::Models::FileListParams::Purpose]
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::File>]

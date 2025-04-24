@@ -22,8 +22,13 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(entity_id:, file_id:, request_options: {}); end
-
+      def self.new(
+        # The identifier of the Entity to associate with the supplemental document.
+        entity_id:,
+        # The identifier of the File containing the document.
+        file_id:,
+        request_options: {}
+      ); end
       sig do
         override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions})
       end

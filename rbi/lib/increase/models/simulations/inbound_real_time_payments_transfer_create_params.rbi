@@ -65,12 +65,20 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The identifier of the Account Number the inbound Real-Time Payments Transfer is
+          # for.
           account_number_id:,
+          # The transfer amount in USD cents. Must be positive.
           amount:,
+          # The account number of the account that sent the transfer.
           debtor_account_number: nil,
+          # The name provided by the sender of the transfer.
           debtor_name: nil,
+          # The routing number of the account that sent the transfer.
           debtor_routing_number: nil,
+          # Additional information included with the transfer.
           remittance_information: nil,
+          # The identifier of a pending Request for Payment that this transfer will fulfill.
           request_for_payment_id: nil,
           request_options: {}
         ); end

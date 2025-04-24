@@ -27,9 +27,16 @@ module Increase
       optional :limit, Integer
 
       # @!method initialize(account_id: nil, cursor: nil, limit: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param cursor [String]
-      #   @param limit [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::BookkeepingEntryListParams} for more details.
+      #
+      #   @param account_id [String] The identifier for the Bookkeeping Account to filter by.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

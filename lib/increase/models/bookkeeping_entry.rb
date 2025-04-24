@@ -43,16 +43,26 @@ module Increase
       required :type, enum: -> { Increase::Models::BookkeepingEntry::Type }
 
       # @!method initialize(id:, account_id:, amount:, created_at:, entry_set_id:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::BookkeepingEntry} for more details.
+      #
       #   Entries are T-account entries recording debits and credits. Your compliance
       #   setup might require annotating money movements using this API. Learn more in our
       #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #
-      #   @param id [String]
-      #   @param account_id [String]
-      #   @param amount [Integer]
-      #   @param created_at [Time]
-      #   @param entry_set_id [String]
-      #   @param type [Symbol, Increase::Models::BookkeepingEntry::Type]
+      #   @param id [String] The entry identifier.
+      #
+      #   @param account_id [String] The identifier for the Account the Entry belongs to.
+      #
+      #   @param amount [Integer] The Entry amount in the minor unit of its currency. For dollars, for example, th
+      #   ...
+      #
+      #   @param created_at [Time] When the entry set was created.
+      #
+      #   @param entry_set_id [String] The identifier for the Account the Entry belongs to.
+      #
+      #   @param type [Symbol, Increase::Models::BookkeepingEntry::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry`.

@@ -32,8 +32,11 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(rejection: nil, request_options: {}); end
-
+        def self.new(
+          # If set, the simulation will reject the transfer.
+          rejection: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(
@@ -61,8 +64,10 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(reject_reason_code:); end
-
+          def self.new(
+            # The reason code that the simulated rejection will have.
+            reject_reason_code:
+          ); end
           sig do
             override
               .returns(

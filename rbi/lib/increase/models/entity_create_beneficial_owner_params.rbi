@@ -26,8 +26,12 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(beneficial_owner:, request_options: {}); end
-
+      def self.new(
+        # The identifying details of anyone controlling or owning 25% or more of the
+        # corporation.
+        beneficial_owner:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -81,8 +85,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(individual:, prongs:, company_title: nil); end
-
+        def self.new(
+          # Personal details for the beneficial owner.
+          individual:,
+          # Why this person is considered a beneficial owner of the entity. At least one
+          # option is required, if a person is both a control person and owner, submit an
+          # array containing both.
+          prongs:,
+          # This person's role or title within the entity.
+          company_title: nil
+        ); end
         sig do
           override
             .returns(
@@ -162,8 +174,22 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil); end
-
+          def self.new(
+            # The individual's physical address. Mail receiving locations like PO Boxes and
+            # PMB's are disallowed.
+            address:,
+            # The person's date of birth in YYYY-MM-DD format.
+            date_of_birth:,
+            # A means of verifying the person's identity.
+            identification:,
+            # The person's legal name.
+            name:,
+            # The identification method for an individual can only be a passport, driver's
+            # license, or other document if you've confirmed the individual does not have a US
+            # tax id (either a Social Security Number or Individual Taxpayer Identification
+            # Number).
+            confirmed_no_us_tax_id: nil
+          ); end
           sig do
             override
               .returns(
@@ -223,8 +249,22 @@ module Increase
               params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
                 .returns(T.attached_class)
             end
-            def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil); end
-
+            def self.new(
+              # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+              country:,
+              # The first line of the address. This is usually the street number and street.
+              line1:,
+              # The city, district, town, or village of the address. Required in certain
+              # countries.
+              city: nil,
+              # The second line of the address. This might be the floor or room number.
+              line2: nil,
+              # The two-letter United States Postal Service (USPS) abbreviation for the US
+              # state, province, or region of the address. Required in certain countries.
+              state: nil,
+              # The ZIP or postal code of the address. Required in certain countries.
+              zip: nil
+            ); end
             sig do
               override.returns(
                 {
@@ -340,8 +380,22 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil); end
-
+            def self.new(
+              # A method that can be used to verify the individual's identity.
+              method_:,
+              # An identification number that can be used to verify the individual's identity,
+              # such as a social security number.
+              number:,
+              # Information about the United States driver's license used for identification.
+              # Required if `method` is equal to `drivers_license`.
+              drivers_license: nil,
+              # Information about the identification document provided. Required if `method` is
+              # equal to `other`.
+              other: nil,
+              # Information about the passport used for identification. Required if `method` is
+              # equal to `passport`.
+              passport: nil
+            ); end
             sig do
               override
                 .returns(
@@ -438,8 +492,16 @@ module Increase
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
               end
-              def self.new(expiration_date:, file_id:, state:, back_file_id: nil); end
-
+              def self.new(
+                # The driver's license's expiration date in YYYY-MM-DD format.
+                expiration_date:,
+                # The identifier of the File containing the front of the driver's license.
+                file_id:,
+                # The state that issued the provided driver's license.
+                state:,
+                # The identifier of the File containing the back of the driver's license.
+                back_file_id: nil
+              ); end
               sig do
                 override.returns(
                   {
@@ -494,8 +556,20 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil); end
-
+              def self.new(
+                # The two-character ISO 3166-1 code representing the country that issued the
+                # document.
+                country:,
+                # A description of the document submitted.
+                description:,
+                # The identifier of the File containing the front of the document.
+                file_id:,
+                # The identifier of the File containing the back of the document. Not every
+                # document has a reverse side.
+                back_file_id: nil,
+                # The document's expiration date in YYYY-MM-DD format.
+                expiration_date: nil
+              ); end
               sig do
                 override
                   .returns(
@@ -529,8 +603,14 @@ module Increase
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end
-              def self.new(country:, expiration_date:, file_id:); end
-
+              def self.new(
+                # The country that issued the passport.
+                country:,
+                # The passport's expiration date in YYYY-MM-DD format.
+                expiration_date:,
+                # The identifier of the File containing the passport.
+                file_id:
+              ); end
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
               def to_hash; end
             end

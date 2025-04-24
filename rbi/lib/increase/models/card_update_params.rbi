@@ -66,10 +66,18 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The card's updated billing address.
         billing_address: nil,
+        # The description you choose to give the card.
         description: nil,
+        # The contact information used in the two-factor steps for digital wallet card
+        # creation. At least one field must be present to complete the digital wallet
+        # steps.
         digital_wallet: nil,
+        # The Entity the card belongs to. You only need to supply this in rare situations
+        # when the card is not for the Account holder.
         entity_id: nil,
+        # The status to update the Card with.
         status: nil,
         request_options: {}
       ); end
@@ -117,8 +125,18 @@ module Increase
           params(city: String, line1: String, postal_code: String, state: String, line2: String)
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, postal_code:, state:, line2: nil); end
-
+        def self.new(
+          # The city of the billing address.
+          city:,
+          # The first line of the billing address.
+          line1:,
+          # The postal code of the billing address.
+          postal_code:,
+          # The US state of the billing address.
+          state:,
+          # The second line of the billing address.
+          line2: nil
+        ); end
         sig do
           override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
         end
@@ -155,8 +173,16 @@ module Increase
         sig do
           params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
         end
-        def self.new(digital_card_profile_id: nil, email: nil, phone: nil); end
-
+        def self.new(
+          # The digital card profile assigned to this digital card.
+          digital_card_profile_id: nil,
+          # An email address that can be used to verify the cardholder via one-time passcode
+          # over email.
+          email: nil,
+          # A phone number that can be used to verify the cardholder via one-time passcode
+          # over SMS.
+          phone: nil
+        ); end
         sig { override.returns({digital_card_profile_id: String, email: String, phone: String}) }
         def to_hash; end
       end

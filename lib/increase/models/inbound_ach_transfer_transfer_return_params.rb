@@ -15,7 +15,12 @@ module Increase
       required :reason, enum: -> { Increase::Models::InboundACHTransferTransferReturnParams::Reason }
 
       # @!method initialize(reason:, request_options: {})
-      #   @param reason [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::InboundACHTransferTransferReturnParams} for more details.
+      #
+      #   @param reason [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason] The reason why this transfer will be returned. The most usual return codes are `
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The reason why this transfer will be returned. The most usual return codes are

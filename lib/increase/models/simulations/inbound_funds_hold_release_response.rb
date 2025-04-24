@@ -71,19 +71,37 @@ module Increase
         required :type, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type }
 
         # @!method initialize(id:, amount:, automatically_releases_at:, created_at:, currency:, held_transaction_id:, pending_transaction_id:, released_at:, status:, type:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::Simulations::InboundFundsHoldReleaseResponse} for more
+        #   details.
+        #
         #   We hold funds for certain transaction types to account for return windows where
         #   funds might still be clawed back by the sending institution.
         #
-        #   @param id [String]
-        #   @param amount [Integer]
-        #   @param automatically_releases_at [Time]
-        #   @param created_at [Time]
-        #   @param currency [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency]
-        #   @param held_transaction_id [String, nil]
-        #   @param pending_transaction_id [String, nil]
-        #   @param released_at [Time, nil]
-        #   @param status [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status]
-        #   @param type [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type]
+        #   @param id [String] The Inbound Funds Hold identifier.
+        #
+        #   @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for ex
+        #   ...
+        #
+        #   @param automatically_releases_at [Time] When the hold will be released automatically. Certain conditions may cause it to
+        #   ...
+        #
+        #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold wa
+        #   ...
+        #
+        #   @param currency [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's curre
+        #   ...
+        #
+        #   @param held_transaction_id [String, nil] The ID of the Transaction for which funds were held.
+        #
+        #   @param pending_transaction_id [String, nil] The ID of the Pending Transaction representing the held funds.
+        #
+        #   @param released_at [Time, nil] When the hold was released (if it has been released).
+        #
+        #   @param status [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status] The status of the hold.
+        #
+        #   @param type [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type] A constant representing the object's type. For this resource it will always be `
+        #   ...
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         # currency.

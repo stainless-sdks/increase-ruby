@@ -7,8 +7,10 @@ module Increase
       #
       # @overload create(account_id:, email_address:, request_options: {})
       #
-      # @param account_id [String]
-      # @param email_address [String]
+      # @param account_id [String] The identifier for the account to be added to IntraFi.
+      #
+      # @param email_address [String] The contact email for the account owner, to be shared with IntraFi.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
@@ -29,7 +31,8 @@ module Increase
       #
       # @overload retrieve(intrafi_account_enrollment_id, request_options: {})
       #
-      # @param intrafi_account_enrollment_id [String]
+      # @param intrafi_account_enrollment_id [String] The identifier of the IntraFi Account Enrollment to retrieve.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
@@ -44,15 +47,25 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::IntrafiAccountEnrollmentListParams} for more details.
+      #
       # List IntraFi Account Enrollments
       #
       # @overload list(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #
-      # @param account_id [String]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
+      # @param account_id [String] Filter IntraFi Account Enrollments to the one belonging to an account.
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param status [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::IntrafiAccountEnrollment>]
@@ -74,7 +87,8 @@ module Increase
       #
       # @overload unenroll(intrafi_account_enrollment_id, request_options: {})
       #
-      # @param intrafi_account_enrollment_id [String]
+      # @param intrafi_account_enrollment_id [String] The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]

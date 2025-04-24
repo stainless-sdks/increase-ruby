@@ -36,10 +36,19 @@ module Increase
       optional :transaction_id, String
 
       # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {})
-      #   @param cursor [String]
-      #   @param idempotency_key [String]
-      #   @param limit [Integer]
-      #   @param transaction_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::BookkeepingEntrySetListParams} for more details.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      #   ...
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
+      #   @param transaction_id [String] Filter to the Bookkeeping Entry Set that maps to this Transaction.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

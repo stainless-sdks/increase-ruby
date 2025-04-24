@@ -44,14 +44,24 @@ module Increase
       required :verification_code, String
 
       # @!method initialize(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::CardDetails} for more details.
+      #
       #   An object containing the sensitive details (card number, cvc, etc) for a Card.
       #
-      #   @param card_id [String]
-      #   @param expiration_month [Integer]
-      #   @param expiration_year [Integer]
-      #   @param primary_account_number [String]
-      #   @param type [Symbol, Increase::Models::CardDetails::Type]
-      #   @param verification_code [String]
+      #   @param card_id [String] The identifier for the Card for which sensitive details have been returned.
+      #
+      #   @param expiration_month [Integer] The month the card expires in M format (e.g., August is 8).
+      #
+      #   @param expiration_year [Integer] The year the card expires in YYYY format (e.g., 2025).
+      #
+      #   @param primary_account_number [String] The card number.
+      #
+      #   @param type [Symbol, Increase::Models::CardDetails::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
+      #
+      #   @param verification_code [String] The three-digit verification code for the card. It's also known as the Card Veri
+      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `card_details`.

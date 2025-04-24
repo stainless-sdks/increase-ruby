@@ -32,10 +32,14 @@ module Increase
       optional :status, enum: -> { Increase::Models::ExternalAccountUpdateParams::Status }
 
       # @!method initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
-      #   @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder]
-      #   @param description [String]
-      #   @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding]
-      #   @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status]
+      #   @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder] The type of entity that owns the External Account.
+      #
+      #   @param description [String] The description you choose to give the external account.
+      #
+      #   @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding] The funding type of the External Account.
+      #
+      #   @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status] The status of the External Account.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of entity that owns the External Account.

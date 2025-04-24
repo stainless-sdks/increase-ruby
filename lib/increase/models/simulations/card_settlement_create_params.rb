@@ -29,9 +29,17 @@ module Increase
         optional :amount, Integer
 
         # @!method initialize(card_id:, pending_transaction_id:, amount: nil, request_options: {})
-        #   @param card_id [String]
-        #   @param pending_transaction_id [String]
-        #   @param amount [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::Simulations::CardSettlementCreateParams} for more details.
+        #
+        #   @param card_id [String] The identifier of the Card to create a settlement on.
+        #
+        #   @param pending_transaction_id [String] The identifier of the Pending Transaction for the Card Authorization you wish to
+        #   ...
+        #
+        #   @param amount [Integer] The amount to be settled. This defaults to the amount of the Pending Transaction
+        #   ...
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

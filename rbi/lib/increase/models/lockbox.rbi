@@ -64,18 +64,30 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Lockbox identifier.
         id:,
+        # The identifier for the Account checks sent to this lockbox will be deposited
+        # into.
         account_id:,
+        # The mailing address for the Lockbox.
         address:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
+        # was created.
         created_at:,
+        # The description you choose for the Lockbox.
         description:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # The recipient name you choose for the Lockbox.
         recipient_name:,
+        # This indicates if mail can be sent to this address.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `lockbox`.
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -135,8 +147,24 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, line2:, postal_code:, recipient:, state:); end
-
+        def self.new(
+          # The city of the address.
+          city:,
+          # The first line of the address.
+          line1:,
+          # The second line of the address.
+          line2:,
+          # The postal code of the address.
+          postal_code:,
+          # The recipient line of the address. This will include the recipient name you
+          # provide when creating the address, as well as an ATTN suffix to help route the
+          # mail to your lockbox. Mail senders must include this ATTN line to receive mail
+          # at this Lockbox.
+          recipient:,
+          # The two-letter United States Postal Service (USPS) abbreviation for the state of
+          # the address.
+          state:
+        ); end
         sig do
           override
             .returns(

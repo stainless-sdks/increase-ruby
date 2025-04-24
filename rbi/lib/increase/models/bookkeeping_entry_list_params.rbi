@@ -37,8 +37,16 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id: nil, cursor: nil, limit: nil, request_options: {}); end
-
+      def self.new(
+        # The identifier for the Bookkeeping Account to filter by.
+        account_id: nil,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        # objects.
+        limit: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns({

@@ -50,14 +50,19 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The URL you'd like us to send webhooks to.
         url:,
+        # If specified, this subscription will only receive webhooks for Events associated
+        # with the specified OAuth Connection.
         oauth_connection_id: nil,
+        # If specified, this subscription will only receive webhooks for Events with the
+        # specified `category`.
         selected_event_category: nil,
+        # The key that will be used to sign webhooks. If no value is passed, a random
+        # string will be used as default.
         shared_secret: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

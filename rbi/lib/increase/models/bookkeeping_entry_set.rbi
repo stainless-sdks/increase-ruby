@@ -50,8 +50,25 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:); end
-
+      def self.new(
+        # The entry set identifier.
+        id:,
+        # When the entry set was created.
+        created_at:,
+        # The timestamp of the entry set.
+        date:,
+        # The entries.
+        entries:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key:,
+        # The transaction identifier, if any.
+        transaction_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `bookkeeping_entry_set`.
+        type:
+      ); end
       sig do
         override
           .returns(
@@ -82,8 +99,14 @@ module Increase
         attr_accessor :amount
 
         sig { params(id: String, account_id: String, amount: Integer).returns(T.attached_class) }
-        def self.new(id:, account_id:, amount:); end
-
+        def self.new(
+          # The entry identifier.
+          id:,
+          # The bookkeeping account impacted by the entry.
+          account_id:,
+          # The amount of the entry in minor units.
+          amount:
+        ); end
         sig { override.returns({id: String, account_id: String, amount: Integer}) }
         def to_hash; end
       end

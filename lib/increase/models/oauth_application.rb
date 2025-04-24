@@ -51,18 +51,31 @@ module Increase
       required :type, enum: -> { Increase::Models::OAuthApplication::Type }
 
       # @!method initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::OAuthApplication} for more details.
+      #
       #   An OAuth Application lets you build an application for others to use with their
       #   Increase data. You can create an OAuth Application via the Dashboard and read
       #   information about it with the API. Learn more about OAuth
       #   [here](https://increase.com/documentation/oauth).
       #
-      #   @param id [String]
-      #   @param client_id [String]
-      #   @param created_at [Time]
-      #   @param deleted_at [Time, nil]
-      #   @param name [String, nil]
-      #   @param status [Symbol, Increase::Models::OAuthApplication::Status]
-      #   @param type [Symbol, Increase::Models::OAuthApplication::Type]
+      #   @param id [String] The OAuth Application's identifier.
+      #
+      #   @param client_id [String] The OAuth Application's client_id. Use this to authenticate with the OAuth Appli
+      #   ...
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #   ...
+      #
+      #   @param deleted_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #   ...
+      #
+      #   @param name [String, nil] The name you chose for this OAuth Application.
+      #
+      #   @param status [Symbol, Increase::Models::OAuthApplication::Status] Whether the application is active.
+      #
+      #   @param type [Symbol, Increase::Models::OAuthApplication::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # Whether the application is active.
       #

@@ -23,8 +23,13 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, request_options: {}); end
-
+        def self.new(
+          # The reason for the notification of change.
+          change_code:,
+          # The corrected data for the notification of change (e.g., a new routing number).
+          corrected_data:,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

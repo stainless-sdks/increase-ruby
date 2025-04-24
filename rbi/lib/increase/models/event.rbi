@@ -44,8 +44,22 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:); end
-
+      def self.new(
+        # The Event identifier.
+        id:,
+        # The identifier of the object that generated this Event.
+        associated_object_id:,
+        # The type of the object that generated this Event.
+        associated_object_type:,
+        # The category of the Event. We may add additional possible values for this enum
+        # over time; your application should be able to handle such additions gracefully.
+        category:,
+        # The time the Event was created.
+        created_at:,
+        # A constant representing the object's type. For this resource it will always be
+        # `event`.
+        type:
+      ); end
       sig do
         override
           .returns(

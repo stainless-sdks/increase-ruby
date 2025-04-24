@@ -18,8 +18,12 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(reason:, request_options: {}); end
-
+      def self.new(
+        # The reason why this transfer will be returned. The most usual return codes are
+        # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+        reason:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -7,7 +7,8 @@ module Increase
       #
       # @overload retrieve(inbound_wire_drawdown_request_id, request_options: {})
       #
-      # @param inbound_wire_drawdown_request_id [String]
+      # @param inbound_wire_drawdown_request_id [String] The identifier of the Inbound Wire Drawdown Request to retrieve.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundWireDrawdownRequest]
@@ -22,12 +23,18 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::InboundWireDrawdownRequestListParams} for more details.
+      #
       # List Inbound Wire Drawdown Requests
       #
       # @overload list(cursor: nil, limit: nil, request_options: {})
       #
-      # @param cursor [String]
-      # @param limit [Integer]
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::InboundWireDrawdownRequest>]

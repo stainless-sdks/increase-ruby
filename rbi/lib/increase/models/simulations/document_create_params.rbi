@@ -21,8 +21,11 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id:, request_options: {}); end
-
+        def self.new(
+          # The identifier of the Account the tax document is for.
+          account_id:,
+          request_options: {}
+        ); end
         sig { override.returns({account_id: String, request_options: Increase::RequestOptions}) }
         def to_hash; end
       end

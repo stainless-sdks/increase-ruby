@@ -91,12 +91,23 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The type of Export to create.
         category:,
+        # Options for the created export. Required if `category` is equal to
+        # `account_statement_ofx`.
         account_statement_ofx: nil,
+        # Options for the created export. Required if `category` is equal to
+        # `balance_csv`.
         balance_csv: nil,
+        # Options for the created export. Required if `category` is equal to
+        # `bookkeeping_account_balance_csv`.
         bookkeeping_account_balance_csv: nil,
+        # Options for the created export. Required if `category` is equal to `entity_csv`.
         entity_csv: nil,
+        # Options for the created export. Required if `category` is equal to
+        # `transaction_csv`.
         transaction_csv: nil,
+        # Options for the created export. Required if `category` is equal to `vendor_csv`.
         vendor_csv: nil,
         request_options: {}
       ); end
@@ -174,8 +185,12 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id:, created_at: nil); end
-
+        def self.new(
+          # The Account to create a statement for.
+          account_id:,
+          # Filter results by time range on the `created_at` attribute.
+          created_at: nil
+        ); end
         sig do
           override
             .returns(
@@ -221,8 +236,20 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
-
+          def self.new(
+            # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            after: nil,
+            # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            before: nil,
+            # Return results on or after this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_after: nil,
+            # Return results on or before this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_before: nil
+          ); end
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
           def to_hash; end
         end
@@ -265,8 +292,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id: nil, created_at: nil, program_id: nil); end
-
+        def self.new(
+          # Filter exported Transactions to the specified Account.
+          account_id: nil,
+          # Filter results by time range on the `created_at` attribute.
+          created_at: nil,
+          # Filter exported Transactions to the specified Program.
+          program_id: nil
+        ); end
         sig do
           override
             .returns(
@@ -316,8 +349,20 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
-
+          def self.new(
+            # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            after: nil,
+            # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            before: nil,
+            # Return results on or after this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_after: nil,
+            # Return results on or before this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_before: nil
+          ); end
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
           def to_hash; end
         end
@@ -358,8 +403,12 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(bookkeeping_account_id: nil, created_at: nil); end
-
+        def self.new(
+          # Filter exported Transactions to the specified Bookkeeping Account.
+          bookkeeping_account_id: nil,
+          # Filter results by time range on the `created_at` attribute.
+          created_at: nil
+        ); end
         sig do
           override
             .returns(
@@ -408,8 +457,20 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
-
+          def self.new(
+            # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            after: nil,
+            # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            before: nil,
+            # Return results on or after this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_after: nil,
+            # Return results on or before this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_before: nil
+          ); end
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
           def to_hash; end
         end
@@ -435,8 +496,10 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(status: nil); end
-
+        def self.new(
+          # Entity statuses to filter by.
+          status: nil
+        ); end
         sig { override.returns({status: Increase::Models::ExportCreateParams::EntityCsv::Status}) }
         def to_hash; end
 
@@ -451,8 +514,11 @@ module Increase
             params(in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol])
               .returns(T.attached_class)
           end
-          def self.new(in_:); end
-
+          def self.new(
+            # Entity statuses to filter by. For GET requests, this should be encoded as a
+            # comma-delimited string, such as `?in=one,two,three`.
+            in_:
+          ); end
           sig { override.returns({in_: T::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::In::OrSymbol]}) }
           def to_hash; end
 
@@ -515,8 +581,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id: nil, created_at: nil, program_id: nil); end
-
+        def self.new(
+          # Filter exported Transactions to the specified Account.
+          account_id: nil,
+          # Filter results by time range on the `created_at` attribute.
+          created_at: nil,
+          # Filter exported Transactions to the specified Program.
+          program_id: nil
+        ); end
         sig do
           override
             .returns(
@@ -566,8 +638,20 @@ module Increase
           sig do
             params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
           end
-          def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
-
+          def self.new(
+            # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            after: nil,
+            # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+            # timestamp.
+            before: nil,
+            # Return results on or after this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_after: nil,
+            # Return results on or before this
+            # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+            on_or_before: nil
+          ); end
           sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
           def to_hash; end
         end

@@ -32,8 +32,15 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(address:, beneficial_owner_id:, request_options: {}); end
-
+      def self.new(
+        # The individual's physical address. Mail receiving locations like PO Boxes and
+        # PMB's are disallowed.
+        address:,
+        # The identifying details of anyone controlling or owning 25% or more of the
+        # corporation.
+        beneficial_owner_id:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -91,8 +98,22 @@ module Increase
           params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
             .returns(T.attached_class)
         end
-        def self.new(country:, line1:, city: nil, line2: nil, state: nil, zip: nil); end
-
+        def self.new(
+          # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
+          country:,
+          # The first line of the address. This is usually the street number and street.
+          line1:,
+          # The city, district, town, or village of the address. Required in certain
+          # countries.
+          city: nil,
+          # The second line of the address. This might be the floor or room number.
+          line2: nil,
+          # The two-letter United States Postal Service (USPS) abbreviation for the US
+          # state, province, or region of the address. Required in certain countries.
+          state: nil,
+          # The ZIP or postal code of the address. Required in certain countries.
+          zip: nil
+        ); end
         sig do
           override.returns(
             {

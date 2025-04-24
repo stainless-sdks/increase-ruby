@@ -20,8 +20,10 @@ module Increase
       required :email_address, String
 
       # @!method initialize(account_id:, email_address:, request_options: {})
-      #   @param account_id [String]
-      #   @param email_address [String]
+      #   @param account_id [String] The identifier for the account to be added to IntraFi.
+      #
+      #   @param email_address [String] The contact email for the account owner, to be shared with IntraFi.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

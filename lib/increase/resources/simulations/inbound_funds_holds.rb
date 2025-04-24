@@ -9,7 +9,8 @@ module Increase
         #
         # @overload release(inbound_funds_hold_id, request_options: {})
         #
-        # @param inbound_funds_hold_id [String]
+        # @param inbound_funds_hold_id [String] The inbound funds hold to release.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Simulations::InboundFundsHoldReleaseResponse]

@@ -33,8 +33,19 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id:, available_balance:, current_balance:, type:); end
-
+      def self.new(
+        # The identifier for the account for which the balance was queried.
+        account_id:,
+        # The Account's available balance, representing the current balance less any open
+        # Pending Transactions on the Account.
+        available_balance:,
+        # The Account's current balance, representing the sum of all posted Transactions
+        # on the Account.
+        current_balance:,
+        # A constant representing the object's type. For this resource it will always be
+        # `balance_lookup`.
+        type:
+      ); end
       sig do
         override
           .returns(

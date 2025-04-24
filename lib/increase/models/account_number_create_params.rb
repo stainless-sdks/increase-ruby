@@ -33,10 +33,18 @@ module Increase
       optional :inbound_checks, -> { Increase::Models::AccountNumberCreateParams::InboundChecks }
 
       # @!method initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param name [String]
-      #   @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH]
-      #   @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::AccountNumberCreateParams} for more details.
+      #
+      #   @param account_id [String] The Account the Account Number should belong to.
+      #
+      #   @param name [String] The name you choose for the Account Number.
+      #
+      #   @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH] Options related to how this Account Number should handle inbound ACH transfers.
+      #
+      #   @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class InboundACH < Increase::Internal::Type::BaseModel
@@ -49,9 +57,13 @@ module Increase
         required :debit_status, enum: -> { Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus }
 
         # @!method initialize(debit_status:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::AccountNumberCreateParams::InboundACH} for more details.
+        #
         #   Options related to how this Account Number should handle inbound ACH transfers.
         #
-        #   @param debit_status [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus]
+        #   @param debit_status [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus] Whether ACH debits are allowed against this Account Number. Note that ACH debits
+        #   ...
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active. If
@@ -81,10 +93,14 @@ module Increase
         required :status, enum: -> { Increase::Models::AccountNumberCreateParams::InboundChecks::Status }
 
         # @!method initialize(status:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::AccountNumberCreateParams::InboundChecks} for more details.
+        #
         #   Options related to how this Account Number should handle inbound check
         #   withdrawals.
         #
-        #   @param status [Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status]
+        #   @param status [Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status] How Increase should process checks with this account number printed on them. If
+        #   ...
 
         # How Increase should process checks with this account number printed on them. If
         # you do not specify this field, the default is `check_transfers_only`.

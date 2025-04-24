@@ -27,8 +27,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(card_payment_id:, amount: nil, request_options: {}); end
-
+        def self.new(
+          # The identifier of the Card Payment to create a reversal on.
+          card_payment_id:,
+          # The amount of the reversal in minor units in the card authorization's currency.
+          # This defaults to the authorization amount.
+          amount: nil,
+          request_options: {}
+        ); end
         sig do
           override.returns(
             {

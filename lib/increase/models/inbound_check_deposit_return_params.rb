@@ -14,7 +14,8 @@ module Increase
       required :reason, enum: -> { Increase::Models::InboundCheckDepositReturnParams::Reason }
 
       # @!method initialize(reason:, request_options: {})
-      #   @param reason [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason]
+      #   @param reason [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason] The reason to return the Inbound Check Deposit.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The reason to return the Inbound Check Deposit.

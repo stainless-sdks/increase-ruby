@@ -89,24 +89,43 @@ module Increase
       required :type, enum: -> { Increase::Models::Card::Type }
 
       # @!method initialize(id:, account_id:, billing_address:, created_at:, description:, digital_wallet:, entity_id:, expiration_month:, expiration_year:, idempotency_key:, last4:, status:, type:)
+      #   Some parameter documentations has been truncated, see {Increase::Models::Card}
+      #   for more details.
+      #
       #   Cards are commercial credit cards. They'll immediately work for online purchases
       #   after you create them. All cards maintain a credit limit of 100% of the
       #   Account’s available balance at the time of transaction. Funds are deducted from
       #   the Account upon transaction settlement.
       #
-      #   @param id [String]
-      #   @param account_id [String]
-      #   @param billing_address [Increase::Models::Card::BillingAddress]
-      #   @param created_at [Time]
-      #   @param description [String, nil]
-      #   @param digital_wallet [Increase::Models::Card::DigitalWallet, nil]
-      #   @param entity_id [String, nil]
-      #   @param expiration_month [Integer]
-      #   @param expiration_year [Integer]
-      #   @param idempotency_key [String, nil]
-      #   @param last4 [String]
-      #   @param status [Symbol, Increase::Models::Card::Status]
-      #   @param type [Symbol, Increase::Models::Card::Type]
+      #   @param id [String] The card identifier.
+      #
+      #   @param account_id [String] The identifier for the account this card belongs to.
+      #
+      #   @param billing_address [Increase::Models::Card::BillingAddress] The Card's billing address.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param description [String, nil] The card's description for display purposes.
+      #
+      #   @param digital_wallet [Increase::Models::Card::DigitalWallet, nil] The contact information used in the two-factor steps for digital wallet card cre
+      #   ...
+      #
+      #   @param entity_id [String, nil] The identifier for the entity associated with this card.
+      #
+      #   @param expiration_month [Integer] The month the card expires in M format (e.g., August is 8).
+      #
+      #   @param expiration_year [Integer] The year the card expires in YYYY format (e.g., 2025).
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param last4 [String] The last 4 digits of the Card's Primary Account Number.
+      #
+      #   @param status [Symbol, Increase::Models::Card::Status] This indicates if payments can be made with the card.
+      #
+      #   @param type [Symbol, Increase::Models::Card::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # @see Increase::Models::Card#billing_address
       class BillingAddress < Increase::Internal::Type::BaseModel
@@ -143,11 +162,15 @@ module Increase
         # @!method initialize(city:, line1:, line2:, postal_code:, state:)
         #   The Card's billing address.
         #
-        #   @param city [String, nil]
-        #   @param line1 [String, nil]
-        #   @param line2 [String, nil]
-        #   @param postal_code [String, nil]
-        #   @param state [String, nil]
+        #   @param city [String, nil] The city of the billing address.
+        #
+        #   @param line1 [String, nil] The first line of the billing address.
+        #
+        #   @param line2 [String, nil] The second line of the billing address.
+        #
+        #   @param postal_code [String, nil] The postal code of the billing address.
+        #
+        #   @param state [String, nil] The US state of the billing address.
       end
 
       # @see Increase::Models::Card#digital_wallet
@@ -174,13 +197,21 @@ module Increase
         required :phone, String, nil?: true
 
         # @!method initialize(digital_card_profile_id:, email:, phone:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::Card::DigitalWallet} for more details.
+        #
         #   The contact information used in the two-factor steps for digital wallet card
         #   creation. At least one field must be present to complete the digital wallet
         #   steps.
         #
-        #   @param digital_card_profile_id [String, nil]
-        #   @param email [String, nil]
-        #   @param phone [String, nil]
+        #   @param digital_card_profile_id [String, nil] The digital card profile assigned to this digital card. Card profiles may also b
+        #   ...
+        #
+        #   @param email [String, nil] An email address that can be used to verify the cardholder via one-time passcode
+        #   ...
+        #
+        #   @param phone [String, nil] A phone number that can be used to verify the cardholder via one-time passcode o
+        #   ...
       end
 
       # This indicates if payments can be made with the card.

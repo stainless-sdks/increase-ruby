@@ -61,14 +61,27 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Account Statement identifier.
         id:,
+        # The identifier for the Account this Account Statement belongs to.
         account_id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+        # Statement was created.
         created_at:,
+        # The Account's balance at the start of its statement period.
         ending_balance:,
+        # The identifier of the File containing a PDF of the statement.
         file_id:,
+        # The Account's balance at the start of its statement period.
         starting_balance:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
+        # of the period the Account Statement covers.
         statement_period_end:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
+        # start of the period the Account Statement covers.
         statement_period_start:,
+        # A constant representing the object's type. For this resource it will always be
+        # `account_statement`.
         type:
       ); end
       sig do

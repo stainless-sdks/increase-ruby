@@ -7,7 +7,8 @@ module Increase
       #
       # @overload retrieve(oauth_application_id, request_options: {})
       #
-      # @param oauth_application_id [String]
+      # @param oauth_application_id [String] The identifier of the OAuth Application.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::OAuthApplication]
@@ -22,14 +23,22 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::OAuthApplicationListParams} for more details.
+      #
       # List OAuth Applications
       #
       # @overload list(created_at: nil, cursor: nil, limit: nil, status: nil, request_options: {})
       #
       # @param created_at [Increase::Models::OAuthApplicationListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param status [Increase::Models::OAuthApplicationListParams::Status]
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::OAuthApplication>]
