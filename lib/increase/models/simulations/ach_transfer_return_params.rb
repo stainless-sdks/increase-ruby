@@ -16,12 +16,7 @@ module Increase
         optional :reason, enum: -> { Increase::Models::Simulations::ACHTransferReturnParams::Reason }
 
         # @!method initialize(reason: nil, request_options: {})
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Simulations::ACHTransferReturnParams} for more details.
-        #
-        #   @param reason [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason] The reason why the Federal Reserve or destination bank returned this transfer. D
-        #   ...
-        #
+        #   @param reason [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason]
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
         # The reason why the Federal Reserve or destination bank returned this transfer.

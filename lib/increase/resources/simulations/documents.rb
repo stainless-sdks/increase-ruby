@@ -8,8 +8,7 @@ module Increase
         #
         # @overload create(account_id:, request_options: {})
         #
-        # @param account_id [String] The identifier of the Account the tax document is for.
-        #
+        # @param account_id [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Document]

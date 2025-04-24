@@ -14,8 +14,7 @@ module Increase
       optional :reason, enum: -> { Increase::Models::CheckTransferStopPaymentParams::Reason }
 
       # @!method initialize(reason: nil, request_options: {})
-      #   @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason] The reason why this transfer should be stopped.
-      #
+      #   @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The reason why this transfer should be stopped.

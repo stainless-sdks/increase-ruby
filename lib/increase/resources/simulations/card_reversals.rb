@@ -4,9 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardReversals
-        # Some parameter documentations has been truncated, see
-        # {Increase::Models::Simulations::CardReversalCreateParams} for more details.
-        #
         # Simulates the reversal of an authorization by a card acquirer. An authorization
         # can be partially reversed multiple times, up until the total authorized amount.
         # Marks the pending transaction as complete if the authorization is fully
@@ -14,11 +11,8 @@ module Increase
         #
         # @overload create(card_payment_id:, amount: nil, request_options: {})
         #
-        # @param card_payment_id [String] The identifier of the Card Payment to create a reversal on.
-        #
-        # @param amount [Integer] The amount of the reversal in minor units in the card authorization's currency.
-        # ...
-        #
+        # @param card_payment_id [String]
+        # @param amount [Integer]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardPayment]

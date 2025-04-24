@@ -23,7 +23,6 @@ group :development, :test do
   gem "minitest-hooks"
   gem "minitest-proveit"
   gem "minitest-rg"
-  gem "webmock"
 end
 
 group :development, :docs do

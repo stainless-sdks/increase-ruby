@@ -35,19 +35,10 @@ module Increase
       optional :status, -> { Increase::Models::WireDrawdownRequestListParams::Status }
 
       # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::WireDrawdownRequestListParams} for more details.
-      #
-      #   @param cursor [String] Return the page of entries after this one.
-      #
-      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      #   ...
-      #
-      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
-      #
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
       #   @param status [Increase::Models::WireDrawdownRequestListParams::Status]
-      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
@@ -62,11 +53,7 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::WireDrawdownRequestListParams::Status} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>] Filter Wire Drawdown Requests for those with the specified status. For GET reque
-        #   ...
+        #   @param in_ [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum

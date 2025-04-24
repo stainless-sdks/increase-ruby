@@ -48,24 +48,13 @@ module Increase
       optional :status, -> { Increase::Models::PendingTransactionListParams::Status }
 
       # @!method initialize(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, status: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::PendingTransactionListParams} for more details.
-      #
-      #   @param account_id [String] Filter pending transactions to those belonging to the specified Account.
-      #
+      #   @param account_id [String]
       #   @param category [Increase::Models::PendingTransactionListParams::Category]
-      #
       #   @param created_at [Increase::Models::PendingTransactionListParams::CreatedAt]
-      #
-      #   @param cursor [String] Return the page of entries after this one.
-      #
-      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
-      #
-      #   @param route_id [String] Filter pending transactions to those belonging to the specified Route.
-      #
+      #   @param cursor [String]
+      #   @param limit [Integer]
+      #   @param route_id [String]
       #   @param status [Increase::Models::PendingTransactionListParams::Status]
-      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Category < Increase::Internal::Type::BaseModel
@@ -79,11 +68,7 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::PendingTransactionListParams::Category} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::PendingTransactionListParams::Category::In>] Return results whose value is in the provided list. For GET requests, this shoul
-        #   ...
+        #   @param in_ [Array<Symbol, Increase::Models::PendingTransactionListParams::Category::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -114,9 +99,6 @@ module Increase
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
-
-          # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
-          SWIFT_TRANSFER_INSTRUCTION = :swift_transfer_instruction
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
@@ -156,20 +138,10 @@ module Increase
         optional :on_or_before, Time
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::PendingTransactionListParams::CreatedAt} for more details.
-        #
-        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
-        #
-        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
-        #
-        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
-        #
-        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -185,11 +157,7 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::PendingTransactionListParams::Status} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::PendingTransactionListParams::Status::In>] Filter Pending Transactions for those with the specified status. By default only
-        #   ...
+        #   @param in_ [Array<Symbol, Increase::Models::PendingTransactionListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum

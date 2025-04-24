@@ -51,25 +51,13 @@ module Increase
       optional :status, -> { Increase::Models::AccountNumberListParams::Status }
 
       # @!method initialize(account_id: nil, ach_debit_status: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::AccountNumberListParams} for more details.
-      #
-      #   @param account_id [String] Filter Account Numbers to those belonging to the specified Account.
-      #
+      #   @param account_id [String]
       #   @param ach_debit_status [Increase::Models::AccountNumberListParams::ACHDebitStatus]
-      #
       #   @param created_at [Increase::Models::AccountNumberListParams::CreatedAt]
-      #
-      #   @param cursor [String] Return the page of entries after this one.
-      #
-      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      #   ...
-      #
-      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
-      #
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
       #   @param status [Increase::Models::AccountNumberListParams::Status]
-      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class ACHDebitStatus < Increase::Internal::Type::BaseModel
@@ -83,11 +71,7 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::AccountNumberListParams::ACHDebitStatus} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In>] The ACH Debit status to retrieve Account Numbers for. For GET requests, this sho
-        #   ...
+        #   @param in_ [Array<Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In>]
 
         module In
           extend Increase::Internal::Type::Enum
@@ -133,20 +117,10 @@ module Increase
         optional :on_or_before, Time
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::AccountNumberListParams::CreatedAt} for more details.
-        #
-        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
-        #
-        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
-        #
-        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
-        #
-        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -160,11 +134,7 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::AccountNumberListParams::Status} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::AccountNumberListParams::Status::In>] The status to retrieve Account Numbers for. For GET requests, this should be enc
-        #   ...
+        #   @param in_ [Array<Symbol, Increase::Models::AccountNumberListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum

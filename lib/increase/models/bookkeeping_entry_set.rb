@@ -50,29 +50,18 @@ module Increase
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
       # @!method initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::BookkeepingEntrySet} for more details.
-      #
       #   Entry Sets are accounting entries that are transactionally applied. Your
       #   compliance setup might require annotating money movements using this API. Learn
       #   more in our
       #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #
-      #   @param id [String] The entry set identifier.
-      #
-      #   @param created_at [Time] When the entry set was created.
-      #
-      #   @param date [Time] The timestamp of the entry set.
-      #
-      #   @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>] The entries.
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param transaction_id [String, nil] The transaction identifier, if any.
-      #
-      #   @param type [Symbol, Increase::Models::BookkeepingEntrySet::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      #   @param id [String]
+      #   @param created_at [Time]
+      #   @param date [Time]
+      #   @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>]
+      #   @param idempotency_key [String, nil]
+      #   @param transaction_id [String, nil]
+      #   @param type [Symbol, Increase::Models::BookkeepingEntrySet::Type]
 
       class Entry < Increase::Internal::Type::BaseModel
         # @!attribute id
@@ -94,11 +83,9 @@ module Increase
         required :amount, Integer
 
         # @!method initialize(id:, account_id:, amount:)
-        #   @param id [String] The entry identifier.
-        #
-        #   @param account_id [String] The bookkeeping account impacted by the entry.
-        #
-        #   @param amount [Integer] The amount of the entry in minor units.
+        #   @param id [String]
+        #   @param account_id [String]
+        #   @param amount [Integer]
       end
 
       # A constant representing the object's type. For this resource it will always be

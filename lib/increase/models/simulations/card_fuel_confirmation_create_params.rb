@@ -22,15 +22,8 @@ module Increase
         required :card_payment_id, String
 
         # @!method initialize(amount:, card_payment_id:, request_options: {})
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Simulations::CardFuelConfirmationCreateParams} for more
-        #   details.
-        #
-        #   @param amount [Integer] The amount of the fuel_confirmation in minor units in the card authorization's c
-        #   ...
-        #
-        #   @param card_payment_id [String] The identifier of the Card Payment to create a fuel_confirmation on.
-        #
+        #   @param amount [Integer]
+        #   @param card_payment_id [String]
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end
