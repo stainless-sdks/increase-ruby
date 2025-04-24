@@ -95,10 +95,20 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # If the Real-Time Decision relates to a 3DS card authentication attempt, this
+        # object contains your response to the authentication.
         card_authentication: nil,
+        # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+        # this object contains your response.
         card_authentication_challenge: nil,
+        # If the Real-Time Decision relates to a card authorization attempt, this object
+        # contains your response to the authorization.
         card_authorization: nil,
+        # If the Real-Time Decision relates to a digital wallet authentication attempt,
+        # this object contains your response to the authentication.
         digital_wallet_authentication: nil,
+        # If the Real-Time Decision relates to a digital wallet token provisioning
+        # attempt, this object contains your response to the attempt.
         digital_wallet_token: nil,
         request_options: {}
       ); end
@@ -128,8 +138,10 @@ module Increase
           params(decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(decision:); end
-
+        def self.new(
+          # Whether the card authentication attempt should be approved or declined.
+          decision:
+        ); end
         sig do
           override
             .returns(
@@ -188,8 +200,11 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(result:); end
-
+        def self.new(
+          # Whether the card authentication challenge was successfully delivered to the
+          # cardholder.
+          result:
+        ); end
         sig do
           override
             .returns(
@@ -262,8 +277,13 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(decision:, decline_reason: nil); end
-
+        def self.new(
+          # Whether the card authorization should be approved or declined.
+          decision:,
+          # The reason the card authorization was declined. This translates to a specific
+          # decline code that is sent to the card network.
+          decline_reason: nil
+        ); end
         sig do
           override
             .returns(
@@ -392,8 +412,11 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(result:, success: nil); end
-
+        def self.new(
+          # Whether your application was able to deliver the one-time passcode.
+          result:,
+          success: nil
+        ); end
         sig do
           override
             .returns(
@@ -453,8 +476,13 @@ module Increase
           attr_writer :phone
 
           sig { params(email: String, phone: String).returns(T.attached_class) }
-          def self.new(email: nil, phone: nil); end
-
+          def self.new(
+            # The email address that was used to verify the cardholder via one-time passcode.
+            email: nil,
+            # The phone number that was used to verify the cardholder via one-time passcode
+            # over SMS.
+            phone: nil
+          ); end
           sig { override.returns({email: String, phone: String}) }
           def to_hash; end
         end
@@ -508,8 +536,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(approval: nil, decline: nil); end
-
+        def self.new(
+          # If your application approves the provisioning attempt, this contains metadata
+          # about the digital wallet token that will be generated.
+          approval: nil,
+          # If your application declines the provisioning attempt, this contains details
+          # about the decline.
+          decline: nil
+        ); end
         sig do
           override
             .returns(
@@ -541,8 +575,14 @@ module Increase
           # If your application approves the provisioning attempt, this contains metadata
           # about the digital wallet token that will be generated.
           sig { params(email: String, phone: String).returns(T.attached_class) }
-          def self.new(email: nil, phone: nil); end
-
+          def self.new(
+            # An email address that can be used to verify the cardholder via one-time
+            # passcode.
+            email: nil,
+            # A phone number that can be used to verify the cardholder via one-time passcode
+            # over SMS.
+            phone: nil
+          ); end
           sig { override.returns({email: String, phone: String}) }
           def to_hash; end
         end
@@ -559,8 +599,11 @@ module Increase
           # If your application declines the provisioning attempt, this contains details
           # about the decline.
           sig { params(reason: String).returns(T.attached_class) }
-          def self.new(reason: nil); end
-
+          def self.new(
+            # Why the tokenization attempt was declined. This is for logging purposes only and
+            # is not displayed to the end-user.
+            reason: nil
+          ); end
           sig { override.returns({reason: String}) }
           def to_hash; end
         end

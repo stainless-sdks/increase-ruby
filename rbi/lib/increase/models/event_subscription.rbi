@@ -60,17 +60,28 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The event subscription identifier.
         id:,
+        # The time the event subscription was created.
         created_at:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # If specified, this subscription will only receive webhooks for Events associated
+        # with this OAuth Connection.
         oauth_connection_id:,
+        # If specified, this subscription will only receive webhooks for Events with the
+        # specified `category`.
         selected_event_category:,
+        # This indicates if we'll send notifications to this subscription.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `event_subscription`.
         type:,
+        # The webhook url where we'll send notifications.
         url:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

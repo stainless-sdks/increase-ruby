@@ -18,8 +18,11 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(shipment_status:, request_options: {}); end
-
+        def self.new(
+          # The shipment status to move the Physical Card to.
+          shipment_status:,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

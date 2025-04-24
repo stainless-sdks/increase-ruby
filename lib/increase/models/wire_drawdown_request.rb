@@ -139,31 +139,61 @@ module Increase
       required :type, enum: -> { Increase::Models::WireDrawdownRequest::Type }
 
       # @!method initialize(id:, account_number_id:, amount:, created_at:, currency:, fulfillment_inbound_wire_transfer_id:, idempotency_key:, message_to_recipient:, originator_address_line1:, originator_address_line2:, originator_address_line3:, originator_name:, recipient_account_number:, recipient_address_line1:, recipient_address_line2:, recipient_address_line3:, recipient_name:, recipient_routing_number:, status:, submission:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::WireDrawdownRequest} for more details.
+      #
       #   Wire drawdown requests enable you to request that someone else send you a wire.
       #   This feature is in beta; reach out to
       #   [support@increase.com](mailto:support@increase.com) to learn more.
       #
-      #   @param id [String]
-      #   @param account_number_id [String]
-      #   @param amount [Integer]
-      #   @param created_at [Time]
-      #   @param currency [String]
-      #   @param fulfillment_inbound_wire_transfer_id [String, nil]
-      #   @param idempotency_key [String, nil]
-      #   @param message_to_recipient [String]
-      #   @param originator_address_line1 [String, nil]
-      #   @param originator_address_line2 [String, nil]
-      #   @param originator_address_line3 [String, nil]
-      #   @param originator_name [String, nil]
-      #   @param recipient_account_number [String]
-      #   @param recipient_address_line1 [String, nil]
-      #   @param recipient_address_line2 [String, nil]
-      #   @param recipient_address_line3 [String, nil]
-      #   @param recipient_name [String, nil]
-      #   @param recipient_routing_number [String]
-      #   @param status [Symbol, Increase::Models::WireDrawdownRequest::Status]
-      #   @param submission [Increase::Models::WireDrawdownRequest::Submission, nil]
-      #   @param type [Symbol, Increase::Models::WireDrawdownRequest::Type]
+      #   @param id [String] The Wire drawdown request identifier.
+      #
+      #   @param account_number_id [String] The Account Number to which the recipient of this request is being requested to
+      #   ...
+      #
+      #   @param amount [Integer] The amount being requested in cents.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
+      #   ...
+      #
+      #   @param fulfillment_inbound_wire_transfer_id [String, nil] If the recipient fulfills the drawdown request by sending funds, then this will
+      #   ...
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param message_to_recipient [String] The message the recipient will see as part of the drawdown request.
+      #
+      #   @param originator_address_line1 [String, nil] The originator's address line 1.
+      #
+      #   @param originator_address_line2 [String, nil] The originator's address line 2.
+      #
+      #   @param originator_address_line3 [String, nil] The originator's address line 3.
+      #
+      #   @param originator_name [String, nil] The originator's name.
+      #
+      #   @param recipient_account_number [String] The drawdown request's recipient's account number.
+      #
+      #   @param recipient_address_line1 [String, nil] Line 1 of the drawdown request's recipient's address.
+      #
+      #   @param recipient_address_line2 [String, nil] Line 2 of the drawdown request's recipient's address.
+      #
+      #   @param recipient_address_line3 [String, nil] Line 3 of the drawdown request's recipient's address.
+      #
+      #   @param recipient_name [String, nil] The drawdown request's recipient's name.
+      #
+      #   @param recipient_routing_number [String] The drawdown request's recipient's routing number.
+      #
+      #   @param status [Symbol, Increase::Models::WireDrawdownRequest::Status] The lifecycle status of the drawdown request.
+      #
+      #   @param submission [Increase::Models::WireDrawdownRequest::Submission, nil] After the drawdown request is submitted to Fedwire, this will contain supplement
+      #   ...
+      #
+      #   @param type [Symbol, Increase::Models::WireDrawdownRequest::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The lifecycle status of the drawdown request.
       #
@@ -197,10 +227,14 @@ module Increase
         required :input_message_accountability_data, String
 
         # @!method initialize(input_message_accountability_data:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::WireDrawdownRequest::Submission} for more details.
+        #
         #   After the drawdown request is submitted to Fedwire, this will contain
         #   supplemental details.
         #
-        #   @param input_message_accountability_data [String]
+        #   @param input_message_accountability_data [String] The input message accountability data (IMAD) uniquely identifying the submission
+        #   ...
       end
 
       # A constant representing the object's type. For this resource it will always be

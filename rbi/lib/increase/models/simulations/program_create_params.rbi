@@ -15,8 +15,11 @@ module Increase
           params(name: String, request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
             .returns(T.attached_class)
         end
-        def self.new(name:, request_options: {}); end
-
+        def self.new(
+          # The name of the program being added.
+          name:,
+          request_options: {}
+        ); end
         sig { override.returns({name: String, request_options: Increase::RequestOptions}) }
         def to_hash; end
       end

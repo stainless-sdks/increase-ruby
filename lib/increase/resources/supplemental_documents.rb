@@ -7,8 +7,10 @@ module Increase
       #
       # @overload create(entity_id:, file_id:, request_options: {})
       #
-      # @param entity_id [String]
-      # @param file_id [String]
+      # @param entity_id [String] The identifier of the Entity to associate with the supplemental document.
+      #
+      # @param file_id [String] The identifier of the File containing the document.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::EntitySupplementalDocument]
@@ -25,14 +27,23 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::SupplementalDocumentListParams} for more details.
+      #
       # List Entity Supplemental Document Submissions
       #
       # @overload list(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      # @param entity_id [String]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
+      # @param entity_id [String] The identifier of the Entity to list supplemental documents for.
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::EntitySupplementalDocument>]

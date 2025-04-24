@@ -35,10 +35,19 @@ module Increase
       optional :limit, Integer
 
       # @!method initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::ACHPrenotificationListParams} for more details.
+      #
       #   @param created_at [Increase::Models::ACHPrenotificationListParams::CreatedAt]
-      #   @param cursor [String]
-      #   @param idempotency_key [String]
-      #   @param limit [Integer]
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      #   ...
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class CreatedAt < Increase::Internal::Type::BaseModel
@@ -71,10 +80,20 @@ module Increase
         optional :on_or_before, Time
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   @param after [Time]
-        #   @param before [Time]
-        #   @param on_or_after [Time]
-        #   @param on_or_before [Time]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::ACHPrenotificationListParams::CreatedAt} for more details.
+        #
+        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
+        #   ...
+        #
+        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
+        #   ...
+        #
+        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
+        #   ...
+        #
+        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
+        #   ...
       end
     end
   end

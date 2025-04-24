@@ -50,8 +50,18 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {}); end
-
+      def self.new(
+        # The underlying card representing this physical card.
+        card_id:,
+        # Details about the cardholder, as it will appear on the physical card.
+        cardholder:,
+        # The details used to ship this physical card.
+        shipment:,
+        # The physical card profile to use for this physical card. The latest default
+        # physical card profile will be used if not provided.
+        physical_card_profile_id: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -77,8 +87,12 @@ module Increase
 
         # Details about the cardholder, as it will appear on the physical card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
-        def self.new(first_name:, last_name:); end
-
+        def self.new(
+          # The cardholder's first name.
+          first_name:,
+          # The cardholder's last name.
+          last_name:
+        ); end
         sig { override.returns({first_name: String, last_name: String}) }
         def to_hash; end
       end
@@ -108,8 +122,12 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(address:, method_:); end
-
+        def self.new(
+          # The address to where the card should be shipped.
+          address:,
+          # The shipping method to use.
+          method_:
+        ); end
         sig do
           override
             .returns(
@@ -177,9 +195,24 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil)
-          end
-
+          def self.new(
+            # The city of the shipping address.
+            city:,
+            # The first line of the shipping address.
+            line1:,
+            # The name of the recipient.
+            name:,
+            # The postal code of the shipping address.
+            postal_code:,
+            # The US state of the shipping address.
+            state:,
+            # The second line of the shipping address.
+            line2: nil,
+            # The third line of the shipping address.
+            line3: nil,
+            # The phone number of the recipient.
+            phone_number: nil
+          ); end
           sig do
             override
               .returns(

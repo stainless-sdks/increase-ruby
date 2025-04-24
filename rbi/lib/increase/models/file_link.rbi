@@ -51,9 +51,29 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, expires_at:, file_id:, idempotency_key:, type:, unauthenticated_url:)
-      end
-
+      def self.new(
+        # The File Link identifier.
+        id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
+        # Link was created.
+        created_at:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
+        # Link will expire.
+        expires_at:,
+        # The identifier of the File the File Link points to.
+        file_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key:,
+        # A constant representing the object's type. For this resource it will always be
+        # `file_link`.
+        type:,
+        # A URL where the File can be downloaded. The URL will expire after the
+        # `expires_at` time. This URL is unauthenticated and can be used to download the
+        # File without an Increase API key.
+        unauthenticated_url:
+      ); end
       sig do
         override
           .returns(

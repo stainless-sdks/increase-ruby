@@ -70,16 +70,31 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The External Account's identifier.
         id:,
+        # The type of entity that owns the External Account.
         account_holder:,
+        # The destination account number.
         account_number:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the External Account was created.
         created_at:,
+        # The External Account's description for display purposes.
         description:,
+        # The type of the account to which the transfer will be sent.
         funding:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN).
         routing_number:,
+        # The External Account's status.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `external_account`.
         type:,
+        # If you have verified ownership of the External Account.
         verification_status:
       ); end
       sig do

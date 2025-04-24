@@ -7,7 +7,8 @@ module Increase
       #
       # @overload retrieve(declined_transaction_id, request_options: {})
       #
-      # @param declined_transaction_id [String]
+      # @param declined_transaction_id [String] The identifier of the Declined Transaction.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::DeclinedTransaction]
@@ -22,16 +23,26 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::DeclinedTransactionListParams} for more details.
+      #
       # List Declined Transactions
       #
       # @overload list(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, request_options: {})
       #
-      # @param account_id [String]
+      # @param account_id [String] Filter Declined Transactions to ones belonging to the specified Account.
+      #
       # @param category [Increase::Models::DeclinedTransactionListParams::Category]
+      #
       # @param created_at [Increase::Models::DeclinedTransactionListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
-      # @param route_id [String]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
+      # @param route_id [String] Filter Declined Transactions to those belonging to the specified route.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::DeclinedTransaction>]

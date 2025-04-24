@@ -48,15 +48,18 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The identifier of the Account the Interest Payment should be paid to is for.
           account_id:,
+          # The interest amount in cents. Must be positive.
           amount:,
+          # The identifier of the Account the Interest accrued on. Defaults to `account_id`.
           accrued_on_account_id: nil,
+          # The end of the interest period. If not provided, defaults to the current time.
           period_end: nil,
+          # The start of the interest period. If not provided, defaults to the current time.
           period_start: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(

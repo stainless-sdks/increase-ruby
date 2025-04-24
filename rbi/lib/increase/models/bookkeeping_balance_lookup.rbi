@@ -27,8 +27,16 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(balance:, bookkeeping_account_id:, type:); end
-
+      def self.new(
+        # The Bookkeeping Account's current balance, representing the sum of all
+        # Bookkeeping Entries on the Bookkeeping Account.
+        balance:,
+        # The identifier for the account for which the balance was queried.
+        bookkeeping_account_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `bookkeeping_balance_lookup`.
+        type:
+      ); end
       sig do
         override
           .returns(

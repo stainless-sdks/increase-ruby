@@ -28,8 +28,15 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(account_number_id:, amount:, check_number:, request_options: {}); end
-
+        def self.new(
+          # The identifier of the Account Number the Inbound Check Deposit will be against.
+          account_number_id:,
+          # The check amount in cents.
+          amount:,
+          # The check number on the check to be deposited.
+          check_number:,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

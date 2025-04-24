@@ -20,8 +20,10 @@ module Increase
       required :file_id, String
 
       # @!method initialize(entity_id:, file_id:, request_options: {})
-      #   @param entity_id [String]
-      #   @param file_id [String]
+      #   @param entity_id [String] The identifier of the Entity to associate with the supplemental document.
+      #
+      #   @param file_id [String] The identifier of the File containing the document.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

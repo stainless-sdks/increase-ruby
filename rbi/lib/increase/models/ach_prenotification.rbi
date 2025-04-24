@@ -104,21 +104,42 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The ACH Prenotification's identifier.
         id:,
+        # The destination account number.
         account_number:,
+        # Additional information for the recipient.
         addendum:,
+        # The description of the date of the notification.
         company_descriptive_date:,
+        # Optional data associated with the notification.
         company_discretionary_data:,
+        # The description of the notification.
         company_entry_description:,
+        # The name by which you know the company.
         company_name:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the prenotification was created.
         created_at:,
+        # If the notification is for a future credit or debit.
         credit_debit_indicator:,
+        # The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
         effective_date:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # If the receiving bank notifies that future transfers should use different
+        # details, this will contain those details.
         notifications_of_change:,
+        # If your prenotification is returned, this will contain details of the return.
         prenotification_return:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN).
         routing_number:,
+        # The lifecycle status of the ACH Prenotification.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `ach_prenotification`.
         type:
       ); end
       sig do
@@ -190,8 +211,20 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, created_at:); end
-
+        def self.new(
+          # The required type of change that is being signaled by the receiving financial
+          # institution.
+          change_code:,
+          # The corrected data that should be used in future ACHs to this account. This may
+          # contain the suggested new account number or routing number. When the
+          # `change_code` is `incorrect_transaction_code`, this field contains an integer.
+          # Numbers starting with a 2 encourage changing the `funding` parameter to
+          # checking; numbers starting with a 3 encourage changing to savings.
+          corrected_data:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the notification occurred.
+          created_at:
+        ); end
         sig do
           override
             .returns(
@@ -372,8 +405,13 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(created_at:, return_reason_code:); end
-
+        def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Prenotification was returned.
+          created_at:,
+          # Why the Prenotification was returned.
+          return_reason_code:
+        ); end
         sig do
           override
             .returns(

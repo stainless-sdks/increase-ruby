@@ -41,15 +41,20 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # This routing number's support for ACH Transfers.
         ach_transfers:,
+        # The name of the financial institution belonging to a routing number.
         name:,
+        # This routing number's support for Real-Time Payments Transfers.
         real_time_payments_transfers:,
+        # The nine digit routing number identifier.
         routing_number:,
+        # A constant representing the object's type. For this resource it will always be
+        # `routing_number`.
         type:,
+        # This routing number's support for Wire Transfers.
         wire_transfers:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

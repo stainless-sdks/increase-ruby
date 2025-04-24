@@ -68,18 +68,27 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Digital Wallet Token identifier.
         id:,
+        # The identifier for the Card this Digital Wallet Token belongs to.
         card_id:,
+        # The cardholder information given when the Digital Wallet Token was created.
         cardholder:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the Digital Wallet Token was created.
         created_at:,
+        # The device that was used to create the Digital Wallet Token.
         device:,
+        # This indicates if payments can be made with the Digital Wallet Token.
         status:,
+        # The digital wallet app being used.
         token_requestor:,
+        # A constant representing the object's type. For this resource it will always be
+        # `digital_wallet_token`.
         type:,
+        # Updates to the Digital Wallet Token.
         updates:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -105,8 +114,10 @@ module Increase
 
         # The cardholder information given when the Digital Wallet Token was created.
         sig { params(name: T.nilable(String)).returns(T.attached_class) }
-        def self.new(name:); end
-
+        def self.new(
+          # Name of the cardholder, for example "John Smith".
+          name:
+        ); end
         sig { override.returns({name: T.nilable(String)}) }
         def to_hash; end
       end
@@ -138,8 +149,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(device_type:, identifier:, ip_address:, name:); end
-
+        def self.new(
+          # Device type.
+          device_type:,
+          # ID assigned to the device by the digital wallet provider.
+          identifier:,
+          # IP address of the device.
+          ip_address:,
+          # Name of the device, for example "My Work Phone".
+          name:
+        ); end
         sig do
           override
             .returns(
@@ -272,8 +291,13 @@ module Increase
           params(status: Increase::Models::DigitalWalletToken::Update::Status::OrSymbol, timestamp: Time)
             .returns(T.attached_class)
         end
-        def self.new(status:, timestamp:); end
-
+        def self.new(
+          # The status the update changed this Digital Wallet Token to.
+          status:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the update happened.
+          timestamp:
+        ); end
         sig do
           override
             .returns({status: Increase::Models::DigitalWalletToken::Update::Status::TaggedSymbol, timestamp: Time})

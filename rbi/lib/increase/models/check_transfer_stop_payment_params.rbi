@@ -20,8 +20,11 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(reason: nil, request_options: {}); end
-
+      def self.new(
+        # The reason why this transfer should be stopped.
+        reason: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

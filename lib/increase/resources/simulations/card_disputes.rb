@@ -11,9 +11,12 @@ module Increase
         #
         # @overload action(card_dispute_id, status:, explanation: nil, request_options: {})
         #
-        # @param card_dispute_id [String]
-        # @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
-        # @param explanation [String]
+        # @param card_dispute_id [String] The dispute you would like to action.
+        #
+        # @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status] The status to move the dispute to.
+        #
+        # @param explanation [String] Why the dispute was rejected. Not required for accepting disputes.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CardDispute]

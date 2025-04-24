@@ -62,15 +62,24 @@ module Increase
       optional :text_color, -> { Increase::Models::DigitalCardProfileCloneParams::TextColor }
 
       # @!method initialize(app_icon_file_id: nil, background_image_file_id: nil, card_description: nil, contact_email: nil, contact_phone: nil, contact_website: nil, description: nil, issuer_name: nil, text_color: nil, request_options: {})
-      #   @param app_icon_file_id [String]
-      #   @param background_image_file_id [String]
-      #   @param card_description [String]
-      #   @param contact_email [String]
-      #   @param contact_phone [String]
-      #   @param contact_website [String]
-      #   @param description [String]
-      #   @param issuer_name [String]
-      #   @param text_color [Increase::Models::DigitalCardProfileCloneParams::TextColor]
+      #   @param app_icon_file_id [String] The identifier of the File containing the card's icon image.
+      #
+      #   @param background_image_file_id [String] The identifier of the File containing the card's front image.
+      #
+      #   @param card_description [String] A user-facing description for the card itself.
+      #
+      #   @param contact_email [String] An email address the user can contact to receive support for their card.
+      #
+      #   @param contact_phone [String] A phone number the user can contact to receive support for their card.
+      #
+      #   @param contact_website [String] A website the user can visit to view and receive support for their card.
+      #
+      #   @param description [String] A description you can use to identify the Card Profile.
+      #
+      #   @param issuer_name [String] A user-facing description for whoever is issuing the card.
+      #
+      #   @param text_color [Increase::Models::DigitalCardProfileCloneParams::TextColor] The Card's text color, specified as an RGB triple. The default is white.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class TextColor < Increase::Internal::Type::BaseModel
@@ -95,9 +104,11 @@ module Increase
         # @!method initialize(blue:, green:, red:)
         #   The Card's text color, specified as an RGB triple. The default is white.
         #
-        #   @param blue [Integer]
-        #   @param green [Integer]
-        #   @param red [Integer]
+        #   @param blue [Integer] The value of the blue channel in the RGB color.
+        #
+        #   @param green [Integer] The value of the green channel in the RGB color.
+        #
+        #   @param red [Integer] The value of the red channel in the RGB color.
       end
     end
   end

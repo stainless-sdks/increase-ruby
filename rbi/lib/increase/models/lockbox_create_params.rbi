@@ -33,8 +33,15 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id:, description: nil, recipient_name: nil, request_options: {}); end
-
+      def self.new(
+        # The Account checks sent to this Lockbox should be deposited into.
+        account_id:,
+        # The description you choose for the Lockbox, for display purposes.
+        description: nil,
+        # The name of the recipient that will receive mail at this location.
+        recipient_name: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

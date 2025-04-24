@@ -46,8 +46,19 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(declined_transaction:, pending_transaction:, type:); end
-
+        def self.new(
+          # If the authorization attempt fails, this will contain the resulting
+          # [Declined Transaction](#declined-transactions) object. The Declined
+          # Transaction's `source` will be of `category: card_decline`.
+          declined_transaction:,
+          # If the authorization attempt succeeds, this will contain the resulting Pending
+          # Transaction object. The Pending Transaction's `source` will be of
+          # `category: card_authorization`.
+          pending_transaction:,
+          # A constant representing the object's type. For this resource it will always be
+          # `inbound_card_authorization_simulation_result`.
+          type:
+        ); end
         sig do
           override
             .returns(

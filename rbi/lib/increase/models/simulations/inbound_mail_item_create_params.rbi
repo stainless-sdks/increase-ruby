@@ -32,8 +32,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, lockbox_id:, contents_file_id: nil, request_options: {}); end
-
+        def self.new(
+          # The amount of the check to be simulated, in cents.
+          amount:,
+          # The identifier of the Lockbox to simulate inbound mail to.
+          lockbox_id:,
+          # The file containing the PDF contents. If not present, a default check image file
+          # will be used.
+          contents_file_id: nil,
+          request_options: {}
+        ); end
         sig do
           override
             .returns(

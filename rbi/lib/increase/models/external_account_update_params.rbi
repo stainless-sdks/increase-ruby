@@ -44,8 +44,17 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {}); end
-
+      def self.new(
+        # The type of entity that owns the External Account.
+        account_holder: nil,
+        # The description you choose to give the external account.
+        description: nil,
+        # The funding type of the External Account.
+        funding: nil,
+        # The status of the External Account.
+        status: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

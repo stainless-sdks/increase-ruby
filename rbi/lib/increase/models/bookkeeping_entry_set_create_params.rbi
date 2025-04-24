@@ -34,8 +34,16 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(entries:, date: nil, transaction_id: nil, request_options: {}); end
-
+      def self.new(
+        # The bookkeeping entries.
+        entries:,
+        # The date of the transaction. Optional if `transaction_id` is provided, in which
+        # case we use the `date` of that transaction. Required otherwise.
+        date: nil,
+        # The identifier of the Transaction related to this entry set, if any.
+        transaction_id: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -61,8 +69,14 @@ module Increase
         attr_accessor :amount
 
         sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
-        def self.new(account_id:, amount:); end
-
+        def self.new(
+          # The identifier for the Bookkeeping Account impacted by this entry.
+          account_id:,
+          # The entry amount in the minor unit of the account currency. For dollars, for
+          # example, this is cents. Debit entries have positive amounts; credit entries have
+          # negative amounts.
+          amount:
+        ); end
         sig { override.returns({account_id: String, amount: Integer}) }
         def to_hash; end
       end

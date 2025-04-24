@@ -61,15 +61,21 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # Filter IntraFi Account Enrollments to the one belonging to an account.
         account_id: nil,
+        # Return the page of entries after this one.
         cursor: nil,
+        # Filter records to the one with the specified `idempotency_key` you chose for
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        # objects.
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -99,8 +105,12 @@ module Increase
           params(in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(in_: nil); end
-
+        def self.new(
+          # Filter IntraFi Account Enrollments for those with the specified status or
+          # statuses. For GET requests, this should be encoded as a comma-delimited string,
+          # such as `?in=one,two,three`.
+          in_: nil
+        ); end
         sig do
           override
             .returns({in_: T::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol]})

@@ -17,8 +17,11 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, request_options: {}); end
-
+      def self.new(
+        # The status to update the Physical Card to.
+        status:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

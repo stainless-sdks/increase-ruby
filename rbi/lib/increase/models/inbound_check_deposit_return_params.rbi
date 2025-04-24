@@ -17,8 +17,11 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(reason:, request_options: {}); end
-
+      def self.new(
+        # The reason to return the Inbound Check Deposit.
+        reason:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

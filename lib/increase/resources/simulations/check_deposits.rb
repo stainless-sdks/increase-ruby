@@ -10,7 +10,8 @@ module Increase
         #
         # @overload reject(check_deposit_id, request_options: {})
         #
-        # @param check_deposit_id [String]
+        # @param check_deposit_id [String] The identifier of the Check Deposit you wish to reject.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CheckDeposit]
@@ -30,7 +31,8 @@ module Increase
         #
         # @overload return_(check_deposit_id, request_options: {})
         #
-        # @param check_deposit_id [String]
+        # @param check_deposit_id [String] The identifier of the Check Deposit you wish to return.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CheckDeposit]
@@ -50,7 +52,8 @@ module Increase
         #
         # @overload submit(check_deposit_id, request_options: {})
         #
-        # @param check_deposit_id [String]
+        # @param check_deposit_id [String] The identifier of the Check Deposit you wish to submit.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CheckDeposit]

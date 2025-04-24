@@ -33,10 +33,14 @@ module Increase
       optional :entity_id, String
 
       # @!method initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
-      #   @param name [String]
-      #   @param account_id [String]
-      #   @param compliance_category [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
-      #   @param entity_id [String]
+      #   @param name [String] The name you choose for the account.
+      #
+      #   @param account_id [String] The entity, if `compliance_category` is `commingled_cash`.
+      #
+      #   @param compliance_category [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory] The account compliance category.
+      #
+      #   @param entity_id [String] The entity, if `compliance_category` is `customer_balance`.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The account compliance category.

@@ -135,28 +135,59 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Wire drawdown request identifier.
         id:,
+        # The amount being requested in cents.
         amount:,
+        # The drawdown request's beneficiary's account number.
         beneficiary_account_number:,
+        # Line 1 of the drawdown request's beneficiary's address.
         beneficiary_address_line1:,
+        # Line 2 of the drawdown request's beneficiary's address.
         beneficiary_address_line2:,
+        # Line 3 of the drawdown request's beneficiary's address.
         beneficiary_address_line3:,
+        # The drawdown request's beneficiary's name.
         beneficiary_name:,
+        # The drawdown request's beneficiary's routing number.
         beneficiary_routing_number:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the inbound wire drawdown requested was created.
         created_at:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
+        # requested. Will always be "USD".
         currency:,
+        # A message from the drawdown request's originator.
         message_to_recipient:,
+        # The drawdown request's originator's account number.
         originator_account_number:,
+        # Line 1 of the drawdown request's originator's address.
         originator_address_line1:,
+        # Line 2 of the drawdown request's originator's address.
         originator_address_line2:,
+        # Line 3 of the drawdown request's originator's address.
         originator_address_line3:,
+        # The drawdown request's originator's name.
         originator_name:,
+        # The drawdown request's originator's routing number.
         originator_routing_number:,
+        # Line 1 of the information conveyed from the originator of the message to the
+        # beneficiary.
         originator_to_beneficiary_information_line1:,
+        # Line 2 of the information conveyed from the originator of the message to the
+        # beneficiary.
         originator_to_beneficiary_information_line2:,
+        # Line 3 of the information conveyed from the originator of the message to the
+        # beneficiary.
         originator_to_beneficiary_information_line3:,
+        # Line 4 of the information conveyed from the originator of the message to the
+        # beneficiary.
         originator_to_beneficiary_information_line4:,
+        # The Account Number from which the recipient of this request is being requested
+        # to send funds.
         recipient_account_number_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `inbound_wire_drawdown_request`.
         type:
       ); end
       sig do

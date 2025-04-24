@@ -118,25 +118,52 @@ module Increase
       required :type, enum: -> { Increase::Models::AccountTransfer::Type }
 
       # @!method initialize(id:, account_id:, amount:, approval:, cancellation:, created_at:, created_by:, currency:, description:, destination_account_id:, destination_transaction_id:, idempotency_key:, network:, pending_transaction_id:, status:, transaction_id:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::AccountTransfer} for more details.
+      #
       #   Account transfers move funds between your own accounts at Increase.
       #
-      #   @param id [String]
-      #   @param account_id [String]
-      #   @param amount [Integer]
-      #   @param approval [Increase::Models::AccountTransfer::Approval, nil]
-      #   @param cancellation [Increase::Models::AccountTransfer::Cancellation, nil]
-      #   @param created_at [Time]
-      #   @param created_by [Increase::Models::AccountTransfer::CreatedBy, nil]
-      #   @param currency [Symbol, Increase::Models::AccountTransfer::Currency]
-      #   @param description [String]
-      #   @param destination_account_id [String]
-      #   @param destination_transaction_id [String, nil]
-      #   @param idempotency_key [String, nil]
-      #   @param network [Symbol, Increase::Models::AccountTransfer::Network]
-      #   @param pending_transaction_id [String, nil]
-      #   @param status [Symbol, Increase::Models::AccountTransfer::Status]
-      #   @param transaction_id [String, nil]
-      #   @param type [Symbol, Increase::Models::AccountTransfer::Type]
+      #   @param id [String] The account transfer's identifier.
+      #
+      #   @param account_id [String] The Account to which the transfer belongs.
+      #
+      #   @param amount [Integer] The transfer amount in the minor unit of the destination account currency. For d
+      #   ...
+      #
+      #   @param approval [Increase::Models::AccountTransfer::Approval, nil] If your account requires approvals for transfers and the transfer was approved,
+      #   ...
+      #
+      #   @param cancellation [Increase::Models::AccountTransfer::Cancellation, nil] If your account requires approvals for transfers and the transfer was not approv
+      #   ...
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param created_by [Increase::Models::AccountTransfer::CreatedBy, nil] What object created the transfer, either via the API or the dashboard.
+      #
+      #   @param currency [Symbol, Increase::Models::AccountTransfer::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+      #   ...
+      #
+      #   @param description [String] The description that will show on the transactions.
+      #
+      #   @param destination_account_id [String] The destination account's identifier.
+      #
+      #   @param destination_transaction_id [String, nil] The ID for the transaction receiving the transfer.
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param network [Symbol, Increase::Models::AccountTransfer::Network] The transfer's network.
+      #
+      #   @param pending_transaction_id [String, nil] The ID for the pending transaction representing the transfer. A pending transact
+      #   ...
+      #
+      #   @param status [Symbol, Increase::Models::AccountTransfer::Status] The lifecycle status of the transfer.
+      #
+      #   @param transaction_id [String, nil] The ID for the transaction funding the transfer.
+      #
+      #   @param type [Symbol, Increase::Models::AccountTransfer::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # @see Increase::Models::AccountTransfer#approval
       class Approval < Increase::Internal::Type::BaseModel
@@ -155,11 +182,17 @@ module Increase
         required :approved_by, String, nil?: true
 
         # @!method initialize(approved_at:, approved_by:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::AccountTransfer::Approval} for more details.
+        #
         #   If your account requires approvals for transfers and the transfer was approved,
         #   this will contain details of the approval.
         #
-        #   @param approved_at [Time]
-        #   @param approved_by [String, nil]
+        #   @param approved_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+        #   ...
+        #
+        #   @param approved_by [String, nil] If the Transfer was approved by a user in the dashboard, the email address of th
+        #   ...
       end
 
       # @see Increase::Models::AccountTransfer#cancellation
@@ -179,11 +212,17 @@ module Increase
         required :canceled_by, String, nil?: true
 
         # @!method initialize(canceled_at:, canceled_by:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::AccountTransfer::Cancellation} for more details.
+        #
         #   If your account requires approvals for transfers and the transfer was not
         #   approved, this will contain details of the cancellation.
         #
-        #   @param canceled_at [Time]
-        #   @param canceled_by [String, nil]
+        #   @param canceled_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+        #   ...
+        #
+        #   @param canceled_by [String, nil] If the Transfer was canceled by a user in the dashboard, the email address of th
+        #   ...
       end
 
       # @see Increase::Models::AccountTransfer#created_by
@@ -217,10 +256,13 @@ module Increase
         # @!method initialize(api_key:, category:, oauth_application:, user:)
         #   What object created the transfer, either via the API or the dashboard.
         #
-        #   @param api_key [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil]
-        #   @param category [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category]
-        #   @param oauth_application [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil]
-        #   @param user [Increase::Models::AccountTransfer::CreatedBy::User, nil]
+        #   @param api_key [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil] If present, details about the API key that created the transfer.
+        #
+        #   @param category [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category] The type of object that created this transfer.
+        #
+        #   @param oauth_application [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil] If present, details about the OAuth Application that created the transfer.
+        #
+        #   @param user [Increase::Models::AccountTransfer::CreatedBy::User, nil] If present, details about the User that created the transfer.
 
         # @see Increase::Models::AccountTransfer::CreatedBy#api_key
         class APIKey < Increase::Internal::Type::BaseModel
@@ -233,7 +275,7 @@ module Increase
           # @!method initialize(description:)
           #   If present, details about the API key that created the transfer.
           #
-          #   @param description [String, nil]
+          #   @param description [String, nil] The description set for the API key when it was created.
         end
 
         # The type of object that created this transfer.
@@ -266,7 +308,7 @@ module Increase
           # @!method initialize(name:)
           #   If present, details about the OAuth Application that created the transfer.
           #
-          #   @param name [String]
+          #   @param name [String] The name of the OAuth Application.
         end
 
         # @see Increase::Models::AccountTransfer::CreatedBy#user
@@ -280,7 +322,7 @@ module Increase
           # @!method initialize(email:)
           #   If present, details about the User that created the transfer.
           #
-          #   @param email [String]
+          #   @param email [String] The email address of the User.
         end
       end
 

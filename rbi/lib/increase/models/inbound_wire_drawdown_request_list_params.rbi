@@ -29,8 +29,14 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(cursor: nil, limit: nil, request_options: {}); end
-
+      def self.new(
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        # objects.
+        limit: nil,
+        request_options: {}
+      ); end
       sig { override.returns({cursor: String, limit: Integer, request_options: Increase::RequestOptions}) }
       def to_hash; end
     end

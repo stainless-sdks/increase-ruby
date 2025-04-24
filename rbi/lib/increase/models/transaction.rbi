@@ -75,19 +75,38 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Transaction identifier.
         id:,
+        # The identifier for the Account the Transaction belongs to.
         account_id:,
+        # The Transaction amount in the minor unit of its currency. For dollars, for
+        # example, this is cents.
         amount:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
+        # Transaction occurred.
         created_at:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        # Transaction's currency. This will match the currency on the Transaction's
+        # Account.
         currency:,
+        # An informational message describing this transaction. Use the fields in `source`
+        # to get more detailed information. This field appears as the line-item on the
+        # statement.
         description:,
+        # The identifier for the route this Transaction came through. Routes are things
+        # like cards and ACH details.
         route_id:,
+        # The type of the route this Transaction came through.
         route_type:,
+        # This is an object giving more details on the network-level event that caused the
+        # Transaction. Note that for backwards compatibility reasons, additional
+        # undocumented keys may appear in this object. These should be treated as
+        # deprecated and will be removed in the future.
         source:,
+        # A constant representing the object's type. For this resource it will always be
+        # `transaction`.
         type:
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -708,35 +727,156 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # An Account Transfer Intention object. This field will be present in the JSON
+          # response if and only if `category` is equal to `account_transfer_intention`. Two
+          # Account Transfer Intentions are created from each Account Transfer. One
+          # decrements the source account, and the other increments the destination account.
           account_transfer_intention:,
+          # An ACH Transfer Intention object. This field will be present in the JSON
+          # response if and only if `category` is equal to `ach_transfer_intention`. An ACH
+          # Transfer Intention is created from an ACH Transfer. It reflects the intention to
+          # move money into or out of an Increase account via the ACH network.
           ach_transfer_intention:,
+          # An ACH Transfer Rejection object. This field will be present in the JSON
+          # response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
+          # Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
+          # offsets the ACH Transfer Intention. These rejections are rare.
           ach_transfer_rejection:,
+          # An ACH Transfer Return object. This field will be present in the JSON response
+          # if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
+          # Return is created when an ACH Transfer is returned by the receiving bank. It
+          # offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
+          # the first two business days after the transfer is initiated, but can occur much
+          # later.
           ach_transfer_return:,
+          # A Card Dispute Acceptance object. This field will be present in the JSON
+          # response if and only if `category` is equal to `card_dispute_acceptance`.
+          # Contains the details of a successful Card Dispute.
           card_dispute_acceptance:,
+          # A Card Dispute Loss object. This field will be present in the JSON response if
+          # and only if `category` is equal to `card_dispute_loss`. Contains the details of
+          # a lost Card Dispute.
           card_dispute_loss:,
+          # A Card Refund object. This field will be present in the JSON response if and
+          # only if `category` is equal to `card_refund`. Card Refunds move money back to
+          # the cardholder. While they are usually connected to a Card Settlement an
+          # acquirer can also refund money directly to a card without relation to a
+          # transaction.
           card_refund:,
+          # A Card Revenue Payment object. This field will be present in the JSON response
+          # if and only if `category` is equal to `card_revenue_payment`. Card Revenue
+          # Payments reflect earnings from fees on card transactions.
           card_revenue_payment:,
+          # A Card Settlement object. This field will be present in the JSON response if and
+          # only if `category` is equal to `card_settlement`. Card Settlements are card
+          # transactions that have cleared and settled. While a settlement is usually
+          # preceded by an authorization, an acquirer can also directly clear a transaction
+          # without first authorizing it.
           card_settlement:,
+          # A Cashback Payment object. This field will be present in the JSON response if
+          # and only if `category` is equal to `cashback_payment`. A Cashback Payment
+          # represents the cashback paid to a cardholder for a given period. Cashback is
+          # usually paid monthly for the prior month's transactions.
           cashback_payment:,
+          # The type of the resource. We may add additional possible values for this enum
+          # over time; your application should be able to handle such additions gracefully.
           category:,
+          # A Check Deposit Acceptance object. This field will be present in the JSON
+          # response if and only if `category` is equal to `check_deposit_acceptance`. A
+          # Check Deposit Acceptance is created when a Check Deposit is processed and its
+          # details confirmed. Check Deposits may be returned by the receiving bank, which
+          # will appear as a Check Deposit Return.
           check_deposit_acceptance:,
+          # A Check Deposit Return object. This field will be present in the JSON response
+          # if and only if `category` is equal to `check_deposit_return`. A Check Deposit
+          # Return is created when a Check Deposit is returned by the bank holding the
+          # account it was drawn against. Check Deposits may be returned for a variety of
+          # reasons, including insufficient funds or a mismatched account number. Usually,
+          # checks are returned within the first 7 days after the deposit is made.
           check_deposit_return:,
+          # A Check Transfer Deposit object. This field will be present in the JSON response
+          # if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check
+          # is a check drawn on an Increase account that has been deposited by an external
+          # bank account. These types of checks are not pre-registered.
           check_transfer_deposit:,
+          # A Fee Payment object. This field will be present in the JSON response if and
+          # only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
+          # made to Increase.
           fee_payment:,
+          # An Inbound ACH Transfer Intention object. This field will be present in the JSON
+          # response if and only if `category` is equal to `inbound_ach_transfer`. An
+          # Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
+          # another bank and received by Increase.
           inbound_ach_transfer:,
+          # An Inbound ACH Transfer Return Intention object. This field will be present in
+          # the JSON response if and only if `category` is equal to
+          # `inbound_ach_transfer_return_intention`. An Inbound ACH Transfer Return
+          # Intention is created when an ACH transfer is initiated at another bank and
+          # returned by Increase.
           inbound_ach_transfer_return_intention:,
+          # An Inbound Check Adjustment object. This field will be present in the JSON
+          # response if and only if `category` is equal to `inbound_check_adjustment`. An
+          # Inbound Check Adjustment is created when Increase receives an adjustment for a
+          # check or return deposited through Check21.
           inbound_check_adjustment:,
+          # An Inbound Check Deposit Return Intention object. This field will be present in
+          # the JSON response if and only if `category` is equal to
+          # `inbound_check_deposit_return_intention`. An Inbound Check Deposit Return
+          # Intention is created when Increase receives an Inbound Check and the User
+          # requests that it be returned.
           inbound_check_deposit_return_intention:,
+          # An Inbound Real-Time Payments Transfer Confirmation object. This field will be
+          # present in the JSON response if and only if `category` is equal to
+          # `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
+          # Payments Transfer Confirmation is created when a Real-Time Payments transfer is
+          # initiated at another bank and received by Increase.
           inbound_real_time_payments_transfer_confirmation:,
+          # An Inbound Real-Time Payments Transfer Decline object. This field will be
+          # present in the JSON response if and only if `category` is equal to
+          # `inbound_real_time_payments_transfer_decline`.
           inbound_real_time_payments_transfer_decline:,
+          # An Inbound Wire Reversal object. This field will be present in the JSON response
+          # if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
+          # Reversal represents a reversal of a wire transfer that was initiated via
+          # Increase. The other bank is sending the money back. This most often happens when
+          # the original destination account details were incorrect.
           inbound_wire_reversal:,
+          # An Inbound Wire Transfer Intention object. This field will be present in the
+          # JSON response if and only if `category` is equal to `inbound_wire_transfer`. An
+          # Inbound Wire Transfer Intention is created when a wire transfer is initiated at
+          # another bank and received by Increase.
           inbound_wire_transfer:,
+          # An Inbound Wire Transfer Reversal Intention object. This field will be present
+          # in the JSON response if and only if `category` is equal to
+          # `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal Intention is
+          # created when Increase has received a wire and the User requests that it be
+          # reversed.
           inbound_wire_transfer_reversal:,
+          # An Interest Payment object. This field will be present in the JSON response if
+          # and only if `category` is equal to `interest_payment`. An Interest Payment
+          # represents a payment of interest on an account. Interest is usually paid
+          # monthly.
           interest_payment:,
+          # An Internal Source object. This field will be present in the JSON response if
+          # and only if `category` is equal to `internal_source`. A transaction between the
+          # user and Increase. See the `reason` attribute for more information.
           internal_source:,
+          # If the category of this Transaction source is equal to `other`, this field will
+          # contain an empty object, otherwise it will contain null.
           other:,
+          # A Real-Time Payments Transfer Acknowledgement object. This field will be present
+          # in the JSON response if and only if `category` is equal to
+          # `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer
+          # Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
+          # is acknowledged by the receiving bank.
           real_time_payments_transfer_acknowledgement:,
+          # A Sample Funds object. This field will be present in the JSON response if and
+          # only if `category` is equal to `sample_funds`. Sample funds for testing
+          # purposes.
           sample_funds:,
+          # A Wire Transfer Intention object. This field will be present in the JSON
+          # response if and only if `category` is equal to `wire_transfer_intention`. A Wire
+          # Transfer initiated via Increase and sent to a different bank.
           wire_transfer_intention:
         ); end
         sig do
@@ -821,15 +961,21 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The pending amount in the minor unit of the transaction's currency. For dollars,
+            # for example, this is cents.
             amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+            # account currency.
             currency:,
+            # The description you chose to give the transfer.
             description:,
+            # The identifier of the Account to where the Account Transfer was sent.
             destination_account_id:,
+            # The identifier of the Account from where the Account Transfer was sent.
             source_account_id:,
+            # The identifier of the Account Transfer that led to this Pending Transaction.
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -923,8 +1069,20 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(account_number:, amount:, routing_number:, statement_descriptor:, transfer_id:); end
-
+          def self.new(
+            # The account number for the destination account.
+            account_number:,
+            # The amount in the minor unit of the transaction's currency. For dollars, for
+            # example, this is cents.
+            amount:,
+            # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+            # destination account.
+            routing_number:,
+            # A description set when the ACH Transfer was created.
+            statement_descriptor:,
+            # The identifier of the ACH Transfer that led to this Transaction.
+            transfer_id:
+          ); end
           sig do
             override
               .returns(
@@ -950,8 +1108,10 @@ module Increase
           # Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
           # offsets the ACH Transfer Intention. These rejections are rare.
           sig { params(transfer_id: String).returns(T.attached_class) }
-          def self.new(transfer_id:); end
-
+          def self.new(
+            # The identifier of the ACH Transfer that led to this Transaction.
+            transfer_id:
+          ); end
           sig { override.returns({transfer_id: String}) }
           def to_hash; end
         end
@@ -1004,15 +1164,24 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            # the transfer was created.
             created_at:,
+            # The three character ACH return code, in the range R01 to R85.
             raw_return_reason_code:,
+            # Why the ACH Transfer was returned. This reason code is sent by the receiving
+            # bank back to Increase.
             return_reason_code:,
+            # A 15 digit number that was generated by the bank that initiated the return. The
+            # trace number of the return is different than that of the original transfer. ACH
+            # trace numbers are not unique, but along with the amount and date this number can
+            # be used to identify the ACH return at the bank that initiated it.
             trace_number:,
+            # The identifier of the Transaction associated with this return.
             transaction_id:,
+            # The identifier of the ACH Transfer associated with this return.
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -1562,8 +1731,16 @@ module Increase
               transaction_id: String
             ).returns(T.attached_class)
           end
-          def self.new(accepted_at:, card_dispute_id:, transaction_id:); end
-
+          def self.new(
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            # the Card Dispute was accepted.
+            accepted_at:,
+            # The identifier of the Card Dispute that was accepted.
+            card_dispute_id:,
+            # The identifier of the Transaction that was created to return the disputed funds
+            # to your account.
+            transaction_id:
+          ); end
           sig { override.returns({accepted_at: Time, card_dispute_id: String, transaction_id: String}) }
           def to_hash; end
         end
@@ -1594,8 +1771,18 @@ module Increase
             params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
               .returns(T.attached_class)
           end
-          def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:); end
-
+          def self.new(
+            # The identifier of the Card Dispute that was lost.
+            card_dispute_id:,
+            # Why the Card Dispute was lost.
+            explanation:,
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            # the Card Dispute was lost.
+            lost_at:,
+            # The identifier of the Transaction that was created to debit the disputed funds
+            # from your account.
+            transaction_id:
+          ); end
           sig do
             override.returns(
               {
@@ -1763,24 +1950,50 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The Card Refund identifier.
             id:,
+            # The amount in the minor unit of the transaction's settlement currency. For
+            # dollars, for example, this is cents.
             amount:,
+            # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
+            # Cashback debited for this transaction, if eligible. Cashback is paid out in
+            # aggregate, monthly.
             cashback:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's settlement currency.
             currency:,
+            # Interchange assessed as a part of this transaciton.
             interchange:,
+            # The merchant identifier (commonly abbreviated as MID) of the merchant the card
+            # is transacting with.
             merchant_acceptor_id:,
+            # The 4-digit MCC describing the merchant's business.
             merchant_category_code:,
+            # The city the merchant resides in.
             merchant_city:,
+            # The country the merchant resides in.
             merchant_country:,
+            # The name of the merchant.
             merchant_name:,
+            # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
             merchant_postal_code:,
+            # The state the merchant resides in.
             merchant_state:,
+            # Network-specific identifiers for this refund.
             network_identifiers:,
+            # The amount in the minor unit of the transaction's presentment currency.
             presentment_amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's presentment currency.
             presentment_currency:,
+            # Additional details about the card purchase, such as tax and industry-specific
+            # fields.
             purchase_details:,
+            # The identifier of the Transaction associated with this Transaction.
             transaction_id:,
+            # A constant representing the object's type. For this resource it will always be
+            # `card_refund`.
             type:
           ); end
           sig do
@@ -1831,8 +2044,14 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, currency:); end
-
+            def self.new(
+              # The cashback amount given as a string containing a decimal number. The amount is
+              # a positive number if it will be credited to you (e.g., settlements) and a
+              # negative number if it will be debited (e.g., refunds).
+              amount:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+              currency:
+            ); end
             sig do
               override
                 .returns(
@@ -1935,8 +2154,18 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, code:, currency:); end
-
+            def self.new(
+              # The interchange amount given as a string containing a decimal number in major
+              # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+              # credited to Increase (e.g., settlements) and a negative number if it is debited
+              # (e.g., refunds).
+              amount:,
+              # The card network specific interchange code.
+              code:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+              # reimbursement.
+              currency:
+            ); end
             sig do
               override
                 .returns(
@@ -2008,8 +2237,16 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:); end
-
+            def self.new(
+              # A network assigned business ID that identifies the acquirer that processed this
+              # transaction.
+              acquirer_business_id:,
+              # A globally unique identifier for this settlement.
+              acquirer_reference_number:,
+              # A globally unique transaction identifier provided by the card network, used
+              # across multiple life-cycle requests.
+              transaction_id:
+            ); end
             sig do
               override
                 .returns(
@@ -2146,15 +2383,27 @@ module Increase
                 .returns(T.attached_class)
             end
             def self.new(
+              # Fields specific to car rentals.
               car_rental:,
+              # An identifier from the merchant for the customer or consumer.
               customer_reference_identifier:,
+              # The state or provincial tax amount in minor units.
               local_tax_amount:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+              # assessed.
               local_tax_currency:,
+              # Fields specific to lodging.
               lodging:,
+              # The national tax amount in minor units.
               national_tax_amount:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+              # assessed.
               national_tax_currency:,
+              # An identifier from the merchant for the purchase to the issuer and cardholder.
               purchase_identifier:,
+              # The format of the purchase identifier.
               purchase_identifier_format:,
+              # Fields specific to travel.
               travel:
             ); end
             sig do
@@ -2290,21 +2539,45 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Code indicating the vehicle's class.
                 car_class_code:,
+                # Date the customer picked up the car or, in the case of a no-show or pre-pay
+                # transaction, the scheduled pick up date.
                 checkout_date:,
+                # Daily rate being charged for the vehicle.
                 daily_rental_rate_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+                # rate.
                 daily_rental_rate_currency:,
+                # Number of days the vehicle was rented.
                 days_rented:,
+                # Additional charges (gas, late fee, etc.) being billed.
                 extra_charges:,
+                # Fuel charges for the vehicle.
                 fuel_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+                # assessed.
                 fuel_charges_currency:,
+                # Any insurance being charged for the vehicle.
                 insurance_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+                # charges assessed.
                 insurance_charges_currency:,
+                # An indicator that the cardholder is being billed for a reserved vehicle that was
+                # not actually rented (that is, a "no-show" charge).
                 no_show_indicator:,
+                # Charges for returning the vehicle at a different location than where it was
+                # picked up.
                 one_way_drop_off_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+                # drop-off charges assessed.
                 one_way_drop_off_charges_currency:,
+                # Name of the person renting the vehicle.
                 renter_name:,
+                # Weekly rate being charged for the vehicle.
                 weekly_rental_rate_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+                # rental rate.
                 weekly_rental_rate_currency:
               ); end
               sig do
@@ -2543,21 +2816,44 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Date the customer checked in.
                 check_in_date:,
+                # Daily rate being charged for the room.
                 daily_room_rate_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+                # rate.
                 daily_room_rate_currency:,
+                # Additional charges (phone, late check-out, etc.) being billed.
                 extra_charges:,
+                # Folio cash advances for the room.
                 folio_cash_advances_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+                # advances.
                 folio_cash_advances_currency:,
+                # Food and beverage charges for the room.
                 food_beverage_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
+                # beverage charges.
                 food_beverage_charges_currency:,
+                # Indicator that the cardholder is being billed for a reserved room that was not
+                # actually used.
                 no_show_indicator:,
+                # Prepaid expenses being charged for the room.
                 prepaid_expenses_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+                # expenses.
                 prepaid_expenses_currency:,
+                # Number of nights the room was rented.
                 room_nights:,
+                # Total room tax being charged.
                 total_room_tax_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+                # tax.
                 total_room_tax_currency:,
+                # Total tax being charged for the room.
                 total_tax_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+                # assessed.
                 total_tax_currency:
               ); end
               sig do
@@ -2865,17 +3161,29 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Ancillary purchases in addition to the airfare.
                 ancillary:,
+                # Indicates the computerized reservation system used to book the ticket.
                 computerized_reservation_system:,
+                # Indicates the reason for a credit to the cardholder.
                 credit_reason_indicator:,
+                # Date of departure.
                 departure_date:,
+                # Code for the originating city or airport.
                 origination_city_airport_code:,
+                # Name of the passenger.
                 passenger_name:,
+                # Indicates whether this ticket is non-refundable.
                 restricted_ticket_indicator:,
+                # Indicates why a ticket was changed.
                 ticket_change_indicator:,
+                # Ticket number.
                 ticket_number:,
+                # Code for the travel agency if the ticket was issued by a travel agency.
                 travel_agency_code:,
+                # Name of the travel agency if the ticket was issued by a travel agency.
                 travel_agency_name:,
+                # Fields specific to each leg of the journey.
                 trip_legs:
               ); end
               sig do
@@ -2957,10 +3265,17 @@ module Increase
                     .returns(T.attached_class)
                 end
                 def self.new(
+                  # If this purchase has a connection or relationship to another purchase, such as a
+                  # baggage fee for a passenger transport ticket, this field should contain the
+                  # ticket document number for the other purchase.
                   connected_ticket_document_number:,
+                  # Indicates the reason for a credit to the cardholder.
                   credit_reason_indicator:,
+                  # Name of the passenger or description of the ancillary purchase.
                   passenger_name_or_description:,
+                  # Additional travel charges, such as baggage fees.
                   services:,
+                  # Ticket document number.
                   ticket_document_number:
                 ); end
                 sig do
@@ -3052,8 +3367,12 @@ module Increase
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(category:, sub_category:); end
-
+                  def self.new(
+                    # Category of the ancillary service.
+                    category:,
+                    # Sub-category of the ancillary service, free-form.
+                    sub_category:
+                  ); end
                   sig do
                     override
                       .returns(
@@ -3443,11 +3762,17 @@ module Increase
                     .returns(T.attached_class)
                 end
                 def self.new(
+                  # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                   carrier_code:,
+                  # Code for the destination city or airport.
                   destination_city_airport_code:,
+                  # Fare basis code.
                   fare_basis_code:,
+                  # Flight number.
                   flight_number:,
+                  # Service class (e.g., first class, business class, etc.).
                   service_class:,
+                  # Indicates whether a stopover is allowed on this ticket.
                   stop_over_code:
                 ); end
                 sig do
@@ -3563,8 +3888,20 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, period_end:, period_start:, transacted_on_account_id:); end
-
+          def self.new(
+            # The amount in the minor unit of the transaction's currency. For dollars, for
+            # example, this is cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+            # currency.
+            currency:,
+            # The end of the period for which this transaction paid interest.
+            period_end:,
+            # The start of the period for which this transaction paid interest.
+            period_start:,
+            # The account the card belonged to.
+            transacted_on_account_id:
+          ); end
           sig do
             override
               .returns(
@@ -3789,26 +4126,55 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The Card Settlement identifier.
             id:,
+            # The amount in the minor unit of the transaction's settlement currency. For
+            # dollars, for example, this is cents.
             amount:,
+            # The Card Authorization that was created prior to this Card Settlement, if one
+            # exists.
             card_authorization:,
+            # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
+            # Cashback earned on this transaction, if eligible. Cashback is paid out in
+            # aggregate, monthly.
             cashback:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's settlement currency.
             currency:,
+            # Interchange assessed as a part of this transaction.
             interchange:,
+            # The merchant identifier (commonly abbreviated as MID) of the merchant the card
+            # is transacting with.
             merchant_acceptor_id:,
+            # The 4-digit MCC describing the merchant's business.
             merchant_category_code:,
+            # The city the merchant resides in.
             merchant_city:,
+            # The country the merchant resides in.
             merchant_country:,
+            # The name of the merchant.
             merchant_name:,
+            # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
             merchant_postal_code:,
+            # The state the merchant resides in.
             merchant_state:,
+            # Network-specific identifiers for this refund.
             network_identifiers:,
+            # The identifier of the Pending Transaction associated with this Transaction.
             pending_transaction_id:,
+            # The amount in the minor unit of the transaction's presentment currency.
             presentment_amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's presentment currency.
             presentment_currency:,
+            # Additional details about the card purchase, such as tax and industry-specific
+            # fields.
             purchase_details:,
+            # The identifier of the Transaction associated with this Transaction.
             transaction_id:,
+            # A constant representing the object's type. For this resource it will always be
+            # `card_settlement`.
             type:
           ); end
           sig do
@@ -3861,8 +4227,14 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, currency:); end
-
+            def self.new(
+              # The cashback amount given as a string containing a decimal number. The amount is
+              # a positive number if it will be credited to you (e.g., settlements) and a
+              # negative number if it will be debited (e.g., refunds).
+              amount:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+              currency:
+            ); end
             sig do
               override
                 .returns(
@@ -3971,8 +4343,18 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(amount:, code:, currency:); end
-
+            def self.new(
+              # The interchange amount given as a string containing a decimal number in major
+              # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
+              # credited to Increase (e.g., settlements) and a negative number if it is debited
+              # (e.g., refunds).
+              amount:,
+              # The card network specific interchange code.
+              code:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+              # reimbursement.
+              currency:
+            ); end
             sig do
               override
                 .returns(
@@ -4052,8 +4434,16 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:); end
-
+            def self.new(
+              # A network assigned business ID that identifies the acquirer that processed this
+              # transaction.
+              acquirer_business_id:,
+              # A globally unique identifier for this settlement.
+              acquirer_reference_number:,
+              # A globally unique transaction identifier provided by the card network, used
+              # across multiple life-cycle requests.
+              transaction_id:
+            ); end
             sig do
               override
                 .returns(
@@ -4190,15 +4580,27 @@ module Increase
                 .returns(T.attached_class)
             end
             def self.new(
+              # Fields specific to car rentals.
               car_rental:,
+              # An identifier from the merchant for the customer or consumer.
               customer_reference_identifier:,
+              # The state or provincial tax amount in minor units.
               local_tax_amount:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+              # assessed.
               local_tax_currency:,
+              # Fields specific to lodging.
               lodging:,
+              # The national tax amount in minor units.
               national_tax_amount:,
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+              # assessed.
               national_tax_currency:,
+              # An identifier from the merchant for the purchase to the issuer and cardholder.
               purchase_identifier:,
+              # The format of the purchase identifier.
               purchase_identifier_format:,
+              # Fields specific to travel.
               travel:
             ); end
             sig do
@@ -4334,21 +4736,45 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Code indicating the vehicle's class.
                 car_class_code:,
+                # Date the customer picked up the car or, in the case of a no-show or pre-pay
+                # transaction, the scheduled pick up date.
                 checkout_date:,
+                # Daily rate being charged for the vehicle.
                 daily_rental_rate_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+                # rate.
                 daily_rental_rate_currency:,
+                # Number of days the vehicle was rented.
                 days_rented:,
+                # Additional charges (gas, late fee, etc.) being billed.
                 extra_charges:,
+                # Fuel charges for the vehicle.
                 fuel_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+                # assessed.
                 fuel_charges_currency:,
+                # Any insurance being charged for the vehicle.
                 insurance_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+                # charges assessed.
                 insurance_charges_currency:,
+                # An indicator that the cardholder is being billed for a reserved vehicle that was
+                # not actually rented (that is, a "no-show" charge).
                 no_show_indicator:,
+                # Charges for returning the vehicle at a different location than where it was
+                # picked up.
                 one_way_drop_off_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+                # drop-off charges assessed.
                 one_way_drop_off_charges_currency:,
+                # Name of the person renting the vehicle.
                 renter_name:,
+                # Weekly rate being charged for the vehicle.
                 weekly_rental_rate_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+                # rental rate.
                 weekly_rental_rate_currency:
               ); end
               sig do
@@ -4591,21 +5017,44 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Date the customer checked in.
                 check_in_date:,
+                # Daily rate being charged for the room.
                 daily_room_rate_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+                # rate.
                 daily_room_rate_currency:,
+                # Additional charges (phone, late check-out, etc.) being billed.
                 extra_charges:,
+                # Folio cash advances for the room.
                 folio_cash_advances_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+                # advances.
                 folio_cash_advances_currency:,
+                # Food and beverage charges for the room.
                 food_beverage_charges_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
+                # beverage charges.
                 food_beverage_charges_currency:,
+                # Indicator that the cardholder is being billed for a reserved room that was not
+                # actually used.
                 no_show_indicator:,
+                # Prepaid expenses being charged for the room.
                 prepaid_expenses_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+                # expenses.
                 prepaid_expenses_currency:,
+                # Number of nights the room was rented.
                 room_nights:,
+                # Total room tax being charged.
                 total_room_tax_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+                # tax.
                 total_room_tax_currency:,
+                # Total tax being charged for the room.
                 total_tax_amount:,
+                # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+                # assessed.
                 total_tax_currency:
               ); end
               sig do
@@ -4927,17 +5376,29 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Ancillary purchases in addition to the airfare.
                 ancillary:,
+                # Indicates the computerized reservation system used to book the ticket.
                 computerized_reservation_system:,
+                # Indicates the reason for a credit to the cardholder.
                 credit_reason_indicator:,
+                # Date of departure.
                 departure_date:,
+                # Code for the originating city or airport.
                 origination_city_airport_code:,
+                # Name of the passenger.
                 passenger_name:,
+                # Indicates whether this ticket is non-refundable.
                 restricted_ticket_indicator:,
+                # Indicates why a ticket was changed.
                 ticket_change_indicator:,
+                # Ticket number.
                 ticket_number:,
+                # Code for the travel agency if the ticket was issued by a travel agency.
                 travel_agency_code:,
+                # Name of the travel agency if the ticket was issued by a travel agency.
                 travel_agency_name:,
+                # Fields specific to each leg of the journey.
                 trip_legs:
               ); end
               sig do
@@ -5021,10 +5482,17 @@ module Increase
                     .returns(T.attached_class)
                 end
                 def self.new(
+                  # If this purchase has a connection or relationship to another purchase, such as a
+                  # baggage fee for a passenger transport ticket, this field should contain the
+                  # ticket document number for the other purchase.
                   connected_ticket_document_number:,
+                  # Indicates the reason for a credit to the cardholder.
                   credit_reason_indicator:,
+                  # Name of the passenger or description of the ancillary purchase.
                   passenger_name_or_description:,
+                  # Additional travel charges, such as baggage fees.
                   services:,
+                  # Ticket document number.
                   ticket_document_number:
                 ); end
                 sig do
@@ -5116,8 +5584,12 @@ module Increase
                     )
                       .returns(T.attached_class)
                   end
-                  def self.new(category:, sub_category:); end
-
+                  def self.new(
+                    # Category of the ancillary service.
+                    category:,
+                    # Sub-category of the ancillary service, free-form.
+                    sub_category:
+                  ); end
                   sig do
                     override
                       .returns(
@@ -5507,11 +5979,17 @@ module Increase
                     .returns(T.attached_class)
                 end
                 def self.new(
+                  # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                   carrier_code:,
+                  # Code for the destination city or airport.
                   destination_city_airport_code:,
+                  # Fare basis code.
                   fare_basis_code:,
+                  # Flight number.
                   flight_number:,
+                  # Service class (e.g., first class, business class, etc.).
                   service_class:,
+                  # Indicates whether a stopover is allowed on this ticket.
                   stop_over_code:
                 ); end
                 sig do
@@ -5630,8 +6108,20 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(accrued_on_card_id:, amount:, currency:, period_end:, period_start:); end
-
+          def self.new(
+            # The card on which the cashback was accrued.
+            accrued_on_card_id:,
+            # The amount in the minor unit of the transaction's currency. For dollars, for
+            # example, this is cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+            # currency.
+            currency:,
+            # The end of the period for which this transaction paid cashback.
+            period_end:,
+            # The start of the period for which this transaction paid cashback.
+            period_start:
+          ); end
           sig do
             override
               .returns(
@@ -5866,16 +6356,25 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The account number printed on the check.
             account_number:,
+            # The amount to be deposited in the minor unit of the transaction's currency. For
+            # dollars, for example, this is cents.
             amount:,
+            # An additional line of metadata printed on the check. This typically includes the
+            # check number for business checks.
             auxiliary_on_us:,
+            # The ID of the Check Deposit that was accepted.
             check_deposit_id:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's currency.
             currency:,
+            # The routing number printed on the check.
             routing_number:,
+            # The check serial number, if present, for consumer checks. For business checks,
+            # the serial number is usually in the `auxiliary_on_us` field.
             serial_number:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -5973,9 +6472,24 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
-          end
-
+          def self.new(
+            # The returned amount in USD cents.
+            amount:,
+            # The identifier of the Check Deposit that was returned.
+            check_deposit_id:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's currency.
+            currency:,
+            # Why this check was returned by the bank holding the account it was drawn
+            # against.
+            return_reason:,
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            # the check deposit was returned.
+            returned_at:,
+            # The identifier of the transaction that reversed the original check deposit
+            # transaction.
+            transaction_id:
+          ); end
           sig do
             override
               .returns(
@@ -6272,13 +6786,27 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The identifier of the API File object containing an image of the back of the
+            # deposited check.
             back_image_file_id:,
+            # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+            # bank depositing this check. In some rare cases, this is not transmitted via
+            # Check21 and the value will be null.
             bank_of_first_deposit_routing_number:,
+            # When the check was deposited.
             deposited_at:,
+            # The identifier of the API File object containing an image of the front of the
+            # deposited check.
             front_image_file_id:,
+            # The identifier of the Inbound Check Deposit object associated with this
+            # transaction.
             inbound_check_deposit_id:,
+            # The identifier of the Transaction object created when the check was deposited.
             transaction_id:,
+            # The identifier of the Check Transfer object that was deposited.
             transfer_id:,
+            # A constant representing the object's type. For this resource it will always be
+            # `check_transfer_deposit`.
             type:
           ); end
           sig do
@@ -6351,8 +6879,18 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, fee_period_start:, program_id:); end
-
+          def self.new(
+            # The amount in the minor unit of the transaction's currency. For dollars, for
+            # example, this is cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+            # currency.
+            currency:,
+            # The start of this payment's fee period, usually the first day of a month.
+            fee_period_start:,
+            # The Program for which this fee was incurred.
+            program_id:
+          ); end
           sig do
             override
               .returns(
@@ -6482,16 +7020,33 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # Additional information sent from the originator.
             addenda:,
+            # The transfer amount in USD cents.
             amount:,
+            # The description of the date of the transfer, usually in the format `YYMMDD`.
             originator_company_descriptive_date:,
+            # Data set by the originator.
             originator_company_discretionary_data:,
+            # An informational description of the transfer.
             originator_company_entry_description:,
+            # An identifier for the originating company. This is generally, but not always, a
+            # stable identifier across multiple transfers.
             originator_company_id:,
+            # A name set by the originator to identify themselves.
             originator_company_name:,
+            # The originator's identifier for the transfer recipient.
             receiver_id_number:,
+            # The name of the transfer recipient. This value is informational and not verified
+            # by Increase.
             receiver_name:,
+            # A 15 digit number recorded in the Nacha file and available to both the
+            # originating and receiving bank. Along with the amount, date, and originating
+            # routing number, this can be used to identify the ACH transfer at either bank.
+            # ACH trace numbers are not unique, but are
+            # [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
             trace_number:,
+            # The Inbound ACH Transfer's identifier.
             transfer_id:
           ); end
           sig do
@@ -6549,8 +7104,12 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, freeform:); end
-
+            def self.new(
+              # The type of addendum.
+              category:,
+              # Unstructured `payment_related_information` passed through by the originator.
+              freeform:
+            ); end
             sig do
               override
                 .returns(
@@ -6603,8 +7162,10 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(entries:); end
-
+              def self.new(
+                # Each entry represents an addendum received from the originator.
+                entries:
+              ); end
               sig do
                 override
                   .returns(
@@ -6619,8 +7180,10 @@ module Increase
                 attr_accessor :payment_related_information
 
                 sig { params(payment_related_information: String).returns(T.attached_class) }
-                def self.new(payment_related_information:); end
-
+                def self.new(
+                  # The payment related information passed in the addendum.
+                  payment_related_information:
+                ); end
                 sig { override.returns({payment_related_information: String}) }
                 def to_hash; end
               end
@@ -6639,8 +7202,10 @@ module Increase
           # Intention is created when an ACH transfer is initiated at another bank and
           # returned by Increase.
           sig { params(inbound_ach_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_ach_transfer_id:); end
-
+          def self.new(
+            # The ID of the Inbound ACH Transfer that is being returned.
+            inbound_ach_transfer_id:
+          ); end
           sig { override.returns({inbound_ach_transfer_id: String}) }
           def to_hash; end
         end
@@ -6670,8 +7235,14 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(adjusted_transaction_id:, amount:, reason:); end
-
+          def self.new(
+            # The ID of the transaction that was adjusted.
+            adjusted_transaction_id:,
+            # The amount of the check adjustment.
+            amount:,
+            # The reason for the adjustment.
+            reason:
+          ); end
           sig do
             override
               .returns(
@@ -6742,8 +7313,12 @@ module Increase
           sig do
             params(inbound_check_deposit_id: String, transfer_id: T.nilable(String)).returns(T.attached_class)
           end
-          def self.new(inbound_check_deposit_id:, transfer_id:); end
-
+          def self.new(
+            # The ID of the Inbound Check Deposit that is being returned.
+            inbound_check_deposit_id:,
+            # The identifier of the Check Transfer object that was deposited.
+            transfer_id:
+          ); end
           sig { override.returns({inbound_check_deposit_id: String, transfer_id: T.nilable(String)}) }
           def to_hash; end
         end
@@ -6811,14 +7386,25 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The amount in the minor unit of the transfer's currency. For dollars, for
+            # example, this is cents.
             amount:,
+            # The name the sender of the transfer specified as the recipient of the transfer.
             creditor_name:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
+            # currency. This will always be "USD" for a Real-Time Payments transfer.
             currency:,
+            # The account number of the account that sent the transfer.
             debtor_account_number:,
+            # The name provided by the sender of the transfer.
             debtor_name:,
+            # The routing number of the account that sent the transfer.
             debtor_routing_number:,
+            # Additional information included with the transfer.
             remittance_information:,
+            # The Real-Time Payments network identification of the transfer.
             transaction_identification:,
+            # The identifier of the Real-Time Payments Transfer that led to this Transaction.
             transfer_id:
           ); end
           sig do
@@ -6973,15 +7559,28 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The declined amount in the minor unit of the destination account currency. For
+            # dollars, for example, this is cents.
             amount:,
+            # The name the sender of the transfer specified as the recipient of the transfer.
             creditor_name:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+            # transfer's currency. This will always be "USD" for a Real-Time Payments
+            # transfer.
             currency:,
+            # The account number of the account that sent the transfer.
             debtor_account_number:,
+            # The name provided by the sender of the transfer.
             debtor_name:,
+            # The routing number of the account that sent the transfer.
             debtor_routing_number:,
+            # Why the transfer was declined.
             reason:,
+            # Additional information included with the transfer.
             remittance_information:,
+            # The Real-Time Payments network identification of the declined transfer.
             transaction_identification:,
+            # The identifier of the Real-Time Payments Transfer that led to this Transaction.
             transfer_id:
           ); end
           sig do
@@ -7226,22 +7825,44 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The amount that was reversed in USD cents.
             amount:,
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            # the reversal was created.
             created_at:,
+            # The description on the reversal message from Fedwire, set by the reversing bank.
             description:,
+            # Additional financial institution information included in the wire reversal.
             financial_institution_to_financial_institution_information:,
+            # The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00
+            # PM Eastern Time on the evening before the `cycle date`.
             input_cycle_date:,
+            # The Fedwire transaction identifier.
             input_message_accountability_data:,
+            # The Fedwire sequence number.
             input_sequence_number:,
+            # The Fedwire input source identifier.
             input_source:,
+            # The American Banking Association (ABA) routing number of the bank originating
+            # the transfer.
             originator_routing_number:,
+            # The Fedwire cycle date for the wire transfer that is being reversed by this
+            # message.
             previous_message_input_cycle_date:,
+            # The Fedwire transaction identifier for the wire transfer that was reversed.
             previous_message_input_message_accountability_data:,
+            # The Fedwire sequence number for the wire transfer that was reversed.
             previous_message_input_sequence_number:,
+            # The Fedwire input source identifier for the wire transfer that was reversed.
             previous_message_input_source:,
+            # Information included in the wire reversal for the receiving financial
+            # institution.
             receiver_financial_institution_information:,
+            # The sending bank's reference number for the wire reversal.
             sender_reference:,
+            # The ID for the Transaction associated with the transfer reversal.
             transaction_id:,
+            # The ID for the Wire Transfer that is being reversed.
             wire_transfer_id:
           ); end
           sig do
@@ -7380,24 +8001,46 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The amount in USD cents.
             amount:,
+            # A free-form address field set by the sender.
             beneficiary_address_line1:,
+            # A free-form address field set by the sender.
             beneficiary_address_line2:,
+            # A free-form address field set by the sender.
             beneficiary_address_line3:,
+            # A name set by the sender.
             beneficiary_name:,
+            # A free-form reference string set by the sender, to help identify the transfer.
             beneficiary_reference:,
+            # An Increase-constructed description of the transfer.
             description:,
+            # A unique identifier available to the originating and receiving banks, commonly
+            # abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+            # service and is helpful when debugging wires with the originating bank.
             input_message_accountability_data:,
+            # The address of the wire originator, set by the sending bank.
             originator_address_line1:,
+            # The address of the wire originator, set by the sending bank.
             originator_address_line2:,
+            # The address of the wire originator, set by the sending bank.
             originator_address_line3:,
+            # The originator of the wire, set by the sending bank.
             originator_name:,
+            # The American Banking Association (ABA) routing number of the bank originating
+            # the transfer.
             originator_routing_number:,
+            # An Increase-created concatenation of the Originator-to-Beneficiary lines.
             originator_to_beneficiary_information:,
+            # A free-form message set by the wire originator.
             originator_to_beneficiary_information_line1:,
+            # A free-form message set by the wire originator.
             originator_to_beneficiary_information_line2:,
+            # A free-form message set by the wire originator.
             originator_to_beneficiary_information_line3:,
+            # A free-form message set by the wire originator.
             originator_to_beneficiary_information_line4:,
+            # The ID of the Inbound Wire Transfer object that resulted in this Transaction.
             transfer_id:
           ); end
           sig do
@@ -7440,8 +8083,10 @@ module Increase
           # created when Increase has received a wire and the User requests that it be
           # reversed.
           sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_wire_transfer_id:); end
-
+          def self.new(
+            # The ID of the Inbound Wire Transfer that is being reversed.
+            inbound_wire_transfer_id:
+          ); end
           sig { override.returns({inbound_wire_transfer_id: String}) }
           def to_hash; end
         end
@@ -7483,8 +8128,20 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(accrued_on_account_id:, amount:, currency:, period_end:, period_start:); end
-
+          def self.new(
+            # The account on which the interest was accrued.
+            accrued_on_account_id:,
+            # The amount in the minor unit of the transaction's currency. For dollars, for
+            # example, this is cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+            # currency.
+            currency:,
+            # The end of the period for which this transaction paid interest.
+            period_end:,
+            # The start of the period for which this transaction paid interest.
+            period_start:
+          ); end
           sig do
             override
               .returns(
@@ -7558,8 +8215,17 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, reason:); end
-
+          def self.new(
+            # The amount in the minor unit of the transaction's currency. For dollars, for
+            # example, this is cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+            # currency.
+            currency:,
+            # An Internal Source is a transaction between you and Increase. This describes the
+            # reason for the transaction.
+            reason:
+          ); end
           sig do
             override
               .returns(
@@ -7717,14 +8383,17 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The transfer amount in USD cents.
             amount:,
+            # The destination account number.
             destination_account_number:,
+            # The American Bankers' Association (ABA) Routing Transit Number (RTN).
             destination_routing_number:,
+            # Unstructured information that will show on the recipient's bank statement.
             remittance_information:,
+            # The identifier of the Real-Time Payments Transfer that led to this Transaction.
             transfer_id:
-          )
-          end
-
+          ); end
           sig do
             override
               .returns(
@@ -7749,8 +8418,10 @@ module Increase
           # only if `category` is equal to `sample_funds`. Sample funds for testing
           # purposes.
           sig { params(originator: String).returns(T.attached_class) }
-          def self.new(originator:); end
-
+          def self.new(
+            # Where the sample funds came from.
+            originator:
+          ); end
           sig { override.returns({originator: String}) }
           def to_hash; end
         end
@@ -7789,8 +8460,18 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:); end
-
+          def self.new(
+            # The destination account number.
+            account_number:,
+            # The transfer amount in USD cents.
+            amount:,
+            # The message that will show on the recipient's bank statement.
+            message_to_recipient:,
+            # The American Bankers' Association (ABA) Routing Transit Number (RTN).
+            routing_number:,
+            # The identifier of the Wire Transfer that led to this Transaction.
+            transfer_id:
+          ); end
           sig do
             override
               .returns(

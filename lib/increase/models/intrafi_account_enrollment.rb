@@ -53,6 +53,9 @@ module Increase
       required :type, enum: -> { Increase::Models::IntrafiAccountEnrollment::Type }
 
       # @!method initialize(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::IntrafiAccountEnrollment} for more details.
+      #
       #   IntraFi is a
       #   [network of financial institutions](https://www.intrafi.com/network-banks) that
       #   allows Increase users to sweep funds to multiple banks, in addition to
@@ -61,13 +64,24 @@ module Increase
       #   Account Enrollment object represents the status of an account in the network.
       #   Sweeping an account to IntraFi doesn't affect funds availability.
       #
-      #   @param id [String]
-      #   @param account_id [String]
-      #   @param created_at [Time]
-      #   @param idempotency_key [String, nil]
-      #   @param intrafi_id [String]
-      #   @param status [Symbol, Increase::Models::IntrafiAccountEnrollment::Status]
-      #   @param type [Symbol, Increase::Models::IntrafiAccountEnrollment::Type]
+      #   @param id [String] The identifier of this enrollment at IntraFi.
+      #
+      #   @param account_id [String] The identifier of the Increase Account being swept into the network.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param intrafi_id [String] The identifier of the account in IntraFi's system. This identifier will be print
+      #   ...
+      #
+      #   @param status [Symbol, Increase::Models::IntrafiAccountEnrollment::Status] The status of the account in the network. An account takes about one business da
+      #   ...
+      #
+      #   @param type [Symbol, Increase::Models::IntrafiAccountEnrollment::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The status of the account in the network. An account takes about one business
       # day to go from `pending_enrolling` to `enrolled`.

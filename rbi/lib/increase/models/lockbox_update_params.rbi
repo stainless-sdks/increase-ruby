@@ -36,8 +36,15 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(description: nil, recipient_name: nil, status: nil, request_options: {}); end
-
+      def self.new(
+        # The description you choose for the Lockbox.
+        description: nil,
+        # The recipient name you choose for the Lockbox.
+        recipient_name: nil,
+        # This indicates if checks can be sent to the Lockbox.
+        status: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -133,25 +133,59 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The deposit's identifier.
         id:,
+        # If the Inbound Check Deposit was accepted, the
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+        # took place.
         accepted_at:,
+        # The Account the check is being deposited against.
         account_id:,
+        # The Account Number the check is being deposited against.
         account_number_id:,
+        # If the deposit or the return was adjusted by the sending institution, this will
+        # contain details of the adjustments.
         adjustments:,
+        # The deposited amount in USD cents.
         amount:,
+        # The ID for the File containing the image of the back of the check.
         back_image_file_id:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+        # bank depositing this check. In some rare cases, this is not transmitted via
+        # Check21 and the value will be null.
         bank_of_first_deposit_routing_number:,
+        # The check number printed on the check being deposited.
         check_number:,
+        # If this deposit is for an existing Check Transfer, the identifier of that Check
+        # Transfer.
         check_transfer_id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the deposit was attempted.
         created_at:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
         currency:,
+        # If the Inbound Check Deposit was declined, the
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+        # took place.
         declined_at:,
+        # If the deposit attempt has been rejected, the identifier of the Declined
+        # Transaction object created as a result of the failed deposit.
         declined_transaction_id:,
+        # If you requested a return of this deposit, this will contain details of the
+        # return.
         deposit_return:,
+        # The ID for the File containing the image of the front of the check.
         front_image_file_id:,
+        # Whether the details on the check match the recipient name of the check transfer.
+        # This is an optional feature, contact sales to enable.
         payee_name_analysis:,
+        # The status of the Inbound Check Deposit.
         status:,
+        # If the deposit attempt has been accepted, the identifier of the Transaction
+        # object created as a result of the successful deposit.
         transaction_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `inbound_check_deposit`.
         type:
       ); end
       sig do
@@ -209,8 +243,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(adjusted_at:, amount:, reason:, transaction_id:); end
-
+        def self.new(
+          # The time at which the return adjustment was received.
+          adjusted_at:,
+          # The amount of the adjustment.
+          amount:,
+          # The reason for the adjustment.
+          reason:,
+          # The id of the transaction for the adjustment.
+          transaction_id:
+        ); end
         sig do
           override
             .returns(
@@ -304,8 +346,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reason:, returned_at:, transaction_id:); end
-
+        def self.new(
+          # The reason the deposit was returned.
+          reason:,
+          # The time at which the deposit was returned.
+          returned_at:,
+          # The id of the transaction for the returned deposit.
+          transaction_id:
+        ); end
         sig do
           override
             .returns(

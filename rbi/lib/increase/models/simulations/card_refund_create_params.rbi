@@ -19,8 +19,12 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(transaction_id:, request_options: {}); end
-
+        def self.new(
+          # The identifier for the Transaction to refund. The Transaction's source must have
+          # a category of card_settlement.
+          transaction_id:,
+          request_options: {}
+        ); end
         sig { override.returns({transaction_id: String, request_options: Increase::RequestOptions}) }
         def to_hash; end
       end
