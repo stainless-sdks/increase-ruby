@@ -124,6 +124,7 @@ module Increase
           other: top?,
           real_time_payments_transfer_acknowledgement: Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement?,
           sample_funds: Increase::Models::Transaction::Source::SampleFunds?,
+          swift_transfer_intention: Increase::Models::Transaction::Source::SwiftTransferIntention?,
           wire_transfer_intention: Increase::Models::Transaction::Source::WireTransferIntention?
         }
 
@@ -186,6 +187,8 @@ module Increase
 
         attr_accessor sample_funds: Increase::Models::Transaction::Source::SampleFunds?
 
+        attr_accessor swift_transfer_intention: Increase::Models::Transaction::Source::SwiftTransferIntention?
+
         attr_accessor wire_transfer_intention: Increase::Models::Transaction::Source::WireTransferIntention?
 
         def initialize: (
@@ -218,6 +221,7 @@ module Increase
           other: top?,
           real_time_payments_transfer_acknowledgement: Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement?,
           sample_funds: Increase::Models::Transaction::Source::SampleFunds?,
+          swift_transfer_intention: Increase::Models::Transaction::Source::SwiftTransferIntention?,
           wire_transfer_intention: Increase::Models::Transaction::Source::WireTransferIntention?
         ) -> void
 
@@ -2687,6 +2691,7 @@ module Increase
           | :real_time_payments_transfer_acknowledgement
           | :sample_funds
           | :wire_transfer_intention
+          | :swift_transfer_intention
           | :other
 
         module Category
@@ -2775,6 +2780,9 @@ module Increase
 
           # Wire Transfer Intention: details will be under the `wire_transfer_intention` object.
           WIRE_TRANSFER_INTENTION: :wire_transfer_intention
+
+          # Swift Transfer Intention: details will be under the `swift_transfer_intention` object.
+          SWIFT_TRANSFER_INTENTION: :swift_transfer_intention
 
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
@@ -3882,6 +3890,16 @@ module Increase
           def initialize: (originator: String) -> void
 
           def to_hash: -> Increase::Models::Transaction::Source::sample_funds
+        end
+
+        type swift_transfer_intention = { transfer_id: String }
+
+        class SwiftTransferIntention < Increase::Internal::Type::BaseModel
+          attr_accessor transfer_id: String
+
+          def initialize: (transfer_id: String) -> void
+
+          def to_hash: -> Increase::Models::Transaction::Source::swift_transfer_intention
         end
 
         type wire_transfer_intention =

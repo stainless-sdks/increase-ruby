@@ -634,6 +634,22 @@ module Increase
         end
         attr_writer :sample_funds
 
+        # A Swift Transfer Intention object. This field will be present in the JSON
+        # response if and only if `category` is equal to `swift_transfer_intention`. A
+        # Swift Transfer initiated via Increase.
+        sig { returns(T.nilable(Increase::Models::Transaction::Source::SwiftTransferIntention)) }
+        attr_reader :swift_transfer_intention
+
+        sig do
+          params(
+            swift_transfer_intention: T.nilable(
+              T.any(Increase::Models::Transaction::Source::SwiftTransferIntention, Increase::Internal::AnyHash)
+            )
+          )
+            .void
+        end
+        attr_writer :swift_transfer_intention
+
         # A Wire Transfer Intention object. This field will be present in the JSON
         # response if and only if `category` is equal to `wire_transfer_intention`. A Wire
         # Transfer initiated via Increase and sent to a different bank.
@@ -720,6 +736,9 @@ module Increase
               )
             ),
             sample_funds: T.nilable(T.any(Increase::Models::Transaction::Source::SampleFunds, Increase::Internal::AnyHash)),
+            swift_transfer_intention: T.nilable(
+              T.any(Increase::Models::Transaction::Source::SwiftTransferIntention, Increase::Internal::AnyHash)
+            ),
             wire_transfer_intention: T.nilable(
               T.any(Increase::Models::Transaction::Source::WireTransferIntention, Increase::Internal::AnyHash)
             )
@@ -874,6 +893,10 @@ module Increase
           # only if `category` is equal to `sample_funds`. Sample funds for testing
           # purposes.
           sample_funds:,
+          # A Swift Transfer Intention object. This field will be present in the JSON
+          # response if and only if `category` is equal to `swift_transfer_intention`. A
+          # Swift Transfer initiated via Increase.
+          swift_transfer_intention:,
           # A Wire Transfer Intention object. This field will be present in the JSON
           # response if and only if `category` is equal to `wire_transfer_intention`. A Wire
           # Transfer initiated via Increase and sent to a different bank.
@@ -912,6 +935,7 @@ module Increase
                 other: T.nilable(T.anything),
                 real_time_payments_transfer_acknowledgement: T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement),
                 sample_funds: T.nilable(Increase::Models::Transaction::Source::SampleFunds),
+                swift_transfer_intention: T.nilable(Increase::Models::Transaction::Source::SwiftTransferIntention),
                 wire_transfer_intention: T.nilable(Increase::Models::Transaction::Source::WireTransferIntention)
               }
             )
@@ -6298,6 +6322,10 @@ module Increase
           WIRE_TRANSFER_INTENTION =
             T.let(:wire_transfer_intention, Increase::Models::Transaction::Source::Category::TaggedSymbol)
 
+          # Swift Transfer Intention: details will be under the `swift_transfer_intention` object.
+          SWIFT_TRANSFER_INTENTION =
+            T.let(:swift_transfer_intention, Increase::Models::Transaction::Source::Category::TaggedSymbol)
+
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::Transaction::Source::Category::TaggedSymbol)
 
@@ -8423,6 +8451,23 @@ module Increase
             originator:
           ); end
           sig { override.returns({originator: String}) }
+          def to_hash; end
+        end
+
+        class SwiftTransferIntention < Increase::Internal::Type::BaseModel
+          # The identifier of the Swift Transfer that led to this Transaction.
+          sig { returns(String) }
+          attr_accessor :transfer_id
+
+          # A Swift Transfer Intention object. This field will be present in the JSON
+          # response if and only if `category` is equal to `swift_transfer_intention`. A
+          # Swift Transfer initiated via Increase.
+          sig { params(transfer_id: String).returns(T.attached_class) }
+          def self.new(
+            # The identifier of the Swift Transfer that led to this Transaction.
+            transfer_id:
+          ); end
+          sig { override.returns({transfer_id: String}) }
           def to_hash; end
         end
 

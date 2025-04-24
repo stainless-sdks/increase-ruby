@@ -251,6 +251,10 @@ module Increase
           WIRE_TRANSFER_INTENTION =
             T.let(:wire_transfer_intention, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
 
+          # Swift Transfer Intention: details will be under the `swift_transfer_intention` object.
+          SWIFT_TRANSFER_INTENTION =
+            T.let(:swift_transfer_intention, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
+
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::TransactionListParams::Category::In::TaggedSymbol)
 

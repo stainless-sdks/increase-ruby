@@ -167,6 +167,9 @@ module Increase
           # Wire Transfer Intention: details will be under the `wire_transfer_intention` object.
           WIRE_TRANSFER_INTENTION = :wire_transfer_intention
 
+          # Swift Transfer Intention: details will be under the `swift_transfer_intention` object.
+          SWIFT_TRANSFER_INTENTION = :swift_transfer_intention
+
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
 

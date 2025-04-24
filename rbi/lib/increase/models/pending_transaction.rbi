@@ -342,6 +342,21 @@ module Increase
         end
         attr_writer :real_time_payments_transfer_instruction
 
+        # A Swift Transfer Instruction object. This field will be present in the JSON
+        # response if and only if `category` is equal to `swift_transfer_instruction`.
+        sig { returns(T.nilable(Increase::Models::PendingTransaction::Source::SwiftTransferInstruction)) }
+        attr_reader :swift_transfer_instruction
+
+        sig do
+          params(
+            swift_transfer_instruction: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::SwiftTransferInstruction, Increase::Internal::AnyHash)
+            )
+          )
+            .void
+        end
+        attr_writer :swift_transfer_instruction
+
         # A Wire Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `wire_transfer_instruction`.
         sig { returns(T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction)) }
@@ -397,6 +412,9 @@ module Increase
                 Increase::Internal::AnyHash
               )
             ),
+            swift_transfer_instruction: T.nilable(
+              T.any(Increase::Models::PendingTransaction::Source::SwiftTransferInstruction, Increase::Internal::AnyHash)
+            ),
             wire_transfer_instruction: T.nilable(
               T.any(Increase::Models::PendingTransaction::Source::WireTransferInstruction, Increase::Internal::AnyHash)
             )
@@ -441,6 +459,9 @@ module Increase
           # the JSON response if and only if `category` is equal to
           # `real_time_payments_transfer_instruction`.
           real_time_payments_transfer_instruction:,
+          # A Swift Transfer Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `swift_transfer_instruction`.
+          swift_transfer_instruction:,
           # A Wire Transfer Instruction object. This field will be present in the JSON
           # response if and only if `category` is equal to `wire_transfer_instruction`.
           wire_transfer_instruction:
@@ -459,6 +480,7 @@ module Increase
                 inbound_wire_transfer_reversal: T.nilable(Increase::Models::PendingTransaction::Source::InboundWireTransferReversal),
                 other: T.nilable(T.anything),
                 real_time_payments_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction),
+                swift_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::SwiftTransferInstruction),
                 wire_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction)
               }
             )
@@ -1865,6 +1887,10 @@ module Increase
               Increase::Models::PendingTransaction::Source::Category::TaggedSymbol
             )
 
+          # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
+          SWIFT_TRANSFER_INSTRUCTION =
+            T.let(:swift_transfer_instruction, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
+
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::PendingTransaction::Source::Category::TaggedSymbol)
 
@@ -2316,6 +2342,22 @@ module Increase
             transfer_id:
           ); end
           sig { override.returns({amount: Integer, transfer_id: String}) }
+          def to_hash; end
+        end
+
+        class SwiftTransferInstruction < Increase::Internal::Type::BaseModel
+          # The identifier of the Swift Transfer that led to this Pending Transaction.
+          sig { returns(String) }
+          attr_accessor :transfer_id
+
+          # A Swift Transfer Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `swift_transfer_instruction`.
+          sig { params(transfer_id: String).returns(T.attached_class) }
+          def self.new(
+            # The identifier of the Swift Transfer that led to this Pending Transaction.
+            transfer_id:
+          ); end
+          sig { override.returns({transfer_id: String}) }
           def to_hash; end
         end
 
