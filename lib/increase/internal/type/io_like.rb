@@ -7,12 +7,8 @@ module Increase
       #
       # @abstract
       #
-      # Either `Pathname` or `StringIO`, or `IO`, or
-      # `Increase::Internal::Type::FileInput`.
-      #
-      # Note: when `IO` is used, all retries are disabled, since many IO` streams are
-      # not rewindable.
-      class FileInput
+      # Either `Pathname` or `StringIO`.
+      class IOLike
         extend Increase::Internal::Type::Converter
 
         private_class_method :new
@@ -24,7 +20,7 @@ module Increase
         # @return [Boolean]
         def self.===(other)
           case other
-          in Pathname | StringIO | IO | String | Increase::FilePart
+          in StringIO | Pathname | IO
             true
           else
             false
@@ -36,7 +32,7 @@ module Increase
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= Increase::Internal::Type::FileInput
+        def self.==(other) = other.is_a?(Class) && other <= Increase::Internal::Type::IOLike
 
         class << self
           # @api private
