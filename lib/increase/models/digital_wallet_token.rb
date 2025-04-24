@@ -61,32 +61,19 @@ module Increase
       required :updates, -> { Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update] }
 
       # @!method initialize(id:, card_id:, cardholder:, created_at:, device:, status:, token_requestor:, type:, updates:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::DigitalWalletToken} for more details.
-      #
       #   A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
       #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
       #   Card.
       #
-      #   @param id [String] The Digital Wallet Token identifier.
-      #
-      #   @param card_id [String] The identifier for the Card this Digital Wallet Token belongs to.
-      #
-      #   @param cardholder [Increase::Models::DigitalWalletToken::Cardholder] The cardholder information given when the Digital Wallet Token was created.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
-      #
-      #   @param device [Increase::Models::DigitalWalletToken::Device] The device that was used to create the Digital Wallet Token.
-      #
-      #   @param status [Symbol, Increase::Models::DigitalWalletToken::Status] This indicates if payments can be made with the Digital Wallet Token.
-      #
-      #   @param token_requestor [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor] The digital wallet app being used.
-      #
-      #   @param type [Symbol, Increase::Models::DigitalWalletToken::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
-      #
-      #   @param updates [Array<Increase::Models::DigitalWalletToken::Update>] Updates to the Digital Wallet Token.
+      #   @param id [String]
+      #   @param card_id [String]
+      #   @param cardholder [Increase::Models::DigitalWalletToken::Cardholder]
+      #   @param created_at [Time]
+      #   @param device [Increase::Models::DigitalWalletToken::Device]
+      #   @param status [Symbol, Increase::Models::DigitalWalletToken::Status]
+      #   @param token_requestor [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor]
+      #   @param type [Symbol, Increase::Models::DigitalWalletToken::Type]
+      #   @param updates [Array<Increase::Models::DigitalWalletToken::Update>]
 
       # @see Increase::Models::DigitalWalletToken#cardholder
       class Cardholder < Increase::Internal::Type::BaseModel
@@ -99,7 +86,7 @@ module Increase
         # @!method initialize(name:)
         #   The cardholder information given when the Digital Wallet Token was created.
         #
-        #   @param name [String, nil] Name of the cardholder, for example "John Smith".
+        #   @param name [String, nil]
       end
 
       # @see Increase::Models::DigitalWalletToken#device
@@ -131,13 +118,10 @@ module Increase
         # @!method initialize(device_type:, identifier:, ip_address:, name:)
         #   The device that was used to create the Digital Wallet Token.
         #
-        #   @param device_type [Symbol, Increase::Models::DigitalWalletToken::Device::DeviceType, nil] Device type.
-        #
-        #   @param identifier [String, nil] ID assigned to the device by the digital wallet provider.
-        #
-        #   @param ip_address [String, nil] IP address of the device.
-        #
-        #   @param name [String, nil] Name of the device, for example "My Work Phone".
+        #   @param device_type [Symbol, Increase::Models::DigitalWalletToken::Device::DeviceType, nil]
+        #   @param identifier [String, nil]
+        #   @param ip_address [String, nil]
+        #   @param name [String, nil]
 
         # Device type.
         #
@@ -249,13 +233,8 @@ module Increase
         required :timestamp, Time
 
         # @!method initialize(status:, timestamp:)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::DigitalWalletToken::Update} for more details.
-        #
-        #   @param status [Symbol, Increase::Models::DigitalWalletToken::Update::Status] The status the update changed this Digital Wallet Token to.
-        #
-        #   @param timestamp [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
+        #   @param status [Symbol, Increase::Models::DigitalWalletToken::Update::Status]
+        #   @param timestamp [Time]
 
         # The status the update changed this Digital Wallet Token to.
         #

@@ -176,7 +176,7 @@ module Increase
             conn.finish if !eof && conn&.started?
             closing&.call
           end
-          [Integer(response.code), response, body]
+          [Integer(response.code), response, (response.body = body)]
         end
 
         # @api private

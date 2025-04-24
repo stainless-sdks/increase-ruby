@@ -1,7 +1,7 @@
 module Increase
   module Internal
     module Type
-      class FileInput
+      class IOLike
         extend Increase::Internal::Type::Converter
 
         def self.===: (top other) -> bool

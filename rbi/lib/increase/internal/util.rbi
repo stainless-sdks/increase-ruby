@@ -68,19 +68,13 @@ module Increase
         sig do
           params(
             data: T.any(Increase::Internal::AnyHash, T::Array[T.anything], T.anything),
-            pick: T.nilable(
-              T.any(
-                Symbol,
-                Integer,
-                T::Array[T.any(Symbol, Integer)],
-                T.proc.params(arg0: T.anything).returns(T.anything)
-              )
-            ),
+            pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
+            sentinel: T.nilable(T.anything),
             blk: T.nilable(T.proc.returns(T.anything))
           )
             .returns(T.nilable(T.anything))
         end
-        def dig(data, pick, &blk); end
+        def dig(data, pick, sentinel = nil, &blk); end
       end
 
       class << self
@@ -147,6 +141,22 @@ module Increase
       end
 
       # @api private
+      class SerializationAdapter
+        sig { returns(T.any(Pathname, IO)) }
+        attr_reader :inner
+
+        sig { params(a: T.anything).returns(String) }
+        def to_json(*a); end
+
+        sig { params(a: T.anything).returns(String) }
+        def to_yaml(*a); end
+
+        # @api private
+        sig { params(inner: T.any(Pathname, IO)).returns(T.attached_class) }
+        def self.new(inner); end
+      end
+
+      # @api private
       #
       # An adapter that satisfies the IO interface required by `::IO.copy_stream`
       class ReadIOAdapter
@@ -182,22 +192,7 @@ module Increase
         def writable_enum(&blk); end
       end
 
-      JSON_CONTENT = T.let(%r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}, Regexp)
-      JSONL_CONTENT = T.let(%r{^application/(?:x-)?jsonl}, Regexp)
-
       class << self
-        # @api private
-        sig do
-          params(
-            y: Enumerator::Yielder,
-            val: T.anything,
-            closing: T::Array[T.proc.void],
-            content_type: T.nilable(String)
-          )
-            .void
-        end
-        private def write_multipart_content(y, val:, closing:, content_type: nil); end
-
         # @api private
         sig do
           params(

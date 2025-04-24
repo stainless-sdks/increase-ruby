@@ -12,13 +12,9 @@ The REST API documentation can be found on [increase.com](https://increase.com/d
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.11"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 ## Usage
 
@@ -81,11 +77,11 @@ Request parameters that correspond to file uploads can be passed as `StringIO`, 
 require "pathname"
 
 # using `Pathname`, the file will be lazily read, without reading everything in to memory
-file = increase.files.create(file: Pathname("my/file.txt"), purpose: "check_image_front")
+file = increase.files.create(file: Pathname("my/file.txt"), purpose: :check_image_front)
 
 file = File.read("my/file.txt")
 # using `StringIO`, useful if you already have the data in memory
-file = increase.files.create(file: StringIO.new(file), purpose: "check_image_front")
+file = increase.files.create(file: StringIO.new(file), purpose: :check_image_front)
 
 puts(file.id)
 ```

@@ -14,8 +14,7 @@ module Increase
       optional :name, String
 
       # @!method initialize(name: nil, request_options: {})
-      #   @param name [String] The new name of the Account.
-      #
+      #   @param name [String]
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

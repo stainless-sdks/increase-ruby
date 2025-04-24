@@ -153,7 +153,7 @@ module Increase
 
         # @api private
         # @return [Increase::Internal::Transport::PooledNetRequester]
-        attr_reader :requester
+        attr_accessor :requester
 
         # @api private
         #
@@ -214,7 +214,7 @@ module Increase
         #
         #   @option req [Object, nil] :body
         #
-        #   @option req [Symbol, Integer, Array<Symbol, Integer>, Proc, nil] :unwrap
+        #   @option req [Symbol, nil] :unwrap
         #
         #   @option req [Class<Increase::Internal::Type::BasePage>, nil] :page
         #
@@ -415,7 +415,7 @@ module Increase
         #
         # @param body [Object, nil]
         #
-        # @param unwrap [Symbol, Integer, Array<Symbol, Integer>, Proc, nil]
+        # @param unwrap [Symbol, nil]
         #
         # @param page [Class<Increase::Internal::Type::BasePage>, nil]
         #
