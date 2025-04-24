@@ -83,16 +83,32 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Account Number identifier.
         id:,
+        # The identifier for the account this Account Number belongs to.
         account_id:,
+        # The account number.
         account_number:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+        # Number was created.
         created_at:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # Properties related to how this Account Number handles inbound ACH transfers.
         inbound_ach:,
+        # Properties related to how this Account Number should handle inbound check
+        # withdrawals.
         inbound_checks:,
+        # The name you choose for the Account Number.
         name:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN).
         routing_number:,
+        # This indicates if payments can be made to the Account Number.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `account_number`.
         type:
       ); end
       sig do
@@ -126,8 +142,11 @@ module Increase
           params(debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(debit_status:); end
-
+        def self.new(
+          # Whether ACH debits are allowed against this Account Number. Note that they will
+          # still be declined if this is `allowed` if the Account Number is not active.
+          debit_status:
+        ); end
         sig { override.returns({debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol}) }
         def to_hash; end
 
@@ -158,8 +177,10 @@ module Increase
         # Properties related to how this Account Number should handle inbound check
         # withdrawals.
         sig { params(status: Increase::Models::AccountNumber::InboundChecks::Status::OrSymbol).returns(T.attached_class) }
-        def self.new(status:); end
-
+        def self.new(
+          # How Increase should process checks with this account number printed on them.
+          status:
+        ); end
         sig { override.returns({status: Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol}) }
         def to_hash; end
 

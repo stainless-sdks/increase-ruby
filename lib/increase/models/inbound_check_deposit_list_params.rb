@@ -39,11 +39,21 @@ module Increase
       optional :limit, Integer
 
       # @!method initialize(account_id: nil, check_transfer_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param check_transfer_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::InboundCheckDepositListParams} for more details.
+      #
+      #   @param account_id [String] Filter Inbound Check Deposits to those belonging to the specified Account.
+      #
+      #   @param check_transfer_id [String] Filter Inbound Check Deposits to those belonging to the specified Check Transfer
+      #   ...
+      #
       #   @param created_at [Increase::Models::InboundCheckDepositListParams::CreatedAt]
-      #   @param cursor [String]
-      #   @param limit [Integer]
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class CreatedAt < Increase::Internal::Type::BaseModel
@@ -76,10 +86,20 @@ module Increase
         optional :on_or_before, Time
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   @param after [Time]
-        #   @param before [Time]
-        #   @param on_or_after [Time]
-        #   @param on_or_before [Time]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::InboundCheckDepositListParams::CreatedAt} for more details.
+        #
+        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
+        #   ...
+        #
+        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
+        #   ...
+        #
+        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
+        #   ...
+        #
+        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
+        #   ...
       end
     end
   end

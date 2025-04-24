@@ -7,7 +7,8 @@ module Increase
       #
       # @overload retrieve(card_payment_id, request_options: {})
       #
-      # @param card_payment_id [String]
+      # @param card_payment_id [String] The identifier of the Card Payment.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::CardPayment]
@@ -22,15 +23,24 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::CardPaymentListParams} for more details.
+      #
       # List Card Payments
       #
       # @overload list(account_id: nil, card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       #
-      # @param account_id [String]
-      # @param card_id [String]
+      # @param account_id [String] Filter Card Payments to ones belonging to the specified Account.
+      #
+      # @param card_id [String] Filter Card Payments to ones belonging to the specified Card.
+      #
       # @param created_at [Increase::Models::CardPaymentListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::CardPayment>]

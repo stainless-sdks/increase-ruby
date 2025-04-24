@@ -64,20 +64,35 @@ module Increase
       required :updated_at, Time
 
       # @!method initialize(id:, bank:, billing_account_id:, created_at:, default_digital_card_profile_id:, interest_rate:, name:, type:, updated_at:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::Program} for more details.
+      #
       #   Programs determine the compliance and commercial terms of Accounts. By default,
       #   you have a Commercial Banking program for managing your own funds. If you are
       #   lending or managing funds on behalf of your customers, or otherwise engaged in
       #   regulated activity, we will work together to create additional Programs for you.
       #
-      #   @param id [String]
-      #   @param bank [Symbol, Increase::Models::Program::Bank]
-      #   @param billing_account_id [String, nil]
-      #   @param created_at [Time]
-      #   @param default_digital_card_profile_id [String, nil]
-      #   @param interest_rate [String]
-      #   @param name [String]
-      #   @param type [Symbol, Increase::Models::Program::Type]
-      #   @param updated_at [Time]
+      #   @param id [String] The Program identifier.
+      #
+      #   @param bank [Symbol, Increase::Models::Program::Bank] The Bank the Program is with.
+      #
+      #   @param billing_account_id [String, nil] The Program billing account.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
+      #   ...
+      #
+      #   @param default_digital_card_profile_id [String, nil] The default configuration for digital cards attached to this Program.
+      #
+      #   @param interest_rate [String] The Interest Rate currently being earned on the accounts in this program, as a s
+      #   ...
+      #
+      #   @param name [String] The name of the Program.
+      #
+      #   @param type [Symbol, Increase::Models::Program::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
+      #
+      #   @param updated_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
+      #   ...
 
       # The Bank the Program is with.
       #

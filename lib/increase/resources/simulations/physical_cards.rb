@@ -10,8 +10,10 @@ module Increase
         #
         # @overload advance_shipment(physical_card_id, shipment_status:, request_options: {})
         #
-        # @param physical_card_id [String]
-        # @param shipment_status [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus]
+        # @param physical_card_id [String] The Physical Card you would like to action.
+        #
+        # @param shipment_status [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus] The shipment status to move the Physical Card to.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::PhysicalCard]

@@ -95,18 +95,37 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The card identifier.
         id:,
+        # The identifier for the account this card belongs to.
         account_id:,
+        # The Card's billing address.
         billing_address:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the Card was created.
         created_at:,
+        # The card's description for display purposes.
         description:,
+        # The contact information used in the two-factor steps for digital wallet card
+        # creation. At least one field must be present to complete the digital wallet
+        # steps.
         digital_wallet:,
+        # The identifier for the entity associated with this card.
         entity_id:,
+        # The month the card expires in M format (e.g., August is 8).
         expiration_month:,
+        # The year the card expires in YYYY format (e.g., 2025).
         expiration_year:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # The last 4 digits of the Card's Primary Account Number.
         last4:,
+        # This indicates if payments can be made with the card.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `card`.
         type:
       ); end
       sig do
@@ -163,8 +182,18 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(city:, line1:, line2:, postal_code:, state:); end
-
+        def self.new(
+          # The city of the billing address.
+          city:,
+          # The first line of the billing address.
+          line1:,
+          # The second line of the billing address.
+          line2:,
+          # The postal code of the billing address.
+          postal_code:,
+          # The US state of the billing address.
+          state:
+        ); end
         sig do
           override
             .returns(
@@ -207,8 +236,17 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(digital_card_profile_id:, email:, phone:); end
-
+        def self.new(
+          # The digital card profile assigned to this digital card. Card profiles may also
+          # be assigned at the program level.
+          digital_card_profile_id:,
+          # An email address that can be used to verify the cardholder via one-time passcode
+          # over email.
+          email:,
+          # A phone number that can be used to verify the cardholder via one-time passcode
+          # over SMS.
+          phone:
+        ); end
         sig do
           override
             .returns({

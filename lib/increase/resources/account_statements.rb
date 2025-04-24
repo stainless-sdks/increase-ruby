@@ -7,7 +7,8 @@ module Increase
       #
       # @overload retrieve(account_statement_id, request_options: {})
       #
-      # @param account_statement_id [String]
+      # @param account_statement_id [String] The identifier of the Account Statement to retrieve.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::AccountStatement]
@@ -22,14 +23,22 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::AccountStatementListParams} for more details.
+      #
       # List Account Statements
       #
       # @overload list(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {})
       #
-      # @param account_id [String]
-      # @param cursor [String]
-      # @param limit [Integer]
+      # @param account_id [String] Filter Account Statements to those belonging to the specified Account.
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::AccountStatement>]

@@ -82,18 +82,36 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Card Profile identifier.
         id:,
+        # The identifier of the File containing the physical card's back image.
         back_image_file_id:,
+        # The identifier of the File containing the physical card's carrier image.
         carrier_image_file_id:,
+        # A phone number the user can contact to receive support for their card.
         contact_phone:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the Card Dispute was created.
         created_at:,
+        # The creator of this Physical Card Profile.
         creator:,
+        # A description you can use to identify the Physical Card Profile.
         description:,
+        # The identifier of the File containing the physical card's front image.
         front_image_file_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # Whether this Physical Card Profile is the default for all cards in its Increase
+        # group.
         is_default:,
+        # The identifier for the Program this Physical Card Profile belongs to.
         program_id:,
+        # The status of the Physical Card Profile.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `physical_card_profile`.
         type:
       ); end
       sig do

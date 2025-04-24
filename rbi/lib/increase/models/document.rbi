@@ -42,8 +42,22 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:); end
-
+      def self.new(
+        # The Document identifier.
+        id:,
+        # The type of document.
+        category:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+        # Document was created.
+        created_at:,
+        # The identifier of the Entity the document was generated for.
+        entity_id:,
+        # The identifier of the File containing the Document's contents.
+        file_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `document`.
+        type:
+      ); end
       sig do
         override
           .returns(

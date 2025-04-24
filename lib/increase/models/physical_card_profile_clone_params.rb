@@ -39,11 +39,20 @@ module Increase
       optional :front_text, -> { Increase::Models::PhysicalCardProfileCloneParams::FrontText }
 
       # @!method initialize(carrier_image_file_id: nil, contact_phone: nil, description: nil, front_image_file_id: nil, front_text: nil, request_options: {})
-      #   @param carrier_image_file_id [String]
-      #   @param contact_phone [String]
-      #   @param description [String]
-      #   @param front_image_file_id [String]
-      #   @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::PhysicalCardProfileCloneParams} for more details.
+      #
+      #   @param carrier_image_file_id [String] The identifier of the File containing the physical card's carrier image.
+      #
+      #   @param contact_phone [String] A phone number the user can contact to receive support for their card.
+      #
+      #   @param description [String] A description you can use to identify the Card Profile.
+      #
+      #   @param front_image_file_id [String] The identifier of the File containing the physical card's front image.
+      #
+      #   @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText] Text printed on the front of the card. Reach out to [support@increase.com](mailt
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class FrontText < Increase::Internal::Type::BaseModel
@@ -62,11 +71,16 @@ module Increase
         optional :line2, String
 
         # @!method initialize(line1:, line2: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::PhysicalCardProfileCloneParams::FrontText} for more details.
+        #
         #   Text printed on the front of the card. Reach out to
         #   [support@increase.com](mailto:support@increase.com) for more information.
         #
-        #   @param line1 [String]
-        #   @param line2 [String]
+        #   @param line1 [String] The first line of text on the front of the card.
+        #
+        #   @param line2 [String] The second line of text on the front of the card. Providing a second line moves
+        #   ...
       end
     end
   end

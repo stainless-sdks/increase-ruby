@@ -39,11 +39,20 @@ module Increase
       optional :funding, enum: -> { Increase::Models::ExternalAccountCreateParams::Funding }
 
       # @!method initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
-      #   @param account_number [String]
-      #   @param description [String]
-      #   @param routing_number [String]
-      #   @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
-      #   @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::ExternalAccountCreateParams} for more details.
+      #
+      #   @param account_number [String] The account number for the destination account.
+      #
+      #   @param description [String] The name you choose for the Account.
+      #
+      #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
+      #   ...
+      #
+      #   @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder] The type of entity that owns the External Account.
+      #
+      #   @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding] The type of the destination account. Defaults to `checking`.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The type of entity that owns the External Account.

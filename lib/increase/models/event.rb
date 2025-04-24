@@ -43,17 +43,27 @@ module Increase
       required :type, enum: -> { Increase::Models::Event::Type }
 
       # @!method initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
+      #   Some parameter documentations has been truncated, see {Increase::Models::Event}
+      #   for more details.
+      #
       #   Events are records of things that happened to objects at Increase. Events are
       #   accessible via the List Events endpoint and can be delivered to your application
       #   via webhooks. For more information, see our
       #   [webhooks guide](https://increase.com/documentation/webhooks).
       #
-      #   @param id [String]
-      #   @param associated_object_id [String]
-      #   @param associated_object_type [String]
-      #   @param category [Symbol, Increase::Models::Event::Category]
-      #   @param created_at [Time]
-      #   @param type [Symbol, Increase::Models::Event::Type]
+      #   @param id [String] The Event identifier.
+      #
+      #   @param associated_object_id [String] The identifier of the object that generated this Event.
+      #
+      #   @param associated_object_type [String] The type of the object that generated this Event.
+      #
+      #   @param category [Symbol, Increase::Models::Event::Category] The category of the Event. We may add additional possible values for this enum o
+      #   ...
+      #
+      #   @param created_at [Time] The time the Event was created.
+      #
+      #   @param type [Symbol, Increase::Models::Event::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The category of the Event. We may add additional possible values for this enum
       # over time; your application should be able to handle such additions gracefully.

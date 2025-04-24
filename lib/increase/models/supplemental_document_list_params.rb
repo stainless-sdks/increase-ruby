@@ -36,10 +36,19 @@ module Increase
       optional :limit, Integer
 
       # @!method initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
-      #   @param entity_id [String]
-      #   @param cursor [String]
-      #   @param idempotency_key [String]
-      #   @param limit [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::SupplementalDocumentListParams} for more details.
+      #
+      #   @param entity_id [String] The identifier of the Entity to list supplemental documents for.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      #   ...
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

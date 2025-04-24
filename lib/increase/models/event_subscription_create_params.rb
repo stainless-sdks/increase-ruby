@@ -36,10 +36,20 @@ module Increase
       optional :shared_secret, String
 
       # @!method initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
-      #   @param url [String]
-      #   @param oauth_connection_id [String]
-      #   @param selected_event_category [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
-      #   @param shared_secret [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::EventSubscriptionCreateParams} for more details.
+      #
+      #   @param url [String] The URL you'd like us to send webhooks to.
+      #
+      #   @param oauth_connection_id [String] If specified, this subscription will only receive webhooks for Events associated
+      #   ...
+      #
+      #   @param selected_event_category [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory] If specified, this subscription will only receive webhooks for Events with the s
+      #   ...
+      #
+      #   @param shared_secret [String] The key that will be used to sign webhooks. If no value is passed, a random stri
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # If specified, this subscription will only receive webhooks for Events with the

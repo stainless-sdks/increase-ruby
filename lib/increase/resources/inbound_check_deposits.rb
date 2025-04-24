@@ -7,7 +7,8 @@ module Increase
       #
       # @overload retrieve(inbound_check_deposit_id, request_options: {})
       #
-      # @param inbound_check_deposit_id [String]
+      # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to get details for.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundCheckDeposit]
@@ -22,15 +23,25 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::InboundCheckDepositListParams} for more details.
+      #
       # List Inbound Check Deposits
       #
       # @overload list(account_id: nil, check_transfer_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       #
-      # @param account_id [String]
-      # @param check_transfer_id [String]
+      # @param account_id [String] Filter Inbound Check Deposits to those belonging to the specified Account.
+      #
+      # @param check_transfer_id [String] Filter Inbound Check Deposits to those belonging to the specified Check Transfer
+      # ...
+      #
       # @param created_at [Increase::Models::InboundCheckDepositListParams::CreatedAt]
-      # @param cursor [String]
-      # @param limit [Integer]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::InboundCheckDeposit>]
@@ -52,7 +63,8 @@ module Increase
       #
       # @overload decline(inbound_check_deposit_id, request_options: {})
       #
-      # @param inbound_check_deposit_id [String]
+      # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to decline.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundCheckDeposit]
@@ -71,8 +83,10 @@ module Increase
       #
       # @overload return_(inbound_check_deposit_id, reason:, request_options: {})
       #
-      # @param inbound_check_deposit_id [String]
-      # @param reason [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason]
+      # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to return.
+      #
+      # @param reason [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason] The reason to return the Inbound Check Deposit.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::InboundCheckDeposit]

@@ -34,8 +34,17 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(decline_reason:, digital_wallet_token_id:, type:); end
-
+        def self.new(
+          # If the simulated tokenization attempt was declined, this field contains details
+          # as to why.
+          decline_reason:,
+          # If the simulated tokenization attempt was accepted, this field contains the id
+          # of the Digital Wallet Token that was created.
+          digital_wallet_token_id:,
+          # A constant representing the object's type. For this resource it will always be
+          # `inbound_digital_wallet_token_request_simulation_result`.
+          type:
+        ); end
         sig do
           override
             .returns(

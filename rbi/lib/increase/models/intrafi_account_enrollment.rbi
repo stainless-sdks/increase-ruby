@@ -56,8 +56,28 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:); end
-
+      def self.new(
+        # The identifier of this enrollment at IntraFi.
+        id:,
+        # The identifier of the Increase Account being swept into the network.
+        account_id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the enrollment was created.
+        created_at:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key:,
+        # The identifier of the account in IntraFi's system. This identifier will be
+        # printed on any IntraFi statements or documents.
+        intrafi_id:,
+        # The status of the account in the network. An account takes about one business
+        # day to go from `pending_enrolling` to `enrolled`.
+        status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `intrafi_account_enrollment`.
+        type:
+      ); end
       sig do
         override
           .returns(

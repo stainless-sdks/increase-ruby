@@ -33,10 +33,18 @@ module Increase
       optional :physical_card_profile_id, String
 
       # @!method initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
-      #   @param card_id [String]
-      #   @param cardholder [Increase::Models::PhysicalCardCreateParams::Cardholder]
-      #   @param shipment [Increase::Models::PhysicalCardCreateParams::Shipment]
-      #   @param physical_card_profile_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::PhysicalCardCreateParams} for more details.
+      #
+      #   @param card_id [String] The underlying card representing this physical card.
+      #
+      #   @param cardholder [Increase::Models::PhysicalCardCreateParams::Cardholder] Details about the cardholder, as it will appear on the physical card.
+      #
+      #   @param shipment [Increase::Models::PhysicalCardCreateParams::Shipment] The details used to ship this physical card.
+      #
+      #   @param physical_card_profile_id [String] The physical card profile to use for this physical card. The latest default phys
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Cardholder < Increase::Internal::Type::BaseModel
@@ -55,8 +63,9 @@ module Increase
         # @!method initialize(first_name:, last_name:)
         #   Details about the cardholder, as it will appear on the physical card.
         #
-        #   @param first_name [String]
-        #   @param last_name [String]
+        #   @param first_name [String] The cardholder's first name.
+        #
+        #   @param last_name [String] The cardholder's last name.
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
@@ -77,8 +86,9 @@ module Increase
         # @!method initialize(address:, method_:)
         #   The details used to ship this physical card.
         #
-        #   @param address [Increase::Models::PhysicalCardCreateParams::Shipment::Address]
-        #   @param method_ [Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method]
+        #   @param address [Increase::Models::PhysicalCardCreateParams::Shipment::Address] The address to where the card should be shipped.
+        #
+        #   @param method_ [Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method] The shipping method to use.
 
         # @see Increase::Models::PhysicalCardCreateParams::Shipment#address
         class Address < Increase::Internal::Type::BaseModel
@@ -133,14 +143,21 @@ module Increase
           # @!method initialize(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil)
           #   The address to where the card should be shipped.
           #
-          #   @param city [String]
-          #   @param line1 [String]
-          #   @param name [String]
-          #   @param postal_code [String]
-          #   @param state [String]
-          #   @param line2 [String]
-          #   @param line3 [String]
-          #   @param phone_number [String]
+          #   @param city [String] The city of the shipping address.
+          #
+          #   @param line1 [String] The first line of the shipping address.
+          #
+          #   @param name [String] The name of the recipient.
+          #
+          #   @param postal_code [String] The postal code of the shipping address.
+          #
+          #   @param state [String] The US state of the shipping address.
+          #
+          #   @param line2 [String] The second line of the shipping address.
+          #
+          #   @param line3 [String] The third line of the shipping address.
+          #
+          #   @param phone_number [String] The phone number of the recipient.
         end
 
         # The shipping method to use.

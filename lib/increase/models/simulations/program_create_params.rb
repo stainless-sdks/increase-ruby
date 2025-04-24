@@ -15,7 +15,8 @@ module Increase
         required :name, String
 
         # @!method initialize(name:, request_options: {})
-        #   @param name [String]
+        #   @param name [String] The name of the program being added.
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

@@ -34,8 +34,19 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(disputed_transaction_id:, explanation:, amount: nil, request_options: {}); end
-
+      def self.new(
+        # The Transaction you wish to dispute. This Transaction must have a `source_type`
+        # of `card_settlement`.
+        disputed_transaction_id:,
+        # Why you are disputing this Transaction.
+        explanation:,
+        # The monetary amount of the part of the transaction that is being disputed. This
+        # is optional and will default to the full amount of the transaction if not
+        # provided. If provided, the amount must be less than or equal to the amount of
+        # the transaction.
+        amount: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

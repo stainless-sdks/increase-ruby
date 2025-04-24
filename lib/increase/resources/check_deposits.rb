@@ -3,15 +3,24 @@
 module Increase
   module Resources
     class CheckDeposits
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::CheckDepositCreateParams} for more details.
+      #
       # Create a Check Deposit
       #
       # @overload create(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
       #
-      # @param account_id [String]
-      # @param amount [Integer]
-      # @param back_image_file_id [String]
-      # @param front_image_file_id [String]
-      # @param description [String]
+      # @param account_id [String] The identifier for the Account to deposit the check in.
+      #
+      # @param amount [Integer] The deposit amount in USD cents.
+      #
+      # @param back_image_file_id [String] The File containing the check's back image.
+      #
+      # @param front_image_file_id [String] The File containing the check's front image.
+      #
+      # @param description [String] The description you choose to give the Check Deposit, for display purposes only.
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::CheckDeposit]
@@ -32,7 +41,8 @@ module Increase
       #
       # @overload retrieve(check_deposit_id, request_options: {})
       #
-      # @param check_deposit_id [String]
+      # @param check_deposit_id [String] The identifier of the Check Deposit to retrieve.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::CheckDeposit]
@@ -47,15 +57,25 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::CheckDepositListParams} for more details.
+      #
       # List Check Deposits
       #
       # @overload list(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      # @param account_id [String]
+      # @param account_id [String] Filter Check Deposits to those belonging to the specified Account.
+      #
       # @param created_at [Increase::Models::CheckDepositListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::CheckDeposit>]

@@ -26,9 +26,12 @@ module Increase
       optional :status, enum: -> { Increase::Models::LockboxUpdateParams::Status }
 
       # @!method initialize(description: nil, recipient_name: nil, status: nil, request_options: {})
-      #   @param description [String]
-      #   @param recipient_name [String]
-      #   @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
+      #   @param description [String] The description you choose for the Lockbox.
+      #
+      #   @param recipient_name [String] The recipient name you choose for the Lockbox.
+      #
+      #   @param status [Symbol, Increase::Models::LockboxUpdateParams::Status] This indicates if checks can be sent to the Lockbox.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # This indicates if checks can be sent to the Lockbox.

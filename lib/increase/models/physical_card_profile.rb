@@ -88,23 +88,42 @@ module Increase
       required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
 
       # @!method initialize(id:, back_image_file_id:, carrier_image_file_id:, contact_phone:, created_at:, creator:, description:, front_image_file_id:, idempotency_key:, is_default:, program_id:, status:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::PhysicalCardProfile} for more details.
+      #
       #   This contains artwork and metadata relating to a Physical Card's appearance. For
       #   more information, see our guide on
       #   [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
       #
-      #   @param id [String]
-      #   @param back_image_file_id [String, nil]
-      #   @param carrier_image_file_id [String, nil]
-      #   @param contact_phone [String, nil]
-      #   @param created_at [Time]
-      #   @param creator [Symbol, Increase::Models::PhysicalCardProfile::Creator]
-      #   @param description [String]
-      #   @param front_image_file_id [String, nil]
-      #   @param idempotency_key [String, nil]
-      #   @param is_default [Boolean]
-      #   @param program_id [String]
-      #   @param status [Symbol, Increase::Models::PhysicalCardProfile::Status]
-      #   @param type [Symbol, Increase::Models::PhysicalCardProfile::Type]
+      #   @param id [String] The Card Profile identifier.
+      #
+      #   @param back_image_file_id [String, nil] The identifier of the File containing the physical card's back image.
+      #
+      #   @param carrier_image_file_id [String, nil] The identifier of the File containing the physical card's carrier image.
+      #
+      #   @param contact_phone [String, nil] A phone number the user can contact to receive support for their card.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param creator [Symbol, Increase::Models::PhysicalCardProfile::Creator] The creator of this Physical Card Profile.
+      #
+      #   @param description [String] A description you can use to identify the Physical Card Profile.
+      #
+      #   @param front_image_file_id [String, nil] The identifier of the File containing the physical card's front image.
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param is_default [Boolean] Whether this Physical Card Profile is the default for all cards in its Increase
+      #   ...
+      #
+      #   @param program_id [String] The identifier for the Program this Physical Card Profile belongs to.
+      #
+      #   @param status [Symbol, Increase::Models::PhysicalCardProfile::Status] The status of the Physical Card Profile.
+      #
+      #   @param type [Symbol, Increase::Models::PhysicalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The creator of this Physical Card Profile.
       #

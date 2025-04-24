@@ -38,11 +38,16 @@ module Increase
       required :program_id, String
 
       # @!method initialize(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, program_id:, request_options: {})
-      #   @param carrier_image_file_id [String]
-      #   @param contact_phone [String]
-      #   @param description [String]
-      #   @param front_image_file_id [String]
-      #   @param program_id [String]
+      #   @param carrier_image_file_id [String] The identifier of the File containing the physical card's carrier image.
+      #
+      #   @param contact_phone [String] A phone number the user can contact to receive support for their card.
+      #
+      #   @param description [String] A description you can use to identify the Card Profile.
+      #
+      #   @param front_image_file_id [String] The identifier of the File containing the physical card's front image.
+      #
+      #   @param program_id [String] The identifier for the Program that this Physical Card Profile falls under.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

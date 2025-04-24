@@ -20,8 +20,10 @@ module Increase
       optional :updated_routing_number, String
 
       # @!method initialize(updated_account_number: nil, updated_routing_number: nil, request_options: {})
-      #   @param updated_account_number [String]
-      #   @param updated_routing_number [String]
+      #   @param updated_account_number [String] The updated account number to send in the notification of change.
+      #
+      #   @param updated_routing_number [String] The updated routing number to send in the notification of change.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

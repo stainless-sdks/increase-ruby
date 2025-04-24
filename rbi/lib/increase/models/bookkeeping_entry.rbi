@@ -43,8 +43,22 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:); end
-
+      def self.new(
+        # The entry identifier.
+        id:,
+        # The identifier for the Account the Entry belongs to.
+        account_id:,
+        # The Entry amount in the minor unit of its currency. For dollars, for example,
+        # this is cents.
+        amount:,
+        # When the entry set was created.
+        created_at:,
+        # The identifier for the Account the Entry belongs to.
+        entry_set_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `bookkeeping_entry`.
+        type:
+      ); end
       sig do
         override
           .returns(

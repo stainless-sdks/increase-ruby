@@ -38,10 +38,15 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The identifier of the File containing the physical card's carrier image.
         carrier_image_file_id:,
+        # A phone number the user can contact to receive support for their card.
         contact_phone:,
+        # A description you can use to identify the Card Profile.
         description:,
+        # The identifier of the File containing the physical card's front image.
         front_image_file_id:,
+        # The identifier for the Program that this Physical Card Profile falls under.
         program_id:,
         request_options: {}
       ); end

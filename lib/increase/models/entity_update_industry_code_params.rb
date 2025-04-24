@@ -17,7 +17,12 @@ module Increase
       required :industry_code, String
 
       # @!method initialize(industry_code:, request_options: {})
-      #   @param industry_code [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::EntityUpdateIndustryCodeParams} for more details.
+      #
+      #   @param industry_code [String] The North American Industry Classification System (NAICS) code for the corporati
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

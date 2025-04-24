@@ -39,8 +39,20 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:); end
-
+      def self.new(
+        # The Group identifier.
+        id:,
+        # If the Group is allowed to create ACH debits.
+        ach_debit_status:,
+        # If the Group is activated or not.
+        activation_status:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
+        # was created.
+        created_at:,
+        # A constant representing the object's type. For this resource it will always be
+        # `group`.
+        type:
+      ); end
       sig do
         override
           .returns(

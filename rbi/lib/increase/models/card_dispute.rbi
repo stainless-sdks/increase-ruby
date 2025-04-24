@@ -99,17 +99,37 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Card Dispute identifier.
         id:,
+        # If the Card Dispute's status is `accepted`, this will contain details of the
+        # successful dispute.
         acceptance:,
+        # The amount of the dispute, if provided, or the transaction amount otherwise.
         amount:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the Card Dispute was created.
         created_at:,
+        # The identifier of the Transaction that was disputed.
         disputed_transaction_id:,
+        # Why you disputed the Transaction in question.
         explanation:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # If the Card Dispute's status is `lost`, this will contain details of the lost
+        # dispute.
         loss:,
+        # If the Card Dispute's status is `rejected`, this will contain details of the
+        # unsuccessful dispute.
         rejection:,
+        # The results of the Dispute investigation.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `card_dispute`.
         type:,
+        # If the Card Dispute's status is `won`, this will contain details of the won
+        # dispute.
         win:
       ); end
       sig do
@@ -153,8 +173,16 @@ module Increase
         sig do
           params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class)
         end
-        def self.new(accepted_at:, card_dispute_id:, transaction_id:); end
-
+        def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Card Dispute was accepted.
+          accepted_at:,
+          # The identifier of the Card Dispute that was accepted.
+          card_dispute_id:,
+          # The identifier of the Transaction that was created to return the disputed funds
+          # to your account.
+          transaction_id:
+        ); end
         sig { override.returns({accepted_at: Time, card_dispute_id: String, transaction_id: String}) }
         def to_hash; end
       end
@@ -184,8 +212,18 @@ module Increase
           params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
             .returns(T.attached_class)
         end
-        def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:); end
-
+        def self.new(
+          # The identifier of the Card Dispute that was lost.
+          card_dispute_id:,
+          # Why the Card Dispute was lost.
+          explanation:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Card Dispute was lost.
+          lost_at:,
+          # The identifier of the Transaction that was created to debit the disputed funds
+          # from your account.
+          transaction_id:
+        ); end
         sig do
           override.returns(
             {
@@ -218,8 +256,15 @@ module Increase
         sig do
           params(card_dispute_id: String, explanation: String, rejected_at: Time).returns(T.attached_class)
         end
-        def self.new(card_dispute_id:, explanation:, rejected_at:); end
-
+        def self.new(
+          # The identifier of the Card Dispute that was rejected.
+          card_dispute_id:,
+          # Why the Card Dispute was rejected.
+          explanation:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Card Dispute was rejected.
+          rejected_at:
+        ); end
         sig { override.returns({card_dispute_id: String, explanation: String, rejected_at: Time}) }
         def to_hash; end
       end
@@ -281,8 +326,13 @@ module Increase
         # If the Card Dispute's status is `won`, this will contain details of the won
         # dispute.
         sig { params(card_dispute_id: String, won_at: Time).returns(T.attached_class) }
-        def self.new(card_dispute_id:, won_at:); end
-
+        def self.new(
+          # The identifier of the Card Dispute that was won.
+          card_dispute_id:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Card Dispute was won.
+          won_at:
+        ); end
         sig { override.returns({card_dispute_id: String, won_at: Time}) }
         def to_hash; end
       end

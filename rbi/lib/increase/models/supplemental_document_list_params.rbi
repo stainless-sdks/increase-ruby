@@ -45,8 +45,21 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}); end
-
+      def self.new(
+        # The identifier of the Entity to list supplemental documents for.
+        entity_id:,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Filter records to the one with the specified `idempotency_key` you chose for
+        # that object. This value is unique across Increase and is used to ensure that a
+        # request is only processed once. Learn more about
+        # [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        # objects.
+        limit: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

@@ -45,15 +45,19 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The account number for the destination account.
         account_number:,
+        # The name you choose for the Account.
         description:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+        # destination account.
         routing_number:,
+        # The type of entity that owns the External Account.
         account_holder: nil,
+        # The type of the destination account. Defaults to `checking`.
         funding: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

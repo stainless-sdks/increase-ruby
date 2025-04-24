@@ -75,20 +75,36 @@ module Increase
       required :verification_status, enum: -> { Increase::Models::ExternalAccount::VerificationStatus }
 
       # @!method initialize(id:, account_holder:, account_number:, created_at:, description:, funding:, idempotency_key:, routing_number:, status:, type:, verification_status:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::ExternalAccount} for more details.
+      #
       #   External Accounts represent accounts at financial institutions other than
       #   Increase. You can use this API to store their details for reuse.
       #
-      #   @param id [String]
-      #   @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder]
-      #   @param account_number [String]
-      #   @param created_at [Time]
-      #   @param description [String]
-      #   @param funding [Symbol, Increase::Models::ExternalAccount::Funding]
-      #   @param idempotency_key [String, nil]
-      #   @param routing_number [String]
-      #   @param status [Symbol, Increase::Models::ExternalAccount::Status]
-      #   @param type [Symbol, Increase::Models::ExternalAccount::Type]
-      #   @param verification_status [Symbol, Increase::Models::ExternalAccount::VerificationStatus]
+      #   @param id [String] The External Account's identifier.
+      #
+      #   @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder] The type of entity that owns the External Account.
+      #
+      #   @param account_number [String] The destination account number.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param description [String] The External Account's description for display purposes.
+      #
+      #   @param funding [Symbol, Increase::Models::ExternalAccount::Funding] The type of the account to which the transfer will be sent.
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #
+      #   @param status [Symbol, Increase::Models::ExternalAccount::Status] The External Account's status.
+      #
+      #   @param type [Symbol, Increase::Models::ExternalAccount::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
+      #
+      #   @param verification_status [Symbol, Increase::Models::ExternalAccount::VerificationStatus] If you have verified ownership of the External Account.
 
       # The type of entity that owns the External Account.
       #

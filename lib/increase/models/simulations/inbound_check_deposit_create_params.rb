@@ -27,9 +27,12 @@ module Increase
         required :check_number, String
 
         # @!method initialize(account_number_id:, amount:, check_number:, request_options: {})
-        #   @param account_number_id [String]
-        #   @param amount [Integer]
-        #   @param check_number [String]
+        #   @param account_number_id [String] The identifier of the Account Number the Inbound Check Deposit will be against.
+        #
+        #   @param amount [Integer] The check amount in cents.
+        #
+        #   @param check_number [String] The check number on the check to be deposited.
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

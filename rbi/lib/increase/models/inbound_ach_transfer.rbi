@@ -203,32 +203,68 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The inbound ACH transfer's identifier.
         id:,
+        # If your transfer is accepted, this will contain details of the acceptance.
         acceptance:,
+        # The Account to which the transfer belongs.
         account_id:,
+        # The identifier of the Account Number to which this transfer was sent.
         account_number_id:,
+        # Additional information sent from the originator.
         addenda:,
+        # The transfer amount in USD cents.
         amount:,
+        # The time at which the transfer will be automatically resolved.
         automatically_resolves_at:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the inbound ACH transfer was created.
         created_at:,
+        # If your transfer is declined, this will contain details of the decline.
         decline:,
+        # The direction of the transfer.
         direction:,
+        # The effective date of the transfer. This is sent by the sending bank and is a
+        # factor in determining funds availability.
         effective_date:,
+        # The settlement schedule the transfer is expected to follow.
         expected_settlement_schedule:,
+        # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
+        # contain fields pertaining to the International ACH Transaction.
         international_addenda:,
+        # If you initiate a notification of change in response to the transfer, this will
+        # contain its details.
         notification_of_change:,
+        # The descriptive date of the transfer.
         originator_company_descriptive_date:,
+        # The additional information included with the transfer.
         originator_company_discretionary_data:,
+        # The description of the transfer.
         originator_company_entry_description:,
+        # The id of the company that initiated the transfer.
         originator_company_id:,
+        # The name of the company that initiated the transfer.
         originator_company_name:,
+        # The American Banking Association (ABA) routing number of the bank originating
+        # the transfer.
         originator_routing_number:,
+        # The id of the receiver of the transfer.
         receiver_id_number:,
+        # The name of the receiver of the transfer.
         receiver_name:,
+        # The Standard Entry Class (SEC) code of the transfer.
         standard_entry_class_code:,
+        # The status of the transfer.
         status:,
+        # A 15 digit number set by the sending bank and transmitted to the receiving bank.
+        # Along with the amount, date, and originating routing number, this can be used to
+        # identify the ACH transfer. ACH trace numbers are not unique, but are
+        # [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
         trace_number:,
+        # If your transfer is returned, this will contain details of the return.
         transfer_return:,
+        # A constant representing the object's type. For this resource it will always be
+        # `inbound_ach_transfer`.
         type:
       ); end
       sig do
@@ -278,8 +314,12 @@ module Increase
 
         # If your transfer is accepted, this will contain details of the acceptance.
         sig { params(accepted_at: Time, transaction_id: String).returns(T.attached_class) }
-        def self.new(accepted_at:, transaction_id:); end
-
+        def self.new(
+          # The time at which the transfer was accepted.
+          accepted_at:,
+          # The id of the transaction for the accepted transfer.
+          transaction_id:
+        ); end
         sig { override.returns({accepted_at: Time, transaction_id: String}) }
         def to_hash; end
       end
@@ -309,8 +349,12 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(category:, freeform:); end
-
+        def self.new(
+          # The type of addendum.
+          category:,
+          # Unstructured `payment_related_information` passed through by the originator.
+          freeform:
+        ); end
         sig do
           override
             .returns(
@@ -348,8 +392,10 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(entries:); end
-
+          def self.new(
+            # Each entry represents an addendum received from the originator.
+            entries:
+          ); end
           sig { override.returns({entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]}) }
           def to_hash; end
 
@@ -359,8 +405,10 @@ module Increase
             attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:); end
-
+            def self.new(
+              # The payment related information passed in the addendum.
+              payment_related_information:
+            ); end
             sig { override.returns({payment_related_information: String}) }
             def to_hash; end
           end
@@ -389,8 +437,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(declined_at:, declined_transaction_id:, reason:); end
-
+        def self.new(
+          # The time at which the transfer was declined.
+          declined_at:,
+          # The id of the transaction for the declined transfer.
+          declined_transaction_id:,
+          # The reason for the transfer decline.
+          reason:
+        ); end
         sig do
           override
             .returns(
@@ -751,38 +805,91 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+          # country code of the destination country.
           destination_country_code:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+          # destination bank account.
           destination_currency_code:,
+          # A description of how the foreign exchange rate was calculated.
           foreign_exchange_indicator:,
+          # Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
+          # reference to a well-known rate.
           foreign_exchange_reference:,
+          # An instruction of how to interpret the `foreign_exchange_reference` field for
+          # this Transaction.
           foreign_exchange_reference_indicator:,
+          # The amount in the minor unit of the foreign payment currency. For dollars, for
+          # example, this is cents.
           foreign_payment_amount:,
+          # A reference number in the foreign banking infrastructure.
           foreign_trace_number:,
+          # The type of transfer. Set by the originator.
           international_transaction_type_code:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+          # originating bank account.
           originating_currency_code:,
+          # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+          # country code of the originating branch country.
           originating_depository_financial_institution_branch_country:,
+          # An identifier for the originating bank. One of an International Bank Account
+          # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+          # domestic identifier like a US Routing Number.
           originating_depository_financial_institution_id:,
+          # An instruction of how to interpret the
+          # `originating_depository_financial_institution_id` field for this Transaction.
           originating_depository_financial_institution_id_qualifier:,
+          # The name of the originating bank. Sometimes this will refer to an American bank
+          # and obscure the correspondent foreign bank.
           originating_depository_financial_institution_name:,
+          # A portion of the originator address. This may be incomplete.
           originator_city:,
+          # A portion of the originator address. The
+          # [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+          # code of the originator country.
           originator_country:,
+          # An identifier for the originating company. This is generally stable across
+          # multiple ACH transfers.
           originator_identification:,
+          # Either the name of the originator or an intermediary money transmitter.
           originator_name:,
+          # A portion of the originator address. This may be incomplete.
           originator_postal_code:,
+          # A portion of the originator address. This may be incomplete.
           originator_state_or_province:,
+          # A portion of the originator address. This may be incomplete.
           originator_street_address:,
+          # A description field set by the originator.
           payment_related_information:,
+          # A description field set by the originator.
           payment_related_information2:,
+          # A portion of the receiver address. This may be incomplete.
           receiver_city:,
+          # A portion of the receiver address. The
+          # [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+          # code of the receiver country.
           receiver_country:,
+          # An identification number the originator uses for the receiver.
           receiver_identification_number:,
+          # A portion of the receiver address. This may be incomplete.
           receiver_postal_code:,
+          # A portion of the receiver address. This may be incomplete.
           receiver_state_or_province:,
+          # A portion of the receiver address. This may be incomplete.
           receiver_street_address:,
+          # The name of the receiver of the transfer. This is not verified by Increase.
           receiving_company_or_individual_name:,
+          # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+          # country code of the receiving bank country.
           receiving_depository_financial_institution_country:,
+          # An identifier for the receiving bank. One of an International Bank Account
+          # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+          # domestic identifier like a US Routing Number.
           receiving_depository_financial_institution_id:,
+          # An instruction of how to interpret the
+          # `receiving_depository_financial_institution_id` field for this Transaction.
           receiving_depository_financial_institution_id_qualifier:,
+          # The name of the receiving bank, as set by the sending financial institution.
           receiving_depository_financial_institution_name:
         ); end
         sig do
@@ -1169,8 +1276,12 @@ module Increase
           params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String))
             .returns(T.attached_class)
         end
-        def self.new(updated_account_number:, updated_routing_number:); end
-
+        def self.new(
+          # The new account number provided in the notification of change.
+          updated_account_number:,
+          # The new account number provided in the notification of change.
+          updated_routing_number:
+        ); end
         sig do
           override.returns(
             {
@@ -1318,8 +1429,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(reason:, returned_at:, transaction_id:); end
-
+        def self.new(
+          # The reason for the transfer return.
+          reason:,
+          # The time at which the transfer was returned.
+          returned_at:,
+          # The id of the transaction for the returned transfer.
+          transaction_id:
+        ); end
         sig do
           override
             .returns(

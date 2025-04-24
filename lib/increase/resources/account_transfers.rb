@@ -3,15 +3,24 @@
 module Increase
   module Resources
     class AccountTransfers
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::AccountTransferCreateParams} for more details.
+      #
       # Create an Account Transfer
       #
       # @overload create(account_id:, amount:, description:, destination_account_id:, require_approval: nil, request_options: {})
       #
-      # @param account_id [String]
-      # @param amount [Integer]
-      # @param description [String]
-      # @param destination_account_id [String]
-      # @param require_approval [Boolean]
+      # @param account_id [String] The identifier for the account that will send the transfer.
+      #
+      # @param amount [Integer] The transfer amount in the minor unit of the account currency. For dollars, for
+      # ...
+      #
+      # @param description [String] The description you choose to give the transfer.
+      #
+      # @param destination_account_id [String] The identifier for the account that will receive the transfer.
+      #
+      # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::AccountTransfer]
@@ -32,7 +41,8 @@ module Increase
       #
       # @overload retrieve(account_transfer_id, request_options: {})
       #
-      # @param account_transfer_id [String]
+      # @param account_transfer_id [String] The identifier of the Account Transfer.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::AccountTransfer]
@@ -47,15 +57,25 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::AccountTransferListParams} for more details.
+      #
       # List Account Transfers
       #
       # @overload list(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      # @param account_id [String]
+      # @param account_id [String] Filter Account Transfers to those that originated from the specified Account.
+      #
       # @param created_at [Increase::Models::AccountTransferListParams::CreatedAt]
-      # @param cursor [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
+      #
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::AccountTransfer>]
@@ -77,7 +97,8 @@ module Increase
       #
       # @overload approve(account_transfer_id, request_options: {})
       #
-      # @param account_transfer_id [String]
+      # @param account_transfer_id [String] The identifier of the Account Transfer to approve.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::AccountTransfer]
@@ -96,7 +117,8 @@ module Increase
       #
       # @overload cancel(account_transfer_id, request_options: {})
       #
-      # @param account_transfer_id [String]
+      # @param account_transfer_id [String] The identifier of the pending Account Transfer to cancel.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::AccountTransfer]

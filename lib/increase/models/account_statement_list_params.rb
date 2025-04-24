@@ -33,10 +33,18 @@ module Increase
                -> { Increase::Models::AccountStatementListParams::StatementPeriodStart }
 
       # @!method initialize(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param cursor [String]
-      #   @param limit [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::AccountStatementListParams} for more details.
+      #
+      #   @param account_id [String] Filter Account Statements to those belonging to the specified Account.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class StatementPeriodStart < Increase::Internal::Type::BaseModel
@@ -69,10 +77,21 @@ module Increase
         optional :on_or_before, Time
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   @param after [Time]
-        #   @param before [Time]
-        #   @param on_or_after [Time]
-        #   @param on_or_before [Time]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::AccountStatementListParams::StatementPeriodStart} for more
+        #   details.
+        #
+        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
+        #   ...
+        #
+        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
+        #   ...
+        #
+        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
+        #   ...
+        #
+        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
+        #   ...
       end
     end
   end

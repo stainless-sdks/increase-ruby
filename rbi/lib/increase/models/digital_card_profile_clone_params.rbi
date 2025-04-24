@@ -90,14 +90,23 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The identifier of the File containing the card's icon image.
         app_icon_file_id: nil,
+        # The identifier of the File containing the card's front image.
         background_image_file_id: nil,
+        # A user-facing description for the card itself.
         card_description: nil,
+        # An email address the user can contact to receive support for their card.
         contact_email: nil,
+        # A phone number the user can contact to receive support for their card.
         contact_phone: nil,
+        # A website the user can visit to view and receive support for their card.
         contact_website: nil,
+        # A description you can use to identify the Card Profile.
         description: nil,
+        # A user-facing description for whoever is issuing the card.
         issuer_name: nil,
+        # The Card's text color, specified as an RGB triple. The default is white.
         text_color: nil,
         request_options: {}
       ); end
@@ -135,8 +144,14 @@ module Increase
 
         # The Card's text color, specified as an RGB triple. The default is white.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:); end
-
+        def self.new(
+          # The value of the blue channel in the RGB color.
+          blue:,
+          # The value of the green channel in the RGB color.
+          green:,
+          # The value of the red channel in the RGB color.
+          red:
+        ); end
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
         def to_hash; end
       end

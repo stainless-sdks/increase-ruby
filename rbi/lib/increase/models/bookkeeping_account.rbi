@@ -49,8 +49,25 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:); end
-
+      def self.new(
+        # The account identifier.
+        id:,
+        # The API Account associated with this bookkeeping account.
+        account_id:,
+        # The compliance category of the account.
+        compliance_category:,
+        # The Entity associated with this bookkeeping account.
+        entity_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key:,
+        # The name you choose for the account.
+        name:,
+        # A constant representing the object's type. For this resource it will always be
+        # `bookkeeping_account`.
+        type:
+      ); end
       sig do
         override
           .returns(

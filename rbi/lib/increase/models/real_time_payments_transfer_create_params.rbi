@@ -96,16 +96,34 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The transfer amount in USD cents. For Real-Time Payments transfers, must be
+        # positive.
         amount:,
+        # The name of the transfer's recipient.
         creditor_name:,
+        # Unstructured information that will show on the recipient's bank statement.
         remittance_information:,
+        # The identifier of the Account Number from which to send the transfer.
         source_account_number_id:,
+        # The name of the transfer's sender. If not provided, defaults to the name of the
+        # account's entity.
         debtor_name: nil,
+        # The destination account number.
         destination_account_number: nil,
+        # The destination American Bankers' Association (ABA) Routing Transit Number
+        # (RTN).
         destination_routing_number: nil,
+        # The ID of an External Account to initiate a transfer to. If this parameter is
+        # provided, `destination_account_number` and `destination_routing_number` must be
+        # absent.
         external_account_id: nil,
+        # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
+        # The name of the ultimate recipient of the transfer. Set this if the creditor is
+        # an intermediary receiving the payment for someone else.
         ultimate_creditor_name: nil,
+        # The name of the ultimate sender of the transfer. Set this if the funds are being
+        # sent on behalf of someone who is not the account holder at Increase.
         ultimate_debtor_name: nil,
         request_options: {}
       ); end

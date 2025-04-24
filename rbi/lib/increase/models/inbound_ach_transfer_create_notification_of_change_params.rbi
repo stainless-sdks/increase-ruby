@@ -28,8 +28,13 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(updated_account_number: nil, updated_routing_number: nil, request_options: {}); end
-
+      def self.new(
+        # The updated account number to send in the notification of change.
+        updated_account_number: nil,
+        # The updated routing number to send in the notification of change.
+        updated_routing_number: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

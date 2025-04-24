@@ -41,15 +41,18 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The identifier for the Account to deposit the check in.
         account_id:,
+        # The deposit amount in USD cents.
         amount:,
+        # The File containing the check's back image.
         back_image_file_id:,
+        # The File containing the check's front image.
         front_image_file_id:,
+        # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

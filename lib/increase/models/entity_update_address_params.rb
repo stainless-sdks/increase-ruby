@@ -15,7 +15,12 @@ module Increase
       required :address, -> { Increase::Models::EntityUpdateAddressParams::Address }
 
       # @!method initialize(address:, request_options: {})
-      #   @param address [Increase::Models::EntityUpdateAddressParams::Address]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::EntityUpdateAddressParams} for more details.
+      #
+      #   @param address [Increase::Models::EntityUpdateAddressParams::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Address < Increase::Internal::Type::BaseModel
@@ -51,14 +56,22 @@ module Increase
         optional :line2, String
 
         # @!method initialize(city:, line1:, state:, zip:, line2: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::EntityUpdateAddressParams::Address} for more details.
+        #
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         #   are disallowed.
         #
-        #   @param city [String]
-        #   @param line1 [String]
-        #   @param state [String]
-        #   @param zip [String]
-        #   @param line2 [String]
+        #   @param city [String] The city of the address.
+        #
+        #   @param line1 [String] The first line of the address. This is usually the street number and street.
+        #
+        #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
+        #   ...
+        #
+        #   @param zip [String] The ZIP code of the address.
+        #
+        #   @param line2 [String] The second line of the address. This might be the floor or room number.
       end
     end
   end

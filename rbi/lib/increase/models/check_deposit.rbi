@@ -151,23 +151,52 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The deposit's identifier.
         id:,
+        # The Account the check was deposited into.
         account_id:,
+        # The deposited amount in USD cents.
         amount:,
+        # The ID for the File containing the image of the back of the check.
         back_image_file_id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the transfer was created.
         created_at:,
+        # If your deposit is successfully parsed and accepted by Increase, this will
+        # contain details of the parsed check.
         deposit_acceptance:,
+        # If your deposit is rejected by Increase, this will contain details as to why it
+        # was rejected.
         deposit_rejection:,
+        # If your deposit is returned, this will contain details as to why it was
+        # returned.
         deposit_return:,
+        # After the check is parsed, it is submitted to the Check21 network for
+        # processing. This will contain details of the submission.
         deposit_submission:,
+        # The description of the Check Deposit, for display purposes only.
         description:,
+        # The ID for the File containing the image of the front of the check.
         front_image_file_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # Increase will sometimes hold the funds for Check Deposits. If funds are held,
+        # this sub-object will contain details of the hold.
         inbound_funds_hold:,
+        # If the Check Deposit was the result of an Inbound Mail Item, this will contain
+        # the identifier of the Inbound Mail Item.
         inbound_mail_item_id:,
+        # If the Check Deposit was the result of an Inbound Mail Item, this will contain
+        # the identifier of the Lockbox that received it.
         lockbox_id:,
+        # The status of the Check Deposit.
         status:,
+        # The ID for the Transaction created by the deposit.
         transaction_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `check_deposit`.
         type:
       ); end
       sig do
@@ -245,16 +274,25 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The account number printed on the check.
           account_number:,
+          # The amount to be deposited in the minor unit of the transaction's currency. For
+          # dollars, for example, this is cents.
           amount:,
+          # An additional line of metadata printed on the check. This typically includes the
+          # check number for business checks.
           auxiliary_on_us:,
+          # The ID of the Check Deposit that was accepted.
           check_deposit_id:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          # transaction's currency.
           currency:,
+          # The routing number printed on the check.
           routing_number:,
+          # The check serial number, if present, for consumer checks. For business checks,
+          # the serial number is usually in the `auxiliary_on_us` field.
           serial_number:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -344,9 +382,23 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
-        end
-
+        def self.new(
+          # The rejected amount in the minor unit of check's currency. For dollars, for
+          # example, this is cents.
+          amount:,
+          # The identifier of the Check Deposit that was rejected.
+          check_deposit_id:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+          # currency.
+          currency:,
+          # The identifier of the associated declined transaction.
+          declined_transaction_id:,
+          # Why the check deposit was rejected.
+          reason:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the check deposit was rejected.
+          rejected_at:
+        ); end
         sig do
           override
             .returns(
@@ -494,9 +546,24 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
-        end
-
+        def self.new(
+          # The returned amount in USD cents.
+          amount:,
+          # The identifier of the Check Deposit that was returned.
+          check_deposit_id:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          # transaction's currency.
+          currency:,
+          # Why this check was returned by the bank holding the account it was drawn
+          # against.
+          return_reason:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the check deposit was returned.
+          returned_at:,
+          # The identifier of the transaction that reversed the original check deposit
+          # transaction.
+          transaction_id:
+        ); end
         sig do
           override
             .returns(
@@ -697,8 +764,18 @@ module Increase
         sig do
           params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
         end
-        def self.new(back_file_id:, front_file_id:, submitted_at:); end
-
+        def self.new(
+          # The ID for the File containing the check back image that was submitted to the
+          # Check21 network.
+          back_file_id:,
+          # The ID for the File containing the check front image that was submitted to the
+          # Check21 network.
+          front_file_id:,
+          # When the check deposit was submitted to the Check21 network for processing.
+          # During business days, this happens within a few hours of the check being
+          # accepted by Increase.
+          submitted_at:
+        ); end
         sig { override.returns({back_file_id: String, front_file_id: String, submitted_at: Time}) }
         def to_hash; end
       end
@@ -767,15 +844,30 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The Inbound Funds Hold identifier.
           id:,
+          # The held amount in the minor unit of the account's currency. For dollars, for
+          # example, this is cents.
           amount:,
+          # When the hold will be released automatically. Certain conditions may cause it to
+          # be released before this time.
           automatically_releases_at:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+          # was created.
           created_at:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+          # currency.
           currency:,
+          # The ID of the Transaction for which funds were held.
           held_transaction_id:,
+          # The ID of the Pending Transaction representing the held funds.
           pending_transaction_id:,
+          # When the hold was released (if it has been released).
           released_at:,
+          # The status of the hold.
           status:,
+          # A constant representing the object's type. For this resource it will always be
+          # `inbound_funds_hold`.
           type:
         ); end
         sig do
