@@ -43,7 +43,7 @@ module Increase
             value.string
           in Pathname | IO
             state[:can_retry] = false if value.is_a?(IO)
-            Increase::Internal::Util::SerializationAdapter.new(value)
+            Increase::FilePart.new(value)
           else
             value
           end

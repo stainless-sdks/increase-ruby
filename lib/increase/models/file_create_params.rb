@@ -12,8 +12,8 @@ module Increase
       #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
       #   transfers for the multipart/form-data protocol.
       #
-      #   @return [Pathname, StringIO]
-      required :file, Increase::Internal::Type::IOLike
+      #   @return [Pathname, StringIO, IO, Increase::FilePart]
+      required :file, Increase::Internal::Type::FileInput
 
       # @!attribute purpose
       #   What the File will be used for in Increase's systems.
@@ -31,7 +31,7 @@ module Increase
       #   Some parameter documentations has been truncated, see
       #   {Increase::Models::FileCreateParams} for more details.
       #
-      #   @param file [Pathname, StringIO] The file contents. This should follow the specifications of [RFC 7578](https://d
+      #   @param file [Pathname, StringIO, IO, Increase::FilePart] The file contents. This should follow the specifications of [RFC 7578](https://d
       #   ...
       #
       #   @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
