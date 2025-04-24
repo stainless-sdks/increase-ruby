@@ -113,6 +113,7 @@ module Increase
           inbound_wire_transfer_reversal: Increase::Models::PendingTransaction::Source::InboundWireTransferReversal?,
           other: top?,
           real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?,
+          swift_transfer_instruction: Increase::Models::PendingTransaction::Source::SwiftTransferInstruction?,
           wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
         }
 
@@ -137,6 +138,8 @@ module Increase
 
         attr_accessor real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?
 
+        attr_accessor swift_transfer_instruction: Increase::Models::PendingTransaction::Source::SwiftTransferInstruction?
+
         attr_accessor wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
 
         def initialize: (
@@ -150,6 +153,7 @@ module Increase
           inbound_wire_transfer_reversal: Increase::Models::PendingTransaction::Source::InboundWireTransferReversal?,
           other: top?,
           real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?,
+          swift_transfer_instruction: Increase::Models::PendingTransaction::Source::SwiftTransferInstruction?,
           wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
         ) -> void
 
@@ -758,6 +762,7 @@ module Increase
           | :real_time_payments_transfer_instruction
           | :wire_transfer_instruction
           | :inbound_wire_transfer_reversal
+          | :swift_transfer_instruction
           | :other
 
         module Category
@@ -789,6 +794,9 @@ module Increase
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL: :inbound_wire_transfer_reversal
+
+          # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
+          SWIFT_TRANSFER_INSTRUCTION: :swift_transfer_instruction
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
@@ -1025,6 +1033,16 @@ module Increase
           def initialize: (amount: Integer, transfer_id: String) -> void
 
           def to_hash: -> Increase::Models::PendingTransaction::Source::real_time_payments_transfer_instruction
+        end
+
+        type swift_transfer_instruction = { transfer_id: String }
+
+        class SwiftTransferInstruction < Increase::Internal::Type::BaseModel
+          attr_accessor transfer_id: String
+
+          def initialize: (transfer_id: String) -> void
+
+          def to_hash: -> Increase::Models::PendingTransaction::Source::swift_transfer_instruction
         end
 
         type wire_transfer_instruction =

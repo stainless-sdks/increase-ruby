@@ -272,6 +272,15 @@ module Increase
                  -> { Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction },
                  nil?: true
 
+        # @!attribute swift_transfer_instruction
+        #   A Swift Transfer Instruction object. This field will be present in the JSON
+        #   response if and only if `category` is equal to `swift_transfer_instruction`.
+        #
+        #   @return [Increase::Models::PendingTransaction::Source::SwiftTransferInstruction, nil]
+        required :swift_transfer_instruction,
+                 -> { Increase::Models::PendingTransaction::Source::SwiftTransferInstruction },
+                 nil?: true
+
         # @!attribute wire_transfer_instruction
         #   A Wire Transfer Instruction object. This field will be present in the JSON
         #   response if and only if `category` is equal to `wire_transfer_instruction`.
@@ -281,7 +290,7 @@ module Increase
                  -> { Increase::Models::PendingTransaction::Source::WireTransferInstruction },
                  nil?: true
 
-        # @!method initialize(account_transfer_instruction:, ach_transfer_instruction:, card_authorization:, category:, check_deposit_instruction:, check_transfer_instruction:, inbound_funds_hold:, inbound_wire_transfer_reversal:, other:, real_time_payments_transfer_instruction:, wire_transfer_instruction:)
+        # @!method initialize(account_transfer_instruction:, ach_transfer_instruction:, card_authorization:, category:, check_deposit_instruction:, check_transfer_instruction:, inbound_funds_hold:, inbound_wire_transfer_reversal:, other:, real_time_payments_transfer_instruction:, swift_transfer_instruction:, wire_transfer_instruction:)
         #   Some parameter documentations has been truncated, see
         #   {Increase::Models::PendingTransaction::Source} for more details.
         #
@@ -317,6 +326,9 @@ module Increase
         #   ...
         #
         #   @param real_time_payments_transfer_instruction [Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction, nil] A Real-Time Payments Transfer Instruction object. This field will be present in
+        #   ...
+        #
+        #   @param swift_transfer_instruction [Increase::Models::PendingTransaction::Source::SwiftTransferInstruction, nil] A Swift Transfer Instruction object. This field will be present in the JSON resp
         #   ...
         #
         #   @param wire_transfer_instruction [Increase::Models::PendingTransaction::Source::WireTransferInstruction, nil] A Wire Transfer Instruction object. This field will be present in the JSON respo
@@ -1209,6 +1221,9 @@ module Increase
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
 
+          # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
+          SWIFT_TRANSFER_INSTRUCTION = :swift_transfer_instruction
+
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
 
@@ -1576,6 +1591,21 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the Real-Time Payments Transfer that led to this Pending Trans
           #   ...
+        end
+
+        # @see Increase::Models::PendingTransaction::Source#swift_transfer_instruction
+        class SwiftTransferInstruction < Increase::Internal::Type::BaseModel
+          # @!attribute transfer_id
+          #   The identifier of the Swift Transfer that led to this Pending Transaction.
+          #
+          #   @return [String]
+          required :transfer_id, String
+
+          # @!method initialize(transfer_id:)
+          #   A Swift Transfer Instruction object. This field will be present in the JSON
+          #   response if and only if `category` is equal to `swift_transfer_instruction`.
+          #
+          #   @param transfer_id [String] The identifier of the Swift Transfer that led to this Pending Transaction.
         end
 
         # @see Increase::Models::PendingTransaction::Source#wire_transfer_instruction

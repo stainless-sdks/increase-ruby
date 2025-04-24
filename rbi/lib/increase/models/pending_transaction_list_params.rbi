@@ -196,6 +196,13 @@ module Increase
               Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
+          # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
+          SWIFT_TRANSFER_INSTRUCTION =
+            T.let(
+              :swift_transfer_instruction,
+              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+            )
+
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = T.let(:other, Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol)
 
