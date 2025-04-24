@@ -78,22 +78,38 @@ module Increase
       required :type, enum: -> { Increase::Models::RealTimeDecision::Type }
 
       # @!method initialize(id:, card_authentication:, card_authentication_challenge:, card_authorization:, category:, created_at:, digital_wallet_authentication:, digital_wallet_token:, status:, timeout_at:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::RealTimeDecision} for more details.
+      #
       #   Real Time Decisions are created when your application needs to take action in
       #   real-time to some event such as a card authorization. For more information, see
       #   our
       #   [Real-Time Decisions guide](https://increase.com/documentation/real-time-decisions).
       #
-      #   @param id [String]
-      #   @param card_authentication [Increase::Models::RealTimeDecision::CardAuthentication, nil]
-      #   @param card_authentication_challenge [Increase::Models::RealTimeDecision::CardAuthenticationChallenge, nil]
-      #   @param card_authorization [Increase::Models::RealTimeDecision::CardAuthorization, nil]
-      #   @param category [Symbol, Increase::Models::RealTimeDecision::Category]
-      #   @param created_at [Time]
-      #   @param digital_wallet_authentication [Increase::Models::RealTimeDecision::DigitalWalletAuthentication, nil]
-      #   @param digital_wallet_token [Increase::Models::RealTimeDecision::DigitalWalletToken, nil]
-      #   @param status [Symbol, Increase::Models::RealTimeDecision::Status]
-      #   @param timeout_at [Time]
-      #   @param type [Symbol, Increase::Models::RealTimeDecision::Type]
+      #   @param id [String] The Real-Time Decision identifier.
+      #
+      #   @param card_authentication [Increase::Models::RealTimeDecision::CardAuthentication, nil] Fields related to a 3DS authentication attempt.
+      #
+      #   @param card_authentication_challenge [Increase::Models::RealTimeDecision::CardAuthenticationChallenge, nil] Fields related to a 3DS authentication attempt.
+      #
+      #   @param card_authorization [Increase::Models::RealTimeDecision::CardAuthorization, nil] Fields related to a card authorization.
+      #
+      #   @param category [Symbol, Increase::Models::RealTimeDecision::Category] The category of the Real-Time Decision.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
+      #
+      #   @param digital_wallet_authentication [Increase::Models::RealTimeDecision::DigitalWalletAuthentication, nil] Fields related to a digital wallet authentication attempt.
+      #
+      #   @param digital_wallet_token [Increase::Models::RealTimeDecision::DigitalWalletToken, nil] Fields related to a digital wallet token provisioning attempt.
+      #
+      #   @param status [Symbol, Increase::Models::RealTimeDecision::Status] The status of the Real-Time Decision.
+      #
+      #   @param timeout_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which yo
+      #   ...
+      #
+      #   @param type [Symbol, Increase::Models::RealTimeDecision::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # @see Increase::Models::RealTimeDecision#card_authentication
       class CardAuthentication < Increase::Internal::Type::BaseModel
@@ -125,12 +141,19 @@ module Increase
         required :upcoming_card_payment_id, String
 
         # @!method initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::RealTimeDecision::CardAuthentication} for more details.
+        #
         #   Fields related to a 3DS authentication attempt.
         #
-        #   @param account_id [String]
-        #   @param card_id [String]
-        #   @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision, nil]
-        #   @param upcoming_card_payment_id [String]
+        #   @param account_id [String] The identifier of the Account the card belongs to.
+        #
+        #   @param card_id [String] The identifier of the Card that is being tokenized.
+        #
+        #   @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision, nil] Whether or not the authentication attempt was approved.
+        #
+        #   @param upcoming_card_payment_id [String] The identifier of the Card Payment this authentication attempt will belong to. A
+        #   ...
 
         # Whether or not the authentication attempt was approved.
         #
@@ -188,13 +211,22 @@ module Increase
                  nil?: true
 
         # @!method initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::RealTimeDecision::CardAuthenticationChallenge} for more
+        #   details.
+        #
         #   Fields related to a 3DS authentication attempt.
         #
-        #   @param account_id [String]
-        #   @param card_id [String]
-        #   @param card_payment_id [String]
-        #   @param one_time_code [String]
-        #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result, nil]
+        #   @param account_id [String] The identifier of the Account the card belongs to.
+        #
+        #   @param card_id [String] The identifier of the Card that is being tokenized.
+        #
+        #   @param card_payment_id [String] The identifier of the Card Payment this authentication challenge attempt belongs
+        #   ...
+        #
+        #   @param one_time_code [String] The one-time code delivered to the cardholder.
+        #
+        #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result, nil] Whether or not the challenge was delivered to the cardholder.
 
         # Whether or not the challenge was delivered to the cardholder.
         #
@@ -385,33 +417,74 @@ module Increase
         required :verification, -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification }
 
         # @!method initialize(account_id:, card_id:, decision:, digital_wallet_token_id:, direction:, merchant_acceptor_id:, merchant_category_code:, merchant_city:, merchant_country:, merchant_descriptor:, merchant_postal_code:, merchant_state:, network_details:, network_identifiers:, network_risk_score:, physical_card_id:, presentment_amount:, presentment_currency:, processing_category:, request_details:, settlement_amount:, settlement_currency:, terminal_id:, upcoming_card_payment_id:, verification:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::RealTimeDecision::CardAuthorization} for more details.
+        #
         #   Fields related to a card authorization.
         #
-        #   @param account_id [String]
-        #   @param card_id [String]
-        #   @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision, nil]
-        #   @param digital_wallet_token_id [String, nil]
-        #   @param direction [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
-        #   @param merchant_acceptor_id [String]
-        #   @param merchant_category_code [String]
-        #   @param merchant_city [String, nil]
-        #   @param merchant_country [String]
-        #   @param merchant_descriptor [String]
-        #   @param merchant_postal_code [String, nil]
-        #   @param merchant_state [String, nil]
-        #   @param network_details [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
-        #   @param network_identifiers [Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers]
-        #   @param network_risk_score [Integer, nil]
-        #   @param physical_card_id [String, nil]
-        #   @param presentment_amount [Integer]
-        #   @param presentment_currency [String]
-        #   @param processing_category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory]
-        #   @param request_details [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
-        #   @param settlement_amount [Integer]
-        #   @param settlement_currency [String]
-        #   @param terminal_id [String, nil]
-        #   @param upcoming_card_payment_id [String]
-        #   @param verification [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
+        #   @param account_id [String] The identifier of the Account the authorization will debit.
+        #
+        #   @param card_id [String] The identifier of the Card that is being authorized.
+        #
+        #   @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision, nil] Whether or not the authorization was approved.
+        #
+        #   @param digital_wallet_token_id [String, nil] If the authorization was made via a Digital Wallet Token (such as an Apple Pay p
+        #   ...
+        #
+        #   @param direction [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction] The direction describes the direction the funds will move, either from the cardh
+        #   ...
+        #
+        #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
+        #   ...
+        #
+        #   @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the car
+        #   ...
+        #
+        #   @param merchant_city [String, nil] The city the merchant resides in.
+        #
+        #   @param merchant_country [String] The country the merchant resides in.
+        #
+        #   @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
+        #
+        #   @param merchant_postal_code [String, nil] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+        #   ...
+        #
+        #   @param merchant_state [String, nil] The state the merchant resides in.
+        #
+        #   @param network_details [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails] Fields specific to the `network`.
+        #
+        #   @param network_identifiers [Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers] Network-specific identifiers for a specific request or transaction.
+        #
+        #   @param network_risk_score [Integer, nil] The risk score generated by the card network. For Visa this is the Visa Advanced
+        #   ...
+        #
+        #   @param physical_card_id [String, nil] If the authorization was made in-person with a physical card, the Physical Card
+        #   ...
+        #
+        #   @param presentment_amount [Integer] The amount of the attempted authorization in the currency the card user sees at
+        #   ...
+        #
+        #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
+        #   ...
+        #
+        #   @param processing_category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory] The processing category describes the intent behind the authorization, such as w
+        #   ...
+        #
+        #   @param request_details [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails] Fields specific to the type of request, such as an incremental authorization.
+        #
+        #   @param settlement_amount [Integer] The amount of the attempted authorization in the currency it will be settled in.
+        #   ...
+        #
+        #   @param settlement_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
+        #   ...
+        #
+        #   @param terminal_id [String, nil] The terminal identifier (commonly abbreviated as TID) of the terminal the card i
+        #   ...
+        #
+        #   @param upcoming_card_payment_id [String] The identifier of the Card Payment this authorization will belong to. Available
+        #   ...
+        #
+        #   @param verification [Increase::Models::RealTimeDecision::CardAuthorization::Verification] Fields related to verification of cardholder-provided values.
 
         # Whether or not the authorization was approved.
         #
@@ -466,8 +539,9 @@ module Increase
           # @!method initialize(category:, visa:)
           #   Fields specific to the `network`.
           #
-          #   @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
-          #   @param visa [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa, nil]
+          #   @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category] The payment network used to process this card authorization.
+          #
+          #   @param visa [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa, nil] Fields specific to the `visa` network.
 
           # The payment network used to process this card authorization.
           #
@@ -513,11 +587,20 @@ module Increase
                      nil?: true
 
             # @!method initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+            #   Some parameter documentations has been truncated, see
+            #   {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa}
+            #   for more details.
+            #
             #   Fields specific to the `visa` network.
             #
-            #   @param electronic_commerce_indicator [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
-            #   @param point_of_service_entry_mode [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
-            #   @param stand_in_processing_reason [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
+            #   @param electronic_commerce_indicator [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil] For electronic commerce transactions, this identifies the level of security used
+            #   ...
+            #
+            #   @param point_of_service_entry_mode [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil] The method used to enter the cardholder's primary account number and card expira
+            #   ...
+            #
+            #   @param stand_in_processing_reason [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil] Only present when `actioner: network`. Describes why a card authorization was ap
+            #   ...
 
             # For electronic commerce transactions, this identifies the level of security used
             # in obtaining the customer's payment credential. For mail or telephone order
@@ -658,11 +741,20 @@ module Increase
           required :transaction_id, String, nil?: true
 
           # @!method initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+          #   Some parameter documentations has been truncated, see
+          #   {Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers} for
+          #   more details.
+          #
           #   Network-specific identifiers for a specific request or transaction.
           #
-          #   @param retrieval_reference_number [String, nil]
-          #   @param trace_number [String, nil]
-          #   @param transaction_id [String, nil]
+          #   @param retrieval_reference_number [String, nil] A life-cycle identifier used across e.g., an authorization and a reversal. Expec
+          #   ...
+          #
+          #   @param trace_number [String, nil] A counter used to verify an individual authorization. Expected to be unique per
+          #   ...
+          #
+          #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
+          #   ...
         end
 
         # The processing category describes the intent behind the authorization, such as
@@ -719,11 +811,18 @@ module Increase
           required :initial_authorization, Increase::Internal::Type::Unknown, nil?: true
 
           # @!method initialize(category:, incremental_authorization:, initial_authorization:)
+          #   Some parameter documentations has been truncated, see
+          #   {Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails} for more
+          #   details.
+          #
           #   Fields specific to the type of request, such as an incremental authorization.
           #
-          #   @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
-          #   @param incremental_authorization [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization, nil]
-          #   @param initial_authorization [Object, nil]
+          #   @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category] The type of this request (e.g., an initial authorization or an incremental autho
+          #   ...
+          #
+          #   @param incremental_authorization [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization, nil] Fields specific to the category `incremental_authorization`.
+          #
+          #   @param initial_authorization [Object, nil] Fields specific to the category `initial_authorization`.
 
           # The type of this request (e.g., an initial authorization or an incremental
           # authorization).
@@ -758,10 +857,16 @@ module Increase
             required :original_card_authorization_id, String
 
             # @!method initialize(card_payment_id:, original_card_authorization_id:)
+            #   Some parameter documentations has been truncated, see
+            #   {Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization}
+            #   for more details.
+            #
             #   Fields specific to the category `incremental_authorization`.
             #
-            #   @param card_payment_id [String]
-            #   @param original_card_authorization_id [String]
+            #   @param card_payment_id [String] The card payment for this authorization and increment.
+            #
+            #   @param original_card_authorization_id [String] The identifier of the card authorization this request is attempting to increment
+            #   ...
           end
         end
 
@@ -784,10 +889,17 @@ module Increase
                    -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress }
 
           # @!method initialize(card_verification_code:, cardholder_address:)
+          #   Some parameter documentations has been truncated, see
+          #   {Increase::Models::RealTimeDecision::CardAuthorization::Verification} for more
+          #   details.
+          #
           #   Fields related to verification of cardholder-provided values.
           #
-          #   @param card_verification_code [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode]
-          #   @param cardholder_address [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress]
+          #   @param card_verification_code [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode] Fields related to verification of the Card Verification Code, a 3-digit code on
+          #   ...
+          #
+          #   @param cardholder_address [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress] Cardholder address provided in the authorization request and the address on file
+          #   ...
 
           # @see Increase::Models::RealTimeDecision::CardAuthorization::Verification#card_verification_code
           class CardVerificationCode < Increase::Internal::Type::BaseModel
@@ -802,7 +914,7 @@ module Increase
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
             #   the back of the card.
             #
-            #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
+            #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result] The result of verifying the Card Verification Code.
 
             # The result of verifying the Card Verification Code.
             #
@@ -859,14 +971,23 @@ module Increase
                      enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result }
 
             # @!method initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+            #   Some parameter documentations has been truncated, see
+            #   {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress}
+            #   for more details.
+            #
             #   Cardholder address provided in the authorization request and the address on file
             #   we verified it against.
             #
-            #   @param actual_line1 [String, nil]
-            #   @param actual_postal_code [String, nil]
-            #   @param provided_line1 [String, nil]
-            #   @param provided_postal_code [String, nil]
-            #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
+            #   @param actual_line1 [String, nil] Line 1 of the address on file for the cardholder.
+            #
+            #   @param actual_postal_code [String, nil] The postal code of the address on file for the cardholder.
+            #
+            #   @param provided_line1 [String, nil] The cardholder address line 1 provided for verification in the authorization req
+            #   ...
+            #
+            #   @param provided_postal_code [String, nil] The postal code provided for verification in the authorization request.
+            #
+            #   @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result] The address verification result returned to the card network.
 
             # The address verification result returned to the card network.
             #
@@ -973,15 +1094,26 @@ module Increase
                  nil?: true
 
         # @!method initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::RealTimeDecision::DigitalWalletAuthentication} for more
+        #   details.
+        #
         #   Fields related to a digital wallet authentication attempt.
         #
-        #   @param card_id [String]
-        #   @param channel [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
-        #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet]
-        #   @param email [String, nil]
-        #   @param one_time_passcode [String]
-        #   @param phone [String, nil]
-        #   @param result [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result, nil]
+        #   @param card_id [String] The identifier of the Card that is being tokenized.
+        #
+        #   @param channel [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel] The channel to send the card user their one-time passcode.
+        #
+        #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet] The digital wallet app being used.
+        #
+        #   @param email [String, nil] The email to send the one-time passcode to if `channel` is equal to `email`.
+        #
+        #   @param one_time_passcode [String] The one-time passcode to send the card user.
+        #
+        #   @param phone [String, nil] The phone number to send the one-time passcode to if `channel` is equal to `sms`
+        #   ...
+        #
+        #   @param result [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result, nil] Whether your application successfully delivered the one-time passcode.
 
         # The channel to send the card user their one-time passcode.
         #
@@ -1077,13 +1209,22 @@ module Increase
                  enum: -> { Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet }
 
         # @!method initialize(card_id:, card_profile_id:, decision:, device:, digital_wallet:)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::RealTimeDecision::DigitalWalletToken} for more details.
+        #
         #   Fields related to a digital wallet token provisioning attempt.
         #
-        #   @param card_id [String]
-        #   @param card_profile_id [String, nil]
-        #   @param decision [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision, nil]
-        #   @param device [Increase::Models::RealTimeDecision::DigitalWalletToken::Device]
-        #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet]
+        #   @param card_id [String] The identifier of the Card that is being tokenized.
+        #
+        #   @param card_profile_id [String, nil] The identifier of the Card Profile that was set via the real time decision. This
+        #   ...
+        #
+        #   @param decision [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision, nil] Whether or not the provisioning request was approved. This will be null until th
+        #   ...
+        #
+        #   @param device [Increase::Models::RealTimeDecision::DigitalWalletToken::Device] Device that is being used to provision the digital wallet token.
+        #
+        #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet] The digital wallet app being used.
 
         # Whether or not the provisioning request was approved. This will be null until
         # the real time decision is responded to.
@@ -1113,7 +1254,7 @@ module Increase
           # @!method initialize(identifier:)
           #   Device that is being used to provision the digital wallet token.
           #
-          #   @param identifier [String, nil]
+          #   @param identifier [String, nil] ID assigned to the device by the digital wallet provider.
         end
 
         # The digital wallet app being used.

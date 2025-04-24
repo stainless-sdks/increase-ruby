@@ -22,8 +22,13 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id:, email_address:, request_options: {}); end
-
+      def self.new(
+        # The identifier for the account to be added to IntraFi.
+        account_id:,
+        # The contact email for the account owner, to be shared with IntraFi.
+        email_address:,
+        request_options: {}
+      ); end
       sig do
         override.returns(
           {

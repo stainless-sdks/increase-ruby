@@ -25,12 +25,19 @@ module Increase
       required :type, enum: -> { Increase::Models::BookkeepingBalanceLookup::Type }
 
       # @!method initialize(balance:, bookkeeping_account_id:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::BookkeepingBalanceLookup} for more details.
+      #
       #   Represents a request to lookup the balance of an Bookkeeping Account at a given
       #   point in time.
       #
-      #   @param balance [Integer]
-      #   @param bookkeeping_account_id [String]
-      #   @param type [Symbol, Increase::Models::BookkeepingBalanceLookup::Type]
+      #   @param balance [Integer] The Bookkeeping Account's current balance, representing the sum of all Bookkeepi
+      #   ...
+      #
+      #   @param bookkeeping_account_id [String] The identifier for the account for which the balance was queried.
+      #
+      #   @param type [Symbol, Increase::Models::BookkeepingBalanceLookup::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_balance_lookup`.

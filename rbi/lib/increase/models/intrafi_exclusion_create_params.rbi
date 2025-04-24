@@ -22,8 +22,13 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(bank_name:, entity_id:, request_options: {}); end
-
+      def self.new(
+        # The name of the financial institution to be excluded.
+        bank_name:,
+        # The identifier of the Entity whose deposits will be excluded.
+        entity_id:,
+        request_options: {}
+      ); end
       sig do
         override.returns({bank_name: String, entity_id: String, request_options: Increase::RequestOptions})
       end

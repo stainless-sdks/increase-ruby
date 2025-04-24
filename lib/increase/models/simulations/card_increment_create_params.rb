@@ -30,9 +30,17 @@ module Increase
         optional :event_subscription_id, String
 
         # @!method initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
-        #   @param amount [Integer]
-        #   @param card_payment_id [String]
-        #   @param event_subscription_id [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::Simulations::CardIncrementCreateParams} for more details.
+        #
+        #   @param amount [Integer] The amount of the increment in minor units in the card authorization's currency.
+        #   ...
+        #
+        #   @param card_payment_id [String] The identifier of the Card Payment to create a increment on.
+        #
+        #   @param event_subscription_id [String] The identifier of the Event Subscription to use. If provided, will override the
+        #   ...
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

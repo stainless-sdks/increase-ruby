@@ -28,8 +28,16 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(access_token:, token_type:, type:); end
-
+      def self.new(
+        # You may use this token in place of an API key to make OAuth requests on a user's
+        # behalf.
+        access_token:,
+        # The type of OAuth token.
+        token_type:,
+        # A constant representing the object's type. For this resource it will always be
+        # `oauth_token`.
+        type:
+      ); end
       sig do
         override
           .returns(

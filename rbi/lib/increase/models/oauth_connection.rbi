@@ -49,8 +49,25 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:); end
-
+      def self.new(
+        # The OAuth Connection's identifier.
+        id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+        # Connection was created.
+        created_at:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+        # Connection was deleted.
+        deleted_at:,
+        # The identifier of the Group that has authorized your OAuth application.
+        group_id:,
+        # The identifier of the OAuth application this connection is for.
+        oauth_application_id:,
+        # Whether the connection is active.
+        status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `oauth_connection`.
+        type:
+      ); end
       sig do
         override
           .returns(

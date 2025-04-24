@@ -15,7 +15,8 @@ module Increase
         required :card_id, String
 
         # @!method initialize(card_id:, request_options: {})
-        #   @param card_id [String]
+        #   @param card_id [String] The identifier of the Card to be authorized.
+        #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

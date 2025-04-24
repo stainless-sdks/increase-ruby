@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardSettlements
+        # Some parameter documentations has been truncated, see
+        # {Increase::Models::Simulations::CardSettlementCreateParams} for more details.
+        #
         # Simulates the settlement of an authorization by a card acquirer. After a card
         # authorization is created, the merchant will eventually send a settlement. This
         # simulates that event, which may occur many days after the purchase in
@@ -12,9 +15,14 @@ module Increase
         #
         # @overload create(card_id:, pending_transaction_id:, amount: nil, request_options: {})
         #
-        # @param card_id [String]
-        # @param pending_transaction_id [String]
-        # @param amount [Integer]
+        # @param card_id [String] The identifier of the Card to create a settlement on.
+        #
+        # @param pending_transaction_id [String] The identifier of the Pending Transaction for the Card Authorization you wish to
+        # ...
+        #
+        # @param amount [Integer] The amount to be settled. This defaults to the amount of the Pending Transaction
+        # ...
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Transaction]

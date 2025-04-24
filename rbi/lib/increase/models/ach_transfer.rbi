@@ -287,41 +287,103 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The ACH transfer's identifier.
         id:,
+        # The Account to which the transfer belongs.
         account_id:,
+        # The destination account number.
         account_number:,
+        # After the transfer is acknowledged by FedACH, this will contain supplemental
+        # details. The Federal Reserve sends an acknowledgement message for each file that
+        # Increase submits.
         acknowledgement:,
+        # Additional information that will be sent to the recipient.
         addenda:,
+        # The transfer amount in USD cents. A positive amount indicates a credit transfer
+        # pushing funds to the receiving account. A negative amount indicates a debit
+        # transfer pulling funds from the receiving account.
         amount:,
+        # If your account requires approvals for transfers and the transfer was approved,
+        # this will contain details of the approval.
         approval:,
+        # If your account requires approvals for transfers and the transfer was not
+        # approved, this will contain details of the cancellation.
         cancellation:,
+        # The description of the date of the transfer.
         company_descriptive_date:,
+        # The data you chose to associate with the transfer.
         company_discretionary_data:,
+        # The description of the transfer you set to be shown to the recipient.
         company_entry_description:,
+        # The company ID associated with the transfer.
         company_id:,
+        # The name by which the recipient knows you.
         company_name:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the transfer was created.
         created_at:,
+        # What object created the transfer, either via the API or the dashboard.
         created_by:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+        # currency. For ACH transfers this is always equal to `usd`.
         currency:,
+        # The type of entity that owns the account to which the ACH Transfer is being
+        # sent.
         destination_account_holder:,
+        # The identifier of the External Account the transfer was made to, if any.
         external_account_id:,
+        # The type of the account to which the transfer will be sent.
         funding:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # Increase will sometimes hold the funds for ACH debit transfers. If funds are
+        # held, this sub-object will contain details of the hold.
         inbound_funds_hold:,
+        # Your identifier for the transfer recipient.
         individual_id:,
+        # The name of the transfer recipient. This value is information and not verified
+        # by the recipient's bank.
         individual_name:,
+        # The transfer's network.
         network:,
+        # If the receiving bank accepts the transfer but notifies that future transfers
+        # should use different details, this will contain those details.
         notifications_of_change:,
+        # The ID for the pending transaction representing the transfer. A pending
+        # transaction is created when the transfer
+        # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+        # by someone else in your organization.
         pending_transaction_id:,
+        # Configuration for how the effective date of the transfer will be set. This
+        # determines same-day vs future-dated settlement timing. If not set, defaults to a
+        # `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+        # must be set.
         preferred_effective_date:,
+        # If your transfer is returned, this will contain details of the return.
         return_:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN).
         routing_number:,
+        # A subhash containing information about when and how the transfer settled at the
+        # Federal Reserve.
         settlement:,
+        # The Standard Entry Class (SEC) code to use for the transfer.
         standard_entry_class_code:,
+        # The descriptor that will show on the recipient's bank statement.
         statement_descriptor:,
+        # The lifecycle status of the transfer.
         status:,
+        # After the transfer is submitted to FedACH, this will contain supplemental
+        # details. Increase batches transfers and submits a file to the Federal Reserve
+        # roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+        # weekdays according to their
+        # [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         submission:,
+        # The ID for the transaction funding the transfer.
         transaction_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `ach_transfer`.
         type:
       ); end
       sig do
@@ -379,8 +441,11 @@ module Increase
         # details. The Federal Reserve sends an acknowledgement message for each file that
         # Increase submits.
         sig { params(acknowledged_at: String).returns(T.attached_class) }
-        def self.new(acknowledged_at:); end
-
+        def self.new(
+          # When the Federal Reserve acknowledged the submitted file containing this
+          # transfer.
+          acknowledged_at:
+        ); end
         sig { override.returns({acknowledged_at: String}) }
         def to_hash; end
       end
@@ -429,8 +494,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(category:, freeform:, payment_order_remittance_advice:); end
-
+        def self.new(
+          # The type of the resource. We may add additional possible values for this enum
+          # over time; your application should be able to handle such additions gracefully.
+          category:,
+          # Unstructured `payment_related_information` passed through with the transfer.
+          freeform:,
+          # Structured ASC X12 820 remittance advice records. Please reach out to
+          # [support@increase.com](mailto:support@increase.com) for more information.
+          payment_order_remittance_advice:
+        ); end
         sig do
           override
             .returns(
@@ -477,8 +550,10 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(entries:); end
-
+          def self.new(
+            # Each entry represents an addendum sent with the transfer.
+            entries:
+          ); end
           sig { override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]}) }
           def to_hash; end
 
@@ -488,8 +563,10 @@ module Increase
             attr_accessor :payment_related_information
 
             sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:); end
-
+            def self.new(
+              # The payment related information passed in the addendum.
+              payment_related_information:
+            ); end
             sig { override.returns({payment_related_information: String}) }
             def to_hash; end
           end
@@ -513,8 +590,10 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(invoices:); end
-
+          def self.new(
+            # ASC X12 RMR records for this specific transfer.
+            invoices:
+          ); end
           sig do
             override
               .returns(
@@ -534,8 +613,13 @@ module Increase
             attr_accessor :paid_amount
 
             sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
-            def self.new(invoice_number:, paid_amount:); end
-
+            def self.new(
+              # The invoice number for this reference, determined in advance with the receiver.
+              invoice_number:,
+              # The amount that was paid for this invoice in the minor unit of its currency. For
+              # dollars, for example, this is cents.
+              paid_amount:
+            ); end
             sig { override.returns({invoice_number: String, paid_amount: Integer}) }
             def to_hash; end
           end
@@ -556,8 +640,14 @@ module Increase
         # If your account requires approvals for transfers and the transfer was approved,
         # this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:); end
-
+        def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the transfer was approved.
+          approved_at:,
+          # If the Transfer was approved by a user in the dashboard, the email address of
+          # that user.
+          approved_by:
+        ); end
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
         def to_hash; end
       end
@@ -576,8 +666,14 @@ module Increase
         # If your account requires approvals for transfers and the transfer was not
         # approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:); end
-
+        def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Transfer was canceled.
+          canceled_at:,
+          # If the Transfer was canceled by a user in the dashboard, the email address of
+          # that user.
+          canceled_by:
+        ); end
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
         def to_hash; end
       end
@@ -633,8 +729,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:); end
-
+        def self.new(
+          # If present, details about the API key that created the transfer.
+          api_key:,
+          # The type of object that created this transfer.
+          category:,
+          # If present, details about the OAuth Application that created the transfer.
+          oauth_application:,
+          # If present, details about the User that created the transfer.
+          user:
+        ); end
         sig do
           override
             .returns(
@@ -655,8 +759,10 @@ module Increase
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:); end
-
+          def self.new(
+            # The description set for the API key when it was created.
+            description:
+          ); end
           sig { override.returns({description: T.nilable(String)}) }
           def to_hash; end
         end
@@ -689,8 +795,10 @@ module Increase
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:); end
-
+          def self.new(
+            # The name of the OAuth Application.
+            name:
+          ); end
           sig { override.returns({name: String}) }
           def to_hash; end
         end
@@ -702,8 +810,10 @@ module Increase
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:); end
-
+          def self.new(
+            # The email address of the User.
+            email:
+          ); end
           sig { override.returns({email: String}) }
           def to_hash; end
         end
@@ -841,15 +951,30 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The Inbound Funds Hold identifier.
           id:,
+          # The held amount in the minor unit of the account's currency. For dollars, for
+          # example, this is cents.
           amount:,
+          # When the hold will be released automatically. Certain conditions may cause it to
+          # be released before this time.
           automatically_releases_at:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+          # was created.
           created_at:,
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+          # currency.
           currency:,
+          # The ID of the Transaction for which funds were held.
           held_transaction_id:,
+          # The ID of the Pending Transaction representing the held funds.
           pending_transaction_id:,
+          # When the hold was released (if it has been released).
           released_at:,
+          # The status of the hold.
           status:,
+          # A constant representing the object's type. For this resource it will always be
+          # `inbound_funds_hold`.
           type:
         ); end
         sig do
@@ -974,8 +1099,20 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(change_code:, corrected_data:, created_at:); end
-
+        def self.new(
+          # The required type of change that is being signaled by the receiving financial
+          # institution.
+          change_code:,
+          # The corrected data that should be used in future ACHs to this account. This may
+          # contain the suggested new account number or routing number. When the
+          # `change_code` is `incorrect_transaction_code`, this field contains an integer.
+          # Numbers starting with a 2 encourage changing the `funding` parameter to
+          # checking; numbers starting with a 3 encourage changing to savings.
+          corrected_data:,
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the notification occurred.
+          created_at:
+        ); end
         sig do
           override
             .returns(
@@ -1160,8 +1297,13 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(date:, settlement_schedule:); end
-
+        def self.new(
+          # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+          # use as the effective date when submitting this transfer.
+          date:,
+          # A schedule by which Increase will choose an effective date for the transfer.
+          settlement_schedule:
+        ); end
         sig do
           override
             .returns(
@@ -1246,15 +1388,24 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the transfer was created.
           created_at:,
+          # The three character ACH return code, in the range R01 to R85.
           raw_return_reason_code:,
+          # Why the ACH Transfer was returned. This reason code is sent by the receiving
+          # bank back to Increase.
           return_reason_code:,
+          # A 15 digit number that was generated by the bank that initiated the return. The
+          # trace number of the return is different than that of the original transfer. ACH
+          # trace numbers are not unique, but along with the amount and date this number can
+          # be used to identify the ACH return at the bank that initiated it.
           trace_number:,
+          # The identifier of the Transaction associated with this return.
           transaction_id:,
+          # The identifier of the ACH Transfer associated with this return.
           transfer_id:
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -1678,8 +1829,11 @@ module Increase
         # A subhash containing information about when and how the transfer settled at the
         # Federal Reserve.
         sig { params(settled_at: Time).returns(T.attached_class) }
-        def self.new(settled_at:); end
-
+        def self.new(
+          # When the funds for this transfer have settled at the destination bank at the
+          # Federal Reserve.
+          settled_at:
+        ); end
         sig { override.returns({settled_at: Time}) }
         def to_hash; end
       end
@@ -1802,10 +1956,27 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # The ACH transfer's effective date as sent to the Federal Reserve. If a specific
+          # date was configured using `preferred_effective_date`, this will match that
+          # value. Otherwise, it will be the date selected (following the specified
+          # settlement schedule) at the time the transfer was submitted.
           effective_date:,
+          # When the transfer is expected to settle in the recipient's account. Credits may
+          # be available sooner, at the receiving banks discretion. The FedACH schedule is
+          # published
+          # [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
           expected_funds_settlement_at:,
+          # The settlement schedule the transfer is expected to follow. This expectation
+          # takes into account the `effective_date`, `submitted_at`, and the amount of the
+          # transfer.
           expected_settlement_schedule:,
+          # When the ACH transfer was sent to FedACH.
           submitted_at:,
+          # A 15 digit number recorded in the Nacha file and transmitted to the receiving
+          # bank. Along with the amount, date, and originating routing number, this can be
+          # used to identify the ACH transfer at the receiving bank. ACH trace numbers are
+          # not unique, but are
+          # [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
           trace_number:
         ); end
         sig do

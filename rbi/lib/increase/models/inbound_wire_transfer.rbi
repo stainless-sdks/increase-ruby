@@ -141,30 +141,60 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The inbound wire transfer's identifier.
         id:,
+        # The Account to which the transfer belongs.
         account_id:,
+        # The identifier of the Account Number to which this transfer was sent.
         account_number_id:,
+        # The amount in USD cents.
         amount:,
+        # A free-form address field set by the sender.
         beneficiary_address_line1:,
+        # A free-form address field set by the sender.
         beneficiary_address_line2:,
+        # A free-form address field set by the sender.
         beneficiary_address_line3:,
+        # A name set by the sender.
         beneficiary_name:,
+        # A free-form reference string set by the sender, to help identify the transfer.
         beneficiary_reference:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the inbound wire transfer was created.
         created_at:,
+        # An Increase-constructed description of the transfer.
         description:,
+        # A unique identifier available to the originating and receiving banks, commonly
+        # abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+        # service and is helpful when debugging wires with the originating bank.
         input_message_accountability_data:,
+        # The address of the wire originator, set by the sending bank.
         originator_address_line1:,
+        # The address of the wire originator, set by the sending bank.
         originator_address_line2:,
+        # The address of the wire originator, set by the sending bank.
         originator_address_line3:,
+        # The originator of the wire, set by the sending bank.
         originator_name:,
+        # The American Banking Association (ABA) routing number of the bank originating
+        # the transfer.
         originator_routing_number:,
+        # An Increase-created concatenation of the Originator-to-Beneficiary lines.
         originator_to_beneficiary_information:,
+        # A free-form message set by the wire originator.
         originator_to_beneficiary_information_line1:,
+        # A free-form message set by the wire originator.
         originator_to_beneficiary_information_line2:,
+        # A free-form message set by the wire originator.
         originator_to_beneficiary_information_line3:,
+        # A free-form message set by the wire originator.
         originator_to_beneficiary_information_line4:,
+        # The sending bank's reference number for the wire transfer.
         sender_reference:,
+        # The status of the transfer.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `inbound_wire_transfer`.
         type:
       ); end
       sig do

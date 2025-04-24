@@ -72,12 +72,24 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The identifier for the account that will send the transfer.
         account_id:,
+        # The transfer amount in USD cents.
         amount:,
+        # Whether Increase will print and mail the check or if you will do it yourself.
         fulfillment_method:,
+        # The identifier of the Account Number from which to send the transfer and print
+        # on the check.
         source_account_number_id:,
+        # Details relating to the physical check that Increase will print and mail. This
+        # is required if `fulfillment_method` is equal to `physical_check`. It must not be
+        # included if any other `fulfillment_method` is provided.
         physical_check: nil,
+        # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
+        # Details relating to the custom fulfillment you will perform. This is required if
+        # `fulfillment_method` is equal to `third_party`. It must not be included if any
+        # other `fulfillment_method` is provided.
         third_party: nil,
         request_options: {}
       ); end
@@ -229,14 +241,31 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # Details for where Increase will mail the check.
           mailing_address:,
+          # The descriptor that will be printed on the memo field on the check.
           memo:,
+          # The name that will be printed on the check in the 'To:' field.
           recipient_name:,
+          # The ID of a File to be attached to the check. This must have
+          # `purpose: check_attachment`. For details on pricing and restrictions, see
+          # https://increase.com/documentation/originating-checks#printing-checks .
           attachment_file_id: nil,
+          # The check number Increase should print on the check. This should not contain
+          # leading zeroes and must be unique across the `source_account_number`. If this is
+          # omitted, Increase will generate a check number for you.
           check_number: nil,
+          # The descriptor that will be printed on the letter included with the check.
           note: nil,
+          # The return address to be printed on the check. If omitted this will default to
+          # an Increase-owned address that will mark checks as delivery failed and shred
+          # them.
           return_address: nil,
+          # How to ship the check. For details on pricing, timing, and restrictions, see
+          # https://increase.com/documentation/originating-checks#printing-checks .
           shipping_method: nil,
+          # The text that will appear as the signature on the check in cursive font. If not
+          # provided, the check will be printed with 'No signature required'.
           signature_text: nil
         ); end
         sig do
@@ -286,8 +315,18 @@ module Increase
             params(city: String, line1: String, postal_code: String, state: String, line2: String)
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, postal_code:, state:, line2: nil); end
-
+          def self.new(
+            # The city component of the check's destination address.
+            city:,
+            # The first line of the address component of the check's destination address.
+            line1:,
+            # The postal code component of the check's destination address.
+            postal_code:,
+            # The US state component of the check's destination address.
+            state:,
+            # The second line of the address component of the check's destination address.
+            line2: nil
+          ); end
           sig do
             override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
           end
@@ -336,8 +375,20 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil); end
-
+          def self.new(
+            # The city of the return address.
+            city:,
+            # The first line of the return address.
+            line1:,
+            # The name of the return address.
+            name:,
+            # The postal code of the return address.
+            postal_code:,
+            # The US state of the return address.
+            state:,
+            # The second line of the return address.
+            line2: nil
+          ); end
           sig do
             override
               .returns({
@@ -399,8 +450,12 @@ module Increase
         # `fulfillment_method` is equal to `third_party`. It must not be included if any
         # other `fulfillment_method` is provided.
         sig { params(recipient_name: String).returns(T.attached_class) }
-        def self.new(recipient_name: nil); end
-
+        def self.new(
+          # The pay-to name you will print on the check. If provided, this is used for
+          # [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
+          # be unable to validate the payee name when the check is deposited.
+          recipient_name: nil
+        ); end
         sig { override.returns({recipient_name: String}) }
         def to_hash; end
       end

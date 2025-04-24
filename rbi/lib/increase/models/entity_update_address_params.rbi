@@ -24,8 +24,12 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(address:, request_options: {}); end
-
+      def self.new(
+        # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+        # are disallowed.
+        address:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -70,8 +74,19 @@ module Increase
             line2: String
           ).returns(T.attached_class)
         end
-        def self.new(city:, line1:, state:, zip:, line2: nil); end
-
+        def self.new(
+          # The city of the address.
+          city:,
+          # The first line of the address. This is usually the street number and street.
+          line1:,
+          # The two-letter United States Postal Service (USPS) abbreviation for the state of
+          # the address.
+          state:,
+          # The ZIP code of the address.
+          zip:,
+          # The second line of the address. This might be the floor or room number.
+          line2: nil
+        ); end
         sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
         def to_hash; end
       end

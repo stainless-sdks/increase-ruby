@@ -49,8 +49,17 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, request_options: {}); end
-
+      def self.new(
+        created_at: nil,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        # objects.
+        limit: nil,
+        # Filter Inbound Mail Items to ones sent to the provided Lockbox.
+        lockbox_id: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -101,8 +110,20 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
-
+        def self.new(
+          # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+          # timestamp.
+          after: nil,
+          # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+          # timestamp.
+          before: nil,
+          # Return results on or after this
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          on_or_after: nil,
+          # Return results on or before this
+          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+          on_or_before: nil
+        ); end
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash; end
       end

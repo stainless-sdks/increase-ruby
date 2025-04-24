@@ -46,8 +46,17 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {}); end
-
+      def self.new(
+        # The name you choose for the account.
+        name:,
+        # The entity, if `compliance_category` is `commingled_cash`.
+        account_id: nil,
+        # The account compliance category.
+        compliance_category: nil,
+        # The entity, if `compliance_category` is `customer_balance`.
+        entity_id: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

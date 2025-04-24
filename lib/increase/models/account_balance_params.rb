@@ -14,7 +14,8 @@ module Increase
       optional :at_time, Time
 
       # @!method initialize(at_time: nil, request_options: {})
-      #   @param at_time [Time]
+      #   @param at_time [Time] The moment to query the balance at. If not set, returns the current balances.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

@@ -51,8 +51,26 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, client_id:, created_at:, deleted_at:, name:, status:, type:); end
-
+      def self.new(
+        # The OAuth Application's identifier.
+        id:,
+        # The OAuth Application's client_id. Use this to authenticate with the OAuth
+        # Application.
+        client_id:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+        # Application was created.
+        created_at:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+        # Application was deleted.
+        deleted_at:,
+        # The name you chose for this OAuth Application.
+        name:,
+        # Whether the application is active.
+        status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `oauth_application`.
+        type:
+      ); end
       sig do
         override
           .returns(

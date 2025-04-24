@@ -24,8 +24,14 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(amount:, card_payment_id:, request_options: {}); end
-
+        def self.new(
+          # The amount of the fuel_confirmation in minor units in the card authorization's
+          # currency.
+          amount:,
+          # The identifier of the Card Payment to create a fuel_confirmation on.
+          card_payment_id:,
+          request_options: {}
+        ); end
         sig do
           override.returns(
             {

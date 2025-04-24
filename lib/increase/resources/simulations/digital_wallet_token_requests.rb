@@ -9,7 +9,8 @@ module Increase
         #
         # @overload create(card_id:, request_options: {})
         #
-        # @param card_id [String]
+        # @param card_id [String] The identifier of the Card to be authorized.
+        #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse]

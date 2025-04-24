@@ -15,7 +15,12 @@ module Increase
       required :beneficial_owner_id, String
 
       # @!method initialize(beneficial_owner_id:, request_options: {})
-      #   @param beneficial_owner_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::EntityArchiveBeneficialOwnerParams} for more details.
+      #
+      #   @param beneficial_owner_id [String] The identifying details of anyone controlling or owning 25% or more of the corpo
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

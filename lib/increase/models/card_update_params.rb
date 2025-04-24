@@ -41,11 +41,21 @@ module Increase
       optional :status, enum: -> { Increase::Models::CardUpdateParams::Status }
 
       # @!method initialize(billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, status: nil, request_options: {})
-      #   @param billing_address [Increase::Models::CardUpdateParams::BillingAddress]
-      #   @param description [String]
-      #   @param digital_wallet [Increase::Models::CardUpdateParams::DigitalWallet]
-      #   @param entity_id [String]
-      #   @param status [Symbol, Increase::Models::CardUpdateParams::Status]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::CardUpdateParams} for more details.
+      #
+      #   @param billing_address [Increase::Models::CardUpdateParams::BillingAddress] The card's updated billing address.
+      #
+      #   @param description [String] The description you choose to give the card.
+      #
+      #   @param digital_wallet [Increase::Models::CardUpdateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
+      #   ...
+      #
+      #   @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
+      #   ...
+      #
+      #   @param status [Symbol, Increase::Models::CardUpdateParams::Status] The status to update the Card with.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class BillingAddress < Increase::Internal::Type::BaseModel
@@ -82,11 +92,15 @@ module Increase
         # @!method initialize(city:, line1:, postal_code:, state:, line2: nil)
         #   The card's updated billing address.
         #
-        #   @param city [String]
-        #   @param line1 [String]
-        #   @param postal_code [String]
-        #   @param state [String]
-        #   @param line2 [String]
+        #   @param city [String] The city of the billing address.
+        #
+        #   @param line1 [String] The first line of the billing address.
+        #
+        #   @param postal_code [String] The postal code of the billing address.
+        #
+        #   @param state [String] The US state of the billing address.
+        #
+        #   @param line2 [String] The second line of the billing address.
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
@@ -111,13 +125,20 @@ module Increase
         optional :phone, String
 
         # @!method initialize(digital_card_profile_id: nil, email: nil, phone: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::CardUpdateParams::DigitalWallet} for more details.
+        #
         #   The contact information used in the two-factor steps for digital wallet card
         #   creation. At least one field must be present to complete the digital wallet
         #   steps.
         #
-        #   @param digital_card_profile_id [String]
-        #   @param email [String]
-        #   @param phone [String]
+        #   @param digital_card_profile_id [String] The digital card profile assigned to this digital card.
+        #
+        #   @param email [String] An email address that can be used to verify the cardholder via one-time passcode
+        #   ...
+        #
+        #   @param phone [String] A phone number that can be used to verify the cardholder via one-time passcode o
+        #   ...
       end
 
       # The status to update the Card with.

@@ -144,25 +144,59 @@ module Increase
       optional :transaction_timing, enum: -> { Increase::Models::ACHTransferCreateParams::TransactionTiming }
 
       # @!method initialize(account_id:, amount:, statement_descriptor:, account_number: nil, addenda: nil, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_name: nil, destination_account_holder: nil, external_account_id: nil, funding: nil, individual_id: nil, individual_name: nil, preferred_effective_date: nil, require_approval: nil, routing_number: nil, standard_entry_class_code: nil, transaction_timing: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param amount [Integer]
-      #   @param statement_descriptor [String]
-      #   @param account_number [String]
-      #   @param addenda [Increase::Models::ACHTransferCreateParams::Addenda]
-      #   @param company_descriptive_date [String]
-      #   @param company_discretionary_data [String]
-      #   @param company_entry_description [String]
-      #   @param company_name [String]
-      #   @param destination_account_holder [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder]
-      #   @param external_account_id [String]
-      #   @param funding [Symbol, Increase::Models::ACHTransferCreateParams::Funding]
-      #   @param individual_id [String]
-      #   @param individual_name [String]
-      #   @param preferred_effective_date [Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate]
-      #   @param require_approval [Boolean]
-      #   @param routing_number [String]
-      #   @param standard_entry_class_code [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode]
-      #   @param transaction_timing [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::ACHTransferCreateParams} for more details.
+      #
+      #   @param account_id [String] The Increase identifier for the account that will send the transfer.
+      #
+      #   @param amount [Integer] The transfer amount in USD cents. A positive amount originates a credit transfer
+      #   ...
+      #
+      #   @param statement_descriptor [String] A description you choose to give the transfer. This will be saved with the trans
+      #   ...
+      #
+      #   @param account_number [String] The account number for the destination account.
+      #
+      #   @param addenda [Increase::Models::ACHTransferCreateParams::Addenda] Additional information that will be sent to the recipient. This is included in t
+      #   ...
+      #
+      #   @param company_descriptive_date [String] The description of the date of the transfer, usually in the format `YYMMDD`. Thi
+      #   ...
+      #
+      #   @param company_discretionary_data [String] The data you choose to associate with the transfer. This is included in the tran
+      #   ...
+      #
+      #   @param company_entry_description [String] A description of the transfer. This is included in the transfer data sent to the
+      #   ...
+      #
+      #   @param company_name [String] The name by which the recipient knows you. This is included in the transfer data
+      #   ...
+      #
+      #   @param destination_account_holder [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder] The type of entity that owns the account to which the ACH Transfer is being sent
+      #   ...
+      #
+      #   @param external_account_id [String] The ID of an External Account to initiate a transfer to. If this parameter is pr
+      #   ...
+      #
+      #   @param funding [Symbol, Increase::Models::ACHTransferCreateParams::Funding] The type of the account to which the transfer will be sent.
+      #
+      #   @param individual_id [String] Your identifier for the transfer recipient.
+      #
+      #   @param individual_name [String] The name of the transfer recipient. This value is informational and not verified
+      #   ...
+      #
+      #   @param preferred_effective_date [Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate] Configuration for how the effective date of the transfer will be set. This deter
+      #   ...
+      #
+      #   @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
+      #
+      #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
+      #   ...
+      #
+      #   @param standard_entry_class_code [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode] The Standard Entry Class (SEC) code to use for the transfer.
+      #
+      #   @param transaction_timing [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming] The timing of the transaction.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Addenda < Increase::Internal::Type::BaseModel
@@ -187,12 +221,18 @@ module Increase
                  -> { Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice }
 
         # @!method initialize(category:, freeform: nil, payment_order_remittance_advice: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::ACHTransferCreateParams::Addenda} for more details.
+        #
         #   Additional information that will be sent to the recipient. This is included in
         #   the transfer data sent to the receiving bank.
         #
-        #   @param category [Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category]
-        #   @param freeform [Increase::Models::ACHTransferCreateParams::Addenda::Freeform]
-        #   @param payment_order_remittance_advice [Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice]
+        #   @param category [Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category] The type of addenda to pass with the transfer.
+        #
+        #   @param freeform [Increase::Models::ACHTransferCreateParams::Addenda::Freeform] Unstructured `payment_related_information` passed through with the transfer.
+        #
+        #   @param payment_order_remittance_advice [Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice] Structured ASC X12 820 remittance advice records. Please reach out to [support@i
+        #   ...
 
         # The type of addenda to pass with the transfer.
         #
@@ -222,9 +262,13 @@ module Increase
                    -> { Increase::Internal::Type::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry] }
 
           # @!method initialize(entries:)
+          #   Some parameter documentations has been truncated, see
+          #   {Increase::Models::ACHTransferCreateParams::Addenda::Freeform} for more details.
+          #
           #   Unstructured `payment_related_information` passed through with the transfer.
           #
-          #   @param entries [Array<Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry>]
+          #   @param entries [Array<Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry>] Each entry represents an addendum sent with the transfer. Please reach out to [s
+          #   ...
 
           class Entry < Increase::Internal::Type::BaseModel
             # @!attribute payment_related_information
@@ -234,7 +278,7 @@ module Increase
             required :payment_related_information, String
 
             # @!method initialize(payment_related_information:)
-            #   @param payment_related_information [String]
+            #   @param payment_related_information [String] The payment related information passed in the addendum.
           end
         end
 
@@ -251,7 +295,7 @@ module Increase
           #   Structured ASC X12 820 remittance advice records. Please reach out to
           #   [support@increase.com](mailto:support@increase.com) for more information.
           #
-          #   @param invoices [Array<Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
+          #   @param invoices [Array<Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice>] ASC X12 RMR records for this specific transfer.
 
           class Invoice < Increase::Internal::Type::BaseModel
             # @!attribute invoice_number
@@ -268,8 +312,14 @@ module Increase
             required :paid_amount, Integer
 
             # @!method initialize(invoice_number:, paid_amount:)
-            #   @param invoice_number [String]
-            #   @param paid_amount [Integer]
+            #   Some parameter documentations has been truncated, see
+            #   {Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice}
+            #   for more details.
+            #
+            #   @param invoice_number [String] The invoice number for this reference, determined in advance with the receiver.
+            #
+            #   @param paid_amount [Integer] The amount that was paid for this invoice in the minor unit of its currency. For
+            #   ...
           end
         end
       end
@@ -322,13 +372,19 @@ module Increase
                  enum: -> { Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule }
 
         # @!method initialize(date: nil, settlement_schedule: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate} for more
+        #   details.
+        #
         #   Configuration for how the effective date of the transfer will be set. This
         #   determines same-day vs future-dated settlement timing. If not set, defaults to a
         #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
         #   must be set.
         #
-        #   @param date [Date]
-        #   @param settlement_schedule [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule]
+        #   @param date [Date] A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+        #   ...
+        #
+        #   @param settlement_schedule [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule] A schedule by which Increase will choose an effective date for the transfer.
 
         # A schedule by which Increase will choose an effective date for the transfer.
         #

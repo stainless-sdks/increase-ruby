@@ -34,10 +34,19 @@ module Increase
       optional :program_id, String
 
       # @!method initialize(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
-      #   @param name [String]
-      #   @param entity_id [String]
-      #   @param informational_entity_id [String]
-      #   @param program_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::AccountCreateParams} for more details.
+      #
+      #   @param name [String] The name you choose for the Account.
+      #
+      #   @param entity_id [String] The identifier for the Entity that will own the Account.
+      #
+      #   @param informational_entity_id [String] The identifier of an Entity that, while not owning the Account, is associated wi
+      #   ...
+      #
+      #   @param program_id [String] The identifier for the Program that this Account falls under. Required if you op
+      #   ...
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end
   end

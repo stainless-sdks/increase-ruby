@@ -42,15 +42,19 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The identifier for the account that will send the transfer.
         account_id:,
+        # The transfer amount in the minor unit of the account currency. For dollars, for
+        # example, this is cents.
         amount:,
+        # The description you choose to give the transfer.
         description:,
+        # The identifier for the account that will receive the transfer.
         destination_account_id:,
+        # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(

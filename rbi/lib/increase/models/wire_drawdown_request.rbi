@@ -133,26 +133,55 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Wire drawdown request identifier.
         id:,
+        # The Account Number to which the recipient of this request is being requested to
+        # send funds.
         account_number_id:,
+        # The amount being requested in cents.
         amount:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the wire drawdown request was created.
         created_at:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
+        # requested. Will always be "USD".
         currency:,
+        # If the recipient fulfills the drawdown request by sending funds, then this will
+        # be the identifier of the corresponding Transaction.
         fulfillment_inbound_wire_transfer_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # The message the recipient will see as part of the drawdown request.
         message_to_recipient:,
+        # The originator's address line 1.
         originator_address_line1:,
+        # The originator's address line 2.
         originator_address_line2:,
+        # The originator's address line 3.
         originator_address_line3:,
+        # The originator's name.
         originator_name:,
+        # The drawdown request's recipient's account number.
         recipient_account_number:,
+        # Line 1 of the drawdown request's recipient's address.
         recipient_address_line1:,
+        # Line 2 of the drawdown request's recipient's address.
         recipient_address_line2:,
+        # Line 3 of the drawdown request's recipient's address.
         recipient_address_line3:,
+        # The drawdown request's recipient's name.
         recipient_name:,
+        # The drawdown request's recipient's routing number.
         recipient_routing_number:,
+        # The lifecycle status of the drawdown request.
         status:,
+        # After the drawdown request is submitted to Fedwire, this will contain
+        # supplemental details.
         submission:,
+        # A constant representing the object's type. For this resource it will always be
+        # `wire_drawdown_request`.
         type:
       ); end
       sig do
@@ -218,8 +247,11 @@ module Increase
         # After the drawdown request is submitted to Fedwire, this will contain
         # supplemental details.
         sig { params(input_message_accountability_data: String).returns(T.attached_class) }
-        def self.new(input_message_accountability_data:); end
-
+        def self.new(
+          # The input message accountability data (IMAD) uniquely identifying the submission
+          # with Fedwire.
+          input_message_accountability_data:
+        ); end
         sig { override.returns({input_message_accountability_data: String}) }
         def to_hash; end
       end

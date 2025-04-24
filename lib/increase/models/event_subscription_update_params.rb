@@ -14,7 +14,8 @@ module Increase
       optional :status, enum: -> { Increase::Models::EventSubscriptionUpdateParams::Status }
 
       # @!method initialize(status: nil, request_options: {})
-      #   @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
+      #   @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status] The status to update the Event Subscription with.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The status to update the Event Subscription with.

@@ -50,17 +50,29 @@ module Increase
       required :type, enum: -> { Increase::Models::OAuthConnection::Type }
 
       # @!method initialize(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::OAuthConnection} for more details.
+      #
       #   When a user authorizes your OAuth application, an OAuth Connection object is
       #   created. Learn more about OAuth
       #   [here](https://increase.com/documentation/oauth).
       #
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param deleted_at [Time, nil]
-      #   @param group_id [String]
-      #   @param oauth_application_id [String]
-      #   @param status [Symbol, Increase::Models::OAuthConnection::Status]
-      #   @param type [Symbol, Increase::Models::OAuthConnection::Type]
+      #   @param id [String] The OAuth Connection's identifier.
+      #
+      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #   ...
+      #
+      #   @param deleted_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #   ...
+      #
+      #   @param group_id [String] The identifier of the Group that has authorized your OAuth application.
+      #
+      #   @param oauth_application_id [String] The identifier of the OAuth application this connection is for.
+      #
+      #   @param status [Symbol, Increase::Models::OAuthConnection::Status] Whether the connection is active.
+      #
+      #   @param type [Symbol, Increase::Models::OAuthConnection::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # Whether the connection is active.
       #

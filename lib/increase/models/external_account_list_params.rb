@@ -41,11 +41,21 @@ module Increase
       optional :status, -> { Increase::Models::ExternalAccountListParams::Status }
 
       # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, request_options: {})
-      #   @param cursor [String]
-      #   @param idempotency_key [String]
-      #   @param limit [Integer]
-      #   @param routing_number [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::ExternalAccountListParams} for more details.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      #   ...
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
+      #   @param routing_number [String] Filter External Accounts to those with the specified Routing Number.
+      #
       #   @param status [Increase::Models::ExternalAccountListParams::Status]
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
@@ -60,7 +70,11 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   @param in_ [Array<Symbol, Increase::Models::ExternalAccountListParams::Status::In>]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::ExternalAccountListParams::Status} for more details.
+        #
+        #   @param in_ [Array<Symbol, Increase::Models::ExternalAccountListParams::Status::In>] Filter External Accounts for those with the specified status or statuses. For GE
+        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

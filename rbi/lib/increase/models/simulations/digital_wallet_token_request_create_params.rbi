@@ -21,8 +21,11 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(card_id:, request_options: {}); end
-
+        def self.new(
+          # The identifier of the Card to be authorized.
+          card_id:,
+          request_options: {}
+        ); end
         sig { override.returns({card_id: String, request_options: Increase::RequestOptions}) }
         def to_hash; end
       end

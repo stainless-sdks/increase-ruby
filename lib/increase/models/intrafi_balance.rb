@@ -45,16 +45,28 @@ module Increase
       required :type, enum: -> { Increase::Models::IntrafiBalance::Type }
 
       # @!method initialize(id:, balances:, currency:, effective_date:, total_balance:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::IntrafiBalance} for more details.
+      #
       #   When using IntraFi, each account's balance over the standard FDIC insurance
       #   amount are swept to various other institutions. Funds are rebalanced across
       #   banks as needed once per business day.
       #
-      #   @param id [String]
-      #   @param balances [Array<Increase::Models::IntrafiBalance::Balance>]
-      #   @param currency [Symbol, Increase::Models::IntrafiBalance::Currency]
-      #   @param effective_date [Date]
-      #   @param total_balance [Integer]
-      #   @param type [Symbol, Increase::Models::IntrafiBalance::Type]
+      #   @param id [String] The identifier of this balance.
+      #
+      #   @param balances [Array<Increase::Models::IntrafiBalance::Balance>] Each entry represents a balance held at a different bank. IntraFi separates the
+      #   ...
+      #
+      #   @param currency [Symbol, Increase::Models::IntrafiBalance::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account curr
+      #   ...
+      #
+      #   @param effective_date [Date] The date this balance reflects.
+      #
+      #   @param total_balance [Integer] The total balance, in minor units of `currency`. Increase reports this balance t
+      #   ...
+      #
+      #   @param type [Symbol, Increase::Models::IntrafiBalance::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       class Balance < Increase::Internal::Type::BaseModel
         # @!attribute id
@@ -90,11 +102,19 @@ module Increase
         required :fdic_certificate_number, String
 
         # @!method initialize(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
-        #   @param id [String]
-        #   @param balance [Integer]
-        #   @param bank [String]
-        #   @param bank_location [Increase::Models::IntrafiBalance::Balance::BankLocation, nil]
-        #   @param fdic_certificate_number [String]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::IntrafiBalance::Balance} for more details.
+        #
+        #   @param id [String] The identifier of this balance.
+        #
+        #   @param balance [Integer] The balance, in minor units of `currency`, held with this bank.
+        #
+        #   @param bank [String] The name of the bank holding these funds.
+        #
+        #   @param bank_location [Increase::Models::IntrafiBalance::Balance::BankLocation, nil] The primary location of the bank.
+        #
+        #   @param fdic_certificate_number [String] The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
+        #   ...
 
         # @see Increase::Models::IntrafiBalance::Balance#bank_location
         class BankLocation < Increase::Internal::Type::BaseModel
@@ -113,8 +133,9 @@ module Increase
           # @!method initialize(city:, state:)
           #   The primary location of the bank.
           #
-          #   @param city [String]
-          #   @param state [String]
+          #   @param city [String] The bank's city.
+          #
+          #   @param state [String] The bank's state.
         end
       end
 

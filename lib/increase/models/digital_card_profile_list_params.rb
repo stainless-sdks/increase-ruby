@@ -35,10 +35,19 @@ module Increase
       optional :status, -> { Increase::Models::DigitalCardProfileListParams::Status }
 
       # @!method initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
-      #   @param cursor [String]
-      #   @param idempotency_key [String]
-      #   @param limit [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::DigitalCardProfileListParams} for more details.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      #   ...
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param status [Increase::Models::DigitalCardProfileListParams::Status]
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
@@ -53,7 +62,11 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   @param in_ [Array<Symbol, Increase::Models::DigitalCardProfileListParams::Status::In>]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::DigitalCardProfileListParams::Status} for more details.
+        #
+        #   @param in_ [Array<Symbol, Increase::Models::DigitalCardProfileListParams::Status::In>] Filter Digital Card Profiles for those with the specified digital wallet status
+        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

@@ -130,22 +130,50 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The account transfer's identifier.
         id:,
+        # The Account to which the transfer belongs.
         account_id:,
+        # The transfer amount in the minor unit of the destination account currency. For
+        # dollars, for example, this is cents.
         amount:,
+        # If your account requires approvals for transfers and the transfer was approved,
+        # this will contain details of the approval.
         approval:,
+        # If your account requires approvals for transfers and the transfer was not
+        # approved, this will contain details of the cancellation.
         cancellation:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        # the transfer was created.
         created_at:,
+        # What object created the transfer, either via the API or the dashboard.
         created_by:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+        # account currency.
         currency:,
+        # The description that will show on the transactions.
         description:,
+        # The destination account's identifier.
         destination_account_id:,
+        # The ID for the transaction receiving the transfer.
         destination_transaction_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # The transfer's network.
         network:,
+        # The ID for the pending transaction representing the transfer. A pending
+        # transaction is created when the transfer
+        # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+        # by someone else in your organization.
         pending_transaction_id:,
+        # The lifecycle status of the transfer.
         status:,
+        # The ID for the transaction funding the transfer.
         transaction_id:,
+        # A constant representing the object's type. For this resource it will always be
+        # `account_transfer`.
         type:
       ); end
       sig do
@@ -188,8 +216,14 @@ module Increase
         # If your account requires approvals for transfers and the transfer was approved,
         # this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:); end
-
+        def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the transfer was approved.
+          approved_at:,
+          # If the Transfer was approved by a user in the dashboard, the email address of
+          # that user.
+          approved_by:
+        ); end
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
         def to_hash; end
       end
@@ -208,8 +242,14 @@ module Increase
         # If your account requires approvals for transfers and the transfer was not
         # approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:); end
-
+        def self.new(
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          # the Transfer was canceled.
+          canceled_at:,
+          # If the Transfer was canceled by a user in the dashboard, the email address of
+          # that user.
+          canceled_by:
+        ); end
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
         def to_hash; end
       end
@@ -269,8 +309,16 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(api_key:, category:, oauth_application:, user:); end
-
+        def self.new(
+          # If present, details about the API key that created the transfer.
+          api_key:,
+          # The type of object that created this transfer.
+          category:,
+          # If present, details about the OAuth Application that created the transfer.
+          oauth_application:,
+          # If present, details about the User that created the transfer.
+          user:
+        ); end
         sig do
           override
             .returns(
@@ -291,8 +339,10 @@ module Increase
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:); end
-
+          def self.new(
+            # The description set for the API key when it was created.
+            description:
+          ); end
           sig { override.returns({description: T.nilable(String)}) }
           def to_hash; end
         end
@@ -325,8 +375,10 @@ module Increase
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:); end
-
+          def self.new(
+            # The name of the OAuth Application.
+            name:
+          ); end
           sig { override.returns({name: String}) }
           def to_hash; end
         end
@@ -338,8 +390,10 @@ module Increase
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:); end
-
+          def self.new(
+            # The email address of the User.
+            email:
+          ); end
           sig { override.returns({email: String}) }
           def to_hash; end
         end

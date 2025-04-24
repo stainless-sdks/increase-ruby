@@ -28,9 +28,16 @@ module Increase
       optional :description, String
 
       # @!method initialize(file:, purpose:, description: nil, request_options: {})
-      #   @param file [Pathname, StringIO]
-      #   @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose]
-      #   @param description [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::FileCreateParams} for more details.
+      #
+      #   @param file [Pathname, StringIO] The file contents. This should follow the specifications of [RFC 7578](https://d
+      #   ...
+      #
+      #   @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
+      #
+      #   @param description [String] The description you choose to give the File.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # What the File will be used for in Increase's systems.

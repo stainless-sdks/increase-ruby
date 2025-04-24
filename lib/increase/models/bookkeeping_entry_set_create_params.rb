@@ -28,9 +28,16 @@ module Increase
       optional :transaction_id, String
 
       # @!method initialize(entries:, date: nil, transaction_id: nil, request_options: {})
-      #   @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
-      #   @param date [Time]
-      #   @param transaction_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::BookkeepingEntrySetCreateParams} for more details.
+      #
+      #   @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
+      #
+      #   @param date [Time] The date of the transaction. Optional if `transaction_id` is provided, in which
+      #   ...
+      #
+      #   @param transaction_id [String] The identifier of the Transaction related to this entry set, if any.
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Entry < Increase::Internal::Type::BaseModel
@@ -49,8 +56,13 @@ module Increase
         required :amount, Integer
 
         # @!method initialize(account_id:, amount:)
-        #   @param account_id [String]
-        #   @param amount [Integer]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::BookkeepingEntrySetCreateParams::Entry} for more details.
+        #
+        #   @param account_id [String] The identifier for the Bookkeeping Account impacted by this entry.
+        #
+        #   @param amount [Integer] The entry amount in the minor unit of the account currency. For dollars, for exa
+        #   ...
       end
     end
   end

@@ -52,17 +52,28 @@ module Increase
       required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
 
       # @!method initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::BookkeepingAccount} for more details.
+      #
       #   Accounts are T-accounts. They can store accounting entries. Your compliance
       #   setup might require annotating money movements using this API. Learn more in our
       #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #
-      #   @param id [String]
-      #   @param account_id [String, nil]
-      #   @param compliance_category [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil]
-      #   @param entity_id [String, nil]
-      #   @param idempotency_key [String, nil]
-      #   @param name [String]
-      #   @param type [Symbol, Increase::Models::BookkeepingAccount::Type]
+      #   @param id [String] The account identifier.
+      #
+      #   @param account_id [String, nil] The API Account associated with this bookkeeping account.
+      #
+      #   @param compliance_category [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil] The compliance category of the account.
+      #
+      #   @param entity_id [String, nil] The Entity associated with this bookkeeping account.
+      #
+      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
+      #
+      #   @param name [String] The name you choose for the account.
+      #
+      #   @param type [Symbol, Increase::Models::BookkeepingAccount::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The compliance category of the account.
       #

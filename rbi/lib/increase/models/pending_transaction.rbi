@@ -86,17 +86,41 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Pending Transaction identifier.
         id:,
+        # The identifier for the account this Pending Transaction belongs to.
         account_id:,
+        # The Pending Transaction amount in the minor unit of its currency. For dollars,
+        # for example, this is cents.
         amount:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
+        # Transaction was completed.
         completed_at:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
+        # Transaction occurred.
         created_at:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
+        # Transaction's currency. This will match the currency on the Pending
+        # Transaction's Account.
         currency:,
+        # For a Pending Transaction related to a transfer, this is the description you
+        # provide. For a Pending Transaction related to a payment, this is the description
+        # the vendor provides.
         description:,
+        # The identifier for the route this Pending Transaction came through. Routes are
+        # things like cards and ACH details.
         route_id:,
+        # The type of the route this Pending Transaction came through.
         route_type:,
+        # This is an object giving more details on the network-level event that caused the
+        # Pending Transaction. For example, for a card transaction this lists the
+        # merchant's industry and location.
         source:,
+        # Whether the Pending Transaction has been confirmed and has an associated
+        # Transaction.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `pending_transaction`.
         type:
       ); end
       sig do
@@ -380,16 +404,45 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
+          # An Account Transfer Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `account_transfer_instruction`.
           account_transfer_instruction:,
+          # An ACH Transfer Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `ach_transfer_instruction`.
           ach_transfer_instruction:,
+          # A Card Authorization object. This field will be present in the JSON response if
+          # and only if `category` is equal to `card_authorization`. Card Authorizations are
+          # temporary holds placed on a customers funds with the intent to later clear a
+          # transaction.
           card_authorization:,
+          # The type of the resource. We may add additional possible values for this enum
+          # over time; your application should be able to handle such additions gracefully.
           category:,
+          # A Check Deposit Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `check_deposit_instruction`.
           check_deposit_instruction:,
+          # A Check Transfer Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `check_transfer_instruction`.
           check_transfer_instruction:,
+          # An Inbound Funds Hold object. This field will be present in the JSON response if
+          # and only if `category` is equal to `inbound_funds_hold`. We hold funds for
+          # certain transaction types to account for return windows where funds might still
+          # be clawed back by the sending institution.
           inbound_funds_hold:,
+          # An Inbound Wire Transfer Reversal object. This field will be present in the JSON
+          # response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+          # An Inbound Wire Transfer Reversal is created when Increase has received a wire
+          # and the User requests that it be reversed.
           inbound_wire_transfer_reversal:,
+          # If the category of this Transaction source is equal to `other`, this field will
+          # contain an empty object, otherwise it will contain null.
           other:,
+          # A Real-Time Payments Transfer Instruction object. This field will be present in
+          # the JSON response if and only if `category` is equal to
+          # `real_time_payments_transfer_instruction`.
           real_time_payments_transfer_instruction:,
+          # A Wire Transfer Instruction object. This field will be present in the JSON
+          # response if and only if `category` is equal to `wire_transfer_instruction`.
           wire_transfer_instruction:
         ); end
         sig do
@@ -437,8 +490,16 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, transfer_id:); end
-
+          def self.new(
+            # The pending amount in the minor unit of the transaction's currency. For dollars,
+            # for example, this is cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+            # account currency.
+            currency:,
+            # The identifier of the Account Transfer that led to this Pending Transaction.
+            transfer_id:
+          ); end
           sig do
             override
               .returns(
@@ -524,8 +585,12 @@ module Increase
           # An ACH Transfer Instruction object. This field will be present in the JSON
           # response if and only if `category` is equal to `ach_transfer_instruction`.
           sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, transfer_id:); end
-
+          def self.new(
+            # The pending amount in USD cents.
+            amount:,
+            # The identifier of the ACH Transfer that led to this Pending Transaction.
+            transfer_id:
+          ); end
           sig { override.returns({amount: Integer, transfer_id: String}) }
           def to_hash; end
         end
@@ -734,32 +799,75 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The Card Authorization identifier.
             id:,
+            # Whether this authorization was approved by Increase, the card network through
+            # stand-in processing, or the user through a real-time decision.
             actioner:,
+            # The pending amount in the minor unit of the transaction's currency. For dollars,
+            # for example, this is cents.
             amount:,
+            # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's currency.
             currency:,
+            # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+            # purchase), the identifier of the token that was used.
             digital_wallet_token_id:,
+            # The direction describes the direction the funds will move, either from the
+            # cardholder to the merchant or from the merchant to the cardholder.
             direction:,
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
+            # will expire and the pending transaction will be released.
             expires_at:,
+            # The merchant identifier (commonly abbreviated as MID) of the merchant the card
+            # is transacting with.
             merchant_acceptor_id:,
+            # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+            # card is transacting with.
             merchant_category_code:,
+            # The city the merchant resides in.
             merchant_city:,
+            # The country the merchant resides in.
             merchant_country:,
+            # The merchant descriptor of the merchant the card is transacting with.
             merchant_descriptor:,
+            # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+            # ZIP code, where the first 5 and last 4 are separated by a dash.
             merchant_postal_code:,
+            # The state the merchant resides in.
             merchant_state:,
+            # Fields specific to the `network`.
             network_details:,
+            # Network-specific identifiers for a specific request or transaction.
             network_identifiers:,
+            # The risk score generated by the card network. For Visa this is the Visa Advanced
+            # Authorization risk score, from 0 to 99, where 99 is the riskiest.
             network_risk_score:,
+            # The identifier of the Pending Transaction associated with this Transaction.
             pending_transaction_id:,
+            # If the authorization was made in-person with a physical card, the Physical Card
+            # that was used.
             physical_card_id:,
+            # The pending amount in the minor unit of the transaction's presentment currency.
             presentment_amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's presentment currency.
             presentment_currency:,
+            # The processing category describes the intent behind the authorization, such as
+            # whether it was used for bill payments or an automatic fuel dispenser.
             processing_category:,
+            # The identifier of the Real-Time Decision sent to approve or decline this
+            # transaction.
             real_time_decision_id:,
+            # The terminal identifier (commonly abbreviated as TID) of the terminal the card
+            # is transacting with.
             terminal_id:,
+            # A constant representing the object's type. For this resource it will always be
+            # `card_authorization`.
             type:,
+            # Fields related to verification of cardholder-provided values.
             verification:
           ); end
           sig do
@@ -934,8 +1042,12 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(category:, visa:); end
-
+            def self.new(
+              # The payment network used to process this card authorization.
+              category:,
+              # Fields specific to the `visa` network.
+              visa:
+            ); end
             sig do
               override
                 .returns(
@@ -1022,12 +1134,17 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # For electronic commerce transactions, this identifies the level of security used
+                # in obtaining the customer's payment credential. For mail or telephone order
+                # transactions, identifies the type of mail or telephone order.
                 electronic_commerce_indicator:,
+                # The method used to enter the cardholder's primary account number and card
+                # expiration date.
                 point_of_service_entry_mode:,
+                # Only present when `actioner: network`. Describes why a card authorization was
+                # approved or declined by Visa through stand-in processing.
                 stand_in_processing_reason:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -1316,8 +1433,18 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
-
+            def self.new(
+              # A life-cycle identifier used across e.g., an authorization and a reversal.
+              # Expected to be unique per acquirer within a window of time. For some card
+              # networks the retrieval reference number includes the trace counter.
+              retrieval_reference_number:,
+              # A counter used to verify an individual authorization. Expected to be unique per
+              # acquirer within a window of time.
+              trace_number:,
+              # A globally unique transaction identifier provided by the card network, used
+              # across multiple life-cycle requests.
+              transaction_id:
+            ); end
             sig do
               override
                 .returns(
@@ -1464,8 +1591,14 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(card_verification_code:, cardholder_address:); end
-
+            def self.new(
+              # Fields related to verification of the Card Verification Code, a 3-digit code on
+              # the back of the card.
+              card_verification_code:,
+              # Cardholder address provided in the authorization request and the address on file
+              # we verified it against.
+              cardholder_address:
+            ); end
             sig do
               override
                 .returns(
@@ -1494,8 +1627,10 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(result:); end
-
+              def self.new(
+                # The result of verifying the Card Verification Code.
+                result:
+              ); end
               sig do
                 override
                   .returns(
@@ -1588,14 +1723,18 @@ module Increase
                   .returns(T.attached_class)
               end
               def self.new(
+                # Line 1 of the address on file for the cardholder.
                 actual_line1:,
+                # The postal code of the address on file for the cardholder.
                 actual_postal_code:,
+                # The cardholder address line 1 provided for verification in the authorization
+                # request.
                 provided_line1:,
+                # The postal code provided for verification in the authorization request.
                 provided_postal_code:,
+                # The address verification result returned to the card network.
                 result:
-              )
-              end
-
+              ); end
               sig do
                 override
                   .returns(
@@ -1769,8 +1908,21 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, back_image_file_id:, check_deposit_id:, currency:, front_image_file_id:); end
-
+          def self.new(
+            # The pending amount in USD cents.
+            amount:,
+            # The identifier of the File containing the image of the back of the check that
+            # was deposited.
+            back_image_file_id:,
+            # The identifier of the Check Deposit.
+            check_deposit_id:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+            # transaction's currency.
+            currency:,
+            # The identifier of the File containing the image of the front of the check that
+            # was deposited.
+            front_image_file_id:
+          ); end
           sig do
             override
               .returns(
@@ -1852,8 +2004,15 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(amount:, currency:, transfer_id:); end
-
+          def self.new(
+            # The transfer amount in USD cents.
+            amount:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+            # currency.
+            currency:,
+            # The identifier of the Check Transfer that led to this Pending Transaction.
+            transfer_id:
+          ); end
           sig do
             override
               .returns(
@@ -1993,15 +2152,30 @@ module Increase
               .returns(T.attached_class)
           end
           def self.new(
+            # The Inbound Funds Hold identifier.
             id:,
+            # The held amount in the minor unit of the account's currency. For dollars, for
+            # example, this is cents.
             amount:,
+            # When the hold will be released automatically. Certain conditions may cause it to
+            # be released before this time.
             automatically_releases_at:,
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+            # was created.
             created_at:,
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+            # currency.
             currency:,
+            # The ID of the Transaction for which funds were held.
             held_transaction_id:,
+            # The ID of the Pending Transaction representing the held funds.
             pending_transaction_id:,
+            # When the hold was released (if it has been released).
             released_at:,
+            # The status of the hold.
             status:,
+            # A constant representing the object's type. For this resource it will always be
+            # `inbound_funds_hold`.
             type:
           ); end
           sig do
@@ -2112,8 +2286,10 @@ module Increase
           # An Inbound Wire Transfer Reversal is created when Increase has received a wire
           # and the User requests that it be reversed.
           sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_wire_transfer_id:); end
-
+          def self.new(
+            # The ID of the Inbound Wire Transfer that is being reversed.
+            inbound_wire_transfer_id:
+          ); end
           sig { override.returns({inbound_wire_transfer_id: String}) }
           def to_hash; end
         end
@@ -2132,8 +2308,13 @@ module Increase
           # the JSON response if and only if `category` is equal to
           # `real_time_payments_transfer_instruction`.
           sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, transfer_id:); end
-
+          def self.new(
+            # The transfer amount in USD cents.
+            amount:,
+            # The identifier of the Real-Time Payments Transfer that led to this Pending
+            # Transaction.
+            transfer_id:
+          ); end
           sig { override.returns({amount: Integer, transfer_id: String}) }
           def to_hash; end
         end
@@ -2172,8 +2353,19 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:); end
-
+          def self.new(
+            # The account number for the destination account.
+            account_number:,
+            # The transfer amount in USD cents.
+            amount:,
+            # The message that will show on the recipient's bank statement.
+            message_to_recipient:,
+            # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+            # destination account.
+            routing_number:,
+            # The identifier of the Wire Transfer that led to this Pending Transaction.
+            transfer_id:
+          ); end
           sig do
             override
               .returns(

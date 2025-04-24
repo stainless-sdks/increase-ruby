@@ -41,11 +41,21 @@ module Increase
       optional :status, -> { Increase::Models::IntrafiAccountEnrollmentListParams::Status }
 
       # @!method initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
-      #   @param account_id [String]
-      #   @param cursor [String]
-      #   @param idempotency_key [String]
-      #   @param limit [Integer]
+      #   Some parameter documentations has been truncated, see
+      #   {Increase::Models::IntrafiAccountEnrollmentListParams} for more details.
+      #
+      #   @param account_id [String] Filter IntraFi Account Enrollments to the one belonging to an account.
+      #
+      #   @param cursor [String] Return the page of entries after this one.
+      #
+      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      #   ...
+      #
+      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      #   ...
+      #
       #   @param status [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
+      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class Status < Increase::Internal::Type::BaseModel
@@ -60,7 +70,11 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   @param in_ [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
+        #   Some parameter documentations has been truncated, see
+        #   {Increase::Models::IntrafiAccountEnrollmentListParams::Status} for more details.
+        #
+        #   @param in_ [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>] Filter IntraFi Account Enrollments for those with the specified status or status
+        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

@@ -98,20 +98,47 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
+        # The Account identifier.
         id:,
+        # The bank the Account is with.
         bank:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+        # was closed.
         closed_at:,
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+        # was created.
         created_at:,
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+        # currency.
         currency:,
+        # The identifier for the Entity the Account belongs to.
         entity_id:,
+        # The idempotency key you chose for this object. This value is unique across
+        # Increase and is used to ensure that a request is only processed once. Learn more
+        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
+        # The identifier of an Entity that, while not owning the Account, is associated
+        # with its activity.
         informational_entity_id:,
+        # The interest accrued but not yet paid, expressed as a string containing a
+        # floating-point value.
         interest_accrued:,
+        # The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
+        # interest was accrued.
         interest_accrued_at:,
+        # The Interest Rate currently being earned on the account, as a string containing
+        # a decimal number. For example, a 1% interest rate would be represented as
+        # "0.01".
         interest_rate:,
+        # The name you choose for the Account.
         name:,
+        # The identifier of the Program determining the compliance and commercial terms of
+        # this Account.
         program_id:,
+        # The status of the Account.
         status:,
+        # A constant representing the object's type. For this resource it will always be
+        # `account`.
         type:
       ); end
       sig do

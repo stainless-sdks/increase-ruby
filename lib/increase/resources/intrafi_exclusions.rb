@@ -7,8 +7,10 @@ module Increase
       #
       # @overload create(bank_name:, entity_id:, request_options: {})
       #
-      # @param bank_name [String]
-      # @param entity_id [String]
+      # @param bank_name [String] The name of the financial institution to be excluded.
+      #
+      # @param entity_id [String] The identifier of the Entity whose deposits will be excluded.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiExclusion]
@@ -29,7 +31,8 @@ module Increase
       #
       # @overload retrieve(intrafi_exclusion_id, request_options: {})
       #
-      # @param intrafi_exclusion_id [String]
+      # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion to retrieve.
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiExclusion]
@@ -44,14 +47,23 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::IntrafiExclusionListParams} for more details.
+      #
       # List IntraFi Exclusions
       #
       # @overload list(cursor: nil, entity_id: nil, idempotency_key: nil, limit: nil, request_options: {})
       #
-      # @param cursor [String]
-      # @param entity_id [String]
-      # @param idempotency_key [String]
-      # @param limit [Integer]
+      # @param cursor [String] Return the page of entries after this one.
+      #
+      # @param entity_id [String] Filter IntraFi Exclusions for those belonging to the specified Entity.
+      #
+      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
+      #
+      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::IntrafiExclusion>]
@@ -69,11 +81,16 @@ module Increase
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {Increase::Models::IntrafiExclusionArchiveParams} for more details.
+      #
       # Archive an IntraFi Exclusion
       #
       # @overload archive(intrafi_exclusion_id, request_options: {})
       #
-      # @param intrafi_exclusion_id [String]
+      # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion request to archive. It may take 5 busine
+      # ...
+      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::IntrafiExclusion]
