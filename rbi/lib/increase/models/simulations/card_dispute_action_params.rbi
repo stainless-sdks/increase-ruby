@@ -26,13 +26,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The status to move the dispute to.
-          status:,
-          # Why the dispute was rejected. Not required for accepting disputes.
-          explanation: nil,
-          request_options: {}
-        ); end
+        def self.new(status:, explanation: nil, request_options: {}); end
+
         sig do
           override
             .returns(

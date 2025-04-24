@@ -5,12 +5,8 @@ module Increase
     module Type
       # @api private
       #
-      # Either `Pathname` or `StringIO`, or `IO`, or
-      # `Increase::Internal::Type::FileInput`.
-      #
-      # Note: when `IO` is used, all retries are disabled, since many IO` streams are
-      # not rewindable.
-      class FileInput
+      # Either `Pathname` or `StringIO`.
+      class IOLike
         extend Increase::Internal::Type::Converter
 
         abstract!

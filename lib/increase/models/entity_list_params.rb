@@ -40,21 +40,11 @@ module Increase
       optional :status, -> { Increase::Models::EntityListParams::Status }
 
       # @!method initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::EntityListParams} for more details.
-      #
       #   @param created_at [Increase::Models::EntityListParams::CreatedAt]
-      #
-      #   @param cursor [String] Return the page of entries after this one.
-      #
-      #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      #   ...
-      #
-      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
-      #
+      #   @param cursor [String]
+      #   @param idempotency_key [String]
+      #   @param limit [Integer]
       #   @param status [Increase::Models::EntityListParams::Status]
-      #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       class CreatedAt < Increase::Internal::Type::BaseModel
@@ -87,20 +77,10 @@ module Increase
         optional :on_or_before, Time
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::EntityListParams::CreatedAt} for more details.
-        #
-        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
-        #
-        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
-        #
-        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
-        #
-        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
+        #   @param after [Time]
+        #   @param before [Time]
+        #   @param on_or_after [Time]
+        #   @param on_or_before [Time]
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -115,11 +95,7 @@ module Increase
                  api_name: :in
 
         # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::EntityListParams::Status} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::EntityListParams::Status::In>] Filter Entities for those with the specified status or statuses. For GET request
-        #   ...
+        #   @param in_ [Array<Symbol, Increase::Models::EntityListParams::Status::In>]
 
         module In
           extend Increase::Internal::Type::Enum

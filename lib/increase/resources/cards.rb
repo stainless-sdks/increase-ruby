@@ -3,25 +3,15 @@
 module Increase
   module Resources
     class Cards
-      # Some parameter documentations has been truncated, see
-      # {Increase::Models::CardCreateParams} for more details.
-      #
       # Create a Card
       #
       # @overload create(account_id:, billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, request_options: {})
       #
-      # @param account_id [String] The Account the card should belong to.
-      #
-      # @param billing_address [Increase::Models::CardCreateParams::BillingAddress] The card's billing address.
-      #
-      # @param description [String] The description you choose to give the card.
-      #
-      # @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
-      # ...
-      #
-      # @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      # ...
-      #
+      # @param account_id [String]
+      # @param billing_address [Increase::Models::CardCreateParams::BillingAddress]
+      # @param description [String]
+      # @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet]
+      # @param entity_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Card]
@@ -42,8 +32,7 @@ module Increase
       #
       # @overload retrieve(card_id, request_options: {})
       #
-      # @param card_id [String] The identifier of the Card.
-      #
+      # @param card_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Card]
@@ -58,27 +47,16 @@ module Increase
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Increase::Models::CardUpdateParams} for more details.
-      #
       # Update a Card
       #
       # @overload update(card_id, billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, status: nil, request_options: {})
       #
-      # @param card_id [String] The card identifier.
-      #
-      # @param billing_address [Increase::Models::CardUpdateParams::BillingAddress] The card's updated billing address.
-      #
-      # @param description [String] The description you choose to give the card.
-      #
-      # @param digital_wallet [Increase::Models::CardUpdateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
-      # ...
-      #
-      # @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      # ...
-      #
-      # @param status [Symbol, Increase::Models::CardUpdateParams::Status] The status to update the Card with.
-      #
+      # @param card_id [String]
+      # @param billing_address [Increase::Models::CardUpdateParams::BillingAddress]
+      # @param description [String]
+      # @param digital_wallet [Increase::Models::CardUpdateParams::DigitalWallet]
+      # @param entity_id [String]
+      # @param status [Symbol, Increase::Models::CardUpdateParams::Status]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::Card]
@@ -95,27 +73,16 @@ module Increase
         )
       end
 
-      # Some parameter documentations has been truncated, see
-      # {Increase::Models::CardListParams} for more details.
-      #
       # List Cards
       #
       # @overload list(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #
-      # @param account_id [String] Filter Cards to ones belonging to the specified Account.
-      #
+      # @param account_id [String]
       # @param created_at [Increase::Models::CardListParams::CreatedAt]
-      #
-      # @param cursor [String] Return the page of entries after this one.
-      #
-      # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
-      #
-      # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
-      #
+      # @param cursor [String]
+      # @param idempotency_key [String]
+      # @param limit [Integer]
       # @param status [Increase::Models::CardListParams::Status]
-      #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Internal::Page<Increase::Models::Card>]
@@ -137,8 +104,7 @@ module Increase
       #
       # @overload details(card_id, request_options: {})
       #
-      # @param card_id [String] The identifier of the Card to retrieve details for.
-      #
+      # @param card_id [String]
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [Increase::Models::CardDetails]

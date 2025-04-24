@@ -16,12 +16,7 @@ module Increase
         required :transaction_id, String
 
         # @!method initialize(transaction_id:, request_options: {})
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Simulations::CardRefundCreateParams} for more details.
-        #
-        #   @param transaction_id [String] The identifier for the Transaction to refund. The Transaction's source must have
-        #   ...
-        #
+        #   @param transaction_id [String]
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       end
     end

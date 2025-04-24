@@ -11,8 +11,7 @@ module Increase
         #
         # @overload reverse(wire_transfer_id, request_options: {})
         #
-        # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
-        #
+        # @param wire_transfer_id [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::WireTransfer]
@@ -33,8 +32,7 @@ module Increase
         #
         # @overload submit(wire_transfer_id, request_options: {})
         #
-        # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
-        #
+        # @param wire_transfer_id [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::WireTransfer]

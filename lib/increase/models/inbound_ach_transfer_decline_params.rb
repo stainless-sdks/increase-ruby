@@ -16,12 +16,7 @@ module Increase
       optional :reason, enum: -> { Increase::Models::InboundACHTransferDeclineParams::Reason }
 
       # @!method initialize(reason: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::InboundACHTransferDeclineParams} for more details.
-      #
-      #   @param reason [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason] The reason why this transfer will be returned. If this parameter is unset, the r
-      #   ...
-      #
+      #   @param reason [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason]
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
       # The reason why this transfer will be returned. If this parameter is unset, the
