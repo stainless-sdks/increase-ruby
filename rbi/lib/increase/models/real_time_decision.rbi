@@ -119,30 +119,16 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The Real-Time Decision identifier.
         id:,
-        # Fields related to a 3DS authentication attempt.
         card_authentication:,
-        # Fields related to a 3DS authentication attempt.
         card_authentication_challenge:,
-        # Fields related to a card authorization.
         card_authorization:,
-        # The category of the Real-Time Decision.
         category:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Real-Time Decision was created.
         created_at:,
-        # Fields related to a digital wallet authentication attempt.
         digital_wallet_authentication:,
-        # Fields related to a digital wallet token provisioning attempt.
         digital_wallet_token:,
-        # The status of the Real-Time Decision.
         status:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # your application can no longer respond to the Real-Time Decision.
         timeout_at:,
-        # A constant representing the object's type. For this resource it will always be
-        # `real_time_decision`.
         type:
       ); end
       sig do
@@ -193,17 +179,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The identifier of the Account the card belongs to.
-          account_id:,
-          # The identifier of the Card that is being tokenized.
-          card_id:,
-          # Whether or not the authentication attempt was approved.
-          decision:,
-          # The identifier of the Card Payment this authentication attempt will belong to.
-          # Available in the API once the card authentication has completed.
-          upcoming_card_payment_id:
-        ); end
+        def self.new(account_id:, card_id:, decision:, upcoming_card_payment_id:); end
+
         sig do
           override
             .returns(
@@ -223,7 +200,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol) }
 
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = T.let(:approve, Increase::Models::RealTimeDecision::CardAuthentication::Decision::TaggedSymbol)
@@ -273,19 +251,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The identifier of the Account the card belongs to.
-          account_id:,
-          # The identifier of the Card that is being tokenized.
-          card_id:,
-          # The identifier of the Card Payment this authentication challenge attempt belongs
-          # to.
-          card_payment_id:,
-          # The one-time code delivered to the cardholder.
-          one_time_code:,
-          # Whether or not the challenge was delivered to the cardholder.
-          result:
-        ); end
+        def self.new(account_id:, card_id:, card_payment_id:, one_time_code:, result:); end
+
         sig do
           override
             .returns(
@@ -306,7 +273,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result::TaggedSymbol
+              )
+            end
 
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS =
@@ -510,70 +484,30 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
-          # The identifier of the Account the authorization will debit.
           account_id:,
-          # The identifier of the Card that is being authorized.
           card_id:,
-          # Whether or not the authorization was approved.
           decision:,
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          # purchase), the identifier of the token that was used.
           digital_wallet_token_id:,
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
           direction:,
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          # is transacting with.
           merchant_acceptor_id:,
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          # card is transacting with.
           merchant_category_code:,
-          # The city the merchant resides in.
           merchant_city:,
-          # The country the merchant resides in.
           merchant_country:,
-          # The merchant descriptor of the merchant the card is transacting with.
           merchant_descriptor:,
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          # ZIP code, where the first 5 and last 4 are separated by a dash.
           merchant_postal_code:,
-          # The state the merchant resides in.
           merchant_state:,
-          # Fields specific to the `network`.
           network_details:,
-          # Network-specific identifiers for a specific request or transaction.
           network_identifiers:,
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
           network_risk_score:,
-          # If the authorization was made in-person with a physical card, the Physical Card
-          # that was used.
           physical_card_id:,
-          # The amount of the attempted authorization in the currency the card user sees at
-          # the time of purchase, in the minor unit of that currency. For dollars, for
-          # example, this is cents.
           presentment_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
-          # user sees at the time of purchase.
           presentment_currency:,
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
           processing_category:,
-          # Fields specific to the type of request, such as an incremental authorization.
           request_details:,
-          # The amount of the attempted authorization in the currency it will be settled in.
-          # This currency is the same as that of the Account the card belongs to.
           settlement_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
-          # transaction will be settled in.
           settlement_currency:,
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          # is transacting with.
           terminal_id:,
-          # The identifier of the Card Payment this authorization will belong to. Available
-          # in the API once the card authorization has completed.
           upcoming_card_payment_id:,
-          # Fields related to verification of cardholder-provided values.
           verification:
         ); end
         sig do
@@ -616,7 +550,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol) }
 
           # Approve the authorization.
           APPROVE = T.let(:approve, Increase::Models::RealTimeDecision::CardAuthorization::Decision::TaggedSymbol)
@@ -635,7 +570,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol) }
 
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT =
@@ -683,12 +619,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The payment network used to process this card authorization.
-            category:,
-            # Fields specific to the `visa` network.
-            visa:
-          ); end
+          def self.new(category:, visa:); end
+
           sig do
             override
               .returns(
@@ -706,7 +638,14 @@ module Increase
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category::TaggedSymbol
+                )
+              end
 
             # Visa
             VISA =
@@ -775,17 +714,12 @@ module Increase
                 .returns(T.attached_class)
             end
             def self.new(
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
               electronic_commerce_indicator:,
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
               point_of_service_entry_mode:,
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
               stand_in_processing_reason:
-            ); end
+            )
+            end
+
             sig do
               override
                 .returns(
@@ -814,7 +748,14 @@ module Increase
                 T.type_alias do
                   T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator)
                 end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                  )
+                end
 
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
               MAIL_PHONE_ORDER =
@@ -892,7 +833,14 @@ module Increase
                 T.type_alias do
                   T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode)
                 end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                  )
+                end
 
               # Unknown
               UNKNOWN =
@@ -984,7 +932,14 @@ module Increase
                 T.type_alias do
                   T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason)
                 end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  )
+                end
 
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR =
@@ -1074,18 +1029,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            # Expected to be unique per acquirer within a window of time. For some card
-            # networks the retrieval reference number includes the trace counter.
-            retrieval_reference_number:,
-            # A counter used to verify an individual authorization. Expected to be unique per
-            # acquirer within a window of time.
-            trace_number:,
-            # A globally unique transaction identifier provided by the card network, used
-            # across multiple life-cycle requests.
-            transaction_id:
-          ); end
+          def self.new(retrieval_reference_number:, trace_number:, transaction_id:); end
+
           sig do
             override
               .returns(
@@ -1106,7 +1051,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol
+              )
+            end
 
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING =
@@ -1196,15 +1148,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The type of this request (e.g., an initial authorization or an incremental
-            # authorization).
-            category:,
-            # Fields specific to the category `incremental_authorization`.
-            incremental_authorization:,
-            # Fields specific to the category `initial_authorization`.
-            initial_authorization:
-          ); end
+          def self.new(category:, incremental_authorization:, initial_authorization:); end
+
           sig do
             override
               .returns(
@@ -1224,7 +1169,14 @@ module Increase
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol
+                )
+              end
 
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION =
@@ -1266,13 +1218,8 @@ module Increase
                 original_card_authorization_id: String
               ).returns(T.attached_class)
             end
-            def self.new(
-              # The card payment for this authorization and increment.
-              card_payment_id:,
-              # The identifier of the card authorization this request is attempting to
-              # increment.
-              original_card_authorization_id:
-            ); end
+            def self.new(card_payment_id:, original_card_authorization_id:); end
+
             sig { override.returns({card_payment_id: String, original_card_authorization_id: String}) }
             def to_hash; end
           end
@@ -1325,14 +1272,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            # the back of the card.
-            card_verification_code:,
-            # Cardholder address provided in the authorization request and the address on file
-            # we verified it against.
-            cardholder_address:
-          ); end
+          def self.new(card_verification_code:, cardholder_address:); end
+
           sig do
             override
               .returns(
@@ -1361,10 +1302,8 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(
-              # The result of verifying the Card Verification Code.
-              result:
-            ); end
+            def self.new(result:); end
+
             sig do
               override
                 .returns(
@@ -1383,7 +1322,14 @@ module Increase
                 T.type_alias do
                   T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result)
                 end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                  )
+                end
 
               # No card verification code was provided in the authorization request.
               NOT_CHECKED =
@@ -1456,19 +1402,9 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(
-              # Line 1 of the address on file for the cardholder.
-              actual_line1:,
-              # The postal code of the address on file for the cardholder.
-              actual_postal_code:,
-              # The cardholder address line 1 provided for verification in the authorization
-              # request.
-              provided_line1:,
-              # The postal code provided for verification in the authorization request.
-              provided_postal_code:,
-              # The address verification result returned to the card network.
-              result:
-            ); end
+            def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+            end
+
             sig do
               override
                 .returns(
@@ -1491,7 +1427,14 @@ module Increase
                 T.type_alias do
                   T.all(Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result)
                 end
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias do
+                  T.any(
+                    Symbol,
+                    String,
+                    Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                  )
+                end
 
               # No address was provided in the authorization request.
               NOT_CHECKED =
@@ -1554,7 +1497,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::Category::TaggedSymbol) }
 
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED =
@@ -1629,23 +1573,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The identifier of the Card that is being tokenized.
-          card_id:,
-          # The channel to send the card user their one-time passcode.
-          channel:,
-          # The digital wallet app being used.
-          digital_wallet:,
-          # The email to send the one-time passcode to if `channel` is equal to `email`.
-          email:,
-          # The one-time passcode to send the card user.
-          one_time_passcode:,
-          # The phone number to send the one-time passcode to if `channel` is equal to
-          # `sms`.
-          phone:,
-          # Whether your application successfully delivered the one-time passcode.
-          result:
-        ); end
+        def self.new(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:); end
+
         sig do
           override
             .returns(
@@ -1668,7 +1597,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol
+              )
+            end
 
           # Send one-time passcodes over SMS.
           SMS = T.let(:sms, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel::TaggedSymbol)
@@ -1690,7 +1626,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet::TaggedSymbol
+              )
+            end
 
           # Apple Pay
           APPLE_PAY =
@@ -1735,7 +1678,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result::TaggedSymbol
+              )
+            end
 
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS =
@@ -1796,21 +1746,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The identifier of the Card that is being tokenized.
-          card_id:,
-          # The identifier of the Card Profile that was set via the real time decision. This
-          # will be null until the real time decision is responded to or if the real time
-          # decision did not set a card profile.
-          card_profile_id:,
-          # Whether or not the provisioning request was approved. This will be null until
-          # the real time decision is responded to.
-          decision:,
-          # Device that is being used to provision the digital wallet token.
-          device:,
-          # The digital wallet app being used.
-          digital_wallet:
-        ); end
+        def self.new(card_id:, card_profile_id:, decision:, device:, digital_wallet:); end
+
         sig do
           override
             .returns(
@@ -1832,7 +1769,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol) }
 
           # Approve the provisioning request.
           APPROVE = T.let(:approve, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision::TaggedSymbol)
@@ -1851,10 +1789,8 @@ module Increase
 
           # Device that is being used to provision the digital wallet token.
           sig { params(identifier: T.nilable(String)).returns(T.attached_class) }
-          def self.new(
-            # ID assigned to the device by the digital wallet provider.
-            identifier:
-          ); end
+          def self.new(identifier:); end
+
           sig { override.returns({identifier: T.nilable(String)}) }
           def to_hash; end
         end
@@ -1865,7 +1801,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet::TaggedSymbol) }
 
           # Apple Pay
           APPLE_PAY =
@@ -1896,7 +1833,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::Status::TaggedSymbol) }
 
         # The decision is pending action via real-time webhook.
         PENDING = T.let(:pending, Increase::Models::RealTimeDecision::Status::TaggedSymbol)
@@ -1917,7 +1855,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimeDecision::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::RealTimeDecision::Type::TaggedSymbol) }
 
         REAL_TIME_DECISION = T.let(:real_time_decision, Increase::Models::RealTimeDecision::Type::TaggedSymbol)
 

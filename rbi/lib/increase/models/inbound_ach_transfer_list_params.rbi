@@ -68,15 +68,10 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # Filter Inbound ACH Transfers to ones belonging to the specified Account.
         account_id: nil,
-        # Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
         account_number_id: nil,
         created_at: nil,
-        # Return the page of entries after this one.
         cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
         limit: nil,
         status: nil,
         request_options: {}
@@ -133,20 +128,8 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(
-          # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
-          # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
-          # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
-          # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        ); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash; end
       end
@@ -165,12 +148,8 @@ module Increase
           params(in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # Filter Inbound ACH Transfers to those with the specified status. For GET
-          # requests, this should be encoded as a comma-delimited string, such as
-          # `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
@@ -178,7 +157,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol) }
 
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = T.let(:pending, Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol)

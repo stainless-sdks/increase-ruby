@@ -28,12 +28,8 @@ module Increase
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
-        #
-        # @return [Increase::Internal::Type::HashOf]
         def self.[](...) = new(...)
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -54,8 +50,6 @@ module Increase
           end
         end
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -64,11 +58,6 @@ module Increase
           other.is_a?(Increase::Internal::Type::HashOf) && other.nilable? == nilable? && other.item_type == item_type
           # rubocop:enable Layout/LineLength
         end
-
-        # @api public
-        #
-        # @return [Integer]
-        def hash = [self.class, item_type].hash
 
         # @api private
         #

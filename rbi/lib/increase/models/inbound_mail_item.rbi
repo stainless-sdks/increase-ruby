@@ -53,26 +53,17 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The Inbound Mail Item identifier.
         id:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-        # Mail Item was created.
         created_at:,
-        # The identifier for the File containing the scanned contents of the mail item.
         file_id:,
-        # The identifier for the Lockbox that received this mail item. For mail items that
-        # could not be processed due to an invalid address, this will be null.
         lockbox_id:,
-        # The recipient name as written on the mail item.
         recipient_name:,
-        # If the mail item has been rejected, why it was rejected.
         rejection_reason:,
-        # If the mail item has been processed.
         status:,
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_mail_item`.
         type:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -95,7 +86,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::RejectionReason) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol) }
 
         # The mail item does not match any lockbox.
         NO_MATCHING_LOCKBOX =
@@ -117,7 +109,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundMailItem::Status::TaggedSymbol) }
 
         # The mail item is pending processing.
         PENDING = T.let(:pending, Increase::Models::InboundMailItem::Status::TaggedSymbol)
@@ -138,7 +131,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundMailItem::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::InboundMailItem::Type::TaggedSymbol) }
 
         INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::Models::InboundMailItem::Type::TaggedSymbol)
 

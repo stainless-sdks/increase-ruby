@@ -62,36 +62,39 @@ module Increase
       #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
-      # @!method initialize(id:, card_id:, cardholder:, created_at:, idempotency_key:, physical_card_profile_id:, shipment:, status:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::PhysicalCard} for more details.
-      #
-      #   Custom physical Visa cards that are shipped to your customers. The artwork is
-      #   configurable by a connected [Card Profile](/documentation/api#card-profiles).
-      #   The same Card can be used for multiple Physical Cards. Printing cards incurs a
-      #   fee. Please contact [support@increase.com](mailto:support@increase.com) for
-      #   pricing!
-      #
-      #   @param id [String] The physical card identifier.
-      #
-      #   @param card_id [String] The identifier for the Card this Physical Card represents.
-      #
-      #   @param cardholder [Increase::Models::PhysicalCard::Cardholder] Details about the cardholder, as it appears on the printed card.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param physical_card_profile_id [String, nil] The Physical Card Profile used for this Physical Card.
-      #
-      #   @param shipment [Increase::Models::PhysicalCard::Shipment] The details used to ship this physical card.
-      #
-      #   @param status [Symbol, Increase::Models::PhysicalCard::Status] The status of the Physical Card.
-      #
-      #   @param type [Symbol, Increase::Models::PhysicalCard::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Custom physical Visa cards that are shipped to your customers. The artwork is
+      #   # configurable by a connected [Card Profile](/documentation/api#card-profiles).
+      #   # The same Card can be used for multiple Physical Cards. Printing cards incurs a
+      #   # fee. Please contact [support@increase.com](mailto:support@increase.com) for
+      #   # pricing!
+      #   #
+      #   # @param id [String]
+      #   # @param card_id [String]
+      #   # @param cardholder [Increase::Models::PhysicalCard::Cardholder]
+      #   # @param created_at [Time]
+      #   # @param idempotency_key [String, nil]
+      #   # @param physical_card_profile_id [String, nil]
+      #   # @param shipment [Increase::Models::PhysicalCard::Shipment]
+      #   # @param status [Symbol, Increase::Models::PhysicalCard::Status]
+      #   # @param type [Symbol, Increase::Models::PhysicalCard::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     card_id:,
+      #     cardholder:,
+      #     created_at:,
+      #     idempotency_key:,
+      #     physical_card_profile_id:,
+      #     shipment:,
+      #     status:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # @see Increase::Models::PhysicalCard#cardholder
       class Cardholder < Increase::Internal::Type::BaseModel
@@ -107,12 +110,15 @@ module Increase
         #   @return [String]
         required :last_name, String
 
-        # @!method initialize(first_name:, last_name:)
-        #   Details about the cardholder, as it appears on the printed card.
-        #
-        #   @param first_name [String] The cardholder's first name.
-        #
-        #   @param last_name [String] The cardholder's last name.
+        # @!parse
+        #   # Details about the cardholder, as it appears on the printed card.
+        #   #
+        #   # @param first_name [String]
+        #   # @param last_name [String]
+        #   #
+        #   def initialize(first_name:, last_name:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
       # @see Increase::Models::PhysicalCard#shipment
@@ -141,16 +147,17 @@ module Increase
         #   @return [Increase::Models::PhysicalCard::Shipment::Tracking, nil]
         required :tracking, -> { Increase::Models::PhysicalCard::Shipment::Tracking }, nil?: true
 
-        # @!method initialize(address:, method_:, status:, tracking:)
-        #   The details used to ship this physical card.
-        #
-        #   @param address [Increase::Models::PhysicalCard::Shipment::Address] The location to where the card's packing label is addressed.
-        #
-        #   @param method_ [Symbol, Increase::Models::PhysicalCard::Shipment::Method] The shipping method.
-        #
-        #   @param status [Symbol, Increase::Models::PhysicalCard::Shipment::Status] The status of this shipment.
-        #
-        #   @param tracking [Increase::Models::PhysicalCard::Shipment::Tracking, nil] Tracking details for the shipment.
+        # @!parse
+        #   # The details used to ship this physical card.
+        #   #
+        #   # @param address [Increase::Models::PhysicalCard::Shipment::Address]
+        #   # @param method_ [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
+        #   # @param status [Symbol, Increase::Models::PhysicalCard::Shipment::Status]
+        #   # @param tracking [Increase::Models::PhysicalCard::Shipment::Tracking, nil]
+        #   #
+        #   def initialize(address:, method_:, status:, tracking:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # @see Increase::Models::PhysicalCard::Shipment#address
         class Address < Increase::Internal::Type::BaseModel
@@ -196,22 +203,20 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # @!method initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:)
-          #   The location to where the card's packing label is addressed.
-          #
-          #   @param city [String] The city of the shipping address.
-          #
-          #   @param line1 [String] The first line of the shipping address.
-          #
-          #   @param line2 [String, nil] The second line of the shipping address.
-          #
-          #   @param line3 [String, nil] The third line of the shipping address.
-          #
-          #   @param name [String] The name of the recipient.
-          #
-          #   @param postal_code [String] The postal code of the shipping address.
-          #
-          #   @param state [String] The US state of the shipping address.
+          # @!parse
+          #   # The location to where the card's packing label is addressed.
+          #   #
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param line2 [String, nil]
+          #   # @param line3 [String, nil]
+          #   # @param name [String]
+          #   # @param postal_code [String]
+          #   # @param state [String]
+          #   #
+          #   def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         # The shipping method.
@@ -229,8 +234,11 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY = :fedex_2_day
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # The status of this shipment.
@@ -260,8 +268,11 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # @see Increase::Models::PhysicalCard::Shipment#tracking
@@ -292,20 +303,17 @@ module Increase
           #   @return [Time]
           required :shipped_at, Time
 
-          # @!method initialize(number:, return_number:, return_reason:, shipped_at:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::PhysicalCard::Shipment::Tracking} for more details.
-          #
-          #   Tracking details for the shipment.
-          #
-          #   @param number [String] The tracking number.
-          #
-          #   @param return_number [String, nil] For returned shipments, the tracking number of the return shipment.
-          #
-          #   @param return_reason [String, nil] For returned shipments, this describes why the package was returned.
-          #
-          #   @param shipped_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
+          # @!parse
+          #   # Tracking details for the shipment.
+          #   #
+          #   # @param number [String]
+          #   # @param return_number [String, nil]
+          #   # @param return_reason [String, nil]
+          #   # @param shipped_at [Time]
+          #   #
+          #   def initialize(number:, return_number:, return_reason:, shipped_at:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
       end
 
@@ -324,8 +332,11 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED = :canceled
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -337,8 +348,11 @@ module Increase
 
         PHYSICAL_CARD = :physical_card
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

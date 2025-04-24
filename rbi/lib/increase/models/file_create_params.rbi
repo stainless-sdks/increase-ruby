@@ -32,17 +32,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The file contents. This should follow the specifications of
-        # [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
-        # transfers for the multipart/form-data protocol.
-        file:,
-        # What the File will be used for in Increase's systems.
-        purpose:,
-        # The description you choose to give the File.
-        description: nil,
-        request_options: {}
-      ); end
+      def self.new(file:, purpose:, description: nil, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -61,7 +52,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileCreateParams::Purpose) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::FileCreateParams::Purpose::TaggedSymbol) }
 
         # An image of the front of a check, used for check deposits.
         CHECK_IMAGE_FRONT = T.let(:check_image_front, Increase::Models::FileCreateParams::Purpose::TaggedSymbol)

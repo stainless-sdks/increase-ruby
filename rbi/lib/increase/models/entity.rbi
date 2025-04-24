@@ -133,46 +133,20 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The entity's identifier.
         id:,
-        # Details of the corporation entity. Will be present if `structure` is equal to
-        # `corporation`.
         corporation:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-        # was created.
         created_at:,
-        # The entity's description for display purposes.
         description:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-        # Entity's details were most recently confirmed.
         details_confirmed_at:,
-        # Details of the government authority entity. Will be present if `structure` is
-        # equal to `government_authority`.
         government_authority:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
-        # Details of the joint entity. Will be present if `structure` is equal to `joint`.
         joint:,
-        # Details of the natural person entity. Will be present if `structure` is equal to
-        # `natural_person`.
         natural_person:,
-        # The status of the entity.
         status:,
-        # The entity's legal structure.
         structure:,
-        # Additional documentation associated with the entity. This is limited to the
-        # first 10 documents for an entity. If an entity has more than 10 documents, use
-        # the GET /entity_supplemental_documents list endpoint to retrieve them.
         supplemental_documents:,
-        # A reference to data stored in a third-party verification service. Your
-        # integration may or may not use this field.
         third_party_verification:,
-        # Details of the trust entity. Will be present if `structure` is equal to `trust`.
         trust:,
-        # A constant representing the object's type. For this resource it will always be
-        # `entity`.
         type:
       ); end
       sig do
@@ -249,24 +223,16 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
-          # The corporation's address.
           address:,
-          # The identifying details of anyone controlling or owning 25% or more of the
-          # corporation.
           beneficial_owners:,
-          # The two-letter United States Postal Service (USPS) abbreviation for the
-          # corporation's state of incorporation.
           incorporation_state:,
-          # The numeric North American Industry Classification System (NAICS) code submitted
-          # for the corporation.
           industry_code:,
-          # The legal name of the corporation.
           name:,
-          # The Employer Identification Number (EIN) for the corporation.
           tax_identifier:,
-          # The website of the corporation.
           website:
-        ); end
+        )
+        end
+
         sig do
           override
             .returns(
@@ -310,19 +276,8 @@ module Increase
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
           end
-          def self.new(
-            # The city of the address.
-            city:,
-            # The first line of the address.
-            line1:,
-            # The second line of the address.
-            line2:,
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            # the address.
-            state:,
-            # The ZIP code of the address.
-            zip:
-          ); end
+          def self.new(city:, line1:, line2:, state:, zip:); end
+
           sig do
             override.returns(
               {
@@ -371,16 +326,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The identifier of this beneficial owner.
-            beneficial_owner_id:,
-            # This person's role or title within the entity.
-            company_title:,
-            # Personal details for the beneficial owner.
-            individual:,
-            # Why this person is considered a beneficial owner of the entity.
-            prong:
-          ); end
+          def self.new(beneficial_owner_id:, company_title:, individual:, prong:); end
+
           sig do
             override
               .returns(
@@ -449,16 +396,8 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(
-              # The person's address.
-              address:,
-              # The person's date of birth in YYYY-MM-DD format.
-              date_of_birth:,
-              # A means of verifying the person's identity.
-              identification:,
-              # The person's legal name.
-              name:
-            ); end
+            def self.new(address:, date_of_birth:, identification:, name:); end
+
             sig do
               override
                 .returns(
@@ -510,21 +449,8 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                # The city, district, town, or village of the address.
-                city:,
-                # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-                country:,
-                # The first line of the address.
-                line1:,
-                # The second line of the address.
-                line2:,
-                # The two-letter United States Postal Service (USPS) abbreviation for the US
-                # state, province, or region of the address.
-                state:,
-                # The ZIP or postal code of the address.
-                zip:
-              ); end
+              def self.new(city:, country:, line1:, line2:, state:, zip:); end
+
               sig do
                 override
                   .returns(
@@ -563,13 +489,8 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                # A method that can be used to verify the individual's identity.
-                method_:,
-                # The last 4 digits of the identification number that can be used to verify the
-                # individual's identity.
-                number_last4:
-              ); end
+              def self.new(method_:, number_last4:); end
+
               sig do
                 override
                   .returns(
@@ -587,7 +508,14 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method) }
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      String,
+                      Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    )
+                  end
 
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER =
@@ -641,7 +569,8 @@ module Increase
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Corporation::BeneficialOwner::Prong::TaggedSymbol) }
 
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP =
@@ -702,20 +631,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The government authority's address.
-          address:,
-          # The identifying details of authorized persons of the government authority.
-          authorized_persons:,
-          # The category of the government authority.
-          category:,
-          # The government authority's name.
-          name:,
-          # The Employer Identification Number (EIN) of the government authority.
-          tax_identifier:,
-          # The government authority's website.
-          website:
-        ); end
+        def self.new(address:, authorized_persons:, category:, name:, tax_identifier:, website:); end
+
         sig do
           override
             .returns(
@@ -758,19 +675,8 @@ module Increase
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
           end
-          def self.new(
-            # The city of the address.
-            city:,
-            # The first line of the address.
-            line1:,
-            # The second line of the address.
-            line2:,
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            # the address.
-            state:,
-            # The ZIP code of the address.
-            zip:
-          ); end
+          def self.new(city:, line1:, line2:, state:, zip:); end
+
           sig do
             override.returns(
               {
@@ -795,12 +701,8 @@ module Increase
           attr_accessor :name
 
           sig { params(authorized_person_id: String, name: String).returns(T.attached_class) }
-          def self.new(
-            # The identifier of this authorized person.
-            authorized_person_id:,
-            # The person's legal name.
-            name:
-          ); end
+          def self.new(authorized_person_id:, name:); end
+
           sig { override.returns({authorized_person_id: String, name: String}) }
           def to_hash; end
         end
@@ -810,7 +712,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::GovernmentAuthority::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::Entity::GovernmentAuthority::Category::TaggedSymbol) }
 
           # The Public Entity is a Municipality.
           MUNICIPALITY =
@@ -838,12 +741,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The two individuals that share control of the entity.
-          individuals:,
-          # The entity's name.
-          name:
-        ); end
+        def self.new(individuals:, name:); end
+
         sig { override.returns({individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String}) }
         def to_hash; end
 
@@ -887,16 +786,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The person's address.
-            address:,
-            # The person's date of birth in YYYY-MM-DD format.
-            date_of_birth:,
-            # A means of verifying the person's identity.
-            identification:,
-            # The person's legal name.
-            name:
-          ); end
+          def self.new(address:, date_of_birth:, identification:, name:); end
+
           sig do
             override
               .returns(
@@ -937,19 +828,8 @@ module Increase
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                 .returns(T.attached_class)
             end
-            def self.new(
-              # The city of the address.
-              city:,
-              # The first line of the address.
-              line1:,
-              # The second line of the address.
-              line2:,
-              # The two-letter United States Postal Service (USPS) abbreviation for the state of
-              # the address.
-              state:,
-              # The ZIP code of the address.
-              zip:
-            ); end
+            def self.new(city:, line1:, line2:, state:, zip:); end
+
             sig do
               override.returns(
                 {
@@ -982,13 +862,8 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(
-              # A method that can be used to verify the individual's identity.
-              method_:,
-              # The last 4 digits of the identification number that can be used to verify the
-              # individual's identity.
-              number_last4:
-            ); end
+            def self.new(method_:, number_last4:); end
+
             sig do
               override
                 .returns(
@@ -1006,7 +881,8 @@ module Increase
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method) }
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Joint::Individual::Identification::Method::TaggedSymbol) }
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER =
@@ -1082,16 +958,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The person's address.
-          address:,
-          # The person's date of birth in YYYY-MM-DD format.
-          date_of_birth:,
-          # A means of verifying the person's identity.
-          identification:,
-          # The person's legal name.
-          name:
-        ); end
+        def self.new(address:, date_of_birth:, identification:, name:); end
+
         sig do
           override
             .returns(
@@ -1132,19 +1000,8 @@ module Increase
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
           end
-          def self.new(
-            # The city of the address.
-            city:,
-            # The first line of the address.
-            line1:,
-            # The second line of the address.
-            line2:,
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            # the address.
-            state:,
-            # The ZIP code of the address.
-            zip:
-          ); end
+          def self.new(city:, line1:, line2:, state:, zip:); end
+
           sig do
             override.returns(
               {
@@ -1177,13 +1034,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # A method that can be used to verify the individual's identity.
-            method_:,
-            # The last 4 digits of the identification number that can be used to verify the
-            # individual's identity.
-            number_last4:
-          ); end
+          def self.new(method_:, number_last4:); end
+
           sig do
             override
               .returns(
@@ -1198,7 +1050,8 @@ module Increase
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, Increase::Models::Entity::NaturalPerson::Identification::Method::TaggedSymbol) }
 
             # A social security number.
             SOCIAL_SECURITY_NUMBER =
@@ -1236,7 +1089,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Status::TaggedSymbol) }
 
         # The entity is active.
         ACTIVE = T.let(:active, Increase::Models::Entity::Status::TaggedSymbol)
@@ -1256,7 +1109,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Structure) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Structure::TaggedSymbol) }
 
         # A corporation.
         CORPORATION = T.let(:corporation, Increase::Models::Entity::Structure::TaggedSymbol)
@@ -1292,12 +1145,8 @@ module Increase
           params(reference: String, vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(
-          # The reference identifier for the third party verification.
-          reference:,
-          # The vendor that was used to perform the verification.
-          vendor:
-        ); end
+        def self.new(reference:, vendor:); end
+
         sig do
           override
             .returns(
@@ -1311,7 +1160,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol) }
 
           # Alloy. See https://alloy.com for more information.
           ALLOY = T.let(:alloy, Increase::Models::Entity::ThirdPartyVerification::Vendor::TaggedSymbol)
@@ -1382,22 +1232,13 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
-          # The trust's address.
           address:,
-          # Whether the trust is `revocable` or `irrevocable`.
           category:,
-          # The ID for the File containing the formation document of the trust.
           formation_document_file_id:,
-          # The two-letter United States Postal Service (USPS) abbreviation for the state in
-          # which the trust was formed.
           formation_state:,
-          # The grantor of the trust. Will be present if the `category` is `revocable`.
           grantor:,
-          # The trust's name.
           name:,
-          # The Employer Identification Number (EIN) of the trust itself.
           tax_identifier:,
-          # The trustees of the trust.
           trustees:
         ); end
         sig do
@@ -1444,19 +1285,8 @@ module Increase
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
           end
-          def self.new(
-            # The city of the address.
-            city:,
-            # The first line of the address.
-            line1:,
-            # The second line of the address.
-            line2:,
-            # The two-letter United States Postal Service (USPS) abbreviation for the state of
-            # the address.
-            state:,
-            # The ZIP code of the address.
-            zip:
-          ); end
+          def self.new(city:, line1:, line2:, state:, zip:); end
+
           sig do
             override.returns(
               {
@@ -1476,7 +1306,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Trust::Category::TaggedSymbol) }
 
           # The trust is revocable by the grantor.
           REVOCABLE = T.let(:revocable, Increase::Models::Entity::Trust::Category::TaggedSymbol)
@@ -1528,16 +1359,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The person's address.
-            address:,
-            # The person's date of birth in YYYY-MM-DD format.
-            date_of_birth:,
-            # A means of verifying the person's identity.
-            identification:,
-            # The person's legal name.
-            name:
-          ); end
+          def self.new(address:, date_of_birth:, identification:, name:); end
+
           sig do
             override
               .returns(
@@ -1578,19 +1401,8 @@ module Increase
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                 .returns(T.attached_class)
             end
-            def self.new(
-              # The city of the address.
-              city:,
-              # The first line of the address.
-              line1:,
-              # The second line of the address.
-              line2:,
-              # The two-letter United States Postal Service (USPS) abbreviation for the state of
-              # the address.
-              state:,
-              # The ZIP code of the address.
-              zip:
-            ); end
+            def self.new(city:, line1:, line2:, state:, zip:); end
+
             sig do
               override.returns(
                 {
@@ -1623,13 +1435,8 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(
-              # A method that can be used to verify the individual's identity.
-              method_:,
-              # The last 4 digits of the identification number that can be used to verify the
-              # individual's identity.
-              number_last4:
-            ); end
+            def self.new(method_:, number_last4:); end
+
             sig do
               override
                 .returns(
@@ -1647,7 +1454,8 @@ module Increase
 
               TaggedSymbol =
                 T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method) }
-              OrSymbol = T.type_alias { T.any(Symbol, String) }
+              OrSymbol =
+                T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Trust::Grantor::Identification::Method::TaggedSymbol) }
 
               # A social security number.
               SOCIAL_SECURITY_NUMBER =
@@ -1705,13 +1513,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The individual trustee of the trust. Will be present if the trustee's
-            # `structure` is equal to `individual`.
-            individual:,
-            # The structure of the trustee. Will always be equal to `individual`.
-            structure:
-          ); end
+          def self.new(individual:, structure:); end
+
           sig do
             override
               .returns(
@@ -1767,16 +1570,8 @@ module Increase
               )
                 .returns(T.attached_class)
             end
-            def self.new(
-              # The person's address.
-              address:,
-              # The person's date of birth in YYYY-MM-DD format.
-              date_of_birth:,
-              # A means of verifying the person's identity.
-              identification:,
-              # The person's legal name.
-              name:
-            ); end
+            def self.new(address:, date_of_birth:, identification:, name:); end
+
             sig do
               override
                 .returns(
@@ -1817,19 +1612,8 @@ module Increase
                 params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                   .returns(T.attached_class)
               end
-              def self.new(
-                # The city of the address.
-                city:,
-                # The first line of the address.
-                line1:,
-                # The second line of the address.
-                line2:,
-                # The two-letter United States Postal Service (USPS) abbreviation for the state of
-                # the address.
-                state:,
-                # The ZIP code of the address.
-                zip:
-              ); end
+              def self.new(city:, line1:, line2:, state:, zip:); end
+
               sig do
                 override.returns(
                   {
@@ -1862,13 +1646,8 @@ module Increase
                 )
                   .returns(T.attached_class)
               end
-              def self.new(
-                # A method that can be used to verify the individual's identity.
-                method_:,
-                # The last 4 digits of the identification number that can be used to verify the
-                # individual's identity.
-                number_last4:
-              ); end
+              def self.new(method_:, number_last4:); end
+
               sig do
                 override
                   .returns(
@@ -1886,7 +1665,14 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method) }
-                OrSymbol = T.type_alias { T.any(Symbol, String) }
+                OrSymbol =
+                  T.type_alias do
+                    T.any(
+                      Symbol,
+                      String,
+                      Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    )
+                  end
 
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER =
@@ -1936,7 +1722,8 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Trust::Trustee::Structure) }
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol) }
 
             # The trustee is an individual.
             INDIVIDUAL = T.let(:individual, Increase::Models::Entity::Trust::Trustee::Structure::TaggedSymbol)
@@ -1953,7 +1740,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Entity::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Entity::Type::TaggedSymbol) }
 
         ENTITY = T.let(:entity, Increase::Models::Entity::Type::TaggedSymbol)
 

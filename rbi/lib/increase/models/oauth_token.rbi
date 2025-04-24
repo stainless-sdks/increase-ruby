@@ -28,16 +28,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # You may use this token in place of an API key to make OAuth requests on a user's
-        # behalf.
-        access_token:,
-        # The type of OAuth token.
-        token_type:,
-        # A constant representing the object's type. For this resource it will always be
-        # `oauth_token`.
-        type:
-      ); end
+      def self.new(access_token:, token_type:, type:); end
+
       sig do
         override
           .returns(
@@ -55,7 +47,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::TokenType) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
 
         BEARER = T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
 
@@ -69,7 +61,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::OAuthToken::Type::TaggedSymbol) }
 
         OAUTH_TOKEN = T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
 

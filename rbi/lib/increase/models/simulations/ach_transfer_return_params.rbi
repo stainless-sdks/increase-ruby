@@ -22,12 +22,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The reason why the Federal Reserve or destination bank returned this transfer.
-          # Defaults to `no_account`.
-          reason: nil,
-          request_options: {}
-        ); end
+        def self.new(reason: nil, request_options: {}); end
+
         sig do
           override
             .returns(
@@ -46,7 +42,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND =

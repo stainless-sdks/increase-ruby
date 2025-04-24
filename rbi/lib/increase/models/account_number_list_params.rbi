@@ -80,19 +80,11 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # Filter Account Numbers to those belonging to the specified Account.
         account_id: nil,
         ach_debit_status: nil,
         created_at: nil,
-        # Return the page of entries after this one.
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
         limit: nil,
         status: nil,
         request_options: {}
@@ -127,11 +119,8 @@ module Increase
           params(in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
-          # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol]}) }
         def to_hash; end
 
@@ -140,7 +129,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol) }
 
           # ACH Debits are allowed.
           ALLOWED = T.let(:allowed, Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol)
@@ -189,20 +179,8 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(
-          # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
-          # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
-          # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
-          # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        ); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash; end
       end
@@ -220,11 +198,8 @@ module Increase
           params(in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # The status to retrieve Account Numbers for. For GET requests, this should be
-          # encoded as a comma-delimited string, such as `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::AccountNumberListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
@@ -232,7 +207,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountNumberListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol) }
 
           # The account number is active.
           ACTIVE = T.let(:active, Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol)

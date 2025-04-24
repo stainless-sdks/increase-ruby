@@ -27,16 +27,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The Bookkeeping Account's current balance, representing the sum of all
-        # Bookkeeping Entries on the Bookkeeping Account.
-        balance:,
-        # The identifier for the account for which the balance was queried.
-        bookkeeping_account_id:,
-        # A constant representing the object's type. For this resource it will always be
-        # `bookkeeping_balance_lookup`.
-        type:
-      ); end
+      def self.new(balance:, bookkeeping_account_id:, type:); end
+
       sig do
         override
           .returns(
@@ -55,7 +47,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingBalanceLookup::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol) }
 
         BOOKKEEPING_BALANCE_LOOKUP =
           T.let(:bookkeeping_balance_lookup, Increase::Models::BookkeepingBalanceLookup::Type::TaggedSymbol)

@@ -51,26 +51,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The OAuth Application's identifier.
-        id:,
-        # The OAuth Application's client_id. Use this to authenticate with the OAuth
-        # Application.
-        client_id:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-        # Application was created.
-        created_at:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-        # Application was deleted.
-        deleted_at:,
-        # The name you chose for this OAuth Application.
-        name:,
-        # Whether the application is active.
-        status:,
-        # A constant representing the object's type. For this resource it will always be
-        # `oauth_application`.
-        type:
-      ); end
+      def self.new(id:, client_id:, created_at:, deleted_at:, name:, status:, type:); end
+
       sig do
         override
           .returns(
@@ -92,7 +74,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplication::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::OAuthApplication::Status::TaggedSymbol) }
 
         # The application is active and can be used by your users.
         ACTIVE = T.let(:active, Increase::Models::OAuthApplication::Status::TaggedSymbol)
@@ -110,7 +93,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplication::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::OAuthApplication::Type::TaggedSymbol) }
 
         OAUTH_APPLICATION = T.let(:oauth_application, Increase::Models::OAuthApplication::Type::TaggedSymbol)
 

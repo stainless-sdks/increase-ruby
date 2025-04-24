@@ -63,28 +63,14 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The Program identifier.
         id:,
-        # The Bank the Program is with.
         bank:,
-        # The Program billing account.
         billing_account_id:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-        # was created.
         created_at:,
-        # The default configuration for digital cards attached to this Program.
         default_digital_card_profile_id:,
-        # The Interest Rate currently being earned on the accounts in this program, as a
-        # string containing a decimal number. For example, a 1% interest rate would be
-        # represented as "0.01".
         interest_rate:,
-        # The name of the Program.
         name:,
-        # A constant representing the object's type. For this resource it will always be
-        # `program`.
         type:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-        # was last updated.
         updated_at:
       ); end
       sig do
@@ -110,7 +96,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Bank) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Program::Bank::TaggedSymbol) }
 
         # Core Bank
         CORE_BANK = T.let(:core_bank, Increase::Models::Program::Bank::TaggedSymbol)
@@ -131,7 +117,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Program::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Program::Type::TaggedSymbol) }
 
         PROGRAM = T.let(:program, Increase::Models::Program::Type::TaggedSymbol)
 

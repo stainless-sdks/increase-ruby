@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::BookkeepingEntrySets#create
     class BookkeepingEntrySetCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute entries
@@ -14,31 +15,36 @@ module Increase
       required :entries,
                -> { Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
 
-      # @!attribute date
+      # @!attribute [r] date
       #   The date of the transaction. Optional if `transaction_id` is provided, in which
       #   case we use the `date` of that transaction. Required otherwise.
       #
       #   @return [Time, nil]
       optional :date, Time
 
-      # @!attribute transaction_id
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :date
+
+      # @!attribute [r] transaction_id
       #   The identifier of the Transaction related to this entry set, if any.
       #
       #   @return [String, nil]
       optional :transaction_id, String
 
-      # @!method initialize(entries:, date: nil, transaction_id: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::BookkeepingEntrySetCreateParams} for more details.
-      #
-      #   @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
-      #
-      #   @param date [Time] The date of the transaction. Optional if `transaction_id` is provided, in which
-      #   ...
-      #
-      #   @param transaction_id [String] The identifier of the Transaction related to this entry set, if any.
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :transaction_id
+
+      # @!parse
+      #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
+      #   # @param date [Time]
+      #   # @param transaction_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(entries:, date: nil, transaction_id: nil, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       class Entry < Increase::Internal::Type::BaseModel
         # @!attribute account_id
@@ -55,14 +61,13 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!method initialize(account_id:, amount:)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::BookkeepingEntrySetCreateParams::Entry} for more details.
-        #
-        #   @param account_id [String] The identifier for the Bookkeeping Account impacted by this entry.
-        #
-        #   @param amount [Integer] The entry amount in the minor unit of the account currency. For dollars, for exa
-        #   ...
+        # @!parse
+        #   # @param account_id [String]
+        #   # @param amount [Integer]
+        #   #
+        #   def initialize(account_id:, amount:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -32,11 +32,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # If set, the simulation will reject the transfer.
-          rejection: nil,
-          request_options: {}
-        ); end
+        def self.new(rejection: nil, request_options: {}); end
+
         sig do
           override
             .returns(
@@ -64,10 +61,8 @@ module Increase
             )
               .returns(T.attached_class)
           end
-          def self.new(
-            # The reason code that the simulated rejection will have.
-            reject_reason_code:
-          ); end
+          def self.new(reject_reason_code:); end
+
           sig do
             override
               .returns(
@@ -86,7 +81,14 @@ module Increase
               T.type_alias do
                 T.all(Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode)
               end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
+            OrSymbol =
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
+                )
+              end
 
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED =

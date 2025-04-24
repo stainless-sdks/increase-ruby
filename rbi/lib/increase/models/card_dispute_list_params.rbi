@@ -59,19 +59,14 @@ module Increase
       end
       def self.new(
         created_at: nil,
-        # Return the page of entries after this one.
         cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -123,20 +118,8 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(
-          # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
-          # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
-          # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
-          # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        ); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash; end
       end
@@ -155,12 +138,8 @@ module Increase
           params(in_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # Filter Card Disputes for those with the specified status or statuses. For GET
-          # requests, this should be encoded as a comma-delimited string, such as
-          # `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::CardDisputeListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
@@ -168,7 +147,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDisputeListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::CardDisputeListParams::Status::In::TaggedSymbol) }
 
           # The Card Dispute is pending review.
           PENDING_REVIEWING =

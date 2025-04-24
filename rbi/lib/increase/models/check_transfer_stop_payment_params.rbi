@@ -20,11 +20,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The reason why this transfer should be stopped.
-        reason: nil,
-        request_options: {}
-      ); end
+      def self.new(reason: nil, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -41,7 +38,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::CheckTransferStopPaymentParams::Reason::TaggedSymbol) }
 
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED =

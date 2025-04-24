@@ -26,13 +26,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The status to move the dispute to.
-          status:,
-          # Why the dispute was rejected. Not required for accepting disputes.
-          explanation: nil,
-          request_options: {}
-        ); end
+        def self.new(status:, explanation: nil, request_options: {}); end
+
         sig do
           override
             .returns(
@@ -51,7 +46,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol) }
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION =

@@ -57,15 +57,13 @@ module Increase
       def self.new(
         category: nil,
         created_at: nil,
-        # Return the page of entries after this one.
         cursor: nil,
-        # Filter Documents to ones belonging to the specified Entity.
         entity_id: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -95,12 +93,8 @@ module Increase
           params(in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # Filter Documents for those with the specified category or categories. For GET
-          # requests, this should be encoded as a comma-delimited string, such as
-          # `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::DocumentListParams::Category::In::OrSymbol]}) }
         def to_hash; end
 
@@ -108,7 +102,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DocumentListParams::Category::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::DocumentListParams::Category::In::TaggedSymbol) }
 
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = T.let(:form_1099_int, Increase::Models::DocumentListParams::Category::In::TaggedSymbol)
@@ -165,20 +160,8 @@ module Increase
         sig do
           params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
         end
-        def self.new(
-          # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
-          # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
-          # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
-          # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        ); end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil); end
+
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash; end
       end

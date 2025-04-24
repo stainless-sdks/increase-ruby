@@ -39,20 +39,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The Group identifier.
-        id:,
-        # If the Group is allowed to create ACH debits.
-        ach_debit_status:,
-        # If the Group is activated or not.
-        activation_status:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
-        # was created.
-        created_at:,
-        # A constant representing the object's type. For this resource it will always be
-        # `group`.
-        type:
-      ); end
+      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:); end
+
       sig do
         override
           .returns(
@@ -72,7 +60,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ACHDebitStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
 
         # The Group cannot make ACH debits.
         DISABLED = T.let(:disabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
@@ -89,7 +77,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ActivationStatus) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::Group::ActivationStatus::TaggedSymbol) }
 
         # The Group is not activated.
         UNACTIVATED = T.let(:unactivated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
@@ -107,7 +96,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Group::Type::TaggedSymbol) }
 
         GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 

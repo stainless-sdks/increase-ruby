@@ -45,19 +45,15 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The account number for the destination account.
         account_number:,
-        # The name you choose for the Account.
         description:,
-        # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        # destination account.
         routing_number:,
-        # The type of entity that owns the External Account.
         account_holder: nil,
-        # The type of the destination account. Defaults to `checking`.
         funding: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -79,7 +75,8 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol) }
 
         # The External Account is owned by a business.
         BUSINESS = T.let(:business, Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol)
@@ -100,7 +97,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::ExternalAccountCreateParams::Funding) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol) }
 
         # A checking account.
         CHECKING = T.let(:checking, Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol)

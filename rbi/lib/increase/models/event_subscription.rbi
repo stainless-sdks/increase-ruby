@@ -60,28 +60,17 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The event subscription identifier.
         id:,
-        # The time the event subscription was created.
         created_at:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
-        # If specified, this subscription will only receive webhooks for Events associated
-        # with this OAuth Connection.
         oauth_connection_id:,
-        # If specified, this subscription will only receive webhooks for Events with the
-        # specified `category`.
         selected_event_category:,
-        # This indicates if we'll send notifications to this subscription.
         status:,
-        # A constant representing the object's type. For this resource it will always be
-        # `event_subscription`.
         type:,
-        # The webhook url where we'll send notifications.
         url:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -105,7 +94,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::SelectedEventCategory) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::EventSubscription::SelectedEventCategory::TaggedSymbol) }
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED =
@@ -619,7 +609,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::EventSubscription::Status::TaggedSymbol) }
 
         # The subscription is active and Events will be delivered normally.
         ACTIVE = T.let(:active, Increase::Models::EventSubscription::Status::TaggedSymbol)
@@ -644,7 +635,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscription::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::EventSubscription::Type::TaggedSymbol) }
 
         EVENT_SUBSCRIPTION = T.let(:event_subscription, Increase::Models::EventSubscription::Type::TaggedSymbol)
 

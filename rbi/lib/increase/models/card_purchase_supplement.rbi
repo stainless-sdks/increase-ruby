@@ -51,21 +51,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The Card Purchase Supplement identifier.
-        id:,
-        # The ID of the Card Payment this transaction belongs to.
-        card_payment_id:,
-        # Invoice-level information about the payment.
-        invoice:,
-        # Line item information, such as individual products purchased.
-        line_items:,
-        # The ID of the transaction.
-        transaction_id:,
-        # A constant representing the object's type. For this resource it will always be
-        # `card_purchase_supplement`.
-        type:
-      ); end
+      def self.new(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:); end
+
       sig do
         override
           .returns(
@@ -171,39 +158,21 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
-          # Discount given to cardholder.
           discount_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
           discount_currency:,
-          # Indicates how the merchant applied the discount.
           discount_treatment_code:,
-          # Amount of duty taxes.
           duty_tax_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
           duty_tax_currency:,
-          # Date the order was taken.
           order_date:,
-          # The shipping cost.
           shipping_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-          # cost.
           shipping_currency:,
-          # Country code of the shipping destination.
           shipping_destination_country_code:,
-          # Postal code of the shipping destination.
           shipping_destination_postal_code:,
-          # Postal code of the location being shipped from.
           shipping_source_postal_code:,
-          # Taxes paid for freight and shipping.
           shipping_tax_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-          # tax.
           shipping_tax_currency:,
-          # Tax rate for freight and shipping.
           shipping_tax_rate:,
-          # Indicates how the merchant applied taxes.
           tax_treatments:,
-          # Value added tax invoice reference number.
           unique_value_added_tax_invoice_reference:
         ); end
         sig do
@@ -237,7 +206,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+              )
+            end
 
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED =
@@ -273,7 +249,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol) }
 
           # No tax applies
           NO_TAX_APPLIES =
@@ -410,41 +387,22 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
-          # The Card Purchase Supplement Line Item identifier.
           id:,
-          # Indicates the type of line item.
           detail_indicator:,
-          # Discount amount for this specific line item.
           discount_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
           discount_currency:,
-          # Indicates how the merchant applied the discount for this specific line item.
           discount_treatment_code:,
-          # Code used to categorize the purchase item.
           item_commodity_code:,
-          # Description of the purchase item.
           item_descriptor:,
-          # The number of units of the product being purchased.
           item_quantity:,
-          # Code used to categorize the product being purchased.
           product_code:,
-          # Sales tax amount for this line item.
           sales_tax_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-          # assessed.
           sales_tax_currency:,
-          # Sales tax rate for this line item.
           sales_tax_rate:,
-          # Total amount of all line items.
           total_amount:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-          # amount.
           total_amount_currency:,
-          # Cost of line item per unit of measure, in major units.
           unit_cost:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
           unit_cost_currency:,
-          # Code indicating unit of measure (gallons, etc.).
           unit_of_measure_code:
         ); end
         sig do
@@ -479,7 +437,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol) }
 
           # Normal
           NORMAL =
@@ -506,7 +465,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+              )
+            end
 
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED =
@@ -543,7 +509,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardPurchaseSupplement::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol) }
 
         CARD_PURCHASE_SUPPLEMENT =
           T.let(:card_purchase_supplement, Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)

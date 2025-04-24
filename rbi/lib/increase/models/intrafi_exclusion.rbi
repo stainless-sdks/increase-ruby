@@ -68,30 +68,15 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The identifier of this exclusion request.
         id:,
-        # The name of the excluded institution.
         bank_name:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the exclusion was created.
         created_at:,
-        # The entity for which this institution is excluded.
         entity_id:,
-        # When this was exclusion was confirmed by IntraFi.
         excluded_at:,
-        # The Federal Deposit Insurance Corporation's certificate number for the
-        # institution.
         fdic_certificate_number:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
-        # The status of the exclusion request.
         status:,
-        # When this was exclusion was submitted to IntraFi by Increase.
         submitted_at:,
-        # A constant representing the object's type. For this resource it will always be
-        # `intrafi_exclusion`.
         type:
       ); end
       sig do
@@ -118,7 +103,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiExclusion::Status::TaggedSymbol) }
 
         # The exclusion is being added to the IntraFi network.
         PENDING = T.let(:pending, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
@@ -139,7 +125,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiExclusion::Type::TaggedSymbol) }
 
         INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
 

@@ -66,9 +66,10 @@ module Increase
     optional :timeout, Float
 
     # @!parse
-    #   # @!method initialize(values = {})
-    #   #   Returns a new instance of RequestOptions.
+    #   # Returns a new instance of RequestOptions.
     #   #
-    #   #   @param values [Hash{Symbol=>Object}]
+    #   # @param values [Hash{Symbol=>Object}]
+    #   #
+    #   def initialize(values = {}) = super
   end
 end

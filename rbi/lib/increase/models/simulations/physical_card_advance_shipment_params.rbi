@@ -18,11 +18,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The shipment status to move the Physical Card to.
-          shipment_status:,
-          request_options: {}
-        ); end
+        def self.new(shipment_status:, request_options: {}); end
+
         sig do
           override
             .returns(
@@ -40,7 +37,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol
+              )
+            end
 
           # The physical card has not yet been shipped.
           PENDING =

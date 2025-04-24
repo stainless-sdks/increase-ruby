@@ -202,73 +202,30 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The Real-Time Payments Transfer's identifier.
         id:,
-        # The Account from which the transfer was sent.
         account_id:,
-        # If the transfer is acknowledged by the recipient bank, this will contain
-        # supplemental details.
         acknowledgement:,
-        # The transfer amount in USD cents.
         amount:,
-        # If your account requires approvals for transfers and the transfer was approved,
-        # this will contain details of the approval.
         approval:,
-        # If your account requires approvals for transfers and the transfer was not
-        # approved, this will contain details of the cancellation.
         cancellation:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was created.
         created_at:,
-        # What object created the transfer, either via the API or the dashboard.
         created_by:,
-        # The name of the transfer's recipient. This is set by the sender when creating
-        # the transfer.
         creditor_name:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-        # currency. For real-time payments transfers this is always equal to `USD`.
         currency:,
-        # The name of the transfer's sender. If not provided, defaults to the name of the
-        # account's entity.
         debtor_name:,
-        # The destination account number.
         destination_account_number:,
-        # The destination American Bankers' Association (ABA) Routing Transit Number
-        # (RTN).
         destination_routing_number:,
-        # The identifier of the External Account the transfer was made to, if any.
         external_account_id:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
-        # The ID for the pending transaction representing the transfer. A pending
-        # transaction is created when the transfer
-        # [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-        # by someone else in your organization.
         pending_transaction_id:,
-        # If the transfer is rejected by Real-Time Payments or the destination financial
-        # institution, this will contain supplemental details.
         rejection:,
-        # Unstructured information that will show on the recipient's bank statement.
         remittance_information:,
-        # The Account Number the recipient will see as having sent the transfer.
         source_account_number_id:,
-        # The lifecycle status of the transfer.
         status:,
-        # After the transfer is submitted to Real-Time Payments, this will contain
-        # supplemental details.
         submission:,
-        # The Transaction funding the transfer once it is complete.
         transaction_id:,
-        # A constant representing the object's type. For this resource it will always be
-        # `real_time_payments_transfer`.
         type:,
-        # The name of the ultimate recipient of the transfer. Set this if the creditor is
-        # an intermediary receiving the payment for someone else.
         ultimate_creditor_name:,
-        # The name of the ultimate sender of the transfer. Set this if the funds are being
-        # sent on behalf of someone who is not the account holder at Increase.
         ultimate_debtor_name:
       ); end
       sig do
@@ -313,10 +270,8 @@ module Increase
         # If the transfer is acknowledged by the recipient bank, this will contain
         # supplemental details.
         sig { params(acknowledged_at: Time).returns(T.attached_class) }
-        def self.new(
-          # When the transfer was acknowledged.
-          acknowledged_at:
-        ); end
+        def self.new(acknowledged_at:); end
+
         sig { override.returns({acknowledged_at: Time}) }
         def to_hash; end
       end
@@ -335,14 +290,8 @@ module Increase
         # If your account requires approvals for transfers and the transfer was approved,
         # this will contain details of the approval.
         sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the transfer was approved.
-          approved_at:,
-          # If the Transfer was approved by a user in the dashboard, the email address of
-          # that user.
-          approved_by:
-        ); end
+        def self.new(approved_at:, approved_by:); end
+
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
         def to_hash; end
       end
@@ -361,14 +310,8 @@ module Increase
         # If your account requires approvals for transfers and the transfer was not
         # approved, this will contain details of the cancellation.
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the Transfer was canceled.
-          canceled_at:,
-          # If the Transfer was canceled by a user in the dashboard, the email address of
-          # that user.
-          canceled_by:
-        ); end
+        def self.new(canceled_at:, canceled_by:); end
+
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
         def to_hash; end
       end
@@ -438,16 +381,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # If present, details about the API key that created the transfer.
-          api_key:,
-          # The type of object that created this transfer.
-          category:,
-          # If present, details about the OAuth Application that created the transfer.
-          oauth_application:,
-          # If present, details about the User that created the transfer.
-          user:
-        ); end
+        def self.new(api_key:, category:, oauth_application:, user:); end
+
         sig do
           override
             .returns(
@@ -468,10 +403,8 @@ module Increase
 
           # If present, details about the API key that created the transfer.
           sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(
-            # The description set for the API key when it was created.
-            description:
-          ); end
+          def self.new(description:); end
+
           sig { override.returns({description: T.nilable(String)}) }
           def to_hash; end
         end
@@ -482,7 +415,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol) }
 
           # An API key. Details will be under the `api_key` object.
           API_KEY = T.let(:api_key, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category::TaggedSymbol)
@@ -505,10 +439,8 @@ module Increase
 
           # If present, details about the OAuth Application that created the transfer.
           sig { params(name: String).returns(T.attached_class) }
-          def self.new(
-            # The name of the OAuth Application.
-            name:
-          ); end
+          def self.new(name:); end
+
           sig { override.returns({name: String}) }
           def to_hash; end
         end
@@ -520,10 +452,8 @@ module Increase
 
           # If present, details about the User that created the transfer.
           sig { params(email: String).returns(T.attached_class) }
-          def self.new(
-            # The email address of the User.
-            email:
-          ); end
+          def self.new(email:); end
+
           sig { override.returns({email: String}) }
           def to_hash; end
         end
@@ -535,7 +465,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::RealTimePaymentsTransfer::Currency::TaggedSymbol)
@@ -585,17 +516,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # Additional information about the rejection provided by the recipient bank when
-          # the `reject_reason_code` is `NARRATIVE`.
-          reject_reason_additional_information:,
-          # The reason the transfer was rejected as provided by the recipient bank or the
-          # Real-Time Payments network.
-          reject_reason_code:,
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the transfer was rejected.
-          rejected_at:
-        ); end
+        def self.new(reject_reason_additional_information:, reject_reason_code:, rejected_at:); end
+
         sig do
           override
             .returns(
@@ -615,7 +537,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
+              )
+            end
 
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED =
@@ -768,7 +697,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending approval.
         PENDING_APPROVAL =
@@ -817,13 +747,8 @@ module Increase
         sig do
           params(submitted_at: T.nilable(Time), transaction_identification: String).returns(T.attached_class)
         end
-        def self.new(
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the transfer was submitted to The Clearing House.
-          submitted_at:,
-          # The Real-Time Payments network identification of the transfer.
-          transaction_identification:
-        ); end
+        def self.new(submitted_at:, transaction_identification:); end
+
         sig { override.returns({submitted_at: T.nilable(Time), transaction_identification: String}) }
         def to_hash; end
       end
@@ -834,7 +759,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::RealTimePaymentsTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol) }
 
         REAL_TIME_PAYMENTS_TRANSFER =
           T.let(:real_time_payments_transfer, Increase::Models::RealTimePaymentsTransfer::Type::TaggedSymbol)

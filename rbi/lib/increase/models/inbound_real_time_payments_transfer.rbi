@@ -114,40 +114,21 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The inbound Real-Time Payments transfer's identifier.
         id:,
-        # The Account to which the transfer was sent.
         account_id:,
-        # The identifier of the Account Number to which this transfer was sent.
         account_number_id:,
-        # The amount in USD cents.
         amount:,
-        # If your transfer is confirmed, this will contain details of the confirmation.
         confirmation:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the transfer was created.
         created_at:,
-        # The name the sender of the transfer specified as the recipient of the transfer.
         creditor_name:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-        # currency. This will always be "USD" for a Real-Time Payments transfer.
         currency:,
-        # The account number of the account that sent the transfer.
         debtor_account_number:,
-        # The name provided by the sender of the transfer.
         debtor_name:,
-        # The routing number of the account that sent the transfer.
         debtor_routing_number:,
-        # If your transfer is declined, this will contain details of the decline.
         decline:,
-        # Additional information included with the transfer.
         remittance_information:,
-        # The lifecycle status of the transfer.
         status:,
-        # The Real-Time Payments network identification of the transfer.
         transaction_identification:,
-        # A constant representing the object's type. For this resource it will always be
-        # `inbound_real_time_payments_transfer`.
         type:
       ); end
       sig do
@@ -186,12 +167,8 @@ module Increase
 
         # If your transfer is confirmed, this will contain details of the confirmation.
         sig { params(confirmed_at: Time, transaction_id: String).returns(T.attached_class) }
-        def self.new(
-          # The time at which the transfer was confirmed.
-          confirmed_at:,
-          # The id of the transaction for the confirmed transfer.
-          transaction_id:
-        ); end
+        def self.new(confirmed_at:, transaction_id:); end
+
         sig { override.returns({confirmed_at: Time, transaction_id: String}) }
         def to_hash; end
       end
@@ -203,7 +180,8 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol)
@@ -249,14 +227,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The time at which the transfer was declined.
-          declined_at:,
-          # The id of the transaction for the declined transfer.
-          declined_transaction_id:,
-          # The reason for the transfer decline.
-          reason:
-        ); end
+        def self.new(declined_at:, declined_transaction_id:, reason:); end
+
         sig do
           override
             .returns(
@@ -275,7 +247,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason::TaggedSymbol) }
 
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED =
@@ -329,7 +302,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundRealTimePaymentsTransfer::Status::TaggedSymbol) }
 
         # The transfer is pending confirmation.
         PENDING_CONFIRMING =
@@ -354,7 +328,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundRealTimePaymentsTransfer::Type::TaggedSymbol) }
 
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER =
           T.let(

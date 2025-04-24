@@ -20,11 +20,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The status to update the Event Subscription with.
-        status: nil,
-        request_options: {}
-      ); end
+      def self.new(status: nil, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -41,7 +38,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionUpdateParams::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol) }
 
         # The subscription is active and Events will be delivered normally.
         ACTIVE = T.let(:active, Increase::Models::EventSubscriptionUpdateParams::Status::TaggedSymbol)

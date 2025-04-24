@@ -31,23 +31,18 @@ module Increase
       #   @return [Symbol, Increase::Models::BalanceLookup::Type]
       required :type, enum: -> { Increase::Models::BalanceLookup::Type }
 
-      # @!method initialize(account_id:, available_balance:, current_balance:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::BalanceLookup} for more details.
-      #
-      #   Represents a request to lookup the balance of an Account at a given point in
-      #   time.
-      #
-      #   @param account_id [String] The identifier for the account for which the balance was queried.
-      #
-      #   @param available_balance [Integer] The Account's available balance, representing the current balance less any open
-      #   ...
-      #
-      #   @param current_balance [Integer] The Account's current balance, representing the sum of all posted Transactions o
-      #   ...
-      #
-      #   @param type [Symbol, Increase::Models::BalanceLookup::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Represents a request to lookup the balance of an Account at a given point in
+      #   # time.
+      #   #
+      #   # @param account_id [String]
+      #   # @param available_balance [Integer]
+      #   # @param current_balance [Integer]
+      #   # @param type [Symbol, Increase::Models::BalanceLookup::Type]
+      #   #
+      #   def initialize(account_id:, available_balance:, current_balance:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
       # `balance_lookup`.
@@ -58,8 +53,11 @@ module Increase
 
         BALANCE_LOOKUP = :balance_lookup
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

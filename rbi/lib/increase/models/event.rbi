@@ -44,22 +44,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The Event identifier.
-        id:,
-        # The identifier of the object that generated this Event.
-        associated_object_id:,
-        # The type of the object that generated this Event.
-        associated_object_type:,
-        # The category of the Event. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
-        category:,
-        # The time the Event was created.
-        created_at:,
-        # A constant representing the object's type. For this resource it will always be
-        # `event`.
-        type:
-      ); end
+      def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:); end
+
       sig do
         override
           .returns(
@@ -81,7 +67,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Event::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Event::Category::TaggedSymbol) }
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = T.let(:"account.created", Increase::Models::Event::Category::TaggedSymbol)
@@ -420,7 +406,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Event::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Event::Type::TaggedSymbol) }
 
         EVENT = T.let(:event, Increase::Models::Event::Type::TaggedSymbol)
 

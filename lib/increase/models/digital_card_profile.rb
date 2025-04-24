@@ -92,44 +92,47 @@ module Increase
       #   @return [Symbol, Increase::Models::DigitalCardProfile::Type]
       required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
 
-      # @!method initialize(id:, app_icon_file_id:, background_image_file_id:, card_description:, contact_email:, contact_phone:, contact_website:, created_at:, description:, idempotency_key:, issuer_name:, status:, text_color:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::DigitalCardProfile} for more details.
-      #
-      #   This contains artwork and metadata relating to a Card's appearance in digital
-      #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
-      #   on [digital card artwork](https://increase.com/documentation/card-art).
-      #
-      #   @param id [String] The Card Profile identifier.
-      #
-      #   @param app_icon_file_id [String] The identifier of the File containing the card's icon image.
-      #
-      #   @param background_image_file_id [String] The identifier of the File containing the card's front image.
-      #
-      #   @param card_description [String] A user-facing description for the card itself.
-      #
-      #   @param contact_email [String, nil] An email address the user can contact to receive support for their card.
-      #
-      #   @param contact_phone [String, nil] A phone number the user can contact to receive support for their card.
-      #
-      #   @param contact_website [String, nil] A website the user can visit to view and receive support for their card.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
-      #
-      #   @param description [String] A description you can use to identify the Card Profile.
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param issuer_name [String] A user-facing description for whoever is issuing the card.
-      #
-      #   @param status [Symbol, Increase::Models::DigitalCardProfile::Status] The status of the Card Profile.
-      #
-      #   @param text_color [Increase::Models::DigitalCardProfile::TextColor] The Card's text color, specified as an RGB triple.
-      #
-      #   @param type [Symbol, Increase::Models::DigitalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # This contains artwork and metadata relating to a Card's appearance in digital
+      #   # wallet apps like Apple Pay and Google Pay. For more information, see our guide
+      #   # on [digital card artwork](https://increase.com/documentation/card-art).
+      #   #
+      #   # @param id [String]
+      #   # @param app_icon_file_id [String]
+      #   # @param background_image_file_id [String]
+      #   # @param card_description [String]
+      #   # @param contact_email [String, nil]
+      #   # @param contact_phone [String, nil]
+      #   # @param contact_website [String, nil]
+      #   # @param created_at [Time]
+      #   # @param description [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param issuer_name [String]
+      #   # @param status [Symbol, Increase::Models::DigitalCardProfile::Status]
+      #   # @param text_color [Increase::Models::DigitalCardProfile::TextColor]
+      #   # @param type [Symbol, Increase::Models::DigitalCardProfile::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     app_icon_file_id:,
+      #     background_image_file_id:,
+      #     card_description:,
+      #     contact_email:,
+      #     contact_phone:,
+      #     contact_website:,
+      #     created_at:,
+      #     description:,
+      #     idempotency_key:,
+      #     issuer_name:,
+      #     status:,
+      #     text_color:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The status of the Card Profile.
       #
@@ -149,8 +152,11 @@ module Increase
         # The Card Profile is no longer in use.
         ARCHIVED = :archived
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # @see Increase::Models::DigitalCardProfile#text_color
@@ -173,14 +179,16 @@ module Increase
         #   @return [Integer]
         required :red, Integer
 
-        # @!method initialize(blue:, green:, red:)
-        #   The Card's text color, specified as an RGB triple.
-        #
-        #   @param blue [Integer] The value of the blue channel in the RGB color.
-        #
-        #   @param green [Integer] The value of the green channel in the RGB color.
-        #
-        #   @param red [Integer] The value of the red channel in the RGB color.
+        # @!parse
+        #   # The Card's text color, specified as an RGB triple.
+        #   #
+        #   # @param blue [Integer]
+        #   # @param green [Integer]
+        #   # @param red [Integer]
+        #   #
+        #   def initialize(blue:, green:, red:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -192,8 +200,11 @@ module Increase
 
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

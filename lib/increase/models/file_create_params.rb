@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::Files#create
     class FileCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute file
@@ -21,24 +22,25 @@ module Increase
       #   @return [Symbol, Increase::Models::FileCreateParams::Purpose]
       required :purpose, enum: -> { Increase::Models::FileCreateParams::Purpose }
 
-      # @!attribute description
+      # @!attribute [r] description
       #   The description you choose to give the File.
       #
       #   @return [String, nil]
       optional :description, String
 
-      # @!method initialize(file:, purpose:, description: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::FileCreateParams} for more details.
-      #
-      #   @param file [Pathname, StringIO] The file contents. This should follow the specifications of [RFC 7578](https://d
-      #   ...
-      #
-      #   @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
-      #
-      #   @param description [String] The description you choose to give the File.
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!parse
+      #   # @param file [Pathname, StringIO]
+      #   # @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose]
+      #   # @param description [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(file:, purpose:, description: nil, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # What the File will be used for in Increase's systems.
       module Purpose
@@ -92,8 +94,11 @@ module Increase
         # A file containing additional evidence for a Proof of Authorization Request Submission.
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

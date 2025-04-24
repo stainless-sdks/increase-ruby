@@ -18,12 +18,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The reason why this transfer will be returned. The most usual return codes are
-        # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-        reason:,
-        request_options: {}
-      ); end
+      def self.new(reason:, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -42,7 +38,8 @@ module Increase
 
         TaggedSymbol =
           T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol) }
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS =

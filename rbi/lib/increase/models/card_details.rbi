@@ -43,22 +43,15 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The identifier for the Card for which sensitive details have been returned.
         card_id:,
-        # The month the card expires in M format (e.g., August is 8).
         expiration_month:,
-        # The year the card expires in YYYY format (e.g., 2025).
         expiration_year:,
-        # The card number.
         primary_account_number:,
-        # A constant representing the object's type. For this resource it will always be
-        # `card_details`.
         type:,
-        # The three-digit verification code for the card. It's also known as the Card
-        # Verification Code (CVC), the Card Verification Value (CVV), or the Card
-        # Identification (CID).
         verification_code:
-      ); end
+      )
+      end
+
       sig do
         override
           .returns(
@@ -80,7 +73,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDetails::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::CardDetails::Type::TaggedSymbol) }
 
         CARD_DETAILS = T.let(:card_details, Increase::Models::CardDetails::Type::TaggedSymbol)
 

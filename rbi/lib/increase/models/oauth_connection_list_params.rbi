@@ -48,18 +48,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # Return the page of entries after this one.
-        cursor: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
-        # Filter results to only include OAuth Connections for a specific OAuth
-        # Application.
-        oauth_application_id: nil,
-        status: nil,
-        request_options: {}
-      ); end
+      def self.new(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -88,12 +78,8 @@ module Increase
           params(in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # Filter to OAuth Connections by their status. By default, return only the
-          # `active` ones. For GET requests, this should be encoded as a comma-delimited
-          # string, such as `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
@@ -101,7 +87,8 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthConnectionListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol) }
 
           # The OAuth connection is active.
           ACTIVE = T.let(:active, Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol)

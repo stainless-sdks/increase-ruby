@@ -21,7 +21,7 @@ end
 
 desc("Preview docs; use `PORT=<PORT>` to change the port")
 multitask(:"docs:preview") do
-  sh(*%w[yard server --reload --quiet --bind [::] --port], ENV.fetch("PORT", "8808"))
+  sh(*%w[yard server --bind [::] --reload --quiet --port], ENV.fetch("PORT", "8808"))
 end
 
 desc("Run test suites; use `TEST=path/to/test.rb` to run a specific test file")
@@ -31,7 +31,7 @@ multitask(:test) do
     .map { "require_relative(#{_1.dump});" }
     .join
 
-  ruby(*%w[-e], rb, verbose: false) { fail unless _1 }
+  ruby(*%w[-w -e], rb, verbose: false) { fail unless _1 }
 end
 
 rubo_find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
@@ -111,7 +111,7 @@ end
 desc("Typecheck everything")
 multitask(typecheck: [:"typecheck:steep", :"typecheck:sorbet"])
 
-desc("Lint and typecheck")
+desc("Lint everything")
 multitask(lint: [:"lint:rubocop", :typecheck])
 
 desc("Build yard docs")

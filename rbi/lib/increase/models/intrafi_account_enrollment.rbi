@@ -56,28 +56,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The identifier of this enrollment at IntraFi.
-        id:,
-        # The identifier of the Increase Account being swept into the network.
-        account_id:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the enrollment was created.
-        created_at:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
-        # The identifier of the account in IntraFi's system. This identifier will be
-        # printed on any IntraFi statements or documents.
-        intrafi_id:,
-        # The status of the account in the network. An account takes about one business
-        # day to go from `pending_enrolling` to `enrolled`.
-        status:,
-        # A constant representing the object's type. For this resource it will always be
-        # `intrafi_account_enrollment`.
-        type:
-      ); end
+      def self.new(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:); end
+
       sig do
         override
           .returns(
@@ -100,7 +80,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiAccountEnrollment::Status::TaggedSymbol) }
 
         # The account is being added to the IntraFi network.
         PENDING_ENROLLING =
@@ -130,7 +111,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiAccountEnrollment::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol) }
 
         INTRAFI_ACCOUNT_ENROLLMENT =
           T.let(:intrafi_account_enrollment, Increase::Models::IntrafiAccountEnrollment::Type::TaggedSymbol)

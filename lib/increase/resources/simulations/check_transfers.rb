@@ -11,8 +11,7 @@ module Increase
         #
         # @overload mail(check_transfer_id, request_options: {})
         #
-        # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
-        #
+        # @param check_transfer_id [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::CheckTransfer]

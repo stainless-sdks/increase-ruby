@@ -52,20 +52,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # Return the page of entries after this one.
-        cursor: nil,
-        # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key: nil,
-        # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
-        status: nil,
-        request_options: {}
-      ); end
+      def self.new(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -94,12 +82,8 @@ module Increase
           params(in_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol])
             .returns(T.attached_class)
         end
-        def self.new(
-          # Filter Wire Drawdown Requests for those with the specified status. For GET
-          # requests, this should be encoded as a comma-delimited string, such as
-          # `?in=one,two,three`.
-          in_: nil
-        ); end
+        def self.new(in_: nil); end
+
         sig { override.returns({in_: T::Array[Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol]}) }
         def to_hash; end
 
@@ -108,7 +92,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol) }
 
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION =

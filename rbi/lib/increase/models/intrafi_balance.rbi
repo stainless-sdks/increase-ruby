@@ -45,24 +45,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The identifier of this balance.
-        id:,
-        # Each entry represents a balance held at a different bank. IntraFi separates the
-        # total balance across many participating banks in the network.
-        balances:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-        # currency.
-        currency:,
-        # The date this balance reflects.
-        effective_date:,
-        # The total balance, in minor units of `currency`. Increase reports this balance
-        # to IntraFi daily.
-        total_balance:,
-        # A constant representing the object's type. For this resource it will always be
-        # `intrafi_balance`.
-        type:
-      ); end
+      def self.new(id:, balances:, currency:, effective_date:, total_balance:, type:); end
+
       sig do
         override
           .returns(
@@ -119,20 +103,8 @@ module Increase
           )
             .returns(T.attached_class)
         end
-        def self.new(
-          # The identifier of this balance.
-          id:,
-          # The balance, in minor units of `currency`, held with this bank.
-          balance:,
-          # The name of the bank holding these funds.
-          bank:,
-          # The primary location of the bank.
-          bank_location:,
-          # The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-          # Because many banks have the same or similar names, this can be used to uniquely
-          # identify the institution.
-          fdic_certificate_number:
-        ); end
+        def self.new(id:, balance:, bank:, bank_location:, fdic_certificate_number:); end
+
         sig do
           override
             .returns(
@@ -158,12 +130,8 @@ module Increase
 
           # The primary location of the bank.
           sig { params(city: String, state: String).returns(T.attached_class) }
-          def self.new(
-            # The bank's city.
-            city:,
-            # The bank's state.
-            state:
-          ); end
+          def self.new(city:, state:); end
+
           sig { override.returns({city: String, state: String}) }
           def to_hash; end
         end
@@ -175,7 +143,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Currency) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiBalance::Currency::TaggedSymbol) }
 
         # Canadian Dollar (CAD)
         CAD = T.let(:CAD, Increase::Models::IntrafiBalance::Currency::TaggedSymbol)
@@ -205,7 +174,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiBalance::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::IntrafiBalance::Type::TaggedSymbol) }
 
         INTRAFI_BALANCE = T.let(:intrafi_balance, Increase::Models::IntrafiBalance::Type::TaggedSymbol)
 

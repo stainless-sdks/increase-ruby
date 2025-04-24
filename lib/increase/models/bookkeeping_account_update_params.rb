@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::BookkeepingAccounts#update
     class BookkeepingAccountUpdateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute name
@@ -13,10 +14,13 @@ module Increase
       #   @return [String]
       required :name, String
 
-      # @!method initialize(name:, request_options: {})
-      #   @param name [String] The name you choose for the account.
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @param name [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(name:, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
     end
   end
 end

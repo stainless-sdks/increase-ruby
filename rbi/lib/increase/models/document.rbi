@@ -42,22 +42,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The Document identifier.
-        id:,
-        # The type of document.
-        category:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-        # Document was created.
-        created_at:,
-        # The identifier of the Entity the document was generated for.
-        entity_id:,
-        # The identifier of the File containing the Document's contents.
-        file_id:,
-        # A constant representing the object's type. For this resource it will always be
-        # `document`.
-        type:
-      ); end
+      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:); end
+
       sig do
         override
           .returns(
@@ -78,7 +64,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Document::Category::TaggedSymbol) }
 
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = T.let(:form_1099_int, Increase::Models::Document::Category::TaggedSymbol)
@@ -103,7 +89,7 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol = T.type_alias { T.any(Symbol, String, Increase::Models::Document::Type::TaggedSymbol) }
 
         DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
 

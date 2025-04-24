@@ -49,18 +49,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The Account the Account Number should belong to.
-        account_id:,
-        # The name you choose for the Account Number.
-        name:,
-        # Options related to how this Account Number should handle inbound ACH transfers.
-        inbound_ach: nil,
-        # Options related to how this Account Number should handle inbound check
-        # withdrawals.
-        inbound_checks: nil,
-        request_options: {}
-      ); end
+      def self.new(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {}); end
+
       sig do
         override
           .returns(
@@ -87,12 +77,8 @@ module Increase
           params(debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(
-          # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-          # will be declined if this is `allowed` but the Account Number is not active. If
-          # you do not specify this field, the default is `allowed`.
-          debit_status:
-        ); end
+        def self.new(debit_status:); end
+
         sig do
           override
             .returns({debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol})
@@ -107,7 +93,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol) }
 
           # ACH Debits are allowed.
           ALLOWED =
@@ -137,11 +124,8 @@ module Increase
           params(status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
             .returns(T.attached_class)
         end
-        def self.new(
-          # How Increase should process checks with this account number printed on them. If
-          # you do not specify this field, the default is `check_transfers_only`.
-          status:
-        ); end
+        def self.new(status:); end
+
         sig { override.returns({status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol}) }
         def to_hash; end
 
@@ -152,7 +136,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol) }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED =

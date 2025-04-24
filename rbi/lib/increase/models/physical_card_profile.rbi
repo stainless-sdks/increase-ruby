@@ -82,36 +82,18 @@ module Increase
           .returns(T.attached_class)
       end
       def self.new(
-        # The Card Profile identifier.
         id:,
-        # The identifier of the File containing the physical card's back image.
         back_image_file_id:,
-        # The identifier of the File containing the physical card's carrier image.
         carrier_image_file_id:,
-        # A phone number the user can contact to receive support for their card.
         contact_phone:,
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Card Dispute was created.
         created_at:,
-        # The creator of this Physical Card Profile.
         creator:,
-        # A description you can use to identify the Physical Card Profile.
         description:,
-        # The identifier of the File containing the physical card's front image.
         front_image_file_id:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key:,
-        # Whether this Physical Card Profile is the default for all cards in its Increase
-        # group.
         is_default:,
-        # The identifier for the Program this Physical Card Profile belongs to.
         program_id:,
-        # The status of the Physical Card Profile.
         status:,
-        # A constant representing the object's type. For this resource it will always be
-        # `physical_card_profile`.
         type:
       ); end
       sig do
@@ -141,7 +123,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Creator) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol) }
 
         # This Physical Card Profile was created by Increase.
         INCREASE = T.let(:increase, Increase::Models::PhysicalCardProfile::Creator::TaggedSymbol)
@@ -158,7 +141,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Status) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol) }
 
         # The Card Profile has not yet been processed by Increase.
         PENDING_CREATING = T.let(:pending_creating, Increase::Models::PhysicalCardProfile::Status::TaggedSymbol)
@@ -190,7 +174,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCardProfile::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol) }
 
         PHYSICAL_CARD_PROFILE =
           T.let(:physical_card_profile, Increase::Models::PhysicalCardProfile::Type::TaggedSymbol)

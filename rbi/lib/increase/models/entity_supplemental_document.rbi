@@ -39,22 +39,8 @@ module Increase
         )
           .returns(T.attached_class)
       end
-      def self.new(
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-        # Supplemental Document was created.
-        created_at:,
-        # The Entity the supplemental document is attached to.
-        entity_id:,
-        # The File containing the document.
-        file_id:,
-        # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
-        # A constant representing the object's type. For this resource it will always be
-        # `entity_supplemental_document`.
-        type:
-      ); end
+      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:); end
+
       sig do
         override
           .returns(
@@ -75,7 +61,8 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type) }
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol) }
 
         ENTITY_SUPPLEMENTAL_DOCUMENT =
           T.let(:entity_supplemental_document, Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol)

@@ -67,30 +67,15 @@ module Increase
             .returns(T.attached_class)
         end
         def self.new(
-          # The Inbound Funds Hold identifier.
           id:,
-          # The held amount in the minor unit of the account's currency. For dollars, for
-          # example, this is cents.
           amount:,
-          # When the hold will be released automatically. Certain conditions may cause it to
-          # be released before this time.
           automatically_releases_at:,
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-          # was created.
           created_at:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
           currency:,
-          # The ID of the Transaction for which funds were held.
           held_transaction_id:,
-          # The ID of the Pending Transaction representing the held funds.
           pending_transaction_id:,
-          # When the hold was released (if it has been released).
           released_at:,
-          # The status of the hold.
           status:,
-          # A constant representing the object's type. For this resource it will always be
-          # `inbound_funds_hold`.
           type:
         ); end
         sig do
@@ -119,7 +104,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol
+              )
+            end
 
           # Canadian Dollar (CAD)
           CAD = T.let(:CAD, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol)
@@ -152,7 +144,14 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias do
+              T.any(
+                Symbol,
+                String,
+                Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol
+              )
+            end
 
           # Funds are still being held.
           HELD = T.let(:held, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status::TaggedSymbol)
@@ -175,7 +174,8 @@ module Increase
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type) }
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, String, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type::TaggedSymbol) }
 
           INBOUND_FUNDS_HOLD =
             T.let(
