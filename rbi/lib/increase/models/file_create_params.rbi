@@ -9,7 +9,7 @@ module Increase
       # The file contents. This should follow the specifications of
       # [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
       # transfers for the multipart/form-data protocol.
-      sig { returns(T.any(Pathname, StringIO)) }
+      sig { returns(T.any(Pathname, StringIO, IO, Increase::FilePart)) }
       attr_accessor :file
 
       # What the File will be used for in Increase's systems.
@@ -25,7 +25,7 @@ module Increase
 
       sig do
         params(
-          file: T.any(Pathname, StringIO),
+          file: T.any(Pathname, StringIO, IO, Increase::FilePart),
           purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
           description: String,
           request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -47,7 +47,7 @@ module Increase
         override
           .returns(
             {
-              file: T.any(Pathname, StringIO),
+              file: T.any(Pathname, StringIO, IO, Increase::FilePart),
               purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
               description: String,
               request_options: Increase::RequestOptions

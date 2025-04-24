@@ -12,7 +12,7 @@ module Increase
       #
       # @overload create(file:, purpose:, description: nil, request_options: {})
       #
-      # @param file [Pathname, StringIO] The file contents. This should follow the specifications of [RFC 7578](https://d
+      # @param file [Pathname, StringIO, IO, Increase::FilePart] The file contents. This should follow the specifications of [RFC 7578](https://d
       # ...
       #
       # @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
