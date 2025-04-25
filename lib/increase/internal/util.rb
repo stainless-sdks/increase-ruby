@@ -175,17 +175,18 @@ module Increase
         # @api private
         #
         # @param data [Hash{Symbol=>Object}, Array<Object>, Object]
-        # @param pick [Symbol, Integer, Array<Symbol, Integer>, Proc, nil]
+        # @param pick [Symbol, Integer, Array<Symbol, Integer>, nil]
+        # @param sentinel [Object, nil]
         # @param blk [Proc, nil]
         #
         # @return [Object, nil]
-        def dig(data, pick, &blk)
-          case [data, pick]
-          in [_, nil]
+        def dig(data, pick, sentinel = nil, &blk)
+          case [data, pick, blk]
+          in [_, nil, nil]
             data
-          in [Hash, Symbol] | [Array, Integer]
-            data.fetch(pick) { blk&.call }
-          in [Hash | Array, Array]
+          in [Hash, Symbol, _] | [Array, Integer, _]
+            blk.nil? ? data.fetch(pick, sentinel) : data.fetch(pick, &blk)
+          in [Hash | Array, Array, _]
             pick.reduce(data) do |acc, key|
               case acc
               in Hash if acc.key?(key)
@@ -193,13 +194,11 @@ module Increase
               in Array if key.is_a?(Integer) && key < acc.length
                 acc[key]
               else
-                return blk&.call
+                return blk.nil? ? sentinel : blk.call
               end
             end
-          in [_, Proc]
-            pick.call(data)
-          else
-            blk&.call
+          in _
+            blk.nil? ? sentinel : blk.call
           end
         end
       end
