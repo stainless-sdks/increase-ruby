@@ -10,7 +10,7 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Account)
       end
@@ -28,13 +28,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve an Account
-      sig do
-        params(
-          account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Account)
-      end
+      sig { params(account_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Account) }
       def retrieve(
         # The identifier of the Account to retrieve.
         account_id,
@@ -42,11 +36,7 @@ module Increase
       ); end
       # Update an Account
       sig do
-        params(
-          account_id: String,
-          name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_id: String, name: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::Account)
       end
       def update(
@@ -67,7 +57,7 @@ module Increase
           limit: Integer,
           program_id: String,
           status: T.any(Increase::Models::AccountListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Account])
       end
@@ -95,11 +85,7 @@ module Increase
       # Retrieve the current and available balances for an account in minor units of the
       # account's currency. Learn more about [account balances](/documentation/balance).
       sig do
-        params(
-          account_id: String,
-          at_time: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_id: String, at_time: Time, request_options: Increase::RequestOpts)
           .returns(Increase::Models::BalanceLookup)
       end
       def balance(
@@ -110,13 +96,7 @@ module Increase
         request_options: {}
       ); end
       # Close an Account
-      sig do
-        params(
-          account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Account)
-      end
+      sig { params(account_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Account) }
       def close(
         # The identifier of the Account to close. The account must have a zero balance.
         account_id,

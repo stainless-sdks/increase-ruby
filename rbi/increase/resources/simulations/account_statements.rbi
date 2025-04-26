@@ -7,10 +7,7 @@ module Increase
         # Simulates an [Account Statement](#account-statements) being created for an
         # account. In production, Account Statements are generated once per month.
         sig do
-          params(
-            account_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(account_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::AccountStatement)
         end
         def create(

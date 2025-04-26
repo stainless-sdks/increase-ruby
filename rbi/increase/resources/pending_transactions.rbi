@@ -5,10 +5,7 @@ module Increase
     class PendingTransactions
       # Retrieve a Pending Transaction
       sig do
-        params(
-          pending_transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(pending_transaction_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::PendingTransaction)
       end
       def retrieve(
@@ -26,7 +23,7 @@ module Increase
           limit: Integer,
           route_id: String,
           status: T.any(Increase::Models::PendingTransactionListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::PendingTransaction])
       end

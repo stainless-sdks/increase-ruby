@@ -4,13 +4,7 @@ module Increase
   module Resources
     class Documents
       # Retrieve a Document
-      sig do
-        params(
-          document_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Document)
-      end
+      sig { params(document_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Document) }
       def retrieve(
         # The identifier of the Document to retrieve.
         document_id,
@@ -24,7 +18,7 @@ module Increase
           cursor: String,
           entity_id: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Document])
       end

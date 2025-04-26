@@ -22,7 +22,7 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::WireTransfer)
       end
@@ -69,10 +69,7 @@ module Increase
       ); end
       # Retrieve a Wire Transfer
       sig do
-        params(
-          wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(wire_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::WireTransfer)
       end
       def retrieve(
@@ -89,7 +86,7 @@ module Increase
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::WireTransfer])
       end
@@ -113,10 +110,7 @@ module Increase
       ); end
       # Approve a Wire Transfer
       sig do
-        params(
-          wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(wire_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::WireTransfer)
       end
       def approve(
@@ -126,10 +120,7 @@ module Increase
       ); end
       # Cancel a pending Wire Transfer
       sig do
-        params(
-          wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(wire_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::WireTransfer)
       end
       def cancel(

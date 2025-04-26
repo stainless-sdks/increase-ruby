@@ -10,7 +10,7 @@ module Increase
           cardholder: T.any(Increase::Models::PhysicalCardCreateParams::Cardholder, Increase::Internal::AnyHash),
           shipment: T.any(Increase::Models::PhysicalCardCreateParams::Shipment, Increase::Internal::AnyHash),
           physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -28,10 +28,7 @@ module Increase
       ); end
       # Retrieve a Physical Card
       sig do
-        params(
-          physical_card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(physical_card_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::PhysicalCard)
       end
       def retrieve(
@@ -44,7 +41,7 @@ module Increase
         params(
           physical_card_id: String,
           status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::PhysicalCard)
       end
@@ -63,7 +60,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::PhysicalCard])
       end

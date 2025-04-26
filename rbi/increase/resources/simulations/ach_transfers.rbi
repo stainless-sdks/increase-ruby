@@ -11,10 +11,7 @@ module Increase
         # Reserve, this endpoint allows you to skip that delay and add the acknowledgment
         # subresource to the ACH Transfer.
         sig do
-          params(
-            ach_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(ach_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::ACHTransfer)
         end
         def acknowledge(
@@ -29,7 +26,7 @@ module Increase
             ach_transfer_id: String,
             change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: Increase::RequestOpts
           )
             .returns(Increase::Models::ACHTransfer)
         end
@@ -50,7 +47,7 @@ module Increase
           params(
             ach_transfer_id: String,
             reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: Increase::RequestOpts
           )
             .returns(Increase::Models::ACHTransfer)
         end
@@ -69,10 +66,7 @@ module Increase
         # simulation the transfer will eventually settle on its own following the same
         # Federal Reserve timeline as in production.
         sig do
-          params(
-            ach_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(ach_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::ACHTransfer)
         end
         def settle(
@@ -87,10 +81,7 @@ module Increase
         # not submitted to the Federal Reserve, this endpoint allows you to skip that
         # delay and transition the ACH Transfer to a status of `submitted`.
         sig do
-          params(
-            ach_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(ach_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::ACHTransfer)
         end
         def submit(

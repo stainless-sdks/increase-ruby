@@ -5,10 +5,7 @@ module Increase
     class InboundACHTransfers
       # Retrieve an Inbound ACH Transfer
       sig do
-        params(
-          inbound_ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_ach_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundACHTransfer)
       end
       def retrieve(
@@ -25,7 +22,7 @@ module Increase
           cursor: String,
           limit: Integer,
           status: T.any(Increase::Models::InboundACHTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::InboundACHTransfer])
       end
@@ -49,7 +46,7 @@ module Increase
           inbound_ach_transfer_id: String,
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::InboundACHTransfer)
       end
@@ -68,7 +65,7 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           reason: Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::InboundACHTransfer)
       end
@@ -86,7 +83,7 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           reason: Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::InboundACHTransfer)
       end

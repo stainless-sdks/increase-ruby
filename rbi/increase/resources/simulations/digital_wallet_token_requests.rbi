@@ -7,10 +7,7 @@ module Increase
         # Simulates a user attempting add a [Card](#cards) to a digital wallet such as
         # Apple Pay.
         sig do
-          params(
-            card_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(card_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse)
         end
         def create(

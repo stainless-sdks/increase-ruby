@@ -5,11 +5,7 @@ module Increase
     class SupplementalDocuments
       # Create a supplemental document for an Entity
       sig do
-        params(
-          entity_id: String,
-          file_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(entity_id: String, file_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::EntitySupplementalDocument)
       end
       def create(
@@ -26,7 +22,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::EntitySupplementalDocument])
       end

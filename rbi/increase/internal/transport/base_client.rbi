@@ -35,7 +35,7 @@ module Increase
               page: T.nilable(T::Class[Increase::Internal::Type::BasePage[Increase::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Increase::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+              options: T.nilable(Increase::RequestOpts)
             }
           end
 
@@ -188,7 +188,7 @@ module Increase
             page: T.nilable(T::Class[Increase::Internal::Type::BasePage[Increase::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Increase::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            options: T.nilable(Increase::RequestOpts)
           )
             .returns(T.anything)
         end

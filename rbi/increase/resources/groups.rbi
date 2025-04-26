@@ -4,10 +4,7 @@ module Increase
   module Resources
     class Groups
       # Returns details for the currently authenticated Group.
-      sig do
-        params(request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash)))
-          .returns(Increase::Models::Group)
-      end
+      sig { params(request_options: Increase::RequestOpts).returns(Increase::Models::Group) }
       def retrieve(request_options: {}); end
 
       # @api private

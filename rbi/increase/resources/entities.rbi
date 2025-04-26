@@ -15,7 +15,7 @@ module Increase
           supplemental_documents: T::Array[T.any(Increase::Models::EntityCreateParams::SupplementalDocument, Increase::Internal::AnyHash)],
           third_party_verification: T.any(Increase::Models::EntityCreateParams::ThirdPartyVerification, Increase::Internal::AnyHash),
           trust: T.any(Increase::Models::EntityCreateParams::Trust, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Entity)
       end
@@ -49,13 +49,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve an Entity
-      sig do
-        params(
-          entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Entity)
-      end
+      sig { params(entity_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Entity) }
       def retrieve(
         # The identifier of the Entity to retrieve.
         entity_id,
@@ -69,7 +63,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::EntityListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Entity])
       end
@@ -89,13 +83,7 @@ module Increase
         request_options: {}
       ); end
       # Archive an Entity
-      sig do
-        params(
-          entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Entity)
-      end
+      sig { params(entity_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Entity) }
       def archive(
         # The identifier of the Entity to archive. Any accounts associated with an entity
         # must be closed before the entity can be archived.
@@ -104,11 +92,7 @@ module Increase
       ); end
       # Archive a beneficial owner for a corporate Entity
       sig do
-        params(
-          entity_id: String,
-          beneficial_owner_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(entity_id: String, beneficial_owner_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::Entity)
       end
       def archive_beneficial_owner(
@@ -124,11 +108,7 @@ module Increase
       # on a recurring basis. After making any required updates, call this endpoint to
       # record that your user confirmed their details.
       sig do
-        params(
-          entity_id: String,
-          confirmed_at: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(entity_id: String, confirmed_at: Time, request_options: Increase::RequestOpts)
           .returns(Increase::Models::Entity)
       end
       def confirm(
@@ -144,7 +124,7 @@ module Increase
         params(
           entity_id: String,
           beneficial_owner: T.any(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Entity)
       end
@@ -161,7 +141,7 @@ module Increase
         params(
           entity_id: String,
           address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Entity)
       end
@@ -179,7 +159,7 @@ module Increase
           entity_id: String,
           address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Internal::AnyHash),
           beneficial_owner_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Entity)
       end
@@ -197,11 +177,7 @@ module Increase
       ); end
       # Update the industry code for a corporate Entity
       sig do
-        params(
-          entity_id: String,
-          industry_code: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(entity_id: String, industry_code: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::Entity)
       end
       def update_industry_code(

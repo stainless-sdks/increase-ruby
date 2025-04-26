@@ -8,11 +8,7 @@ module Increase
         # happens asynchronously right after a fuel pump transaction is completed. A fuel
         # confirmation can only happen once per authorization.
         sig do
-          params(
-            amount: Integer,
-            card_payment_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(amount: Integer, card_payment_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::CardPayment)
         end
         def create(

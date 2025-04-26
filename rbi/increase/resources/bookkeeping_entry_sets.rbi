@@ -9,7 +9,7 @@ module Increase
           entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Internal::AnyHash)],
           date: Time,
           transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::BookkeepingEntrySet)
       end
@@ -25,10 +25,7 @@ module Increase
       ); end
       # Retrieve a Bookkeeping Entry Set
       sig do
-        params(
-          bookkeeping_entry_set_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(bookkeeping_entry_set_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::BookkeepingEntrySet)
       end
       def retrieve(
@@ -43,7 +40,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::BookkeepingEntrySet])
       end

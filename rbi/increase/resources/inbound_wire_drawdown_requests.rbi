@@ -5,10 +5,7 @@ module Increase
     class InboundWireDrawdownRequests
       # Retrieve an Inbound Wire Drawdown Request
       sig do
-        params(
-          inbound_wire_drawdown_request_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_wire_drawdown_request_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundWireDrawdownRequest)
       end
       def retrieve(
@@ -18,11 +15,7 @@ module Increase
       ); end
       # List Inbound Wire Drawdown Requests
       sig do
-        params(
-          cursor: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(cursor: String, limit: Integer, request_options: Increase::RequestOpts)
           .returns(Increase::Internal::Page[Increase::Models::InboundWireDrawdownRequest])
       end
       def list(

@@ -5,10 +5,7 @@ module Increase
     class InboundRealTimePaymentsTransfers
       # Retrieve an Inbound Real-Time Payments Transfer
       sig do
-        params(
-          inbound_real_time_payments_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_real_time_payments_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundRealTimePaymentsTransfer)
       end
       def retrieve(
@@ -24,7 +21,7 @@ module Increase
           created_at: T.any(Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::InboundRealTimePaymentsTransfer])
       end

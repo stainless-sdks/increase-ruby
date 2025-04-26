@@ -5,10 +5,7 @@ module Increase
     class DeclinedTransactions
       # Retrieve a Declined Transaction
       sig do
-        params(
-          declined_transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(declined_transaction_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::DeclinedTransaction)
       end
       def retrieve(
@@ -25,7 +22,7 @@ module Increase
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::DeclinedTransaction])
       end

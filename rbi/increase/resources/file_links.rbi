@@ -5,11 +5,7 @@ module Increase
     class FileLinks
       # Create a File Link
       sig do
-        params(
-          file_id: String,
-          expires_at: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(file_id: String, expires_at: Time, request_options: Increase::RequestOpts)
           .returns(Increase::Models::FileLink)
       end
       def create(

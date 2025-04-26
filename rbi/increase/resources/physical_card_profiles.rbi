@@ -11,7 +11,7 @@ module Increase
           description: String,
           front_image_file_id: String,
           program_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end
@@ -30,10 +30,7 @@ module Increase
       ); end
       # Retrieve a Card Profile
       sig do
-        params(
-          physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(physical_card_profile_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def retrieve(
@@ -48,7 +45,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::PhysicalCardProfile])
       end
@@ -68,10 +65,7 @@ module Increase
       ); end
       # Archive a Physical Card Profile
       sig do
-        params(
-          physical_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(physical_card_profile_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::PhysicalCardProfile)
       end
       def archive(
@@ -88,7 +82,7 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::PhysicalCardProfile)
       end

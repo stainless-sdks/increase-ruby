@@ -5,10 +5,7 @@ module Increase
     class IntrafiBalances
       # Get IntraFi balances by bank
       sig do
-        params(
-          account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiBalance)
       end
       def intrafi_balance(

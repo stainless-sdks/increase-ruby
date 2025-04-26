@@ -11,7 +11,7 @@ module Increase
           file: T.any(Pathname, StringIO, IO, Increase::FilePart),
           purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
           description: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::File)
       end
@@ -27,13 +27,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve a File
-      sig do
-        params(
-          file_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::File)
-      end
+      sig { params(file_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::File) }
       def retrieve(
         # The identifier of the File.
         file_id,
@@ -47,7 +41,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::File])
       end

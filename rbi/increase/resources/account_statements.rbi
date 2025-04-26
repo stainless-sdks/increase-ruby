@@ -5,10 +5,7 @@ module Increase
     class AccountStatements
       # Retrieve an Account Statement
       sig do
-        params(
-          account_statement_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_statement_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::AccountStatement)
       end
       def retrieve(
@@ -23,7 +20,7 @@ module Increase
           cursor: String,
           limit: Integer,
           statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::AccountStatement])
       end

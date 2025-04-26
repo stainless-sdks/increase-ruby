@@ -11,7 +11,7 @@ module Increase
           routing_number: String,
           account_holder: Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
           funding: Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -31,10 +31,7 @@ module Increase
       ); end
       # Retrieve an External Account
       sig do
-        params(
-          external_account_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(external_account_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::ExternalAccount)
       end
       def retrieve(
@@ -50,7 +47,7 @@ module Increase
           description: String,
           funding: Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
           status: Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::ExternalAccount)
       end
@@ -75,7 +72,7 @@ module Increase
           limit: Integer,
           routing_number: String,
           status: T.any(Increase::Models::ExternalAccountListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::ExternalAccount])
       end

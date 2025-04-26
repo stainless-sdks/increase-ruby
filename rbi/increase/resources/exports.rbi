@@ -13,7 +13,7 @@ module Increase
           entity_csv: T.any(Increase::Models::ExportCreateParams::EntityCsv, Increase::Internal::AnyHash),
           transaction_csv: T.any(Increase::Models::ExportCreateParams::TransactionCsv, Increase::Internal::AnyHash),
           vendor_csv: T.anything,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Export)
       end
@@ -39,13 +39,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve an Export
-      sig do
-        params(
-          export_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Export)
-      end
+      sig { params(export_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Export) }
       def retrieve(
         # The identifier of the Export to retrieve.
         export_id,
@@ -60,7 +54,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::ExportListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Export])
       end
