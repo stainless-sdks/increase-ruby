@@ -10,7 +10,7 @@ module Increase
           account_id: String,
           compliance_category: Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::BookkeepingAccount)
       end
@@ -27,11 +27,7 @@ module Increase
       ); end
       # Update a Bookkeeping Account
       sig do
-        params(
-          bookkeeping_account_id: String,
-          name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(bookkeeping_account_id: String, name: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::BookkeepingAccount)
       end
       def update(
@@ -47,7 +43,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::BookkeepingAccount])
       end
@@ -66,11 +62,7 @@ module Increase
       ); end
       # Retrieve a Bookkeeping Account Balance
       sig do
-        params(
-          bookkeeping_account_id: String,
-          at_time: Time,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(bookkeeping_account_id: String, at_time: Time, request_options: Increase::RequestOpts)
           .returns(Increase::Models::BookkeepingBalanceLookup)
       end
       def balance(

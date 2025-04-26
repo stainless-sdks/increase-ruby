@@ -4,13 +4,7 @@ module Increase
   module Resources
     class Events
       # Retrieve an Event
-      sig do
-        params(
-          event_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Event)
-      end
+      sig { params(event_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Event) }
       def retrieve(
         # The identifier of the Event.
         event_id,
@@ -24,7 +18,7 @@ module Increase
           created_at: T.any(Increase::Models::EventListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Event])
       end

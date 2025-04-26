@@ -11,7 +11,7 @@ module Increase
           back_image_file_id: String,
           front_image_file_id: String,
           description: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::CheckDeposit)
       end
@@ -30,10 +30,7 @@ module Increase
       ); end
       # Retrieve a Check Deposit
       sig do
-        params(
-          check_deposit_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(check_deposit_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::CheckDeposit)
       end
       def retrieve(
@@ -49,7 +46,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::CheckDeposit])
       end

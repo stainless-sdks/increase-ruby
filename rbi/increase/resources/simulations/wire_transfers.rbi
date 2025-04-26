@@ -9,10 +9,7 @@ module Increase
         # [Transaction](#transaction) to account for the returned funds. This Wire
         # Transfer must first have a `status` of `complete`.
         sig do
-          params(
-            wire_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(wire_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::WireTransfer)
         end
         def reverse(
@@ -24,10 +21,7 @@ module Increase
         # Reserve. This transfer must first have a `status` of `pending_approval` or
         # `pending_creating`.
         sig do
-          params(
-            wire_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(wire_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::WireTransfer)
         end
         def submit(

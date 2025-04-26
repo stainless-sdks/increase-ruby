@@ -9,7 +9,7 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -23,13 +23,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve a Lockbox
-      sig do
-        params(
-          lockbox_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Lockbox)
-      end
+      sig { params(lockbox_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Lockbox) }
       def retrieve(
         # The identifier of the Lockbox to retrieve.
         lockbox_id,
@@ -42,7 +36,7 @@ module Increase
           description: String,
           recipient_name: String,
           status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Lockbox)
       end
@@ -65,7 +59,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Lockbox])
       end

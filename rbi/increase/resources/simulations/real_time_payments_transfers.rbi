@@ -15,7 +15,7 @@ module Increase
               Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
               Increase::Internal::AnyHash
             ),
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: Increase::RequestOpts
           )
             .returns(Increase::Models::RealTimePaymentsTransfer)
         end

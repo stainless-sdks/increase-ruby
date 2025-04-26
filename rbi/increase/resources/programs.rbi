@@ -4,13 +4,7 @@ module Increase
   module Resources
     class Programs
       # Retrieve a Program
-      sig do
-        params(
-          program_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Program)
-      end
+      sig { params(program_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Program) }
       def retrieve(
         # The identifier of the Program to retrieve.
         program_id,
@@ -18,11 +12,7 @@ module Increase
       ); end
       # List Programs
       sig do
-        params(
-          cursor: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(cursor: String, limit: Integer, request_options: Increase::RequestOpts)
           .returns(Increase::Internal::Page[Increase::Models::Program])
       end
       def list(

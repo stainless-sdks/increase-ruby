@@ -7,10 +7,7 @@ module Increase
         # Simulates refunding a card transaction. The full value of the original sandbox
         # transaction is refunded.
         sig do
-          params(
-            transaction_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(transaction_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::Transaction)
         end
         def create(

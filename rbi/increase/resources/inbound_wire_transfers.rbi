@@ -5,10 +5,7 @@ module Increase
     class InboundWireTransfers
       # Retrieve an Inbound Wire Transfer
       sig do
-        params(
-          inbound_wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_wire_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(
@@ -25,7 +22,7 @@ module Increase
           cursor: String,
           limit: Integer,
           status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::InboundWireTransfer])
       end

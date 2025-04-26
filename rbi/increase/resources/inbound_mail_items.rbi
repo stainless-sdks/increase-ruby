@@ -5,10 +5,7 @@ module Increase
     class InboundMailItems
       # Retrieve an Inbound Mail Item
       sig do
-        params(
-          inbound_mail_item_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_mail_item_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundMailItem)
       end
       def retrieve(
@@ -23,7 +20,7 @@ module Increase
           cursor: String,
           limit: Integer,
           lockbox_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::InboundMailItem])
       end

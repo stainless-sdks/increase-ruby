@@ -5,10 +5,7 @@ module Increase
     class CardPayments
       # Retrieve a Card Payment
       sig do
-        params(
-          card_payment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(card_payment_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::CardPayment)
       end
       def retrieve(
@@ -24,7 +21,7 @@ module Increase
           created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::CardPayment])
       end

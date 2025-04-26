@@ -5,13 +5,7 @@ module Increase
     class Simulations
       class Documents
         # Simulates an tax document being created for an account.
-        sig do
-          params(
-            account_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
-            .returns(Increase::Models::Document)
-        end
+        sig { params(account_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Document) }
         def create(
           # The identifier of the Account the tax document is for.
           account_id:,
