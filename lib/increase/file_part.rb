@@ -15,15 +15,15 @@ module Increase
     #
     # @return [String]
     private def read
-      case content
+      case contents
       in Pathname
-        content.read(binmode: true)
+        contents.read(binmode: true)
       in StringIO
-        content.string
+        contents.string
       in IO
-        content.read
+        contents.read
       in String
-        content
+        contents
       end
     end
 
