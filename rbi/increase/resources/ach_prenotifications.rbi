@@ -19,7 +19,7 @@ module Increase
           individual_id: String,
           individual_name: String,
           standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::ACHPrenotification)
       end
@@ -57,10 +57,7 @@ module Increase
       ); end
       # Retrieve an ACH Prenotification
       sig do
-        params(
-          ach_prenotification_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(ach_prenotification_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::ACHPrenotification)
       end
       def retrieve(
@@ -75,7 +72,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::ACHPrenotification])
       end

@@ -5,11 +5,7 @@ module Increase
     class IntrafiExclusions
       # Create an IntraFi Exclusion
       sig do
-        params(
-          bank_name: String,
-          entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(bank_name: String, entity_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiExclusion)
       end
       def create(
@@ -21,10 +17,7 @@ module Increase
       ); end
       # Get an IntraFi Exclusion
       sig do
-        params(
-          intrafi_exclusion_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(intrafi_exclusion_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiExclusion)
       end
       def retrieve(
@@ -39,7 +32,7 @@ module Increase
           entity_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::IntrafiExclusion])
       end
@@ -60,10 +53,7 @@ module Increase
       ); end
       # Archive an IntraFi Exclusion
       sig do
-        params(
-          intrafi_exclusion_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(intrafi_exclusion_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiExclusion)
       end
       def archive(

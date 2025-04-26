@@ -5,10 +5,7 @@ module Increase
     class InboundCheckDeposits
       # Retrieve an Inbound Check Deposit
       sig do
-        params(
-          inbound_check_deposit_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_check_deposit_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundCheckDeposit)
       end
       def retrieve(
@@ -24,7 +21,7 @@ module Increase
           created_at: T.any(Increase::Models::InboundCheckDepositListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::InboundCheckDeposit])
       end
@@ -44,10 +41,7 @@ module Increase
       ); end
       # Decline an Inbound Check Deposit
       sig do
-        params(
-          inbound_check_deposit_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(inbound_check_deposit_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::InboundCheckDeposit)
       end
       def decline(
@@ -60,7 +54,7 @@ module Increase
         params(
           inbound_check_deposit_id: String,
           reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::InboundCheckDeposit)
       end

@@ -5,10 +5,7 @@ module Increase
     class OAuthConnections
       # Retrieve an OAuth Connection
       sig do
-        params(
-          oauth_connection_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(oauth_connection_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::OAuthConnection)
       end
       def retrieve(
@@ -23,7 +20,7 @@ module Increase
           limit: Integer,
           oauth_application_id: String,
           status: T.any(Increase::Models::OAuthConnectionListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::OAuthConnection])
       end

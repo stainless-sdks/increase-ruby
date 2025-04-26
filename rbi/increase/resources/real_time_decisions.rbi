@@ -5,10 +5,7 @@ module Increase
     class RealTimeDecisions
       # Retrieve a Real-Time Decision
       sig do
-        params(
-          real_time_decision_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(real_time_decision_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::RealTimeDecision)
       end
       def retrieve(
@@ -31,7 +28,7 @@ module Increase
             Increase::Internal::AnyHash
           ),
           digital_wallet_token: T.any(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::RealTimeDecision)
       end

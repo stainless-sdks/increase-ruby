@@ -15,7 +15,7 @@ module Increase
           contact_phone: String,
           contact_website: String,
           text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::DigitalCardProfile)
       end
@@ -42,10 +42,7 @@ module Increase
       ); end
       # Retrieve a Digital Card Profile
       sig do
-        params(
-          digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(digital_card_profile_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::DigitalCardProfile)
       end
       def retrieve(
@@ -60,7 +57,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::DigitalCardProfileListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::DigitalCardProfile])
       end
@@ -80,10 +77,7 @@ module Increase
       ); end
       # Archive a Digital Card Profile
       sig do
-        params(
-          digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(digital_card_profile_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::DigitalCardProfile)
       end
       def archive(
@@ -104,7 +98,7 @@ module Increase
           description: String,
           issuer_name: String,
           text_color: T.any(Increase::Models::DigitalCardProfileCloneParams::TextColor, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::DigitalCardProfile)
       end

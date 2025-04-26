@@ -9,10 +9,7 @@ module Increase
         # You can also approve sandbox Account Transfers in the dashboard. This transfer
         # must first have a `status` of `pending_approval`.
         sig do
-          params(
-            account_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(account_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::AccountTransfer)
         end
         def complete(

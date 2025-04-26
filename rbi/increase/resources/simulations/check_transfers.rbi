@@ -9,10 +9,7 @@ module Increase
         # This transfer must first have a `status` of `pending_approval` or
         # `pending_submission`.
         sig do
-          params(
-            check_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(check_transfer_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::CheckTransfer)
         end
         def mail(

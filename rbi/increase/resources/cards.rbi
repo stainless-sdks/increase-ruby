@@ -11,7 +11,7 @@ module Increase
           description: String,
           digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::AnyHash),
           entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Card)
       end
@@ -34,13 +34,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve a Card
-      sig do
-        params(
-          card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::Card)
-      end
+      sig { params(card_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Card) }
       def retrieve(
         # The identifier of the Card.
         card_id,
@@ -55,7 +49,7 @@ module Increase
           digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::AnyHash),
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::Card)
       end
@@ -86,7 +80,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::CardListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::Card])
       end
@@ -108,13 +102,7 @@ module Increase
         request_options: {}
       ); end
       # Retrieve sensitive details for a Card
-      sig do
-        params(
-          card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
-          .returns(Increase::Models::CardDetails)
-      end
+      sig { params(card_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::CardDetails) }
       def details(
         # The identifier of the Card to retrieve details for.
         card_id,

@@ -10,7 +10,7 @@ module Increase
           name: String,
           inbound_ach: T.any(Increase::Models::AccountNumberCreateParams::InboundACH, Increase::Internal::AnyHash),
           inbound_checks: T.any(Increase::Models::AccountNumberCreateParams::InboundChecks, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -28,10 +28,7 @@ module Increase
       ); end
       # Retrieve an Account Number
       sig do
-        params(
-          account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_number_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::AccountNumber)
       end
       def retrieve(
@@ -47,7 +44,7 @@ module Increase
           inbound_checks: T.any(Increase::Models::AccountNumberUpdateParams::InboundChecks, Increase::Internal::AnyHash),
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::AccountNumber)
       end
@@ -75,7 +72,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::AccountNumberListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::AccountNumber])
       end

@@ -5,11 +5,7 @@ module Increase
     class IntrafiAccountEnrollments
       # Enroll an account in the IntraFi deposit sweep network
       sig do
-        params(
-          account_id: String,
-          email_address: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_id: String, email_address: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def create(
@@ -21,10 +17,7 @@ module Increase
       ); end
       # Get an IntraFi Account Enrollment
       sig do
-        params(
-          intrafi_account_enrollment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(intrafi_account_enrollment_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def retrieve(
@@ -40,7 +33,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::IntrafiAccountEnrollmentListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::IntrafiAccountEnrollment])
       end
@@ -62,10 +55,7 @@ module Increase
       ); end
       # Unenroll an account from IntraFi
       sig do
-        params(
-          intrafi_account_enrollment_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(intrafi_account_enrollment_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def unenroll(

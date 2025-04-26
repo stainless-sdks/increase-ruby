@@ -33,7 +33,7 @@ module Increase
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+            request_options: Increase::RequestOpts
           )
             .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse)
         end

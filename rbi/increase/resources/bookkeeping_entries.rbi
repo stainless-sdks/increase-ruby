@@ -5,10 +5,7 @@ module Increase
     class BookkeepingEntries
       # Retrieve a Bookkeeping Entry
       sig do
-        params(
-          bookkeeping_entry_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(bookkeeping_entry_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::BookkeepingEntry)
       end
       def retrieve(
@@ -18,12 +15,7 @@ module Increase
       ); end
       # List Bookkeeping Entries
       sig do
-        params(
-          account_id: String,
-          cursor: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(account_id: String, cursor: String, limit: Integer, request_options: Increase::RequestOpts)
           .returns(Increase::Internal::Page[Increase::Models::BookkeepingEntry])
       end
       def list(

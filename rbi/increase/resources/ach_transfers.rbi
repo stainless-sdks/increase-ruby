@@ -25,7 +25,7 @@ module Increase
           routing_number: String,
           standard_entry_class_code: Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
           transaction_timing: Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::ACHTransfer)
       end
@@ -91,10 +91,7 @@ module Increase
       ); end
       # Retrieve an ACH Transfer
       sig do
-        params(
-          ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(ach_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::ACHTransfer)
       end
       def retrieve(
@@ -112,7 +109,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::ACHTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::ACHTransfer])
       end
@@ -137,10 +134,7 @@ module Increase
       ); end
       # Approves an ACH Transfer in a pending_approval state.
       sig do
-        params(
-          ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(ach_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::ACHTransfer)
       end
       def approve(
@@ -150,10 +144,7 @@ module Increase
       ); end
       # Cancels an ACH Transfer in a pending_approval state.
       sig do
-        params(
-          ach_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(ach_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::ACHTransfer)
       end
       def cancel(

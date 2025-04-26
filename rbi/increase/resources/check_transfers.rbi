@@ -14,7 +14,7 @@ module Increase
           physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Internal::AnyHash),
           require_approval: T::Boolean,
           third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::CheckTransfer)
       end
@@ -46,10 +46,7 @@ module Increase
       ); end
       # Retrieve a Check Transfer
       sig do
-        params(
-          check_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(check_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::CheckTransfer)
       end
       def retrieve(
@@ -66,7 +63,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::CheckTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::CheckTransfer])
       end
@@ -89,10 +86,7 @@ module Increase
       ); end
       # Approve a Check Transfer
       sig do
-        params(
-          check_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(check_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::CheckTransfer)
       end
       def approve(
@@ -102,10 +96,7 @@ module Increase
       ); end
       # Cancel a pending Check Transfer
       sig do
-        params(
-          check_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(check_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::CheckTransfer)
       end
       def cancel(
@@ -118,7 +109,7 @@ module Increase
         params(
           check_transfer_id: String,
           reason: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::CheckTransfer)
       end

@@ -8,10 +8,7 @@ module Increase
         # factors like poor image quality. This Check Deposit must first have a `status`
         # of `pending`.
         sig do
-          params(
-            check_deposit_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(check_deposit_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::CheckDeposit)
         end
         def reject(
@@ -22,10 +19,7 @@ module Increase
         # Simulates the return of a [Check Deposit](#check-deposits). This Check Deposit
         # must first have a `status` of `submitted`.
         sig do
-          params(
-            check_deposit_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(check_deposit_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::CheckDeposit)
         end
         def return_(
@@ -36,10 +30,7 @@ module Increase
         # Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
         # Reserve. This Check Deposit must first have a `status` of `pending`.
         sig do
-          params(
-            check_deposit_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-          )
+          params(check_deposit_id: String, request_options: Increase::RequestOpts)
             .returns(Increase::Models::CheckDeposit)
         end
         def submit(

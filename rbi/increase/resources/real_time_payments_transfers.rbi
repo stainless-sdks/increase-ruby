@@ -17,7 +17,7 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Models::RealTimePaymentsTransfer)
       end
@@ -55,10 +55,7 @@ module Increase
       ); end
       # Retrieve a Real-Time Payments Transfer
       sig do
-        params(
-          real_time_payments_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
-        )
+        params(real_time_payments_transfer_id: String, request_options: Increase::RequestOpts)
           .returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def retrieve(
@@ -76,7 +73,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: T.any(Increase::Models::RealTimePaymentsTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: T.nilable(T.any(Increase::RequestOptions, Increase::Internal::AnyHash))
+          request_options: Increase::RequestOpts
         )
           .returns(Increase::Internal::Page[Increase::Models::RealTimePaymentsTransfer])
       end
