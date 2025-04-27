@@ -341,13 +341,18 @@ module Increase
           sig { returns(Time) }
           attr_accessor :shipped_at
 
+          # Tracking updates relating to the physical card's delivery.
+          sig { returns(T::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]) }
+          attr_accessor :updates
+
           # Tracking details for the shipment.
           sig do
             params(
               number: String,
               return_number: T.nilable(String),
               return_reason: T.nilable(String),
-              shipped_at: Time
+              shipped_at: Time,
+              updates: T::Array[T.any(Increase::Models::PhysicalCard::Shipment::Tracking::Update, Increase::Internal::AnyHash)]
             )
               .returns(T.attached_class)
           end
@@ -361,7 +366,9 @@ module Increase
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
             # the fulfillment provider marked the card as ready for pick-up by the shipment
             # carrier.
-            shipped_at:
+            shipped_at:,
+            # Tracking updates relating to the physical card's delivery.
+            updates:
           ); end
           sig do
             override
@@ -370,11 +377,93 @@ module Increase
                   number: String,
                   return_number: T.nilable(String),
                   return_reason: T.nilable(String),
-                  shipped_at: Time
+                  shipped_at: Time,
+                  updates: T::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]
                 }
               )
           end
           def to_hash; end
+
+          class Update < Increase::Internal::Type::BaseModel
+            # The type of tracking event.
+            sig { returns(Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol) }
+            attr_accessor :category
+
+            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            # the tracking event took place.
+            sig { returns(Time) }
+            attr_accessor :created_at
+
+            # The postal code where the event took place.
+            sig { returns(String) }
+            attr_accessor :postal_code
+
+            sig do
+              params(
+                category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::OrSymbol,
+                created_at: Time,
+                postal_code: String
+              )
+                .returns(T.attached_class)
+            end
+            def self.new(
+              # The type of tracking event.
+              category:,
+              # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+              # the tracking event took place.
+              created_at:,
+              # The postal code where the event took place.
+              postal_code:
+            ); end
+            sig do
+              override
+                .returns(
+                  {
+                    category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol,
+                    created_at: Time,
+                    postal_code: String
+                  }
+                )
+            end
+            def to_hash; end
+
+            # The type of tracking event.
+            module Category
+              extend Increase::Internal::Type::Enum
+
+              TaggedSymbol =
+                T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category) }
+              OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+              # The physical card is in transit.
+              IN_TRANSIT =
+                T.let(:in_transit, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol)
+
+              # The physical card has been processed for delivery.
+              PROCESSED_FOR_DELIVERY =
+                T.let(
+                  :processed_for_delivery,
+                  Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol
+                )
+
+              # The physical card has been delivered.
+              DELIVERED =
+                T.let(:delivered, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol)
+
+              # Delivery failed and the physical card was returned to sender.
+              RETURNED_TO_SENDER =
+                T.let(
+                  :returned_to_sender,
+                  Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol
+                )
+
+              sig do
+                override
+                  .returns(T::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol])
+              end
+              def self.values; end
+            end
+          end
         end
       end
 

@@ -292,7 +292,14 @@ module Increase
           #   @return [Time]
           required :shipped_at, Time
 
-          # @!method initialize(number:, return_number:, return_reason:, shipped_at:)
+          # @!attribute updates
+          #   Tracking updates relating to the physical card's delivery.
+          #
+          #   @return [Array<Increase::Models::PhysicalCard::Shipment::Tracking::Update>]
+          required :updates,
+                   -> { Increase::Internal::Type::ArrayOf[Increase::Models::PhysicalCard::Shipment::Tracking::Update] }
+
+          # @!method initialize(number:, return_number:, return_reason:, shipped_at:, updates:)
           #   Some parameter documentations has been truncated, see
           #   {Increase::Models::PhysicalCard::Shipment::Tracking} for more details.
           #
@@ -306,6 +313,62 @@ module Increase
           #
           #   @param shipped_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
           #   ...
+          #
+          #   @param updates [Array<Increase::Models::PhysicalCard::Shipment::Tracking::Update>] Tracking updates relating to the physical card's delivery.
+
+          class Update < Increase::Internal::Type::BaseModel
+            # @!attribute category
+            #   The type of tracking event.
+            #
+            #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category]
+            required :category, enum: -> { Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category }
+
+            # @!attribute created_at
+            #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+            #   the tracking event took place.
+            #
+            #   @return [Time]
+            required :created_at, Time
+
+            # @!attribute postal_code
+            #   The postal code where the event took place.
+            #
+            #   @return [String]
+            required :postal_code, String
+
+            # @!method initialize(category:, created_at:, postal_code:)
+            #   Some parameter documentations has been truncated, see
+            #   {Increase::Models::PhysicalCard::Shipment::Tracking::Update} for more details.
+            #
+            #   @param category [Symbol, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category] The type of tracking event.
+            #
+            #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+            #   ...
+            #
+            #   @param postal_code [String] The postal code where the event took place.
+
+            # The type of tracking event.
+            #
+            # @see Increase::Models::PhysicalCard::Shipment::Tracking::Update#category
+            module Category
+              extend Increase::Internal::Type::Enum
+
+              # The physical card is in transit.
+              IN_TRANSIT = :in_transit
+
+              # The physical card has been processed for delivery.
+              PROCESSED_FOR_DELIVERY = :processed_for_delivery
+
+              # The physical card has been delivered.
+              DELIVERED = :delivered
+
+              # Delivery failed and the physical card was returned to sender.
+              RETURNED_TO_SENDER = :returned_to_sender
+
+              # @!method self.values
+              #   @return [Array<Symbol>]
+            end
+          end
         end
       end
 
