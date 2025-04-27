@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::Entities#update_beneficial_owner_address
     class EntityUpdateBeneficialOwnerAddressParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute address
@@ -21,17 +22,14 @@ module Increase
       #   @return [String]
       required :beneficial_owner_id, String
 
-      # @!method initialize(address:, beneficial_owner_id:, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::EntityUpdateBeneficialOwnerAddressParams} for more details.
-      #
-      #   @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-      #   ...
-      #
-      #   @param beneficial_owner_id [String] The identifying details of anyone controlling or owning 25% or more of the corpo
-      #   ...
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
+      #   # @param beneficial_owner_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(address:, beneficial_owner_id:, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       class Address < Increase::Internal::Type::BaseModel
         # @!attribute country
@@ -46,53 +44,62 @@ module Increase
         #   @return [String]
         required :line1, String
 
-        # @!attribute city
+        # @!attribute [r] city
         #   The city, district, town, or village of the address. Required in certain
         #   countries.
         #
         #   @return [String, nil]
         optional :city, String
 
-        # @!attribute line2
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :city
+
+        # @!attribute [r] line2
         #   The second line of the address. This might be the floor or room number.
         #
         #   @return [String, nil]
         optional :line2, String
 
-        # @!attribute state
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :line2
+
+        # @!attribute [r] state
         #   The two-letter United States Postal Service (USPS) abbreviation for the US
         #   state, province, or region of the address. Required in certain countries.
         #
         #   @return [String, nil]
         optional :state, String
 
-        # @!attribute zip
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :state
+
+        # @!attribute [r] zip
         #   The ZIP or postal code of the address. Required in certain countries.
         #
         #   @return [String, nil]
         optional :zip, String
 
-        # @!method initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address} for more
-        #   details.
-        #
-        #   The individual's physical address. Mail receiving locations like PO Boxes and
-        #   PMB's are disallowed.
-        #
-        #   @param country [String] The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-        #
-        #   @param line1 [String] The first line of the address. This is usually the street number and street.
-        #
-        #   @param city [String] The city, district, town, or village of the address. Required in certain countri
-        #   ...
-        #
-        #   @param line2 [String] The second line of the address. This might be the floor or room number.
-        #
-        #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the US state
-        #   ...
-        #
-        #   @param zip [String] The ZIP or postal code of the address. Required in certain countries.
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :zip
+
+        # @!parse
+        #   # The individual's physical address. Mail receiving locations like PO Boxes and
+        #   # PMB's are disallowed.
+        #   #
+        #   # @param country [String]
+        #   # @param line1 [String]
+        #   # @param city [String]
+        #   # @param line2 [String]
+        #   # @param state [String]
+        #   # @param zip [String]
+        #   #
+        #   def initialize(country:, line1:, city: nil, line2: nil, state: nil, zip: nil, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -106,53 +106,48 @@ module Increase
       #   @return [Symbol, Increase::Models::Entity::Type]
       required :type, enum: -> { Increase::Models::Entity::Type }
 
-      # @!method initialize(id:, corporation:, created_at:, description:, details_confirmed_at:, government_authority:, idempotency_key:, joint:, natural_person:, status:, structure:, supplemental_documents:, third_party_verification:, trust:, type:)
-      #   Some parameter documentations has been truncated, see {Increase::Models::Entity}
-      #   for more details.
-      #
-      #   Entities are the legal entities that own accounts. They can be people,
-      #   corporations, partnerships, government authorities, or trusts.
-      #
-      #   @param id [String] The entity's identifier.
-      #
-      #   @param corporation [Increase::Models::Entity::Corporation, nil] Details of the corporation entity. Will be present if `structure` is equal to `c
-      #   ...
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      #   ...
-      #
-      #   @param description [String, nil] The entity's description for display purposes.
-      #
-      #   @param details_confirmed_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity'
-      #   ...
-      #
-      #   @param government_authority [Increase::Models::Entity::GovernmentAuthority, nil] Details of the government authority entity. Will be present if `structure` is eq
-      #   ...
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param joint [Increase::Models::Entity::Joint, nil] Details of the joint entity. Will be present if `structure` is equal to `joint`.
-      #   ...
-      #
-      #   @param natural_person [Increase::Models::Entity::NaturalPerson, nil] Details of the natural person entity. Will be present if `structure` is equal to
-      #   ...
-      #
-      #   @param status [Symbol, Increase::Models::Entity::Status] The status of the entity.
-      #
-      #   @param structure [Symbol, Increase::Models::Entity::Structure] The entity's legal structure.
-      #
-      #   @param supplemental_documents [Array<Increase::Models::EntitySupplementalDocument>] Additional documentation associated with the entity. This is limited to the firs
-      #   ...
-      #
-      #   @param third_party_verification [Increase::Models::Entity::ThirdPartyVerification, nil] A reference to data stored in a third-party verification service. Your integrati
-      #   ...
-      #
-      #   @param trust [Increase::Models::Entity::Trust, nil] Details of the trust entity. Will be present if `structure` is equal to `trust`.
-      #   ...
-      #
-      #   @param type [Symbol, Increase::Models::Entity::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Entities are the legal entities that own accounts. They can be people,
+      #   # corporations, partnerships, government authorities, or trusts.
+      #   #
+      #   # @param id [String]
+      #   # @param corporation [Increase::Models::Entity::Corporation, nil]
+      #   # @param created_at [Time]
+      #   # @param description [String, nil]
+      #   # @param details_confirmed_at [Time, nil]
+      #   # @param government_authority [Increase::Models::Entity::GovernmentAuthority, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param joint [Increase::Models::Entity::Joint, nil]
+      #   # @param natural_person [Increase::Models::Entity::NaturalPerson, nil]
+      #   # @param status [Symbol, Increase::Models::Entity::Status]
+      #   # @param structure [Symbol, Increase::Models::Entity::Structure]
+      #   # @param supplemental_documents [Array<Increase::Models::EntitySupplementalDocument>]
+      #   # @param third_party_verification [Increase::Models::Entity::ThirdPartyVerification, nil]
+      #   # @param trust [Increase::Models::Entity::Trust, nil]
+      #   # @param type [Symbol, Increase::Models::Entity::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     corporation:,
+      #     created_at:,
+      #     description:,
+      #     details_confirmed_at:,
+      #     government_authority:,
+      #     idempotency_key:,
+      #     joint:,
+      #     natural_person:,
+      #     status:,
+      #     structure:,
+      #     supplemental_documents:,
+      #     third_party_verification:,
+      #     trust:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # @see Increase::Models::Entity#corporation
       class Corporation < Increase::Internal::Type::BaseModel
@@ -202,29 +197,21 @@ module Increase
         #   @return [String, nil]
         required :website, String, nil?: true
 
-        # @!method initialize(address:, beneficial_owners:, incorporation_state:, industry_code:, name:, tax_identifier:, website:)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Entity::Corporation} for more details.
-        #
-        #   Details of the corporation entity. Will be present if `structure` is equal to
-        #   `corporation`.
-        #
-        #   @param address [Increase::Models::Entity::Corporation::Address] The corporation's address.
-        #
-        #   @param beneficial_owners [Array<Increase::Models::Entity::Corporation::BeneficialOwner>] The identifying details of anyone controlling or owning 25% or more of the corpo
-        #   ...
-        #
-        #   @param incorporation_state [String, nil] The two-letter United States Postal Service (USPS) abbreviation for the corporat
-        #   ...
-        #
-        #   @param industry_code [String, nil] The numeric North American Industry Classification System (NAICS) code submitted
-        #   ...
-        #
-        #   @param name [String] The legal name of the corporation.
-        #
-        #   @param tax_identifier [String, nil] The Employer Identification Number (EIN) for the corporation.
-        #
-        #   @param website [String, nil] The website of the corporation.
+        # @!parse
+        #   # Details of the corporation entity. Will be present if `structure` is equal to
+        #   # `corporation`.
+        #   #
+        #   # @param address [Increase::Models::Entity::Corporation::Address]
+        #   # @param beneficial_owners [Array<Increase::Models::Entity::Corporation::BeneficialOwner>]
+        #   # @param incorporation_state [String, nil]
+        #   # @param industry_code [String, nil]
+        #   # @param name [String]
+        #   # @param tax_identifier [String, nil]
+        #   # @param website [String, nil]
+        #   #
+        #   def initialize(address:, beneficial_owners:, incorporation_state:, industry_code:, name:, tax_identifier:, website:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # @see Increase::Models::Entity::Corporation#address
         class Address < Increase::Internal::Type::BaseModel
@@ -259,22 +246,18 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # @!method initialize(city:, line1:, line2:, state:, zip:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Entity::Corporation::Address} for more details.
-          #
-          #   The corporation's address.
-          #
-          #   @param city [String] The city of the address.
-          #
-          #   @param line1 [String] The first line of the address.
-          #
-          #   @param line2 [String, nil] The second line of the address.
-          #
-          #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
-          #
-          #   @param zip [String] The ZIP code of the address.
+          # @!parse
+          #   # The corporation's address.
+          #   #
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param line2 [String, nil]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   #
+          #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         class BeneficialOwner < Increase::Internal::Type::BaseModel
@@ -302,14 +285,15 @@ module Increase
           #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong]
           required :prong, enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Prong }
 
-          # @!method initialize(beneficial_owner_id:, company_title:, individual:, prong:)
-          #   @param beneficial_owner_id [String] The identifier of this beneficial owner.
-          #
-          #   @param company_title [String, nil] This person's role or title within the entity.
-          #
-          #   @param individual [Increase::Models::Entity::Corporation::BeneficialOwner::Individual] Personal details for the beneficial owner.
-          #
-          #   @param prong [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong] Why this person is considered a beneficial owner of the entity.
+          # @!parse
+          #   # @param beneficial_owner_id [String]
+          #   # @param company_title [String, nil]
+          #   # @param individual [Increase::Models::Entity::Corporation::BeneficialOwner::Individual]
+          #   # @param prong [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong]
+          #   #
+          #   def initialize(beneficial_owner_id:, company_title:, individual:, prong:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # @see Increase::Models::Entity::Corporation::BeneficialOwner#individual
           class Individual < Increase::Internal::Type::BaseModel
@@ -338,16 +322,17 @@ module Increase
             #   @return [String]
             required :name, String
 
-            # @!method initialize(address:, date_of_birth:, identification:, name:)
-            #   Personal details for the beneficial owner.
-            #
-            #   @param address [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address] The person's address.
-            #
-            #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
-            #
-            #   @param identification [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification] A means of verifying the person's identity.
-            #
-            #   @param name [String] The person's legal name.
+            # @!parse
+            #   # Personal details for the beneficial owner.
+            #   #
+            #   # @param address [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
+            #   # @param date_of_birth [Date]
+            #   # @param identification [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification]
+            #   # @param name [String]
+            #   #
+            #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual#address
             class Address < Increase::Internal::Type::BaseModel
@@ -388,25 +373,19 @@ module Increase
               #   @return [String, nil]
               required :zip, String, nil?: true
 
-              # @!method initialize(city:, country:, line1:, line2:, state:, zip:)
-              #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address}
-              #   for more details.
-              #
-              #   The person's address.
-              #
-              #   @param city [String, nil] The city, district, town, or village of the address.
-              #
-              #   @param country [String] The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-              #
-              #   @param line1 [String] The first line of the address.
-              #
-              #   @param line2 [String, nil] The second line of the address.
-              #
-              #   @param state [String, nil] The two-letter United States Postal Service (USPS) abbreviation for the US state
-              #   ...
-              #
-              #   @param zip [String, nil] The ZIP or postal code of the address.
+              # @!parse
+              #   # The person's address.
+              #   #
+              #   # @param city [String, nil]
+              #   # @param country [String]
+              #   # @param line1 [String]
+              #   # @param line2 [String, nil]
+              #   # @param state [String, nil]
+              #   # @param zip [String, nil]
+              #   #
+              #   def initialize(city:, country:, line1:, line2:, state:, zip:, **) = super
+
+              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
             end
 
             # @see Increase::Models::Entity::Corporation::BeneficialOwner::Individual#identification
@@ -426,17 +405,15 @@ module Increase
               #   @return [String]
               required :number_last4, String
 
-              # @!method initialize(method_:, number_last4:)
-              #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification}
-              #   for more details.
-              #
-              #   A means of verifying the person's identity.
-              #
-              #   @param method_ [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method] A method that can be used to verify the individual's identity.
-              #
-              #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-              #   ...
+              # @!parse
+              #   # A means of verifying the person's identity.
+              #   #
+              #   # @param method_ [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
+              #   # @param number_last4 [String]
+              #   #
+              #   def initialize(method_:, number_last4:, **) = super
+
+              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
               #
@@ -459,8 +436,11 @@ module Increase
                 # Another identifying document.
                 OTHER = :other
 
-                # @!method self.values
-                #   @return [Array<Symbol>]
+                finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def self.values; end
               end
             end
           end
@@ -477,8 +457,11 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL = :control
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -522,21 +505,20 @@ module Increase
         #   @return [String, nil]
         required :website, String, nil?: true
 
-        # @!method initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website:)
-        #   Details of the government authority entity. Will be present if `structure` is
-        #   equal to `government_authority`.
-        #
-        #   @param address [Increase::Models::Entity::GovernmentAuthority::Address] The government authority's address.
-        #
-        #   @param authorized_persons [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>] The identifying details of authorized persons of the government authority.
-        #
-        #   @param category [Symbol, Increase::Models::Entity::GovernmentAuthority::Category] The category of the government authority.
-        #
-        #   @param name [String] The government authority's name.
-        #
-        #   @param tax_identifier [String, nil] The Employer Identification Number (EIN) of the government authority.
-        #
-        #   @param website [String, nil] The government authority's website.
+        # @!parse
+        #   # Details of the government authority entity. Will be present if `structure` is
+        #   # equal to `government_authority`.
+        #   #
+        #   # @param address [Increase::Models::Entity::GovernmentAuthority::Address]
+        #   # @param authorized_persons [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
+        #   # @param category [Symbol, Increase::Models::Entity::GovernmentAuthority::Category]
+        #   # @param name [String]
+        #   # @param tax_identifier [String, nil]
+        #   # @param website [String, nil]
+        #   #
+        #   def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # @see Increase::Models::Entity::GovernmentAuthority#address
         class Address < Increase::Internal::Type::BaseModel
@@ -571,22 +553,18 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # @!method initialize(city:, line1:, line2:, state:, zip:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Entity::GovernmentAuthority::Address} for more details.
-          #
-          #   The government authority's address.
-          #
-          #   @param city [String] The city of the address.
-          #
-          #   @param line1 [String] The first line of the address.
-          #
-          #   @param line2 [String, nil] The second line of the address.
-          #
-          #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
-          #
-          #   @param zip [String] The ZIP code of the address.
+          # @!parse
+          #   # The government authority's address.
+          #   #
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param line2 [String, nil]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   #
+          #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         class AuthorizedPerson < Increase::Internal::Type::BaseModel
@@ -602,10 +580,13 @@ module Increase
           #   @return [String]
           required :name, String
 
-          # @!method initialize(authorized_person_id:, name:)
-          #   @param authorized_person_id [String] The identifier of this authorized person.
-          #
-          #   @param name [String] The person's legal name.
+          # @!parse
+          #   # @param authorized_person_id [String]
+          #   # @param name [String]
+          #   #
+          #   def initialize(authorized_person_id:, name:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         # The category of the government authority.
@@ -617,8 +598,11 @@ module Increase
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -637,12 +621,15 @@ module Increase
         #   @return [String]
         required :name, String
 
-        # @!method initialize(individuals:, name:)
-        #   Details of the joint entity. Will be present if `structure` is equal to `joint`.
-        #
-        #   @param individuals [Array<Increase::Models::Entity::Joint::Individual>] The two individuals that share control of the entity.
-        #
-        #   @param name [String] The entity's name.
+        # @!parse
+        #   # Details of the joint entity. Will be present if `structure` is equal to `joint`.
+        #   #
+        #   # @param individuals [Array<Increase::Models::Entity::Joint::Individual>]
+        #   # @param name [String]
+        #   #
+        #   def initialize(individuals:, name:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         class Individual < Increase::Internal::Type::BaseModel
           # @!attribute address
@@ -669,14 +656,15 @@ module Increase
           #   @return [String]
           required :name, String
 
-          # @!method initialize(address:, date_of_birth:, identification:, name:)
-          #   @param address [Increase::Models::Entity::Joint::Individual::Address] The person's address.
-          #
-          #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
-          #
-          #   @param identification [Increase::Models::Entity::Joint::Individual::Identification] A means of verifying the person's identity.
-          #
-          #   @param name [String] The person's legal name.
+          # @!parse
+          #   # @param address [Increase::Models::Entity::Joint::Individual::Address]
+          #   # @param date_of_birth [Date]
+          #   # @param identification [Increase::Models::Entity::Joint::Individual::Identification]
+          #   # @param name [String]
+          #   #
+          #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # @see Increase::Models::Entity::Joint::Individual#address
           class Address < Increase::Internal::Type::BaseModel
@@ -711,22 +699,18 @@ module Increase
             #   @return [String]
             required :zip, String
 
-            # @!method initialize(city:, line1:, line2:, state:, zip:)
-            #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Entity::Joint::Individual::Address} for more details.
-            #
-            #   The person's address.
-            #
-            #   @param city [String] The city of the address.
-            #
-            #   @param line1 [String] The first line of the address.
-            #
-            #   @param line2 [String, nil] The second line of the address.
-            #
-            #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   ...
-            #
-            #   @param zip [String] The ZIP code of the address.
+            # @!parse
+            #   # The person's address.
+            #   #
+            #   # @param city [String]
+            #   # @param line1 [String]
+            #   # @param line2 [String, nil]
+            #   # @param state [String]
+            #   # @param zip [String]
+            #   #
+            #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
           end
 
           # @see Increase::Models::Entity::Joint::Individual#identification
@@ -746,16 +730,15 @@ module Increase
             #   @return [String]
             required :number_last4, String
 
-            # @!method initialize(method_:, number_last4:)
-            #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Entity::Joint::Individual::Identification} for more details.
-            #
-            #   A means of verifying the person's identity.
-            #
-            #   @param method_ [Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method] A method that can be used to verify the individual's identity.
-            #
-            #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-            #   ...
+            # @!parse
+            #   # A means of verifying the person's identity.
+            #   #
+            #   # @param method_ [Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method]
+            #   # @param number_last4 [String]
+            #   #
+            #   def initialize(method_:, number_last4:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
             #
@@ -778,8 +761,11 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -811,17 +797,18 @@ module Increase
         #   @return [String]
         required :name, String
 
-        # @!method initialize(address:, date_of_birth:, identification:, name:)
-        #   Details of the natural person entity. Will be present if `structure` is equal to
-        #   `natural_person`.
-        #
-        #   @param address [Increase::Models::Entity::NaturalPerson::Address] The person's address.
-        #
-        #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
-        #
-        #   @param identification [Increase::Models::Entity::NaturalPerson::Identification] A means of verifying the person's identity.
-        #
-        #   @param name [String] The person's legal name.
+        # @!parse
+        #   # Details of the natural person entity. Will be present if `structure` is equal to
+        #   # `natural_person`.
+        #   #
+        #   # @param address [Increase::Models::Entity::NaturalPerson::Address]
+        #   # @param date_of_birth [Date]
+        #   # @param identification [Increase::Models::Entity::NaturalPerson::Identification]
+        #   # @param name [String]
+        #   #
+        #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # @see Increase::Models::Entity::NaturalPerson#address
         class Address < Increase::Internal::Type::BaseModel
@@ -856,22 +843,18 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # @!method initialize(city:, line1:, line2:, state:, zip:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Entity::NaturalPerson::Address} for more details.
-          #
-          #   The person's address.
-          #
-          #   @param city [String] The city of the address.
-          #
-          #   @param line1 [String] The first line of the address.
-          #
-          #   @param line2 [String, nil] The second line of the address.
-          #
-          #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
-          #
-          #   @param zip [String] The ZIP code of the address.
+          # @!parse
+          #   # The person's address.
+          #   #
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param line2 [String, nil]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   #
+          #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         # @see Increase::Models::Entity::NaturalPerson#identification
@@ -891,16 +874,15 @@ module Increase
           #   @return [String]
           required :number_last4, String
 
-          # @!method initialize(method_:, number_last4:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Entity::NaturalPerson::Identification} for more details.
-          #
-          #   A means of verifying the person's identity.
-          #
-          #   @param method_ [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method] A method that can be used to verify the individual's identity.
-          #
-          #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-          #   ...
+          # @!parse
+          #   # A means of verifying the person's identity.
+          #   #
+          #   # @param method_ [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method]
+          #   # @param number_last4 [String]
+          #   #
+          #   def initialize(method_:, number_last4:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # A method that can be used to verify the individual's identity.
           #
@@ -923,8 +905,11 @@ module Increase
             # Another identifying document.
             OTHER = :other
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -944,8 +929,11 @@ module Increase
         # The entity is temporarily disabled and cannot be used for financial activity.
         DISABLED = :disabled
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # The entity's legal structure.
@@ -969,8 +957,11 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY = :government_authority
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # @see Increase::Models::Entity#third_party_verification
@@ -987,13 +978,16 @@ module Increase
         #   @return [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor]
         required :vendor, enum: -> { Increase::Models::Entity::ThirdPartyVerification::Vendor }
 
-        # @!method initialize(reference:, vendor:)
-        #   A reference to data stored in a third-party verification service. Your
-        #   integration may or may not use this field.
-        #
-        #   @param reference [String] The reference identifier for the third party verification.
-        #
-        #   @param vendor [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor] The vendor that was used to perform the verification.
+        # @!parse
+        #   # A reference to data stored in a third-party verification service. Your
+        #   # integration may or may not use this field.
+        #   #
+        #   # @param reference [String]
+        #   # @param vendor [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor]
+        #   #
+        #   def initialize(reference:, vendor:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # The vendor that was used to perform the verification.
         #
@@ -1007,8 +1001,11 @@ module Increase
           # Middesk. See https://middesk.com for more information.
           MIDDESK = :middesk
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -1063,28 +1060,33 @@ module Increase
         #   @return [Array<Increase::Models::Entity::Trust::Trustee>]
         required :trustees, -> { Increase::Internal::Type::ArrayOf[Increase::Models::Entity::Trust::Trustee] }
 
-        # @!method initialize(address:, category:, formation_document_file_id:, formation_state:, grantor:, name:, tax_identifier:, trustees:)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Entity::Trust} for more details.
-        #
-        #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
-        #
-        #   @param address [Increase::Models::Entity::Trust::Address] The trust's address.
-        #
-        #   @param category [Symbol, Increase::Models::Entity::Trust::Category] Whether the trust is `revocable` or `irrevocable`.
-        #
-        #   @param formation_document_file_id [String, nil] The ID for the File containing the formation document of the trust.
-        #
-        #   @param formation_state [String, nil] The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   ...
-        #
-        #   @param grantor [Increase::Models::Entity::Trust::Grantor, nil] The grantor of the trust. Will be present if the `category` is `revocable`.
-        #
-        #   @param name [String] The trust's name.
-        #
-        #   @param tax_identifier [String, nil] The Employer Identification Number (EIN) of the trust itself.
-        #
-        #   @param trustees [Array<Increase::Models::Entity::Trust::Trustee>] The trustees of the trust.
+        # @!parse
+        #   # Details of the trust entity. Will be present if `structure` is equal to `trust`.
+        #   #
+        #   # @param address [Increase::Models::Entity::Trust::Address]
+        #   # @param category [Symbol, Increase::Models::Entity::Trust::Category]
+        #   # @param formation_document_file_id [String, nil]
+        #   # @param formation_state [String, nil]
+        #   # @param grantor [Increase::Models::Entity::Trust::Grantor, nil]
+        #   # @param name [String]
+        #   # @param tax_identifier [String, nil]
+        #   # @param trustees [Array<Increase::Models::Entity::Trust::Trustee>]
+        #   #
+        #   def initialize(
+        #     address:,
+        #     category:,
+        #     formation_document_file_id:,
+        #     formation_state:,
+        #     grantor:,
+        #     name:,
+        #     tax_identifier:,
+        #     trustees:,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # @see Increase::Models::Entity::Trust#address
         class Address < Increase::Internal::Type::BaseModel
@@ -1119,22 +1121,18 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # @!method initialize(city:, line1:, line2:, state:, zip:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Entity::Trust::Address} for more details.
-          #
-          #   The trust's address.
-          #
-          #   @param city [String] The city of the address.
-          #
-          #   @param line1 [String] The first line of the address.
-          #
-          #   @param line2 [String, nil] The second line of the address.
-          #
-          #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
-          #
-          #   @param zip [String] The ZIP code of the address.
+          # @!parse
+          #   # The trust's address.
+          #   #
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param line2 [String, nil]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   #
+          #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
         end
 
         # Whether the trust is `revocable` or `irrevocable`.
@@ -1149,8 +1147,11 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE = :irrevocable
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
 
         # @see Increase::Models::Entity::Trust#grantor
@@ -1179,16 +1180,17 @@ module Increase
           #   @return [String]
           required :name, String
 
-          # @!method initialize(address:, date_of_birth:, identification:, name:)
-          #   The grantor of the trust. Will be present if the `category` is `revocable`.
-          #
-          #   @param address [Increase::Models::Entity::Trust::Grantor::Address] The person's address.
-          #
-          #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
-          #
-          #   @param identification [Increase::Models::Entity::Trust::Grantor::Identification] A means of verifying the person's identity.
-          #
-          #   @param name [String] The person's legal name.
+          # @!parse
+          #   # The grantor of the trust. Will be present if the `category` is `revocable`.
+          #   #
+          #   # @param address [Increase::Models::Entity::Trust::Grantor::Address]
+          #   # @param date_of_birth [Date]
+          #   # @param identification [Increase::Models::Entity::Trust::Grantor::Identification]
+          #   # @param name [String]
+          #   #
+          #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # @see Increase::Models::Entity::Trust::Grantor#address
           class Address < Increase::Internal::Type::BaseModel
@@ -1223,22 +1225,18 @@ module Increase
             #   @return [String]
             required :zip, String
 
-            # @!method initialize(city:, line1:, line2:, state:, zip:)
-            #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Entity::Trust::Grantor::Address} for more details.
-            #
-            #   The person's address.
-            #
-            #   @param city [String] The city of the address.
-            #
-            #   @param line1 [String] The first line of the address.
-            #
-            #   @param line2 [String, nil] The second line of the address.
-            #
-            #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   ...
-            #
-            #   @param zip [String] The ZIP code of the address.
+            # @!parse
+            #   # The person's address.
+            #   #
+            #   # @param city [String]
+            #   # @param line1 [String]
+            #   # @param line2 [String, nil]
+            #   # @param state [String]
+            #   # @param zip [String]
+            #   #
+            #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
           end
 
           # @see Increase::Models::Entity::Trust::Grantor#identification
@@ -1258,16 +1256,15 @@ module Increase
             #   @return [String]
             required :number_last4, String
 
-            # @!method initialize(method_:, number_last4:)
-            #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Entity::Trust::Grantor::Identification} for more details.
-            #
-            #   A means of verifying the person's identity.
-            #
-            #   @param method_ [Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method] A method that can be used to verify the individual's identity.
-            #
-            #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-            #   ...
+            # @!parse
+            #   # A means of verifying the person's identity.
+            #   #
+            #   # @param method_ [Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method]
+            #   # @param number_last4 [String]
+            #   #
+            #   def initialize(method_:, number_last4:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # A method that can be used to verify the individual's identity.
             #
@@ -1290,8 +1287,11 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              # @!method self.values
-              #   @return [Array<Symbol>]
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   def self.values; end
             end
           end
         end
@@ -1310,14 +1310,13 @@ module Increase
           #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Structure]
           required :structure, enum: -> { Increase::Models::Entity::Trust::Trustee::Structure }
 
-          # @!method initialize(individual:, structure:)
-          #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Entity::Trust::Trustee} for more details.
-          #
-          #   @param individual [Increase::Models::Entity::Trust::Trustee::Individual, nil] The individual trustee of the trust. Will be present if the trustee's `structure
-          #   ...
-          #
-          #   @param structure [Symbol, Increase::Models::Entity::Trust::Trustee::Structure] The structure of the trustee. Will always be equal to `individual`.
+          # @!parse
+          #   # @param individual [Increase::Models::Entity::Trust::Trustee::Individual, nil]
+          #   # @param structure [Symbol, Increase::Models::Entity::Trust::Trustee::Structure]
+          #   #
+          #   def initialize(individual:, structure:, **) = super
+
+          # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
           # @see Increase::Models::Entity::Trust::Trustee#individual
           class Individual < Increase::Internal::Type::BaseModel
@@ -1345,17 +1344,18 @@ module Increase
             #   @return [String]
             required :name, String
 
-            # @!method initialize(address:, date_of_birth:, identification:, name:)
-            #   The individual trustee of the trust. Will be present if the trustee's
-            #   `structure` is equal to `individual`.
-            #
-            #   @param address [Increase::Models::Entity::Trust::Trustee::Individual::Address] The person's address.
-            #
-            #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
-            #
-            #   @param identification [Increase::Models::Entity::Trust::Trustee::Individual::Identification] A means of verifying the person's identity.
-            #
-            #   @param name [String] The person's legal name.
+            # @!parse
+            #   # The individual trustee of the trust. Will be present if the trustee's
+            #   # `structure` is equal to `individual`.
+            #   #
+            #   # @param address [Increase::Models::Entity::Trust::Trustee::Individual::Address]
+            #   # @param date_of_birth [Date]
+            #   # @param identification [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
+            #   # @param name [String]
+            #   #
+            #   def initialize(address:, date_of_birth:, identification:, name:, **) = super
+
+            # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
             # @see Increase::Models::Entity::Trust::Trustee::Individual#address
             class Address < Increase::Internal::Type::BaseModel
@@ -1390,23 +1390,18 @@ module Increase
               #   @return [String]
               required :zip, String
 
-              # @!method initialize(city:, line1:, line2:, state:, zip:)
-              #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Entity::Trust::Trustee::Individual::Address} for more
-              #   details.
-              #
-              #   The person's address.
-              #
-              #   @param city [String] The city of the address.
-              #
-              #   @param line1 [String] The first line of the address.
-              #
-              #   @param line2 [String, nil] The second line of the address.
-              #
-              #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   ...
-              #
-              #   @param zip [String] The ZIP code of the address.
+              # @!parse
+              #   # The person's address.
+              #   #
+              #   # @param city [String]
+              #   # @param line1 [String]
+              #   # @param line2 [String, nil]
+              #   # @param state [String]
+              #   # @param zip [String]
+              #   #
+              #   def initialize(city:, line1:, line2:, state:, zip:, **) = super
+
+              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
             end
 
             # @see Increase::Models::Entity::Trust::Trustee::Individual#identification
@@ -1426,17 +1421,15 @@ module Increase
               #   @return [String]
               required :number_last4, String
 
-              # @!method initialize(method_:, number_last4:)
-              #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Entity::Trust::Trustee::Individual::Identification} for more
-              #   details.
-              #
-              #   A means of verifying the person's identity.
-              #
-              #   @param method_ [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method] A method that can be used to verify the individual's identity.
-              #
-              #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-              #   ...
+              # @!parse
+              #   # A means of verifying the person's identity.
+              #   #
+              #   # @param method_ [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method]
+              #   # @param number_last4 [String]
+              #   #
+              #   def initialize(method_:, number_last4:, **) = super
+
+              # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
               # A method that can be used to verify the individual's identity.
               #
@@ -1459,8 +1452,11 @@ module Increase
                 # Another identifying document.
                 OTHER = :other
 
-                # @!method self.values
-                #   @return [Array<Symbol>]
+                finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   def self.values; end
               end
             end
           end
@@ -1474,8 +1470,11 @@ module Increase
             # The trustee is an individual.
             INDIVIDUAL = :individual
 
-            # @!method self.values
-            #   @return [Array<Symbol>]
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
           end
         end
       end
@@ -1489,8 +1488,11 @@ module Increase
 
         ENTITY = :entity
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

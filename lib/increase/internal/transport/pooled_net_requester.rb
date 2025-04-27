@@ -61,7 +61,7 @@ module Increase
               method.to_s.upcase,
               !body.nil?,
               method != :head,
-              URI(url.to_s) # ensure we construct a URI class of the right scheme
+              url.to_s
             )
 
             headers.each { req[_1] = _2 }
@@ -149,7 +149,7 @@ module Increase
                 break if finished
 
                 rsp.read_body do |bytes|
-                  y << bytes.force_encoding(Encoding::BINARY)
+                  y << bytes
                   break if finished
 
                   self.class.calibrate_socket_timeout(conn, deadline)
@@ -176,7 +176,7 @@ module Increase
             conn.finish if !eof && conn&.started?
             closing&.call
           end
-          [Integer(response.code), response, body]
+          [Integer(response.code), response, (response.body = body)]
         end
 
         # @api private

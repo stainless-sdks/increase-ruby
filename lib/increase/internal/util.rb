@@ -175,17 +175,18 @@ module Increase
         # @api private
         #
         # @param data [Hash{Symbol=>Object}, Array<Object>, Object]
-        # @param pick [Symbol, Integer, Array<Symbol, Integer>, Proc, nil]
+        # @param pick [Symbol, Integer, Array<Symbol, Integer>, nil]
+        # @param sentinel [Object, nil]
         # @param blk [Proc, nil]
         #
         # @return [Object, nil]
-        def dig(data, pick, &blk)
-          case [data, pick]
-          in [_, nil]
+        def dig(data, pick, sentinel = nil, &blk)
+          case [data, pick, blk]
+          in [_, nil, nil]
             data
-          in [Hash, Symbol] | [Array, Integer]
-            data.fetch(pick) { blk&.call }
-          in [Hash | Array, Array]
+          in [Hash, Symbol, _] | [Array, Integer, _]
+            blk.nil? ? data.fetch(pick, sentinel) : data.fetch(pick, &blk)
+          in [Hash | Array, Array, _]
             pick.reduce(data) do |acc, key|
               case acc
               in Hash if acc.key?(key)
@@ -193,13 +194,11 @@ module Increase
               in Array if key.is_a?(Integer) && key < acc.length
                 acc[key]
               else
-                return blk&.call
+                return blk.nil? ? sentinel : blk.call
               end
             end
-          in [_, Proc]
-            pick.call(data)
-          else
-            blk&.call
+          in _
+            blk.nil? ? sentinel : blk.call
           end
         end
       end
@@ -350,6 +349,27 @@ module Increase
       end
 
       # @api private
+      class SerializationAdapter
+        # @return [Pathname, IO]
+        attr_reader :inner
+
+        # @param a [Object]
+        #
+        # @return [String]
+        def to_json(*a) = (inner.is_a?(IO) ? inner.read : inner.read(binmode: true)).to_json(*a)
+
+        # @param a [Object]
+        #
+        # @return [String]
+        def to_yaml(*a) = (inner.is_a?(IO) ? inner.read : inner.read(binmode: true)).to_yaml(*a)
+
+        # @api private
+        #
+        # @param inner [Pathname, IO]
+        def initialize(inner) = @inner = inner
+      end
+
+      # @api private
       #
       # An adapter that satisfies the IO interface required by `::IO.copy_stream`
       class ReadIOAdapter
@@ -428,7 +448,7 @@ module Increase
             else
               src
             end
-          @buf = String.new
+          @buf = String.new.b
           @blk = blk
         end
       end
@@ -440,7 +460,7 @@ module Increase
         # @return [Enumerable<String>]
         def writable_enum(&blk)
           Enumerator.new do |y|
-            buf = String.new
+            buf = String.new.b
             y.define_singleton_method(:write) do
               self << buf.replace(_1)
               buf.bytesize
@@ -451,53 +471,7 @@ module Increase
         end
       end
 
-      # @type [Regexp]
-      JSON_CONTENT = %r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}
-      # @type [Regexp]
-      JSONL_CONTENT = %r{^application/(?:x-)?jsonl}
-
       class << self
-        # @api private
-        #
-        # @param y [Enumerator::Yielder]
-        # @param val [Object]
-        # @param closing [Array<Proc>]
-        # @param content_type [String, nil]
-        private def write_multipart_content(y, val:, closing:, content_type: nil)
-          content_type ||= "application/octet-stream"
-
-          case val
-          in Increase::FilePart
-            return write_multipart_content(
-              y,
-              val: val.content,
-              closing: closing,
-              content_type: val.content_type
-            )
-          in Pathname
-            y << "Content-Type: #{content_type}\r\n\r\n"
-            io = val.open(binmode: true)
-            closing << io.method(:close)
-            IO.copy_stream(io, y)
-          in IO
-            y << "Content-Type: #{content_type}\r\n\r\n"
-            IO.copy_stream(val, y)
-          in StringIO
-            y << "Content-Type: #{content_type}\r\n\r\n"
-            y << val.string
-          in String
-            y << "Content-Type: #{content_type}\r\n\r\n"
-            y << val.to_s
-          in -> { primitive?(_1) }
-            y << "Content-Type: text/plain\r\n\r\n"
-            y << val.to_s
-          else
-            y << "Content-Type: application/json\r\n\r\n"
-            y << JSON.fast_generate(val)
-          end
-          y << "\r\n"
-        end
-
         # @api private
         #
         # @param y [Enumerator::Yielder]
@@ -506,26 +480,44 @@ module Increase
         # @param val [Object]
         # @param closing [Array<Proc>]
         private def write_multipart_chunk(y, boundary:, key:, val:, closing:)
+          val = val.inner if val.is_a?(Increase::Internal::Util::SerializationAdapter)
+
           y << "--#{boundary}\r\n"
           y << "Content-Disposition: form-data"
-
           unless key.nil?
             name = ERB::Util.url_encode(key.to_s)
             y << "; name=\"#{name}\""
           end
-
           case val
-          in Increase::FilePart unless val.filename.nil?
-            filename = ERB::Util.url_encode(val.filename)
-            y << "; filename=\"#{filename}\""
           in Pathname | IO
             filename = ERB::Util.url_encode(File.basename(val.to_path))
             y << "; filename=\"#{filename}\""
           else
           end
           y << "\r\n"
-
-          write_multipart_content(y, val: val, closing: closing)
+          case val
+          in Pathname
+            y << "Content-Type: application/octet-stream\r\n\r\n"
+            io = val.open(binmode: true)
+            closing << io.method(:close)
+            IO.copy_stream(io, y)
+          in IO
+            y << "Content-Type: application/octet-stream\r\n\r\n"
+            IO.copy_stream(val, y)
+          in StringIO
+            y << "Content-Type: application/octet-stream\r\n\r\n"
+            y << val.string
+          in String
+            y << "Content-Type: application/octet-stream\r\n\r\n"
+            y << val.to_s
+          in _ if primitive?(val)
+            y << "Content-Type: text/plain\r\n\r\n"
+            y << val.to_s
+          else
+            y << "Content-Type: application/json\r\n\r\n"
+            y << JSON.fast_generate(val)
+          end
+          y << "\r\n"
         end
 
         # @api private
@@ -568,12 +560,14 @@ module Increase
         # @return [Object]
         def encode_content(headers, body)
           content_type = headers["content-type"]
+          body = body.inner if body.is_a?(Increase::Internal::Util::SerializationAdapter)
+
           case [content_type, body]
-          in [Increase::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
+          in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array | -> { primitive?(_1) }]
             [headers, JSON.fast_generate(body)]
-          in [Increase::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(Increase::Internal::Type::FileInput)
+          in [%r{^application/(?:x-)?jsonl}, Enumerable] unless body.is_a?(StringIO) || body.is_a?(IO)
             [headers, body.lazy.map { JSON.fast_generate(_1) }]
-          in [%r{^multipart/form-data}, Hash | Increase::Internal::Type::FileInput]
+          in [%r{^multipart/form-data}, Hash | Pathname | StringIO | IO]
             boundary, strio = encode_multipart_streaming(body)
             headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
             [headers, strio]
@@ -581,35 +575,12 @@ module Increase
             [headers, body.to_s]
           in [_, StringIO]
             [headers, body.string]
-          in [_, Increase::FilePart]
-            [headers, body.content]
           else
             [headers, body]
           end
         end
 
         # @api private
-        #
-        # https://www.iana.org/assignments/character-sets/character-sets.xhtml
-        #
-        # @param content_type [String]
-        # @param text [String]
-        def force_charset!(content_type, text:)
-          charset = /charset=([^;\s]+)/.match(content_type)&.captures&.first
-
-          return unless charset
-
-          begin
-            encoding = Encoding.find(charset)
-            text.force_encoding(encoding)
-          rescue ArgumentError
-            nil
-          end
-        end
-
-        # @api private
-        #
-        # Assumes each chunk in stream has `Encoding::BINARY`.
         #
         # @param headers [Hash{String=>String}, Net::HTTPHeader]
         # @param stream [Enumerable<String>]
@@ -618,8 +589,8 @@ module Increase
         # @raise [JSON::ParserError]
         # @return [Object]
         def decode_content(headers, stream:, suppress_error: false)
-          case (content_type = headers["content-type"])
-          in Increase::Internal::Util::JSON_CONTENT
+          case headers["content-type"]
+          in %r{^application/(?:vnd\.api\+)?json}
             json = stream.to_a.join
             begin
               JSON.parse(json, symbolize_names: true)
@@ -627,7 +598,7 @@ module Increase
               raise e unless suppress_error
               json
             end
-          in Increase::Internal::Util::JSONL_CONTENT
+          in %r{^application/(?:x-)?jsonl}
             lines = decode_lines(stream)
             chain_fused(lines) do |y|
               lines.each { y << JSON.parse(_1, symbolize_names: true) }
@@ -635,10 +606,11 @@ module Increase
           in %r{^text/event-stream}
             lines = decode_lines(stream)
             decode_sse(lines)
+          in %r{^text/}
+            stream.to_a.join
           else
-            text = stream.to_a.join
-            force_charset!(content_type, text: text)
-            StringIO.new(text)
+            # TODO: parsing other response types
+            StringIO.new(stream.to_a.join)
           end
         end
       end
@@ -703,17 +675,12 @@ module Increase
       class << self
         # @api private
         #
-        # Assumes Strings have been forced into having `Encoding::BINARY`.
-        #
-        # This decoder is responsible for reassembling lines split across multiple
-        # fragments.
-        #
         # @param enum [Enumerable<String>]
         #
         # @return [Enumerable<String>]
         def decode_lines(enum)
           re = /(\r\n|\r|\n)/
-          buffer = String.new
+          buffer = String.new.b
           cr_seen = nil
 
           chain_fused(enum) do |y|
@@ -744,8 +711,6 @@ module Increase
         #
         # https://html.spec.whatwg.org/multipage/server-sent-events.html#parsing-an-event-stream
         #
-        # Assumes that `lines` has been decoded with `#decode_lines`.
-        #
         # @param lines [Enumerable<String>]
         #
         # @return [Enumerable<Hash{Symbol=>Object}>]
@@ -769,7 +734,7 @@ module Increase
                 in "event"
                   current.merge!(event: value)
                 in "data"
-                  (current[:data] ||= String.new) << (value << "\n")
+                  (current[:data] ||= String.new.b) << (value << "\n")
                 in "id" unless value.include?("\0")
                   current.merge!(id: value)
                 in "retry" if /^\d+$/ =~ value

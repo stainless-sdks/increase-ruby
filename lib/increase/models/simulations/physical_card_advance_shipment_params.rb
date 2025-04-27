@@ -5,7 +5,8 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::PhysicalCards#advance_shipment
       class PhysicalCardAdvanceShipmentParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
+        # @!parse
+        #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
         # @!attribute shipment_status
@@ -15,10 +16,13 @@ module Increase
         required :shipment_status,
                  enum: -> { Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus }
 
-        # @!method initialize(shipment_status:, request_options: {})
-        #   @param shipment_status [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus] The shipment status to move the Physical Card to.
-        #
-        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        # @!parse
+        #   # @param shipment_status [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        #   #
+        #   def initialize(shipment_status:, request_options: {}, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # The shipment status to move the Physical Card to.
         module ShipmentStatus
@@ -45,8 +49,11 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
     end

@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::SupplementalDocuments#create
     class SupplementalDocumentCreateParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute entity_id
@@ -19,12 +20,14 @@ module Increase
       #   @return [String]
       required :file_id, String
 
-      # @!method initialize(entity_id:, file_id:, request_options: {})
-      #   @param entity_id [String] The identifier of the Entity to associate with the supplemental document.
-      #
-      #   @param file_id [String] The identifier of the File containing the document.
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @param entity_id [String]
+      #   # @param file_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(entity_id:, file_id:, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
     end
   end
 end

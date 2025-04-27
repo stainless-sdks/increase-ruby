@@ -11,8 +11,7 @@ module Increase
         #
         # @overload complete(account_transfer_id, request_options: {})
         #
-        # @param account_transfer_id [String] The identifier of the Account Transfer you wish to complete.
-        #
+        # @param account_transfer_id [String]
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
         # @return [Increase::Models::AccountTransfer]

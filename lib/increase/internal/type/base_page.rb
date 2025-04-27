@@ -3,27 +3,19 @@
 module Increase
   module Internal
     module Type
-      # @api private
-      #
       # @generic Elem
       #
       # This module provides a base implementation for paginated responses in the SDK.
       module BasePage
         # rubocop:disable Lint/UnusedMethodArgument
 
-        # @api public
-        #
         # @return [Boolean]
         def next_page? = (raise NotImplementedError)
 
-        # @api public
-        #
         # @raise [Increase::Errors::APIError]
-        # @return [self]
+        # @return [Increase::Internal::Type::BasePage]
         def next_page = (raise NotImplementedError)
 
-        # @api public
-        #
         # @param blk [Proc]
         #
         # @yieldparam [generic<Elem>]
@@ -44,7 +36,6 @@ module Increase
         def initialize(client:, req:, headers:, page_data:)
           @client = client
           @req = req
-          @model = req.fetch(:model)
           super()
         end
 

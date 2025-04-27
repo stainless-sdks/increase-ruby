@@ -11,17 +11,11 @@ module Increase
       class Boolean
         extend Increase::Internal::Type::Converter
 
-        private_class_method :new
-
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
         def self.===(other) = other == true || other == false
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -46,16 +40,17 @@ module Increase
             value
           end
 
-          # @!method dump(value, state:)
-          #   @api private
-          #
-          #   @param value [Boolean, Object]
-          #
-          #   @param state [Hash{Symbol=>Object}] .
-          #
-          #     @option state [Boolean] :can_retry
-          #
-          #   @return [Boolean, Object]
+          # @!parse
+          #   # @api private
+          #   #
+          #   # @param value [Boolean, Object]
+          #   #
+          #   # @param state [Hash{Symbol=>Object}] .
+          #   #
+          #   #   @option state [Boolean] :can_retry
+          #   #
+          #   # @return [Boolean, Object]
+          #   def dump(value, state:) = super
         end
       end
     end

@@ -38,25 +38,19 @@ module Increase
       #   @return [Symbol, Increase::Models::EntitySupplementalDocument::Type]
       required :type, enum: -> { Increase::Models::EntitySupplementalDocument::Type }
 
-      # @!method initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::EntitySupplementalDocument} for more details.
-      #
-      #   Supplemental Documents are uploaded files connected to an Entity during
-      #   onboarding.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Supplem
-      #   ...
-      #
-      #   @param entity_id [String] The Entity the supplemental document is attached to.
-      #
-      #   @param file_id [String] The File containing the document.
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param type [Symbol, Increase::Models::EntitySupplementalDocument::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Supplemental Documents are uploaded files connected to an Entity during
+      #   # onboarding.
+      #   #
+      #   # @param created_at [Time]
+      #   # @param entity_id [String]
+      #   # @param file_id [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param type [Symbol, Increase::Models::EntitySupplementalDocument::Type]
+      #   #
+      #   def initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # A constant representing the object's type. For this resource it will always be
       # `entity_supplemental_document`.
@@ -67,8 +61,11 @@ module Increase
 
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

@@ -19,6 +19,15 @@ require "uri"
 # We already ship the preferred sorbet manifests in the package itself.
 # `tapioca` currently does not offer us a way to opt out of unnecessary compilation.
 if Object.const_defined?(:Tapioca) && caller.chain([$PROGRAM_NAME]).chain(ARGV).grep(/tapioca/)
+  Warning.warn(
+    <<~WARN
+      \n
+      ⚠️ skipped loading of "increase" gem under `tapioca`.
+
+      This message is normal and expected if you are running a `tapioca` command, and does not impact `.rbi` generation.
+      \n
+    WARN
+  )
   return
 end
 
@@ -31,7 +40,7 @@ require_relative "increase/internal/util"
 require_relative "increase/internal/type/converter"
 require_relative "increase/internal/type/unknown"
 require_relative "increase/internal/type/boolean"
-require_relative "increase/internal/type/file_input"
+require_relative "increase/internal/type/io_like"
 require_relative "increase/internal/type/enum"
 require_relative "increase/internal/type/union"
 require_relative "increase/internal/type/array_of"
@@ -41,7 +50,6 @@ require_relative "increase/internal/type/base_page"
 require_relative "increase/internal/type/request_parameters"
 require_relative "increase/internal"
 require_relative "increase/request_options"
-require_relative "increase/file_part"
 require_relative "increase/errors"
 require_relative "increase/internal/transport/base_client"
 require_relative "increase/internal/transport/pooled_net_requester"

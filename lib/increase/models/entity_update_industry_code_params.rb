@@ -4,7 +4,8 @@ module Increase
   module Models
     # @see Increase::Resources::Entities#update_industry_code
     class EntityUpdateIndustryCodeParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute industry_code
@@ -16,14 +17,13 @@ module Increase
       #   @return [String]
       required :industry_code, String
 
-      # @!method initialize(industry_code:, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::EntityUpdateIndustryCodeParams} for more details.
-      #
-      #   @param industry_code [String] The North American Industry Classification System (NAICS) code for the corporati
-      #   ...
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @param industry_code [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(industry_code:, request_options: {}, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
     end
   end
 end

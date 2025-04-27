@@ -5,24 +5,28 @@ module Increase
     module Simulations
       # @see Increase::Resources::Simulations::ACHTransfers#return_
       class ACHTransferReturnParams < Increase::Internal::Type::BaseModel
-        extend Increase::Internal::Type::RequestParameters::Converter
+        # @!parse
+        #   extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        # @!attribute reason
+        # @!attribute [r] reason
         #   The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
         #
         #   @return [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason, nil]
         optional :reason, enum: -> { Increase::Models::Simulations::ACHTransferReturnParams::Reason }
 
-        # @!method initialize(reason: nil, request_options: {})
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Simulations::ACHTransferReturnParams} for more details.
-        #
-        #   @param reason [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason] The reason why the Federal Reserve or destination bank returned this transfer. D
-        #   ...
-        #
-        #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        # @!parse
+        #   # @return [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason]
+        #   attr_writer :reason
+
+        # @!parse
+        #   # @param reason [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+        #   #
+        #   def initialize(reason: nil, request_options: {}, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
         # Defaults to `no_account`.
@@ -242,8 +246,11 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
     end

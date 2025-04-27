@@ -36,26 +36,21 @@ module Increase
       #   @return [Symbol, Increase::Models::Group::Type]
       required :type, enum: -> { Increase::Models::Group::Type }
 
-      # @!method initialize(id:, ach_debit_status:, activation_status:, created_at:, type:)
-      #   Some parameter documentations has been truncated, see {Increase::Models::Group}
-      #   for more details.
-      #
-      #   Groups represent organizations using Increase. You can retrieve information
-      #   about your own organization via the API. More commonly, OAuth platforms can
-      #   retrieve information about the organizations that have granted them access.
-      #   Learn more about OAuth [here](https://increase.com/documentation/oauth).
-      #
-      #   @param id [String] The Group identifier.
-      #
-      #   @param ach_debit_status [Symbol, Increase::Models::Group::ACHDebitStatus] If the Group is allowed to create ACH debits.
-      #
-      #   @param activation_status [Symbol, Increase::Models::Group::ActivationStatus] If the Group is activated or not.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group w
-      #   ...
-      #
-      #   @param type [Symbol, Increase::Models::Group::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Groups represent organizations using Increase. You can retrieve information
+      #   # about your own organization via the API. More commonly, OAuth platforms can
+      #   # retrieve information about the organizations that have granted them access.
+      #   # Learn more about OAuth [here](https://increase.com/documentation/oauth).
+      #   #
+      #   # @param id [String]
+      #   # @param ach_debit_status [Symbol, Increase::Models::Group::ACHDebitStatus]
+      #   # @param activation_status [Symbol, Increase::Models::Group::ActivationStatus]
+      #   # @param created_at [Time]
+      #   # @param type [Symbol, Increase::Models::Group::Type]
+      #   #
+      #   def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # If the Group is allowed to create ACH debits.
       #
@@ -69,8 +64,11 @@ module Increase
         # The Group can make ACH debits.
         ENABLED = :enabled
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # If the Group is activated or not.
@@ -85,8 +83,11 @@ module Increase
         # The Group is activated.
         ACTIVATED = :activated
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -98,8 +99,11 @@ module Increase
 
         GROUP = :group
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

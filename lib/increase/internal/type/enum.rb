@@ -21,30 +21,26 @@ module Increase
         # All of the valid Symbol values for this enum.
         #
         # @return [Array<NilClass, Boolean, Integer, Float, Symbol>]
-        def values = constants.map { const_get(_1) }
+        def values = (@values ||= constants.map { const_get(_1) })
 
-        # @api public
+        # @api private
         #
+        # Guard against thread safety issues by instantiating `@values`.
+        private def finalize! = values
+
         # @param other [Object]
         #
         # @return [Boolean]
         def ===(other) = values.include?(other)
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
         def ==(other)
-          # rubocop:disable Style/CaseEquality
-          Increase::Internal::Type::Enum === other && other.values.to_set == values.to_set
-          # rubocop:enable Style/CaseEquality
+          # rubocop:disable Layout/LineLength
+          other.is_a?(Module) && other.singleton_class <= Increase::Internal::Type::Enum && other.values.to_set == values.to_set
+          # rubocop:enable Layout/LineLength
         end
-
-        # @api public
-        #
-        # @return [Integer]
-        def hash = values.to_set.hash
 
         # @api private
         #
@@ -75,32 +71,17 @@ module Increase
           end
         end
 
-        # @!method dump(value, state:)
-        #   @api private
-        #
-        #   @param value [Symbol, Object]
-        #
-        #   @param state [Hash{Symbol=>Object}] .
-        #
-        #     @option state [Boolean] :can_retry
-        #
-        #   @return [Symbol, Object]
-
-        # @api private
-        #
-        # @param depth [Integer]
-        #
-        # @return [String]
-        def inspect(depth: 0)
-          if depth.positive?
-            return is_a?(Module) ? super() : self.class.name
-          end
-
-          members = values.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
-          prefix = is_a?(Module) ? name : self.class.name
-
-          "#{prefix}[#{members.join(' | ')}]"
-        end
+        # @!parse
+        #   # @api private
+        #   #
+        #   # @param value [Symbol, Object]
+        #   #
+        #   # @param state [Hash{Symbol=>Object}] .
+        #   #
+        #   #   @option state [Boolean] :can_retry
+        #   #
+        #   # @return [Symbol, Object]
+        #   def dump(value, state:) = super
       end
     end
   end

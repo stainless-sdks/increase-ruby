@@ -4,6 +4,4 @@ set -e
 
 cd -- "$(dirname -- "$0")/.."
 
-echo "==> Running linters"
-
 exec -- bundle exec rake lint "$@"

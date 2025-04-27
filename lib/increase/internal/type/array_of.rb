@@ -13,10 +13,6 @@ module Increase
       class ArrayOf
         include Increase::Internal::Type::Converter
 
-        private_class_method :new
-
-        # @overload [](type_info, spec = {})
-        #
         # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Internal::Type::Converter, Class]
         #
         # @param spec [Hash{Symbol=>Object}] .
@@ -28,19 +24,13 @@ module Increase
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
-        #
-        # @return [Increase::Internal::Type::ArrayOf]
-        def self.[](...) = new(...)
+        def self.[](type_info, spec = {}) = new(type_info, spec)
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
         def ===(other) = other.is_a?(Array) && other.all?(item_type)
 
-        # @api public
-        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -49,11 +39,6 @@ module Increase
           other.is_a?(Increase::Internal::Type::ArrayOf) && other.nilable? == nilable? && other.item_type == item_type
           # rubocop:enable Layout/LineLength
         end
-
-        # @api public
-        #
-        # @return [Integer]
-        def hash = [self.class, item_type].hash
 
         # @api private
         #
@@ -135,18 +120,7 @@ module Increase
         #   @option spec [Boolean] :"nil?"
         def initialize(type_info, spec = {})
           @item_type_fn = Increase::Internal::Type::Converter.type_info(type_info || spec)
-          @nilable = spec.fetch(:nil?, false)
-        end
-
-        # @api private
-        #
-        # @param depth [Integer]
-        #
-        # @return [String]
-        def inspect(depth: 0)
-          items = Increase::Internal::Type::Converter.inspect(item_type, depth: depth.succ)
-
-          "#{self.class}[#{[items, nilable? ? 'nil' : nil].compact.join(' | ')}]"
+          @nilable = spec[:nil?]
         end
       end
     end

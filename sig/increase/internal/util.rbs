@@ -29,10 +29,8 @@ module Increase
 
       def self?.dig: (
         ::Hash[Symbol, top] | ::Array[top] | top data,
-        (Symbol
-        | Integer
-        | ::Array[(Symbol | Integer)]
-        | (^(top arg0) -> top))? pick
+        (Symbol | Integer | ::Array[(Symbol | Integer)])? pick,
+        ?top? sentinel
       ) {
         -> top?
       } -> top?
@@ -75,6 +73,16 @@ module Increase
         | ::Array[(String | Integer)?])?] headers
       ) -> ::Hash[String, String]
 
+      class SerializationAdapter
+        attr_reader inner: Pathname | IO
+
+        def to_json: (*top a) -> String
+
+        def to_yaml: (*top a) -> String
+
+        def initialize: (Pathname | IO inner) -> void
+      end
+
       class ReadIOAdapter
         def close?: -> bool?
 
@@ -95,16 +103,6 @@ module Increase
         (Enumerator::Yielder y) -> void
       } -> Enumerable[String]
 
-      JSON_CONTENT: Regexp
-      JSONL_CONTENT: Regexp
-
-      def self?.write_multipart_content: (
-        Enumerator::Yielder y,
-        val: top,
-        closing: ::Array[^-> void],
-        ?content_type: String?
-      ) -> void
-
       def self?.write_multipart_chunk: (
         Enumerator::Yielder y,
         boundary: String,
@@ -121,8 +119,6 @@ module Increase
         ::Hash[String, String] headers,
         top body
       ) -> top
-
-      def self?.force_charset!: (String content_type, text: String) -> void
 
       def self?.decode_content: (
         ::Hash[String, String] headers,

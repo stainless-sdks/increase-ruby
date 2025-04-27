@@ -106,52 +106,48 @@ module Increase
       #   @return [Symbol, Increase::Models::Account::Type]
       required :type, enum: -> { Increase::Models::Account::Type }
 
-      # @!method initialize(id:, bank:, closed_at:, created_at:, currency:, entity_id:, idempotency_key:, informational_entity_id:, interest_accrued:, interest_accrued_at:, interest_rate:, name:, program_id:, status:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::Account} for more details.
-      #
-      #   Accounts are your bank accounts with Increase. They store money, receive
-      #   transfers, and send payments. They earn interest and have depository insurance.
-      #
-      #   @param id [String] The Account identifier.
-      #
-      #   @param bank [Symbol, Increase::Models::Account::Bank] The bank the Account is with.
-      #
-      #   @param closed_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
-      #
-      #   @param currency [Symbol, Increase::Models::Account::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account curr
-      #   ...
-      #
-      #   @param entity_id [String, nil] The identifier for the Entity the Account belongs to.
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param informational_entity_id [String, nil] The identifier of an Entity that, while not owning the Account, is associated wi
-      #   ...
-      #
-      #   @param interest_accrued [String] The interest accrued but not yet paid, expressed as a string containing a floati
-      #   ...
-      #
-      #   @param interest_accrued_at [Date, nil] The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which inte
-      #   ...
-      #
-      #   @param interest_rate [String] The Interest Rate currently being earned on the account, as a string containing
-      #   ...
-      #
-      #   @param name [String] The name you choose for the Account.
-      #
-      #   @param program_id [String] The identifier of the Program determining the compliance and commercial terms of
-      #   ...
-      #
-      #   @param status [Symbol, Increase::Models::Account::Status] The status of the Account.
-      #
-      #   @param type [Symbol, Increase::Models::Account::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Accounts are your bank accounts with Increase. They store money, receive
+      #   # transfers, and send payments. They earn interest and have depository insurance.
+      #   #
+      #   # @param id [String]
+      #   # @param bank [Symbol, Increase::Models::Account::Bank]
+      #   # @param closed_at [Time, nil]
+      #   # @param created_at [Time]
+      #   # @param currency [Symbol, Increase::Models::Account::Currency]
+      #   # @param entity_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param informational_entity_id [String, nil]
+      #   # @param interest_accrued [String]
+      #   # @param interest_accrued_at [Date, nil]
+      #   # @param interest_rate [String]
+      #   # @param name [String]
+      #   # @param program_id [String]
+      #   # @param status [Symbol, Increase::Models::Account::Status]
+      #   # @param type [Symbol, Increase::Models::Account::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     bank:,
+      #     closed_at:,
+      #     created_at:,
+      #     currency:,
+      #     entity_id:,
+      #     idempotency_key:,
+      #     informational_entity_id:,
+      #     interest_accrued:,
+      #     interest_accrued_at:,
+      #     interest_rate:,
+      #     name:,
+      #     program_id:,
+      #     status:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # The bank the Account is with.
       #
@@ -168,8 +164,11 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK = :grasshopper_bank
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
@@ -197,8 +196,11 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # The status of the Account.
@@ -213,8 +215,11 @@ module Increase
         # Open Accounts that are ready to use.
         OPEN = :open
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -226,8 +231,11 @@ module Increase
 
         ACCOUNT = :account
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

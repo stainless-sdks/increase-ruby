@@ -55,30 +55,21 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundMailItem::Type]
       required :type, enum: -> { Increase::Models::InboundMailItem::Type }
 
-      # @!method initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::InboundMailItem} for more details.
-      #
-      #   Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
-      #
-      #   @param id [String] The Inbound Mail Item identifier.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      #   ...
-      #
-      #   @param file_id [String] The identifier for the File containing the scanned contents of the mail item.
-      #
-      #   @param lockbox_id [String, nil] The identifier for the Lockbox that received this mail item. For mail items that
-      #   ...
-      #
-      #   @param recipient_name [String, nil] The recipient name as written on the mail item.
-      #
-      #   @param rejection_reason [Symbol, Increase::Models::InboundMailItem::RejectionReason, nil] If the mail item has been rejected, why it was rejected.
-      #
-      #   @param status [Symbol, Increase::Models::InboundMailItem::Status] If the mail item has been processed.
-      #
-      #   @param type [Symbol, Increase::Models::InboundMailItem::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
+      #   #
+      #   # @param id [String]
+      #   # @param created_at [Time]
+      #   # @param file_id [String]
+      #   # @param lockbox_id [String, nil]
+      #   # @param recipient_name [String, nil]
+      #   # @param rejection_reason [Symbol, Increase::Models::InboundMailItem::RejectionReason, nil]
+      #   # @param status [Symbol, Increase::Models::InboundMailItem::Status]
+      #   # @param type [Symbol, Increase::Models::InboundMailItem::Type]
+      #   #
+      #   def initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:, **) = super
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # If the mail item has been rejected, why it was rejected.
       #
@@ -95,8 +86,11 @@ module Increase
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE = :lockbox_not_active
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # If the mail item has been processed.
@@ -114,8 +108,11 @@ module Increase
         # The mail item has been rejected.
         REJECTED = :rejected
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -127,8 +124,11 @@ module Increase
 
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end

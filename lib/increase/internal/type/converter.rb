@@ -43,22 +43,10 @@ module Increase
             value.string
           in Pathname | IO
             state[:can_retry] = false if value.is_a?(IO)
-            Increase::FilePart.new(value)
-          in Increase::FilePart
-            state[:can_retry] = false if value.content.is_a?(IO)
-            value
+            Increase::Internal::Util::SerializationAdapter.new(value)
           else
             value
           end
-        end
-
-        # @api private
-        #
-        # @param depth [Integer]
-        #
-        # @return [String]
-        def inspect(depth: 0)
-          super()
         end
 
         # rubocop:enable Lint/UnusedMethodArgument
@@ -250,21 +238,6 @@ module Increase
               target.dump(value, state: state)
             else
               Increase::Internal::Type::Unknown.dump(value, state: state)
-            end
-          end
-
-          # @api private
-          #
-          # @param target [Object]
-          # @param depth [Integer]
-          #
-          # @return [String]
-          def inspect(target, depth:)
-            case target
-            in Increase::Internal::Type::Converter
-              target.inspect(depth: depth.succ)
-            else
-              target.inspect
             end
           end
         end

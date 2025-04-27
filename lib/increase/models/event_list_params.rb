@@ -4,57 +4,83 @@ module Increase
   module Models
     # @see Increase::Resources::Events#list
     class EventListParams < Increase::Internal::Type::BaseModel
-      extend Increase::Internal::Type::RequestParameters::Converter
+      # @!parse
+      #   extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      # @!attribute associated_object_id
+      # @!attribute [r] associated_object_id
       #   Filter Events to those belonging to the object with the provided identifier.
       #
       #   @return [String, nil]
       optional :associated_object_id, String
 
-      # @!attribute category
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :associated_object_id
+
+      # @!attribute [r] category
       #
       #   @return [Increase::Models::EventListParams::Category, nil]
       optional :category, -> { Increase::Models::EventListParams::Category }
 
-      # @!attribute created_at
+      # @!parse
+      #   # @return [Increase::Models::EventListParams::Category]
+      #   attr_writer :category
+
+      # @!attribute [r] created_at
       #
       #   @return [Increase::Models::EventListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::EventListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::EventListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
       #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!method initialize(associated_object_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::EventListParams} for more details.
-      #
-      #   @param associated_object_id [String] Filter Events to those belonging to the object with the provided identifier.
-      #
-      #   @param category [Increase::Models::EventListParams::Category]
-      #
-      #   @param created_at [Increase::Models::EventListParams::CreatedAt]
-      #
-      #   @param cursor [String] Return the page of entries after this one.
-      #
-      #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
-      #
-      #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!parse
+      #   # @param associated_object_id [String]
+      #   # @param category [Increase::Models::EventListParams::Category]
+      #   # @param created_at [Increase::Models::EventListParams::CreatedAt]
+      #   # @param cursor [String]
+      #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(
+      #     associated_object_id: nil,
+      #     category: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     limit: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       class Category < Increase::Internal::Type::BaseModel
-        # @!attribute in_
+        # @!attribute [r] in_
         #   Filter Events for those with the specified category or categories. For GET
         #   requests, this should be encoded as a comma-delimited string, such as
         #   `?in=one,two,three`.
@@ -64,12 +90,16 @@ module Increase
                  -> { Increase::Internal::Type::ArrayOf[enum: Increase::Models::EventListParams::Category::In] },
                  api_name: :in
 
-        # @!method initialize(in_: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::EventListParams::Category} for more details.
-        #
-        #   @param in_ [Array<Symbol, Increase::Models::EventListParams::Category::In>] Filter Events for those with the specified category or categories. For GET reque
-        #   ...
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::EventListParams::Category::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::EventListParams::Category::In>]
+        #   #
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         module In
           extend Increase::Internal::Type::Enum
@@ -334,55 +364,68 @@ module Increase
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         #
         #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         #   timestamp.
         #
         #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this
         #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_before, Time
 
-        # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::EventListParams::CreatedAt} for more details.
-        #
-        #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
-        #
-        #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
-        #
-        #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
-        #
-        #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
+
+        # @!parse
+        #   # @param after [Time]
+        #   # @param before [Time]
+        #   # @param on_or_after [Time]
+        #   # @param on_or_before [Time]
+        #   #
+        #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
       end
     end
   end

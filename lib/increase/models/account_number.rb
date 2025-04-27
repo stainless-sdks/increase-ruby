@@ -75,41 +75,43 @@ module Increase
       #   @return [Symbol, Increase::Models::AccountNumber::Type]
       required :type, enum: -> { Increase::Models::AccountNumber::Type }
 
-      # @!method initialize(id:, account_id:, account_number:, created_at:, idempotency_key:, inbound_ach:, inbound_checks:, name:, routing_number:, status:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::AccountNumber} for more details.
-      #
-      #   Each account can have multiple account and routing numbers. We recommend that
-      #   you use a set per vendor. This is similar to how you use different passwords for
-      #   different websites. Account numbers can also be used to seamlessly reconcile
-      #   inbound payments. Generating a unique account number per vendor ensures you
-      #   always know the originator of an incoming payment.
-      #
-      #   @param id [String] The Account Number identifier.
-      #
-      #   @param account_id [String] The identifier for the account this Account Number belongs to.
-      #
-      #   @param account_number [String] The account number.
-      #
-      #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
-      #
-      #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
-      #
-      #   @param inbound_ach [Increase::Models::AccountNumber::InboundACH] Properties related to how this Account Number handles inbound ACH transfers.
-      #
-      #   @param inbound_checks [Increase::Models::AccountNumber::InboundChecks] Properties related to how this Account Number should handle inbound check withdr
-      #   ...
-      #
-      #   @param name [String] The name you choose for the Account Number.
-      #
-      #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
-      #
-      #   @param status [Symbol, Increase::Models::AccountNumber::Status] This indicates if payments can be made to the Account Number.
-      #
-      #   @param type [Symbol, Increase::Models::AccountNumber::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
+      # @!parse
+      #   # Each account can have multiple account and routing numbers. We recommend that
+      #   # you use a set per vendor. This is similar to how you use different passwords for
+      #   # different websites. Account numbers can also be used to seamlessly reconcile
+      #   # inbound payments. Generating a unique account number per vendor ensures you
+      #   # always know the originator of an incoming payment.
+      #   #
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param account_number [String]
+      #   # @param created_at [Time]
+      #   # @param idempotency_key [String, nil]
+      #   # @param inbound_ach [Increase::Models::AccountNumber::InboundACH]
+      #   # @param inbound_checks [Increase::Models::AccountNumber::InboundChecks]
+      #   # @param name [String]
+      #   # @param routing_number [String]
+      #   # @param status [Symbol, Increase::Models::AccountNumber::Status]
+      #   # @param type [Symbol, Increase::Models::AccountNumber::Type]
+      #   #
+      #   def initialize(
+      #     id:,
+      #     account_id:,
+      #     account_number:,
+      #     created_at:,
+      #     idempotency_key:,
+      #     inbound_ach:,
+      #     inbound_checks:,
+      #     name:,
+      #     routing_number:,
+      #     status:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
       # @see Increase::Models::AccountNumber#inbound_ach
       class InboundACH < Increase::Internal::Type::BaseModel
@@ -120,14 +122,14 @@ module Increase
         #   @return [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         required :debit_status, enum: -> { Increase::Models::AccountNumber::InboundACH::DebitStatus }
 
-        # @!method initialize(debit_status:)
-        #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::AccountNumber::InboundACH} for more details.
-        #
-        #   Properties related to how this Account Number handles inbound ACH transfers.
-        #
-        #   @param debit_status [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus] Whether ACH debits are allowed against this Account Number. Note that they will
-        #   ...
+        # @!parse
+        #   # Properties related to how this Account Number handles inbound ACH transfers.
+        #   #
+        #   # @param debit_status [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
+        #   #
+        #   def initialize(debit_status:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # Whether ACH debits are allowed against this Account Number. Note that they will
         # still be declined if this is `allowed` if the Account Number is not active.
@@ -142,8 +144,11 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED = :blocked
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -155,11 +160,15 @@ module Increase
         #   @return [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
         required :status, enum: -> { Increase::Models::AccountNumber::InboundChecks::Status }
 
-        # @!method initialize(status:)
-        #   Properties related to how this Account Number should handle inbound check
-        #   withdrawals.
-        #
-        #   @param status [Symbol, Increase::Models::AccountNumber::InboundChecks::Status] How Increase should process checks with this account number printed on them.
+        # @!parse
+        #   # Properties related to how this Account Number should handle inbound check
+        #   # withdrawals.
+        #   #
+        #   # @param status [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
+        #   #
+        #   def initialize(status:, **) = super
+
+        # def initialize: (Hash | Increase::Internal::Type::BaseModel) -> void
 
         # How Increase should process checks with this account number printed on them.
         #
@@ -173,8 +182,11 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
-          # @!method self.values
-          #   @return [Array<Symbol>]
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
         end
       end
 
@@ -193,8 +205,11 @@ module Increase
         # The account number is permanently disabled.
         CANCELED = :canceled
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -206,8 +221,11 @@ module Increase
 
         ACCOUNT_NUMBER = :account_number
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
       end
     end
   end
