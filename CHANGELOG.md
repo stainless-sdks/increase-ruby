@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-04-28)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/Increase/increase-ruby/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Features
+
+* **api:** api update ([45fc551](https://github.com/Increase/increase-ruby/commit/45fc551b875600bfcd2dea9cfad233e932937c60))
+
+
+### Chores
+
+* add generator safe directory ([cb8b110](https://github.com/Increase/increase-ruby/commit/cb8b1101240abd6d05da7e20d0dd9d03cc8f0d31))
+* **internal:** annotate request options with type aliases in sorbet ([2c2ec21](https://github.com/Increase/increase-ruby/commit/2c2ec21376e7acc7554e8ac99a36682479ee8930))
+* **internal:** remove unnecessary `rbi/lib` folder ([7826238](https://github.com/Increase/increase-ruby/commit/7826238a53b6c07a3c256f88c9f1bcd8ea29c92c))
+* more accurate type annotations and aliases ([4a22b74](https://github.com/Increase/increase-ruby/commit/4a22b7498e85103d2a393b4930c49a200141b27c))
+
 ## 0.1.0-alpha.12 (2025-04-25)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/Increase/increase-ruby/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)

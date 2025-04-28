@@ -181,7 +181,8 @@ module Increase
             number: String,
             return_number: String?,
             return_reason: String?,
-            shipped_at: Time
+            shipped_at: Time,
+            updates: ::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]
           }
 
         class Tracking < Increase::Internal::Type::BaseModel
@@ -193,14 +194,64 @@ module Increase
 
           attr_accessor shipped_at: Time
 
+          attr_accessor updates: ::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]
+
           def initialize: (
             number: String,
             return_number: String?,
             return_reason: String?,
-            shipped_at: Time
+            shipped_at: Time,
+            updates: ::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]
           ) -> void
 
           def to_hash: -> Increase::Models::PhysicalCard::Shipment::tracking
+
+          type update =
+            {
+              category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::category,
+              created_at: Time,
+              postal_code: String
+            }
+
+          class Update < Increase::Internal::Type::BaseModel
+            attr_accessor category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::category
+
+            attr_accessor created_at: Time
+
+            attr_accessor postal_code: String
+
+            def initialize: (
+              category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::category,
+              created_at: Time,
+              postal_code: String
+            ) -> void
+
+            def to_hash: -> Increase::Models::PhysicalCard::Shipment::Tracking::update
+
+            type category =
+              :in_transit
+              | :processed_for_delivery
+              | :delivered
+              | :returned_to_sender
+
+            module Category
+              extend Increase::Internal::Type::Enum
+
+              # The physical card is in transit.
+              IN_TRANSIT: :in_transit
+
+              # The physical card has been processed for delivery.
+              PROCESSED_FOR_DELIVERY: :processed_for_delivery
+
+              # The physical card has been delivered.
+              DELIVERED: :delivered
+
+              # Delivery failed and the physical card was returned to sender.
+              RETURNED_TO_SENDER: :returned_to_sender
+
+              def self?.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update::category]
+            end
+          end
         end
       end
 
