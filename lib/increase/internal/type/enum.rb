@@ -75,16 +75,17 @@ module Increase
           end
         end
 
-        # @!method dump(value, state:)
-        #   @api private
-        #
-        #   @param value [Symbol, Object]
-        #
-        #   @param state [Hash{Symbol=>Object}] .
-        #
-        #     @option state [Boolean] :can_retry
-        #
-        #   @return [Symbol, Object]
+        # @!parse
+        #   # @api private
+        #   #
+        #   # @param value [Symbol, Object]
+        #   #
+        #   # @param state [Hash{Symbol=>Object}] .
+        #   #
+        #   #   @option state [Boolean] :can_retry
+        #   #
+        #   # @return [Symbol, Object]
+        #   def dump(value, state:) = super
 
         # @api private
         #

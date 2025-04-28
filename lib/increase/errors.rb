@@ -3,9 +3,9 @@
 module Increase
   module Errors
     class Error < StandardError
-      # @!attribute cause
-      #
-      #   @return [StandardError, nil]
+      # @!parse
+      #   # @return [StandardError, nil]
+      #   attr_accessor :cause
     end
 
     class ConversionError < Increase::Errors::Error
@@ -40,13 +40,13 @@ module Increase
     end
 
     class APIConnectionError < Increase::Errors::APIError
-      # @!attribute status
-      #
-      #   @return [nil]
+      # @!parse
+      #   # @return [nil]
+      #   attr_accessor :status
 
-      # @!attribute body
-      #
-      #   @return [nil]
+      # @!parse
+      #   # @return [nil]
+      #   attr_accessor :body
 
       # @api private
       #
