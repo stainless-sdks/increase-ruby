@@ -221,6 +221,8 @@ module Increase
       max_retry_delay: Increase::Client::DEFAULT_MAX_RETRY_DELAY,
       idempotency_header: "Idempotency-Key"
     )
+      @base_url_overridden = !base_url.nil?
+
       base_url ||= Increase::Client::ENVIRONMENTS.fetch(environment&.to_sym || :production) do
         message = "environment must be one of #{Increase::Client::ENVIRONMENTS.keys}, got #{environment}"
         raise ArgumentError.new(message)
