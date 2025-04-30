@@ -1,3 +1,0 @@
-module Increase
-  VERSION: String
-end
