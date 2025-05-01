@@ -24,7 +24,7 @@ module Increase
 
       # @return [Boolean]
       def next_page?
-        !next_cursor.nil?
+        !data.to_a.empty? && !next_cursor.to_s.empty?
       end
 
       # @raise [Increase::HTTP::Error]
@@ -66,8 +66,8 @@ module Increase
         super
 
         case page_data
-        in {data: Array | nil => data}
-          @data = data&.map { Increase::Internal::Type::Converter.coerce(@model, _1) }
+        in {data: Array => data}
+          @data = data.map { Increase::Internal::Type::Converter.coerce(@model, _1) }
         else
         end
         @next_cursor = page_data[:next_cursor]
