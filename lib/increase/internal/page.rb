@@ -24,7 +24,7 @@ module Increase
 
       # @return [Boolean]
       def next_page?
-        !next_cursor.nil?
+        !next_cursor.to_a.empty?
       end
 
       # @raise [Increase::HTTP::Error]
