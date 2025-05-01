@@ -1,6 +1,6 @@
 # Increase Ruby API library
 
-The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.2.0+ application.
+The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.1.0+ application.
 
 ## Documentation
 
@@ -12,13 +12,9 @@ The REST API documentation can be found on [increase.com](https://increase.com/d
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.14"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 ## Usage
 
@@ -75,7 +71,7 @@ end
 
 ### File uploads
 
-Request parameters that correspond to file uploads can be passed as `StringIO`, or a [`Pathname`](https://rubyapi.org/3.2/o/pathname) instance.
+Request parameters that correspond to file uploads can be passed as `StringIO`, or a [`Pathname`](https://rubyapi.org/3.1/o/pathname) instance.
 
 ```ruby
 require "pathname"
@@ -102,7 +98,7 @@ rescue Increase::Errors::APIError => e
 end
 ```
 
-Error codes are as follows:
+Error codes are as followed:
 
 | Cause            | Error Type                 |
 | ---------------- | -------------------------- |
@@ -246,7 +242,7 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 
 ## Requirements
 
-Ruby 3.2.0 or higher.
+Ruby 3.1.0 or higher.
 
 ## Contributing
 
