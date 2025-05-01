@@ -1,0 +1,431 @@
+module Increase
+  class Account = Increase::Models::Account
+
+  class AccountBalanceParams = Increase::Models::AccountBalanceParams
+
+  class AccountCloseParams = Increase::Models::AccountCloseParams
+
+  class AccountCreateParams = Increase::Models::AccountCreateParams
+
+  class AccountListParams = Increase::Models::AccountListParams
+
+  class AccountNumber = Increase::Models::AccountNumber
+
+  class AccountNumberCreateParams = Increase::Models::AccountNumberCreateParams
+
+  class AccountNumberListParams = Increase::Models::AccountNumberListParams
+
+  class AccountNumberRetrieveParams = Increase::Models::AccountNumberRetrieveParams
+
+  class AccountNumberUpdateParams = Increase::Models::AccountNumberUpdateParams
+
+  class AccountRetrieveParams = Increase::Models::AccountRetrieveParams
+
+  class AccountStatement = Increase::Models::AccountStatement
+
+  class AccountStatementListParams = Increase::Models::AccountStatementListParams
+
+  class AccountStatementRetrieveParams = Increase::Models::AccountStatementRetrieveParams
+
+  class AccountTransfer = Increase::Models::AccountTransfer
+
+  class AccountTransferApproveParams = Increase::Models::AccountTransferApproveParams
+
+  class AccountTransferCancelParams = Increase::Models::AccountTransferCancelParams
+
+  class AccountTransferCreateParams = Increase::Models::AccountTransferCreateParams
+
+  class AccountTransferListParams = Increase::Models::AccountTransferListParams
+
+  class AccountTransferRetrieveParams = Increase::Models::AccountTransferRetrieveParams
+
+  class AccountUpdateParams = Increase::Models::AccountUpdateParams
+
+  class ACHPrenotification = Increase::Models::ACHPrenotification
+
+  class ACHPrenotificationCreateParams = Increase::Models::ACHPrenotificationCreateParams
+
+  class ACHPrenotificationListParams = Increase::Models::ACHPrenotificationListParams
+
+  class ACHPrenotificationRetrieveParams = Increase::Models::ACHPrenotificationRetrieveParams
+
+  class ACHTransfer = Increase::Models::ACHTransfer
+
+  class ACHTransferApproveParams = Increase::Models::ACHTransferApproveParams
+
+  class ACHTransferCancelParams = Increase::Models::ACHTransferCancelParams
+
+  class ACHTransferCreateParams = Increase::Models::ACHTransferCreateParams
+
+  class ACHTransferListParams = Increase::Models::ACHTransferListParams
+
+  class ACHTransferRetrieveParams = Increase::Models::ACHTransferRetrieveParams
+
+  class BalanceLookup = Increase::Models::BalanceLookup
+
+  class BookkeepingAccount = Increase::Models::BookkeepingAccount
+
+  class BookkeepingAccountBalanceParams = Increase::Models::BookkeepingAccountBalanceParams
+
+  class BookkeepingAccountCreateParams = Increase::Models::BookkeepingAccountCreateParams
+
+  class BookkeepingAccountListParams = Increase::Models::BookkeepingAccountListParams
+
+  class BookkeepingAccountUpdateParams = Increase::Models::BookkeepingAccountUpdateParams
+
+  class BookkeepingBalanceLookup = Increase::Models::BookkeepingBalanceLookup
+
+  class BookkeepingEntry = Increase::Models::BookkeepingEntry
+
+  class BookkeepingEntryListParams = Increase::Models::BookkeepingEntryListParams
+
+  class BookkeepingEntryRetrieveParams = Increase::Models::BookkeepingEntryRetrieveParams
+
+  class BookkeepingEntrySet = Increase::Models::BookkeepingEntrySet
+
+  class BookkeepingEntrySetCreateParams = Increase::Models::BookkeepingEntrySetCreateParams
+
+  class BookkeepingEntrySetListParams = Increase::Models::BookkeepingEntrySetListParams
+
+  class BookkeepingEntrySetRetrieveParams = Increase::Models::BookkeepingEntrySetRetrieveParams
+
+  class Card = Increase::Models::Card
+
+  class CardCreateParams = Increase::Models::CardCreateParams
+
+  class CardDetails = Increase::Models::CardDetails
+
+  class CardDetailsParams = Increase::Models::CardDetailsParams
+
+  class CardDispute = Increase::Models::CardDispute
+
+  class CardDisputeCreateParams = Increase::Models::CardDisputeCreateParams
+
+  class CardDisputeListParams = Increase::Models::CardDisputeListParams
+
+  class CardDisputeRetrieveParams = Increase::Models::CardDisputeRetrieveParams
+
+  class CardListParams = Increase::Models::CardListParams
+
+  class CardPayment = Increase::Models::CardPayment
+
+  class CardPaymentListParams = Increase::Models::CardPaymentListParams
+
+  class CardPaymentRetrieveParams = Increase::Models::CardPaymentRetrieveParams
+
+  class CardPurchaseSupplement = Increase::Models::CardPurchaseSupplement
+
+  class CardPurchaseSupplementListParams = Increase::Models::CardPurchaseSupplementListParams
+
+  class CardPurchaseSupplementRetrieveParams = Increase::Models::CardPurchaseSupplementRetrieveParams
+
+  class CardRetrieveParams = Increase::Models::CardRetrieveParams
+
+  class CardUpdateParams = Increase::Models::CardUpdateParams
+
+  class CheckDeposit = Increase::Models::CheckDeposit
+
+  class CheckDepositCreateParams = Increase::Models::CheckDepositCreateParams
+
+  class CheckDepositListParams = Increase::Models::CheckDepositListParams
+
+  class CheckDepositRetrieveParams = Increase::Models::CheckDepositRetrieveParams
+
+  class CheckTransfer = Increase::Models::CheckTransfer
+
+  class CheckTransferApproveParams = Increase::Models::CheckTransferApproveParams
+
+  class CheckTransferCancelParams = Increase::Models::CheckTransferCancelParams
+
+  class CheckTransferCreateParams = Increase::Models::CheckTransferCreateParams
+
+  class CheckTransferListParams = Increase::Models::CheckTransferListParams
+
+  class CheckTransferRetrieveParams = Increase::Models::CheckTransferRetrieveParams
+
+  class CheckTransferStopPaymentParams = Increase::Models::CheckTransferStopPaymentParams
+
+  class DeclinedTransaction = Increase::Models::DeclinedTransaction
+
+  class DeclinedTransactionListParams = Increase::Models::DeclinedTransactionListParams
+
+  class DeclinedTransactionRetrieveParams = Increase::Models::DeclinedTransactionRetrieveParams
+
+  class DigitalCardProfile = Increase::Models::DigitalCardProfile
+
+  class DigitalCardProfileArchiveParams = Increase::Models::DigitalCardProfileArchiveParams
+
+  class DigitalCardProfileCloneParams = Increase::Models::DigitalCardProfileCloneParams
+
+  class DigitalCardProfileCreateParams = Increase::Models::DigitalCardProfileCreateParams
+
+  class DigitalCardProfileListParams = Increase::Models::DigitalCardProfileListParams
+
+  class DigitalCardProfileRetrieveParams = Increase::Models::DigitalCardProfileRetrieveParams
+
+  class DigitalWalletToken = Increase::Models::DigitalWalletToken
+
+  class DigitalWalletTokenListParams = Increase::Models::DigitalWalletTokenListParams
+
+  class DigitalWalletTokenRetrieveParams = Increase::Models::DigitalWalletTokenRetrieveParams
+
+  class Document = Increase::Models::Document
+
+  class DocumentListParams = Increase::Models::DocumentListParams
+
+  class DocumentRetrieveParams = Increase::Models::DocumentRetrieveParams
+
+  class Entity = Increase::Models::Entity
+
+  class EntityArchiveBeneficialOwnerParams = Increase::Models::EntityArchiveBeneficialOwnerParams
+
+  class EntityArchiveParams = Increase::Models::EntityArchiveParams
+
+  class EntityConfirmParams = Increase::Models::EntityConfirmParams
+
+  class EntityCreateBeneficialOwnerParams = Increase::Models::EntityCreateBeneficialOwnerParams
+
+  class EntityCreateParams = Increase::Models::EntityCreateParams
+
+  class EntityListParams = Increase::Models::EntityListParams
+
+  class EntityRetrieveParams = Increase::Models::EntityRetrieveParams
+
+  class EntitySupplementalDocument = Increase::Models::EntitySupplementalDocument
+
+  class EntityUpdateAddressParams = Increase::Models::EntityUpdateAddressParams
+
+  class EntityUpdateBeneficialOwnerAddressParams = Increase::Models::EntityUpdateBeneficialOwnerAddressParams
+
+  class EntityUpdateIndustryCodeParams = Increase::Models::EntityUpdateIndustryCodeParams
+
+  class Event = Increase::Models::Event
+
+  class EventListParams = Increase::Models::EventListParams
+
+  class EventRetrieveParams = Increase::Models::EventRetrieveParams
+
+  class EventSubscription = Increase::Models::EventSubscription
+
+  class EventSubscriptionCreateParams = Increase::Models::EventSubscriptionCreateParams
+
+  class EventSubscriptionListParams = Increase::Models::EventSubscriptionListParams
+
+  class EventSubscriptionRetrieveParams = Increase::Models::EventSubscriptionRetrieveParams
+
+  class EventSubscriptionUpdateParams = Increase::Models::EventSubscriptionUpdateParams
+
+  class Export = Increase::Models::Export
+
+  class ExportCreateParams = Increase::Models::ExportCreateParams
+
+  class ExportListParams = Increase::Models::ExportListParams
+
+  class ExportRetrieveParams = Increase::Models::ExportRetrieveParams
+
+  class ExternalAccount = Increase::Models::ExternalAccount
+
+  class ExternalAccountCreateParams = Increase::Models::ExternalAccountCreateParams
+
+  class ExternalAccountListParams = Increase::Models::ExternalAccountListParams
+
+  class ExternalAccountRetrieveParams = Increase::Models::ExternalAccountRetrieveParams
+
+  class ExternalAccountUpdateParams = Increase::Models::ExternalAccountUpdateParams
+
+  class File = Increase::Models::File
+
+  class FileCreateParams = Increase::Models::FileCreateParams
+
+  class FileLink = Increase::Models::FileLink
+
+  class FileLinkCreateParams = Increase::Models::FileLinkCreateParams
+
+  class FileListParams = Increase::Models::FileListParams
+
+  class FileRetrieveParams = Increase::Models::FileRetrieveParams
+
+  class Group = Increase::Models::Group
+
+  class GroupRetrieveParams = Increase::Models::GroupRetrieveParams
+
+  class InboundACHTransfer = Increase::Models::InboundACHTransfer
+
+  class InboundACHTransferCreateNotificationOfChangeParams = Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
+
+  class InboundACHTransferDeclineParams = Increase::Models::InboundACHTransferDeclineParams
+
+  class InboundACHTransferListParams = Increase::Models::InboundACHTransferListParams
+
+  class InboundACHTransferRetrieveParams = Increase::Models::InboundACHTransferRetrieveParams
+
+  class InboundACHTransferTransferReturnParams = Increase::Models::InboundACHTransferTransferReturnParams
+
+  class InboundCheckDeposit = Increase::Models::InboundCheckDeposit
+
+  class InboundCheckDepositDeclineParams = Increase::Models::InboundCheckDepositDeclineParams
+
+  class InboundCheckDepositListParams = Increase::Models::InboundCheckDepositListParams
+
+  class InboundCheckDepositRetrieveParams = Increase::Models::InboundCheckDepositRetrieveParams
+
+  class InboundCheckDepositReturnParams = Increase::Models::InboundCheckDepositReturnParams
+
+  class InboundMailItem = Increase::Models::InboundMailItem
+
+  class InboundMailItemListParams = Increase::Models::InboundMailItemListParams
+
+  class InboundMailItemRetrieveParams = Increase::Models::InboundMailItemRetrieveParams
+
+  class InboundRealTimePaymentsTransfer = Increase::Models::InboundRealTimePaymentsTransfer
+
+  class InboundRealTimePaymentsTransferListParams = Increase::Models::InboundRealTimePaymentsTransferListParams
+
+  class InboundRealTimePaymentsTransferRetrieveParams = Increase::Models::InboundRealTimePaymentsTransferRetrieveParams
+
+  class InboundWireDrawdownRequest = Increase::Models::InboundWireDrawdownRequest
+
+  class InboundWireDrawdownRequestListParams = Increase::Models::InboundWireDrawdownRequestListParams
+
+  class InboundWireDrawdownRequestRetrieveParams = Increase::Models::InboundWireDrawdownRequestRetrieveParams
+
+  class InboundWireTransfer = Increase::Models::InboundWireTransfer
+
+  class InboundWireTransferListParams = Increase::Models::InboundWireTransferListParams
+
+  class InboundWireTransferRetrieveParams = Increase::Models::InboundWireTransferRetrieveParams
+
+  class InboundWireTransferReverseParams = Increase::Models::InboundWireTransferReverseParams
+
+  class IntrafiAccountEnrollment = Increase::Models::IntrafiAccountEnrollment
+
+  class IntrafiAccountEnrollmentCreateParams = Increase::Models::IntrafiAccountEnrollmentCreateParams
+
+  class IntrafiAccountEnrollmentListParams = Increase::Models::IntrafiAccountEnrollmentListParams
+
+  class IntrafiAccountEnrollmentRetrieveParams = Increase::Models::IntrafiAccountEnrollmentRetrieveParams
+
+  class IntrafiAccountEnrollmentUnenrollParams = Increase::Models::IntrafiAccountEnrollmentUnenrollParams
+
+  class IntrafiBalance = Increase::Models::IntrafiBalance
+
+  class IntrafiBalanceIntrafiBalanceParams = Increase::Models::IntrafiBalanceIntrafiBalanceParams
+
+  class IntrafiExclusion = Increase::Models::IntrafiExclusion
+
+  class IntrafiExclusionArchiveParams = Increase::Models::IntrafiExclusionArchiveParams
+
+  class IntrafiExclusionCreateParams = Increase::Models::IntrafiExclusionCreateParams
+
+  class IntrafiExclusionListParams = Increase::Models::IntrafiExclusionListParams
+
+  class IntrafiExclusionRetrieveParams = Increase::Models::IntrafiExclusionRetrieveParams
+
+  class Lockbox = Increase::Models::Lockbox
+
+  class LockboxCreateParams = Increase::Models::LockboxCreateParams
+
+  class LockboxListParams = Increase::Models::LockboxListParams
+
+  class LockboxRetrieveParams = Increase::Models::LockboxRetrieveParams
+
+  class LockboxUpdateParams = Increase::Models::LockboxUpdateParams
+
+  class OAuthApplication = Increase::Models::OAuthApplication
+
+  class OAuthApplicationListParams = Increase::Models::OAuthApplicationListParams
+
+  class OAuthApplicationRetrieveParams = Increase::Models::OAuthApplicationRetrieveParams
+
+  class OAuthConnection = Increase::Models::OAuthConnection
+
+  class OAuthConnectionListParams = Increase::Models::OAuthConnectionListParams
+
+  class OAuthConnectionRetrieveParams = Increase::Models::OAuthConnectionRetrieveParams
+
+  class OAuthToken = Increase::Models::OAuthToken
+
+  class OAuthTokenCreateParams = Increase::Models::OAuthTokenCreateParams
+
+  class PendingTransaction = Increase::Models::PendingTransaction
+
+  class PendingTransactionListParams = Increase::Models::PendingTransactionListParams
+
+  class PendingTransactionRetrieveParams = Increase::Models::PendingTransactionRetrieveParams
+
+  class PhysicalCard = Increase::Models::PhysicalCard
+
+  class PhysicalCardCreateParams = Increase::Models::PhysicalCardCreateParams
+
+  class PhysicalCardListParams = Increase::Models::PhysicalCardListParams
+
+  class PhysicalCardProfile = Increase::Models::PhysicalCardProfile
+
+  class PhysicalCardProfileArchiveParams = Increase::Models::PhysicalCardProfileArchiveParams
+
+  class PhysicalCardProfileCloneParams = Increase::Models::PhysicalCardProfileCloneParams
+
+  class PhysicalCardProfileCreateParams = Increase::Models::PhysicalCardProfileCreateParams
+
+  class PhysicalCardProfileListParams = Increase::Models::PhysicalCardProfileListParams
+
+  class PhysicalCardProfileRetrieveParams = Increase::Models::PhysicalCardProfileRetrieveParams
+
+  class PhysicalCardRetrieveParams = Increase::Models::PhysicalCardRetrieveParams
+
+  class PhysicalCardUpdateParams = Increase::Models::PhysicalCardUpdateParams
+
+  class Program = Increase::Models::Program
+
+  class ProgramListParams = Increase::Models::ProgramListParams
+
+  class ProgramRetrieveParams = Increase::Models::ProgramRetrieveParams
+
+  class RealTimeDecision = Increase::Models::RealTimeDecision
+
+  class RealTimeDecisionActionParams = Increase::Models::RealTimeDecisionActionParams
+
+  class RealTimeDecisionRetrieveParams = Increase::Models::RealTimeDecisionRetrieveParams
+
+  class RealTimePaymentsTransfer = Increase::Models::RealTimePaymentsTransfer
+
+  class RealTimePaymentsTransferCreateParams = Increase::Models::RealTimePaymentsTransferCreateParams
+
+  class RealTimePaymentsTransferListParams = Increase::Models::RealTimePaymentsTransferListParams
+
+  class RealTimePaymentsTransferRetrieveParams = Increase::Models::RealTimePaymentsTransferRetrieveParams
+
+  class RoutingNumberListParams = Increase::Models::RoutingNumberListParams
+
+  module Simulations = Increase::Models::Simulations
+
+  class SupplementalDocumentCreateParams = Increase::Models::SupplementalDocumentCreateParams
+
+  class SupplementalDocumentListParams = Increase::Models::SupplementalDocumentListParams
+
+  class Transaction = Increase::Models::Transaction
+
+  class TransactionListParams = Increase::Models::TransactionListParams
+
+  class TransactionRetrieveParams = Increase::Models::TransactionRetrieveParams
+
+  class WireDrawdownRequest = Increase::Models::WireDrawdownRequest
+
+  class WireDrawdownRequestCreateParams = Increase::Models::WireDrawdownRequestCreateParams
+
+  class WireDrawdownRequestListParams = Increase::Models::WireDrawdownRequestListParams
+
+  class WireDrawdownRequestRetrieveParams = Increase::Models::WireDrawdownRequestRetrieveParams
+
+  class WireTransfer = Increase::Models::WireTransfer
+
+  class WireTransferApproveParams = Increase::Models::WireTransferApproveParams
+
+  class WireTransferCancelParams = Increase::Models::WireTransferCancelParams
+
+  class WireTransferCreateParams = Increase::Models::WireTransferCreateParams
+
+  class WireTransferListParams = Increase::Models::WireTransferListParams
+
+  class WireTransferRetrieveParams = Increase::Models::WireTransferRetrieveParams
+end
