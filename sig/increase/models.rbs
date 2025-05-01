@@ -1,0 +1,111 @@
+module Increase
+  class Account = Increase::Models::Account
+
+  class AccountNumber = Increase::Models::AccountNumber
+
+  class AccountStatement = Increase::Models::AccountStatement
+
+  class AccountTransfer = Increase::Models::AccountTransfer
+
+  class ACHPrenotification = Increase::Models::ACHPrenotification
+
+  class ACHTransfer = Increase::Models::ACHTransfer
+
+  class BalanceLookup = Increase::Models::BalanceLookup
+
+  class BookkeepingAccount = Increase::Models::BookkeepingAccount
+
+  class BookkeepingBalanceLookup = Increase::Models::BookkeepingBalanceLookup
+
+  class BookkeepingEntry = Increase::Models::BookkeepingEntry
+
+  class BookkeepingEntrySet = Increase::Models::BookkeepingEntrySet
+
+  class Card = Increase::Models::Card
+
+  class CardDetails = Increase::Models::CardDetails
+
+  class CardDispute = Increase::Models::CardDispute
+
+  class CardPayment = Increase::Models::CardPayment
+
+  class CardPurchaseSupplement = Increase::Models::CardPurchaseSupplement
+
+  class CheckDeposit = Increase::Models::CheckDeposit
+
+  class CheckTransfer = Increase::Models::CheckTransfer
+
+  class DeclinedTransaction = Increase::Models::DeclinedTransaction
+
+  class DigitalCardProfile = Increase::Models::DigitalCardProfile
+
+  class DigitalWalletToken = Increase::Models::DigitalWalletToken
+
+  class Document = Increase::Models::Document
+
+  class Entity = Increase::Models::Entity
+
+  class EntitySupplementalDocument = Increase::Models::EntitySupplementalDocument
+
+  class Event = Increase::Models::Event
+
+  class EventSubscription = Increase::Models::EventSubscription
+
+  class Export = Increase::Models::Export
+
+  class ExternalAccount = Increase::Models::ExternalAccount
+
+  class File = Increase::Models::File
+
+  class FileLink = Increase::Models::FileLink
+
+  class Group = Increase::Models::Group
+
+  class InboundACHTransfer = Increase::Models::InboundACHTransfer
+
+  class InboundCheckDeposit = Increase::Models::InboundCheckDeposit
+
+  class InboundMailItem = Increase::Models::InboundMailItem
+
+  class InboundRealTimePaymentsTransfer = Increase::Models::InboundRealTimePaymentsTransfer
+
+  class InboundWireDrawdownRequest = Increase::Models::InboundWireDrawdownRequest
+
+  class InboundWireTransfer = Increase::Models::InboundWireTransfer
+
+  class IntrafiAccountEnrollment = Increase::Models::IntrafiAccountEnrollment
+
+  class IntrafiBalance = Increase::Models::IntrafiBalance
+
+  class IntrafiExclusion = Increase::Models::IntrafiExclusion
+
+  class Lockbox = Increase::Models::Lockbox
+
+  class OAuthApplication = Increase::Models::OAuthApplication
+
+  class OAuthConnection = Increase::Models::OAuthConnection
+
+  class OAuthToken = Increase::Models::OAuthToken
+
+  class PendingTransaction = Increase::Models::PendingTransaction
+
+  class PhysicalCard = Increase::Models::PhysicalCard
+
+  class PhysicalCardProfile = Increase::Models::PhysicalCardProfile
+
+  class Program = Increase::Models::Program
+
+  class RealTimeDecision = Increase::Models::RealTimeDecision
+
+  class RealTimePaymentsTransfer = Increase::Models::RealTimePaymentsTransfer
+
+  class RoutingNumberListResponse = Increase::Models::RoutingNumberListResponse
+
+  module Simulations = Increase::Models::Simulations
+
+  class Transaction = Increase::Models::Transaction
+
+  class WireDrawdownRequest = Increase::Models::WireDrawdownRequest
+
+  class WireTransfer = Increase::Models::WireTransfer
+end
