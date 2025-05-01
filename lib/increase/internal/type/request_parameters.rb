@@ -28,7 +28,7 @@ module Increase
             state = {can_retry: true}
             case (dumped = dump(params, state: state))
             in Hash
-              options = Increase::Internal::Util.coerce_hash(dumped[:request_options])
+              options = Increase::Internal::Util.coerce_hash!(dumped[:request_options])
               request_options =
                 case [options, state.fetch(:can_retry)]
                 in [Hash | nil, false]
