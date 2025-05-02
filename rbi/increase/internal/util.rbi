@@ -42,10 +42,6 @@ module Increase
         # @api private
         sig { params(input: T.anything).returns(T.any(T::Hash[T.anything, T.anything], T.anything)) }
         def coerce_hash(input); end
-
-        # @api private
-        sig { params(input: T.anything).returns(T.nilable(T::Hash[T.anything, T.anything])) }
-        def coerce_hash!(input); end
       end
 
       class << self
