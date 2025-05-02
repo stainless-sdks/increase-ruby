@@ -397,7 +397,15 @@ module Increase
         # Create a new instance of a model.
         #
         # @param data [Hash{Symbol=>Object}, self]
-        def initialize(data = {}) = (@data = Increase::Internal::Util.coerce_hash!(data).to_h)
+        def initialize(data = {})
+          case Increase::Internal::Util.coerce_hash(data)
+          in Hash => coerced
+            @data = coerced
+          else
+            message = "Expected a #{Hash} or #{Increase::Internal::Type::BaseModel}, got #{data.inspect}"
+            raise ArgumentError.new(message)
+          end
+        end
 
         class << self
           # @api private

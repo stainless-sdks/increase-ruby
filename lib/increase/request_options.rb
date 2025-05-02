@@ -65,9 +65,10 @@ module Increase
     #   @return [Float, nil]
     optional :timeout, Float
 
-    # @!method initialize(values = {})
-    #   Returns a new instance of RequestOptions.
-    #
-    #   @param values [Hash{Symbol=>Object}]
+    # @!parse
+    #   # @!method initialize(values = {})
+    #   #   Returns a new instance of RequestOptions.
+    #   #
+    #   #   @param values [Hash{Symbol=>Object}]
   end
 end

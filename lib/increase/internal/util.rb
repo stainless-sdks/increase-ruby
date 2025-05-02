@@ -128,22 +128,6 @@ module Increase
             input.respond_to?(:to_h) ? input.to_h : input
           end
         end
-
-        # @api private
-        #
-        # @param input [Object]
-        #
-        # @raise [ArgumentError]
-        # @return [Hash{Object=>Object}, nil]
-        def coerce_hash!(input)
-          case coerce_hash(input)
-          in Hash | nil => coerced
-            coerced
-          else
-            message = "Expected a #{Hash} or #{Increase::Internal::Type::BaseModel}, got #{data.inspect}"
-            raise ArgumentError.new(message)
-          end
-        end
       end
 
       class << self
@@ -509,7 +493,7 @@ module Increase
             y << val.to_s
           else
             y << "Content-Type: application/json\r\n\r\n"
-            y << JSON.generate(val)
+            y << JSON.fast_generate(val)
           end
           y << "\r\n"
         end
@@ -586,9 +570,9 @@ module Increase
           content_type = headers["content-type"]
           case [content_type, body]
           in [Increase::Internal::Util::JSON_CONTENT, Hash | Array | -> { primitive?(_1) }]
-            [headers, JSON.generate(body)]
+            [headers, JSON.fast_generate(body)]
           in [Increase::Internal::Util::JSONL_CONTENT, Enumerable] unless body.is_a?(Increase::Internal::Type::FileInput)
-            [headers, body.lazy.map { JSON.generate(_1) }]
+            [headers, body.lazy.map { JSON.fast_generate(_1) }]
           in [%r{^multipart/form-data}, Hash | Increase::Internal::Type::FileInput]
             boundary, strio = encode_multipart_streaming(body)
             headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}

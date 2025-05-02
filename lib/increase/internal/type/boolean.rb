@@ -46,16 +46,17 @@ module Increase
             value
           end
 
-          # @!method dump(value, state:)
-          #   @api private
-          #
-          #   @param value [Boolean, Object]
-          #
-          #   @param state [Hash{Symbol=>Object}] .
-          #
-          #     @option state [Boolean] :can_retry
-          #
-          #   @return [Boolean, Object]
+          # @!parse
+          #   # @api private
+          #   #
+          #   # @param value [Boolean, Object]
+          #   #
+          #   # @param state [Hash{Symbol=>Object}] .
+          #   #
+          #   #   @option state [Boolean] :can_retry
+          #   #
+          #   # @return [Boolean, Object]
+          #   def dump(value, state:) = super
         end
       end
     end
