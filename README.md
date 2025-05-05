@@ -12,13 +12,9 @@ The REST API documentation can be found on [increase.com](https://increase.com/d
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.15"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 ## Usage
 
@@ -27,7 +23,7 @@ require "bundler/setup"
 require "increase"
 
 increase = Increase::Client.new(
-  api_key: ENV["INCREASE_API_KEY"], # This is the default and can be omitted
+  api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
   environment: "sandbox" # defaults to "production"
 )
 
