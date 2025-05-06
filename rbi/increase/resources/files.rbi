@@ -12,8 +12,7 @@ module Increase
           purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
           description: String,
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::File)
+        ).returns(Increase::Models::File)
       end
       def create(
         # The file contents. This should follow the specifications of
@@ -25,25 +24,40 @@ module Increase
         # The description you choose to give the File.
         description: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a File
-      sig { params(file_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::File) }
+      sig do
+        params(file_id: String, request_options: Increase::RequestOpts).returns(
+          Increase::Models::File
+        )
+      end
       def retrieve(
         # The identifier of the File.
         file_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Files
       sig do
         params(
-          created_at: T.any(Increase::Models::FileListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            T.any(
+              Increase::Models::FileListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          purpose: T.any(Increase::Models::FileListParams::Purpose, Increase::Internal::AnyHash),
+          purpose:
+            T.any(
+              Increase::Models::FileListParams::Purpose,
+              Increase::Internal::AnyHash
+            ),
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Internal::Page[Increase::Models::File])
+        ).returns(Increase::Internal::Page[Increase::Models::File])
       end
       def list(
         created_at: nil,
@@ -59,10 +73,13 @@ module Increase
         limit: nil,
         purpose: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

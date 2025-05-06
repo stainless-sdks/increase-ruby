@@ -40,8 +40,7 @@ module Increase
           created_at: Time,
           entry_set_id: String,
           type: Increase::Models::BookkeepingEntry::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The entry identifier.
@@ -58,34 +57,48 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `bookkeeping_entry`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              account_id: String,
-              amount: Integer,
-              created_at: Time,
-              entry_set_id: String,
-              type: Increase::Models::BookkeepingEntry::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            account_id: String,
+            amount: Integer,
+            created_at: Time,
+            entry_set_id: String,
+            type: Increase::Models::BookkeepingEntry::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::BookkeepingEntry::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::BookkeepingEntry::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::Models::BookkeepingEntry::Type::TaggedSymbol)
+        BOOKKEEPING_ENTRY =
+          T.let(
+            :bookkeeping_entry,
+            Increase::Models::BookkeepingEntry::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

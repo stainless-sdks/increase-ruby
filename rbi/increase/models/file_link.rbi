@@ -48,8 +48,7 @@ module Increase
           idempotency_key: T.nilable(String),
           type: Increase::Models::FileLink::Type::OrSymbol,
           unauthenticated_url: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The File Link identifier.
@@ -73,35 +72,44 @@ module Increase
         # `expires_at` time. This URL is unauthenticated and can be used to download the
         # File without an Increase API key.
         unauthenticated_url:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              created_at: Time,
-              expires_at: Time,
-              file_id: String,
-              idempotency_key: T.nilable(String),
-              type: Increase::Models::FileLink::Type::TaggedSymbol,
-              unauthenticated_url: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            expires_at: Time,
+            file_id: String,
+            idempotency_key: T.nilable(String),
+            type: Increase::Models::FileLink::Type::TaggedSymbol,
+            unauthenticated_url: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
       # `file_link`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::FileLink::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::FileLink::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        FILE_LINK = T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
+        FILE_LINK =
+          T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::FileLink::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::FileLink::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

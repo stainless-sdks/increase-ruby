@@ -18,9 +18,9 @@ module Increase
         params(
           entity_id: String,
           file_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The identifier of the Entity to associate with the supplemental document.
@@ -28,11 +28,20 @@ module Increase
         # The identifier of the File containing the document.
         file_id:,
         request_options: {}
-      ); end
-      sig do
-        override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions})
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            entity_id: String,
+            file_id: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

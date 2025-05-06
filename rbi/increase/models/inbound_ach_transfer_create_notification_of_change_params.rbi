@@ -24,9 +24,9 @@ module Increase
         params(
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The updated account number to send in the notification of change.
@@ -34,18 +34,20 @@ module Increase
         # The updated routing number to send in the notification of change.
         updated_routing_number: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              updated_account_number: String,
-              updated_routing_number: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            updated_account_number: String,
+            updated_routing_number: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

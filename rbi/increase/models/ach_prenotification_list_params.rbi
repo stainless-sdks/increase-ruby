@@ -6,14 +6,21 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      sig { returns(T.nilable(Increase::Models::ACHPrenotificationListParams::CreatedAt)) }
+      sig do
+        returns(
+          T.nilable(Increase::Models::ACHPrenotificationListParams::CreatedAt)
+        )
+      end
       attr_reader :created_at
 
       sig do
         params(
-          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Internal::AnyHash)
-        )
-          .void
+          created_at:
+            T.any(
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :created_at
 
@@ -44,13 +51,17 @@ module Increase
 
       sig do
         params(
-          created_at: T.any(Increase::Models::ACHPrenotificationListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            T.any(
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         created_at: nil,
@@ -65,20 +76,23 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
-              cursor: String,
-              idempotency_key: String,
-              limit: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            created_at:
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -114,7 +128,12 @@ module Increase
         attr_writer :on_or_before
 
         sig do
-          params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
+          params(
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ).returns(T.attached_class)
         end
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -129,9 +148,16 @@ module Increase
           # Return results on or before this
           # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           on_or_before: nil
-        ); end
-        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

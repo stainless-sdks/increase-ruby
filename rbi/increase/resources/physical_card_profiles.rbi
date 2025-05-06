@@ -12,8 +12,7 @@ module Increase
           front_image_file_id: String,
           program_id: String,
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::PhysicalCardProfile)
+        ).returns(Increase::Models::PhysicalCardProfile)
       end
       def create(
         # The identifier of the File containing the physical card's carrier image.
@@ -27,27 +26,38 @@ module Increase
         # The identifier for the Program that this Physical Card Profile falls under.
         program_id:,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Card Profile
       sig do
-        params(physical_card_profile_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::PhysicalCardProfile)
+        params(
+          physical_card_profile_id: String,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::PhysicalCardProfile)
       end
       def retrieve(
         # The identifier of the Card Profile.
         physical_card_profile_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Physical Card Profiles
       sig do
         params(
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::PhysicalCardProfileListParams::Status, Increase::Internal::AnyHash),
+          status:
+            T.any(
+              Increase::Models::PhysicalCardProfileListParams::Status,
+              Increase::Internal::AnyHash
+            ),
           request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::PhysicalCardProfile]
         )
-          .returns(Increase::Internal::Page[Increase::Models::PhysicalCardProfile])
       end
       def list(
         # Return the page of entries after this one.
@@ -62,17 +72,23 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Archive a Physical Card Profile
       sig do
-        params(physical_card_profile_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::PhysicalCardProfile)
+        params(
+          physical_card_profile_id: String,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::PhysicalCardProfile)
       end
       def archive(
         # The identifier of the Physical Card Profile to archive.
         physical_card_profile_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Clone a Physical Card Profile
       sig do
         params(
@@ -81,10 +97,13 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::AnyHash),
+          front_text:
+            T.any(
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+              Increase::Internal::AnyHash
+            ),
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::PhysicalCardProfile)
+        ).returns(Increase::Models::PhysicalCardProfile)
       end
       def clone_(
         # The identifier of the Physical Card Profile to clone.
@@ -101,10 +120,13 @@ module Increase
         # [support@increase.com](mailto:support@increase.com) for more information.
         front_text: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end
