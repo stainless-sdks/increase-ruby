@@ -55,14 +55,20 @@ module Increase
       attr_writer :company_name
 
       # Whether the Prenotification is for a future debit or credit.
-      sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
+          )
+        )
+      end
       attr_reader :credit_debit_indicator
 
       sig do
         params(
-          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
-        )
-          .void
+          credit_debit_indicator:
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
+        ).void
       end
       attr_writer :credit_debit_indicator
 
@@ -90,14 +96,20 @@ module Increase
       attr_writer :individual_name
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
-      sig { returns(T.nilable(Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+          )
+        )
+      end
       attr_reader :standard_entry_class_code
 
       sig do
         params(
-          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
-        )
-          .void
+          standard_entry_class_code:
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+        ).void
       end
       attr_writer :standard_entry_class_code
 
@@ -111,14 +123,16 @@ module Increase
           company_discretionary_data: String,
           company_entry_description: String,
           company_name: String,
-          credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+          credit_debit_indicator:
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
           effective_date: Date,
           individual_id: String,
           individual_name: String,
-          standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          standard_entry_class_code:
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Increase identifier for the account that will send the transfer.
@@ -151,51 +165,70 @@ module Increase
         # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
         standard_entry_class_code: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_id: String,
-              account_number: String,
-              routing_number: String,
-              addendum: String,
-              company_descriptive_date: String,
-              company_discretionary_data: String,
-              company_entry_description: String,
-              company_name: String,
-              credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
-              effective_date: Date,
-              individual_id: String,
-              individual_name: String,
-              standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_id: String,
+            account_number: String,
+            routing_number: String,
+            addendum: String,
+            company_descriptive_date: String,
+            company_discretionary_data: String,
+            company_entry_description: String,
+            company_name: String,
+            credit_debit_indicator:
+              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+            effective_date: Date,
+            individual_id: String,
+            individual_name: String,
+            standard_entry_class_code:
+              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # Whether the Prenotification is for a future debit or credit.
       module CreditDebitIndicator
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Prenotification is for an anticipated credit.
         CREDIT =
-          T.let(:credit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
+          T.let(
+            :credit,
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
+          )
 
         # The Prenotification is for an anticipated debit.
         DEBIT =
-          T.let(:debit, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol)
+          T.let(
+            :debit,
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
+          )
 
         sig do
-          override
-            .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
 
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
@@ -203,7 +236,12 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Corporate Credit and Debit (CCD).
@@ -235,10 +273,14 @@ module Increase
           )
 
         sig do
-          override
-            .returns(T::Array[Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

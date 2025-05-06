@@ -36,14 +36,21 @@ module Increase
 
       # Text printed on the front of the card. Reach out to
       # [support@increase.com](mailto:support@increase.com) for more information.
-      sig { returns(T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)) }
+      sig do
+        returns(
+          T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
+        )
+      end
       attr_reader :front_text
 
       sig do
         params(
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::AnyHash)
-        )
-          .void
+          front_text:
+            T.any(
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :front_text
 
@@ -53,10 +60,14 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          front_text: T.any(Increase::Models::PhysicalCardProfileCloneParams::FrontText, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          front_text:
+            T.any(
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The identifier of the File containing the physical card's carrier image.
@@ -71,21 +82,24 @@ module Increase
         # [support@increase.com](mailto:support@increase.com) for more information.
         front_text: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              carrier_image_file_id: String,
-              contact_phone: String,
-              description: String,
-              front_image_file_id: String,
-              front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            carrier_image_file_id: String,
+            contact_phone: String,
+            description: String,
+            front_image_file_id: String,
+            front_text:
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class FrontText < Increase::Internal::Type::BaseModel
         # The first line of text on the front of the card.
@@ -111,9 +125,12 @@ module Increase
           # the first line slightly higher and prints the second line in the spot where the
           # first line would have otherwise been printed.
           line2: nil
-        ); end
-        sig { override.returns({line1: String, line2: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ line1: String, line2: String }) }
+        def to_hash
+        end
       end
     end
   end

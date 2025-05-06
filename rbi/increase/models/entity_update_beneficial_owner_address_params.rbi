@@ -8,14 +8,21 @@ module Increase
 
       # The individual's physical address. Mail receiving locations like PO Boxes and
       # PMB's are disallowed.
-      sig { returns(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address) }
+      sig do
+        returns(
+          Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address
+        )
+      end
       attr_reader :address
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Internal::AnyHash)
-        )
-          .void
+          address:
+            T.any(
+              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :address
 
@@ -26,11 +33,15 @@ module Increase
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Internal::AnyHash),
+          address:
+            T.any(
+              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+              Increase::Internal::AnyHash
+            ),
           beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The individual's physical address. Mail receiving locations like PO Boxes and
@@ -40,18 +51,21 @@ module Increase
         # corporation.
         beneficial_owner_id:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-              beneficial_owner_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            address:
+              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+            beneficial_owner_id: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Address < Increase::Internal::Type::BaseModel
         # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
@@ -95,8 +109,14 @@ module Increase
         # The individual's physical address. Mail receiving locations like PO Boxes and
         # PMB's are disallowed.
         sig do
-          params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
-            .returns(T.attached_class)
+          params(
+            country: String,
+            line1: String,
+            city: String,
+            line2: String,
+            state: String,
+            zip: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
@@ -113,7 +133,9 @@ module Increase
           state: nil,
           # The ZIP or postal code of the address. Required in certain countries.
           zip: nil
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -126,7 +148,8 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end
