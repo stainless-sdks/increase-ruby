@@ -7,8 +7,15 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The reason for the notification of change.
-        sig { returns(Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol) }
+        sig do
+          returns(
+            Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol
+          )
+        end
         attr_accessor :change_code
 
         # The corrected data for the notification of change (e.g., a new routing number).
@@ -17,11 +24,12 @@ module Increase
 
         sig do
           params(
-            change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
+            change_code:
+              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The reason for the notification of change.
@@ -29,25 +37,33 @@ module Increase
           # The corrected data for the notification of change (e.g., a new routing number).
           corrected_data:,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                change_code: Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
-                corrected_data: String,
-                request_options: Increase::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              change_code:
+                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
+              corrected_data: String,
+              request_options: Increase::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The reason for the notification of change.
         module ChangeCode
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The account number was incorrect.
@@ -184,12 +200,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end
