@@ -25,8 +25,7 @@ module Increase
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
             request_options: Increase::RequestOpts
-          )
-            .returns(Increase::Models::InboundWireTransfer)
+          ).returns(Increase::Models::InboundWireTransfer)
         end
         def create(
           # The identifier of the Account Number the inbound Wire Transfer is for.
@@ -79,10 +78,13 @@ module Increase
           # value here.
           sender_reference: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

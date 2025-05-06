@@ -5,25 +5,34 @@ module Increase
     class InboundCheckDeposits
       # Retrieve an Inbound Check Deposit
       sig do
-        params(inbound_check_deposit_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::InboundCheckDeposit)
+        params(
+          inbound_check_deposit_id: String,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundCheckDeposit)
       end
       def retrieve(
         # The identifier of the Inbound Check Deposit to get details for.
         inbound_check_deposit_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Inbound Check Deposits
       sig do
         params(
           account_id: String,
           check_transfer_id: String,
-          created_at: T.any(Increase::Models::InboundCheckDepositListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            T.any(
+              Increase::Models::InboundCheckDepositListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::InboundCheckDeposit]
         )
-          .returns(Increase::Internal::Page[Increase::Models::InboundCheckDeposit])
       end
       def list(
         # Filter Inbound Check Deposits to those belonging to the specified Account.
@@ -38,25 +47,31 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Decline an Inbound Check Deposit
       sig do
-        params(inbound_check_deposit_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::InboundCheckDeposit)
+        params(
+          inbound_check_deposit_id: String,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundCheckDeposit)
       end
       def decline(
         # The identifier of the Inbound Check Deposit to decline.
         inbound_check_deposit_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Return an Inbound Check Deposit
       sig do
         params(
           inbound_check_deposit_id: String,
-          reason: Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
+          reason:
+            Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::InboundCheckDeposit)
+        ).returns(Increase::Models::InboundCheckDeposit)
       end
       def return_(
         # The identifier of the Inbound Check Deposit to return.
@@ -64,10 +79,13 @@ module Increase
         # The reason to return the Inbound Check Deposit.
         reason:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

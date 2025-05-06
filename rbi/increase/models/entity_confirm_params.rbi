@@ -17,18 +17,25 @@ module Increase
       sig do
         params(
           confirmed_at: Time,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # When your user confirmed the Entity's details. If not provided, the current time
         # will be used.
         confirmed_at: nil,
         request_options: {}
-      ); end
-      sig { override.returns({confirmed_at: Time, request_options: Increase::RequestOptions}) }
-      def to_hash; end
+      )
+      end
+
+      sig do
+        override.returns(
+          { confirmed_at: Time, request_options: Increase::RequestOptions }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end
