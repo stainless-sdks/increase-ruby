@@ -11,7 +11,7 @@ require "rubocop/rake_task"
 tapioca = "sorbet/tapioca"
 ignore_file = ".ignore"
 
-CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/ doc/], *FileList["*.gem"], ignore_file)
+CLEAN.push(*%w[.idea/ .ruby-lsp/ .yardoc/ doc/ Gemfile.lock], *FileList["*.gem"], ignore_file)
 
 CLOBBER.push(*%w[sorbet/rbi/annotations/ sorbet/rbi/gems/], tapioca)
 
@@ -58,13 +58,12 @@ end
 desc("Format `*.rbs`")
 multitask(:"format:syntax_tree") do
   find = %w[find ./sig -type f -name *.rbs -print0]
-  inplace = /darwin|bsd/ =~ RUBY_PLATFORM ? ["-i", ""] : %w[-i]
+  inplace = /darwin|bsd/ =~ RUBY_PLATFORM ? %w[-i''] : %w[-i]
   uuid = SecureRandom.uuid
 
   # `syntax_tree` has trouble with `rbs`'s class & module aliases
 
-  sed_bin = /darwin/ =~ RUBY_PLATFORM ? "/usr/bin/sed" : "sed"
-  sed = xargs + [sed_bin, "-E", *inplace, "-e"]
+  sed = xargs + %w[sed -E] + inplace + %w[-e]
   # annotate unprocessable aliases with a unique comment
   pre = sed + ["s/(class|module) ([^ ]+) = (.+$)/# \\1 #{uuid}\\n\\2: \\3/", "--"]
   fmt = xargs + %w[stree write --plugin=rbs --]
