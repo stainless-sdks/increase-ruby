@@ -20,12 +20,19 @@ module Increase
       sig { params(card_id: String).void }
       attr_writer :card_id
 
-      sig { returns(T.nilable(Increase::Models::CardPaymentListParams::CreatedAt)) }
+      sig do
+        returns(T.nilable(Increase::Models::CardPaymentListParams::CreatedAt))
+      end
       attr_reader :created_at
 
       sig do
-        params(created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Internal::AnyHash))
-          .void
+        params(
+          created_at:
+            T.any(
+              Increase::Models::CardPaymentListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :created_at
 
@@ -48,12 +55,16 @@ module Increase
         params(
           account_id: String,
           card_id: String,
-          created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            T.any(
+              Increase::Models::CardPaymentListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Filter Card Payments to ones belonging to the specified Account.
@@ -67,21 +78,23 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_id: String,
-              card_id: String,
-              created_at: Increase::Models::CardPaymentListParams::CreatedAt,
-              cursor: String,
-              limit: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_id: String,
+            card_id: String,
+            created_at: Increase::Models::CardPaymentListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -117,7 +130,12 @@ module Increase
         attr_writer :on_or_before
 
         sig do
-          params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
+          params(
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ).returns(T.attached_class)
         end
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -132,9 +150,16 @@ module Increase
           # Return results on or before this
           # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           on_or_before: nil
-        ); end
-        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

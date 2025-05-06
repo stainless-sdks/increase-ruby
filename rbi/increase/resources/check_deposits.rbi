@@ -12,8 +12,7 @@ module Increase
           front_image_file_id: String,
           description: String,
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::CheckDeposit)
+        ).returns(Increase::Models::CheckDeposit)
       end
       def create(
         # The identifier for the Account to deposit the check in.
@@ -27,28 +26,37 @@ module Increase
         # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Check Deposit
       sig do
-        params(check_deposit_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::CheckDeposit)
+        params(
+          check_deposit_id: String,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::CheckDeposit)
       end
       def retrieve(
         # The identifier of the Check Deposit to retrieve.
         check_deposit_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Check Deposits
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::CheckDepositListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            T.any(
+              Increase::Models::CheckDepositListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Internal::Page[Increase::Models::CheckDeposit])
+        ).returns(Increase::Internal::Page[Increase::Models::CheckDeposit])
       end
       def list(
         # Filter Check Deposits to those belonging to the specified Account.
@@ -65,10 +73,13 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

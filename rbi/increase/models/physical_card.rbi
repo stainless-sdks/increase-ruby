@@ -15,7 +15,15 @@ module Increase
       sig { returns(Increase::Models::PhysicalCard::Cardholder) }
       attr_reader :cardholder
 
-      sig { params(cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Internal::AnyHash)).void }
+      sig do
+        params(
+          cardholder:
+            T.any(
+              Increase::Models::PhysicalCard::Cardholder,
+              Increase::Internal::AnyHash
+            )
+        ).void
+      end
       attr_writer :cardholder
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -37,7 +45,15 @@ module Increase
       sig { returns(Increase::Models::PhysicalCard::Shipment) }
       attr_reader :shipment
 
-      sig { params(shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Internal::AnyHash)).void }
+      sig do
+        params(
+          shipment:
+            T.any(
+              Increase::Models::PhysicalCard::Shipment,
+              Increase::Internal::AnyHash
+            )
+        ).void
+      end
       attr_writer :shipment
 
       # The status of the Physical Card.
@@ -58,15 +74,22 @@ module Increase
         params(
           id: String,
           card_id: String,
-          cardholder: T.any(Increase::Models::PhysicalCard::Cardholder, Increase::Internal::AnyHash),
+          cardholder:
+            T.any(
+              Increase::Models::PhysicalCard::Cardholder,
+              Increase::Internal::AnyHash
+            ),
           created_at: Time,
           idempotency_key: T.nilable(String),
           physical_card_profile_id: T.nilable(String),
-          shipment: T.any(Increase::Models::PhysicalCard::Shipment, Increase::Internal::AnyHash),
+          shipment:
+            T.any(
+              Increase::Models::PhysicalCard::Shipment,
+              Increase::Internal::AnyHash
+            ),
           status: Increase::Models::PhysicalCard::Status::OrSymbol,
           type: Increase::Models::PhysicalCard::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The physical card identifier.
@@ -91,24 +114,26 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `physical_card`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              card_id: String,
-              cardholder: Increase::Models::PhysicalCard::Cardholder,
-              created_at: Time,
-              idempotency_key: T.nilable(String),
-              physical_card_profile_id: T.nilable(String),
-              shipment: Increase::Models::PhysicalCard::Shipment,
-              status: Increase::Models::PhysicalCard::Status::TaggedSymbol,
-              type: Increase::Models::PhysicalCard::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            card_id: String,
+            cardholder: Increase::Models::PhysicalCard::Cardholder,
+            created_at: Time,
+            idempotency_key: T.nilable(String),
+            physical_card_profile_id: T.nilable(String),
+            shipment: Increase::Models::PhysicalCard::Shipment,
+            status: Increase::Models::PhysicalCard::Status::TaggedSymbol,
+            type: Increase::Models::PhysicalCard::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Cardholder < Increase::Internal::Type::BaseModel
         # The cardholder's first name.
@@ -120,15 +145,22 @@ module Increase
         attr_accessor :last_name
 
         # Details about the cardholder, as it appears on the printed card.
-        sig { params(first_name: String, last_name: String).returns(T.attached_class) }
+        sig do
+          params(first_name: String, last_name: String).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The cardholder's first name.
           first_name:,
           # The cardholder's last name.
           last_name:
-        ); end
-        sig { override.returns({first_name: String, last_name: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ first_name: String, last_name: String }) }
+        def to_hash
+        end
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
@@ -137,39 +169,69 @@ module Increase
         attr_reader :address
 
         sig do
-          params(address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::AnyHash)).void
+          params(
+            address:
+              T.any(
+                Increase::Models::PhysicalCard::Shipment::Address,
+                Increase::Internal::AnyHash
+              )
+          ).void
         end
         attr_writer :address
 
         # The shipping method.
-        sig { returns(Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol) }
+        sig do
+          returns(
+            Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol
+          )
+        end
         attr_accessor :method_
 
         # The status of this shipment.
-        sig { returns(Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol) }
+        sig do
+          returns(
+            Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+          )
+        end
         attr_accessor :status
 
         # Tracking details for the shipment.
-        sig { returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)) }
+        sig do
+          returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
+        end
         attr_reader :tracking
 
         sig do
           params(
-            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Internal::AnyHash))
-          )
-            .void
+            tracking:
+              T.nilable(
+                T.any(
+                  Increase::Models::PhysicalCard::Shipment::Tracking,
+                  Increase::Internal::AnyHash
+                )
+              )
+          ).void
         end
         attr_writer :tracking
 
         # The details used to ship this physical card.
         sig do
           params(
-            address: T.any(Increase::Models::PhysicalCard::Shipment::Address, Increase::Internal::AnyHash),
+            address:
+              T.any(
+                Increase::Models::PhysicalCard::Shipment::Address,
+                Increase::Internal::AnyHash
+              ),
             method_: Increase::Models::PhysicalCard::Shipment::Method::OrSymbol,
             status: Increase::Models::PhysicalCard::Shipment::Status::OrSymbol,
-            tracking: T.nilable(T.any(Increase::Models::PhysicalCard::Shipment::Tracking, Increase::Internal::AnyHash))
-          )
-            .returns(T.attached_class)
+            tracking:
+              T.nilable(
+                T.any(
+                  Increase::Models::PhysicalCard::Shipment::Tracking,
+                  Increase::Internal::AnyHash
+                )
+              )
+          ).returns(T.attached_class)
         end
         def self.new(
           # The location to where the card's packing label is addressed.
@@ -180,19 +242,24 @@ module Increase
           status:,
           # Tracking details for the shipment.
           tracking:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                address: Increase::Models::PhysicalCard::Shipment::Address,
-                method_: Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol,
-                status: Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol,
-                tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              address: Increase::Models::PhysicalCard::Shipment::Address,
+              method_:
+                Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol,
+              status:
+                Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol,
+              tracking:
+                T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
+            }
+          )
+        end
+        def to_hash
+        end
 
         class Address < Increase::Internal::Type::BaseModel
           # The city of the shipping address.
@@ -233,8 +300,7 @@ module Increase
               name: String,
               postal_code: String,
               state: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The city of the shipping address.
@@ -251,75 +317,136 @@ module Increase
             postal_code:,
             # The US state of the shipping address.
             state:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  city: String,
-                  line1: String,
-                  line2: T.nilable(String),
-                  line3: T.nilable(String),
-                  name: String,
-                  postal_code: String,
-                  state: String
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                city: String,
+                line1: String,
+                line2: T.nilable(String),
+                line3: T.nilable(String),
+                name: String,
+                postal_code: String,
+                state: String
+              }
+            )
+          end
+          def to_hash
+          end
         end
 
         # The shipping method.
         module Method
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Method) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Method)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # USPS Post with tracking.
-          USPS = T.let(:usps, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
+          USPS =
+            T.let(
+              :usps,
+              Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol
+            )
 
           # FedEx Priority Overnight, no signature.
           FEDEX_PRIORITY_OVERNIGHT =
-            T.let(:fedex_priority_overnight, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
+            T.let(
+              :fedex_priority_overnight,
+              Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol
+            )
 
           # FedEx 2-day.
-          FEDEX_2_DAY = T.let(:fedex_2_day, Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol)
+          FEDEX_2_DAY =
+            T.let(
+              :fedex_2_day,
+              Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Increase::Models::PhysicalCard::Shipment::Method::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         # The status of this shipment.
         module Status
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Status) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Status)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The physical card has not yet been shipped.
-          PENDING = T.let(:pending, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          PENDING =
+            T.let(
+              :pending,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
           # The physical card shipment was canceled prior to submission.
-          CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          CANCELED =
+            T.let(
+              :canceled,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
           # The physical card shipment has been submitted to the card fulfillment provider.
-          SUBMITTED = T.let(:submitted, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          SUBMITTED =
+            T.let(
+              :submitted,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
           # The physical card shipment has been acknowledged by the card fulfillment provider and will be processed in their next batch.
-          ACKNOWLEDGED = T.let(:acknowledged, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          ACKNOWLEDGED =
+            T.let(
+              :acknowledged,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
           # The physical card shipment was rejected by the card printer due to an error.
-          REJECTED = T.let(:rejected, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          REJECTED =
+            T.let(
+              :rejected,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
           # The physical card has been shipped.
-          SHIPPED = T.let(:shipped, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          SHIPPED =
+            T.let(
+              :shipped,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
           # The physical card shipment was returned to the sender and destroyed by the production facility.
-          RETURNED = T.let(:returned, Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol)
+          RETURNED =
+            T.let(
+              :returned,
+              Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Increase::Models::PhysicalCard::Shipment::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Tracking < Increase::Internal::Type::BaseModel
@@ -342,7 +469,13 @@ module Increase
           attr_accessor :shipped_at
 
           # Tracking updates relating to the physical card's delivery.
-          sig { returns(T::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]) }
+          sig do
+            returns(
+              T::Array[
+                Increase::Models::PhysicalCard::Shipment::Tracking::Update
+              ]
+            )
+          end
           attr_accessor :updates
 
           # Tracking details for the shipment.
@@ -352,9 +485,14 @@ module Increase
               return_number: T.nilable(String),
               return_reason: T.nilable(String),
               shipped_at: Time,
-              updates: T::Array[T.any(Increase::Models::PhysicalCard::Shipment::Tracking::Update, Increase::Internal::AnyHash)]
-            )
-              .returns(T.attached_class)
+              updates:
+                T::Array[
+                  T.any(
+                    Increase::Models::PhysicalCard::Shipment::Tracking::Update,
+                    Increase::Internal::AnyHash
+                  )
+                ]
+            ).returns(T.attached_class)
           end
           def self.new(
             # The tracking number.
@@ -369,20 +507,25 @@ module Increase
             shipped_at:,
             # Tracking updates relating to the physical card's delivery.
             updates:
-          ); end
-          sig do
-            override
-              .returns(
-                {
-                  number: String,
-                  return_number: T.nilable(String),
-                  return_reason: T.nilable(String),
-                  shipped_at: Time,
-                  updates: T::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update]
-                }
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                number: String,
+                return_number: T.nilable(String),
+                return_reason: T.nilable(String),
+                shipped_at: Time,
+                updates:
+                  T::Array[
+                    Increase::Models::PhysicalCard::Shipment::Tracking::Update
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Update < Increase::Internal::Type::BaseModel
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
@@ -391,7 +534,11 @@ module Increase
             attr_accessor :carrier_estimated_delivery_at
 
             # The type of tracking event.
-            sig { returns(Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol) }
+            sig do
+              returns(
+                Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol
+              )
+            end
             attr_accessor :category
 
             # The city where the event took place.
@@ -414,13 +561,13 @@ module Increase
             sig do
               params(
                 carrier_estimated_delivery_at: T.nilable(Time),
-                category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::OrSymbol,
+                category:
+                  Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::OrSymbol,
                 city: T.nilable(String),
                 created_at: Time,
                 postal_code: T.nilable(String),
                 state: T.nilable(String)
-              )
-                .returns(T.attached_class)
+              ).returns(T.attached_class)
             end
             def self.new(
               # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
@@ -437,33 +584,44 @@ module Increase
               postal_code:,
               # The state where the event took place.
               state:
-            ); end
-            sig do
-              override
-                .returns(
-                  {
-                    carrier_estimated_delivery_at: T.nilable(Time),
-                    category: Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol,
-                    city: T.nilable(String),
-                    created_at: Time,
-                    postal_code: T.nilable(String),
-                    state: T.nilable(String)
-                  }
-                )
+            )
             end
-            def to_hash; end
+
+            sig do
+              override.returns(
+                {
+                  carrier_estimated_delivery_at: T.nilable(Time),
+                  category:
+                    Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol,
+                  city: T.nilable(String),
+                  created_at: Time,
+                  postal_code: T.nilable(String),
+                  state: T.nilable(String)
+                }
+              )
+            end
+            def to_hash
+            end
 
             # The type of tracking event.
             module Category
               extend Increase::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category) }
+                T.type_alias do
+                  T.all(
+                    Symbol,
+                    Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category
+                  )
+                end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               # The physical card is in transit.
               IN_TRANSIT =
-                T.let(:in_transit, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol)
+                T.let(
+                  :in_transit,
+                  Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol
+                )
 
               # The physical card has been processed for delivery.
               PROCESSED_FOR_DELIVERY =
@@ -474,7 +632,10 @@ module Increase
 
               # The physical card has been delivered.
               DELIVERED =
-                T.let(:delivered, Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol)
+                T.let(
+                  :delivered,
+                  Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol
+                )
 
               # Delivery failed and the physical card was returned to sender.
               RETURNED_TO_SENDER =
@@ -484,10 +645,14 @@ module Increase
                 )
 
               sig do
-                override
-                  .returns(T::Array[Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol])
+                override.returns(
+                  T::Array[
+                    Increase::Models::PhysicalCard::Shipment::Tracking::Update::Category::TaggedSymbol
+                  ]
+                )
               end
-              def self.values; end
+              def self.values
+              end
             end
           end
         end
@@ -497,20 +662,29 @@ module Increase
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The physical card is active.
-        ACTIVE = T.let(:active, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+        ACTIVE =
+          T.let(:active, Increase::Models::PhysicalCard::Status::TaggedSymbol)
 
         # The physical card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+        DISABLED =
+          T.let(:disabled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
 
         # The physical card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
+        CANCELED =
+          T.let(:canceled, Increase::Models::PhysicalCard::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::PhysicalCard::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -518,13 +692,23 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::PhysicalCard::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PHYSICAL_CARD = T.let(:physical_card, Increase::Models::PhysicalCard::Type::TaggedSymbol)
+        PHYSICAL_CARD =
+          T.let(
+            :physical_card,
+            Increase::Models::PhysicalCard::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::PhysicalCard::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end
