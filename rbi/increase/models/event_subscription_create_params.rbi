@@ -20,14 +20,20 @@ module Increase
 
       # If specified, this subscription will only receive webhooks for Events with the
       # specified `category`.
-      sig { returns(T.nilable(Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol
+          )
+        )
+      end
       attr_reader :selected_event_category
 
       sig do
         params(
-          selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol
-        )
-          .void
+          selected_event_category:
+            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol
+        ).void
       end
       attr_writer :selected_event_category
 
@@ -43,11 +49,12 @@ module Increase
         params(
           url: String,
           oauth_connection_id: String,
-          selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+          selected_event_category:
+            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The URL you'd like us to send webhooks to.
@@ -62,20 +69,23 @@ module Increase
         # string will be used as default.
         shared_secret: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              url: String,
-              oauth_connection_id: String,
-              selected_event_category: Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
-              shared_secret: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            url: String,
+            oauth_connection_id: String,
+            selected_event_category:
+              Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+            shared_secret: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       # If specified, this subscription will only receive webhooks for Events with the
       # specified `category`.
@@ -83,7 +93,12 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Occurs whenever an Account is created.
@@ -689,10 +704,14 @@ module Increase
           )
 
         sig do
-          override
-            .returns(T::Array[Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol])
+          override.returns(
+            T::Array[
+              Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
+            ]
+          )
         end
-        def self.values; end
+        def self.values
+        end
       end
     end
   end

@@ -36,9 +36,9 @@ module Increase
           back_image_file_id: String,
           front_image_file_id: String,
           description: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The identifier for the Account to deposit the check in.
@@ -52,21 +52,23 @@ module Increase
         # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_id: String,
-              amount: Integer,
-              back_image_file_id: String,
-              front_image_file_id: String,
-              description: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_id: String,
+            amount: Integer,
+            back_image_file_id: String,
+            front_image_file_id: String,
+            description: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

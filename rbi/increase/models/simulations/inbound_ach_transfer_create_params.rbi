@@ -77,16 +77,18 @@ module Increase
         # The standard entry class code for the transfer.
         sig do
           returns(
-            T.nilable(Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
+            T.nilable(
+              Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+            )
           )
         end
         attr_reader :standard_entry_class_code
 
         sig do
           params(
-            standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
-          )
-            .void
+            standard_entry_class_code:
+              Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+          ).void
         end
         attr_writer :standard_entry_class_code
 
@@ -102,10 +104,11 @@ module Increase
             receiver_id_number: String,
             receiver_name: String,
             resolve_at: Time,
-            standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            standard_entry_class_code:
+              Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Account Number the inbound ACH Transfer is for.
@@ -134,34 +137,42 @@ module Increase
           # The standard entry class code for the transfer.
           standard_entry_class_code: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                account_number_id: String,
-                amount: Integer,
-                company_descriptive_date: String,
-                company_discretionary_data: String,
-                company_entry_description: String,
-                company_id: String,
-                company_name: String,
-                receiver_id_number: String,
-                receiver_name: String,
-                resolve_at: Time,
-                standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-                request_options: Increase::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              account_number_id: String,
+              amount: Integer,
+              company_descriptive_date: String,
+              company_discretionary_data: String,
+              company_entry_description: String,
+              company_id: String,
+              company_name: String,
+              receiver_id_number: String,
+              receiver_name: String,
+              resolve_at: Time,
+              standard_entry_class_code:
+                Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
+              request_options: Increase::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The standard entry class code for the transfer.
         module StandardEntryClassCode
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Corporate Credit and Debit (CCD).
@@ -277,12 +288,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end
