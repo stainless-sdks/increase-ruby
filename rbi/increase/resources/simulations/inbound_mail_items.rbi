@@ -12,8 +12,7 @@ module Increase
             lockbox_id: String,
             contents_file_id: String,
             request_options: Increase::RequestOpts
-          )
-            .returns(Increase::Models::InboundMailItem)
+          ).returns(Increase::Models::InboundMailItem)
         end
         def create(
           # The amount of the check to be simulated, in cents.
@@ -24,10 +23,13 @@ module Increase
           # will be used.
           contents_file_id: nil,
           request_options: {}
-        ); end
+        )
+        end
+
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:); end
+        def self.new(client:)
+        end
       end
     end
   end

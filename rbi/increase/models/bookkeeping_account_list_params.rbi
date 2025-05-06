@@ -36,9 +36,9 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Return the page of entries after this one.
@@ -52,19 +52,21 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              cursor: String,
-              idempotency_key: String,
-              limit: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

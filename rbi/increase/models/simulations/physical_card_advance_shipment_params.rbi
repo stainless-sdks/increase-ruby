@@ -8,38 +8,51 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         # The shipment status to move the Physical Card to.
-        sig { returns(Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol) }
+        sig do
+          returns(
+            Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol
+          )
+        end
         attr_accessor :shipment_status
 
         sig do
           params(
-            shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            shipment_status:
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The shipment status to move the Physical Card to.
           shipment_status:,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-                request_options: Increase::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              shipment_status:
+                Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
+              request_options: Increase::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The shipment status to move the Physical Card to.
         module ShipmentStatus
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The physical card has not yet been shipped.
@@ -92,12 +105,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

@@ -8,14 +8,21 @@ module Increase
       attr_accessor :id
 
       # If your transfer is accepted, this will contain details of the acceptance.
-      sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance)) }
+      sig do
+        returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance))
+      end
       attr_reader :acceptance
 
       sig do
         params(
-          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Internal::AnyHash))
-        )
-          .void
+          acceptance:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::Acceptance,
+                Increase::Internal::AnyHash
+              )
+            )
+        ).void
       end
       attr_writer :acceptance
 
@@ -33,9 +40,14 @@ module Increase
 
       sig do
         params(
-          addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Internal::AnyHash))
-        )
-          .void
+          addenda:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::Addenda,
+                Increase::Internal::AnyHash
+              )
+            )
+        ).void
       end
       attr_writer :addenda
 
@@ -58,14 +70,21 @@ module Increase
 
       sig do
         params(
-          decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Internal::AnyHash))
-        )
-          .void
+          decline:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::Decline,
+                Increase::Internal::AnyHash
+              )
+            )
+        ).void
       end
       attr_writer :decline
 
       # The direction of the transfer.
-      sig { returns(Increase::Models::InboundACHTransfer::Direction::TaggedSymbol) }
+      sig do
+        returns(Increase::Models::InboundACHTransfer::Direction::TaggedSymbol)
+      end
       attr_accessor :direction
 
       # The effective date of the transfer. This is sent by the sending bank and is a
@@ -74,32 +93,54 @@ module Increase
       attr_accessor :effective_date
 
       # The settlement schedule the transfer is expected to follow.
-      sig { returns(Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol) }
+      sig do
+        returns(
+          Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol
+        )
+      end
       attr_accessor :expected_settlement_schedule
 
       # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
       # contain fields pertaining to the International ACH Transaction.
-      sig { returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)) }
+      sig do
+        returns(
+          T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)
+        )
+      end
       attr_reader :international_addenda
 
       sig do
         params(
-          international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Internal::AnyHash))
-        )
-          .void
+          international_addenda:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::InternationalAddenda,
+                Increase::Internal::AnyHash
+              )
+            )
+        ).void
       end
       attr_writer :international_addenda
 
       # If you initiate a notification of change in response to the transfer, this will
       # contain its details.
-      sig { returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)) }
+      sig do
+        returns(
+          T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)
+        )
+      end
       attr_reader :notification_of_change
 
       sig do
         params(
-          notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Internal::AnyHash))
-        )
-          .void
+          notification_of_change:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::NotificationOfChange,
+                Increase::Internal::AnyHash
+              )
+            )
+        ).void
       end
       attr_writer :notification_of_change
 
@@ -137,11 +178,17 @@ module Increase
       attr_accessor :receiver_name
 
       # The Standard Entry Class (SEC) code of the transfer.
-      sig { returns(Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol) }
+      sig do
+        returns(
+          Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+        )
+      end
       attr_accessor :standard_entry_class_code
 
       # The status of the transfer.
-      sig { returns(Increase::Models::InboundACHTransfer::Status::TaggedSymbol) }
+      sig do
+        returns(Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
+      end
       attr_accessor :status
 
       # A 15 digit number set by the sending bank and transmitted to the receiving bank.
@@ -152,14 +199,21 @@ module Increase
       attr_accessor :trace_number
 
       # If your transfer is returned, this will contain details of the return.
-      sig { returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn)) }
+      sig do
+        returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn))
+      end
       attr_reader :transfer_return
 
       sig do
         params(
-          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Internal::AnyHash))
-        )
-          .void
+          transfer_return:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::TransferReturn,
+                Increase::Internal::AnyHash
+              )
+            )
+        ).void
       end
       attr_writer :transfer_return
 
@@ -173,19 +227,50 @@ module Increase
       sig do
         params(
           id: String,
-          acceptance: T.nilable(T.any(Increase::Models::InboundACHTransfer::Acceptance, Increase::Internal::AnyHash)),
+          acceptance:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::Acceptance,
+                Increase::Internal::AnyHash
+              )
+            ),
           account_id: String,
           account_number_id: String,
-          addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda, Increase::Internal::AnyHash)),
+          addenda:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::Addenda,
+                Increase::Internal::AnyHash
+              )
+            ),
           amount: Integer,
           automatically_resolves_at: Time,
           created_at: Time,
-          decline: T.nilable(T.any(Increase::Models::InboundACHTransfer::Decline, Increase::Internal::AnyHash)),
+          decline:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::Decline,
+                Increase::Internal::AnyHash
+              )
+            ),
           direction: Increase::Models::InboundACHTransfer::Direction::OrSymbol,
           effective_date: Date,
-          expected_settlement_schedule: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::OrSymbol,
-          international_addenda: T.nilable(T.any(Increase::Models::InboundACHTransfer::InternationalAddenda, Increase::Internal::AnyHash)),
-          notification_of_change: T.nilable(T.any(Increase::Models::InboundACHTransfer::NotificationOfChange, Increase::Internal::AnyHash)),
+          expected_settlement_schedule:
+            Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::OrSymbol,
+          international_addenda:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::InternationalAddenda,
+                Increase::Internal::AnyHash
+              )
+            ),
+          notification_of_change:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::NotificationOfChange,
+                Increase::Internal::AnyHash
+              )
+            ),
           originator_company_descriptive_date: T.nilable(String),
           originator_company_discretionary_data: T.nilable(String),
           originator_company_entry_description: String,
@@ -194,13 +279,19 @@ module Increase
           originator_routing_number: String,
           receiver_id_number: T.nilable(String),
           receiver_name: T.nilable(String),
-          standard_entry_class_code: Increase::Models::InboundACHTransfer::StandardEntryClassCode::OrSymbol,
+          standard_entry_class_code:
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::OrSymbol,
           status: Increase::Models::InboundACHTransfer::Status::OrSymbol,
           trace_number: String,
-          transfer_return: T.nilable(T.any(Increase::Models::InboundACHTransfer::TransferReturn, Increase::Internal::AnyHash)),
+          transfer_return:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundACHTransfer::TransferReturn,
+                Increase::Internal::AnyHash
+              )
+            ),
           type: Increase::Models::InboundACHTransfer::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The inbound ACH transfer's identifier.
@@ -266,42 +357,55 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `inbound_ach_transfer`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              acceptance: T.nilable(Increase::Models::InboundACHTransfer::Acceptance),
-              account_id: String,
-              account_number_id: String,
-              addenda: T.nilable(Increase::Models::InboundACHTransfer::Addenda),
-              amount: Integer,
-              automatically_resolves_at: Time,
-              created_at: Time,
-              decline: T.nilable(Increase::Models::InboundACHTransfer::Decline),
-              direction: Increase::Models::InboundACHTransfer::Direction::TaggedSymbol,
-              effective_date: Date,
-              expected_settlement_schedule: Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol,
-              international_addenda: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda),
-              notification_of_change: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange),
-              originator_company_descriptive_date: T.nilable(String),
-              originator_company_discretionary_data: T.nilable(String),
-              originator_company_entry_description: String,
-              originator_company_id: String,
-              originator_company_name: String,
-              originator_routing_number: String,
-              receiver_id_number: T.nilable(String),
-              receiver_name: T.nilable(String),
-              standard_entry_class_code: Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol,
-              status: Increase::Models::InboundACHTransfer::Status::TaggedSymbol,
-              trace_number: String,
-              transfer_return: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
-              type: Increase::Models::InboundACHTransfer::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            acceptance:
+              T.nilable(Increase::Models::InboundACHTransfer::Acceptance),
+            account_id: String,
+            account_number_id: String,
+            addenda: T.nilable(Increase::Models::InboundACHTransfer::Addenda),
+            amount: Integer,
+            automatically_resolves_at: Time,
+            created_at: Time,
+            decline: T.nilable(Increase::Models::InboundACHTransfer::Decline),
+            direction:
+              Increase::Models::InboundACHTransfer::Direction::TaggedSymbol,
+            effective_date: Date,
+            expected_settlement_schedule:
+              Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol,
+            international_addenda:
+              T.nilable(
+                Increase::Models::InboundACHTransfer::InternationalAddenda
+              ),
+            notification_of_change:
+              T.nilable(
+                Increase::Models::InboundACHTransfer::NotificationOfChange
+              ),
+            originator_company_descriptive_date: T.nilable(String),
+            originator_company_discretionary_data: T.nilable(String),
+            originator_company_entry_description: String,
+            originator_company_id: String,
+            originator_company_name: String,
+            originator_routing_number: String,
+            receiver_id_number: T.nilable(String),
+            receiver_name: T.nilable(String),
+            standard_entry_class_code:
+              Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol,
+            status: Increase::Models::InboundACHTransfer::Status::TaggedSymbol,
+            trace_number: String,
+            transfer_return:
+              T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
+            type: Increase::Models::InboundACHTransfer::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Acceptance < Increase::Internal::Type::BaseModel
         # The time at which the transfer was accepted.
@@ -313,104 +417,183 @@ module Increase
         attr_accessor :transaction_id
 
         # If your transfer is accepted, this will contain details of the acceptance.
-        sig { params(accepted_at: Time, transaction_id: String).returns(T.attached_class) }
+        sig do
+          params(accepted_at: Time, transaction_id: String).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The time at which the transfer was accepted.
           accepted_at:,
           # The id of the transaction for the accepted transfer.
           transaction_id:
-        ); end
-        sig { override.returns({accepted_at: Time, transaction_id: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ accepted_at: Time, transaction_id: String }) }
+        def to_hash
+        end
       end
 
       class Addenda < Increase::Internal::Type::BaseModel
         # The type of addendum.
-        sig { returns(Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol) }
+        sig do
+          returns(
+            Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol
+          )
+        end
         attr_accessor :category
 
         # Unstructured `payment_related_information` passed through by the originator.
-        sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)) }
+        sig do
+          returns(
+            T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)
+          )
+        end
         attr_reader :freeform
 
         sig do
           params(
-            freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Internal::AnyHash))
-          )
-            .void
+            freeform:
+              T.nilable(
+                T.any(
+                  Increase::Models::InboundACHTransfer::Addenda::Freeform,
+                  Increase::Internal::AnyHash
+                )
+              )
+          ).void
         end
         attr_writer :freeform
 
         # Additional information sent from the originator.
         sig do
           params(
-            category: Increase::Models::InboundACHTransfer::Addenda::Category::OrSymbol,
-            freeform: T.nilable(T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform, Increase::Internal::AnyHash))
-          )
-            .returns(T.attached_class)
+            category:
+              Increase::Models::InboundACHTransfer::Addenda::Category::OrSymbol,
+            freeform:
+              T.nilable(
+                T.any(
+                  Increase::Models::InboundACHTransfer::Addenda::Freeform,
+                  Increase::Internal::AnyHash
+                )
+              )
+          ).returns(T.attached_class)
         end
         def self.new(
           # The type of addendum.
           category:,
           # Unstructured `payment_related_information` passed through by the originator.
           freeform:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                category: Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol,
-                freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              category:
+                Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol,
+              freeform:
+                T.nilable(
+                  Increase::Models::InboundACHTransfer::Addenda::Freeform
+                )
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of addendum.
         module Category
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::Addenda::Category) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::Addenda::Category
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Unstructured addendum.
-          FREEFORM = T.let(:freeform, Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol)
+          FREEFORM =
+            T.let(
+              :freeform,
+              Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::Addenda::Category::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Freeform < Increase::Internal::Type::BaseModel
           # Each entry represents an addendum received from the originator.
-          sig { returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]) }
+          sig do
+            returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry
+              ]
+            )
+          end
           attr_accessor :entries
 
           # Unstructured `payment_related_information` passed through by the originator.
           sig do
             params(
-              entries: T::Array[T.any(Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry, Increase::Internal::AnyHash)]
-            )
-              .returns(T.attached_class)
+              entries:
+                T::Array[
+                  T.any(
+                    Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry,
+                    Increase::Internal::AnyHash
+                  )
+                ]
+            ).returns(T.attached_class)
           end
           def self.new(
             # Each entry represents an addendum received from the originator.
             entries:
-          ); end
-          sig { override.returns({entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]}) }
-          def to_hash; end
+          )
+          end
+
+          sig do
+            override.returns(
+              {
+                entries:
+                  T::Array[
+                    Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry
+                  ]
+              }
+            )
+          end
+          def to_hash
+          end
 
           class Entry < Increase::Internal::Type::BaseModel
             # The payment related information passed in the addendum.
             sig { returns(String) }
             attr_accessor :payment_related_information
 
-            sig { params(payment_related_information: String).returns(T.attached_class) }
+            sig do
+              params(payment_related_information: String).returns(
+                T.attached_class
+              )
+            end
             def self.new(
               # The payment related information passed in the addendum.
               payment_related_information:
-            ); end
-            sig { override.returns({payment_related_information: String}) }
-            def to_hash; end
+            )
+            end
+
+            sig { override.returns({ payment_related_information: String }) }
+            def to_hash
+            end
           end
         end
       end
@@ -425,7 +608,11 @@ module Increase
         attr_accessor :declined_transaction_id
 
         # The reason for the transfer decline.
-        sig { returns(Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol) }
+        sig do
+          returns(
+            Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+          )
+        end
         attr_accessor :reason
 
         # If your transfer is declined, this will contain details of the decline.
@@ -433,9 +620,9 @@ module Increase
           params(
             declined_at: Time,
             declined_transaction_id: String,
-            reason: Increase::Models::InboundACHTransfer::Decline::Reason::OrSymbol
-          )
-            .returns(T.attached_class)
+            reason:
+              Increase::Models::InboundACHTransfer::Decline::Reason::OrSymbol
+          ).returns(T.attached_class)
         end
         def self.new(
           # The time at which the transfer was declined.
@@ -444,60 +631,97 @@ module Increase
           declined_transaction_id:,
           # The reason for the transfer decline.
           reason:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                declined_at: Time,
-                declined_transaction_id: String,
-                reason: Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              declined_at: Time,
+              declined_transaction_id: String,
+              reason:
+                Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The reason for the transfer decline.
         module Reason
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::Decline::Reason) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::Decline::Reason
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The account number is canceled.
           ACH_ROUTE_CANCELED =
-            T.let(:ach_route_canceled, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :ach_route_canceled,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The account number is disabled.
           ACH_ROUTE_DISABLED =
-            T.let(:ach_route_disabled, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :ach_route_disabled,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The transaction would cause an Increase limit to be exceeded.
           BREACHES_LIMIT =
-            T.let(:breaches_limit, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :breaches_limit,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The account's entity is not active.
           ENTITY_NOT_ACTIVE =
-            T.let(:entity_not_active, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :entity_not_active,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # Your account is inactive.
-          GROUP_LOCKED = T.let(:group_locked, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+          GROUP_LOCKED =
+            T.let(
+              :group_locked,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The transaction is not allowed per Increase's terms.
           TRANSACTION_NOT_ALLOWED =
-            T.let(:transaction_not_allowed, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :transaction_not_allowed,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # Your integration declined this transfer via the API.
           USER_INITIATED =
-            T.let(:user_initiated, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :user_initiated,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # Your account contains insufficient funds.
           INSUFFICIENT_FUNDS =
-            T.let(:insufficient_funds, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :insufficient_funds,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The originating financial institution asked for this transfer to be returned. The receiving bank is complying with the request.
           RETURNED_PER_ODFI_REQUEST =
-            T.let(:returned_per_odfi_request, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :returned_per_odfi_request,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The customer no longer authorizes this transaction.
           AUTHORIZATION_REVOKED_BY_CUSTOMER =
@@ -508,7 +732,10 @@ module Increase
 
           # The customer asked for the payment to be stopped.
           PAYMENT_STOPPED =
-            T.let(:payment_stopped, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :payment_stopped,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The customer advises that the debit was unauthorized.
           CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
@@ -540,7 +767,10 @@ module Increase
 
           # The account holder identified this transaction as a duplicate.
           DUPLICATE_ENTRY =
-            T.let(:duplicate_entry, Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol)
+            T.let(
+              :duplicate_entry,
+              Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+            )
 
           # The corporate customer no longer authorizes this transaction.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED =
@@ -549,8 +779,15 @@ module Increase
               Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
             )
 
-          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::Decline::Reason::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
@@ -558,17 +795,35 @@ module Increase
       module Direction
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::Direction) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::InboundACHTransfer::Direction)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Credit
-        CREDIT = T.let(:credit, Increase::Models::InboundACHTransfer::Direction::TaggedSymbol)
+        CREDIT =
+          T.let(
+            :credit,
+            Increase::Models::InboundACHTransfer::Direction::TaggedSymbol
+          )
 
         # Debit
-        DEBIT = T.let(:debit, Increase::Models::InboundACHTransfer::Direction::TaggedSymbol)
+        DEBIT =
+          T.let(
+            :debit,
+            Increase::Models::InboundACHTransfer::Direction::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Direction::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Increase::Models::InboundACHTransfer::Direction::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The settlement schedule the transfer is expected to follow.
@@ -576,19 +831,37 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The transfer is expected to settle same-day.
         SAME_DAY =
-          T.let(:same_day, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol)
+          T.let(
+            :same_day,
+            Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol
+          )
 
         # The transfer is expected to settle on a future date.
         FUTURE_DATED =
-          T.let(:future_dated, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol)
+          T.let(
+            :future_dated,
+            Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class InternationalAddenda < Increase::Internal::Type::BaseModel
@@ -770,16 +1043,20 @@ module Increase
           params(
             destination_country_code: String,
             destination_currency_code: String,
-            foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::OrSymbol,
+            foreign_exchange_indicator:
+              Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::OrSymbol,
             foreign_exchange_reference: T.nilable(String),
-            foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::OrSymbol,
+            foreign_exchange_reference_indicator:
+              Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::OrSymbol,
             foreign_payment_amount: Integer,
             foreign_trace_number: T.nilable(String),
-            international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::OrSymbol,
+            international_transaction_type_code:
+              Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::OrSymbol,
             originating_currency_code: String,
             originating_depository_financial_institution_branch_country: String,
             originating_depository_financial_institution_id: String,
-            originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::OrSymbol,
+            originating_depository_financial_institution_id_qualifier:
+              Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::OrSymbol,
             originating_depository_financial_institution_name: String,
             originator_city: String,
             originator_country: String,
@@ -799,10 +1076,10 @@ module Increase
             receiving_company_or_individual_name: String,
             receiving_depository_financial_institution_country: String,
             receiving_depository_financial_institution_id: String,
-            receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::OrSymbol,
+            receiving_depository_financial_institution_id_qualifier:
+              Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::OrSymbol,
             receiving_depository_financial_institution_name: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
@@ -891,55 +1168,68 @@ module Increase
           receiving_depository_financial_institution_id_qualifier:,
           # The name of the receiving bank, as set by the sending financial institution.
           receiving_depository_financial_institution_name:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                destination_country_code: String,
-                destination_currency_code: String,
-                foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol,
-                foreign_exchange_reference: T.nilable(String),
-                foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol,
-                foreign_payment_amount: Integer,
-                foreign_trace_number: T.nilable(String),
-                international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol,
-                originating_currency_code: String,
-                originating_depository_financial_institution_branch_country: String,
-                originating_depository_financial_institution_id: String,
-                originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol,
-                originating_depository_financial_institution_name: String,
-                originator_city: String,
-                originator_country: String,
-                originator_identification: String,
-                originator_name: String,
-                originator_postal_code: T.nilable(String),
-                originator_state_or_province: T.nilable(String),
-                originator_street_address: String,
-                payment_related_information: T.nilable(String),
-                payment_related_information2: T.nilable(String),
-                receiver_city: String,
-                receiver_country: String,
-                receiver_identification_number: T.nilable(String),
-                receiver_postal_code: T.nilable(String),
-                receiver_state_or_province: T.nilable(String),
-                receiver_street_address: String,
-                receiving_company_or_individual_name: String,
-                receiving_depository_financial_institution_country: String,
-                receiving_depository_financial_institution_id: String,
-                receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol,
-                receiving_depository_financial_institution_name: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              destination_country_code: String,
+              destination_currency_code: String,
+              foreign_exchange_indicator:
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol,
+              foreign_exchange_reference: T.nilable(String),
+              foreign_exchange_reference_indicator:
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol,
+              foreign_payment_amount: Integer,
+              foreign_trace_number: T.nilable(String),
+              international_transaction_type_code:
+                Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol,
+              originating_currency_code: String,
+              originating_depository_financial_institution_branch_country:
+                String,
+              originating_depository_financial_institution_id: String,
+              originating_depository_financial_institution_id_qualifier:
+                Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol,
+              originating_depository_financial_institution_name: String,
+              originator_city: String,
+              originator_country: String,
+              originator_identification: String,
+              originator_name: String,
+              originator_postal_code: T.nilable(String),
+              originator_state_or_province: T.nilable(String),
+              originator_street_address: String,
+              payment_related_information: T.nilable(String),
+              payment_related_information2: T.nilable(String),
+              receiver_city: String,
+              receiver_country: String,
+              receiver_identification_number: T.nilable(String),
+              receiver_postal_code: T.nilable(String),
+              receiver_state_or_province: T.nilable(String),
+              receiver_street_address: String,
+              receiving_company_or_individual_name: String,
+              receiving_depository_financial_institution_country: String,
+              receiving_depository_financial_institution_id: String,
+              receiving_depository_financial_institution_id_qualifier:
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol,
+              receiving_depository_financial_institution_name: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # A description of how the foreign exchange rate was calculated.
         module ForeignExchangeIndicator
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
@@ -964,12 +1254,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # An instruction of how to interpret the `foreign_exchange_reference` field for
@@ -979,7 +1271,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator)
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1005,14 +1300,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[
-                  Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
-                ]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # The type of transfer. Set by the originator.
@@ -1021,7 +1316,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode)
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1166,12 +1464,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # An instruction of how to interpret the
@@ -1181,7 +1481,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier)
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1207,14 +1510,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[
-                  Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
-                ]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
 
         # An instruction of how to interpret the
@@ -1224,7 +1527,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier)
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1250,14 +1556,14 @@ module Increase
             )
 
           sig do
-            override
-              .returns(
-                T::Array[
-                  Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
-                ]
-              )
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -1273,15 +1579,19 @@ module Increase
         # If you initiate a notification of change in response to the transfer, this will
         # contain its details.
         sig do
-          params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String))
-            .returns(T.attached_class)
+          params(
+            updated_account_number: T.nilable(String),
+            updated_routing_number: T.nilable(String)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The new account number provided in the notification of change.
           updated_account_number:,
           # The new account number provided in the notification of change.
           updated_routing_number:
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -1290,7 +1600,8 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       # The Standard Entry Class (SEC) code of the transfer.
@@ -1298,7 +1609,12 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::StandardEntryClassCode) }
+          T.type_alias do
+            T.all(
+              Symbol,
+              Increase::Models::InboundACHTransfer::StandardEntryClassCode
+            )
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Corporate Credit and Debit (CCD).
@@ -1324,27 +1640,45 @@ module Increase
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED =
-          T.let(:internet_initiated, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :internet_initiated,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Point of Sale (POS).
         POINT_OF_SALE =
-          T.let(:point_of_sale, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :point_of_sale,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Telephone Initiated (TEL).
         TELEPHONE_INITIATED =
-          T.let(:telephone_initiated, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :telephone_initiated,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Customer Initiated (CIE).
         CUSTOMER_INITIATED =
-          T.let(:customer_initiated, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :customer_initiated,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Accounts Receivable (ARC).
         ACCOUNTS_RECEIVABLE =
-          T.let(:accounts_receivable, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :accounts_receivable,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Machine Transfer (MTE).
         MACHINE_TRANSFER =
-          T.let(:machine_transfer, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :machine_transfer,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Shared Network Transaction (SHR).
         SHARED_NETWORK_TRANSACTION =
@@ -1355,23 +1689,38 @@ module Increase
 
         # Represented Check (RCK).
         REPRESENTED_CHECK =
-          T.let(:represented_check, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :represented_check,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Back Office Conversion (BOC).
         BACK_OFFICE_CONVERSION =
-          T.let(:back_office_conversion, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :back_office_conversion,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Point of Purchase (POP).
         POINT_OF_PURCHASE =
-          T.let(:point_of_purchase, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :point_of_purchase,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Check Truncation (TRC).
         CHECK_TRUNCATION =
-          T.let(:check_truncation, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :check_truncation,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # Destroyed Check (XCK).
         DESTROYED_CHECK =
-          T.let(:destroyed_check, Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol)
+          T.let(
+            :destroyed_check,
+            Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+          )
 
         # International ACH Transaction (IAT).
         INTERNATIONAL_ACH_TRANSACTION =
@@ -1380,36 +1729,71 @@ module Increase
             Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
           )
 
-        sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              Increase::Models::InboundACHTransfer::StandardEntryClassCode::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The status of the transfer.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::Status) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::InboundACHTransfer::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-        PENDING = T.let(:pending, Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
+        PENDING =
+          T.let(
+            :pending,
+            Increase::Models::InboundACHTransfer::Status::TaggedSymbol
+          )
 
         # The Inbound ACH Transfer has been declined.
-        DECLINED = T.let(:declined, Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
+        DECLINED =
+          T.let(
+            :declined,
+            Increase::Models::InboundACHTransfer::Status::TaggedSymbol
+          )
 
         # The Inbound ACH Transfer is accepted.
-        ACCEPTED = T.let(:accepted, Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
+        ACCEPTED =
+          T.let(
+            :accepted,
+            Increase::Models::InboundACHTransfer::Status::TaggedSymbol
+          )
 
         # The Inbound ACH Transfer has been returned.
-        RETURNED = T.let(:returned, Increase::Models::InboundACHTransfer::Status::TaggedSymbol)
+        RETURNED =
+          T.let(
+            :returned,
+            Increase::Models::InboundACHTransfer::Status::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::InboundACHTransfer::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class TransferReturn < Increase::Internal::Type::BaseModel
         # The reason for the transfer return.
-        sig { returns(Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol) }
+        sig do
+          returns(
+            Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
+          )
+        end
         attr_accessor :reason
 
         # The time at which the transfer was returned.
@@ -1423,11 +1807,11 @@ module Increase
         # If your transfer is returned, this will contain details of the return.
         sig do
           params(
-            reason: Increase::Models::InboundACHTransfer::TransferReturn::Reason::OrSymbol,
+            reason:
+              Increase::Models::InboundACHTransfer::TransferReturn::Reason::OrSymbol,
             returned_at: Time,
             transaction_id: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The reason for the transfer return.
@@ -1436,30 +1820,41 @@ module Increase
           returned_at:,
           # The id of the transaction for the returned transfer.
           transaction_id:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                reason: Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol,
-                returned_at: Time,
-                transaction_id: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              reason:
+                Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol,
+              returned_at: Time,
+              transaction_id: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The reason for the transfer return.
         module Reason
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::TransferReturn::Reason) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransfer::TransferReturn::Reason
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
           INSUFFICIENT_FUNDS =
-            T.let(:insufficient_funds, Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol)
+            T.let(
+              :insufficient_funds,
+              Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
+            )
 
           # The originating financial institution asked for this transfer to be returned. The receiving bank is complying with the request. The Nacha return code is R06.
           RETURNED_PER_ODFI_REQUEST =
@@ -1477,7 +1872,10 @@ module Increase
 
           # The customer asked for the payment to be stopped. This reason is only allowed for debits. The Nacha return code is R08.
           PAYMENT_STOPPED =
-            T.let(:payment_stopped, Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol)
+            T.let(
+              :payment_stopped,
+              Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
+            )
 
           # The customer advises that the debit was unauthorized. The Nacha return code is R10.
           CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
@@ -1509,7 +1907,10 @@ module Increase
 
           # The account holder identified this transaction as a duplicate. The Nacha return code is R24.
           DUPLICATE_ENTRY =
-            T.let(:duplicate_entry, Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol)
+            T.let(
+              :duplicate_entry,
+              Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
+            )
 
           # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED =
@@ -1518,8 +1919,15 @@ module Increase
               Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
             )
 
-          sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Increase::Models::InboundACHTransfer::TransferReturn::Reason::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
@@ -1528,14 +1936,25 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::InboundACHTransfer::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::InboundACHTransfer::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         INBOUND_ACH_TRANSFER =
-          T.let(:inbound_ach_transfer, Increase::Models::InboundACHTransfer::Type::TaggedSymbol)
+          T.let(
+            :inbound_ach_transfer,
+            Increase::Models::InboundACHTransfer::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::InboundACHTransfer::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::InboundACHTransfer::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

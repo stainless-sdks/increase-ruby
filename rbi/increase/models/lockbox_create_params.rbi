@@ -29,9 +29,9 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Account checks sent to this Lockbox should be deposited into.
@@ -41,19 +41,21 @@ module Increase
         # The name of the recipient that will receive mail at this location.
         recipient_name: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_id: String,
-              description: String,
-              recipient_name: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_id: String,
+            description: String,
+            recipient_name: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

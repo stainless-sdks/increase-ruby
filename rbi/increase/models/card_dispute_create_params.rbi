@@ -30,9 +30,9 @@ module Increase
           disputed_transaction_id: String,
           explanation: String,
           amount: Integer,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Transaction you wish to dispute. This Transaction must have a `source_type`
@@ -46,19 +46,21 @@ module Increase
         # the transaction.
         amount: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              disputed_transaction_id: String,
-              explanation: String,
-              amount: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            disputed_transaction_id: String,
+            explanation: String,
+            amount: Integer,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

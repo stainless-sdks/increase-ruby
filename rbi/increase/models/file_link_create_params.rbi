@@ -22,9 +22,9 @@ module Increase
         params(
           file_id: String,
           expires_at: Time,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The File to create a File Link for.
@@ -33,9 +33,20 @@ module Increase
         # of the request. The maxiumum is 1 day from the time of the request.
         expires_at: nil,
         request_options: {}
-      ); end
-      sig { override.returns({file_id: String, expires_at: Time, request_options: Increase::RequestOptions}) }
-      def to_hash; end
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            file_id: String,
+            expires_at: Time,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

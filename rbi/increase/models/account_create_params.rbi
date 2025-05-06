@@ -39,9 +39,9 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The name you choose for the Account.
@@ -55,20 +55,22 @@ module Increase
         # operate more than one Program.
         program_id: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              name: String,
-              entity_id: String,
-              informational_entity_id: String,
-              program_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            name: String,
+            entity_id: String,
+            informational_entity_id: String,
+            program_id: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

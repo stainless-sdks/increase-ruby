@@ -28,14 +28,23 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Increase::Models::AccountStatementListParams::StatementPeriodStart)) }
+      sig do
+        returns(
+          T.nilable(
+            Increase::Models::AccountStatementListParams::StatementPeriodStart
+          )
+        )
+      end
       attr_reader :statement_period_start
 
       sig do
         params(
-          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Internal::AnyHash)
-        )
-          .void
+          statement_period_start:
+            T.any(
+              Increase::Models::AccountStatementListParams::StatementPeriodStart,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :statement_period_start
 
@@ -44,10 +53,14 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          statement_period_start: T.any(Increase::Models::AccountStatementListParams::StatementPeriodStart, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          statement_period_start:
+            T.any(
+              Increase::Models::AccountStatementListParams::StatementPeriodStart,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # Filter Account Statements to those belonging to the specified Account.
@@ -59,20 +72,23 @@ module Increase
         limit: nil,
         statement_period_start: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              account_id: String,
-              cursor: String,
-              limit: Integer,
-              statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-              request_options: Increase::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            account_id: String,
+            cursor: String,
+            limit: Integer,
+            statement_period_start:
+              Increase::Models::AccountStatementListParams::StatementPeriodStart,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class StatementPeriodStart < Increase::Internal::Type::BaseModel
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -108,7 +124,12 @@ module Increase
         attr_writer :on_or_before
 
         sig do
-          params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
+          params(
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ).returns(T.attached_class)
         end
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -123,9 +144,16 @@ module Increase
           # Return results on or before this
           # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
           on_or_before: nil
-        ); end
-        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end

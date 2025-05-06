@@ -64,8 +64,7 @@ module Increase
           status: Increase::Models::IntrafiExclusion::Status::OrSymbol,
           submitted_at: T.nilable(Time),
           type: Increase::Models::IntrafiExclusion::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The identifier of this exclusion request.
@@ -93,44 +92,66 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `intrafi_exclusion`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              bank_name: String,
-              created_at: Time,
-              entity_id: String,
-              excluded_at: T.nilable(Time),
-              fdic_certificate_number: T.nilable(String),
-              idempotency_key: T.nilable(String),
-              status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
-              submitted_at: T.nilable(Time),
-              type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            bank_name: String,
+            created_at: Time,
+            entity_id: String,
+            excluded_at: T.nilable(Time),
+            fdic_certificate_number: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            status: Increase::Models::IntrafiExclusion::Status::TaggedSymbol,
+            submitted_at: T.nilable(Time),
+            type: Increase::Models::IntrafiExclusion::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The status of the exclusion request.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Status) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::IntrafiExclusion::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The exclusion is being added to the IntraFi network.
-        PENDING = T.let(:pending, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        PENDING =
+          T.let(
+            :pending,
+            Increase::Models::IntrafiExclusion::Status::TaggedSymbol
+          )
 
         # The exclusion has been added to the IntraFi network.
-        COMPLETED = T.let(:completed, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        COMPLETED =
+          T.let(
+            :completed,
+            Increase::Models::IntrafiExclusion::Status::TaggedSymbol
+          )
 
         # The exclusion has been removed from the IntraFi network.
-        ARCHIVED = T.let(:archived, Increase::Models::IntrafiExclusion::Status::TaggedSymbol)
+        ARCHIVED =
+          T.let(
+            :archived,
+            Increase::Models::IntrafiExclusion::Status::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::IntrafiExclusion::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -138,13 +159,25 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::IntrafiExclusion::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::IntrafiExclusion::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        INTRAFI_EXCLUSION = T.let(:intrafi_exclusion, Increase::Models::IntrafiExclusion::Type::TaggedSymbol)
+        INTRAFI_EXCLUSION =
+          T.let(
+            :intrafi_exclusion,
+            Increase::Models::IntrafiExclusion::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::IntrafiExclusion::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

@@ -39,8 +39,7 @@ module Increase
           entity_id: T.nilable(String),
           file_id: String,
           type: Increase::Models::Document::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Document identifier.
@@ -57,44 +56,67 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `document`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              category: Increase::Models::Document::Category::TaggedSymbol,
-              created_at: Time,
-              entity_id: T.nilable(String),
-              file_id: String,
-              type: Increase::Models::Document::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            category: Increase::Models::Document::Category::TaggedSymbol,
+            created_at: Time,
+            entity_id: T.nilable(String),
+            file_id: String,
+            type: Increase::Models::Document::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The type of document.
       module Category
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Document::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Internal Revenue Service Form 1099-INT.
-        FORM_1099_INT = T.let(:form_1099_int, Increase::Models::Document::Category::TaggedSymbol)
+        FORM_1099_INT =
+          T.let(
+            :form_1099_int,
+            Increase::Models::Document::Category::TaggedSymbol
+          )
 
         # Internal Revenue Service Form 1099-MISC.
-        FORM_1099_MISC = T.let(:form_1099_misc, Increase::Models::Document::Category::TaggedSymbol)
+        FORM_1099_MISC =
+          T.let(
+            :form_1099_misc,
+            Increase::Models::Document::Category::TaggedSymbol
+          )
 
         # A document submitted in response to a proof of authorization request for an ACH transfer.
         PROOF_OF_AUTHORIZATION =
-          T.let(:proof_of_authorization, Increase::Models::Document::Category::TaggedSymbol)
+          T.let(
+            :proof_of_authorization,
+            Increase::Models::Document::Category::TaggedSymbol
+          )
 
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
-        COMPANY_INFORMATION = T.let(:company_information, Increase::Models::Document::Category::TaggedSymbol)
+        COMPANY_INFORMATION =
+          T.let(
+            :company_information,
+            Increase::Models::Document::Category::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::Document::Category::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Document::Category::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -102,13 +124,20 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Document::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        DOCUMENT = T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
+        DOCUMENT =
+          T.let(:document, Increase::Models::Document::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Document::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Document::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end
