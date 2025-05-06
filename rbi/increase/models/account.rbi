@@ -94,8 +94,7 @@ module Increase
           program_id: String,
           status: Increase::Models::Account::Status::OrSymbol,
           type: Increase::Models::Account::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Account identifier.
@@ -140,49 +139,66 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `account`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              bank: Increase::Models::Account::Bank::TaggedSymbol,
-              closed_at: T.nilable(Time),
-              created_at: Time,
-              currency: Increase::Models::Account::Currency::TaggedSymbol,
-              entity_id: T.nilable(String),
-              idempotency_key: T.nilable(String),
-              informational_entity_id: T.nilable(String),
-              interest_accrued: String,
-              interest_accrued_at: T.nilable(Date),
-              interest_rate: String,
-              name: String,
-              program_id: String,
-              status: Increase::Models::Account::Status::TaggedSymbol,
-              type: Increase::Models::Account::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            bank: Increase::Models::Account::Bank::TaggedSymbol,
+            closed_at: T.nilable(Time),
+            created_at: Time,
+            currency: Increase::Models::Account::Currency::TaggedSymbol,
+            entity_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            informational_entity_id: T.nilable(String),
+            interest_accrued: String,
+            interest_accrued_at: T.nilable(Date),
+            interest_rate: String,
+            name: String,
+            program_id: String,
+            status: Increase::Models::Account::Status::TaggedSymbol,
+            type: Increase::Models::Account::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       # The bank the Account is with.
       module Bank
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Bank) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Account::Bank) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Core Bank
-        CORE_BANK = T.let(:core_bank, Increase::Models::Account::Bank::TaggedSymbol)
+        CORE_BANK =
+          T.let(:core_bank, Increase::Models::Account::Bank::TaggedSymbol)
 
         # First Internet Bank of Indiana
-        FIRST_INTERNET_BANK = T.let(:first_internet_bank, Increase::Models::Account::Bank::TaggedSymbol)
+        FIRST_INTERNET_BANK =
+          T.let(
+            :first_internet_bank,
+            Increase::Models::Account::Bank::TaggedSymbol
+          )
 
         # Grasshopper Bank
-        GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Models::Account::Bank::TaggedSymbol)
+        GRASSHOPPER_BANK =
+          T.let(
+            :grasshopper_bank,
+            Increase::Models::Account::Bank::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::Account::Bank::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Account::Bank::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
@@ -190,7 +206,8 @@ module Increase
       module Currency
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Currency) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Account::Currency) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Canadian Dollar (CAD)
@@ -211,15 +228,21 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Models::Account::Currency::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Account::Currency::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Account::Currency::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # The status of the Account.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Account::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Closed Accounts on which no new activity can occur.
@@ -228,8 +251,13 @@ module Increase
         # Open Accounts that are ready to use.
         OPEN = T.let(:open, Increase::Models::Account::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Account::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Account::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -237,13 +265,19 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Account::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Account::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCOUNT = T.let(:account, Increase::Models::Account::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::Account::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Account::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

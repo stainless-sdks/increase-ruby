@@ -12,31 +12,45 @@ module Increase
       attr_reader :address
 
       sig do
-        params(address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash))
-          .void
+        params(
+          address:
+            T.any(
+              Increase::Models::EntityUpdateAddressParams::Address,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :address
 
       sig do
         params(
-          address: T.any(Increase::Models::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash),
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          address:
+            T.any(
+              Increase::Models::EntityUpdateAddressParams::Address,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         # are disallowed.
         address:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {address: Increase::Models::EntityUpdateAddressParams::Address, request_options: Increase::RequestOptions}
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            address: Increase::Models::EntityUpdateAddressParams::Address,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Address < Increase::Internal::Type::BaseModel
         # The city of the address.
@@ -86,9 +100,22 @@ module Increase
           zip:,
           # The second line of the address. This might be the floor or room number.
           line2: nil
-        ); end
-        sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              line2: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
     end
   end
