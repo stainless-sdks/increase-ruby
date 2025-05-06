@@ -57,8 +57,7 @@ module Increase
           statement_period_end: Time,
           statement_period_start: Time,
           type: Increase::Models::AccountStatement::Type::OrSymbol
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Account Statement identifier.
@@ -83,37 +82,51 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `account_statement`.
         type:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              account_id: String,
-              created_at: Time,
-              ending_balance: Integer,
-              file_id: String,
-              starting_balance: Integer,
-              statement_period_end: Time,
-              statement_period_start: Time,
-              type: Increase::Models::AccountStatement::Type::TaggedSymbol
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            account_id: String,
+            created_at: Time,
+            ending_balance: Integer,
+            file_id: String,
+            starting_balance: Integer,
+            statement_period_end: Time,
+            statement_period_start: Time,
+            type: Increase::Models::AccountStatement::Type::TaggedSymbol
+          }
+        )
+      end
+      def to_hash
+      end
 
       # A constant representing the object's type. For this resource it will always be
       # `account_statement`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::AccountStatement::Type) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, Increase::Models::AccountStatement::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACCOUNT_STATEMENT = T.let(:account_statement, Increase::Models::AccountStatement::Type::TaggedSymbol)
+        ACCOUNT_STATEMENT =
+          T.let(
+            :account_statement,
+            Increase::Models::AccountStatement::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

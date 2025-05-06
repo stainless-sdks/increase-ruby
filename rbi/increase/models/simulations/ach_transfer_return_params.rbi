@@ -9,35 +9,50 @@ module Increase
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
         # Defaults to `no_account`.
-        sig { returns(T.nilable(Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol
+            )
+          )
+        end
         attr_reader :reason
 
-        sig { params(reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol).void }
+        sig do
+          params(
+            reason:
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol
+          ).void
+        end
         attr_writer :reason
 
         sig do
           params(
-            reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-            request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            reason:
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The reason why the Federal Reserve or destination bank returned this transfer.
           # Defaults to `no_account`.
           reason: nil,
           request_options: {}
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                reason: Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-                request_options: Increase::RequestOptions
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              reason:
+                Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
+              request_options: Increase::RequestOptions
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The reason why the Federal Reserve or destination bank returned this transfer.
         # Defaults to `no_account`.
@@ -45,20 +60,34 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                Increase::Models::Simulations::ACHTransferReturnParams::Reason
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND =
-            T.let(:insufficient_fund, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :insufficient_fund,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R03. The account does not exist or the receiving bank was unable to locate it.
           NO_ACCOUNT =
-            T.let(:no_account, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :no_account,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R02. The account is closed at the receiving bank.
           ACCOUNT_CLOSED =
-            T.let(:account_closed, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :account_closed,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R04. The account number is invalid at the receiving bank.
           INVALID_ACCOUNT_NUMBER_STRUCTURE =
@@ -97,7 +126,10 @@ module Increase
 
           # Code R08. The receiving bank stopped payment on this transfer.
           PAYMENT_STOPPED =
-            T.let(:payment_stopped, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :payment_stopped,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R20. The receiving bank account does not perform transfers.
           NON_TRANSACTION_ACCOUNT =
@@ -108,7 +140,10 @@ module Increase
 
           # Code R09. The receiving bank account does not have enough available balance for the transfer.
           UNCOLLECTED_FUNDS =
-            T.let(:uncollected_funds, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :uncollected_funds,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R28. The routing number is incorrect.
           ROUTING_NUMBER_CHECK_DIGIT_ERROR =
@@ -126,7 +161,10 @@ module Increase
 
           # Code R19. The amount field is incorrect or too large.
           AMOUNT_FIELD_ERROR =
-            T.let(:amount_field_error, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :amount_field_error,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R07. The customer at the receiving institution informed their bank that they have revoked authorization for a previously authorized transfer.
           AUTHORIZATION_REVOKED_BY_CUSTOMER =
@@ -186,7 +224,10 @@ module Increase
 
           # Code R25. The addenda record is incorrect or missing.
           ADDENDA_ERROR =
-            T.let(:addenda_error, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :addenda_error,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R15. A rare return reason. The account holder is deceased.
           BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED =
@@ -204,15 +245,24 @@ module Increase
 
           # Code R74. A rare return reason. Sent in response to a return that was returned with code `field_error`. The latest return should include the corrected field(s).
           CORRECTED_RETURN =
-            T.let(:corrected_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :corrected_return,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R24. A rare return reason. The receiving bank received an exact duplicate entry with the same trace number and amount.
           DUPLICATE_ENTRY =
-            T.let(:duplicate_entry, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :duplicate_entry,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R67. A rare return reason. The return this message refers to was a duplicate.
           DUPLICATE_RETURN =
-            T.let(:duplicate_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :duplicate_return,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R47. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
           ENR_DUPLICATE_ENROLLMENT =
@@ -272,7 +322,10 @@ module Increase
 
           # Code R69. A rare return reason. One or more of the fields in the ACH were malformed.
           FIELD_ERROR =
-            T.let(:field_error, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :field_error,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R83. A rare return reason. The Foreign receiving bank was unable to settle this ACH transfer.
           FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE =
@@ -304,7 +357,10 @@ module Increase
 
           # Code R21. A rare return reason. The Company ID field of the ACH was invalid.
           INVALID_COMPANY_ID =
-            T.let(:invalid_company_id, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :invalid_company_id,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R82. A rare return reason. The foreign receiving bank identifier for an International ACH Transfer was invalid.
           INVALID_FOREIGN_RECEIVING_DFI_IDENTIFICATION =
@@ -350,11 +406,17 @@ module Increase
 
           # Code R61. A rare return reason. The receiving bank does not recognize the routing number in a return entry.
           MISROUTED_RETURN =
-            T.let(:misrouted_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :misrouted_return,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R76. A rare return reason. Sent in response to a return, the bank does not find the errors alleged by the returning bank.
           NO_ERRORS_FOUND =
-            T.let(:no_errors_found, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :no_errors_found,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R77. A rare return reason. The receiving bank does not accept the return of the erroneous debit. The funds are not available at the receiving bank.
           NON_ACCEPTANCE_OF_R62_DISHONORED_RETURN =
@@ -386,7 +448,10 @@ module Increase
 
           # Code R32. A rare return reason. The receiving bank could not settle this transaction.
           RDFI_NON_SETTLEMENT =
-            T.let(:rdfi_non_settlement, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :rdfi_non_settlement,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R30. A rare return reason. The receiving bank does not accept Check Truncation ACH transfers.
           RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM =
@@ -432,7 +497,10 @@ module Increase
 
           # Code R33. A rare return reason. Return of a Destroyed Check ("XKC") entry.
           RETURN_OF_XCK_ENTRY =
-            T.let(:return_of_xck_entry, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :return_of_xck_entry,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R37. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
           SOURCE_DOCUMENT_PRESENTED_FOR_PAYMENT =
@@ -471,7 +539,10 @@ module Increase
 
           # Code R27. A rare return reason. An ACH return's trace number does not match an originated ACH.
           TRACE_NUMBER_ERROR =
-            T.let(:trace_number_error, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :trace_number_error,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
           # Code R72. A rare return reason. The dishonored return was sent too late.
           UNTIMELY_DISHONORED_RETURN =
@@ -482,10 +553,20 @@ module Increase
 
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN =
-            T.let(:untimely_return, Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol)
+            T.let(
+              :untimely_return,
+              Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                Increase::Models::Simulations::ACHTransferReturnParams::Reason::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

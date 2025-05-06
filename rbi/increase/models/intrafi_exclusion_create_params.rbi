@@ -18,9 +18,9 @@ module Increase
         params(
           bank_name: String,
           entity_id: String,
-          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The name of the financial institution to be excluded.
@@ -28,11 +28,20 @@ module Increase
         # The identifier of the Entity whose deposits will be excluded.
         entity_id:,
         request_options: {}
-      ); end
-      sig do
-        override.returns({bank_name: String, entity_id: String, request_options: Increase::RequestOptions})
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            bank_name: String,
+            entity_id: String,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end
