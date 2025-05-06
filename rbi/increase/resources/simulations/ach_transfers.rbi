@@ -13,7 +13,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::ACHTransfer)
         end
         def acknowledge(
@@ -31,7 +31,7 @@ module Increase
             change_code:
               Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::ACHTransfer)
         end
         def create_notification_of_change(
@@ -54,7 +54,7 @@ module Increase
             ach_transfer_id: String,
             reason:
               Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::ACHTransfer)
         end
         def return_(
@@ -76,7 +76,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::ACHTransfer)
         end
         def settle(
@@ -95,7 +95,7 @@ module Increase
         sig do
           params(
             ach_transfer_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::ACHTransfer)
         end
         def submit(

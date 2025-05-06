@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Declined Transactions to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -23,10 +25,7 @@ module Increase
       sig do
         params(
           category:
-            T.any(
-              Increase::Models::DeclinedTransactionListParams::Category,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::DeclinedTransactionListParams::Category::OrHash
         ).void
       end
       attr_writer :category
@@ -41,10 +40,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::DeclinedTransactionListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::DeclinedTransactionListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -75,15 +71,9 @@ module Increase
         params(
           account_id: String,
           category:
-            T.any(
-              Increase::Models::DeclinedTransactionListParams::Category,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DeclinedTransactionListParams::Category::OrHash,
           created_at:
-            T.any(
-              Increase::Models::DeclinedTransactionListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DeclinedTransactionListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           route_id: String,
@@ -125,6 +115,9 @@ module Increase
       end
 
       class Category < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results whose value is in the provided list. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do
@@ -250,6 +243,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

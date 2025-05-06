@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Account the Account Number should belong to.
       sig { returns(String) }
       attr_accessor :account_id
@@ -25,10 +27,7 @@ module Increase
       sig do
         params(
           inbound_ach:
-            T.any(
-              Increase::Models::AccountNumberCreateParams::InboundACH,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::AccountNumberCreateParams::InboundACH::OrHash
         ).void
       end
       attr_writer :inbound_ach
@@ -45,10 +44,7 @@ module Increase
       sig do
         params(
           inbound_checks:
-            T.any(
-              Increase::Models::AccountNumberCreateParams::InboundChecks,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::AccountNumberCreateParams::InboundChecks::OrHash
         ).void
       end
       attr_writer :inbound_checks
@@ -58,15 +54,9 @@ module Increase
           account_id: String,
           name: String,
           inbound_ach:
-            T.any(
-              Increase::Models::AccountNumberCreateParams::InboundACH,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberCreateParams::InboundACH::OrHash,
           inbound_checks:
-            T.any(
-              Increase::Models::AccountNumberCreateParams::InboundChecks,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberCreateParams::InboundChecks::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -102,6 +92,9 @@ module Increase
       end
 
       class InboundACH < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active. If
         # you do not specify this field, the default is `allowed`.
@@ -180,6 +173,9 @@ module Increase
       end
 
       class InboundChecks < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # How Increase should process checks with this account number printed on them. If
         # you do not specify this field, the default is `check_transfers_only`.
         sig do

@@ -10,7 +10,7 @@ module Increase
         sig do
           params(
             check_deposit_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::CheckDeposit)
         end
         def reject(
@@ -25,7 +25,7 @@ module Increase
         sig do
           params(
             check_deposit_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::CheckDeposit)
         end
         def return_(
@@ -40,7 +40,7 @@ module Increase
         sig do
           params(
             check_deposit_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::CheckDeposit)
         end
         def submit(

@@ -12,7 +12,7 @@ module Increase
           client_secret: String,
           code: String,
           production_token: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::OAuthToken)
       end
       def create(

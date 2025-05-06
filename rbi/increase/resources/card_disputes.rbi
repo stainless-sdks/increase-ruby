@@ -9,7 +9,7 @@ module Increase
           disputed_transaction_id: String,
           explanation: String,
           amount: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CardDispute)
       end
       def create(
@@ -31,7 +31,7 @@ module Increase
       sig do
         params(
           card_dispute_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CardDispute)
       end
       def retrieve(
@@ -45,19 +45,12 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::CardDisputeListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardDisputeListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::CardDisputeListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::CardDisputeListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::CardDispute])
       end
       def list(

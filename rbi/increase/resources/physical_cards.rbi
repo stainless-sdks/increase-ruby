@@ -8,17 +8,11 @@ module Increase
         params(
           card_id: String,
           cardholder:
-            T.any(
-              Increase::Models::PhysicalCardCreateParams::Cardholder,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PhysicalCardCreateParams::Cardholder::OrHash,
           shipment:
-            T.any(
-              Increase::Models::PhysicalCardCreateParams::Shipment,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PhysicalCardCreateParams::Shipment::OrHash,
           physical_card_profile_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCard)
       end
       def create(
@@ -39,7 +33,7 @@ module Increase
       sig do
         params(
           physical_card_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCard)
       end
       def retrieve(
@@ -54,7 +48,7 @@ module Increase
         params(
           physical_card_id: String,
           status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCard)
       end
       def update(
@@ -71,14 +65,11 @@ module Increase
         params(
           card_id: String,
           created_at:
-            T.any(
-              Increase::Models::PhysicalCardListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PhysicalCardListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::PhysicalCard])
       end
       def list(

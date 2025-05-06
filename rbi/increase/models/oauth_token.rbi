@@ -3,6 +3,8 @@
 module Increase
   module Models
     class OAuthToken < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # You may use this token in place of an API key to make OAuth requests on a user's
       # behalf.
       sig { returns(String) }

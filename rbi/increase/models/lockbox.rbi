@@ -3,6 +3,8 @@
 module Increase
   module Models
     class Lockbox < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Lockbox identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -16,15 +18,7 @@ module Increase
       sig { returns(Increase::Models::Lockbox::Address) }
       attr_reader :address
 
-      sig do
-        params(
-          address:
-            T.any(
-              Increase::Models::Lockbox::Address,
-              Increase::Internal::AnyHash
-            )
-        ).void
-      end
+      sig { params(address: Increase::Models::Lockbox::Address::OrHash).void }
       attr_writer :address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
@@ -61,11 +55,7 @@ module Increase
         params(
           id: String,
           account_id: String,
-          address:
-            T.any(
-              Increase::Models::Lockbox::Address,
-              Increase::Internal::AnyHash
-            ),
+          address: Increase::Models::Lockbox::Address::OrHash,
           created_at: Time,
           description: T.nilable(String),
           idempotency_key: T.nilable(String),
@@ -120,6 +110,9 @@ module Increase
       end
 
       class Address < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The city of the address.
         sig { returns(String) }
         attr_accessor :city

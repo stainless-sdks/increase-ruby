@@ -14,7 +14,7 @@ module Increase
             status:
               Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::CardDispute)
         end
         def action(

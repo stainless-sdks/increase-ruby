@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The card's updated billing address.
       sig do
         returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress))
@@ -15,10 +17,7 @@ module Increase
       sig do
         params(
           billing_address:
-            T.any(
-              Increase::Models::CardUpdateParams::BillingAddress,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::CardUpdateParams::BillingAddress::OrHash
         ).void
       end
       attr_writer :billing_address
@@ -41,10 +40,7 @@ module Increase
       sig do
         params(
           digital_wallet:
-            T.any(
-              Increase::Models::CardUpdateParams::DigitalWallet,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::CardUpdateParams::DigitalWallet::OrHash
         ).void
       end
       attr_writer :digital_wallet
@@ -73,16 +69,10 @@ module Increase
       sig do
         params(
           billing_address:
-            T.any(
-              Increase::Models::CardUpdateParams::BillingAddress,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardUpdateParams::BillingAddress::OrHash,
           description: String,
           digital_wallet:
-            T.any(
-              Increase::Models::CardUpdateParams::DigitalWallet,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardUpdateParams::DigitalWallet::OrHash,
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
           request_options:
@@ -123,6 +113,9 @@ module Increase
       end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The city of the billing address.
         sig { returns(String) }
         attr_accessor :city
@@ -186,6 +179,9 @@ module Increase
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
         attr_reader :digital_card_profile_id

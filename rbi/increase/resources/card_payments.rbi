@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           card_payment_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CardPayment)
       end
       def retrieve(
@@ -23,13 +23,10 @@ module Increase
           account_id: String,
           card_id: String,
           created_at:
-            T.any(
-              Increase::Models::CardPaymentListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardPaymentListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::CardPayment])
       end
       def list(

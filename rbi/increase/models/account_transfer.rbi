@@ -3,6 +3,8 @@
 module Increase
   module Models
     class AccountTransfer < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The account transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -24,12 +26,7 @@ module Increase
       sig do
         params(
           approval:
-            T.nilable(
-              T.any(
-                Increase::Models::AccountTransfer::Approval,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::AccountTransfer::Approval::OrHash)
         ).void
       end
       attr_writer :approval
@@ -44,12 +41,7 @@ module Increase
       sig do
         params(
           cancellation:
-            T.nilable(
-              T.any(
-                Increase::Models::AccountTransfer::Cancellation,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::AccountTransfer::Cancellation::OrHash)
         ).void
       end
       attr_writer :cancellation
@@ -66,12 +58,7 @@ module Increase
       sig do
         params(
           created_by:
-            T.nilable(
-              T.any(
-                Increase::Models::AccountTransfer::CreatedBy,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::AccountTransfer::CreatedBy::OrHash)
         ).void
       end
       attr_writer :created_by
@@ -130,27 +117,12 @@ module Increase
           account_id: String,
           amount: Integer,
           approval:
-            T.nilable(
-              T.any(
-                Increase::Models::AccountTransfer::Approval,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::AccountTransfer::Approval::OrHash),
           cancellation:
-            T.nilable(
-              T.any(
-                Increase::Models::AccountTransfer::Cancellation,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::AccountTransfer::Cancellation::OrHash),
           created_at: Time,
           created_by:
-            T.nilable(
-              T.any(
-                Increase::Models::AccountTransfer::CreatedBy,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::AccountTransfer::CreatedBy::OrHash),
           currency: Increase::Models::AccountTransfer::Currency::OrSymbol,
           description: String,
           destination_account_id: String,
@@ -240,6 +212,9 @@ module Increase
       end
 
       class Approval < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was approved.
         sig { returns(Time) }
@@ -277,6 +252,9 @@ module Increase
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Transfer was canceled.
         sig { returns(Time) }
@@ -314,6 +292,9 @@ module Increase
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # If present, details about the API key that created the transfer.
         sig do
           returns(
@@ -326,10 +307,7 @@ module Increase
           params(
             api_key:
               T.nilable(
-                T.any(
-                  Increase::Models::AccountTransfer::CreatedBy::APIKey,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::AccountTransfer::CreatedBy::APIKey::OrHash
               )
           ).void
         end
@@ -357,10 +335,7 @@ module Increase
           params(
             oauth_application:
               T.nilable(
-                T.any(
-                  Increase::Models::AccountTransfer::CreatedBy::OAuthApplication,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::AccountTransfer::CreatedBy::OAuthApplication::OrHash
               )
           ).void
         end
@@ -376,10 +351,7 @@ module Increase
           params(
             user:
               T.nilable(
-                T.any(
-                  Increase::Models::AccountTransfer::CreatedBy::User,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::AccountTransfer::CreatedBy::User::OrHash
               )
           ).void
         end
@@ -390,26 +362,17 @@ module Increase
           params(
             api_key:
               T.nilable(
-                T.any(
-                  Increase::Models::AccountTransfer::CreatedBy::APIKey,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::AccountTransfer::CreatedBy::APIKey::OrHash
               ),
             category:
               Increase::Models::AccountTransfer::CreatedBy::Category::OrSymbol,
             oauth_application:
               T.nilable(
-                T.any(
-                  Increase::Models::AccountTransfer::CreatedBy::OAuthApplication,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::AccountTransfer::CreatedBy::OAuthApplication::OrHash
               ),
             user:
               T.nilable(
-                T.any(
-                  Increase::Models::AccountTransfer::CreatedBy::User,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::AccountTransfer::CreatedBy::User::OrHash
               )
           ).returns(T.attached_class)
         end
@@ -445,6 +408,9 @@ module Increase
         end
 
         class APIKey < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
           attr_accessor :description
@@ -510,6 +476,9 @@ module Increase
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The name of the OAuth Application.
           sig { returns(String) }
           attr_accessor :name
@@ -528,6 +497,9 @@ module Increase
         end
 
         class User < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The email address of the User.
           sig { returns(String) }
           attr_accessor :email

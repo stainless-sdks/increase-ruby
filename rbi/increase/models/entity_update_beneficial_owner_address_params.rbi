@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The individual's physical address. Mail receiving locations like PO Boxes and
       # PMB's are disallowed.
       sig do
@@ -18,10 +20,7 @@ module Increase
       sig do
         params(
           address:
-            T.any(
-              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash
         ).void
       end
       attr_writer :address
@@ -34,10 +33,7 @@ module Increase
       sig do
         params(
           address:
-            T.any(
-              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
           beneficial_owner_id: String,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -68,6 +64,9 @@ module Increase
       end
 
       class Address < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
         sig { returns(String) }
         attr_accessor :country

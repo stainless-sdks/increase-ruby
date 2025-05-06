@@ -10,7 +10,7 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Account)
       end
       def create(
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Account)
       end
       def retrieve(
@@ -47,7 +47,7 @@ module Increase
         params(
           account_id: String,
           name: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Account)
       end
       def update(
@@ -62,23 +62,15 @@ module Increase
       # List Accounts
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::AccountListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          created_at: Increase::Models::AccountListParams::CreatedAt::OrHash,
           cursor: String,
           entity_id: String,
           idempotency_key: String,
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status:
-            T.any(
-              Increase::Models::AccountListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::AccountListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Account])
       end
       def list(
@@ -110,7 +102,7 @@ module Increase
         params(
           account_id: String,
           at_time: Time,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::BalanceLookup)
       end
       def balance(
@@ -126,7 +118,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Account)
       end
       def close(

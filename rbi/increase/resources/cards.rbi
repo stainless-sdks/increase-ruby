@@ -8,18 +8,12 @@ module Increase
         params(
           account_id: String,
           billing_address:
-            T.any(
-              Increase::Models::CardCreateParams::BillingAddress,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardCreateParams::BillingAddress::OrHash,
           description: String,
           digital_wallet:
-            T.any(
-              Increase::Models::CardCreateParams::DigitalWallet,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardCreateParams::DigitalWallet::OrHash,
           entity_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Card)
       end
       def create(
@@ -44,9 +38,10 @@ module Increase
 
       # Retrieve a Card
       sig do
-        params(card_id: String, request_options: Increase::RequestOpts).returns(
-          Increase::Models::Card
-        )
+        params(
+          card_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::Card)
       end
       def retrieve(
         # The identifier of the Card.
@@ -60,19 +55,13 @@ module Increase
         params(
           card_id: String,
           billing_address:
-            T.any(
-              Increase::Models::CardUpdateParams::BillingAddress,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardUpdateParams::BillingAddress::OrHash,
           description: String,
           digital_wallet:
-            T.any(
-              Increase::Models::CardUpdateParams::DigitalWallet,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CardUpdateParams::DigitalWallet::OrHash,
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Card)
       end
       def update(
@@ -99,20 +88,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            T.any(
-              Increase::Models::CardListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          created_at: Increase::Models::CardListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::CardListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::CardListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Card])
       end
       def list(
@@ -136,9 +117,10 @@ module Increase
 
       # Retrieve sensitive details for a Card
       sig do
-        params(card_id: String, request_options: Increase::RequestOpts).returns(
-          Increase::Models::CardDetails
-        )
+        params(
+          card_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::CardDetails)
       end
       def details(
         # The identifier of the Card to retrieve details for.

@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Events to those belonging to the object with the provided identifier.
       sig { returns(T.nilable(String)) }
       attr_reader :associated_object_id
@@ -18,11 +20,7 @@ module Increase
 
       sig do
         params(
-          category:
-            T.any(
-              Increase::Models::EventListParams::Category,
-              Increase::Internal::AnyHash
-            )
+          category: Increase::Models::EventListParams::Category::OrHash
         ).void
       end
       attr_writer :category
@@ -32,11 +30,7 @@ module Increase
 
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::EventListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+          created_at: Increase::Models::EventListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -59,16 +53,8 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category:
-            T.any(
-              Increase::Models::EventListParams::Category,
-              Increase::Internal::AnyHash
-            ),
-          created_at:
-            T.any(
-              Increase::Models::EventListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          category: Increase::Models::EventListParams::Category::OrHash,
+          created_at: Increase::Models::EventListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -105,6 +91,9 @@ module Increase
       end
 
       class Category < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Filter Events for those with the specified category or categories. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
@@ -782,6 +771,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

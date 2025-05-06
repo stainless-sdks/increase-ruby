@@ -11,7 +11,7 @@ module Increase
           description: String,
           front_image_file_id: String,
           program_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCardProfile)
       end
       def create(
@@ -33,7 +33,7 @@ module Increase
       sig do
         params(
           physical_card_profile_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCardProfile)
       end
       def retrieve(
@@ -50,11 +50,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::PhysicalCardProfileListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::PhysicalCardProfileListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::PhysicalCardProfile]
         )
@@ -79,7 +76,7 @@ module Increase
       sig do
         params(
           physical_card_profile_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCardProfile)
       end
       def archive(
@@ -98,11 +95,8 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text:
-            T.any(
-              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::PhysicalCardProfileCloneParams::FrontText::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PhysicalCardProfile)
       end
       def clone_(

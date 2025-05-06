@@ -11,7 +11,7 @@ module Increase
           file: T.any(Pathname, StringIO, IO, Increase::FilePart),
           purpose: Increase::Models::FileCreateParams::Purpose::OrSymbol,
           description: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::File)
       end
       def create(
@@ -29,9 +29,10 @@ module Increase
 
       # Retrieve a File
       sig do
-        params(file_id: String, request_options: Increase::RequestOpts).returns(
-          Increase::Models::File
-        )
+        params(
+          file_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::File)
       end
       def retrieve(
         # The identifier of the File.
@@ -43,20 +44,12 @@ module Increase
       # List Files
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::FileListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          created_at: Increase::Models::FileListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          purpose:
-            T.any(
-              Increase::Models::FileListParams::Purpose,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          purpose: Increase::Models::FileListParams::Purpose::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::File])
       end
       def list(

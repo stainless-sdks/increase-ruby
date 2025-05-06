@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The underlying card representing this physical card.
       sig { returns(String) }
       attr_accessor :card_id
@@ -17,10 +19,7 @@ module Increase
       sig do
         params(
           cardholder:
-            T.any(
-              Increase::Models::PhysicalCardCreateParams::Cardholder,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::PhysicalCardCreateParams::Cardholder::OrHash
         ).void
       end
       attr_writer :cardholder
@@ -31,11 +30,7 @@ module Increase
 
       sig do
         params(
-          shipment:
-            T.any(
-              Increase::Models::PhysicalCardCreateParams::Shipment,
-              Increase::Internal::AnyHash
-            )
+          shipment: Increase::Models::PhysicalCardCreateParams::Shipment::OrHash
         ).void
       end
       attr_writer :shipment
@@ -52,15 +47,9 @@ module Increase
         params(
           card_id: String,
           cardholder:
-            T.any(
-              Increase::Models::PhysicalCardCreateParams::Cardholder,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PhysicalCardCreateParams::Cardholder::OrHash,
           shipment:
-            T.any(
-              Increase::Models::PhysicalCardCreateParams::Shipment,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PhysicalCardCreateParams::Shipment::OrHash,
           physical_card_profile_id: String,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -95,6 +84,9 @@ module Increase
       end
 
       class Cardholder < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The cardholder's first name.
         sig { returns(String) }
         attr_accessor :first_name
@@ -123,6 +115,9 @@ module Increase
       end
 
       class Shipment < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The address to where the card should be shipped.
         sig do
           returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address)
@@ -132,10 +127,7 @@ module Increase
         sig do
           params(
             address:
-              T.any(
-                Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::PhysicalCardCreateParams::Shipment::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -152,10 +144,7 @@ module Increase
         sig do
           params(
             address:
-              T.any(
-                Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::PhysicalCardCreateParams::Shipment::Address::OrHash,
             method_:
               Increase::Models::PhysicalCardCreateParams::Shipment::Method::OrSymbol
           ).returns(T.attached_class)
@@ -182,6 +171,9 @@ module Increase
         end
 
         class Address < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city of the shipping address.
           sig { returns(String) }
           attr_accessor :city

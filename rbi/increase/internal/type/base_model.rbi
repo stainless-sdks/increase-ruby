@@ -17,6 +17,9 @@ module Increase
             }
           end
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         class << self
           # @api private
           #

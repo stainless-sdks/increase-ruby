@@ -5,7 +5,7 @@ module Increase
     class Groups
       # Returns details for the currently authenticated Group.
       sig do
-        params(request_options: Increase::RequestOpts).returns(
+        params(request_options: Increase::RequestOptions::OrHash).returns(
           Increase::Models::Group
         )
       end

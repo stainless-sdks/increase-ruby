@@ -11,7 +11,7 @@ module Increase
           description: String,
           destination_account_id: String,
           require_approval: T::Boolean,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountTransfer)
       end
       def create(
@@ -34,7 +34,7 @@ module Increase
       sig do
         params(
           account_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountTransfer)
       end
       def retrieve(
@@ -49,14 +49,11 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::AccountTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountTransferListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::AccountTransfer])
       end
       def list(
@@ -81,7 +78,7 @@ module Increase
       sig do
         params(
           account_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountTransfer)
       end
       def approve(
@@ -95,7 +92,7 @@ module Increase
       sig do
         params(
           account_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountTransfer)
       end
       def cancel(

@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       sig do
         returns(
           T.nilable(Increase::Models::OAuthApplicationListParams::CreatedAt)
@@ -16,10 +18,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::OAuthApplicationListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::OAuthApplicationListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -46,11 +45,7 @@ module Increase
 
       sig do
         params(
-          status:
-            T.any(
-              Increase::Models::OAuthApplicationListParams::Status,
-              Increase::Internal::AnyHash
-            )
+          status: Increase::Models::OAuthApplicationListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -58,17 +53,10 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::OAuthApplicationListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::OAuthApplicationListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::OAuthApplicationListParams::Status,
-              Increase::Internal::AnyHash
-            ),
+          status: Increase::Models::OAuthApplicationListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -100,6 +88,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -166,6 +157,9 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results whose value is in the provided list. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do

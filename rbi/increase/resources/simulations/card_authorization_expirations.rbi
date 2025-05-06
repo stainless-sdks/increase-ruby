@@ -8,7 +8,7 @@ module Increase
         sig do
           params(
             card_payment_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::CardPayment)
         end
         def create(

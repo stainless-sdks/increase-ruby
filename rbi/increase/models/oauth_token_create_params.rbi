@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The credential you request in exchange for the code. In Production, this is
       # always `authorization_code`. In Sandbox, you can pass either enum value.
       sig do

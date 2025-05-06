@@ -11,7 +11,7 @@ module Increase
           params(
             amount: Integer,
             card_payment_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::CardPayment)
         end
         def create(

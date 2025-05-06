@@ -3,6 +3,8 @@
 module Increase
   module Models
     class DeclinedTransaction < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Declined Transaction identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -58,11 +60,7 @@ module Increase
 
       sig do
         params(
-          source:
-            T.any(
-              Increase::Models::DeclinedTransaction::Source,
-              Increase::Internal::AnyHash
-            )
+          source: Increase::Models::DeclinedTransaction::Source::OrHash
         ).void
       end
       attr_writer :source
@@ -88,11 +86,7 @@ module Increase
             T.nilable(
               Increase::Models::DeclinedTransaction::RouteType::OrSymbol
             ),
-          source:
-            T.any(
-              Increase::Models::DeclinedTransaction::Source,
-              Increase::Internal::AnyHash
-            ),
+          source: Increase::Models::DeclinedTransaction::Source::OrHash,
           type: Increase::Models::DeclinedTransaction::Type::OrSymbol
         ).returns(T.attached_class)
       end
@@ -261,6 +255,9 @@ module Increase
       end
 
       class Source < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # An ACH Decline object. This field will be present in the JSON response if and
         # only if `category` is equal to `ach_decline`.
         sig do
@@ -274,10 +271,7 @@ module Increase
           params(
             ach_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::ACHDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::ACHDecline::OrHash
               )
           ).void
         end
@@ -298,10 +292,7 @@ module Increase
           params(
             card_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CardDecline::OrHash
               )
           ).void
         end
@@ -331,10 +322,7 @@ module Increase
           params(
             check_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CheckDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CheckDecline::OrHash
               )
           ).void
         end
@@ -355,10 +343,7 @@ module Increase
           params(
             check_deposit_rejection:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CheckDepositRejection,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::OrHash
               )
           ).void
         end
@@ -380,10 +365,7 @@ module Increase
           params(
             inbound_real_time_payments_transfer_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::OrHash
               )
           ).void
         end
@@ -409,10 +391,7 @@ module Increase
           params(
             wire_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::WireDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::WireDecline::OrHash
               )
           ).void
         end
@@ -427,48 +406,30 @@ module Increase
           params(
             ach_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::ACHDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::ACHDecline::OrHash
               ),
             card_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CardDecline::OrHash
               ),
             category:
               Increase::Models::DeclinedTransaction::Source::Category::OrSymbol,
             check_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CheckDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CheckDecline::OrHash
               ),
             check_deposit_rejection:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CheckDepositRejection,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::OrHash
               ),
             inbound_real_time_payments_transfer_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::OrHash
               ),
             other: T.nilable(T.anything),
             wire_decline:
               T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::WireDecline,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::WireDecline::OrHash
               )
           ).returns(T.attached_class)
         end
@@ -538,6 +499,9 @@ module Increase
         end
 
         class ACHDecline < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The ACH Decline's identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -843,6 +807,9 @@ module Increase
         end
 
         class CardDecline < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The Card Decline identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -934,10 +901,7 @@ module Increase
           sig do
             params(
               network_details:
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::OrHash
             ).void
           end
           attr_writer :network_details
@@ -953,10 +917,7 @@ module Increase
           sig do
             params(
               network_identifiers:
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers::OrHash
             ).void
           end
           attr_writer :network_identifiers
@@ -1029,10 +990,7 @@ module Increase
           sig do
             params(
               verification:
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::OrHash
             ).void
           end
           attr_writer :verification
@@ -1060,15 +1018,9 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_details:
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::OrHash,
               network_identifiers:
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers::OrHash,
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
@@ -1084,10 +1036,7 @@ module Increase
                 Increase::Models::DeclinedTransaction::Source::CardDecline::Reason::OrSymbol,
               terminal_id: T.nilable(String),
               verification:
-                T.any(
-                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1363,6 +1312,9 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The payment network used to process this card authorization.
             sig do
               returns(
@@ -1385,10 +1337,7 @@ module Increase
               params(
                 visa:
                   T.nilable(
-                    T.any(
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
-                      Increase::Internal::AnyHash
-                    )
+                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::OrHash
                   )
               ).void
             end
@@ -1401,10 +1350,7 @@ module Increase
                   Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category::OrSymbol,
                 visa:
                   T.nilable(
-                    T.any(
-                      Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
-                      Increase::Internal::AnyHash
-                    )
+                    Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::OrHash
                   )
               ).returns(T.attached_class)
             end
@@ -1463,6 +1409,9 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
               # transactions, identifies the type of mail or telephone order.
@@ -1803,6 +1752,9 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -2139,6 +2091,9 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
             sig do
@@ -2151,10 +2106,7 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  T.any(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::OrHash
               ).void
             end
             attr_writer :card_verification_code
@@ -2171,10 +2123,7 @@ module Increase
             sig do
               params(
                 cardholder_address:
-                  T.any(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::OrHash
               ).void
             end
             attr_writer :cardholder_address
@@ -2183,15 +2132,9 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  T.any(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  ),
+                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::OrHash,
                 cardholder_address:
-                  T.any(
-                    Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2218,6 +2161,9 @@ module Increase
             end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # The result of verifying the Card Verification Code.
               sig do
                 returns(
@@ -2298,6 +2244,9 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
@@ -2509,6 +2458,9 @@ module Increase
         end
 
         class CheckDecline < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The declined amount in USD cents.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -2743,6 +2695,9 @@ module Increase
         end
 
         class CheckDepositRejection < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The rejected amount in the minor unit of check's currency. For dollars, for
           # example, this is cents.
           sig { returns(Integer) }
@@ -2998,6 +2953,9 @@ module Increase
         end
 
         class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The declined amount in the minor unit of the destination account currency. For
           # dollars, for example, this is cents.
           sig { returns(Integer) }
@@ -3252,6 +3210,9 @@ module Increase
         end
 
         class WireDecline < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The identifier of the Inbound Wire Transfer that was declined.
           sig { returns(String) }
           attr_accessor :inbound_wire_transfer_id

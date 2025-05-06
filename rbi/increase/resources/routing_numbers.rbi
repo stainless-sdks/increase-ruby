@@ -12,7 +12,7 @@ module Increase
           routing_number: String,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::RoutingNumberListResponse]
         )

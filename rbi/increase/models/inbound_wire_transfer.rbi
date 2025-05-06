@@ -3,6 +3,8 @@
 module Increase
   module Models
     class InboundWireTransfer < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The inbound wire transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -105,12 +107,7 @@ module Increase
       sig do
         params(
           reversal:
-            T.nilable(
-              T.any(
-                Increase::Models::InboundWireTransfer::Reversal,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::InboundWireTransfer::Reversal::OrHash)
         ).void
       end
       attr_writer :reversal
@@ -157,12 +154,7 @@ module Increase
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
           reversal:
-            T.nilable(
-              T.any(
-                Increase::Models::InboundWireTransfer::Reversal,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::InboundWireTransfer::Reversal::OrHash),
           sender_reference: T.nilable(String),
           status: Increase::Models::InboundWireTransfer::Status::OrSymbol,
           type: Increase::Models::InboundWireTransfer::Type::OrSymbol
@@ -267,6 +259,9 @@ module Increase
       end
 
       class Reversal < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The reason for the reversal.
         sig do
           returns(

@@ -13,7 +13,7 @@ module Increase
             Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
           funding:
             Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ExternalAccount)
       end
       def create(
@@ -36,7 +36,7 @@ module Increase
       sig do
         params(
           external_account_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ExternalAccount)
       end
       def retrieve(
@@ -57,7 +57,7 @@ module Increase
             Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
           status:
             Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ExternalAccount)
       end
       def update(
@@ -82,12 +82,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status:
-            T.any(
-              Increase::Models::ExternalAccountListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::ExternalAccountListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::ExternalAccount])
       end
       def list(

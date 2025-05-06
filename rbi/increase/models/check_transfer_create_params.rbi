@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
       attr_accessor :account_id
@@ -49,10 +51,7 @@ module Increase
       sig do
         params(
           physical_check:
-            T.any(
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::CheckTransferCreateParams::PhysicalCheck::OrHash
         ).void
       end
       attr_writer :physical_check
@@ -77,10 +76,7 @@ module Increase
       sig do
         params(
           third_party:
-            T.any(
-              Increase::Models::CheckTransferCreateParams::ThirdParty,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::CheckTransferCreateParams::ThirdParty::OrHash
         ).void
       end
       attr_writer :third_party
@@ -94,16 +90,10 @@ module Increase
           source_account_number_id: String,
           check_number: String,
           physical_check:
-            T.any(
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CheckTransferCreateParams::PhysicalCheck::OrHash,
           require_approval: T::Boolean,
           third_party:
-            T.any(
-              Increase::Models::CheckTransferCreateParams::ThirdParty,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CheckTransferCreateParams::ThirdParty::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -196,6 +186,9 @@ module Increase
       end
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Details for where Increase will mail the check.
         sig do
           returns(
@@ -207,10 +200,7 @@ module Increase
         sig do
           params(
             mailing_address:
-              T.any(
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash
           ).void
         end
         attr_writer :mailing_address
@@ -254,10 +244,7 @@ module Increase
         sig do
           params(
             return_address:
-              T.any(
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash
           ).void
         end
         attr_writer :return_address
@@ -295,19 +282,13 @@ module Increase
         sig do
           params(
             mailing_address:
-              T.any(
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash,
             memo: String,
             recipient_name: String,
             attachment_file_id: String,
             note: String,
             return_address:
-              T.any(
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash,
             shipping_method:
               Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
             signature_text: String
@@ -360,6 +341,9 @@ module Increase
         end
 
         class MailingAddress < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city component of the check's destination address.
           sig { returns(String) }
           attr_accessor :city
@@ -423,6 +407,9 @@ module Increase
         end
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city of the return address.
           sig { returns(String) }
           attr_accessor :city
@@ -536,6 +523,9 @@ module Increase
       end
 
       class ThirdParty < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The pay-to name you will print on the check. If provided, this is used for
         # [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
         # be unable to validate the payee name when the check is deposited.

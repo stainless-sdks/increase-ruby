@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundCheckDeposit)
       end
       def retrieve(
@@ -23,13 +23,10 @@ module Increase
           account_id: String,
           check_transfer_id: String,
           created_at:
-            T.any(
-              Increase::Models::InboundCheckDepositListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::InboundCheckDepositListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::InboundCheckDeposit]
         )
@@ -54,7 +51,7 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundCheckDeposit)
       end
       def decline(
@@ -70,7 +67,7 @@ module Increase
           inbound_check_deposit_id: String,
           reason:
             Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundCheckDeposit)
       end
       def return_(

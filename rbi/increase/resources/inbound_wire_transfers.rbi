@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_wire_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(
@@ -23,18 +23,12 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            T.any(
-              Increase::Models::InboundWireTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::InboundWireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::InboundWireTransferListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::InboundWireTransferListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::InboundWireTransfer]
         )
@@ -61,7 +55,7 @@ module Increase
           inbound_wire_transfer_id: String,
           reason:
             Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundWireTransfer)
       end
       def reverse(

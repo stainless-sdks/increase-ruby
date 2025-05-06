@@ -4,6 +4,9 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateResponse < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # If the authorization attempt fails, this will contain the resulting
         # [Declined Transaction](#declined-transactions) object. The Declined
         # Transaction's `source` will be of `category: card_decline`.
@@ -13,12 +16,7 @@ module Increase
         sig do
           params(
             declined_transaction:
-              T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction,
-                  Increase::Internal::AnyHash
-                )
-              )
+              T.nilable(Increase::Models::DeclinedTransaction::OrHash)
           ).void
         end
         attr_writer :declined_transaction
@@ -32,12 +30,7 @@ module Increase
         sig do
           params(
             pending_transaction:
-              T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction,
-                  Increase::Internal::AnyHash
-                )
-              )
+              T.nilable(Increase::Models::PendingTransaction::OrHash)
           ).void
         end
         attr_writer :pending_transaction
@@ -55,19 +48,9 @@ module Increase
         sig do
           params(
             declined_transaction:
-              T.nilable(
-                T.any(
-                  Increase::Models::DeclinedTransaction,
-                  Increase::Internal::AnyHash
-                )
-              ),
+              T.nilable(Increase::Models::DeclinedTransaction::OrHash),
             pending_transaction:
-              T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction,
-                  Increase::Internal::AnyHash
-                )
-              ),
+              T.nilable(Increase::Models::PendingTransaction::OrHash),
             type:
               Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::OrSymbol
           ).returns(T.attached_class)

@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The reason why this transfer will be returned. The most usual return codes are
       # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       sig do

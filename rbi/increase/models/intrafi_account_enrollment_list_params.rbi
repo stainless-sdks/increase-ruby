@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter IntraFi Account Enrollments to the one belonging to an account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -50,10 +52,7 @@ module Increase
       sig do
         params(
           status:
-            T.any(
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::IntrafiAccountEnrollmentListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -65,10 +64,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::IntrafiAccountEnrollmentListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -108,6 +104,9 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Filter IntraFi Account Enrollments for those with the specified status or
         # statuses. For GET requests, this should be encoded as a comma-delimited string,
         # such as `?in=one,two,three`.

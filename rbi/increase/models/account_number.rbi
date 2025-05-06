@@ -3,6 +3,8 @@
 module Increase
   module Models
     class AccountNumber < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Account Number identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -32,11 +34,7 @@ module Increase
 
       sig do
         params(
-          inbound_ach:
-            T.any(
-              Increase::Models::AccountNumber::InboundACH,
-              Increase::Internal::AnyHash
-            )
+          inbound_ach: Increase::Models::AccountNumber::InboundACH::OrHash
         ).void
       end
       attr_writer :inbound_ach
@@ -48,11 +46,7 @@ module Increase
 
       sig do
         params(
-          inbound_checks:
-            T.any(
-              Increase::Models::AccountNumber::InboundChecks,
-              Increase::Internal::AnyHash
-            )
+          inbound_checks: Increase::Models::AccountNumber::InboundChecks::OrHash
         ).void
       end
       attr_writer :inbound_checks
@@ -86,16 +80,9 @@ module Increase
           account_number: String,
           created_at: Time,
           idempotency_key: T.nilable(String),
-          inbound_ach:
-            T.any(
-              Increase::Models::AccountNumber::InboundACH,
-              Increase::Internal::AnyHash
-            ),
+          inbound_ach: Increase::Models::AccountNumber::InboundACH::OrHash,
           inbound_checks:
-            T.any(
-              Increase::Models::AccountNumber::InboundChecks,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumber::InboundChecks::OrHash,
           name: String,
           routing_number: String,
           status: Increase::Models::AccountNumber::Status::OrSymbol,
@@ -154,6 +141,9 @@ module Increase
       end
 
       class InboundACH < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Whether ACH debits are allowed against this Account Number. Note that they will
         # still be declined if this is `allowed` if the Account Number is not active.
         sig do
@@ -229,6 +219,9 @@ module Increase
       end
 
       class InboundChecks < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # How Increase should process checks with this account number printed on them.
         sig do
           returns(

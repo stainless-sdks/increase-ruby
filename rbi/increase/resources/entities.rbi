@@ -8,44 +8,21 @@ module Increase
         params(
           structure: Increase::Models::EntityCreateParams::Structure::OrSymbol,
           corporation:
-            T.any(
-              Increase::Models::EntityCreateParams::Corporation,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::EntityCreateParams::Corporation::OrHash,
           description: String,
           government_authority:
-            T.any(
-              Increase::Models::EntityCreateParams::GovernmentAuthority,
-              Increase::Internal::AnyHash
-            ),
-          joint:
-            T.any(
-              Increase::Models::EntityCreateParams::Joint,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::EntityCreateParams::GovernmentAuthority::OrHash,
+          joint: Increase::Models::EntityCreateParams::Joint::OrHash,
           natural_person:
-            T.any(
-              Increase::Models::EntityCreateParams::NaturalPerson,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::EntityCreateParams::NaturalPerson::OrHash,
           supplemental_documents:
             T::Array[
-              T.any(
-                Increase::Models::EntityCreateParams::SupplementalDocument,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::EntityCreateParams::SupplementalDocument::OrHash
             ],
           third_party_verification:
-            T.any(
-              Increase::Models::EntityCreateParams::ThirdPartyVerification,
-              Increase::Internal::AnyHash
-            ),
-          trust:
-            T.any(
-              Increase::Models::EntityCreateParams::Trust,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::EntityCreateParams::ThirdPartyVerification::OrHash,
+          trust: Increase::Models::EntityCreateParams::Trust::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def create(
@@ -83,7 +60,7 @@ module Increase
       sig do
         params(
           entity_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def retrieve(
@@ -96,20 +73,12 @@ module Increase
       # List Entities
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::EntityListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          created_at: Increase::Models::EntityListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::EntityListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::EntityListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Entity])
       end
       def list(
@@ -133,7 +102,7 @@ module Increase
       sig do
         params(
           entity_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def archive(
@@ -149,7 +118,7 @@ module Increase
         params(
           entity_id: String,
           beneficial_owner_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def archive_beneficial_owner(
@@ -170,7 +139,7 @@ module Increase
         params(
           entity_id: String,
           confirmed_at: Time,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def confirm(
@@ -188,11 +157,8 @@ module Increase
         params(
           entity_id: String,
           beneficial_owner:
-            T.any(
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def create_beneficial_owner(
@@ -209,12 +175,8 @@ module Increase
       sig do
         params(
           entity_id: String,
-          address:
-            T.any(
-              Increase::Models::EntityUpdateAddressParams::Address,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          address: Increase::Models::EntityUpdateAddressParams::Address::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def update_address(
@@ -232,12 +194,9 @@ module Increase
         params(
           entity_id: String,
           address:
-            T.any(
-              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
           beneficial_owner_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def update_beneficial_owner_address(
@@ -259,7 +218,7 @@ module Increase
         params(
           entity_id: String,
           industry_code: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Entity)
       end
       def update_industry_code(

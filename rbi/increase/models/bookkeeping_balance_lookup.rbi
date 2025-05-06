@@ -3,6 +3,8 @@
 module Increase
   module Models
     class BookkeepingBalanceLookup < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Bookkeeping Account's current balance, representing the sum of all
       # Bookkeeping Entries on the Bookkeeping Account.
       sig { returns(Integer) }

@@ -28,7 +28,7 @@ module Increase
             resolve_at: Time,
             standard_entry_class_code:
               Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::InboundACHTransfer)
         end
         def create(

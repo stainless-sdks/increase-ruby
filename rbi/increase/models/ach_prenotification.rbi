@@ -3,6 +3,8 @@
 module Increase
   module Models
     class ACHPrenotification < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The ACH Prenotification's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -77,10 +79,7 @@ module Increase
         params(
           prenotification_return:
             T.nilable(
-              T.any(
-                Increase::Models::ACHPrenotification::PrenotificationReturn,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::ACHPrenotification::PrenotificationReturn::OrHash
             )
         ).void
       end
@@ -121,17 +120,11 @@ module Increase
           idempotency_key: T.nilable(String),
           notifications_of_change:
             T::Array[
-              T.any(
-                Increase::Models::ACHPrenotification::NotificationsOfChange,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::ACHPrenotification::NotificationsOfChange::OrHash
             ],
           prenotification_return:
             T.nilable(
-              T.any(
-                Increase::Models::ACHPrenotification::PrenotificationReturn,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::ACHPrenotification::PrenotificationReturn::OrHash
             ),
           routing_number: String,
           status: Increase::Models::ACHPrenotification::Status::OrSymbol,
@@ -252,6 +245,9 @@ module Increase
       end
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The required type of change that is being signaled by the receiving financial
         # institution.
         sig do
@@ -471,6 +467,9 @@ module Increase
       end
 
       class PrenotificationReturn < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Prenotification was returned.
         sig { returns(Time) }

@@ -3,6 +3,8 @@
 module Increase
   module Models
     class OAuthConnection < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The OAuth Connection's identifier.
       sig { returns(String) }
       attr_accessor :id

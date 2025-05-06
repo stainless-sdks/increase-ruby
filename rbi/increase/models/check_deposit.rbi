@@ -3,6 +3,8 @@
 module Increase
   module Models
     class CheckDeposit < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The deposit's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -34,12 +36,7 @@ module Increase
       sig do
         params(
           deposit_acceptance:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositAcceptance,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CheckDeposit::DepositAcceptance::OrHash)
         ).void
       end
       attr_writer :deposit_acceptance
@@ -54,12 +51,7 @@ module Increase
       sig do
         params(
           deposit_rejection:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositRejection,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CheckDeposit::DepositRejection::OrHash)
         ).void
       end
       attr_writer :deposit_rejection
@@ -72,12 +64,7 @@ module Increase
       sig do
         params(
           deposit_return:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositReturn,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CheckDeposit::DepositReturn::OrHash)
         ).void
       end
       attr_writer :deposit_return
@@ -92,12 +79,7 @@ module Increase
       sig do
         params(
           deposit_submission:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositSubmission,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CheckDeposit::DepositSubmission::OrHash)
         ).void
       end
       attr_writer :deposit_submission
@@ -126,12 +108,7 @@ module Increase
       sig do
         params(
           inbound_funds_hold:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::InboundFundsHold,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CheckDeposit::InboundFundsHold::OrHash)
         ).void
       end
       attr_writer :inbound_funds_hold
@@ -169,42 +146,21 @@ module Increase
           created_at: Time,
           deposit_acceptance:
             T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositAcceptance,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::CheckDeposit::DepositAcceptance::OrHash
             ),
           deposit_rejection:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositRejection,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::CheckDeposit::DepositRejection::OrHash),
           deposit_return:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositReturn,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::CheckDeposit::DepositReturn::OrHash),
           deposit_submission:
             T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::DepositSubmission,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::CheckDeposit::DepositSubmission::OrHash
             ),
           description: T.nilable(String),
           front_image_file_id: String,
           idempotency_key: T.nilable(String),
           inbound_funds_hold:
-            T.nilable(
-              T.any(
-                Increase::Models::CheckDeposit::InboundFundsHold,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::CheckDeposit::InboundFundsHold::OrHash),
           inbound_mail_item_id: T.nilable(String),
           lockbox_id: T.nilable(String),
           status: Increase::Models::CheckDeposit::Status::OrSymbol,
@@ -296,6 +252,9 @@ module Increase
       end
 
       class DepositAcceptance < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The account number printed on the check.
         sig { returns(String) }
         attr_accessor :account_number
@@ -454,6 +413,9 @@ module Increase
       end
 
       class DepositRejection < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The rejected amount in the minor unit of check's currency. For dollars, for
         # example, this is cents.
         sig { returns(Integer) }
@@ -709,6 +671,9 @@ module Increase
       end
 
       class DepositReturn < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The returned amount in USD cents.
         sig { returns(Integer) }
         attr_accessor :amount
@@ -1072,6 +1037,9 @@ module Increase
       end
 
       class DepositSubmission < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The ID for the File containing the check back image that was submitted to the
         # Check21 network.
         sig { returns(String) }
@@ -1121,6 +1089,9 @@ module Increase
       end
 
       class InboundFundsHold < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
         attr_accessor :id

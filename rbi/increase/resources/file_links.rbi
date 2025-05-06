@@ -8,7 +8,7 @@ module Increase
         params(
           file_id: String,
           expires_at: Time,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::FileLink)
       end
       def create(

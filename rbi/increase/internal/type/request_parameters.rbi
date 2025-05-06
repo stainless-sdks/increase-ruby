@@ -6,7 +6,7 @@ module Increase
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(Increase::RequestOpts) }
+        sig { returns(Increase::RequestOptions::OrHash) }
         attr_accessor :request_options
 
         # @api private

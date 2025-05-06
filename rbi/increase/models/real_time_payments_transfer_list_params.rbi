@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Real-Time Payments Transfers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -25,10 +27,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::RealTimePaymentsTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -78,10 +77,7 @@ module Increase
       sig do
         params(
           status:
-            T.any(
-              Increase::Models::RealTimePaymentsTransferListParams::Status,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::RealTimePaymentsTransferListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -90,19 +86,13 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::RealTimePaymentsTransferListParams::Status,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimePaymentsTransferListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -149,6 +139,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -215,6 +208,9 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results whose value is in the provided list. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do

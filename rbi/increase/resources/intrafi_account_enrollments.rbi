@@ -8,7 +8,7 @@ module Increase
         params(
           account_id: String,
           email_address: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def create(
@@ -24,7 +24,7 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def retrieve(
@@ -42,11 +42,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::IntrafiAccountEnrollmentListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::IntrafiAccountEnrollment]
         )
@@ -73,7 +70,7 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def unenroll(

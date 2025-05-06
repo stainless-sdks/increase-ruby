@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           event_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Event)
       end
       def retrieve(
@@ -21,19 +21,11 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category:
-            T.any(
-              Increase::Models::EventListParams::Category,
-              Increase::Internal::AnyHash
-            ),
-          created_at:
-            T.any(
-              Increase::Models::EventListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          category: Increase::Models::EventListParams::Category::OrHash,
+          created_at: Increase::Models::EventListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Event])
       end
       def list(

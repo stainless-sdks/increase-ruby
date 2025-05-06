@@ -9,7 +9,7 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Lockbox)
       end
       def create(
@@ -27,7 +27,7 @@ module Increase
       sig do
         params(
           lockbox_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Lockbox)
       end
       def retrieve(
@@ -44,7 +44,7 @@ module Increase
           description: String,
           recipient_name: String,
           status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Lockbox)
       end
       def update(
@@ -64,15 +64,11 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            T.any(
-              Increase::Models::LockboxListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          created_at: Increase::Models::LockboxListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Lockbox])
       end
       def list(

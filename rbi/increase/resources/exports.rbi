@@ -8,32 +8,15 @@ module Increase
         params(
           category: Increase::Models::ExportCreateParams::Category::OrSymbol,
           account_statement_ofx:
-            T.any(
-              Increase::Models::ExportCreateParams::AccountStatementOfx,
-              Increase::Internal::AnyHash
-            ),
-          balance_csv:
-            T.any(
-              Increase::Models::ExportCreateParams::BalanceCsv,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::ExportCreateParams::AccountStatementOfx::OrHash,
+          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv::OrHash,
           bookkeeping_account_balance_csv:
-            T.any(
-              Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
-              Increase::Internal::AnyHash
-            ),
-          entity_csv:
-            T.any(
-              Increase::Models::ExportCreateParams::EntityCsv,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::OrHash,
+          entity_csv: Increase::Models::ExportCreateParams::EntityCsv::OrHash,
           transaction_csv:
-            T.any(
-              Increase::Models::ExportCreateParams::TransactionCsv,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::ExportCreateParams::TransactionCsv::OrHash,
           vendor_csv: T.anything,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Export)
       end
       def create(
@@ -63,7 +46,7 @@ module Increase
       sig do
         params(
           export_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Export)
       end
       def retrieve(
@@ -76,25 +59,13 @@ module Increase
       # List Exports
       sig do
         params(
-          category:
-            T.any(
-              Increase::Models::ExportListParams::Category,
-              Increase::Internal::AnyHash
-            ),
-          created_at:
-            T.any(
-              Increase::Models::ExportListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          category: Increase::Models::ExportListParams::Category::OrHash,
+          created_at: Increase::Models::ExportListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::ExportListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::ExportListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Export])
       end
       def list(

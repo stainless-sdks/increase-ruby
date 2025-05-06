@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           pending_transaction_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::PendingTransaction)
       end
       def retrieve(
@@ -22,24 +22,15 @@ module Increase
         params(
           account_id: String,
           category:
-            T.any(
-              Increase::Models::PendingTransactionListParams::Category,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PendingTransactionListParams::Category::OrHash,
           created_at:
-            T.any(
-              Increase::Models::PendingTransactionListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PendingTransactionListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           route_id: String,
           status:
-            T.any(
-              Increase::Models::PendingTransactionListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::PendingTransactionListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::PendingTransaction]
         )

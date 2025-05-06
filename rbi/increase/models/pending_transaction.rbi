@@ -3,6 +3,8 @@
 module Increase
   module Models
     class PendingTransaction < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Pending Transaction identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -63,11 +65,7 @@ module Increase
 
       sig do
         params(
-          source:
-            T.any(
-              Increase::Models::PendingTransaction::Source,
-              Increase::Internal::AnyHash
-            )
+          source: Increase::Models::PendingTransaction::Source::OrHash
         ).void
       end
       attr_writer :source
@@ -100,11 +98,7 @@ module Increase
             T.nilable(
               Increase::Models::PendingTransaction::RouteType::OrSymbol
             ),
-          source:
-            T.any(
-              Increase::Models::PendingTransaction::Source,
-              Increase::Internal::AnyHash
-            ),
+          source: Increase::Models::PendingTransaction::Source::OrHash,
           status: Increase::Models::PendingTransaction::Status::OrSymbol,
           type: Increase::Models::PendingTransaction::Type::OrSymbol
         ).returns(T.attached_class)
@@ -282,6 +276,9 @@ module Increase
       end
 
       class Source < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # An Account Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `account_transfer_instruction`.
         sig do
@@ -297,10 +294,7 @@ module Increase
           params(
             account_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::AccountTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::OrHash
               )
           ).void
         end
@@ -321,10 +315,7 @@ module Increase
           params(
             ach_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::ACHTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::ACHTransferInstruction::OrHash
               )
           ).void
         end
@@ -347,10 +338,7 @@ module Increase
           params(
             card_authorization:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CardAuthorization::OrHash
               )
           ).void
         end
@@ -380,10 +368,7 @@ module Increase
           params(
             check_deposit_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CheckDepositInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CheckDepositInstruction::OrHash
               )
           ).void
         end
@@ -404,10 +389,7 @@ module Increase
           params(
             check_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CheckTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::OrHash
               )
           ).void
         end
@@ -430,10 +412,7 @@ module Increase
           params(
             inbound_funds_hold:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::InboundFundsHold,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::InboundFundsHold::OrHash
               )
           ).void
         end
@@ -456,10 +435,7 @@ module Increase
           params(
             inbound_wire_transfer_reversal:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::InboundWireTransferReversal,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::InboundWireTransferReversal::OrHash
               )
           ).void
         end
@@ -486,10 +462,7 @@ module Increase
           params(
             real_time_payments_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction::OrHash
               )
           ).void
         end
@@ -510,10 +483,7 @@ module Increase
           params(
             swift_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::SwiftTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::SwiftTransferInstruction::OrHash
               )
           ).void
         end
@@ -534,10 +504,7 @@ module Increase
           params(
             wire_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::WireTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::WireTransferInstruction::OrHash
               )
           ).void
         end
@@ -550,76 +517,46 @@ module Increase
           params(
             account_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::AccountTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::AccountTransferInstruction::OrHash
               ),
             ach_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::ACHTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::ACHTransferInstruction::OrHash
               ),
             card_authorization:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CardAuthorization::OrHash
               ),
             category:
               Increase::Models::PendingTransaction::Source::Category::OrSymbol,
             check_deposit_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CheckDepositInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CheckDepositInstruction::OrHash
               ),
             check_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CheckTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CheckTransferInstruction::OrHash
               ),
             inbound_funds_hold:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::InboundFundsHold,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::InboundFundsHold::OrHash
               ),
             inbound_wire_transfer_reversal:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::InboundWireTransferReversal,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::InboundWireTransferReversal::OrHash
               ),
             other: T.nilable(T.anything),
             real_time_payments_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction::OrHash
               ),
             swift_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::SwiftTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::SwiftTransferInstruction::OrHash
               ),
             wire_transfer_instruction:
               T.nilable(
-                T.any(
-                  Increase::Models::PendingTransaction::Source::WireTransferInstruction,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::WireTransferInstruction::OrHash
               )
           ).returns(T.attached_class)
         end
@@ -723,6 +660,9 @@ module Increase
         end
 
         class AccountTransferInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The pending amount in the minor unit of the transaction's currency. For dollars,
           # for example, this is cents.
           sig { returns(Integer) }
@@ -845,6 +785,9 @@ module Increase
         end
 
         class ACHTransferInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The pending amount in USD cents.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -874,6 +817,9 @@ module Increase
         end
 
         class CardAuthorization < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The Card Authorization identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -966,10 +912,7 @@ module Increase
           sig do
             params(
               network_details:
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::OrHash
             ).void
           end
           attr_writer :network_details
@@ -985,10 +928,7 @@ module Increase
           sig do
             params(
               network_identifiers:
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers::OrHash
             ).void
           end
           attr_writer :network_identifiers
@@ -1055,10 +995,7 @@ module Increase
           sig do
             params(
               verification:
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::OrHash
             ).void
           end
           attr_writer :verification
@@ -1088,15 +1025,9 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_details:
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::OrHash,
               network_identifiers:
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers::OrHash,
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               physical_card_id: T.nilable(String),
@@ -1109,10 +1040,7 @@ module Increase
               type:
                 Increase::Models::PendingTransaction::Source::CardAuthorization::Type::OrSymbol,
               verification:
-                T.any(
-                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1386,6 +1314,9 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The payment network used to process this card authorization.
             sig do
               returns(
@@ -1408,10 +1339,7 @@ module Increase
               params(
                 visa:
                   T.nilable(
-                    T.any(
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
-                      Increase::Internal::AnyHash
-                    )
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::OrHash
                   )
               ).void
             end
@@ -1424,10 +1352,7 @@ module Increase
                   Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::OrSymbol,
                 visa:
                   T.nilable(
-                    T.any(
-                      Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa,
-                      Increase::Internal::AnyHash
-                    )
+                    Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::OrHash
                   )
               ).returns(T.attached_class)
             end
@@ -1486,6 +1411,9 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
               # transactions, identifies the type of mail or telephone order.
@@ -1826,6 +1754,9 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -1976,6 +1907,9 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
             sig do
@@ -1988,10 +1922,7 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::OrHash
               ).void
             end
             attr_writer :card_verification_code
@@ -2008,10 +1939,7 @@ module Increase
             sig do
               params(
                 cardholder_address:
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::OrHash
               ).void
             end
             attr_writer :cardholder_address
@@ -2020,15 +1948,9 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  ),
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::OrHash,
                 cardholder_address:
-                  T.any(
-                    Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2055,6 +1977,9 @@ module Increase
             end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # The result of verifying the Card Verification Code.
               sig do
                 returns(
@@ -2135,6 +2060,9 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
@@ -2374,6 +2302,9 @@ module Increase
         end
 
         class CheckDepositInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The pending amount in USD cents.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -2514,6 +2445,9 @@ module Increase
         end
 
         class CheckTransferInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The transfer amount in USD cents.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -2634,6 +2568,9 @@ module Increase
         end
 
         class InboundFundsHold < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The Inbound Funds Hold identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -2901,6 +2838,9 @@ module Increase
         end
 
         class InboundWireTransferReversal < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The ID of the Inbound Wire Transfer that is being reversed.
           sig { returns(String) }
           attr_accessor :inbound_wire_transfer_id
@@ -2924,6 +2864,9 @@ module Increase
         end
 
         class RealTimePaymentsTransferInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The transfer amount in USD cents.
           sig { returns(Integer) }
           attr_accessor :amount
@@ -2956,6 +2899,9 @@ module Increase
         end
 
         class SwiftTransferInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The identifier of the Swift Transfer that led to this Pending Transaction.
           sig { returns(String) }
           attr_accessor :transfer_id
@@ -2975,6 +2921,9 @@ module Increase
         end
 
         class WireTransferInstruction < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The account number for the destination account.
           sig { returns(String) }
           attr_accessor :account_number

@@ -6,16 +6,14 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       sig { returns(T.nilable(Increase::Models::EntityListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::EntityListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+          created_at: Increase::Models::EntityListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -49,31 +47,17 @@ module Increase
       attr_reader :status
 
       sig do
-        params(
-          status:
-            T.any(
-              Increase::Models::EntityListParams::Status,
-              Increase::Internal::AnyHash
-            )
-        ).void
+        params(status: Increase::Models::EntityListParams::Status::OrHash).void
       end
       attr_writer :status
 
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::EntityListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          created_at: Increase::Models::EntityListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::EntityListParams::Status,
-              Increase::Internal::AnyHash
-            ),
+          status: Increase::Models::EntityListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -111,6 +95,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -177,6 +164,9 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Filter Entities for those with the specified status or statuses. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.

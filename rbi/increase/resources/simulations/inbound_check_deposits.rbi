@@ -15,7 +15,7 @@ module Increase
             account_number_id: String,
             amount: Integer,
             check_number: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::InboundCheckDeposit)
         end
         def create(

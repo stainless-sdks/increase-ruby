@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Account Transfers to those that originated from the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -23,10 +25,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::AccountTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::AccountTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -60,10 +59,7 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::AccountTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountTransferListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
@@ -105,6 +101,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

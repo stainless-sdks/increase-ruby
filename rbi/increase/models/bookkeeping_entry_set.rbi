@@ -3,6 +3,8 @@
 module Increase
   module Models
     class BookkeepingEntrySet < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The entry set identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -44,12 +46,7 @@ module Increase
           created_at: Time,
           date: Time,
           entries:
-            T::Array[
-              T.any(
-                Increase::Models::BookkeepingEntrySet::Entry,
-                Increase::Internal::AnyHash
-              )
-            ],
+            T::Array[Increase::Models::BookkeepingEntrySet::Entry::OrHash],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
           type: Increase::Models::BookkeepingEntrySet::Type::OrSymbol
@@ -93,6 +90,9 @@ module Increase
       end
 
       class Entry < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The entry identifier.
         sig { returns(String) }
         attr_accessor :id

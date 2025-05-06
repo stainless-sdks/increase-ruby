@@ -3,6 +3,8 @@
 module Increase
   module Models
     class WireTransfer < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The wire transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -26,13 +28,7 @@ module Increase
 
       sig do
         params(
-          approval:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Approval,
-                Increase::Internal::AnyHash
-              )
-            )
+          approval: T.nilable(Increase::Models::WireTransfer::Approval::OrHash)
         ).void
       end
       attr_writer :approval
@@ -61,12 +57,7 @@ module Increase
       sig do
         params(
           cancellation:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Cancellation,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::WireTransfer::Cancellation::OrHash)
         ).void
       end
       attr_writer :cancellation
@@ -83,12 +74,7 @@ module Increase
       sig do
         params(
           created_by:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::CreatedBy,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::WireTransfer::CreatedBy::OrHash)
         ).void
       end
       attr_writer :created_by
@@ -145,13 +131,7 @@ module Increase
 
       sig do
         params(
-          reversal:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Reversal,
-                Increase::Internal::AnyHash
-              )
-            )
+          reversal: T.nilable(Increase::Models::WireTransfer::Reversal::OrHash)
         ).void
       end
       attr_writer :reversal
@@ -176,12 +156,7 @@ module Increase
       sig do
         params(
           submission:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Submission,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::WireTransfer::Submission::OrHash)
         ).void
       end
       attr_writer :submission
@@ -203,32 +178,16 @@ module Increase
           account_id: String,
           account_number: String,
           amount: Integer,
-          approval:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Approval,
-                Increase::Internal::AnyHash
-              )
-            ),
+          approval: T.nilable(Increase::Models::WireTransfer::Approval::OrHash),
           beneficiary_address_line1: T.nilable(String),
           beneficiary_address_line2: T.nilable(String),
           beneficiary_address_line3: T.nilable(String),
           beneficiary_name: T.nilable(String),
           cancellation:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Cancellation,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::WireTransfer::Cancellation::OrHash),
           created_at: Time,
           created_by:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::CreatedBy,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::WireTransfer::CreatedBy::OrHash),
           currency: Increase::Models::WireTransfer::Currency::OrSymbol,
           external_account_id: T.nilable(String),
           idempotency_key: T.nilable(String),
@@ -239,23 +198,12 @@ module Increase
           originator_address_line3: T.nilable(String),
           originator_name: T.nilable(String),
           pending_transaction_id: T.nilable(String),
-          reversal:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Reversal,
-                Increase::Internal::AnyHash
-              )
-            ),
+          reversal: T.nilable(Increase::Models::WireTransfer::Reversal::OrHash),
           routing_number: String,
           source_account_number_id: T.nilable(String),
           status: Increase::Models::WireTransfer::Status::OrSymbol,
           submission:
-            T.nilable(
-              T.any(
-                Increase::Models::WireTransfer::Submission,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::WireTransfer::Submission::OrHash),
           transaction_id: T.nilable(String),
           type: Increase::Models::WireTransfer::Type::OrSymbol
         ).returns(T.attached_class)
@@ -373,6 +321,9 @@ module Increase
       end
 
       class Approval < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was approved.
         sig { returns(Time) }
@@ -410,6 +361,9 @@ module Increase
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Transfer was canceled.
         sig { returns(Time) }
@@ -447,6 +401,9 @@ module Increase
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # If present, details about the API key that created the transfer.
         sig do
           returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
@@ -457,10 +414,7 @@ module Increase
           params(
             api_key:
               T.nilable(
-                T.any(
-                  Increase::Models::WireTransfer::CreatedBy::APIKey,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::WireTransfer::CreatedBy::APIKey::OrHash
               )
           ).void
         end
@@ -488,10 +442,7 @@ module Increase
           params(
             oauth_application:
               T.nilable(
-                T.any(
-                  Increase::Models::WireTransfer::CreatedBy::OAuthApplication,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::WireTransfer::CreatedBy::OAuthApplication::OrHash
               )
           ).void
         end
@@ -506,12 +457,7 @@ module Increase
         sig do
           params(
             user:
-              T.nilable(
-                T.any(
-                  Increase::Models::WireTransfer::CreatedBy::User,
-                  Increase::Internal::AnyHash
-                )
-              )
+              T.nilable(Increase::Models::WireTransfer::CreatedBy::User::OrHash)
           ).void
         end
         attr_writer :user
@@ -521,27 +467,16 @@ module Increase
           params(
             api_key:
               T.nilable(
-                T.any(
-                  Increase::Models::WireTransfer::CreatedBy::APIKey,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::WireTransfer::CreatedBy::APIKey::OrHash
               ),
             category:
               Increase::Models::WireTransfer::CreatedBy::Category::OrSymbol,
             oauth_application:
               T.nilable(
-                T.any(
-                  Increase::Models::WireTransfer::CreatedBy::OAuthApplication,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::WireTransfer::CreatedBy::OAuthApplication::OrHash
               ),
             user:
-              T.nilable(
-                T.any(
-                  Increase::Models::WireTransfer::CreatedBy::User,
-                  Increase::Internal::AnyHash
-                )
-              )
+              T.nilable(Increase::Models::WireTransfer::CreatedBy::User::OrHash)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -575,6 +510,9 @@ module Increase
         end
 
         class APIKey < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
           attr_accessor :description
@@ -637,6 +575,9 @@ module Increase
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The name of the OAuth Application.
           sig { returns(String) }
           attr_accessor :name
@@ -655,6 +596,9 @@ module Increase
         end
 
         class User < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The email address of the User.
           sig { returns(String) }
           attr_accessor :email
@@ -740,6 +684,9 @@ module Increase
       end
 
       class Reversal < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The amount that was reversed in USD cents.
         sig { returns(Integer) }
         attr_accessor :amount
@@ -976,6 +923,9 @@ module Increase
       end
 
       class Submission < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The accountability data for the submission.
         sig { returns(String) }
         attr_accessor :input_message_accountability_data

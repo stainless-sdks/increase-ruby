@@ -11,7 +11,7 @@ module Increase
           back_image_file_id: String,
           front_image_file_id: String,
           description: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckDeposit)
       end
       def create(
@@ -33,7 +33,7 @@ module Increase
       sig do
         params(
           check_deposit_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckDeposit)
       end
       def retrieve(
@@ -48,14 +48,11 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::CheckDepositListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CheckDepositListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::CheckDeposit])
       end
       def list(

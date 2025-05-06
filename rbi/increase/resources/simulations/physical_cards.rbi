@@ -12,7 +12,7 @@ module Increase
             physical_card_id: String,
             shipment_status:
               Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::PhysicalCard)
         end
         def advance_shipment(

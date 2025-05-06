@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Account Numbers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -23,10 +25,7 @@ module Increase
       sig do
         params(
           ach_debit_status:
-            T.any(
-              Increase::Models::AccountNumberListParams::ACHDebitStatus,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::AccountNumberListParams::ACHDebitStatus::OrHash
         ).void
       end
       attr_writer :ach_debit_status
@@ -39,10 +38,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::AccountNumberListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::AccountNumberListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -79,11 +75,7 @@ module Increase
 
       sig do
         params(
-          status:
-            T.any(
-              Increase::Models::AccountNumberListParams::Status,
-              Increase::Internal::AnyHash
-            )
+          status: Increase::Models::AccountNumberListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -92,23 +84,13 @@ module Increase
         params(
           account_id: String,
           ach_debit_status:
-            T.any(
-              Increase::Models::AccountNumberListParams::ACHDebitStatus,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberListParams::ACHDebitStatus::OrHash,
           created_at:
-            T.any(
-              Increase::Models::AccountNumberListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::AccountNumberListParams::Status,
-              Increase::Internal::AnyHash
-            ),
+          status: Increase::Models::AccountNumberListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -152,6 +134,9 @@ module Increase
       end
 
       class ACHDebitStatus < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do
@@ -242,6 +227,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -308,6 +296,9 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The status to retrieve Account Numbers for. For GET requests, this should be
         # encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do

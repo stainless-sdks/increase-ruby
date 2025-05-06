@@ -3,6 +3,8 @@
 module Increase
   module Models
     class CardPurchaseSupplement < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Card Purchase Supplement identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -20,12 +22,7 @@ module Increase
       sig do
         params(
           invoice:
-            T.nilable(
-              T.any(
-                Increase::Models::CardPurchaseSupplement::Invoice,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::OrHash)
         ).void
       end
       attr_writer :invoice
@@ -59,18 +56,12 @@ module Increase
           card_payment_id: T.nilable(String),
           invoice:
             T.nilable(
-              T.any(
-                Increase::Models::CardPurchaseSupplement::Invoice,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::CardPurchaseSupplement::Invoice::OrHash
             ),
           line_items:
             T.nilable(
               T::Array[
-                T.any(
-                  Increase::Models::CardPurchaseSupplement::LineItem,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::CardPurchaseSupplement::LineItem::OrHash
               ]
             ),
           transaction_id: String,
@@ -114,6 +105,9 @@ module Increase
       end
 
       class Invoice < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Discount given to cardholder.
         sig { returns(T.nilable(Integer)) }
         attr_accessor :discount_amount
@@ -394,6 +388,9 @@ module Increase
       end
 
       class LineItem < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The Card Purchase Supplement Line Item identifier.
         sig { returns(String) }
         attr_accessor :id

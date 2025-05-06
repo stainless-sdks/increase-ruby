@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Wire Transfers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -21,10 +23,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::WireTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::WireTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -65,10 +64,7 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::WireTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::WireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
@@ -114,6 +110,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

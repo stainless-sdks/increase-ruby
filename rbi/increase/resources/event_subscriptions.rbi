@@ -11,7 +11,7 @@ module Increase
           selected_event_category:
             Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::EventSubscription)
       end
       def create(
@@ -34,7 +34,7 @@ module Increase
       sig do
         params(
           event_subscription_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::EventSubscription)
       end
       def retrieve(
@@ -50,7 +50,7 @@ module Increase
           event_subscription_id: String,
           status:
             Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::EventSubscription)
       end
       def update(
@@ -68,7 +68,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::EventSubscription])
       end
       def list(

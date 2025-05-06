@@ -1,19 +1,16 @@
 # typed: strong
 
 module Increase
-  RequestOpts =
-    T.type_alias do
-      T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-    end
-
   # Specify HTTP behaviour to use for a specific request. These options supplement
   # or override those provided at the client level.
   #
   # When making a request, you can pass an actual {RequestOptions} instance, or
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Increase::Internal::Type::BaseModel
+    OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
     # @api private
-    sig { params(opts: T.any(T.self_type, T::Hash[Symbol, T.anything])).void }
+    sig { params(opts: Increase::RequestOptions::OrHash).void }
     def self.validate!(opts)
     end
 

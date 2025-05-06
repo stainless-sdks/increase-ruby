@@ -6,16 +6,14 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }
       attr_reader :category
 
       sig do
         params(
-          category:
-            T.any(
-              Increase::Models::DocumentListParams::Category,
-              Increase::Internal::AnyHash
-            )
+          category: Increase::Models::DocumentListParams::Category::OrHash
         ).void
       end
       attr_writer :category
@@ -27,11 +25,7 @@ module Increase
 
       sig do
         params(
-          created_at:
-            T.any(
-              Increase::Models::DocumentListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+          created_at: Increase::Models::DocumentListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -60,16 +54,8 @@ module Increase
 
       sig do
         params(
-          category:
-            T.any(
-              Increase::Models::DocumentListParams::Category,
-              Increase::Internal::AnyHash
-            ),
-          created_at:
-            T.any(
-              Increase::Models::DocumentListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          category: Increase::Models::DocumentListParams::Category::OrHash,
+          created_at: Increase::Models::DocumentListParams::CreatedAt::OrHash,
           cursor: String,
           entity_id: String,
           limit: Integer,
@@ -107,6 +93,9 @@ module Increase
       end
 
       class Category < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Filter Documents for those with the specified category or categories. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
@@ -210,6 +199,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

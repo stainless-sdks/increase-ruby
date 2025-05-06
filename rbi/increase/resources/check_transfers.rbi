@@ -13,17 +13,11 @@ module Increase
           source_account_number_id: String,
           check_number: String,
           physical_check:
-            T.any(
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CheckTransferCreateParams::PhysicalCheck::OrHash,
           require_approval: T::Boolean,
           third_party:
-            T.any(
-              Increase::Models::CheckTransferCreateParams::ThirdParty,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::CheckTransferCreateParams::ThirdParty::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckTransfer)
       end
       def create(
@@ -58,7 +52,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckTransfer)
       end
       def retrieve(
@@ -73,19 +67,12 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::CheckTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::CheckTransferListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::CheckTransferListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::CheckTransferListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::CheckTransfer])
       end
       def list(
@@ -111,7 +98,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckTransfer)
       end
       def approve(
@@ -125,7 +112,7 @@ module Increase
       sig do
         params(
           check_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckTransfer)
       end
       def cancel(
@@ -141,7 +128,7 @@ module Increase
           check_transfer_id: String,
           reason:
             Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::CheckTransfer)
       end
       def stop_payment(

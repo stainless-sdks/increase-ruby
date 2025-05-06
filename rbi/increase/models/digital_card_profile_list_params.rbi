@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
@@ -40,11 +42,7 @@ module Increase
 
       sig do
         params(
-          status:
-            T.any(
-              Increase::Models::DigitalCardProfileListParams::Status,
-              Increase::Internal::AnyHash
-            )
+          status: Increase::Models::DigitalCardProfileListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -55,10 +53,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::DigitalCardProfileListParams::Status,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DigitalCardProfileListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -94,6 +89,9 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Filter Digital Card Profiles for those with the specified digital wallet status
         # or statuses. For GET requests, this should be encoded as a comma-delimited
         # string, such as `?in=one,two,three`.

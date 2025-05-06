@@ -3,6 +3,8 @@
 module Increase
   module Models
     class Entity < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The entity's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -14,13 +16,7 @@ module Increase
 
       sig do
         params(
-          corporation:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::Corporation,
-                Increase::Internal::AnyHash
-              )
-            )
+          corporation: T.nilable(Increase::Models::Entity::Corporation::OrHash)
         ).void
       end
       attr_writer :corporation
@@ -47,12 +43,7 @@ module Increase
       sig do
         params(
           government_authority:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::GovernmentAuthority,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::Entity::GovernmentAuthority::OrHash)
         ).void
       end
       attr_writer :government_authority
@@ -68,15 +59,7 @@ module Increase
       attr_reader :joint
 
       sig do
-        params(
-          joint:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::Joint,
-                Increase::Internal::AnyHash
-              )
-            )
-        ).void
+        params(joint: T.nilable(Increase::Models::Entity::Joint::OrHash)).void
       end
       attr_writer :joint
 
@@ -88,12 +71,7 @@ module Increase
       sig do
         params(
           natural_person:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::NaturalPerson,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::Entity::NaturalPerson::OrHash)
         ).void
       end
       attr_writer :natural_person
@@ -122,12 +100,7 @@ module Increase
       sig do
         params(
           third_party_verification:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::ThirdPartyVerification,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::Entity::ThirdPartyVerification::OrHash)
         ).void
       end
       attr_writer :third_party_verification
@@ -137,15 +110,7 @@ module Increase
       attr_reader :trust
 
       sig do
-        params(
-          trust:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::Trust,
-                Increase::Internal::AnyHash
-              )
-            )
-        ).void
+        params(trust: T.nilable(Increase::Models::Entity::Trust::OrHash)).void
       end
       attr_writer :trust
 
@@ -159,61 +124,23 @@ module Increase
       sig do
         params(
           id: String,
-          corporation:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::Corporation,
-                Increase::Internal::AnyHash
-              )
-            ),
+          corporation: T.nilable(Increase::Models::Entity::Corporation::OrHash),
           created_at: Time,
           description: T.nilable(String),
           details_confirmed_at: T.nilable(Time),
           government_authority:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::GovernmentAuthority,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::Entity::GovernmentAuthority::OrHash),
           idempotency_key: T.nilable(String),
-          joint:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::Joint,
-                Increase::Internal::AnyHash
-              )
-            ),
+          joint: T.nilable(Increase::Models::Entity::Joint::OrHash),
           natural_person:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::NaturalPerson,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::Entity::NaturalPerson::OrHash),
           status: Increase::Models::Entity::Status::OrSymbol,
           structure: Increase::Models::Entity::Structure::OrSymbol,
           supplemental_documents:
-            T::Array[
-              T.any(
-                Increase::Models::EntitySupplementalDocument,
-                Increase::Internal::AnyHash
-              )
-            ],
+            T::Array[Increase::Models::EntitySupplementalDocument::OrHash],
           third_party_verification:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::ThirdPartyVerification,
-                Increase::Internal::AnyHash
-              )
-            ),
-          trust:
-            T.nilable(
-              T.any(
-                Increase::Models::Entity::Trust,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::Entity::ThirdPartyVerification::OrHash),
+          trust: T.nilable(Increase::Models::Entity::Trust::OrHash),
           type: Increase::Models::Entity::Type::OrSymbol
         ).returns(T.attached_class)
       end
@@ -290,17 +217,16 @@ module Increase
       end
 
       class Corporation < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The corporation's address.
         sig { returns(Increase::Models::Entity::Corporation::Address) }
         attr_reader :address
 
         sig do
           params(
-            address:
-              T.any(
-                Increase::Models::Entity::Corporation::Address,
-                Increase::Internal::AnyHash
-              )
+            address: Increase::Models::Entity::Corporation::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -340,17 +266,10 @@ module Increase
         # `corporation`.
         sig do
           params(
-            address:
-              T.any(
-                Increase::Models::Entity::Corporation::Address,
-                Increase::Internal::AnyHash
-              ),
+            address: Increase::Models::Entity::Corporation::Address::OrHash,
             beneficial_owners:
               T::Array[
-                T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Entity::Corporation::BeneficialOwner::OrHash
               ],
             incorporation_state: T.nilable(String),
             industry_code: T.nilable(String),
@@ -400,6 +319,9 @@ module Increase
         end
 
         class Address < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city of the address.
           sig { returns(String) }
           attr_accessor :city
@@ -462,6 +384,9 @@ module Increase
         end
 
         class BeneficialOwner < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The identifier of this beneficial owner.
           sig { returns(String) }
           attr_accessor :beneficial_owner_id
@@ -481,10 +406,7 @@ module Increase
           sig do
             params(
               individual:
-                T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Entity::Corporation::BeneficialOwner::Individual::OrHash
             ).void
           end
           attr_writer :individual
@@ -502,10 +424,7 @@ module Increase
               beneficial_owner_id: String,
               company_title: T.nilable(String),
               individual:
-                T.any(
-                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::Entity::Corporation::BeneficialOwner::Individual::OrHash,
               prong:
                 Increase::Models::Entity::Corporation::BeneficialOwner::Prong::OrSymbol
             ).returns(T.attached_class)
@@ -538,6 +457,9 @@ module Increase
           end
 
           class Individual < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The person's address.
             sig do
               returns(
@@ -549,10 +471,7 @@ module Increase
             sig do
               params(
                 address:
-                  T.any(
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address::OrHash
               ).void
             end
             attr_writer :address
@@ -572,10 +491,7 @@ module Increase
             sig do
               params(
                 identification:
-                  T.any(
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::OrHash
               ).void
             end
             attr_writer :identification
@@ -588,16 +504,10 @@ module Increase
             sig do
               params(
                 address:
-                  T.any(
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-                    Increase::Internal::AnyHash
-                  ),
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address::OrHash,
                 date_of_birth: Date,
                 identification:
-                  T.any(
-                    Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-                    Increase::Internal::AnyHash
-                  ),
+                  Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::OrHash,
                 name: String
               ).returns(T.attached_class)
             end
@@ -629,6 +539,9 @@ module Increase
             end
 
             class Address < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # The city, district, town, or village of the address.
               sig { returns(T.nilable(String)) }
               attr_accessor :city
@@ -699,6 +612,9 @@ module Increase
             end
 
             class Identification < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # A method that can be used to verify the individual's identity.
               sig do
                 returns(
@@ -843,6 +759,9 @@ module Increase
       end
 
       class GovernmentAuthority < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The government authority's address.
         sig { returns(Increase::Models::Entity::GovernmentAuthority::Address) }
         attr_reader :address
@@ -850,10 +769,7 @@ module Increase
         sig do
           params(
             address:
-              T.any(
-                Increase::Models::Entity::GovernmentAuthority::Address,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::Entity::GovernmentAuthority::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -893,16 +809,10 @@ module Increase
         sig do
           params(
             address:
-              T.any(
-                Increase::Models::Entity::GovernmentAuthority::Address,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::Entity::GovernmentAuthority::Address::OrHash,
             authorized_persons:
               T::Array[
-                T.any(
-                  Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson::OrHash
               ],
             category:
               Increase::Models::Entity::GovernmentAuthority::Category::OrSymbol,
@@ -947,6 +857,9 @@ module Increase
         end
 
         class Address < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city of the address.
           sig { returns(String) }
           attr_accessor :city
@@ -1009,6 +922,9 @@ module Increase
         end
 
         class AuthorizedPerson < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The identifier of this authorized person.
           sig { returns(String) }
           attr_accessor :authorized_person_id
@@ -1070,6 +986,9 @@ module Increase
       end
 
       class Joint < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The two individuals that share control of the entity.
         sig { returns(T::Array[Increase::Models::Entity::Joint::Individual]) }
         attr_accessor :individuals
@@ -1082,12 +1001,7 @@ module Increase
         sig do
           params(
             individuals:
-              T::Array[
-                T.any(
-                  Increase::Models::Entity::Joint::Individual,
-                  Increase::Internal::AnyHash
-                )
-              ],
+              T::Array[Increase::Models::Entity::Joint::Individual::OrHash],
             name: String
           ).returns(T.attached_class)
         end
@@ -1112,6 +1026,9 @@ module Increase
         end
 
         class Individual < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The person's address.
           sig { returns(Increase::Models::Entity::Joint::Individual::Address) }
           attr_reader :address
@@ -1119,10 +1036,7 @@ module Increase
           sig do
             params(
               address:
-                T.any(
-                  Increase::Models::Entity::Joint::Individual::Address,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Entity::Joint::Individual::Address::OrHash
             ).void
           end
           attr_writer :address
@@ -1140,10 +1054,7 @@ module Increase
           sig do
             params(
               identification:
-                T.any(
-                  Increase::Models::Entity::Joint::Individual::Identification,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Entity::Joint::Individual::Identification::OrHash
             ).void
           end
           attr_writer :identification
@@ -1155,16 +1066,10 @@ module Increase
           sig do
             params(
               address:
-                T.any(
-                  Increase::Models::Entity::Joint::Individual::Address,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::Entity::Joint::Individual::Address::OrHash,
               date_of_birth: Date,
               identification:
-                T.any(
-                  Increase::Models::Entity::Joint::Individual::Identification,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::Entity::Joint::Individual::Identification::OrHash,
               name: String
             ).returns(T.attached_class)
           end
@@ -1195,6 +1100,9 @@ module Increase
           end
 
           class Address < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The city of the address.
             sig { returns(String) }
             attr_accessor :city
@@ -1257,6 +1165,9 @@ module Increase
           end
 
           class Identification < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # A method that can be used to verify the individual's identity.
             sig do
               returns(
@@ -1362,17 +1273,16 @@ module Increase
       end
 
       class NaturalPerson < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The person's address.
         sig { returns(Increase::Models::Entity::NaturalPerson::Address) }
         attr_reader :address
 
         sig do
           params(
-            address:
-              T.any(
-                Increase::Models::Entity::NaturalPerson::Address,
-                Increase::Internal::AnyHash
-              )
+            address: Increase::Models::Entity::NaturalPerson::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -1388,10 +1298,7 @@ module Increase
         sig do
           params(
             identification:
-              T.any(
-                Increase::Models::Entity::NaturalPerson::Identification,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::Entity::NaturalPerson::Identification::OrHash
           ).void
         end
         attr_writer :identification
@@ -1404,17 +1311,10 @@ module Increase
         # `natural_person`.
         sig do
           params(
-            address:
-              T.any(
-                Increase::Models::Entity::NaturalPerson::Address,
-                Increase::Internal::AnyHash
-              ),
+            address: Increase::Models::Entity::NaturalPerson::Address::OrHash,
             date_of_birth: Date,
             identification:
-              T.any(
-                Increase::Models::Entity::NaturalPerson::Identification,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::Entity::NaturalPerson::Identification::OrHash,
             name: String
           ).returns(T.attached_class)
         end
@@ -1445,6 +1345,9 @@ module Increase
         end
 
         class Address < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city of the address.
           sig { returns(String) }
           attr_accessor :city
@@ -1507,6 +1410,9 @@ module Increase
         end
 
         class Identification < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # A method that can be used to verify the individual's identity.
           sig do
             returns(
@@ -1680,6 +1586,9 @@ module Increase
       end
 
       class ThirdPartyVerification < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The reference identifier for the third party verification.
         sig { returns(String) }
         attr_accessor :reference
@@ -1761,18 +1670,15 @@ module Increase
       end
 
       class Trust < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The trust's address.
         sig { returns(Increase::Models::Entity::Trust::Address) }
         attr_reader :address
 
         sig do
-          params(
-            address:
-              T.any(
-                Increase::Models::Entity::Trust::Address,
-                Increase::Internal::AnyHash
-              )
-          ).void
+          params(address: Increase::Models::Entity::Trust::Address::OrHash).void
         end
         attr_writer :address
 
@@ -1795,13 +1701,7 @@ module Increase
 
         sig do
           params(
-            grantor:
-              T.nilable(
-                T.any(
-                  Increase::Models::Entity::Trust::Grantor,
-                  Increase::Internal::AnyHash
-                )
-              )
+            grantor: T.nilable(Increase::Models::Entity::Trust::Grantor::OrHash)
           ).void
         end
         attr_writer :grantor
@@ -1821,30 +1721,15 @@ module Increase
         # Details of the trust entity. Will be present if `structure` is equal to `trust`.
         sig do
           params(
-            address:
-              T.any(
-                Increase::Models::Entity::Trust::Address,
-                Increase::Internal::AnyHash
-              ),
+            address: Increase::Models::Entity::Trust::Address::OrHash,
             category: Increase::Models::Entity::Trust::Category::OrSymbol,
             formation_document_file_id: T.nilable(String),
             formation_state: T.nilable(String),
             grantor:
-              T.nilable(
-                T.any(
-                  Increase::Models::Entity::Trust::Grantor,
-                  Increase::Internal::AnyHash
-                )
-              ),
+              T.nilable(Increase::Models::Entity::Trust::Grantor::OrHash),
             name: String,
             tax_identifier: T.nilable(String),
-            trustees:
-              T::Array[
-                T.any(
-                  Increase::Models::Entity::Trust::Trustee,
-                  Increase::Internal::AnyHash
-                )
-              ]
+            trustees: T::Array[Increase::Models::Entity::Trust::Trustee::OrHash]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1886,6 +1771,9 @@ module Increase
         end
 
         class Address < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The city of the address.
           sig { returns(String) }
           attr_accessor :city
@@ -1981,17 +1869,16 @@ module Increase
         end
 
         class Grantor < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The person's address.
           sig { returns(Increase::Models::Entity::Trust::Grantor::Address) }
           attr_reader :address
 
           sig do
             params(
-              address:
-                T.any(
-                  Increase::Models::Entity::Trust::Grantor::Address,
-                  Increase::Internal::AnyHash
-                )
+              address: Increase::Models::Entity::Trust::Grantor::Address::OrHash
             ).void
           end
           attr_writer :address
@@ -2009,10 +1896,7 @@ module Increase
           sig do
             params(
               identification:
-                T.any(
-                  Increase::Models::Entity::Trust::Grantor::Identification,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Entity::Trust::Grantor::Identification::OrHash
             ).void
           end
           attr_writer :identification
@@ -2025,16 +1909,10 @@ module Increase
           sig do
             params(
               address:
-                T.any(
-                  Increase::Models::Entity::Trust::Grantor::Address,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::Entity::Trust::Grantor::Address::OrHash,
               date_of_birth: Date,
               identification:
-                T.any(
-                  Increase::Models::Entity::Trust::Grantor::Identification,
-                  Increase::Internal::AnyHash
-                ),
+                Increase::Models::Entity::Trust::Grantor::Identification::OrHash,
               name: String
             ).returns(T.attached_class)
           end
@@ -2065,6 +1943,9 @@ module Increase
           end
 
           class Address < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The city of the address.
             sig { returns(String) }
             attr_accessor :city
@@ -2127,6 +2008,9 @@ module Increase
           end
 
           class Identification < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # A method that can be used to verify the individual's identity.
             sig do
               returns(
@@ -2231,6 +2115,9 @@ module Increase
         end
 
         class Trustee < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The individual trustee of the trust. Will be present if the trustee's
           # `structure` is equal to `individual`.
           sig do
@@ -2244,10 +2131,7 @@ module Increase
             params(
               individual:
                 T.nilable(
-                  T.any(
-                    Increase::Models::Entity::Trust::Trustee::Individual,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::Entity::Trust::Trustee::Individual::OrHash
                 )
             ).void
           end
@@ -2265,10 +2149,7 @@ module Increase
             params(
               individual:
                 T.nilable(
-                  T.any(
-                    Increase::Models::Entity::Trust::Trustee::Individual,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::Entity::Trust::Trustee::Individual::OrHash
                 ),
               structure:
                 Increase::Models::Entity::Trust::Trustee::Structure::OrSymbol
@@ -2299,6 +2180,9 @@ module Increase
           end
 
           class Individual < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The person's address.
             sig do
               returns(
@@ -2310,10 +2194,7 @@ module Increase
             sig do
               params(
                 address:
-                  T.any(
-                    Increase::Models::Entity::Trust::Trustee::Individual::Address,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::Entity::Trust::Trustee::Individual::Address::OrHash
               ).void
             end
             attr_writer :address
@@ -2333,10 +2214,7 @@ module Increase
             sig do
               params(
                 identification:
-                  T.any(
-                    Increase::Models::Entity::Trust::Trustee::Individual::Identification,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::Entity::Trust::Trustee::Individual::Identification::OrHash
               ).void
             end
             attr_writer :identification
@@ -2350,16 +2228,10 @@ module Increase
             sig do
               params(
                 address:
-                  T.any(
-                    Increase::Models::Entity::Trust::Trustee::Individual::Address,
-                    Increase::Internal::AnyHash
-                  ),
+                  Increase::Models::Entity::Trust::Trustee::Individual::Address::OrHash,
                 date_of_birth: Date,
                 identification:
-                  T.any(
-                    Increase::Models::Entity::Trust::Trustee::Individual::Identification,
-                    Increase::Internal::AnyHash
-                  ),
+                  Increase::Models::Entity::Trust::Trustee::Individual::Identification::OrHash,
                 name: String
               ).returns(T.attached_class)
             end
@@ -2391,6 +2263,9 @@ module Increase
             end
 
             class Address < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # The city of the address.
               sig { returns(String) }
               attr_accessor :city
@@ -2453,6 +2328,9 @@ module Increase
             end
 
             class Identification < Increase::Internal::Type::BaseModel
+              OrHash =
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
               # A method that can be used to verify the individual's identity.
               sig do
                 returns(

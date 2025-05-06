@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The moment to query the balance at. If not set, returns the current balances.
       sig { returns(T.nilable(Time)) }
       attr_reader :at_time

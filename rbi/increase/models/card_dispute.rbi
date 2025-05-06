@@ -3,6 +3,8 @@
 module Increase
   module Models
     class CardDispute < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Card Dispute identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -15,12 +17,7 @@ module Increase
       sig do
         params(
           acceptance:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Acceptance,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::CardDispute::Acceptance::OrHash)
         ).void
       end
       attr_writer :acceptance
@@ -55,13 +52,7 @@ module Increase
 
       sig do
         params(
-          loss:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Loss,
-                Increase::Internal::AnyHash
-              )
-            )
+          loss: T.nilable(Increase::Models::CardDispute::Loss::OrHash)
         ).void
       end
       attr_writer :loss
@@ -73,13 +64,7 @@ module Increase
 
       sig do
         params(
-          rejection:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Rejection,
-                Increase::Internal::AnyHash
-              )
-            )
+          rejection: T.nilable(Increase::Models::CardDispute::Rejection::OrHash)
         ).void
       end
       attr_writer :rejection
@@ -99,15 +84,7 @@ module Increase
       attr_reader :win
 
       sig do
-        params(
-          win:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Win,
-                Increase::Internal::AnyHash
-              )
-            )
-        ).void
+        params(win: T.nilable(Increase::Models::CardDispute::Win::OrHash)).void
       end
       attr_writer :win
 
@@ -117,40 +94,18 @@ module Increase
         params(
           id: String,
           acceptance:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Acceptance,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::CardDispute::Acceptance::OrHash),
           amount: T.nilable(Integer),
           created_at: Time,
           disputed_transaction_id: String,
           explanation: String,
           idempotency_key: T.nilable(String),
-          loss:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Loss,
-                Increase::Internal::AnyHash
-              )
-            ),
+          loss: T.nilable(Increase::Models::CardDispute::Loss::OrHash),
           rejection:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Rejection,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::CardDispute::Rejection::OrHash),
           status: Increase::Models::CardDispute::Status::OrSymbol,
           type: Increase::Models::CardDispute::Type::OrSymbol,
-          win:
-            T.nilable(
-              T.any(
-                Increase::Models::CardDispute::Win,
-                Increase::Internal::AnyHash
-              )
-            )
+          win: T.nilable(Increase::Models::CardDispute::Win::OrHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -211,6 +166,9 @@ module Increase
       end
 
       class Acceptance < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Card Dispute was accepted.
         sig { returns(Time) }
@@ -260,6 +218,9 @@ module Increase
       end
 
       class Loss < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of the Card Dispute that was lost.
         sig { returns(String) }
         attr_accessor :card_dispute_id
@@ -317,6 +278,9 @@ module Increase
       end
 
       class Rejection < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of the Card Dispute that was rejected.
         sig { returns(String) }
         attr_accessor :card_dispute_id
@@ -429,6 +393,9 @@ module Increase
       end
 
       class Win < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of the Card Dispute that was won.
         sig { returns(String) }
         attr_accessor :card_dispute_id

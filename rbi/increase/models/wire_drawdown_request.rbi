@@ -3,6 +3,8 @@
 module Increase
   module Models
     class WireDrawdownRequest < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Wire drawdown request identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -97,12 +99,7 @@ module Increase
       sig do
         params(
           submission:
-            T.nilable(
-              T.any(
-                Increase::Models::WireDrawdownRequest::Submission,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::WireDrawdownRequest::Submission::OrHash)
         ).void
       end
       attr_writer :submission
@@ -138,10 +135,7 @@ module Increase
           status: Increase::Models::WireDrawdownRequest::Status::OrSymbol,
           submission:
             T.nilable(
-              T.any(
-                Increase::Models::WireDrawdownRequest::Submission,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::WireDrawdownRequest::Submission::OrHash
             ),
           type: Increase::Models::WireDrawdownRequest::Type::OrSymbol
         ).returns(T.attached_class)
@@ -281,6 +275,9 @@ module Increase
       end
 
       class Submission < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The input message accountability data (IMAD) uniquely identifying the submission
         # with Fedwire.
         sig { returns(String) }

@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           bookkeeping_entry_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::BookkeepingEntry)
       end
       def retrieve(
@@ -23,7 +23,7 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::BookkeepingEntry])
       end
       def list(

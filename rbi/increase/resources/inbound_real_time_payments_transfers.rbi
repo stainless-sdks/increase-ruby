@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_real_time_payments_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundRealTimePaymentsTransfer)
       end
       def retrieve(
@@ -23,13 +23,10 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            T.any(
-              Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[
             Increase::Models::InboundRealTimePaymentsTransfer

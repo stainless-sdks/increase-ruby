@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
       attr_reader :carrier_image_file_id
@@ -46,10 +48,7 @@ module Increase
       sig do
         params(
           front_text:
-            T.any(
-              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::PhysicalCardProfileCloneParams::FrontText::OrHash
         ).void
       end
       attr_writer :front_text
@@ -61,10 +60,7 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text:
-            T.any(
-              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::PhysicalCardProfileCloneParams::FrontText::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -102,6 +98,9 @@ module Increase
       end
 
       class FrontText < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The first line of text on the front of the card.
         sig { returns(String) }
         attr_accessor :line1

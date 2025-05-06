@@ -3,6 +3,8 @@
 module Increase
   module Models
     class DigitalCardProfile < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Card Profile identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -62,11 +64,7 @@ module Increase
 
       sig do
         params(
-          text_color:
-            T.any(
-              Increase::Models::DigitalCardProfile::TextColor,
-              Increase::Internal::AnyHash
-            )
+          text_color: Increase::Models::DigitalCardProfile::TextColor::OrHash
         ).void
       end
       attr_writer :text_color
@@ -93,11 +91,7 @@ module Increase
           idempotency_key: T.nilable(String),
           issuer_name: String,
           status: Increase::Models::DigitalCardProfile::Status::OrSymbol,
-          text_color:
-            T.any(
-              Increase::Models::DigitalCardProfile::TextColor,
-              Increase::Internal::AnyHash
-            ),
+          text_color: Increase::Models::DigitalCardProfile::TextColor::OrHash,
           type: Increase::Models::DigitalCardProfile::Type::OrSymbol
         ).returns(T.attached_class)
       end
@@ -208,6 +202,9 @@ module Increase
       end
 
       class TextColor < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue

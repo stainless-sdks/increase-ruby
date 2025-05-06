@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           real_time_decision_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::RealTimeDecision)
       end
       def retrieve(
@@ -22,31 +22,16 @@ module Increase
         params(
           real_time_decision_id: String,
           card_authentication:
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimeDecisionActionParams::CardAuthentication::OrHash,
           card_authentication_challenge:
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::OrHash,
           card_authorization:
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimeDecisionActionParams::CardAuthorization::OrHash,
           digital_wallet_authentication:
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash,
           digital_wallet_token:
-            T.any(
-              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::RealTimeDecision)
       end
       def action(

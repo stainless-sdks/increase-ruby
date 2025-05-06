@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # Filter Digital Wallet Tokens to ones belonging to the specified Card.
       sig { returns(T.nilable(String)) }
       attr_reader :card_id
@@ -23,10 +25,7 @@ module Increase
       sig do
         params(
           created_at:
-            T.any(
-              Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::DigitalWalletTokenListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -50,10 +49,7 @@ module Increase
         params(
           card_id: String,
           created_at:
-            T.any(
-              Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DigitalWalletTokenListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -89,6 +85,9 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

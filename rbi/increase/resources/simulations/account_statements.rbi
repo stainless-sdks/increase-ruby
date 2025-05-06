@@ -9,7 +9,7 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::AccountStatement)
         end
         def create(

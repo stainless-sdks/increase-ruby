@@ -15,11 +15,8 @@ module Increase
           contact_phone: String,
           contact_website: String,
           text_color:
-            T.any(
-              Increase::Models::DigitalCardProfileCreateParams::TextColor,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::DigitalCardProfileCreateParams::TextColor::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::DigitalCardProfile)
       end
       def create(
@@ -49,7 +46,7 @@ module Increase
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::DigitalCardProfile)
       end
       def retrieve(
@@ -66,11 +63,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::DigitalCardProfileListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::DigitalCardProfileListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::DigitalCardProfile]
         )
@@ -95,7 +89,7 @@ module Increase
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::DigitalCardProfile)
       end
       def archive(
@@ -118,11 +112,8 @@ module Increase
           description: String,
           issuer_name: String,
           text_color:
-            T.any(
-              Increase::Models::DigitalCardProfileCloneParams::TextColor,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::DigitalCardProfileCloneParams::TextColor::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::DigitalCardProfile)
       end
       def clone_(

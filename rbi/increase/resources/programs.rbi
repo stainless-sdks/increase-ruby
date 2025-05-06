@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           program_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Program)
       end
       def retrieve(
@@ -22,7 +22,7 @@ module Increase
         params(
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Program])
       end
       def list(

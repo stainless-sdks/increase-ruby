@@ -17,7 +17,7 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def create(
@@ -58,7 +58,7 @@ module Increase
       sig do
         params(
           real_time_payments_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def retrieve(
@@ -73,20 +73,14 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::RealTimePaymentsTransferListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::RealTimePaymentsTransferListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::RealTimePaymentsTransfer]
         )

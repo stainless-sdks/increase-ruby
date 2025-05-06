@@ -7,6 +7,9 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The authorization amount in cents.
         sig { returns(Integer) }
         attr_accessor :amount
@@ -138,10 +141,7 @@ module Increase
         sig do
           params(
             network_details:
-              T.any(
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash
           ).void
         end
         attr_writer :network_details
@@ -187,10 +187,7 @@ module Increase
             merchant_descriptor: String,
             merchant_state: String,
             network_details:
-              T.any(
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash,
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
@@ -468,6 +465,9 @@ module Increase
         end
 
         class NetworkDetails < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # Fields specific to the Visa network.
           sig do
             returns(
@@ -479,10 +479,7 @@ module Increase
           sig do
             params(
               visa:
-                T.any(
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::OrHash
             ).void
           end
           attr_writer :visa
@@ -491,10 +488,7 @@ module Increase
           sig do
             params(
               visa:
-                T.any(
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -515,6 +509,9 @@ module Increase
           end
 
           class Visa < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The reason code for the stand-in processing.
             sig do
               returns(

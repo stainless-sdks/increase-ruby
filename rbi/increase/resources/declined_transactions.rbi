@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           declined_transaction_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::DeclinedTransaction)
       end
       def retrieve(
@@ -22,19 +22,13 @@ module Increase
         params(
           account_id: String,
           category:
-            T.any(
-              Increase::Models::DeclinedTransactionListParams::Category,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DeclinedTransactionListParams::Category::OrHash,
           created_at:
-            T.any(
-              Increase::Models::DeclinedTransactionListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DeclinedTransactionListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::DeclinedTransaction]
         )

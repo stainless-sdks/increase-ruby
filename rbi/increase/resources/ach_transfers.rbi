@@ -10,11 +10,7 @@ module Increase
           amount: Integer,
           statement_descriptor: String,
           account_number: String,
-          addenda:
-            T.any(
-              Increase::Models::ACHTransferCreateParams::Addenda,
-              Increase::Internal::AnyHash
-            ),
+          addenda: Increase::Models::ACHTransferCreateParams::Addenda::OrHash,
           company_descriptive_date: String,
           company_discretionary_data: String,
           company_entry_description: String,
@@ -26,17 +22,14 @@ module Increase
           individual_id: String,
           individual_name: String,
           preferred_effective_date:
-            T.any(
-              Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::OrHash,
           require_approval: T::Boolean,
           routing_number: String,
           standard_entry_class_code:
             Increase::Models::ACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
           transaction_timing:
             Increase::Models::ACHTransferCreateParams::TransactionTiming::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ACHTransfer)
       end
       def create(
@@ -105,7 +98,7 @@ module Increase
       sig do
         params(
           ach_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ACHTransfer)
       end
       def retrieve(
@@ -120,20 +113,13 @@ module Increase
         params(
           account_id: String,
           created_at:
-            T.any(
-              Increase::Models::ACHTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::ACHTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::ACHTransferListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::ACHTransferListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::ACHTransfer])
       end
       def list(
@@ -161,7 +147,7 @@ module Increase
       sig do
         params(
           ach_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ACHTransfer)
       end
       def approve(
@@ -175,7 +161,7 @@ module Increase
       sig do
         params(
           ach_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::ACHTransfer)
       end
       def cancel(

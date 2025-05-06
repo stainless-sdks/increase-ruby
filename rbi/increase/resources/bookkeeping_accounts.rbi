@@ -11,7 +11,7 @@ module Increase
           compliance_category:
             Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::BookkeepingAccount)
       end
       def create(
@@ -32,7 +32,7 @@ module Increase
         params(
           bookkeeping_account_id: String,
           name: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::BookkeepingAccount)
       end
       def update(
@@ -50,7 +50,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::BookkeepingAccount]
         )
@@ -75,7 +75,7 @@ module Increase
         params(
           bookkeeping_account_id: String,
           at_time: Time,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::BookkeepingBalanceLookup)
       end
       def balance(

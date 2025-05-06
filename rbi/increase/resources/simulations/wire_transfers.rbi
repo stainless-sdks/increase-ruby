@@ -11,7 +11,7 @@ module Increase
         sig do
           params(
             wire_transfer_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::WireTransfer)
         end
         def reverse(
@@ -27,7 +27,7 @@ module Increase
         sig do
           params(
             wire_transfer_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(Increase::Models::WireTransfer)
         end
         def submit(

@@ -9,16 +9,10 @@ module Increase
           account_id: String,
           name: String,
           inbound_ach:
-            T.any(
-              Increase::Models::AccountNumberCreateParams::InboundACH,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberCreateParams::InboundACH::OrHash,
           inbound_checks:
-            T.any(
-              Increase::Models::AccountNumberCreateParams::InboundChecks,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::AccountNumberCreateParams::InboundChecks::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountNumber)
       end
       def create(
@@ -39,7 +33,7 @@ module Increase
       sig do
         params(
           account_number_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountNumber)
       end
       def retrieve(
@@ -54,18 +48,12 @@ module Increase
         params(
           account_number_id: String,
           inbound_ach:
-            T.any(
-              Increase::Models::AccountNumberUpdateParams::InboundACH,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberUpdateParams::InboundACH::OrHash,
           inbound_checks:
-            T.any(
-              Increase::Models::AccountNumberUpdateParams::InboundChecks,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberUpdateParams::InboundChecks::OrHash,
           name: String,
           status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::AccountNumber)
       end
       def update(
@@ -89,24 +77,14 @@ module Increase
         params(
           account_id: String,
           ach_debit_status:
-            T.any(
-              Increase::Models::AccountNumberListParams::ACHDebitStatus,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberListParams::ACHDebitStatus::OrHash,
           created_at:
-            T.any(
-              Increase::Models::AccountNumberListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::AccountNumberListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            T.any(
-              Increase::Models::AccountNumberListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+          status: Increase::Models::AccountNumberListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::AccountNumber])
       end
       def list(

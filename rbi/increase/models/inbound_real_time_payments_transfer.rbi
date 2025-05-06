@@ -3,6 +3,8 @@
 module Increase
   module Models
     class InboundRealTimePaymentsTransfer < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The inbound Real-Time Payments transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -33,10 +35,7 @@ module Increase
         params(
           confirmation:
             T.nilable(
-              T.any(
-                Increase::Models::InboundRealTimePaymentsTransfer::Confirmation,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::InboundRealTimePaymentsTransfer::Confirmation::OrHash
             )
         ).void
       end
@@ -84,10 +83,7 @@ module Increase
         params(
           decline:
             T.nilable(
-              T.any(
-                Increase::Models::InboundRealTimePaymentsTransfer::Decline,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::InboundRealTimePaymentsTransfer::Decline::OrHash
             )
         ).void
       end
@@ -128,10 +124,7 @@ module Increase
           amount: Integer,
           confirmation:
             T.nilable(
-              T.any(
-                Increase::Models::InboundRealTimePaymentsTransfer::Confirmation,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::InboundRealTimePaymentsTransfer::Confirmation::OrHash
             ),
           created_at: Time,
           creditor_name: String,
@@ -142,10 +135,7 @@ module Increase
           debtor_routing_number: String,
           decline:
             T.nilable(
-              T.any(
-                Increase::Models::InboundRealTimePaymentsTransfer::Decline,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::InboundRealTimePaymentsTransfer::Decline::OrHash
             ),
           remittance_information: T.nilable(String),
           status:
@@ -229,6 +219,9 @@ module Increase
       end
 
       class Confirmation < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The time at which the transfer was confirmed.
         sig { returns(Time) }
         attr_accessor :confirmed_at
@@ -324,6 +317,9 @@ module Increase
       end
 
       class Decline < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The time at which the transfer was declined.
         sig { returns(Time) }
         attr_accessor :declined_at

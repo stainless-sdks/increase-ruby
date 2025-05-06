@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           inbound_ach_transfer_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundACHTransfer)
       end
       def retrieve(
@@ -23,18 +23,12 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            T.any(
-              Increase::Models::InboundACHTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::InboundACHTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           status:
-            T.any(
-              Increase::Models::InboundACHTransferListParams::Status,
-              Increase::Internal::AnyHash
-            ),
-          request_options: Increase::RequestOpts
+            Increase::Models::InboundACHTransferListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::InboundACHTransfer]
         )
@@ -61,7 +55,7 @@ module Increase
           inbound_ach_transfer_id: String,
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundACHTransfer)
       end
       def create_notification_of_change(
@@ -82,7 +76,7 @@ module Increase
           inbound_ach_transfer_id: String,
           reason:
             Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundACHTransfer)
       end
       def decline(
@@ -102,7 +96,7 @@ module Increase
           inbound_ach_transfer_id: String,
           reason:
             Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::InboundACHTransfer)
       end
       def transfer_return(

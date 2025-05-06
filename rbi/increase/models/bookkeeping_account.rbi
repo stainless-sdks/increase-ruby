@@ -3,6 +3,8 @@
 module Increase
   module Models
     class BookkeepingAccount < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The account identifier.
       sig { returns(String) }
       attr_accessor :id

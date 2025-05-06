@@ -3,6 +3,8 @@
 module Increase
   module Models
     class Program < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Program identifier.
       sig { returns(String) }
       attr_accessor :id

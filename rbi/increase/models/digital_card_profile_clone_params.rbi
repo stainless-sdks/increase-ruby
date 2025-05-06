@@ -6,6 +6,8 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The identifier of the File containing the card's icon image.
       sig { returns(T.nilable(String)) }
       attr_reader :app_icon_file_id
@@ -73,10 +75,7 @@ module Increase
       sig do
         params(
           text_color:
-            T.any(
-              Increase::Models::DigitalCardProfileCloneParams::TextColor,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::DigitalCardProfileCloneParams::TextColor::OrHash
         ).void
       end
       attr_writer :text_color
@@ -92,10 +91,7 @@ module Increase
           description: String,
           issuer_name: String,
           text_color:
-            T.any(
-              Increase::Models::DigitalCardProfileCloneParams::TextColor,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DigitalCardProfileCloneParams::TextColor::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -144,6 +140,9 @@ module Increase
       end
 
       class TextColor < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue

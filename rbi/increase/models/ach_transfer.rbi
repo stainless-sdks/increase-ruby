@@ -3,6 +3,8 @@
 module Increase
   module Models
     class ACHTransfer < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The ACH transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -24,12 +26,7 @@ module Increase
       sig do
         params(
           acknowledgement:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Acknowledgement,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::ACHTransfer::Acknowledgement::OrHash)
         ).void
       end
       attr_writer :acknowledgement
@@ -40,13 +37,7 @@ module Increase
 
       sig do
         params(
-          addenda:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Addenda,
-                Increase::Internal::AnyHash
-              )
-            )
+          addenda: T.nilable(Increase::Models::ACHTransfer::Addenda::OrHash)
         ).void
       end
       attr_writer :addenda
@@ -64,13 +55,7 @@ module Increase
 
       sig do
         params(
-          approval:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Approval,
-                Increase::Internal::AnyHash
-              )
-            )
+          approval: T.nilable(Increase::Models::ACHTransfer::Approval::OrHash)
         ).void
       end
       attr_writer :approval
@@ -83,12 +68,7 @@ module Increase
       sig do
         params(
           cancellation:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Cancellation,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::ACHTransfer::Cancellation::OrHash)
         ).void
       end
       attr_writer :cancellation
@@ -125,12 +105,7 @@ module Increase
       sig do
         params(
           created_by:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::CreatedBy,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::ACHTransfer::CreatedBy::OrHash)
         ).void
       end
       attr_writer :created_by
@@ -173,12 +148,7 @@ module Increase
       sig do
         params(
           inbound_funds_hold:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::InboundFundsHold,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::ACHTransfer::InboundFundsHold::OrHash)
         ).void
       end
       attr_writer :inbound_funds_hold
@@ -220,10 +190,7 @@ module Increase
       sig do
         params(
           preferred_effective_date:
-            T.any(
-              Increase::Models::ACHTransfer::PreferredEffectiveDate,
-              Increase::Internal::AnyHash
-            )
+            Increase::Models::ACHTransfer::PreferredEffectiveDate::OrHash
         ).void
       end
       attr_writer :preferred_effective_date
@@ -234,13 +201,7 @@ module Increase
 
       sig do
         params(
-          return_:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Return,
-                Increase::Internal::AnyHash
-              )
-            )
+          return_: T.nilable(Increase::Models::ACHTransfer::Return::OrHash)
         ).void
       end
       attr_writer :return_
@@ -257,12 +218,7 @@ module Increase
       sig do
         params(
           settlement:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Settlement,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::ACHTransfer::Settlement::OrHash)
         ).void
       end
       attr_writer :settlement
@@ -294,12 +250,7 @@ module Increase
       sig do
         params(
           submission:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Submission,
-                Increase::Internal::AnyHash
-              )
-            )
+            T.nilable(Increase::Models::ACHTransfer::Submission::OrHash)
         ).void
       end
       attr_writer :submission
@@ -321,34 +272,12 @@ module Increase
           account_id: String,
           account_number: String,
           acknowledgement:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Acknowledgement,
-                Increase::Internal::AnyHash
-              )
-            ),
-          addenda:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Addenda,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::ACHTransfer::Acknowledgement::OrHash),
+          addenda: T.nilable(Increase::Models::ACHTransfer::Addenda::OrHash),
           amount: Integer,
-          approval:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Approval,
-                Increase::Internal::AnyHash
-              )
-            ),
+          approval: T.nilable(Increase::Models::ACHTransfer::Approval::OrHash),
           cancellation:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Cancellation,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::ACHTransfer::Cancellation::OrHash),
           company_descriptive_date: T.nilable(String),
           company_discretionary_data: T.nilable(String),
           company_entry_description: T.nilable(String),
@@ -356,12 +285,7 @@ module Increase
           company_name: T.nilable(String),
           created_at: Time,
           created_by:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::CreatedBy,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::ACHTransfer::CreatedBy::OrHash),
           currency: Increase::Models::ACHTransfer::Currency::OrSymbol,
           destination_account_holder:
             Increase::Models::ACHTransfer::DestinationAccountHolder::OrSymbol,
@@ -369,54 +293,27 @@ module Increase
           funding: Increase::Models::ACHTransfer::Funding::OrSymbol,
           idempotency_key: T.nilable(String),
           inbound_funds_hold:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::InboundFundsHold,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::ACHTransfer::InboundFundsHold::OrHash),
           individual_id: T.nilable(String),
           individual_name: T.nilable(String),
           network: Increase::Models::ACHTransfer::Network::OrSymbol,
           notifications_of_change:
             T::Array[
-              T.any(
-                Increase::Models::ACHTransfer::NotificationsOfChange,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::ACHTransfer::NotificationsOfChange::OrHash
             ],
           pending_transaction_id: T.nilable(String),
           preferred_effective_date:
-            T.any(
-              Increase::Models::ACHTransfer::PreferredEffectiveDate,
-              Increase::Internal::AnyHash
-            ),
-          return_:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Return,
-                Increase::Internal::AnyHash
-              )
-            ),
+            Increase::Models::ACHTransfer::PreferredEffectiveDate::OrHash,
+          return_: T.nilable(Increase::Models::ACHTransfer::Return::OrHash),
           routing_number: String,
           settlement:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Settlement,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::ACHTransfer::Settlement::OrHash),
           standard_entry_class_code:
             Increase::Models::ACHTransfer::StandardEntryClassCode::OrSymbol,
           statement_descriptor: String,
           status: Increase::Models::ACHTransfer::Status::OrSymbol,
           submission:
-            T.nilable(
-              T.any(
-                Increase::Models::ACHTransfer::Submission,
-                Increase::Internal::AnyHash
-              )
-            ),
+            T.nilable(Increase::Models::ACHTransfer::Submission::OrHash),
           transaction_id: T.nilable(String),
           type: Increase::Models::ACHTransfer::Type::OrSymbol
         ).returns(T.attached_class)
@@ -576,6 +473,9 @@ module Increase
       end
 
       class Acknowledgement < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # When the Federal Reserve acknowledged the submitted file containing this
         # transfer.
         sig { returns(String) }
@@ -598,6 +498,9 @@ module Increase
       end
 
       class Addenda < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The type of the resource. We may add additional possible values for this enum
         # over time; your application should be able to handle such additions gracefully.
         sig do
@@ -617,10 +520,7 @@ module Increase
           params(
             freeform:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::Addenda::Freeform,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::Addenda::Freeform::OrHash
               )
           ).void
         end
@@ -641,10 +541,7 @@ module Increase
           params(
             payment_order_remittance_advice:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::OrHash
               )
           ).void
         end
@@ -657,17 +554,11 @@ module Increase
               Increase::Models::ACHTransfer::Addenda::Category::OrSymbol,
             freeform:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::Addenda::Freeform,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::Addenda::Freeform::OrHash
               ),
             payment_order_remittance_advice:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::OrHash
               )
           ).returns(T.attached_class)
         end
@@ -744,6 +635,9 @@ module Increase
         end
 
         class Freeform < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # Each entry represents an addendum sent with the transfer.
           sig do
             returns(
@@ -757,10 +651,7 @@ module Increase
             params(
               entries:
                 T::Array[
-                  T.any(
-                    Increase::Models::ACHTransfer::Addenda::Freeform::Entry,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::ACHTransfer::Addenda::Freeform::Entry::OrHash
                 ]
             ).returns(T.attached_class)
           end
@@ -784,6 +675,9 @@ module Increase
           end
 
           class Entry < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The payment related information passed in the addendum.
             sig { returns(String) }
             attr_accessor :payment_related_information
@@ -806,6 +700,9 @@ module Increase
         end
 
         class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # ASC X12 RMR records for this specific transfer.
           sig do
             returns(
@@ -822,10 +719,7 @@ module Increase
             params(
               invoices:
                 T::Array[
-                  T.any(
-                    Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice,
-                    Increase::Internal::AnyHash
-                  )
+                  Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice::OrHash
                 ]
             ).returns(T.attached_class)
           end
@@ -849,6 +743,9 @@ module Increase
           end
 
           class Invoice < Increase::Internal::Type::BaseModel
+            OrHash =
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
             # The invoice number for this reference, determined in advance with the receiver.
             sig { returns(String) }
             attr_accessor :invoice_number
@@ -882,6 +779,9 @@ module Increase
       end
 
       class Approval < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was approved.
         sig { returns(Time) }
@@ -919,6 +819,9 @@ module Increase
       end
 
       class Cancellation < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Transfer was canceled.
         sig { returns(Time) }
@@ -956,6 +859,9 @@ module Increase
       end
 
       class CreatedBy < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # If present, details about the API key that created the transfer.
         sig do
           returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
@@ -966,10 +872,7 @@ module Increase
           params(
             api_key:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::CreatedBy::APIKey,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::CreatedBy::APIKey::OrHash
               )
           ).void
         end
@@ -997,10 +900,7 @@ module Increase
           params(
             oauth_application:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::CreatedBy::OAuthApplication,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::CreatedBy::OAuthApplication::OrHash
               )
           ).void
         end
@@ -1015,12 +915,7 @@ module Increase
         sig do
           params(
             user:
-              T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::CreatedBy::User,
-                  Increase::Internal::AnyHash
-                )
-              )
+              T.nilable(Increase::Models::ACHTransfer::CreatedBy::User::OrHash)
           ).void
         end
         attr_writer :user
@@ -1030,27 +925,16 @@ module Increase
           params(
             api_key:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::CreatedBy::APIKey,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::CreatedBy::APIKey::OrHash
               ),
             category:
               Increase::Models::ACHTransfer::CreatedBy::Category::OrSymbol,
             oauth_application:
               T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::CreatedBy::OAuthApplication,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::ACHTransfer::CreatedBy::OAuthApplication::OrHash
               ),
             user:
-              T.nilable(
-                T.any(
-                  Increase::Models::ACHTransfer::CreatedBy::User,
-                  Increase::Internal::AnyHash
-                )
-              )
+              T.nilable(Increase::Models::ACHTransfer::CreatedBy::User::OrHash)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1084,6 +968,9 @@ module Increase
         end
 
         class APIKey < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
           attr_accessor :description
@@ -1146,6 +1033,9 @@ module Increase
         end
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The name of the OAuth Application.
           sig { returns(String) }
           attr_accessor :name
@@ -1164,6 +1054,9 @@ module Increase
         end
 
         class User < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The email address of the User.
           sig { returns(String) }
           attr_accessor :email
@@ -1292,6 +1185,9 @@ module Increase
       end
 
       class InboundFundsHold < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
         attr_accessor :id
@@ -1576,6 +1472,9 @@ module Increase
       end
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The required type of change that is being signaled by the receiving financial
         # institution.
         sig do
@@ -1795,6 +1694,9 @@ module Increase
       end
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
         # use as the effective date when submitting this transfer.
         sig { returns(T.nilable(Date)) }
@@ -1889,6 +1791,9 @@ module Increase
       end
 
       class Return < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was created.
         sig { returns(Time) }
@@ -2488,6 +2393,9 @@ module Increase
       end
 
       class Settlement < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # When the funds for this transfer have settled at the destination bank at the
         # Federal Reserve.
         sig { returns(Time) }
@@ -2626,6 +2534,9 @@ module Increase
       end
 
       class Submission < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The ACH transfer's effective date as sent to the Federal Reserve. If a specific
         # date was configured using `preferred_effective_date`, this will match that
         # value. Otherwise, it will be the date selected (following the specified

@@ -7,6 +7,9 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # If set, the simulation will reject the transfer.
         sig do
           returns(
@@ -20,10 +23,7 @@ module Increase
         sig do
           params(
             rejection:
-              T.any(
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-                Increase::Internal::AnyHash
-              )
+              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash
           ).void
         end
         attr_writer :rejection
@@ -31,10 +31,7 @@ module Increase
         sig do
           params(
             rejection:
-              T.any(
-                Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash,
             request_options:
               T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
@@ -59,6 +56,9 @@ module Increase
         end
 
         class Rejection < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The reason code that the simulated rejection will have.
           sig do
             returns(

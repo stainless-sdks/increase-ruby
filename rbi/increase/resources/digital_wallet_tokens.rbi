@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           digital_wallet_token_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::DigitalWalletToken)
       end
       def retrieve(
@@ -22,13 +22,10 @@ module Increase
         params(
           card_id: String,
           created_at:
-            T.any(
-              Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+            Increase::Models::DigitalWalletTokenListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(
           Increase::Internal::Page[Increase::Models::DigitalWalletToken]
         )

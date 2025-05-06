@@ -3,6 +3,8 @@
 module Increase
   module Models
     class IntrafiBalance < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The identifier of this balance.
       sig { returns(String) }
       attr_accessor :id
@@ -37,13 +39,7 @@ module Increase
       sig do
         params(
           id: String,
-          balances:
-            T::Array[
-              T.any(
-                Increase::Models::IntrafiBalance::Balance,
-                Increase::Internal::AnyHash
-              )
-            ],
+          balances: T::Array[Increase::Models::IntrafiBalance::Balance::OrHash],
           currency: Increase::Models::IntrafiBalance::Currency::OrSymbol,
           effective_date: Date,
           total_balance: Integer,
@@ -86,6 +82,9 @@ module Increase
       end
 
       class Balance < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of this balance.
         sig { returns(String) }
         attr_accessor :id
@@ -110,10 +109,7 @@ module Increase
           params(
             bank_location:
               T.nilable(
-                T.any(
-                  Increase::Models::IntrafiBalance::Balance::BankLocation,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::IntrafiBalance::Balance::BankLocation::OrHash
               )
           ).void
         end
@@ -132,10 +128,7 @@ module Increase
             bank: String,
             bank_location:
               T.nilable(
-                T.any(
-                  Increase::Models::IntrafiBalance::Balance::BankLocation,
-                  Increase::Internal::AnyHash
-                )
+                Increase::Models::IntrafiBalance::Balance::BankLocation::OrHash
               ),
             fdic_certificate_number: String
           ).returns(T.attached_class)
@@ -174,6 +167,9 @@ module Increase
         end
 
         class BankLocation < Increase::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
           # The bank's city.
           sig { returns(String) }
           attr_accessor :city

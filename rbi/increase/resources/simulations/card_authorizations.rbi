@@ -29,14 +29,11 @@ module Increase
             merchant_descriptor: String,
             merchant_state: String,
             network_details:
-              T.any(
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-                Increase::Internal::AnyHash
-              ),
+              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash,
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
-            request_options: Increase::RequestOpts
+            request_options: Increase::RequestOptions::OrHash
           ).returns(
             Increase::Models::Simulations::CardAuthorizationCreateResponse
           )

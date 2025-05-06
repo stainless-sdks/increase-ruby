@@ -7,7 +7,7 @@ module Increase
       sig do
         params(
           document_id: String,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Models::Document)
       end
       def retrieve(
@@ -20,20 +20,12 @@ module Increase
       # List Documents
       sig do
         params(
-          category:
-            T.any(
-              Increase::Models::DocumentListParams::Category,
-              Increase::Internal::AnyHash
-            ),
-          created_at:
-            T.any(
-              Increase::Models::DocumentListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            ),
+          category: Increase::Models::DocumentListParams::Category::OrHash,
+          created_at: Increase::Models::DocumentListParams::CreatedAt::OrHash,
           cursor: String,
           entity_id: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
+          request_options: Increase::RequestOptions::OrHash
         ).returns(Increase::Internal::Page[Increase::Models::Document])
       end
       def list(
