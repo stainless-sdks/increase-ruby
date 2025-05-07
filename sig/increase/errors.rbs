@@ -54,7 +54,7 @@ module Increase
         request: nil,
         response: nil,
         ?message: String?
-      ) -> instance
+      ) -> self
 
       def initialize: (
         url: URI::Generic,
