@@ -26,7 +26,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::CardIncrementCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardIncrementCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardIncrementCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_increments",

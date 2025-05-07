@@ -26,7 +26,7 @@ module Increase
       #
       # @see Increase::Models::RoutingNumberListParams
       def list(params)
-        parsed, options = Increase::Models::RoutingNumberListParams.dump_request(params)
+        parsed, options = Increase::RoutingNumberListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "routing_numbers",

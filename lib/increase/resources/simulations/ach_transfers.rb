@@ -51,8 +51,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams
         def create_notification_of_change(ach_transfer_id, params)
-          parsed, options =
-            Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams.dump_request(params)
+          parsed, options = Increase::Simulations::ACHTransferCreateNotificationOfChangeParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%1$s/create_notification_of_change", ach_transfer_id],
@@ -82,7 +81,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::ACHTransferReturnParams
         def return_(ach_transfer_id, params = {})
-          parsed, options = Increase::Models::Simulations::ACHTransferReturnParams.dump_request(params)
+          parsed, options = Increase::Simulations::ACHTransferReturnParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%1$s/return", ach_transfer_id],

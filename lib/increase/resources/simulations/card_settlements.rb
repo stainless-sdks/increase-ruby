@@ -29,7 +29,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::CardSettlementCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardSettlementCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardSettlementCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_settlements",

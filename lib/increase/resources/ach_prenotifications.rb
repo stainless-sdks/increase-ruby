@@ -45,7 +45,7 @@ module Increase
       #
       # @see Increase::Models::ACHPrenotificationCreateParams
       def create(params)
-        parsed, options = Increase::Models::ACHPrenotificationCreateParams.dump_request(params)
+        parsed, options = Increase::ACHPrenotificationCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "ach_prenotifications",
@@ -98,7 +98,7 @@ module Increase
       #
       # @see Increase::Models::ACHPrenotificationListParams
       def list(params = {})
-        parsed, options = Increase::Models::ACHPrenotificationListParams.dump_request(params)
+        parsed, options = Increase::ACHPrenotificationListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "ach_prenotifications",

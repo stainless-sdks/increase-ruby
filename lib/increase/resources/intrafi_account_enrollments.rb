@@ -17,7 +17,7 @@ module Increase
       #
       # @see Increase::Models::IntrafiAccountEnrollmentCreateParams
       def create(params)
-        parsed, options = Increase::Models::IntrafiAccountEnrollmentCreateParams.dump_request(params)
+        parsed, options = Increase::IntrafiAccountEnrollmentCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "intrafi_account_enrollments",
@@ -72,7 +72,7 @@ module Increase
       #
       # @see Increase::Models::IntrafiAccountEnrollmentListParams
       def list(params = {})
-        parsed, options = Increase::Models::IntrafiAccountEnrollmentListParams.dump_request(params)
+        parsed, options = Increase::IntrafiAccountEnrollmentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "intrafi_account_enrollments",

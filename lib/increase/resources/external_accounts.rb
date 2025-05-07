@@ -27,7 +27,7 @@ module Increase
       #
       # @see Increase::Models::ExternalAccountCreateParams
       def create(params)
-        parsed, options = Increase::Models::ExternalAccountCreateParams.dump_request(params)
+        parsed, options = Increase::ExternalAccountCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "external_accounts",
@@ -77,7 +77,7 @@ module Increase
       #
       # @see Increase::Models::ExternalAccountUpdateParams
       def update(external_account_id, params = {})
-        parsed, options = Increase::Models::ExternalAccountUpdateParams.dump_request(params)
+        parsed, options = Increase::ExternalAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["external_accounts/%1$s", external_account_id],
@@ -112,7 +112,7 @@ module Increase
       #
       # @see Increase::Models::ExternalAccountListParams
       def list(params = {})
-        parsed, options = Increase::Models::ExternalAccountListParams.dump_request(params)
+        parsed, options = Increase::ExternalAccountListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "external_accounts",

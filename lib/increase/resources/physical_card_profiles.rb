@@ -23,7 +23,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCardProfileCreateParams
       def create(params)
-        parsed, options = Increase::Models::PhysicalCardProfileCreateParams.dump_request(params)
+        parsed, options = Increase::PhysicalCardProfileCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "physical_card_profiles",
@@ -76,7 +76,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCardProfileListParams
       def list(params = {})
-        parsed, options = Increase::Models::PhysicalCardProfileListParams.dump_request(params)
+        parsed, options = Increase::PhysicalCardProfileListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "physical_card_profiles",
@@ -133,7 +133,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCardProfileCloneParams
       def clone_(physical_card_profile_id, params = {})
-        parsed, options = Increase::Models::PhysicalCardProfileCloneParams.dump_request(params)
+        parsed, options = Increase::PhysicalCardProfileCloneParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["physical_card_profiles/%1$s/clone", physical_card_profile_id],

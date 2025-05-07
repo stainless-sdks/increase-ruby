@@ -7,13 +7,14 @@ module Increase
       sig do
         params(
           account_id: String,
-          billing_address: T.any(Increase::Models::CardCreateParams::BillingAddress, Increase::Internal::AnyHash),
+          billing_address:
+            Increase::Models::CardCreateParams::BillingAddress::OrHash,
           description: String,
-          digital_wallet: T.any(Increase::Models::CardCreateParams::DigitalWallet, Increase::Internal::AnyHash),
+          digital_wallet:
+            Increase::Models::CardCreateParams::DigitalWallet::OrHash,
           entity_id: String,
-          request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::Card)
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::Card)
       end
       def create(
         # The Account the card should belong to.
@@ -32,26 +33,36 @@ module Increase
         # when the card is not for the Account holder.
         entity_id: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve a Card
-      sig { params(card_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Card) }
+      sig do
+        params(
+          card_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::Card)
+      end
       def retrieve(
         # The identifier of the Card.
         card_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # Update a Card
       sig do
         params(
           card_id: String,
-          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::AnyHash),
+          billing_address:
+            Increase::Models::CardUpdateParams::BillingAddress::OrHash,
           description: String,
-          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::AnyHash),
+          digital_wallet:
+            Increase::Models::CardUpdateParams::DigitalWallet::OrHash,
           entity_id: String,
           status: Increase::Models::CardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::Card)
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::Card)
       end
       def update(
         # The card identifier.
@@ -70,19 +81,20 @@ module Increase
         # The status to update the Card with.
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Cards
       sig do
         params(
           account_id: String,
-          created_at: T.any(Increase::Models::CardListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at: Increase::Models::CardListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: T.any(Increase::Models::CardListParams::Status, Increase::Internal::AnyHash),
-          request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Internal::Page[Increase::Models::Card])
+          status: Increase::Models::CardListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Internal::Page[Increase::Models::Card])
       end
       def list(
         # Filter Cards to ones belonging to the specified Account.
@@ -100,17 +112,27 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Retrieve sensitive details for a Card
-      sig { params(card_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::CardDetails) }
+      sig do
+        params(
+          card_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::CardDetails)
+      end
       def details(
         # The identifier of the Card to retrieve details for.
         card_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

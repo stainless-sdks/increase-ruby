@@ -21,7 +21,7 @@ module Increase
       #
       # @see Increase::Models::FileLinkCreateParams
       def create(params)
-        parsed, options = Increase::Models::FileLinkCreateParams.dump_request(params)
+        parsed, options = Increase::FileLinkCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "file_links",

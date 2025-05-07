@@ -67,7 +67,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::InboundWireTransferCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::InboundWireTransferCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::InboundWireTransferCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_wire_transfers",

@@ -25,7 +25,7 @@ module Increase
       #
       # @see Increase::Models::AccountNumberCreateParams
       def create(params)
-        parsed, options = Increase::Models::AccountNumberCreateParams.dump_request(params)
+        parsed, options = Increase::AccountNumberCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "account_numbers",
@@ -79,7 +79,7 @@ module Increase
       #
       # @see Increase::Models::AccountNumberUpdateParams
       def update(account_number_id, params = {})
-        parsed, options = Increase::Models::AccountNumberUpdateParams.dump_request(params)
+        parsed, options = Increase::AccountNumberUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["account_numbers/%1$s", account_number_id],
@@ -118,7 +118,7 @@ module Increase
       #
       # @see Increase::Models::AccountNumberListParams
       def list(params = {})
-        parsed, options = Increase::Models::AccountNumberListParams.dump_request(params)
+        parsed, options = Increase::AccountNumberListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "account_numbers",

@@ -25,7 +25,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::InboundCheckDepositCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::InboundCheckDepositCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::InboundCheckDepositCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_check_deposits",

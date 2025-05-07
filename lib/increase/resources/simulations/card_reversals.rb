@@ -25,7 +25,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::CardReversalCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardReversalCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardReversalCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_reversals",

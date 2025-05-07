@@ -41,7 +41,7 @@ module Increase
       #
       # @see Increase::Models::ProgramListParams
       def list(params = {})
-        parsed, options = Increase::Models::ProgramListParams.dump_request(params)
+        parsed, options = Increase::ProgramListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "programs",

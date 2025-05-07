@@ -47,7 +47,7 @@ module Increase
       #
       # @see Increase::Models::DocumentListParams
       def list(params = {})
-        parsed, options = Increase::Models::DocumentListParams.dump_request(params)
+        parsed, options = Increase::DocumentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "documents",

@@ -53,7 +53,7 @@ module Increase
       #
       # @see Increase::Models::RealTimeDecisionActionParams
       def action(real_time_decision_id, params = {})
-        parsed, options = Increase::Models::RealTimeDecisionActionParams.dump_request(params)
+        parsed, options = Increase::RealTimeDecisionActionParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["real_time_decisions/%1$s/action", real_time_decision_id],

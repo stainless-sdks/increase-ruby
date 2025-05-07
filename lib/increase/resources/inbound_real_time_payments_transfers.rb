@@ -49,7 +49,7 @@ module Increase
       #
       # @see Increase::Models::InboundRealTimePaymentsTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundRealTimePaymentsTransferListParams.dump_request(params)
+        parsed, options = Increase::InboundRealTimePaymentsTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_real_time_payments_transfers",

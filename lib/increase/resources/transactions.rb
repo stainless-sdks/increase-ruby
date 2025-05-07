@@ -50,7 +50,7 @@ module Increase
       #
       # @see Increase::Models::TransactionListParams
       def list(params = {})
-        parsed, options = Increase::Models::TransactionListParams.dump_request(params)
+        parsed, options = Increase::TransactionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "transactions",

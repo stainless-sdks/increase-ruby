@@ -51,7 +51,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::InboundACHTransferCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::InboundACHTransferCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::InboundACHTransferCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_ach_transfers",

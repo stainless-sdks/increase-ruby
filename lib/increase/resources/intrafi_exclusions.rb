@@ -17,7 +17,7 @@ module Increase
       #
       # @see Increase::Models::IntrafiExclusionCreateParams
       def create(params)
-        parsed, options = Increase::Models::IntrafiExclusionCreateParams.dump_request(params)
+        parsed, options = Increase::IntrafiExclusionCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "intrafi_exclusions",
@@ -70,7 +70,7 @@ module Increase
       #
       # @see Increase::Models::IntrafiExclusionListParams
       def list(params = {})
-        parsed, options = Increase::Models::IntrafiExclusionListParams.dump_request(params)
+        parsed, options = Increase::IntrafiExclusionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "intrafi_exclusions",

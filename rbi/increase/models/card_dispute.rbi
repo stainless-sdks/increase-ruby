@@ -3,6 +3,8 @@
 module Increase
   module Models
     class CardDispute < Increase::Internal::Type::BaseModel
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
       # The Card Dispute identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -14,9 +16,9 @@ module Increase
 
       sig do
         params(
-          acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Internal::AnyHash))
-        )
-          .void
+          acceptance:
+            T.nilable(Increase::Models::CardDispute::Acceptance::OrHash)
+        ).void
       end
       attr_writer :acceptance
 
@@ -48,7 +50,11 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardDispute::Loss)) }
       attr_reader :loss
 
-      sig { params(loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Internal::AnyHash))).void }
+      sig do
+        params(
+          loss: T.nilable(Increase::Models::CardDispute::Loss::OrHash)
+        ).void
+      end
       attr_writer :loss
 
       # If the Card Dispute's status is `rejected`, this will contain details of the
@@ -57,8 +63,9 @@ module Increase
       attr_reader :rejection
 
       sig do
-        params(rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Internal::AnyHash)))
-          .void
+        params(
+          rejection: T.nilable(Increase::Models::CardDispute::Rejection::OrHash)
+        ).void
       end
       attr_writer :rejection
 
@@ -76,7 +83,9 @@ module Increase
       sig { returns(T.nilable(Increase::Models::CardDispute::Win)) }
       attr_reader :win
 
-      sig { params(win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Internal::AnyHash))).void }
+      sig do
+        params(win: T.nilable(Increase::Models::CardDispute::Win::OrHash)).void
+      end
       attr_writer :win
 
       # If unauthorized activity occurs on a card, you can create a Card Dispute and
@@ -84,19 +93,20 @@ module Increase
       sig do
         params(
           id: String,
-          acceptance: T.nilable(T.any(Increase::Models::CardDispute::Acceptance, Increase::Internal::AnyHash)),
+          acceptance:
+            T.nilable(Increase::Models::CardDispute::Acceptance::OrHash),
           amount: T.nilable(Integer),
           created_at: Time,
           disputed_transaction_id: String,
           explanation: String,
           idempotency_key: T.nilable(String),
-          loss: T.nilable(T.any(Increase::Models::CardDispute::Loss, Increase::Internal::AnyHash)),
-          rejection: T.nilable(T.any(Increase::Models::CardDispute::Rejection, Increase::Internal::AnyHash)),
+          loss: T.nilable(Increase::Models::CardDispute::Loss::OrHash),
+          rejection:
+            T.nilable(Increase::Models::CardDispute::Rejection::OrHash),
           status: Increase::Models::CardDispute::Status::OrSymbol,
           type: Increase::Models::CardDispute::Type::OrSymbol,
-          win: T.nilable(T.any(Increase::Models::CardDispute::Win, Increase::Internal::AnyHash))
-        )
-          .returns(T.attached_class)
+          win: T.nilable(Increase::Models::CardDispute::Win::OrHash)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The Card Dispute identifier.
@@ -131,29 +141,34 @@ module Increase
         # If the Card Dispute's status is `won`, this will contain details of the won
         # dispute.
         win:
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
-              amount: T.nilable(Integer),
-              created_at: Time,
-              disputed_transaction_id: String,
-              explanation: String,
-              idempotency_key: T.nilable(String),
-              loss: T.nilable(Increase::Models::CardDispute::Loss),
-              rejection: T.nilable(Increase::Models::CardDispute::Rejection),
-              status: Increase::Models::CardDispute::Status::TaggedSymbol,
-              type: Increase::Models::CardDispute::Type::TaggedSymbol,
-              win: T.nilable(Increase::Models::CardDispute::Win)
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
+            amount: T.nilable(Integer),
+            created_at: Time,
+            disputed_transaction_id: String,
+            explanation: String,
+            idempotency_key: T.nilable(String),
+            loss: T.nilable(Increase::Models::CardDispute::Loss),
+            rejection: T.nilable(Increase::Models::CardDispute::Rejection),
+            status: Increase::Models::CardDispute::Status::TaggedSymbol,
+            type: Increase::Models::CardDispute::Type::TaggedSymbol,
+            win: T.nilable(Increase::Models::CardDispute::Win)
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Acceptance < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Card Dispute was accepted.
         sig { returns(Time) }
@@ -171,7 +186,11 @@ module Increase
         # If the Card Dispute's status is `accepted`, this will contain details of the
         # successful dispute.
         sig do
-          params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class)
+          params(
+            accepted_at: Time,
+            card_dispute_id: String,
+            transaction_id: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -182,12 +201,26 @@ module Increase
           # The identifier of the Transaction that was created to return the disputed funds
           # to your account.
           transaction_id:
-        ); end
-        sig { override.returns({accepted_at: Time, card_dispute_id: String, transaction_id: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              accepted_at: Time,
+              card_dispute_id: String,
+              transaction_id: String
+            }
+          )
+        end
+        def to_hash
+        end
       end
 
       class Loss < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of the Card Dispute that was lost.
         sig { returns(String) }
         attr_accessor :card_dispute_id
@@ -209,8 +242,12 @@ module Increase
         # If the Card Dispute's status is `lost`, this will contain details of the lost
         # dispute.
         sig do
-          params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
-            .returns(T.attached_class)
+          params(
+            card_dispute_id: String,
+            explanation: String,
+            lost_at: Time,
+            transaction_id: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Card Dispute that was lost.
@@ -223,7 +260,9 @@ module Increase
           # The identifier of the Transaction that was created to debit the disputed funds
           # from your account.
           transaction_id:
-        ); end
+        )
+        end
+
         sig do
           override.returns(
             {
@@ -234,10 +273,14 @@ module Increase
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Rejection < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of the Card Dispute that was rejected.
         sig { returns(String) }
         attr_accessor :card_dispute_id
@@ -254,7 +297,11 @@ module Increase
         # If the Card Dispute's status is `rejected`, this will contain details of the
         # unsuccessful dispute.
         sig do
-          params(card_dispute_id: String, explanation: String, rejected_at: Time).returns(T.attached_class)
+          params(
+            card_dispute_id: String,
+            explanation: String,
+            rejected_at: Time
+          ).returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Card Dispute that was rejected.
@@ -264,30 +311,47 @@ module Increase
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the Card Dispute was rejected.
           rejected_at:
-        ); end
-        sig { override.returns({card_dispute_id: String, explanation: String, rejected_at: Time}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            { card_dispute_id: String, explanation: String, rejected_at: Time }
+          )
+        end
+        def to_hash
+        end
       end
 
       # The results of the Dispute investigation.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Card Dispute is pending review.
-        PENDING_REVIEWING = T.let(:pending_reviewing, Increase::Models::CardDispute::Status::TaggedSymbol)
+        PENDING_REVIEWING =
+          T.let(
+            :pending_reviewing,
+            Increase::Models::CardDispute::Status::TaggedSymbol
+          )
 
         # Increase has requested more information related to the Card Dispute from you.
         PENDING_USER_INFORMATION =
-          T.let(:pending_user_information, Increase::Models::CardDispute::Status::TaggedSymbol)
+          T.let(
+            :pending_user_information,
+            Increase::Models::CardDispute::Status::TaggedSymbol
+          )
 
         # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-        ACCEPTED = T.let(:accepted, Increase::Models::CardDispute::Status::TaggedSymbol)
+        ACCEPTED =
+          T.let(:accepted, Increase::Models::CardDispute::Status::TaggedSymbol)
 
         # The Card Dispute has been rejected.
-        REJECTED = T.let(:rejected, Increase::Models::CardDispute::Status::TaggedSymbol)
+        REJECTED =
+          T.let(:rejected, Increase::Models::CardDispute::Status::TaggedSymbol)
 
         # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
         LOST = T.let(:lost, Increase::Models::CardDispute::Status::TaggedSymbol)
@@ -295,8 +359,13 @@ module Increase
         # The Card Dispute has been won and no further action can be taken.
         WON = T.let(:won, Increase::Models::CardDispute::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::CardDispute::Status::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -304,16 +373,29 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::CardDispute::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CARD_DISPUTE = T.let(:card_dispute, Increase::Models::CardDispute::Type::TaggedSymbol)
+        CARD_DISPUTE =
+          T.let(
+            :card_dispute,
+            Increase::Models::CardDispute::Type::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[Increase::Models::CardDispute::Type::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class Win < Increase::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+
         # The identifier of the Card Dispute that was won.
         sig { returns(String) }
         attr_accessor :card_dispute_id
@@ -325,16 +407,23 @@ module Increase
 
         # If the Card Dispute's status is `won`, this will contain details of the won
         # dispute.
-        sig { params(card_dispute_id: String, won_at: Time).returns(T.attached_class) }
+        sig do
+          params(card_dispute_id: String, won_at: Time).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The identifier of the Card Dispute that was won.
           card_dispute_id:,
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the Card Dispute was won.
           won_at:
-        ); end
-        sig { override.returns({card_dispute_id: String, won_at: Time}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ card_dispute_id: String, won_at: Time }) }
+        def to_hash
+        end
       end
     end
   end

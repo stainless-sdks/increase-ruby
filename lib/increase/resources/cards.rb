@@ -28,7 +28,7 @@ module Increase
       #
       # @see Increase::Models::CardCreateParams
       def create(params)
-        parsed, options = Increase::Models::CardCreateParams.dump_request(params)
+        parsed, options = Increase::CardCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "cards",
@@ -85,7 +85,7 @@ module Increase
       #
       # @see Increase::Models::CardUpdateParams
       def update(card_id, params = {})
-        parsed, options = Increase::Models::CardUpdateParams.dump_request(params)
+        parsed, options = Increase::CardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["cards/%1$s", card_id],
@@ -122,7 +122,7 @@ module Increase
       #
       # @see Increase::Models::CardListParams
       def list(params = {})
-        parsed, options = Increase::Models::CardListParams.dump_request(params)
+        parsed, options = Increase::CardListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "cards",

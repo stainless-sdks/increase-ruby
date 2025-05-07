@@ -45,7 +45,7 @@ module Increase
       #
       # @see Increase::Models::InboundMailItemListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundMailItemListParams.dump_request(params)
+        parsed, options = Increase::InboundMailItemListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_mail_items",

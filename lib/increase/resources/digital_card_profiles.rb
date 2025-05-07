@@ -31,7 +31,7 @@ module Increase
       #
       # @see Increase::Models::DigitalCardProfileCreateParams
       def create(params)
-        parsed, options = Increase::Models::DigitalCardProfileCreateParams.dump_request(params)
+        parsed, options = Increase::DigitalCardProfileCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "digital_card_profiles",
@@ -84,7 +84,7 @@ module Increase
       #
       # @see Increase::Models::DigitalCardProfileListParams
       def list(params = {})
-        parsed, options = Increase::Models::DigitalCardProfileListParams.dump_request(params)
+        parsed, options = Increase::DigitalCardProfileListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "digital_card_profiles",
@@ -145,7 +145,7 @@ module Increase
       #
       # @see Increase::Models::DigitalCardProfileCloneParams
       def clone_(digital_card_profile_id, params = {})
-        parsed, options = Increase::Models::DigitalCardProfileCloneParams.dump_request(params)
+        parsed, options = Increase::DigitalCardProfileCloneParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["digital_card_profiles/%1$s/clone", digital_card_profile_id],

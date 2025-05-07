@@ -45,7 +45,7 @@ module Increase
       #
       # @see Increase::Models::DigitalWalletTokenListParams
       def list(params = {})
-        parsed, options = Increase::Models::DigitalWalletTokenListParams.dump_request(params)
+        parsed, options = Increase::DigitalWalletTokenListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "digital_wallet_tokens",

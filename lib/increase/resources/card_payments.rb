@@ -47,7 +47,7 @@ module Increase
       #
       # @see Increase::Models::CardPaymentListParams
       def list(params = {})
-        parsed, options = Increase::Models::CardPaymentListParams.dump_request(params)
+        parsed, options = Increase::CardPaymentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "card_payments",

@@ -54,7 +54,7 @@ module Increase
       #
       # @see Increase::Models::WireTransferCreateParams
       def create(params)
-        parsed, options = Increase::Models::WireTransferCreateParams.dump_request(params)
+        parsed, options = Increase::WireTransferCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "wire_transfers",
@@ -111,7 +111,7 @@ module Increase
       #
       # @see Increase::Models::WireTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::WireTransferListParams.dump_request(params)
+        parsed, options = Increase::WireTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "wire_transfers",
