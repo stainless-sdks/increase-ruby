@@ -13,16 +13,16 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::EntitySupplementalDocument]
+      # @return [Increase::EntitySupplementalDocument]
       #
       # @see Increase::Models::SupplementalDocumentCreateParams
       def create(params)
-        parsed, options = Increase::Models::SupplementalDocumentCreateParams.dump_request(params)
+        parsed, options = Increase::SupplementalDocumentCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "entity_supplemental_documents",
           body: parsed,
-          model: Increase::Models::EntitySupplementalDocument,
+          model: Increase::EntitySupplementalDocument,
           options: options
         )
       end
@@ -46,17 +46,17 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::EntitySupplementalDocument>]
+      # @return [Increase::Internal::Page<Increase::EntitySupplementalDocument>]
       #
       # @see Increase::Models::SupplementalDocumentListParams
       def list(params)
-        parsed, options = Increase::Models::SupplementalDocumentListParams.dump_request(params)
+        parsed, options = Increase::SupplementalDocumentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "entity_supplemental_documents",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::EntitySupplementalDocument,
+          model: Increase::EntitySupplementalDocument,
           options: options
         )
       end

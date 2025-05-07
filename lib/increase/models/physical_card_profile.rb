@@ -38,8 +38,8 @@ module Increase
       # @!attribute creator
       #   The creator of this Physical Card Profile.
       #
-      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Creator]
-      required :creator, enum: -> { Increase::Models::PhysicalCardProfile::Creator }
+      #   @return [Symbol, Increase::PhysicalCardProfile::Creator]
+      required :creator, enum: -> { Increase::PhysicalCardProfile::Creator }
 
       # @!attribute description
       #   A description you can use to identify the Physical Card Profile.
@@ -77,19 +77,19 @@ module Increase
       # @!attribute status
       #   The status of the Physical Card Profile.
       #
-      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Status]
-      required :status, enum: -> { Increase::Models::PhysicalCardProfile::Status }
+      #   @return [Symbol, Increase::PhysicalCardProfile::Status]
+      required :status, enum: -> { Increase::PhysicalCardProfile::Status }
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
       #
-      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Type]
-      required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
+      #   @return [Symbol, Increase::PhysicalCardProfile::Type]
+      required :type, enum: -> { Increase::PhysicalCardProfile::Type }
 
       # @!method initialize(id:, back_image_file_id:, carrier_image_file_id:, contact_phone:, created_at:, creator:, description:, front_image_file_id:, idempotency_key:, is_default:, program_id:, status:, type:)
       #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::PhysicalCardProfile} for more details.
+      #   {Increase::PhysicalCardProfile} for more details.
       #
       #   This contains artwork and metadata relating to a Physical Card's appearance. For
       #   more information, see our guide on
@@ -106,7 +106,7 @@ module Increase
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
       #   ...
       #
-      #   @param creator [Symbol, Increase::Models::PhysicalCardProfile::Creator] The creator of this Physical Card Profile.
+      #   @param creator [Symbol, Increase::PhysicalCardProfile::Creator] The creator of this Physical Card Profile.
       #
       #   @param description [String] A description you can use to identify the Physical Card Profile.
       #
@@ -120,14 +120,14 @@ module Increase
       #
       #   @param program_id [String] The identifier for the Program this Physical Card Profile belongs to.
       #
-      #   @param status [Symbol, Increase::Models::PhysicalCardProfile::Status] The status of the Physical Card Profile.
+      #   @param status [Symbol, Increase::PhysicalCardProfile::Status] The status of the Physical Card Profile.
       #
-      #   @param type [Symbol, Increase::Models::PhysicalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::PhysicalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
       #   ...
 
       # The creator of this Physical Card Profile.
       #
-      # @see Increase::Models::PhysicalCardProfile#creator
+      # @see Increase::PhysicalCardProfile#creator
       module Creator
         extend Increase::Internal::Type::Enum
 
@@ -143,7 +143,7 @@ module Increase
 
       # The status of the Physical Card Profile.
       #
-      # @see Increase::Models::PhysicalCardProfile#status
+      # @see Increase::PhysicalCardProfile#status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -172,7 +172,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       # `physical_card_profile`.
       #
-      # @see Increase::Models::PhysicalCardProfile#type
+      # @see Increase::PhysicalCardProfile#type
       module Type
         extend Increase::Internal::Type::Enum
 

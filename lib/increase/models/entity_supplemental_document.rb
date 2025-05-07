@@ -35,12 +35,12 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
       #
-      #   @return [Symbol, Increase::Models::EntitySupplementalDocument::Type]
-      required :type, enum: -> { Increase::Models::EntitySupplementalDocument::Type }
+      #   @return [Symbol, Increase::EntitySupplementalDocument::Type]
+      required :type, enum: -> { Increase::EntitySupplementalDocument::Type }
 
       # @!method initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
       #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::EntitySupplementalDocument} for more details.
+      #   {Increase::EntitySupplementalDocument} for more details.
       #
       #   Supplemental Documents are uploaded files connected to an Entity during
       #   onboarding.
@@ -55,13 +55,13 @@ module Increase
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
       #   ...
       #
-      #   @param type [Symbol, Increase::Models::EntitySupplementalDocument::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::EntitySupplementalDocument::Type] A constant representing the object's type. For this resource it will always be `
       #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `entity_supplemental_document`.
       #
-      # @see Increase::Models::EntitySupplementalDocument#type
+      # @see Increase::EntitySupplementalDocument#type
       module Type
         extend Increase::Internal::Type::Enum
 

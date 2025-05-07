@@ -11,14 +11,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Document]
+      # @return [Increase::Document]
       #
       # @see Increase::Models::DocumentRetrieveParams
       def retrieve(document_id, params = {})
         @client.request(
           method: :get,
           path: ["documents/%1$s", document_id],
-          model: Increase::Models::Document,
+          model: Increase::Document,
           options: params[:request_options]
         )
       end
@@ -30,9 +30,9 @@ module Increase
       #
       # @overload list(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {})
       #
-      # @param category [Increase::Models::DocumentListParams::Category]
+      # @param category [Increase::DocumentListParams::Category]
       #
-      # @param created_at [Increase::Models::DocumentListParams::CreatedAt]
+      # @param created_at [Increase::DocumentListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -43,17 +43,17 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::Document>]
+      # @return [Increase::Internal::Page<Increase::Document>]
       #
       # @see Increase::Models::DocumentListParams
       def list(params = {})
-        parsed, options = Increase::Models::DocumentListParams.dump_request(params)
+        parsed, options = Increase::DocumentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "documents",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::Document,
+          model: Increase::Document,
           options: options
         )
       end

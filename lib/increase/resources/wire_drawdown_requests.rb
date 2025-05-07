@@ -42,16 +42,16 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::WireDrawdownRequest]
+      # @return [Increase::WireDrawdownRequest]
       #
       # @see Increase::Models::WireDrawdownRequestCreateParams
       def create(params)
-        parsed, options = Increase::Models::WireDrawdownRequestCreateParams.dump_request(params)
+        parsed, options = Increase::WireDrawdownRequestCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "wire_drawdown_requests",
           body: parsed,
-          model: Increase::Models::WireDrawdownRequest,
+          model: Increase::WireDrawdownRequest,
           options: options
         )
       end
@@ -64,14 +64,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::WireDrawdownRequest]
+      # @return [Increase::WireDrawdownRequest]
       #
       # @see Increase::Models::WireDrawdownRequestRetrieveParams
       def retrieve(wire_drawdown_request_id, params = {})
         @client.request(
           method: :get,
           path: ["wire_drawdown_requests/%1$s", wire_drawdown_request_id],
-          model: Increase::Models::WireDrawdownRequest,
+          model: Increase::WireDrawdownRequest,
           options: params[:request_options]
         )
       end
@@ -91,21 +91,21 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::WireDrawdownRequestListParams::Status]
+      # @param status [Increase::WireDrawdownRequestListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::WireDrawdownRequest>]
+      # @return [Increase::Internal::Page<Increase::WireDrawdownRequest>]
       #
       # @see Increase::Models::WireDrawdownRequestListParams
       def list(params = {})
-        parsed, options = Increase::Models::WireDrawdownRequestListParams.dump_request(params)
+        parsed, options = Increase::WireDrawdownRequestListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "wire_drawdown_requests",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::WireDrawdownRequest,
+          model: Increase::WireDrawdownRequest,
           options: options
         )
       end

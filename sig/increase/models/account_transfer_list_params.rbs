@@ -3,7 +3,7 @@ module Increase
     type account_transfer_list_params =
       {
         account_id: String,
-        created_at: Increase::Models::AccountTransferListParams::CreatedAt,
+        created_at: Increase::AccountTransferListParams::CreatedAt,
         cursor: String,
         idempotency_key: String,
         limit: Integer
@@ -18,11 +18,11 @@ module Increase
 
       def account_id=: (String) -> String
 
-      attr_reader created_at: Increase::Models::AccountTransferListParams::CreatedAt?
+      attr_reader created_at: Increase::AccountTransferListParams::CreatedAt?
 
       def created_at=: (
-        Increase::Models::AccountTransferListParams::CreatedAt
-      ) -> Increase::Models::AccountTransferListParams::CreatedAt
+        Increase::AccountTransferListParams::CreatedAt
+      ) -> Increase::AccountTransferListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -38,14 +38,14 @@ module Increase
 
       def initialize: (
         ?account_id: String,
-        ?created_at: Increase::Models::AccountTransferListParams::CreatedAt,
+        ?created_at: Increase::AccountTransferListParams::CreatedAt,
         ?cursor: String,
         ?idempotency_key: String,
         ?limit: Integer,
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> Increase::Models::account_transfer_list_params
+      def to_hash: -> ::Hash[Symbol, top]
 
       type created_at =
         { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
@@ -74,7 +74,7 @@ module Increase
           ?on_or_before: Time
         ) -> void
 
-        def to_hash: -> Increase::Models::AccountTransferListParams::created_at
+        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

@@ -42,8 +42,8 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be
       #   `file_link`.
       #
-      #   @return [Symbol, Increase::Models::FileLink::Type]
-      required :type, enum: -> { Increase::Models::FileLink::Type }
+      #   @return [Symbol, Increase::FileLink::Type]
+      required :type, enum: -> { Increase::FileLink::Type }
 
       # @!attribute unauthenticated_url
       #   A URL where the File can be downloaded. The URL will expire after the
@@ -54,8 +54,8 @@ module Increase
       required :unauthenticated_url, String
 
       # @!method initialize(id:, created_at:, expires_at:, file_id:, idempotency_key:, type:, unauthenticated_url:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::FileLink} for more details.
+      #   Some parameter documentations has been truncated, see {Increase::FileLink} for
+      #   more details.
       #
       #   File Links let you generate a URL that can be used to download a File.
       #
@@ -72,7 +72,7 @@ module Increase
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
       #   ...
       #
-      #   @param type [Symbol, Increase::Models::FileLink::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::FileLink::Type] A constant representing the object's type. For this resource it will always be `
       #   ...
       #
       #   @param unauthenticated_url [String] A URL where the File can be downloaded. The URL will expire after the `expires_a
@@ -81,7 +81,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       # `file_link`.
       #
-      # @see Increase::Models::FileLink#type
+      # @see Increase::FileLink#type
       module Type
         extend Increase::Internal::Type::Enum
 

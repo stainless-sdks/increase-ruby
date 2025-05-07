@@ -35,8 +35,8 @@ module Increase
       #   Transaction's currency. This will match the currency on the Transaction's
       #   Account.
       #
-      #   @return [Symbol, Increase::Models::Transaction::Currency]
-      required :currency, enum: -> { Increase::Models::Transaction::Currency }
+      #   @return [Symbol, Increase::Transaction::Currency]
+      required :currency, enum: -> { Increase::Transaction::Currency }
 
       # @!attribute description
       #   An informational message describing this transaction. Use the fields in `source`
@@ -56,8 +56,8 @@ module Increase
       # @!attribute route_type
       #   The type of the route this Transaction came through.
       #
-      #   @return [Symbol, Increase::Models::Transaction::RouteType, nil]
-      required :route_type, enum: -> { Increase::Models::Transaction::RouteType }, nil?: true
+      #   @return [Symbol, Increase::Transaction::RouteType, nil]
+      required :route_type, enum: -> { Increase::Transaction::RouteType }, nil?: true
 
       # @!attribute source
       #   This is an object giving more details on the network-level event that caused the
@@ -65,19 +65,19 @@ module Increase
       #   undocumented keys may appear in this object. These should be treated as
       #   deprecated and will be removed in the future.
       #
-      #   @return [Increase::Models::Transaction::Source]
-      required :source, -> { Increase::Models::Transaction::Source }
+      #   @return [Increase::Transaction::Source]
+      required :source, -> { Increase::Transaction::Source }
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
       #   `transaction`.
       #
-      #   @return [Symbol, Increase::Models::Transaction::Type]
-      required :type, enum: -> { Increase::Models::Transaction::Type }
+      #   @return [Symbol, Increase::Transaction::Type]
+      required :type, enum: -> { Increase::Transaction::Type }
 
       # @!method initialize(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
-      #   Some parameter documentations has been truncated, see
-      #   {Increase::Models::Transaction} for more details.
+      #   Some parameter documentations has been truncated, see {Increase::Transaction}
+      #   for more details.
       #
       #   Transactions are the immutable additions and removals of money from your bank
       #   account. They're the equivalent of line items on your bank statement.
@@ -92,7 +92,7 @@ module Increase
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transac
       #   ...
       #
-      #   @param currency [Symbol, Increase::Models::Transaction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction'
+      #   @param currency [Symbol, Increase::Transaction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction'
       #   ...
       #
       #   @param description [String] An informational message describing this transaction. Use the fields in `source`
@@ -101,19 +101,19 @@ module Increase
       #   @param route_id [String, nil] The identifier for the route this Transaction came through. Routes are things li
       #   ...
       #
-      #   @param route_type [Symbol, Increase::Models::Transaction::RouteType, nil] The type of the route this Transaction came through.
+      #   @param route_type [Symbol, Increase::Transaction::RouteType, nil] The type of the route this Transaction came through.
       #
-      #   @param source [Increase::Models::Transaction::Source] This is an object giving more details on the network-level event that caused the
+      #   @param source [Increase::Transaction::Source] This is an object giving more details on the network-level event that caused the
       #   ...
       #
-      #   @param type [Symbol, Increase::Models::Transaction::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::Transaction::Type] A constant representing the object's type. For this resource it will always be `
       #   ...
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       # Transaction's currency. This will match the currency on the Transaction's
       # Account.
       #
-      # @see Increase::Models::Transaction#currency
+      # @see Increase::Transaction#currency
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -141,7 +141,7 @@ module Increase
 
       # The type of the route this Transaction came through.
       #
-      # @see Increase::Models::Transaction#route_type
+      # @see Increase::Transaction#route_type
       module RouteType
         extend Increase::Internal::Type::Enum
 
@@ -158,7 +158,7 @@ module Increase
         #   @return [Array<Symbol>]
       end
 
-      # @see Increase::Models::Transaction#source
+      # @see Increase::Transaction#source
       class Source < Increase::Internal::Type::BaseModel
         # @!attribute account_transfer_intention
         #   An Account Transfer Intention object. This field will be present in the JSON
@@ -166,9 +166,9 @@ module Increase
         #   Account Transfer Intentions are created from each Account Transfer. One
         #   decrements the source account, and the other increments the destination account.
         #
-        #   @return [Increase::Models::Transaction::Source::AccountTransferIntention, nil]
+        #   @return [Increase::Transaction::Source::AccountTransferIntention, nil]
         required :account_transfer_intention,
-                 -> { Increase::Models::Transaction::Source::AccountTransferIntention },
+                 -> { Increase::Transaction::Source::AccountTransferIntention },
                  nil?: true
 
         # @!attribute ach_transfer_intention
@@ -177,9 +177,11 @@ module Increase
         #   Transfer Intention is created from an ACH Transfer. It reflects the intention to
         #   move money into or out of an Increase account via the ACH network.
         #
-        #   @return [Increase::Models::Transaction::Source::ACHTransferIntention, nil]
+        #   @return [Increase::Transaction::Source::ACHTransferIntention, nil]
         required :ach_transfer_intention,
-                 -> { Increase::Models::Transaction::Source::ACHTransferIntention },
+                 -> {
+                   Increase::Transaction::Source::ACHTransferIntention
+                 },
                  nil?: true
 
         # @!attribute ach_transfer_rejection
@@ -188,9 +190,11 @@ module Increase
         #   Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
         #   offsets the ACH Transfer Intention. These rejections are rare.
         #
-        #   @return [Increase::Models::Transaction::Source::ACHTransferRejection, nil]
+        #   @return [Increase::Transaction::Source::ACHTransferRejection, nil]
         required :ach_transfer_rejection,
-                 -> { Increase::Models::Transaction::Source::ACHTransferRejection },
+                 -> {
+                   Increase::Transaction::Source::ACHTransferRejection
+                 },
                  nil?: true
 
         # @!attribute ach_transfer_return
@@ -201,17 +205,19 @@ module Increase
         #   the first two business days after the transfer is initiated, but can occur much
         #   later.
         #
-        #   @return [Increase::Models::Transaction::Source::ACHTransferReturn, nil]
-        required :ach_transfer_return, -> { Increase::Models::Transaction::Source::ACHTransferReturn }, nil?: true
+        #   @return [Increase::Transaction::Source::ACHTransferReturn, nil]
+        required :ach_transfer_return, -> { Increase::Transaction::Source::ACHTransferReturn }, nil?: true
 
         # @!attribute card_dispute_acceptance
         #   A Card Dispute Acceptance object. This field will be present in the JSON
         #   response if and only if `category` is equal to `card_dispute_acceptance`.
         #   Contains the details of a successful Card Dispute.
         #
-        #   @return [Increase::Models::Transaction::Source::CardDisputeAcceptance, nil]
+        #   @return [Increase::Transaction::Source::CardDisputeAcceptance, nil]
         required :card_dispute_acceptance,
-                 -> { Increase::Models::Transaction::Source::CardDisputeAcceptance },
+                 -> {
+                   Increase::Transaction::Source::CardDisputeAcceptance
+                 },
                  nil?: true
 
         # @!attribute card_dispute_loss
@@ -219,8 +225,8 @@ module Increase
         #   and only if `category` is equal to `card_dispute_loss`. Contains the details of
         #   a lost Card Dispute.
         #
-        #   @return [Increase::Models::Transaction::Source::CardDisputeLoss, nil]
-        required :card_dispute_loss, -> { Increase::Models::Transaction::Source::CardDisputeLoss }, nil?: true
+        #   @return [Increase::Transaction::Source::CardDisputeLoss, nil]
+        required :card_dispute_loss, -> { Increase::Transaction::Source::CardDisputeLoss }, nil?: true
 
         # @!attribute card_refund
         #   A Card Refund object. This field will be present in the JSON response if and
@@ -229,18 +235,16 @@ module Increase
         #   acquirer can also refund money directly to a card without relation to a
         #   transaction.
         #
-        #   @return [Increase::Models::Transaction::Source::CardRefund, nil]
-        required :card_refund, -> { Increase::Models::Transaction::Source::CardRefund }, nil?: true
+        #   @return [Increase::Transaction::Source::CardRefund, nil]
+        required :card_refund, -> { Increase::Transaction::Source::CardRefund }, nil?: true
 
         # @!attribute card_revenue_payment
         #   A Card Revenue Payment object. This field will be present in the JSON response
         #   if and only if `category` is equal to `card_revenue_payment`. Card Revenue
         #   Payments reflect earnings from fees on card transactions.
         #
-        #   @return [Increase::Models::Transaction::Source::CardRevenuePayment, nil]
-        required :card_revenue_payment,
-                 -> { Increase::Models::Transaction::Source::CardRevenuePayment },
-                 nil?: true
+        #   @return [Increase::Transaction::Source::CardRevenuePayment, nil]
+        required :card_revenue_payment, -> { Increase::Transaction::Source::CardRevenuePayment }, nil?: true
 
         # @!attribute card_settlement
         #   A Card Settlement object. This field will be present in the JSON response if and
@@ -249,8 +253,8 @@ module Increase
         #   preceded by an authorization, an acquirer can also directly clear a transaction
         #   without first authorizing it.
         #
-        #   @return [Increase::Models::Transaction::Source::CardSettlement, nil]
-        required :card_settlement, -> { Increase::Models::Transaction::Source::CardSettlement }, nil?: true
+        #   @return [Increase::Transaction::Source::CardSettlement, nil]
+        required :card_settlement, -> { Increase::Transaction::Source::CardSettlement }, nil?: true
 
         # @!attribute cashback_payment
         #   A Cashback Payment object. This field will be present in the JSON response if
@@ -258,15 +262,15 @@ module Increase
         #   represents the cashback paid to a cardholder for a given period. Cashback is
         #   usually paid monthly for the prior month's transactions.
         #
-        #   @return [Increase::Models::Transaction::Source::CashbackPayment, nil]
-        required :cashback_payment, -> { Increase::Models::Transaction::Source::CashbackPayment }, nil?: true
+        #   @return [Increase::Transaction::Source::CashbackPayment, nil]
+        required :cashback_payment, -> { Increase::Transaction::Source::CashbackPayment }, nil?: true
 
         # @!attribute category
         #   The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
         #
-        #   @return [Symbol, Increase::Models::Transaction::Source::Category]
-        required :category, enum: -> { Increase::Models::Transaction::Source::Category }
+        #   @return [Symbol, Increase::Transaction::Source::Category]
+        required :category, enum: -> { Increase::Transaction::Source::Category }
 
         # @!attribute check_deposit_acceptance
         #   A Check Deposit Acceptance object. This field will be present in the JSON
@@ -275,9 +279,9 @@ module Increase
         #   details confirmed. Check Deposits may be returned by the receiving bank, which
         #   will appear as a Check Deposit Return.
         #
-        #   @return [Increase::Models::Transaction::Source::CheckDepositAcceptance, nil]
+        #   @return [Increase::Transaction::Source::CheckDepositAcceptance, nil]
         required :check_deposit_acceptance,
-                 -> { Increase::Models::Transaction::Source::CheckDepositAcceptance },
+                 -> { Increase::Transaction::Source::CheckDepositAcceptance },
                  nil?: true
 
         # @!attribute check_deposit_return
@@ -288,10 +292,8 @@ module Increase
         #   reasons, including insufficient funds or a mismatched account number. Usually,
         #   checks are returned within the first 7 days after the deposit is made.
         #
-        #   @return [Increase::Models::Transaction::Source::CheckDepositReturn, nil]
-        required :check_deposit_return,
-                 -> { Increase::Models::Transaction::Source::CheckDepositReturn },
-                 nil?: true
+        #   @return [Increase::Transaction::Source::CheckDepositReturn, nil]
+        required :check_deposit_return, -> { Increase::Transaction::Source::CheckDepositReturn }, nil?: true
 
         # @!attribute check_transfer_deposit
         #   A Check Transfer Deposit object. This field will be present in the JSON response
@@ -299,9 +301,11 @@ module Increase
         #   is a check drawn on an Increase account that has been deposited by an external
         #   bank account. These types of checks are not pre-registered.
         #
-        #   @return [Increase::Models::Transaction::Source::CheckTransferDeposit, nil]
+        #   @return [Increase::Transaction::Source::CheckTransferDeposit, nil]
         required :check_transfer_deposit,
-                 -> { Increase::Models::Transaction::Source::CheckTransferDeposit },
+                 -> {
+                   Increase::Transaction::Source::CheckTransferDeposit
+                 },
                  nil?: true
 
         # @!attribute fee_payment
@@ -309,8 +313,8 @@ module Increase
         #   only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
         #   made to Increase.
         #
-        #   @return [Increase::Models::Transaction::Source::FeePayment, nil]
-        required :fee_payment, -> { Increase::Models::Transaction::Source::FeePayment }, nil?: true
+        #   @return [Increase::Transaction::Source::FeePayment, nil]
+        required :fee_payment, -> { Increase::Transaction::Source::FeePayment }, nil?: true
 
         # @!attribute inbound_ach_transfer
         #   An Inbound ACH Transfer Intention object. This field will be present in the JSON
@@ -318,10 +322,8 @@ module Increase
         #   Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
         #   another bank and received by Increase.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundACHTransfer, nil]
-        required :inbound_ach_transfer,
-                 -> { Increase::Models::Transaction::Source::InboundACHTransfer },
-                 nil?: true
+        #   @return [Increase::Transaction::Source::InboundACHTransfer, nil]
+        required :inbound_ach_transfer, -> { Increase::Transaction::Source::InboundACHTransfer }, nil?: true
 
         # @!attribute inbound_ach_transfer_return_intention
         #   An Inbound ACH Transfer Return Intention object. This field will be present in
@@ -330,9 +332,9 @@ module Increase
         #   Intention is created when an ACH transfer is initiated at another bank and
         #   returned by Increase.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, nil]
+        #   @return [Increase::Transaction::Source::InboundACHTransferReturnIntention, nil]
         required :inbound_ach_transfer_return_intention,
-                 -> { Increase::Models::Transaction::Source::InboundACHTransferReturnIntention },
+                 -> { Increase::Transaction::Source::InboundACHTransferReturnIntention },
                  nil?: true
 
         # @!attribute inbound_check_adjustment
@@ -341,9 +343,9 @@ module Increase
         #   Inbound Check Adjustment is created when Increase receives an adjustment for a
         #   check or return deposited through Check21.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundCheckAdjustment, nil]
+        #   @return [Increase::Transaction::Source::InboundCheckAdjustment, nil]
         required :inbound_check_adjustment,
-                 -> { Increase::Models::Transaction::Source::InboundCheckAdjustment },
+                 -> { Increase::Transaction::Source::InboundCheckAdjustment },
                  nil?: true
 
         # @!attribute inbound_check_deposit_return_intention
@@ -353,9 +355,9 @@ module Increase
         #   Intention is created when Increase receives an Inbound Check and the User
         #   requests that it be returned.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, nil]
+        #   @return [Increase::Transaction::Source::InboundCheckDepositReturnIntention, nil]
         required :inbound_check_deposit_return_intention,
-                 -> { Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention },
+                 -> { Increase::Transaction::Source::InboundCheckDepositReturnIntention },
                  nil?: true
 
         # @!attribute inbound_real_time_payments_transfer_confirmation
@@ -365,9 +367,9 @@ module Increase
         #   Payments Transfer Confirmation is created when a Real-Time Payments transfer is
         #   initiated at another bank and received by Increase.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil]
+        #   @return [Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil]
         required :inbound_real_time_payments_transfer_confirmation,
-                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation },
+                 -> { Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation },
                  nil?: true
 
         # @!attribute inbound_real_time_payments_transfer_decline
@@ -375,9 +377,9 @@ module Increase
         #   present in the JSON response if and only if `category` is equal to
         #   `inbound_real_time_payments_transfer_decline`.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil]
+        #   @return [Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil]
         required :inbound_real_time_payments_transfer_decline,
-                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline },
+                 -> { Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline },
                  nil?: true
 
         # @!attribute inbound_wire_reversal
@@ -387,10 +389,8 @@ module Increase
         #   Increase. The other bank is sending the money back. This most often happens when
         #   the original destination account details were incorrect.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundWireReversal, nil]
-        required :inbound_wire_reversal,
-                 -> { Increase::Models::Transaction::Source::InboundWireReversal },
-                 nil?: true
+        #   @return [Increase::Transaction::Source::InboundWireReversal, nil]
+        required :inbound_wire_reversal, -> { Increase::Transaction::Source::InboundWireReversal }, nil?: true
 
         # @!attribute inbound_wire_transfer
         #   An Inbound Wire Transfer Intention object. This field will be present in the
@@ -398,10 +398,8 @@ module Increase
         #   Inbound Wire Transfer Intention is created when a wire transfer is initiated at
         #   another bank and received by Increase.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundWireTransfer, nil]
-        required :inbound_wire_transfer,
-                 -> { Increase::Models::Transaction::Source::InboundWireTransfer },
-                 nil?: true
+        #   @return [Increase::Transaction::Source::InboundWireTransfer, nil]
+        required :inbound_wire_transfer, -> { Increase::Transaction::Source::InboundWireTransfer }, nil?: true
 
         # @!attribute inbound_wire_transfer_reversal
         #   An Inbound Wire Transfer Reversal Intention object. This field will be present
@@ -410,9 +408,9 @@ module Increase
         #   created when Increase has received a wire and the User requests that it be
         #   reversed.
         #
-        #   @return [Increase::Models::Transaction::Source::InboundWireTransferReversal, nil]
+        #   @return [Increase::Transaction::Source::InboundWireTransferReversal, nil]
         required :inbound_wire_transfer_reversal,
-                 -> { Increase::Models::Transaction::Source::InboundWireTransferReversal },
+                 -> { Increase::Transaction::Source::InboundWireTransferReversal },
                  nil?: true
 
         # @!attribute interest_payment
@@ -421,16 +419,16 @@ module Increase
         #   represents a payment of interest on an account. Interest is usually paid
         #   monthly.
         #
-        #   @return [Increase::Models::Transaction::Source::InterestPayment, nil]
-        required :interest_payment, -> { Increase::Models::Transaction::Source::InterestPayment }, nil?: true
+        #   @return [Increase::Transaction::Source::InterestPayment, nil]
+        required :interest_payment, -> { Increase::Transaction::Source::InterestPayment }, nil?: true
 
         # @!attribute internal_source
         #   An Internal Source object. This field will be present in the JSON response if
         #   and only if `category` is equal to `internal_source`. A transaction between the
         #   user and Increase. See the `reason` attribute for more information.
         #
-        #   @return [Increase::Models::Transaction::Source::InternalSource, nil]
-        required :internal_source, -> { Increase::Models::Transaction::Source::InternalSource }, nil?: true
+        #   @return [Increase::Transaction::Source::InternalSource, nil]
+        required :internal_source, -> { Increase::Transaction::Source::InternalSource }, nil?: true
 
         # @!attribute other
         #   If the category of this Transaction source is equal to `other`, this field will
@@ -446,9 +444,9 @@ module Increase
         #   Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
         #   is acknowledged by the receiving bank.
         #
-        #   @return [Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil]
+        #   @return [Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil]
         required :real_time_payments_transfer_acknowledgement,
-                 -> { Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement },
+                 -> { Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement },
                  nil?: true
 
         # @!attribute sample_funds
@@ -456,17 +454,17 @@ module Increase
         #   only if `category` is equal to `sample_funds`. Sample funds for testing
         #   purposes.
         #
-        #   @return [Increase::Models::Transaction::Source::SampleFunds, nil]
-        required :sample_funds, -> { Increase::Models::Transaction::Source::SampleFunds }, nil?: true
+        #   @return [Increase::Transaction::Source::SampleFunds, nil]
+        required :sample_funds, -> { Increase::Transaction::Source::SampleFunds }, nil?: true
 
         # @!attribute swift_transfer_intention
         #   A Swift Transfer Intention object. This field will be present in the JSON
         #   response if and only if `category` is equal to `swift_transfer_intention`. A
         #   Swift Transfer initiated via Increase.
         #
-        #   @return [Increase::Models::Transaction::Source::SwiftTransferIntention, nil]
+        #   @return [Increase::Transaction::Source::SwiftTransferIntention, nil]
         required :swift_transfer_intention,
-                 -> { Increase::Models::Transaction::Source::SwiftTransferIntention },
+                 -> { Increase::Transaction::Source::SwiftTransferIntention },
                  nil?: true
 
         # @!attribute wire_transfer_intention
@@ -474,114 +472,116 @@ module Increase
         #   response if and only if `category` is equal to `wire_transfer_intention`. A Wire
         #   Transfer initiated via Increase and sent to a different bank.
         #
-        #   @return [Increase::Models::Transaction::Source::WireTransferIntention, nil]
+        #   @return [Increase::Transaction::Source::WireTransferIntention, nil]
         required :wire_transfer_intention,
-                 -> { Increase::Models::Transaction::Source::WireTransferIntention },
+                 -> {
+                   Increase::Transaction::Source::WireTransferIntention
+                 },
                  nil?: true
 
         # @!method initialize(account_transfer_intention:, ach_transfer_intention:, ach_transfer_rejection:, ach_transfer_return:, card_dispute_acceptance:, card_dispute_loss:, card_refund:, card_revenue_payment:, card_settlement:, cashback_payment:, category:, check_deposit_acceptance:, check_deposit_return:, check_transfer_deposit:, fee_payment:, inbound_ach_transfer:, inbound_ach_transfer_return_intention:, inbound_check_adjustment:, inbound_check_deposit_return_intention:, inbound_real_time_payments_transfer_confirmation:, inbound_real_time_payments_transfer_decline:, inbound_wire_reversal:, inbound_wire_transfer:, inbound_wire_transfer_reversal:, interest_payment:, internal_source:, other:, real_time_payments_transfer_acknowledgement:, sample_funds:, swift_transfer_intention:, wire_transfer_intention:)
         #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::Transaction::Source} for more details.
+        #   {Increase::Transaction::Source} for more details.
         #
         #   This is an object giving more details on the network-level event that caused the
         #   Transaction. Note that for backwards compatibility reasons, additional
         #   undocumented keys may appear in this object. These should be treated as
         #   deprecated and will be removed in the future.
         #
-        #   @param account_transfer_intention [Increase::Models::Transaction::Source::AccountTransferIntention, nil] An Account Transfer Intention object. This field will be present in the JSON res
+        #   @param account_transfer_intention [Increase::Transaction::Source::AccountTransferIntention, nil] An Account Transfer Intention object. This field will be present in the JSON res
         #   ...
         #
-        #   @param ach_transfer_intention [Increase::Models::Transaction::Source::ACHTransferIntention, nil] An ACH Transfer Intention object. This field will be present in the JSON respons
+        #   @param ach_transfer_intention [Increase::Transaction::Source::ACHTransferIntention, nil] An ACH Transfer Intention object. This field will be present in the JSON respons
         #   ...
         #
-        #   @param ach_transfer_rejection [Increase::Models::Transaction::Source::ACHTransferRejection, nil] An ACH Transfer Rejection object. This field will be present in the JSON respons
+        #   @param ach_transfer_rejection [Increase::Transaction::Source::ACHTransferRejection, nil] An ACH Transfer Rejection object. This field will be present in the JSON respons
         #   ...
         #
-        #   @param ach_transfer_return [Increase::Models::Transaction::Source::ACHTransferReturn, nil] An ACH Transfer Return object. This field will be present in the JSON response i
+        #   @param ach_transfer_return [Increase::Transaction::Source::ACHTransferReturn, nil] An ACH Transfer Return object. This field will be present in the JSON response i
         #   ...
         #
-        #   @param card_dispute_acceptance [Increase::Models::Transaction::Source::CardDisputeAcceptance, nil] A Card Dispute Acceptance object. This field will be present in the JSON respons
+        #   @param card_dispute_acceptance [Increase::Transaction::Source::CardDisputeAcceptance, nil] A Card Dispute Acceptance object. This field will be present in the JSON respons
         #   ...
         #
-        #   @param card_dispute_loss [Increase::Models::Transaction::Source::CardDisputeLoss, nil] A Card Dispute Loss object. This field will be present in the JSON response if a
+        #   @param card_dispute_loss [Increase::Transaction::Source::CardDisputeLoss, nil] A Card Dispute Loss object. This field will be present in the JSON response if a
         #   ...
         #
-        #   @param card_refund [Increase::Models::Transaction::Source::CardRefund, nil] A Card Refund object. This field will be present in the JSON response if and onl
+        #   @param card_refund [Increase::Transaction::Source::CardRefund, nil] A Card Refund object. This field will be present in the JSON response if and onl
         #   ...
         #
-        #   @param card_revenue_payment [Increase::Models::Transaction::Source::CardRevenuePayment, nil] A Card Revenue Payment object. This field will be present in the JSON response i
+        #   @param card_revenue_payment [Increase::Transaction::Source::CardRevenuePayment, nil] A Card Revenue Payment object. This field will be present in the JSON response i
         #   ...
         #
-        #   @param card_settlement [Increase::Models::Transaction::Source::CardSettlement, nil] A Card Settlement object. This field will be present in the JSON response if and
+        #   @param card_settlement [Increase::Transaction::Source::CardSettlement, nil] A Card Settlement object. This field will be present in the JSON response if and
         #   ...
         #
-        #   @param cashback_payment [Increase::Models::Transaction::Source::CashbackPayment, nil] A Cashback Payment object. This field will be present in the JSON response if an
+        #   @param cashback_payment [Increase::Transaction::Source::CashbackPayment, nil] A Cashback Payment object. This field will be present in the JSON response if an
         #   ...
         #
-        #   @param category [Symbol, Increase::Models::Transaction::Source::Category] The type of the resource. We may add additional possible values for this enum ov
+        #   @param category [Symbol, Increase::Transaction::Source::Category] The type of the resource. We may add additional possible values for this enum ov
         #   ...
         #
-        #   @param check_deposit_acceptance [Increase::Models::Transaction::Source::CheckDepositAcceptance, nil] A Check Deposit Acceptance object. This field will be present in the JSON respon
+        #   @param check_deposit_acceptance [Increase::Transaction::Source::CheckDepositAcceptance, nil] A Check Deposit Acceptance object. This field will be present in the JSON respon
         #   ...
         #
-        #   @param check_deposit_return [Increase::Models::Transaction::Source::CheckDepositReturn, nil] A Check Deposit Return object. This field will be present in the JSON response i
+        #   @param check_deposit_return [Increase::Transaction::Source::CheckDepositReturn, nil] A Check Deposit Return object. This field will be present in the JSON response i
         #   ...
         #
-        #   @param check_transfer_deposit [Increase::Models::Transaction::Source::CheckTransferDeposit, nil] A Check Transfer Deposit object. This field will be present in the JSON response
+        #   @param check_transfer_deposit [Increase::Transaction::Source::CheckTransferDeposit, nil] A Check Transfer Deposit object. This field will be present in the JSON response
         #   ...
         #
-        #   @param fee_payment [Increase::Models::Transaction::Source::FeePayment, nil] A Fee Payment object. This field will be present in the JSON response if and onl
+        #   @param fee_payment [Increase::Transaction::Source::FeePayment, nil] A Fee Payment object. This field will be present in the JSON response if and onl
         #   ...
         #
-        #   @param inbound_ach_transfer [Increase::Models::Transaction::Source::InboundACHTransfer, nil] An Inbound ACH Transfer Intention object. This field will be present in the JSON
+        #   @param inbound_ach_transfer [Increase::Transaction::Source::InboundACHTransfer, nil] An Inbound ACH Transfer Intention object. This field will be present in the JSON
         #   ...
         #
-        #   @param inbound_ach_transfer_return_intention [Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, nil] An Inbound ACH Transfer Return Intention object. This field will be present in t
+        #   @param inbound_ach_transfer_return_intention [Increase::Transaction::Source::InboundACHTransferReturnIntention, nil] An Inbound ACH Transfer Return Intention object. This field will be present in t
         #   ...
         #
-        #   @param inbound_check_adjustment [Increase::Models::Transaction::Source::InboundCheckAdjustment, nil] An Inbound Check Adjustment object. This field will be present in the JSON respo
+        #   @param inbound_check_adjustment [Increase::Transaction::Source::InboundCheckAdjustment, nil] An Inbound Check Adjustment object. This field will be present in the JSON respo
         #   ...
         #
-        #   @param inbound_check_deposit_return_intention [Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, nil] An Inbound Check Deposit Return Intention object. This field will be present in
+        #   @param inbound_check_deposit_return_intention [Increase::Transaction::Source::InboundCheckDepositReturnIntention, nil] An Inbound Check Deposit Return Intention object. This field will be present in
         #   ...
         #
-        #   @param inbound_real_time_payments_transfer_confirmation [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil] An Inbound Real-Time Payments Transfer Confirmation object. This field will be p
+        #   @param inbound_real_time_payments_transfer_confirmation [Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil] An Inbound Real-Time Payments Transfer Confirmation object. This field will be p
         #   ...
         #
-        #   @param inbound_real_time_payments_transfer_decline [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil] An Inbound Real-Time Payments Transfer Decline object. This field will be presen
+        #   @param inbound_real_time_payments_transfer_decline [Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil] An Inbound Real-Time Payments Transfer Decline object. This field will be presen
         #   ...
         #
-        #   @param inbound_wire_reversal [Increase::Models::Transaction::Source::InboundWireReversal, nil] An Inbound Wire Reversal object. This field will be present in the JSON response
+        #   @param inbound_wire_reversal [Increase::Transaction::Source::InboundWireReversal, nil] An Inbound Wire Reversal object. This field will be present in the JSON response
         #   ...
         #
-        #   @param inbound_wire_transfer [Increase::Models::Transaction::Source::InboundWireTransfer, nil] An Inbound Wire Transfer Intention object. This field will be present in the JSO
+        #   @param inbound_wire_transfer [Increase::Transaction::Source::InboundWireTransfer, nil] An Inbound Wire Transfer Intention object. This field will be present in the JSO
         #   ...
         #
-        #   @param inbound_wire_transfer_reversal [Increase::Models::Transaction::Source::InboundWireTransferReversal, nil] An Inbound Wire Transfer Reversal Intention object. This field will be present i
+        #   @param inbound_wire_transfer_reversal [Increase::Transaction::Source::InboundWireTransferReversal, nil] An Inbound Wire Transfer Reversal Intention object. This field will be present i
         #   ...
         #
-        #   @param interest_payment [Increase::Models::Transaction::Source::InterestPayment, nil] An Interest Payment object. This field will be present in the JSON response if a
+        #   @param interest_payment [Increase::Transaction::Source::InterestPayment, nil] An Interest Payment object. This field will be present in the JSON response if a
         #   ...
         #
-        #   @param internal_source [Increase::Models::Transaction::Source::InternalSource, nil] An Internal Source object. This field will be present in the JSON response if an
+        #   @param internal_source [Increase::Transaction::Source::InternalSource, nil] An Internal Source object. This field will be present in the JSON response if an
         #   ...
         #
         #   @param other [Object, nil] If the category of this Transaction source is equal to `other`, this field will
         #   ...
         #
-        #   @param real_time_payments_transfer_acknowledgement [Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil] A Real-Time Payments Transfer Acknowledgement object. This field will be present
+        #   @param real_time_payments_transfer_acknowledgement [Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil] A Real-Time Payments Transfer Acknowledgement object. This field will be present
         #   ...
         #
-        #   @param sample_funds [Increase::Models::Transaction::Source::SampleFunds, nil] A Sample Funds object. This field will be present in the JSON response if and on
+        #   @param sample_funds [Increase::Transaction::Source::SampleFunds, nil] A Sample Funds object. This field will be present in the JSON response if and on
         #   ...
         #
-        #   @param swift_transfer_intention [Increase::Models::Transaction::Source::SwiftTransferIntention, nil] A Swift Transfer Intention object. This field will be present in the JSON respon
+        #   @param swift_transfer_intention [Increase::Transaction::Source::SwiftTransferIntention, nil] A Swift Transfer Intention object. This field will be present in the JSON respon
         #   ...
         #
-        #   @param wire_transfer_intention [Increase::Models::Transaction::Source::WireTransferIntention, nil] A Wire Transfer Intention object. This field will be present in the JSON respons
+        #   @param wire_transfer_intention [Increase::Transaction::Source::WireTransferIntention, nil] A Wire Transfer Intention object. This field will be present in the JSON respons
         #   ...
 
-        # @see Increase::Models::Transaction::Source#account_transfer_intention
+        # @see Increase::Transaction::Source#account_transfer_intention
         class AccountTransferIntention < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -594,8 +594,8 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::AccountTransferIntention::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::AccountTransferIntention::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::AccountTransferIntention::Currency }
 
           # @!attribute description
           #   The description you chose to give the transfer.
@@ -623,8 +623,7 @@ module Increase
 
           # @!method initialize(amount:, currency:, description:, destination_account_id:, source_account_id:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::AccountTransferIntention} for more
-          #   details.
+          #   {Increase::Transaction::Source::AccountTransferIntention} for more details.
           #
           #   An Account Transfer Intention object. This field will be present in the JSON
           #   response if and only if `category` is equal to `account_transfer_intention`. Two
@@ -634,7 +633,7 @@ module Increase
           #   @param amount [Integer] The pending amount in the minor unit of the transaction's currency. For dollars,
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+          #   @param currency [Symbol, Increase::Transaction::Source::AccountTransferIntention::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   ...
           #
           #   @param description [String] The description you chose to give the transfer.
@@ -648,7 +647,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           # account currency.
           #
-          # @see Increase::Models::Transaction::Source::AccountTransferIntention#currency
+          # @see Increase::Transaction::Source::AccountTransferIntention#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -675,7 +674,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#ach_transfer_intention
+        # @see Increase::Transaction::Source#ach_transfer_intention
         class ACHTransferIntention < Increase::Internal::Type::BaseModel
           # @!attribute account_number
           #   The account number for the destination account.
@@ -711,7 +710,7 @@ module Increase
 
           # @!method initialize(account_number:, amount:, routing_number:, statement_descriptor:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::ACHTransferIntention} for more details.
+          #   {Increase::Transaction::Source::ACHTransferIntention} for more details.
           #
           #   An ACH Transfer Intention object. This field will be present in the JSON
           #   response if and only if `category` is equal to `ach_transfer_intention`. An ACH
@@ -731,7 +730,7 @@ module Increase
           #   @param transfer_id [String] The identifier of the ACH Transfer that led to this Transaction.
         end
 
-        # @see Increase::Models::Transaction::Source#ach_transfer_rejection
+        # @see Increase::Transaction::Source#ach_transfer_rejection
         class ACHTransferRejection < Increase::Internal::Type::BaseModel
           # @!attribute transfer_id
           #   The identifier of the ACH Transfer that led to this Transaction.
@@ -748,7 +747,7 @@ module Increase
           #   @param transfer_id [String] The identifier of the ACH Transfer that led to this Transaction.
         end
 
-        # @see Increase::Models::Transaction::Source#ach_transfer_return
+        # @see Increase::Transaction::Source#ach_transfer_return
         class ACHTransferReturn < Increase::Internal::Type::BaseModel
           # @!attribute created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -767,9 +766,9 @@ module Increase
           #   Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode]
+          #   @return [Symbol, Increase::Transaction::Source::ACHTransferReturn::ReturnReasonCode]
           required :return_reason_code,
-                   enum: -> { Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode }
+                   enum: -> { Increase::Transaction::Source::ACHTransferReturn::ReturnReasonCode }
 
           # @!attribute trace_number
           #   A 15 digit number that was generated by the bank that initiated the return. The
@@ -794,7 +793,7 @@ module Increase
 
           # @!method initialize(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::ACHTransferReturn} for more details.
+          #   {Increase::Transaction::Source::ACHTransferReturn} for more details.
           #
           #   An ACH Transfer Return object. This field will be present in the JSON response
           #   if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
@@ -808,7 +807,7 @@ module Increase
           #
           #   @param raw_return_reason_code [String] The three character ACH return code, in the range R01 to R85.
           #
-          #   @param return_reason_code [Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode] Why the ACH Transfer was returned. This reason code is sent by the receiving ban
+          #   @param return_reason_code [Symbol, Increase::Transaction::Source::ACHTransferReturn::ReturnReasonCode] Why the ACH Transfer was returned. This reason code is sent by the receiving ban
           #   ...
           #
           #   @param trace_number [String] A 15 digit number that was generated by the bank that initiated the return. The
@@ -821,7 +820,7 @@ module Increase
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           # bank back to Increase.
           #
-          # @see Increase::Models::Transaction::Source::ACHTransferReturn#return_reason_code
+          # @see Increase::Transaction::Source::ACHTransferReturn#return_reason_code
           module ReturnReasonCode
             extend Increase::Internal::Type::Enum
 
@@ -1043,7 +1042,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#card_dispute_acceptance
+        # @see Increase::Transaction::Source#card_dispute_acceptance
         class CardDisputeAcceptance < Increase::Internal::Type::BaseModel
           # @!attribute accepted_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1067,7 +1066,7 @@ module Increase
 
           # @!method initialize(accepted_at:, card_dispute_id:, transaction_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CardDisputeAcceptance} for more details.
+          #   {Increase::Transaction::Source::CardDisputeAcceptance} for more details.
           #
           #   A Card Dispute Acceptance object. This field will be present in the JSON
           #   response if and only if `category` is equal to `card_dispute_acceptance`.
@@ -1082,7 +1081,7 @@ module Increase
           #   ...
         end
 
-        # @see Increase::Models::Transaction::Source#card_dispute_loss
+        # @see Increase::Transaction::Source#card_dispute_loss
         class CardDisputeLoss < Increase::Internal::Type::BaseModel
           # @!attribute card_dispute_id
           #   The identifier of the Card Dispute that was lost.
@@ -1112,7 +1111,7 @@ module Increase
 
           # @!method initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CardDisputeLoss} for more details.
+          #   {Increase::Transaction::Source::CardDisputeLoss} for more details.
           #
           #   A Card Dispute Loss object. This field will be present in the JSON response if
           #   and only if `category` is equal to `card_dispute_loss`. Contains the details of
@@ -1129,7 +1128,7 @@ module Increase
           #   ...
         end
 
-        # @see Increase::Models::Transaction::Source#card_refund
+        # @see Increase::Transaction::Source#card_refund
         class CardRefund < Increase::Internal::Type::BaseModel
           # @!attribute id
           #   The Card Refund identifier.
@@ -1154,21 +1153,21 @@ module Increase
           #   Cashback debited for this transaction, if eligible. Cashback is paid out in
           #   aggregate, monthly.
           #
-          #   @return [Increase::Models::Transaction::Source::CardRefund::Cashback, nil]
-          required :cashback, -> { Increase::Models::Transaction::Source::CardRefund::Cashback }, nil?: true
+          #   @return [Increase::Transaction::Source::CardRefund::Cashback, nil]
+          required :cashback, -> { Increase::Transaction::Source::CardRefund::Cashback }, nil?: true
 
           # @!attribute currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::CardRefund::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::CardRefund::Currency }
 
           # @!attribute interchange
           #   Interchange assessed as a part of this transaciton.
           #
-          #   @return [Increase::Models::Transaction::Source::CardRefund::Interchange, nil]
-          required :interchange, -> { Increase::Models::Transaction::Source::CardRefund::Interchange }, nil?: true
+          #   @return [Increase::Transaction::Source::CardRefund::Interchange, nil]
+          required :interchange, -> { Increase::Transaction::Source::CardRefund::Interchange }, nil?: true
 
           # @!attribute merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -1216,9 +1215,8 @@ module Increase
           # @!attribute network_identifiers
           #   Network-specific identifiers for this refund.
           #
-          #   @return [Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers]
-          required :network_identifiers,
-                   -> { Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers }
+          #   @return [Increase::Transaction::Source::CardRefund::NetworkIdentifiers]
+          required :network_identifiers, -> { Increase::Transaction::Source::CardRefund::NetworkIdentifiers }
 
           # @!attribute presentment_amount
           #   The amount in the minor unit of the transaction's presentment currency.
@@ -1237,9 +1235,11 @@ module Increase
           #   Additional details about the card purchase, such as tax and industry-specific
           #   fields.
           #
-          #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, nil]
+          #   @return [Increase::Transaction::Source::CardRefund::PurchaseDetails, nil]
           required :purchase_details,
-                   -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails },
+                   -> {
+                     Increase::Transaction::Source::CardRefund::PurchaseDetails
+                   },
                    nil?: true
 
           # @!attribute transaction_id
@@ -1252,12 +1252,12 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Type]
-          required :type, enum: -> { Increase::Models::Transaction::Source::CardRefund::Type }
+          #   @return [Symbol, Increase::Transaction::Source::CardRefund::Type]
+          required :type, enum: -> { Increase::Transaction::Source::CardRefund::Type }
 
           # @!method initialize(id:, amount:, card_payment_id:, cashback:, currency:, interchange:, merchant_acceptor_id:, merchant_category_code:, merchant_city:, merchant_country:, merchant_name:, merchant_postal_code:, merchant_state:, network_identifiers:, presentment_amount:, presentment_currency:, purchase_details:, transaction_id:, type:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CardRefund} for more details.
+          #   {Increase::Transaction::Source::CardRefund} for more details.
           #
           #   A Card Refund object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_refund`. Card Refunds move money back to
@@ -1272,13 +1272,13 @@ module Increase
           #
           #   @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
           #
-          #   @param cashback [Increase::Models::Transaction::Source::CardRefund::Cashback, nil] Cashback debited for this transaction, if eligible. Cashback is paid out in aggr
+          #   @param cashback [Increase::Transaction::Source::CardRefund::Cashback, nil] Cashback debited for this transaction, if eligible. Cashback is paid out in aggr
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::CardRefund::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
+          #   @param currency [Symbol, Increase::Transaction::Source::CardRefund::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
           #   ...
           #
-          #   @param interchange [Increase::Models::Transaction::Source::CardRefund::Interchange, nil] Interchange assessed as a part of this transaciton.
+          #   @param interchange [Increase::Transaction::Source::CardRefund::Interchange, nil] Interchange assessed as a part of this transaciton.
           #
           #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
           #   ...
@@ -1295,22 +1295,22 @@ module Increase
           #
           #   @param merchant_state [String, nil] The state the merchant resides in.
           #
-          #   @param network_identifiers [Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers] Network-specific identifiers for this refund.
+          #   @param network_identifiers [Increase::Transaction::Source::CardRefund::NetworkIdentifiers] Network-specific identifiers for this refund.
           #
           #   @param presentment_amount [Integer] The amount in the minor unit of the transaction's presentment currency.
           #
           #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
           #   ...
           #
-          #   @param purchase_details [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, nil] Additional details about the card purchase, such as tax and industry-specific fi
+          #   @param purchase_details [Increase::Transaction::Source::CardRefund::PurchaseDetails, nil] Additional details about the card purchase, such as tax and industry-specific fi
           #   ...
           #
           #   @param transaction_id [String] The identifier of the Transaction associated with this Transaction.
           #
-          #   @param type [Symbol, Increase::Models::Transaction::Source::CardRefund::Type] A constant representing the object's type. For this resource it will always be `
+          #   @param type [Symbol, Increase::Transaction::Source::CardRefund::Type] A constant representing the object's type. For this resource it will always be `
           #   ...
 
-          # @see Increase::Models::Transaction::Source::CardRefund#cashback
+          # @see Increase::Transaction::Source::CardRefund#cashback
           class Cashback < Increase::Internal::Type::BaseModel
             # @!attribute amount
             #   The cashback amount given as a string containing a decimal number. The amount is
@@ -1323,12 +1323,12 @@ module Increase
             # @!attribute currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency]
-            required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Cashback::Currency }
+            #   @return [Symbol, Increase::Transaction::Source::CardRefund::Cashback::Currency]
+            required :currency, enum: -> { Increase::Transaction::Source::CardRefund::Cashback::Currency }
 
             # @!method initialize(amount:, currency:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardRefund::Cashback} for more details.
+            #   {Increase::Transaction::Source::CardRefund::Cashback} for more details.
             #
             #   Cashback debited for this transaction, if eligible. Cashback is paid out in
             #   aggregate, monthly.
@@ -1336,11 +1336,11 @@ module Increase
             #   @param amount [String] The cashback amount given as a string containing a decimal number. The amount is
             #   ...
             #
-            #   @param currency [Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #   @param currency [Symbol, Increase::Transaction::Source::CardRefund::Cashback::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
-            # @see Increase::Models::Transaction::Source::CardRefund::Cashback#currency
+            # @see Increase::Transaction::Source::CardRefund::Cashback#currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -1370,7 +1370,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's settlement currency.
           #
-          # @see Increase::Models::Transaction::Source::CardRefund#currency
+          # @see Increase::Transaction::Source::CardRefund#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -1396,7 +1396,7 @@ module Increase
             #   @return [Array<Symbol>]
           end
 
-          # @see Increase::Models::Transaction::Source::CardRefund#interchange
+          # @see Increase::Transaction::Source::CardRefund#interchange
           class Interchange < Increase::Internal::Type::BaseModel
             # @!attribute amount
             #   The interchange amount given as a string containing a decimal number in major
@@ -1417,13 +1417,12 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency]
-            required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Interchange::Currency }
+            #   @return [Symbol, Increase::Transaction::Source::CardRefund::Interchange::Currency]
+            required :currency, enum: -> { Increase::Transaction::Source::CardRefund::Interchange::Currency }
 
             # @!method initialize(amount:, code:, currency:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardRefund::Interchange} for more
-            #   details.
+            #   {Increase::Transaction::Source::CardRefund::Interchange} for more details.
             #
             #   Interchange assessed as a part of this transaciton.
             #
@@ -1432,13 +1431,13 @@ module Increase
             #
             #   @param code [String, nil] The card network specific interchange code.
             #
-            #   @param currency [Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+            #   @param currency [Symbol, Increase::Transaction::Source::CardRefund::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   ...
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             # reimbursement.
             #
-            # @see Increase::Models::Transaction::Source::CardRefund::Interchange#currency
+            # @see Increase::Transaction::Source::CardRefund::Interchange#currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -1465,7 +1464,7 @@ module Increase
             end
           end
 
-          # @see Increase::Models::Transaction::Source::CardRefund#network_identifiers
+          # @see Increase::Transaction::Source::CardRefund#network_identifiers
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             # @!attribute acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this
@@ -1489,7 +1488,7 @@ module Increase
 
             # @!method initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers} for more
+            #   {Increase::Transaction::Source::CardRefund::NetworkIdentifiers} for more
             #   details.
             #
             #   Network-specific identifiers for this refund.
@@ -1503,14 +1502,14 @@ module Increase
             #   ...
           end
 
-          # @see Increase::Models::Transaction::Source::CardRefund#purchase_details
+          # @see Increase::Transaction::Source::CardRefund#purchase_details
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             # @!attribute car_rental
             #   Fields specific to car rentals.
             #
-            #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental, nil]
+            #   @return [Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental, nil]
             required :car_rental,
-                     -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental },
+                     -> { Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental },
                      nil?: true
 
             # @!attribute customer_reference_identifier
@@ -1535,9 +1534,11 @@ module Increase
             # @!attribute lodging
             #   Fields specific to lodging.
             #
-            #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging, nil]
+            #   @return [Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging, nil]
             required :lodging,
-                     -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging },
+                     -> {
+                       Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging
+                     },
                      nil?: true
 
             # @!attribute national_tax_amount
@@ -1562,28 +1563,31 @@ module Increase
             # @!attribute purchase_identifier_format
             #   The format of the purchase identifier.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat, nil]
+            #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat, nil]
             required :purchase_identifier_format,
-                     enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat },
+                     enum: -> {
+                       Increase::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
+                     },
                      nil?: true
 
             # @!attribute travel
             #   Fields specific to travel.
             #
-            #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, nil]
+            #   @return [Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel, nil]
             required :travel,
-                     -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel },
+                     -> {
+                       Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel
+                     },
                      nil?: true
 
             # @!method initialize(car_rental:, customer_reference_identifier:, local_tax_amount:, local_tax_currency:, lodging:, national_tax_amount:, national_tax_currency:, purchase_identifier:, purchase_identifier_format:, travel:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails} for more
-            #   details.
+            #   {Increase::Transaction::Source::CardRefund::PurchaseDetails} for more details.
             #
             #   Additional details about the card purchase, such as tax and industry-specific
             #   fields.
             #
-            #   @param car_rental [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental, nil] Fields specific to car rentals.
+            #   @param car_rental [Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental, nil] Fields specific to car rentals.
             #
             #   @param customer_reference_identifier [String, nil] An identifier from the merchant for the customer or consumer.
             #
@@ -1592,7 +1596,7 @@ module Increase
             #   @param local_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax as
             #   ...
             #
-            #   @param lodging [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging, nil] Fields specific to lodging.
+            #   @param lodging [Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging, nil] Fields specific to lodging.
             #
             #   @param national_tax_amount [Integer, nil] The national tax amount in minor units.
             #
@@ -1601,11 +1605,11 @@ module Increase
             #
             #   @param purchase_identifier [String, nil] An identifier from the merchant for the purchase to the issuer and cardholder.
             #
-            #   @param purchase_identifier_format [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat, nil] The format of the purchase identifier.
+            #   @param purchase_identifier_format [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat, nil] The format of the purchase identifier.
             #
-            #   @param travel [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, nil] Fields specific to travel.
+            #   @param travel [Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel, nil] Fields specific to travel.
 
-            # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails#car_rental
+            # @see Increase::Transaction::Source::CardRefund::PurchaseDetails#car_rental
             class CarRental < Increase::Internal::Type::BaseModel
               # @!attribute car_class_code
               #   Code indicating the vehicle's class.
@@ -1642,9 +1646,11 @@ module Increase
               # @!attribute extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges
+                       },
                        nil?: true
 
               # @!attribute fuel_charges_amount
@@ -1677,9 +1683,11 @@ module Increase
               #   An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
+                       },
                        nil?: true
 
               # @!attribute one_way_drop_off_charges_amount
@@ -1717,8 +1725,8 @@ module Increase
 
               # @!method initialize(car_class_code:, checkout_date:, daily_rental_rate_amount:, daily_rental_rate_currency:, days_rented:, extra_charges:, fuel_charges_amount:, fuel_charges_currency:, insurance_charges_amount:, insurance_charges_currency:, no_show_indicator:, one_way_drop_off_charges_amount:, one_way_drop_off_charges_currency:, renter_name:, weekly_rental_rate_amount:, weekly_rental_rate_currency:)
               #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental}
-              #   for more details.
+              #   {Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental} for more
+              #   details.
               #
               #   Fields specific to car rentals.
               #
@@ -1734,7 +1742,7 @@ module Increase
               #
               #   @param days_rented [Integer, nil] Number of days the vehicle was rented.
               #
-              #   @param extra_charges [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges, nil] Additional charges (gas, late fee, etc.) being billed.
+              #   @param extra_charges [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges, nil] Additional charges (gas, late fee, etc.) being billed.
               #
               #   @param fuel_charges_amount [Integer, nil] Fuel charges for the vehicle.
               #
@@ -1746,7 +1754,7 @@ module Increase
               #   @param insurance_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance ch
               #   ...
               #
-              #   @param no_show_indicator [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil] An indicator that the cardholder is being billed for a reserved vehicle that was
+              #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil] An indicator that the cardholder is being billed for a reserved vehicle that was
               #   ...
               #
               #   @param one_way_drop_off_charges_amount [Integer, nil] Charges for returning the vehicle at a different location than where it was pick
@@ -1764,7 +1772,7 @@ module Increase
 
               # Additional charges (gas, late fee, etc.) being billed.
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental#extra_charges
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental#extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -1793,7 +1801,7 @@ module Increase
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               # not actually rented (that is, a "no-show" charge).
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental#no_show_indicator
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental#no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -1808,7 +1816,7 @@ module Increase
               end
             end
 
-            # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails#lodging
+            # @see Increase::Transaction::Source::CardRefund::PurchaseDetails#lodging
             class Lodging < Increase::Internal::Type::BaseModel
               # @!attribute check_in_date
               #   Date the customer checked in.
@@ -1832,9 +1840,11 @@ module Increase
               # @!attribute extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges
+                       },
                        nil?: true
 
               # @!attribute folio_cash_advances_amount
@@ -1867,9 +1877,11 @@ module Increase
               #   Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
+                       },
                        nil?: true
 
               # @!attribute prepaid_expenses_amount
@@ -1919,8 +1931,8 @@ module Increase
 
               # @!method initialize(check_in_date:, daily_room_rate_amount:, daily_room_rate_currency:, extra_charges:, folio_cash_advances_amount:, folio_cash_advances_currency:, food_beverage_charges_amount:, food_beverage_charges_currency:, no_show_indicator:, prepaid_expenses_amount:, prepaid_expenses_currency:, room_nights:, total_room_tax_amount:, total_room_tax_currency:, total_tax_amount:, total_tax_currency:)
               #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging}
-              #   for more details.
+              #   {Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging} for more
+              #   details.
               #
               #   Fields specific to lodging.
               #
@@ -1931,7 +1943,7 @@ module Increase
               #   @param daily_room_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room r
               #   ...
               #
-              #   @param extra_charges [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil] Additional charges (phone, late check-out, etc.) being billed.
+              #   @param extra_charges [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil] Additional charges (phone, late check-out, etc.) being billed.
               #
               #   @param folio_cash_advances_amount [Integer, nil] Folio cash advances for the room.
               #
@@ -1943,7 +1955,7 @@ module Increase
               #   @param food_beverage_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and bev
               #   ...
               #
-              #   @param no_show_indicator [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil] Indicator that the cardholder is being billed for a reserved room that was not a
+              #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil] Indicator that the cardholder is being billed for a reserved room that was not a
               #   ...
               #
               #   @param prepaid_expenses_amount [Integer, nil] Prepaid expenses being charged for the room.
@@ -1965,7 +1977,7 @@ module Increase
 
               # Additional charges (phone, late check-out, etc.) being billed.
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging#extra_charges
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging#extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -1997,7 +2009,7 @@ module Increase
               # Indicator that the cardholder is being billed for a reserved room that was not
               # actually used.
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging#no_show_indicator
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging#no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -2014,7 +2026,7 @@ module Increase
 
             # The format of the purchase identifier.
             #
-            # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails#purchase_identifier_format
+            # @see Increase::Transaction::Source::CardRefund::PurchaseDetails#purchase_identifier_format
             module PurchaseIdentifierFormat
               extend Increase::Internal::Type::Enum
 
@@ -2037,14 +2049,14 @@ module Increase
               #   @return [Array<Symbol>]
             end
 
-            # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails#travel
+            # @see Increase::Transaction::Source::CardRefund::PurchaseDetails#travel
             class Travel < Increase::Internal::Type::BaseModel
               # @!attribute ancillary
               #   Ancillary purchases in addition to the airfare.
               #
-              #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary, nil]
+              #   @return [Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary, nil]
               required :ancillary,
-                       -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary },
+                       -> { Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary },
                        nil?: true
 
               # @!attribute computerized_reservation_system
@@ -2056,9 +2068,11 @@ module Increase
               # @!attribute credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator, nil]
               required :credit_reason_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
+                       },
                        nil?: true
 
               # @!attribute departure_date
@@ -2082,17 +2096,21 @@ module Increase
               # @!attribute restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
               required :restricted_ticket_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
+                       },
                        nil?: true
 
               # @!attribute ticket_change_indicator
               #   Indicates why a ticket was changed.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator, nil]
               required :ticket_change_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
+                       },
                        nil?: true
 
               # @!attribute ticket_number
@@ -2116,19 +2134,21 @@ module Increase
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
+              #   @return [Array<Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
-                       -> { Increase::Internal::Type::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg] },
+                       -> {
+                         Increase::Internal::Type::ArrayOf[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]
+                       },
                        nil?: true
 
               # @!method initialize(ancillary:, computerized_reservation_system:, credit_reason_indicator:, departure_date:, origination_city_airport_code:, passenger_name:, restricted_ticket_indicator:, ticket_change_indicator:, ticket_number:, travel_agency_code:, travel_agency_name:, trip_legs:)
               #   Fields specific to travel.
               #
-              #   @param ancillary [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary, nil] Ancillary purchases in addition to the airfare.
+              #   @param ancillary [Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary, nil] Ancillary purchases in addition to the airfare.
               #
               #   @param computerized_reservation_system [String, nil] Indicates the computerized reservation system used to book the ticket.
               #
-              #   @param credit_reason_indicator [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
+              #   @param credit_reason_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
               #
               #   @param departure_date [Date, nil] Date of departure.
               #
@@ -2136,9 +2156,9 @@ module Increase
               #
               #   @param passenger_name [String, nil] Name of the passenger.
               #
-              #   @param restricted_ticket_indicator [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator, nil] Indicates whether this ticket is non-refundable.
+              #   @param restricted_ticket_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator, nil] Indicates whether this ticket is non-refundable.
               #
-              #   @param ticket_change_indicator [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator, nil] Indicates why a ticket was changed.
+              #   @param ticket_change_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator, nil] Indicates why a ticket was changed.
               #
               #   @param ticket_number [String, nil] Ticket number.
               #
@@ -2146,9 +2166,9 @@ module Increase
               #
               #   @param travel_agency_name [String, nil] Name of the travel agency if the ticket was issued by a travel agency.
               #
-              #   @param trip_legs [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil] Fields specific to each leg of the journey.
+              #   @param trip_legs [Array<Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil] Fields specific to each leg of the journey.
 
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel#ancillary
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel#ancillary
               class Ancillary < Increase::Internal::Type::BaseModel
                 # @!attribute connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a
@@ -2161,9 +2181,11 @@ module Increase
                 # @!attribute credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
                 #
-                #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
+                #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
                 required :credit_reason_indicator,
-                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator },
+                         enum: -> {
+                           Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
+                         },
                          nil?: true
 
                 # @!attribute passenger_name_or_description
@@ -2175,9 +2197,11 @@ module Increase
                 # @!attribute services
                 #   Additional travel charges, such as baggage fees.
                 #
-                #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
+                #   @return [Array<Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         -> { Increase::Internal::Type::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service] }
+                         -> {
+                           Increase::Internal::Type::ArrayOf[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                         }
 
                 # @!attribute ticket_document_number
                 #   Ticket document number.
@@ -2187,7 +2211,7 @@ module Increase
 
                 # @!method initialize(connected_ticket_document_number:, credit_reason_indicator:, passenger_name_or_description:, services:, ticket_document_number:)
                 #   Some parameter documentations has been truncated, see
-                #   {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary}
+                #   {Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary}
                 #   for more details.
                 #
                 #   Ancillary purchases in addition to the airfare.
@@ -2195,17 +2219,17 @@ module Increase
                 #   @param connected_ticket_document_number [String, nil] If this purchase has a connection or relationship to another purchase, such as a
                 #   ...
                 #
-                #   @param credit_reason_indicator [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
+                #   @param credit_reason_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
                 #
                 #   @param passenger_name_or_description [String, nil] Name of the passenger or description of the ancillary purchase.
                 #
-                #   @param services [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>] Additional travel charges, such as baggage fees.
+                #   @param services [Array<Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>] Additional travel charges, such as baggage fees.
                 #
                 #   @param ticket_document_number [String, nil] Ticket document number.
 
                 # Indicates the reason for a credit to the cardholder.
                 #
-                # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary#credit_reason_indicator
+                # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary#credit_reason_indicator
                 module CreditReasonIndicator
                   extend Increase::Internal::Type::Enum
 
@@ -2231,9 +2255,11 @@ module Increase
                   # @!attribute category
                   #   Category of the ancillary service.
                   #
-                  #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
+                  #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
                   required :category,
-                           enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category },
+                           enum: -> {
+                             Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
+                           },
                            nil?: true
 
                   # @!attribute sub_category
@@ -2243,13 +2269,13 @@ module Increase
                   required :sub_category, String, nil?: true
 
                   # @!method initialize(category:, sub_category:)
-                  #   @param category [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category, nil] Category of the ancillary service.
+                  #   @param category [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category, nil] Category of the ancillary service.
                   #
                   #   @param sub_category [String, nil] Sub-category of the ancillary service, free-form.
 
                   # Category of the ancillary service.
                   #
-                  # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service#category
+                  # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service#category
                   module Category
                     extend Increase::Internal::Type::Enum
 
@@ -2333,7 +2359,7 @@ module Increase
 
               # Indicates the reason for a credit to the cardholder.
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel#credit_reason_indicator
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel#credit_reason_indicator
               module CreditReasonIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -2363,7 +2389,7 @@ module Increase
 
               # Indicates whether this ticket is non-refundable.
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel#restricted_ticket_indicator
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel#restricted_ticket_indicator
               module RestrictedTicketIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -2379,7 +2405,7 @@ module Increase
 
               # Indicates why a ticket was changed.
               #
-              # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel#ticket_change_indicator
+              # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel#ticket_change_indicator
               module TicketChangeIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -2430,9 +2456,11 @@ module Increase
                 # @!attribute stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
                 #
-                #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
+                #   @return [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
                 required :stop_over_code,
-                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode },
+                         enum: -> {
+                           Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
+                         },
                          nil?: true
 
                 # @!method initialize(carrier_code:, destination_city_airport_code:, fare_basis_code:, flight_number:, service_class:, stop_over_code:)
@@ -2446,11 +2474,11 @@ module Increase
                 #
                 #   @param service_class [String, nil] Service class (e.g., first class, business class, etc.).
                 #
-                #   @param stop_over_code [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode, nil] Indicates whether a stopover is allowed on this ticket.
+                #   @param stop_over_code [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode, nil] Indicates whether a stopover is allowed on this ticket.
 
                 # Indicates whether a stopover is allowed on this ticket.
                 #
-                # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg#stop_over_code
+                # @see Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg#stop_over_code
                 module StopOverCode
                   extend Increase::Internal::Type::Enum
 
@@ -2473,7 +2501,7 @@ module Increase
           # A constant representing the object's type. For this resource it will always be
           # `card_refund`.
           #
-          # @see Increase::Models::Transaction::Source::CardRefund#type
+          # @see Increase::Transaction::Source::CardRefund#type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -2484,7 +2512,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#card_revenue_payment
+        # @see Increase::Transaction::Source#card_revenue_payment
         class CardRevenuePayment < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for
@@ -2497,8 +2525,8 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CardRevenuePayment::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::CardRevenuePayment::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::CardRevenuePayment::Currency }
 
           # @!attribute period_end
           #   The end of the period for which this transaction paid interest.
@@ -2520,7 +2548,7 @@ module Increase
 
           # @!method initialize(amount:, currency:, period_end:, period_start:, transacted_on_account_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CardRevenuePayment} for more details.
+          #   {Increase::Transaction::Source::CardRevenuePayment} for more details.
           #
           #   A Card Revenue Payment object. This field will be present in the JSON response
           #   if and only if `category` is equal to `card_revenue_payment`. Card Revenue
@@ -2529,7 +2557,7 @@ module Increase
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+          #   @param currency [Symbol, Increase::Transaction::Source::CardRevenuePayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   ...
           #
           #   @param period_end [Time] The end of the period for which this transaction paid interest.
@@ -2541,7 +2569,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           # currency.
           #
-          # @see Increase::Models::Transaction::Source::CardRevenuePayment#currency
+          # @see Increase::Transaction::Source::CardRevenuePayment#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2568,7 +2596,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#card_settlement
+        # @see Increase::Transaction::Source#card_settlement
         class CardSettlement < Increase::Internal::Type::BaseModel
           # @!attribute id
           #   The Card Settlement identifier.
@@ -2600,23 +2628,21 @@ module Increase
           #   Cashback earned on this transaction, if eligible. Cashback is paid out in
           #   aggregate, monthly.
           #
-          #   @return [Increase::Models::Transaction::Source::CardSettlement::Cashback, nil]
-          required :cashback, -> { Increase::Models::Transaction::Source::CardSettlement::Cashback }, nil?: true
+          #   @return [Increase::Transaction::Source::CardSettlement::Cashback, nil]
+          required :cashback, -> { Increase::Transaction::Source::CardSettlement::Cashback }, nil?: true
 
           # @!attribute currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::CardSettlement::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::CardSettlement::Currency }
 
           # @!attribute interchange
           #   Interchange assessed as a part of this transaction.
           #
-          #   @return [Increase::Models::Transaction::Source::CardSettlement::Interchange, nil]
-          required :interchange,
-                   -> { Increase::Models::Transaction::Source::CardSettlement::Interchange },
-                   nil?: true
+          #   @return [Increase::Transaction::Source::CardSettlement::Interchange, nil]
+          required :interchange, -> { Increase::Transaction::Source::CardSettlement::Interchange }, nil?: true
 
           # @!attribute merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -2664,9 +2690,11 @@ module Increase
           # @!attribute network_identifiers
           #   Network-specific identifiers for this refund.
           #
-          #   @return [Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers]
+          #   @return [Increase::Transaction::Source::CardSettlement::NetworkIdentifiers]
           required :network_identifiers,
-                   -> { Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers }
+                   -> {
+                     Increase::Transaction::Source::CardSettlement::NetworkIdentifiers
+                   }
 
           # @!attribute pending_transaction_id
           #   The identifier of the Pending Transaction associated with this Transaction.
@@ -2691,9 +2719,9 @@ module Increase
           #   Additional details about the card purchase, such as tax and industry-specific
           #   fields.
           #
-          #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, nil]
+          #   @return [Increase::Transaction::Source::CardSettlement::PurchaseDetails, nil]
           required :purchase_details,
-                   -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails },
+                   -> { Increase::Transaction::Source::CardSettlement::PurchaseDetails },
                    nil?: true
 
           # @!attribute transaction_id
@@ -2706,12 +2734,12 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Type]
-          required :type, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Type }
+          #   @return [Symbol, Increase::Transaction::Source::CardSettlement::Type]
+          required :type, enum: -> { Increase::Transaction::Source::CardSettlement::Type }
 
           # @!method initialize(id:, amount:, card_authorization:, card_payment_id:, cashback:, currency:, interchange:, merchant_acceptor_id:, merchant_category_code:, merchant_city:, merchant_country:, merchant_name:, merchant_postal_code:, merchant_state:, network_identifiers:, pending_transaction_id:, presentment_amount:, presentment_currency:, purchase_details:, transaction_id:, type:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CardSettlement} for more details.
+          #   {Increase::Transaction::Source::CardSettlement} for more details.
           #
           #   A Card Settlement object. This field will be present in the JSON response if and
           #   only if `category` is equal to `card_settlement`. Card Settlements are card
@@ -2729,13 +2757,13 @@ module Increase
           #
           #   @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
           #
-          #   @param cashback [Increase::Models::Transaction::Source::CardSettlement::Cashback, nil] Cashback earned on this transaction, if eligible. Cashback is paid out in aggreg
+          #   @param cashback [Increase::Transaction::Source::CardSettlement::Cashback, nil] Cashback earned on this transaction, if eligible. Cashback is paid out in aggreg
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
+          #   @param currency [Symbol, Increase::Transaction::Source::CardSettlement::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
           #   ...
           #
-          #   @param interchange [Increase::Models::Transaction::Source::CardSettlement::Interchange, nil] Interchange assessed as a part of this transaction.
+          #   @param interchange [Increase::Transaction::Source::CardSettlement::Interchange, nil] Interchange assessed as a part of this transaction.
           #
           #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
           #   ...
@@ -2752,7 +2780,7 @@ module Increase
           #
           #   @param merchant_state [String, nil] The state the merchant resides in.
           #
-          #   @param network_identifiers [Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers] Network-specific identifiers for this refund.
+          #   @param network_identifiers [Increase::Transaction::Source::CardSettlement::NetworkIdentifiers] Network-specific identifiers for this refund.
           #
           #   @param pending_transaction_id [String, nil] The identifier of the Pending Transaction associated with this Transaction.
           #
@@ -2761,15 +2789,15 @@ module Increase
           #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
           #   ...
           #
-          #   @param purchase_details [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, nil] Additional details about the card purchase, such as tax and industry-specific fi
+          #   @param purchase_details [Increase::Transaction::Source::CardSettlement::PurchaseDetails, nil] Additional details about the card purchase, such as tax and industry-specific fi
           #   ...
           #
           #   @param transaction_id [String] The identifier of the Transaction associated with this Transaction.
           #
-          #   @param type [Symbol, Increase::Models::Transaction::Source::CardSettlement::Type] A constant representing the object's type. For this resource it will always be `
+          #   @param type [Symbol, Increase::Transaction::Source::CardSettlement::Type] A constant representing the object's type. For this resource it will always be `
           #   ...
 
-          # @see Increase::Models::Transaction::Source::CardSettlement#cashback
+          # @see Increase::Transaction::Source::CardSettlement#cashback
           class Cashback < Increase::Internal::Type::BaseModel
             # @!attribute amount
             #   The cashback amount given as a string containing a decimal number. The amount is
@@ -2782,13 +2810,12 @@ module Increase
             # @!attribute currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency]
-            required :currency, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency }
+            #   @return [Symbol, Increase::Transaction::Source::CardSettlement::Cashback::Currency]
+            required :currency, enum: -> { Increase::Transaction::Source::CardSettlement::Cashback::Currency }
 
             # @!method initialize(amount:, currency:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardSettlement::Cashback} for more
-            #   details.
+            #   {Increase::Transaction::Source::CardSettlement::Cashback} for more details.
             #
             #   Cashback earned on this transaction, if eligible. Cashback is paid out in
             #   aggregate, monthly.
@@ -2796,11 +2823,11 @@ module Increase
             #   @param amount [String] The cashback amount given as a string containing a decimal number. The amount is
             #   ...
             #
-            #   @param currency [Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #   @param currency [Symbol, Increase::Transaction::Source::CardSettlement::Cashback::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
-            # @see Increase::Models::Transaction::Source::CardSettlement::Cashback#currency
+            # @see Increase::Transaction::Source::CardSettlement::Cashback#currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -2830,7 +2857,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's settlement currency.
           #
-          # @see Increase::Models::Transaction::Source::CardSettlement#currency
+          # @see Increase::Transaction::Source::CardSettlement#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2856,7 +2883,7 @@ module Increase
             #   @return [Array<Symbol>]
           end
 
-          # @see Increase::Models::Transaction::Source::CardSettlement#interchange
+          # @see Increase::Transaction::Source::CardSettlement#interchange
           class Interchange < Increase::Internal::Type::BaseModel
             # @!attribute amount
             #   The interchange amount given as a string containing a decimal number in major
@@ -2877,14 +2904,15 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency]
+            #   @return [Symbol, Increase::Transaction::Source::CardSettlement::Interchange::Currency]
             required :currency,
-                     enum: -> { Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency }
+                     enum: -> {
+                       Increase::Transaction::Source::CardSettlement::Interchange::Currency
+                     }
 
             # @!method initialize(amount:, code:, currency:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardSettlement::Interchange} for more
-            #   details.
+            #   {Increase::Transaction::Source::CardSettlement::Interchange} for more details.
             #
             #   Interchange assessed as a part of this transaction.
             #
@@ -2893,13 +2921,13 @@ module Increase
             #
             #   @param code [String, nil] The card network specific interchange code.
             #
-            #   @param currency [Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+            #   @param currency [Symbol, Increase::Transaction::Source::CardSettlement::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   ...
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             # reimbursement.
             #
-            # @see Increase::Models::Transaction::Source::CardSettlement::Interchange#currency
+            # @see Increase::Transaction::Source::CardSettlement::Interchange#currency
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -2926,7 +2954,7 @@ module Increase
             end
           end
 
-          # @see Increase::Models::Transaction::Source::CardSettlement#network_identifiers
+          # @see Increase::Transaction::Source::CardSettlement#network_identifiers
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             # @!attribute acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this
@@ -2950,8 +2978,8 @@ module Increase
 
             # @!method initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers} for
-            #   more details.
+            #   {Increase::Transaction::Source::CardSettlement::NetworkIdentifiers} for more
+            #   details.
             #
             #   Network-specific identifiers for this refund.
             #
@@ -2964,14 +2992,14 @@ module Increase
             #   ...
           end
 
-          # @see Increase::Models::Transaction::Source::CardSettlement#purchase_details
+          # @see Increase::Transaction::Source::CardSettlement#purchase_details
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             # @!attribute car_rental
             #   Fields specific to car rentals.
             #
-            #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental, nil]
+            #   @return [Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental, nil]
             required :car_rental,
-                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental },
+                     -> { Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental },
                      nil?: true
 
             # @!attribute customer_reference_identifier
@@ -2996,9 +3024,9 @@ module Increase
             # @!attribute lodging
             #   Fields specific to lodging.
             #
-            #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging, nil]
+            #   @return [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging, nil]
             required :lodging,
-                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging },
+                     -> { Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging },
                      nil?: true
 
             # @!attribute national_tax_amount
@@ -3023,28 +3051,30 @@ module Increase
             # @!attribute purchase_identifier_format
             #   The format of the purchase identifier.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat, nil]
+            #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat, nil]
             required :purchase_identifier_format,
-                     enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat },
+                     enum: -> {
+                       Increase::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
+                     },
                      nil?: true
 
             # @!attribute travel
             #   Fields specific to travel.
             #
-            #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel, nil]
+            #   @return [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel, nil]
             required :travel,
-                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel },
+                     -> { Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel },
                      nil?: true
 
             # @!method initialize(car_rental:, customer_reference_identifier:, local_tax_amount:, local_tax_currency:, lodging:, national_tax_amount:, national_tax_currency:, purchase_identifier:, purchase_identifier_format:, travel:)
             #   Some parameter documentations has been truncated, see
-            #   {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails} for
-            #   more details.
+            #   {Increase::Transaction::Source::CardSettlement::PurchaseDetails} for more
+            #   details.
             #
             #   Additional details about the card purchase, such as tax and industry-specific
             #   fields.
             #
-            #   @param car_rental [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental, nil] Fields specific to car rentals.
+            #   @param car_rental [Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental, nil] Fields specific to car rentals.
             #
             #   @param customer_reference_identifier [String, nil] An identifier from the merchant for the customer or consumer.
             #
@@ -3053,7 +3083,7 @@ module Increase
             #   @param local_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax as
             #   ...
             #
-            #   @param lodging [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging, nil] Fields specific to lodging.
+            #   @param lodging [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging, nil] Fields specific to lodging.
             #
             #   @param national_tax_amount [Integer, nil] The national tax amount in minor units.
             #
@@ -3062,11 +3092,11 @@ module Increase
             #
             #   @param purchase_identifier [String, nil] An identifier from the merchant for the purchase to the issuer and cardholder.
             #
-            #   @param purchase_identifier_format [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat, nil] The format of the purchase identifier.
+            #   @param purchase_identifier_format [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat, nil] The format of the purchase identifier.
             #
-            #   @param travel [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel, nil] Fields specific to travel.
+            #   @param travel [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel, nil] Fields specific to travel.
 
-            # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails#car_rental
+            # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails#car_rental
             class CarRental < Increase::Internal::Type::BaseModel
               # @!attribute car_class_code
               #   Code indicating the vehicle's class.
@@ -3103,9 +3133,11 @@ module Increase
               # @!attribute extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
+                       },
                        nil?: true
 
               # @!attribute fuel_charges_amount
@@ -3138,9 +3170,11 @@ module Increase
               #   An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
+                       },
                        nil?: true
 
               # @!attribute one_way_drop_off_charges_amount
@@ -3178,8 +3212,8 @@ module Increase
 
               # @!method initialize(car_class_code:, checkout_date:, daily_rental_rate_amount:, daily_rental_rate_currency:, days_rented:, extra_charges:, fuel_charges_amount:, fuel_charges_currency:, insurance_charges_amount:, insurance_charges_currency:, no_show_indicator:, one_way_drop_off_charges_amount:, one_way_drop_off_charges_currency:, renter_name:, weekly_rental_rate_amount:, weekly_rental_rate_currency:)
               #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental}
-              #   for more details.
+              #   {Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental} for
+              #   more details.
               #
               #   Fields specific to car rentals.
               #
@@ -3195,7 +3229,7 @@ module Increase
               #
               #   @param days_rented [Integer, nil] Number of days the vehicle was rented.
               #
-              #   @param extra_charges [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges, nil] Additional charges (gas, late fee, etc.) being billed.
+              #   @param extra_charges [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges, nil] Additional charges (gas, late fee, etc.) being billed.
               #
               #   @param fuel_charges_amount [Integer, nil] Fuel charges for the vehicle.
               #
@@ -3207,7 +3241,7 @@ module Increase
               #   @param insurance_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance ch
               #   ...
               #
-              #   @param no_show_indicator [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil] An indicator that the cardholder is being billed for a reserved vehicle that was
+              #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil] An indicator that the cardholder is being billed for a reserved vehicle that was
               #   ...
               #
               #   @param one_way_drop_off_charges_amount [Integer, nil] Charges for returning the vehicle at a different location than where it was pick
@@ -3225,7 +3259,7 @@ module Increase
 
               # Additional charges (gas, late fee, etc.) being billed.
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental#extra_charges
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental#extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -3254,7 +3288,7 @@ module Increase
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               # not actually rented (that is, a "no-show" charge).
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental#no_show_indicator
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental#no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3269,7 +3303,7 @@ module Increase
               end
             end
 
-            # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails#lodging
+            # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails#lodging
             class Lodging < Increase::Internal::Type::BaseModel
               # @!attribute check_in_date
               #   Date the customer checked in.
@@ -3293,9 +3327,11 @@ module Increase
               # @!attribute extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
+                       },
                        nil?: true
 
               # @!attribute folio_cash_advances_amount
@@ -3328,9 +3364,11 @@ module Increase
               #   Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
+                       },
                        nil?: true
 
               # @!attribute prepaid_expenses_amount
@@ -3380,8 +3418,8 @@ module Increase
 
               # @!method initialize(check_in_date:, daily_room_rate_amount:, daily_room_rate_currency:, extra_charges:, folio_cash_advances_amount:, folio_cash_advances_currency:, food_beverage_charges_amount:, food_beverage_charges_currency:, no_show_indicator:, prepaid_expenses_amount:, prepaid_expenses_currency:, room_nights:, total_room_tax_amount:, total_room_tax_currency:, total_tax_amount:, total_tax_currency:)
               #   Some parameter documentations has been truncated, see
-              #   {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging}
-              #   for more details.
+              #   {Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging} for
+              #   more details.
               #
               #   Fields specific to lodging.
               #
@@ -3392,7 +3430,7 @@ module Increase
               #   @param daily_room_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room r
               #   ...
               #
-              #   @param extra_charges [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil] Additional charges (phone, late check-out, etc.) being billed.
+              #   @param extra_charges [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil] Additional charges (phone, late check-out, etc.) being billed.
               #
               #   @param folio_cash_advances_amount [Integer, nil] Folio cash advances for the room.
               #
@@ -3404,7 +3442,7 @@ module Increase
               #   @param food_beverage_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and bev
               #   ...
               #
-              #   @param no_show_indicator [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil] Indicator that the cardholder is being billed for a reserved room that was not a
+              #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil] Indicator that the cardholder is being billed for a reserved room that was not a
               #   ...
               #
               #   @param prepaid_expenses_amount [Integer, nil] Prepaid expenses being charged for the room.
@@ -3426,7 +3464,7 @@ module Increase
 
               # Additional charges (phone, late check-out, etc.) being billed.
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging#extra_charges
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging#extra_charges
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
 
@@ -3458,7 +3496,7 @@ module Increase
               # Indicator that the cardholder is being billed for a reserved room that was not
               # actually used.
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging#no_show_indicator
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging#no_show_indicator
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3475,7 +3513,7 @@ module Increase
 
             # The format of the purchase identifier.
             #
-            # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails#purchase_identifier_format
+            # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails#purchase_identifier_format
             module PurchaseIdentifierFormat
               extend Increase::Internal::Type::Enum
 
@@ -3498,14 +3536,16 @@ module Increase
               #   @return [Array<Symbol>]
             end
 
-            # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails#travel
+            # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails#travel
             class Travel < Increase::Internal::Type::BaseModel
               # @!attribute ancillary
               #   Ancillary purchases in addition to the airfare.
               #
-              #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary, nil]
+              #   @return [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary, nil]
               required :ancillary,
-                       -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary },
+                       -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary
+                       },
                        nil?: true
 
               # @!attribute computerized_reservation_system
@@ -3517,9 +3557,11 @@ module Increase
               # @!attribute credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator, nil]
               required :credit_reason_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
+                       },
                        nil?: true
 
               # @!attribute departure_date
@@ -3543,17 +3585,21 @@ module Increase
               # @!attribute restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
               required :restricted_ticket_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
+                       },
                        nil?: true
 
               # @!attribute ticket_change_indicator
               #   Indicates why a ticket was changed.
               #
-              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator, nil]
+              #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator, nil]
               required :ticket_change_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator },
+                       enum: -> {
+                         Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
+                       },
                        nil?: true
 
               # @!attribute ticket_number
@@ -3577,19 +3623,21 @@ module Increase
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
+              #   @return [Array<Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
-                       -> { Increase::Internal::Type::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg] },
+                       -> {
+                         Increase::Internal::Type::ArrayOf[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                       },
                        nil?: true
 
               # @!method initialize(ancillary:, computerized_reservation_system:, credit_reason_indicator:, departure_date:, origination_city_airport_code:, passenger_name:, restricted_ticket_indicator:, ticket_change_indicator:, ticket_number:, travel_agency_code:, travel_agency_name:, trip_legs:)
               #   Fields specific to travel.
               #
-              #   @param ancillary [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary, nil] Ancillary purchases in addition to the airfare.
+              #   @param ancillary [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary, nil] Ancillary purchases in addition to the airfare.
               #
               #   @param computerized_reservation_system [String, nil] Indicates the computerized reservation system used to book the ticket.
               #
-              #   @param credit_reason_indicator [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
+              #   @param credit_reason_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
               #
               #   @param departure_date [Date, nil] Date of departure.
               #
@@ -3597,9 +3645,9 @@ module Increase
               #
               #   @param passenger_name [String, nil] Name of the passenger.
               #
-              #   @param restricted_ticket_indicator [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator, nil] Indicates whether this ticket is non-refundable.
+              #   @param restricted_ticket_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator, nil] Indicates whether this ticket is non-refundable.
               #
-              #   @param ticket_change_indicator [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator, nil] Indicates why a ticket was changed.
+              #   @param ticket_change_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator, nil] Indicates why a ticket was changed.
               #
               #   @param ticket_number [String, nil] Ticket number.
               #
@@ -3607,9 +3655,9 @@ module Increase
               #
               #   @param travel_agency_name [String, nil] Name of the travel agency if the ticket was issued by a travel agency.
               #
-              #   @param trip_legs [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil] Fields specific to each leg of the journey.
+              #   @param trip_legs [Array<Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil] Fields specific to each leg of the journey.
 
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel#ancillary
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel#ancillary
               class Ancillary < Increase::Internal::Type::BaseModel
                 # @!attribute connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a
@@ -3622,9 +3670,11 @@ module Increase
                 # @!attribute credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
                 #
-                #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
+                #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
                 required :credit_reason_indicator,
-                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator },
+                         enum: -> {
+                           Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
+                         },
                          nil?: true
 
                 # @!attribute passenger_name_or_description
@@ -3636,9 +3686,11 @@ module Increase
                 # @!attribute services
                 #   Additional travel charges, such as baggage fees.
                 #
-                #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
+                #   @return [Array<Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         -> { Increase::Internal::Type::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service] }
+                         -> {
+                           Increase::Internal::Type::ArrayOf[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                         }
 
                 # @!attribute ticket_document_number
                 #   Ticket document number.
@@ -3648,7 +3700,7 @@ module Increase
 
                 # @!method initialize(connected_ticket_document_number:, credit_reason_indicator:, passenger_name_or_description:, services:, ticket_document_number:)
                 #   Some parameter documentations has been truncated, see
-                #   {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary}
+                #   {Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary}
                 #   for more details.
                 #
                 #   Ancillary purchases in addition to the airfare.
@@ -3656,17 +3708,17 @@ module Increase
                 #   @param connected_ticket_document_number [String, nil] If this purchase has a connection or relationship to another purchase, such as a
                 #   ...
                 #
-                #   @param credit_reason_indicator [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
+                #   @param credit_reason_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
                 #
                 #   @param passenger_name_or_description [String, nil] Name of the passenger or description of the ancillary purchase.
                 #
-                #   @param services [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>] Additional travel charges, such as baggage fees.
+                #   @param services [Array<Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>] Additional travel charges, such as baggage fees.
                 #
                 #   @param ticket_document_number [String, nil] Ticket document number.
 
                 # Indicates the reason for a credit to the cardholder.
                 #
-                # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary#credit_reason_indicator
+                # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary#credit_reason_indicator
                 module CreditReasonIndicator
                   extend Increase::Internal::Type::Enum
 
@@ -3692,9 +3744,11 @@ module Increase
                   # @!attribute category
                   #   Category of the ancillary service.
                   #
-                  #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
+                  #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
                   required :category,
-                           enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category },
+                           enum: -> {
+                             Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
+                           },
                            nil?: true
 
                   # @!attribute sub_category
@@ -3704,13 +3758,13 @@ module Increase
                   required :sub_category, String, nil?: true
 
                   # @!method initialize(category:, sub_category:)
-                  #   @param category [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category, nil] Category of the ancillary service.
+                  #   @param category [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category, nil] Category of the ancillary service.
                   #
                   #   @param sub_category [String, nil] Sub-category of the ancillary service, free-form.
 
                   # Category of the ancillary service.
                   #
-                  # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service#category
+                  # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service#category
                   module Category
                     extend Increase::Internal::Type::Enum
 
@@ -3794,7 +3848,7 @@ module Increase
 
               # Indicates the reason for a credit to the cardholder.
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel#credit_reason_indicator
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel#credit_reason_indicator
               module CreditReasonIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3824,7 +3878,7 @@ module Increase
 
               # Indicates whether this ticket is non-refundable.
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel#restricted_ticket_indicator
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel#restricted_ticket_indicator
               module RestrictedTicketIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3840,7 +3894,7 @@ module Increase
 
               # Indicates why a ticket was changed.
               #
-              # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel#ticket_change_indicator
+              # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel#ticket_change_indicator
               module TicketChangeIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3891,9 +3945,11 @@ module Increase
                 # @!attribute stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
                 #
-                #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
+                #   @return [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
                 required :stop_over_code,
-                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode },
+                         enum: -> {
+                           Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
+                         },
                          nil?: true
 
                 # @!method initialize(carrier_code:, destination_city_airport_code:, fare_basis_code:, flight_number:, service_class:, stop_over_code:)
@@ -3907,11 +3963,11 @@ module Increase
                 #
                 #   @param service_class [String, nil] Service class (e.g., first class, business class, etc.).
                 #
-                #   @param stop_over_code [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode, nil] Indicates whether a stopover is allowed on this ticket.
+                #   @param stop_over_code [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode, nil] Indicates whether a stopover is allowed on this ticket.
 
                 # Indicates whether a stopover is allowed on this ticket.
                 #
-                # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg#stop_over_code
+                # @see Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg#stop_over_code
                 module StopOverCode
                   extend Increase::Internal::Type::Enum
 
@@ -3934,7 +3990,7 @@ module Increase
           # A constant representing the object's type. For this resource it will always be
           # `card_settlement`.
           #
-          # @see Increase::Models::Transaction::Source::CardSettlement#type
+          # @see Increase::Transaction::Source::CardSettlement#type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -3945,7 +4001,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#cashback_payment
+        # @see Increase::Transaction::Source#cashback_payment
         class CashbackPayment < Increase::Internal::Type::BaseModel
           # @!attribute accrued_on_card_id
           #   The card on which the cashback was accrued.
@@ -3964,8 +4020,8 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CashbackPayment::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::CashbackPayment::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::CashbackPayment::Currency }
 
           # @!attribute period_end
           #   The end of the period for which this transaction paid cashback.
@@ -3981,7 +4037,7 @@ module Increase
 
           # @!method initialize(accrued_on_card_id:, amount:, currency:, period_end:, period_start:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CashbackPayment} for more details.
+          #   {Increase::Transaction::Source::CashbackPayment} for more details.
           #
           #   A Cashback Payment object. This field will be present in the JSON response if
           #   and only if `category` is equal to `cashback_payment`. A Cashback Payment
@@ -3993,7 +4049,7 @@ module Increase
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+          #   @param currency [Symbol, Increase::Transaction::Source::CashbackPayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   ...
           #
           #   @param period_end [Time] The end of the period for which this transaction paid cashback.
@@ -4003,7 +4059,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           # currency.
           #
-          # @see Increase::Models::Transaction::Source::CashbackPayment#currency
+          # @see Increase::Transaction::Source::CashbackPayment#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4033,7 +4089,7 @@ module Increase
         # The type of the resource. We may add additional possible values for this enum
         # over time; your application should be able to handle such additions gracefully.
         #
-        # @see Increase::Models::Transaction::Source#category
+        # @see Increase::Transaction::Source#category
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -4131,7 +4187,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # @see Increase::Models::Transaction::Source#check_deposit_acceptance
+        # @see Increase::Transaction::Source#check_deposit_acceptance
         class CheckDepositAcceptance < Increase::Internal::Type::BaseModel
           # @!attribute account_number
           #   The account number printed on the check.
@@ -4163,8 +4219,8 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::CheckDepositAcceptance::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::CheckDepositAcceptance::Currency }
 
           # @!attribute routing_number
           #   The routing number printed on the check.
@@ -4181,8 +4237,7 @@ module Increase
 
           # @!method initialize(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CheckDepositAcceptance} for more
-          #   details.
+          #   {Increase::Transaction::Source::CheckDepositAcceptance} for more details.
           #
           #   A Check Deposit Acceptance object. This field will be present in the JSON
           #   response if and only if `category` is equal to `check_deposit_acceptance`. A
@@ -4200,7 +4255,7 @@ module Increase
           #
           #   @param check_deposit_id [String] The ID of the Check Deposit that was accepted.
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
+          #   @param currency [Symbol, Increase::Transaction::Source::CheckDepositAcceptance::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
           #   ...
           #
           #   @param routing_number [String] The routing number printed on the check.
@@ -4211,7 +4266,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
           #
-          # @see Increase::Models::Transaction::Source::CheckDepositAcceptance#currency
+          # @see Increase::Transaction::Source::CheckDepositAcceptance#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4238,7 +4293,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#check_deposit_return
+        # @see Increase::Transaction::Source#check_deposit_return
         class CheckDepositReturn < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The returned amount in USD cents.
@@ -4256,16 +4311,18 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositReturn::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::CheckDepositReturn::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::CheckDepositReturn::Currency }
 
           # @!attribute return_reason
           #   Why this check was returned by the bank holding the account it was drawn
           #   against.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason]
+          #   @return [Symbol, Increase::Transaction::Source::CheckDepositReturn::ReturnReason]
           required :return_reason,
-                   enum: -> { Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason }
+                   enum: -> {
+                     Increase::Transaction::Source::CheckDepositReturn::ReturnReason
+                   }
 
           # @!attribute returned_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -4283,7 +4340,7 @@ module Increase
 
           # @!method initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CheckDepositReturn} for more details.
+          #   {Increase::Transaction::Source::CheckDepositReturn} for more details.
           #
           #   A Check Deposit Return object. This field will be present in the JSON response
           #   if and only if `category` is equal to `check_deposit_return`. A Check Deposit
@@ -4296,10 +4353,10 @@ module Increase
           #
           #   @param check_deposit_id [String] The identifier of the Check Deposit that was returned.
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
+          #   @param currency [Symbol, Increase::Transaction::Source::CheckDepositReturn::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
           #   ...
           #
-          #   @param return_reason [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason] Why this check was returned by the bank holding the account it was drawn against
+          #   @param return_reason [Symbol, Increase::Transaction::Source::CheckDepositReturn::ReturnReason] Why this check was returned by the bank holding the account it was drawn against
           #   ...
           #
           #   @param returned_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
@@ -4311,7 +4368,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
           #
-          # @see Increase::Models::Transaction::Source::CheckDepositReturn#currency
+          # @see Increase::Transaction::Source::CheckDepositReturn#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4340,7 +4397,7 @@ module Increase
           # Why this check was returned by the bank holding the account it was drawn
           # against.
           #
-          # @see Increase::Models::Transaction::Source::CheckDepositReturn#return_reason
+          # @see Increase::Transaction::Source::CheckDepositReturn#return_reason
           module ReturnReason
             extend Increase::Internal::Type::Enum
 
@@ -4427,7 +4484,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#check_transfer_deposit
+        # @see Increase::Transaction::Source#check_transfer_deposit
         class CheckTransferDeposit < Increase::Internal::Type::BaseModel
           # @!attribute back_image_file_id
           #   The identifier of the API File object containing an image of the back of the
@@ -4480,12 +4537,12 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type]
-          required :type, enum: -> { Increase::Models::Transaction::Source::CheckTransferDeposit::Type }
+          #   @return [Symbol, Increase::Transaction::Source::CheckTransferDeposit::Type]
+          required :type, enum: -> { Increase::Transaction::Source::CheckTransferDeposit::Type }
 
           # @!method initialize(back_image_file_id:, bank_of_first_deposit_routing_number:, deposited_at:, front_image_file_id:, inbound_check_deposit_id:, transaction_id:, transfer_id:, type:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::CheckTransferDeposit} for more details.
+          #   {Increase::Transaction::Source::CheckTransferDeposit} for more details.
           #
           #   A Check Transfer Deposit object. This field will be present in the JSON response
           #   if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check
@@ -4510,13 +4567,13 @@ module Increase
           #
           #   @param transfer_id [String, nil] The identifier of the Check Transfer object that was deposited.
           #
-          #   @param type [Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type] A constant representing the object's type. For this resource it will always be `
+          #   @param type [Symbol, Increase::Transaction::Source::CheckTransferDeposit::Type] A constant representing the object's type. For this resource it will always be `
           #   ...
 
           # A constant representing the object's type. For this resource it will always be
           # `check_transfer_deposit`.
           #
-          # @see Increase::Models::Transaction::Source::CheckTransferDeposit#type
+          # @see Increase::Transaction::Source::CheckTransferDeposit#type
           module Type
             extend Increase::Internal::Type::Enum
 
@@ -4527,7 +4584,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#fee_payment
+        # @see Increase::Transaction::Source#fee_payment
         class FeePayment < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for
@@ -4540,8 +4597,8 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::FeePayment::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::FeePayment::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::FeePayment::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::FeePayment::Currency }
 
           # @!attribute fee_period_start
           #   The start of this payment's fee period, usually the first day of a month.
@@ -4557,7 +4614,7 @@ module Increase
 
           # @!method initialize(amount:, currency:, fee_period_start:, program_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::FeePayment} for more details.
+          #   {Increase::Transaction::Source::FeePayment} for more details.
           #
           #   A Fee Payment object. This field will be present in the JSON response if and
           #   only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
@@ -4566,7 +4623,7 @@ module Increase
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::FeePayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+          #   @param currency [Symbol, Increase::Transaction::Source::FeePayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   ...
           #
           #   @param fee_period_start [Date] The start of this payment's fee period, usually the first day of a month.
@@ -4576,7 +4633,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           # currency.
           #
-          # @see Increase::Models::Transaction::Source::FeePayment#currency
+          # @see Increase::Transaction::Source::FeePayment#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4603,13 +4660,13 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_ach_transfer
+        # @see Increase::Transaction::Source#inbound_ach_transfer
         class InboundACHTransfer < Increase::Internal::Type::BaseModel
           # @!attribute addenda
           #   Additional information sent from the originator.
           #
-          #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, nil]
-          required :addenda, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda }, nil?: true
+          #   @return [Increase::Transaction::Source::InboundACHTransfer::Addenda, nil]
+          required :addenda, -> { Increase::Transaction::Source::InboundACHTransfer::Addenda }, nil?: true
 
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -4679,14 +4736,14 @@ module Increase
 
           # @!method initialize(addenda:, amount:, originator_company_descriptive_date:, originator_company_discretionary_data:, originator_company_entry_description:, originator_company_id:, originator_company_name:, receiver_id_number:, receiver_name:, trace_number:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InboundACHTransfer} for more details.
+          #   {Increase::Transaction::Source::InboundACHTransfer} for more details.
           #
           #   An Inbound ACH Transfer Intention object. This field will be present in the JSON
           #   response if and only if `category` is equal to `inbound_ach_transfer`. An
           #   Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
           #   another bank and received by Increase.
           #
-          #   @param addenda [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, nil] Additional information sent from the originator.
+          #   @param addenda [Increase::Transaction::Source::InboundACHTransfer::Addenda, nil] Additional information sent from the originator.
           #
           #   @param amount [Integer] The transfer amount in USD cents.
           #
@@ -4711,33 +4768,35 @@ module Increase
           #
           #   @param transfer_id [String] The Inbound ACH Transfer's identifier.
 
-          # @see Increase::Models::Transaction::Source::InboundACHTransfer#addenda
+          # @see Increase::Transaction::Source::InboundACHTransfer#addenda
           class Addenda < Increase::Internal::Type::BaseModel
             # @!attribute category
             #   The type of addendum.
             #
-            #   @return [Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category]
+            #   @return [Symbol, Increase::Transaction::Source::InboundACHTransfer::Addenda::Category]
             required :category,
-                     enum: -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category }
+                     enum: -> {
+                       Increase::Transaction::Source::InboundACHTransfer::Addenda::Category
+                     }
 
             # @!attribute freeform
             #   Unstructured `payment_related_information` passed through by the originator.
             #
-            #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform, nil]
+            #   @return [Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform, nil]
             required :freeform,
-                     -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform },
+                     -> { Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform },
                      nil?: true
 
             # @!method initialize(category:, freeform:)
             #   Additional information sent from the originator.
             #
-            #   @param category [Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category] The type of addendum.
+            #   @param category [Symbol, Increase::Transaction::Source::InboundACHTransfer::Addenda::Category] The type of addendum.
             #
-            #   @param freeform [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform, nil] Unstructured `payment_related_information` passed through by the originator.
+            #   @param freeform [Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform, nil] Unstructured `payment_related_information` passed through by the originator.
 
             # The type of addendum.
             #
-            # @see Increase::Models::Transaction::Source::InboundACHTransfer::Addenda#category
+            # @see Increase::Transaction::Source::InboundACHTransfer::Addenda#category
             module Category
               extend Increase::Internal::Type::Enum
 
@@ -4748,19 +4807,21 @@ module Increase
               #   @return [Array<Symbol>]
             end
 
-            # @see Increase::Models::Transaction::Source::InboundACHTransfer::Addenda#freeform
+            # @see Increase::Transaction::Source::InboundACHTransfer::Addenda#freeform
             class Freeform < Increase::Internal::Type::BaseModel
               # @!attribute entries
               #   Each entry represents an addendum received from the originator.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
+              #   @return [Array<Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
               required :entries,
-                       -> { Increase::Internal::Type::ArrayOf[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry] }
+                       -> {
+                         Increase::Internal::Type::ArrayOf[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
+                       }
 
               # @!method initialize(entries:)
               #   Unstructured `payment_related_information` passed through by the originator.
               #
-              #   @param entries [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>] Each entry represents an addendum received from the originator.
+              #   @param entries [Array<Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>] Each entry represents an addendum received from the originator.
 
               class Entry < Increase::Internal::Type::BaseModel
                 # @!attribute payment_related_information
@@ -4776,7 +4837,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_ach_transfer_return_intention
+        # @see Increase::Transaction::Source#inbound_ach_transfer_return_intention
         class InboundACHTransferReturnIntention < Increase::Internal::Type::BaseModel
           # @!attribute inbound_ach_transfer_id
           #   The ID of the Inbound ACH Transfer that is being returned.
@@ -4794,7 +4855,7 @@ module Increase
           #   @param inbound_ach_transfer_id [String] The ID of the Inbound ACH Transfer that is being returned.
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_check_adjustment
+        # @see Increase::Transaction::Source#inbound_check_adjustment
         class InboundCheckAdjustment < Increase::Internal::Type::BaseModel
           # @!attribute adjusted_transaction_id
           #   The ID of the transaction that was adjusted.
@@ -4811,8 +4872,8 @@ module Increase
           # @!attribute reason
           #   The reason for the adjustment.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason]
-          required :reason, enum: -> { Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason }
+          #   @return [Symbol, Increase::Transaction::Source::InboundCheckAdjustment::Reason]
+          required :reason, enum: -> { Increase::Transaction::Source::InboundCheckAdjustment::Reason }
 
           # @!method initialize(adjusted_transaction_id:, amount:, reason:)
           #   An Inbound Check Adjustment object. This field will be present in the JSON
@@ -4824,11 +4885,11 @@ module Increase
           #
           #   @param amount [Integer] The amount of the check adjustment.
           #
-          #   @param reason [Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason] The reason for the adjustment.
+          #   @param reason [Symbol, Increase::Transaction::Source::InboundCheckAdjustment::Reason] The reason for the adjustment.
 
           # The reason for the adjustment.
           #
-          # @see Increase::Models::Transaction::Source::InboundCheckAdjustment#reason
+          # @see Increase::Transaction::Source::InboundCheckAdjustment#reason
           module Reason
             extend Increase::Internal::Type::Enum
 
@@ -4849,7 +4910,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_check_deposit_return_intention
+        # @see Increase::Transaction::Source#inbound_check_deposit_return_intention
         class InboundCheckDepositReturnIntention < Increase::Internal::Type::BaseModel
           # @!attribute inbound_check_deposit_id
           #   The ID of the Inbound Check Deposit that is being returned.
@@ -4875,7 +4936,7 @@ module Increase
           #   @param transfer_id [String, nil] The identifier of the Check Transfer object that was deposited.
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_real_time_payments_transfer_confirmation
+        # @see Increase::Transaction::Source#inbound_real_time_payments_transfer_confirmation
         class InboundRealTimePaymentsTransferConfirmation < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transfer's currency. For dollars, for
@@ -4894,9 +4955,11 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency]
+          #   @return [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency]
           required :currency,
-                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency }
+                   enum: -> {
+                     Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency
+                   }
 
           # @!attribute debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -4936,8 +4999,8 @@ module Increase
 
           # @!method initialize(amount:, creditor_name:, currency:, debtor_account_number:, debtor_name:, debtor_routing_number:, remittance_information:, transaction_identification:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation}
-          #   for more details.
+          #   {Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation} for
+          #   more details.
           #
           #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be
           #   present in the JSON response if and only if `category` is equal to
@@ -4950,7 +5013,7 @@ module Increase
           #
           #   @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's cu
+          #   @param currency [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's cu
           #   ...
           #
           #   @param debtor_account_number [String] The account number of the account that sent the transfer.
@@ -4968,7 +5031,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           # currency. This will always be "USD" for a Real-Time Payments transfer.
           #
-          # @see Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation#currency
+          # @see Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4995,7 +5058,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_real_time_payments_transfer_decline
+        # @see Increase::Transaction::Source#inbound_real_time_payments_transfer_decline
         class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The declined amount in the minor unit of the destination account currency. For
@@ -5015,9 +5078,11 @@ module Increase
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
+          #   @return [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
-                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
+                   enum: -> {
+                     Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency
+                   }
 
           # @!attribute debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -5040,9 +5105,9 @@ module Increase
           # @!attribute reason
           #   Why the transfer was declined.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
+          #   @return [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
-                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
+                   enum: -> { Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
 
           # @!attribute remittance_information
           #   Additional information included with the transfer.
@@ -5064,8 +5129,8 @@ module Increase
 
           # @!method initialize(amount:, creditor_name:, currency:, debtor_account_number:, debtor_name:, debtor_routing_number:, reason:, remittance_information:, transaction_identification:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline}
-          #   for more details.
+          #   {Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline} for more
+          #   details.
           #
           #   An Inbound Real-Time Payments Transfer Decline object. This field will be
           #   present in the JSON response if and only if `category` is equal to
@@ -5076,7 +5141,7 @@ module Increase
           #
           #   @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined tran
+          #   @param currency [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined tran
           #   ...
           #
           #   @param debtor_account_number [String] The account number of the account that sent the transfer.
@@ -5085,7 +5150,7 @@ module Increase
           #
           #   @param debtor_routing_number [String] The routing number of the account that sent the transfer.
           #
-          #   @param reason [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason] Why the transfer was declined.
+          #   @param reason [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason] Why the transfer was declined.
           #
           #   @param remittance_information [String, nil] Additional information included with the transfer.
           #
@@ -5097,7 +5162,7 @@ module Increase
           # transfer's currency. This will always be "USD" for a Real-Time Payments
           # transfer.
           #
-          # @see Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline#currency
+          # @see Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -5125,7 +5190,7 @@ module Increase
 
           # Why the transfer was declined.
           #
-          # @see Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline#reason
+          # @see Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline#reason
           module Reason
             extend Increase::Internal::Type::Enum
 
@@ -5152,7 +5217,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_wire_reversal
+        # @see Increase::Transaction::Source#inbound_wire_reversal
         class InboundWireReversal < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount that was reversed in USD cents.
@@ -5263,7 +5328,7 @@ module Increase
 
           # @!method initialize(amount:, created_at:, description:, financial_institution_to_financial_institution_information:, input_cycle_date:, input_message_accountability_data:, input_sequence_number:, input_source:, originator_routing_number:, previous_message_input_cycle_date:, previous_message_input_message_accountability_data:, previous_message_input_sequence_number:, previous_message_input_source:, receiver_financial_institution_information:, sender_reference:, transaction_id:, wire_transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InboundWireReversal} for more details.
+          #   {Increase::Transaction::Source::InboundWireReversal} for more details.
           #
           #   An Inbound Wire Reversal object. This field will be present in the JSON response
           #   if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
@@ -5312,7 +5377,7 @@ module Increase
           #   @param wire_transfer_id [String] The ID for the Wire Transfer that is being reversed.
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_wire_transfer
+        # @see Increase::Transaction::Source#inbound_wire_transfer
         class InboundWireTransfer < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount in USD cents.
@@ -5433,7 +5498,7 @@ module Increase
 
           # @!method initialize(amount:, beneficiary_address_line1:, beneficiary_address_line2:, beneficiary_address_line3:, beneficiary_name:, beneficiary_reference:, description:, input_message_accountability_data:, originator_address_line1:, originator_address_line2:, originator_address_line3:, originator_name:, originator_routing_number:, originator_to_beneficiary_information:, originator_to_beneficiary_information_line1:, originator_to_beneficiary_information_line2:, originator_to_beneficiary_information_line3:, originator_to_beneficiary_information_line4:, transfer_id:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InboundWireTransfer} for more details.
+          #   {Increase::Transaction::Source::InboundWireTransfer} for more details.
           #
           #   An Inbound Wire Transfer Intention object. This field will be present in the
           #   JSON response if and only if `category` is equal to `inbound_wire_transfer`. An
@@ -5481,7 +5546,7 @@ module Increase
           #   @param transfer_id [String] The ID of the Inbound Wire Transfer object that resulted in this Transaction.
         end
 
-        # @see Increase::Models::Transaction::Source#inbound_wire_transfer_reversal
+        # @see Increase::Transaction::Source#inbound_wire_transfer_reversal
         class InboundWireTransferReversal < Increase::Internal::Type::BaseModel
           # @!attribute inbound_wire_transfer_id
           #   The ID of the Inbound Wire Transfer that is being reversed.
@@ -5499,7 +5564,7 @@ module Increase
           #   @param inbound_wire_transfer_id [String] The ID of the Inbound Wire Transfer that is being reversed.
         end
 
-        # @see Increase::Models::Transaction::Source#interest_payment
+        # @see Increase::Transaction::Source#interest_payment
         class InterestPayment < Increase::Internal::Type::BaseModel
           # @!attribute accrued_on_account_id
           #   The account on which the interest was accrued.
@@ -5518,8 +5583,8 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::InterestPayment::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::InterestPayment::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::InterestPayment::Currency }
 
           # @!attribute period_end
           #   The end of the period for which this transaction paid interest.
@@ -5535,7 +5600,7 @@ module Increase
 
           # @!method initialize(accrued_on_account_id:, amount:, currency:, period_end:, period_start:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InterestPayment} for more details.
+          #   {Increase::Transaction::Source::InterestPayment} for more details.
           #
           #   An Interest Payment object. This field will be present in the JSON response if
           #   and only if `category` is equal to `interest_payment`. An Interest Payment
@@ -5547,7 +5612,7 @@ module Increase
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+          #   @param currency [Symbol, Increase::Transaction::Source::InterestPayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   ...
           #
           #   @param period_end [Time] The end of the period for which this transaction paid interest.
@@ -5557,7 +5622,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           # currency.
           #
-          # @see Increase::Models::Transaction::Source::InterestPayment#currency
+          # @see Increase::Transaction::Source::InterestPayment#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -5584,7 +5649,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#internal_source
+        # @see Increase::Transaction::Source#internal_source
         class InternalSource < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for
@@ -5597,19 +5662,19 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InternalSource::Currency]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::InternalSource::Currency }
+          #   @return [Symbol, Increase::Transaction::Source::InternalSource::Currency]
+          required :currency, enum: -> { Increase::Transaction::Source::InternalSource::Currency }
 
           # @!attribute reason
           #   An Internal Source is a transaction between you and Increase. This describes the
           #   reason for the transaction.
           #
-          #   @return [Symbol, Increase::Models::Transaction::Source::InternalSource::Reason]
-          required :reason, enum: -> { Increase::Models::Transaction::Source::InternalSource::Reason }
+          #   @return [Symbol, Increase::Transaction::Source::InternalSource::Reason]
+          required :reason, enum: -> { Increase::Transaction::Source::InternalSource::Reason }
 
           # @!method initialize(amount:, currency:, reason:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::Transaction::Source::InternalSource} for more details.
+          #   {Increase::Transaction::Source::InternalSource} for more details.
           #
           #   An Internal Source object. This field will be present in the JSON response if
           #   and only if `category` is equal to `internal_source`. A transaction between the
@@ -5618,16 +5683,16 @@ module Increase
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
           #   ...
           #
-          #   @param currency [Symbol, Increase::Models::Transaction::Source::InternalSource::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+          #   @param currency [Symbol, Increase::Transaction::Source::InternalSource::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   ...
           #
-          #   @param reason [Symbol, Increase::Models::Transaction::Source::InternalSource::Reason] An Internal Source is a transaction between you and Increase. This describes the
+          #   @param reason [Symbol, Increase::Transaction::Source::InternalSource::Reason] An Internal Source is a transaction between you and Increase. This describes the
           #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           # currency.
           #
-          # @see Increase::Models::Transaction::Source::InternalSource#currency
+          # @see Increase::Transaction::Source::InternalSource#currency
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -5656,7 +5721,7 @@ module Increase
           # An Internal Source is a transaction between you and Increase. This describes the
           # reason for the transaction.
           #
-          # @see Increase::Models::Transaction::Source::InternalSource#reason
+          # @see Increase::Transaction::Source::InternalSource#reason
           module Reason
             extend Increase::Internal::Type::Enum
 
@@ -5710,7 +5775,7 @@ module Increase
           end
         end
 
-        # @see Increase::Models::Transaction::Source#real_time_payments_transfer_acknowledgement
+        # @see Increase::Transaction::Source#real_time_payments_transfer_acknowledgement
         class RealTimePaymentsTransferAcknowledgement < Increase::Internal::Type::BaseModel
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -5760,7 +5825,7 @@ module Increase
           #   @param transfer_id [String] The identifier of the Real-Time Payments Transfer that led to this Transaction.
         end
 
-        # @see Increase::Models::Transaction::Source#sample_funds
+        # @see Increase::Transaction::Source#sample_funds
         class SampleFunds < Increase::Internal::Type::BaseModel
           # @!attribute originator
           #   Where the sample funds came from.
@@ -5776,7 +5841,7 @@ module Increase
           #   @param originator [String] Where the sample funds came from.
         end
 
-        # @see Increase::Models::Transaction::Source#swift_transfer_intention
+        # @see Increase::Transaction::Source#swift_transfer_intention
         class SwiftTransferIntention < Increase::Internal::Type::BaseModel
           # @!attribute transfer_id
           #   The identifier of the Swift Transfer that led to this Transaction.
@@ -5792,7 +5857,7 @@ module Increase
           #   @param transfer_id [String] The identifier of the Swift Transfer that led to this Transaction.
         end
 
-        # @see Increase::Models::Transaction::Source#wire_transfer_intention
+        # @see Increase::Transaction::Source#wire_transfer_intention
         class WireTransferIntention < Increase::Internal::Type::BaseModel
           # @!attribute account_number
           #   The destination account number.
@@ -5844,7 +5909,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       # `transaction`.
       #
-      # @see Increase::Models::Transaction#type
+      # @see Increase::Transaction#type
       module Type
         extend Increase::Internal::Type::Enum
 

@@ -40,16 +40,16 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::RealTimePaymentsTransfer]
+      # @return [Increase::RealTimePaymentsTransfer]
       #
       # @see Increase::Models::RealTimePaymentsTransferCreateParams
       def create(params)
-        parsed, options = Increase::Models::RealTimePaymentsTransferCreateParams.dump_request(params)
+        parsed, options = Increase::RealTimePaymentsTransferCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "real_time_payments_transfers",
           body: parsed,
-          model: Increase::Models::RealTimePaymentsTransfer,
+          model: Increase::RealTimePaymentsTransfer,
           options: options
         )
       end
@@ -62,14 +62,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::RealTimePaymentsTransfer]
+      # @return [Increase::RealTimePaymentsTransfer]
       #
       # @see Increase::Models::RealTimePaymentsTransferRetrieveParams
       def retrieve(real_time_payments_transfer_id, params = {})
         @client.request(
           method: :get,
           path: ["real_time_payments_transfers/%1$s", real_time_payments_transfer_id],
-          model: Increase::Models::RealTimePaymentsTransfer,
+          model: Increase::RealTimePaymentsTransfer,
           options: params[:request_options]
         )
       end
@@ -84,7 +84,7 @@ module Increase
       # @param account_id [String] Filter Real-Time Payments Transfers to those belonging to the specified Account.
       # ...
       #
-      # @param created_at [Increase::Models::RealTimePaymentsTransferListParams::CreatedAt]
+      # @param created_at [Increase::RealTimePaymentsTransferListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -97,21 +97,21 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::RealTimePaymentsTransferListParams::Status]
+      # @param status [Increase::RealTimePaymentsTransferListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::RealTimePaymentsTransfer>]
+      # @return [Increase::Internal::Page<Increase::RealTimePaymentsTransfer>]
       #
       # @see Increase::Models::RealTimePaymentsTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::RealTimePaymentsTransferListParams.dump_request(params)
+        parsed, options = Increase::RealTimePaymentsTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "real_time_payments_transfers",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::RealTimePaymentsTransfer,
+          model: Increase::RealTimePaymentsTransfer,
           options: options
         )
       end

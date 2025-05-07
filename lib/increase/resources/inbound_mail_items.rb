@@ -11,14 +11,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::InboundMailItem]
+      # @return [Increase::InboundMailItem]
       #
       # @see Increase::Models::InboundMailItemRetrieveParams
       def retrieve(inbound_mail_item_id, params = {})
         @client.request(
           method: :get,
           path: ["inbound_mail_items/%1$s", inbound_mail_item_id],
-          model: Increase::Models::InboundMailItem,
+          model: Increase::InboundMailItem,
           options: params[:request_options]
         )
       end
@@ -30,7 +30,7 @@ module Increase
       #
       # @overload list(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, request_options: {})
       #
-      # @param created_at [Increase::Models::InboundMailItemListParams::CreatedAt]
+      # @param created_at [Increase::InboundMailItemListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -41,17 +41,17 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::InboundMailItem>]
+      # @return [Increase::Internal::Page<Increase::InboundMailItem>]
       #
       # @see Increase::Models::InboundMailItemListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundMailItemListParams.dump_request(params)
+        parsed, options = Increase::InboundMailItemListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_mail_items",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::InboundMailItem,
+          model: Increase::InboundMailItem,
           options: options
         )
       end

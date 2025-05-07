@@ -22,16 +22,16 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::CardPayment]
+        # @return [Increase::CardPayment]
         #
         # @see Increase::Models::Simulations::CardIncrementCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardIncrementCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardIncrementCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_increments",
             body: parsed,
-            model: Increase::Models::CardPayment,
+            model: Increase::CardPayment,
             options: options
           )
         end

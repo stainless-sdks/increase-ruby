@@ -13,16 +13,16 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::IntrafiExclusion]
+      # @return [Increase::IntrafiExclusion]
       #
       # @see Increase::Models::IntrafiExclusionCreateParams
       def create(params)
-        parsed, options = Increase::Models::IntrafiExclusionCreateParams.dump_request(params)
+        parsed, options = Increase::IntrafiExclusionCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "intrafi_exclusions",
           body: parsed,
-          model: Increase::Models::IntrafiExclusion,
+          model: Increase::IntrafiExclusion,
           options: options
         )
       end
@@ -35,14 +35,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::IntrafiExclusion]
+      # @return [Increase::IntrafiExclusion]
       #
       # @see Increase::Models::IntrafiExclusionRetrieveParams
       def retrieve(intrafi_exclusion_id, params = {})
         @client.request(
           method: :get,
           path: ["intrafi_exclusions/%1$s", intrafi_exclusion_id],
-          model: Increase::Models::IntrafiExclusion,
+          model: Increase::IntrafiExclusion,
           options: params[:request_options]
         )
       end
@@ -66,17 +66,17 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::IntrafiExclusion>]
+      # @return [Increase::Internal::Page<Increase::IntrafiExclusion>]
       #
       # @see Increase::Models::IntrafiExclusionListParams
       def list(params = {})
-        parsed, options = Increase::Models::IntrafiExclusionListParams.dump_request(params)
+        parsed, options = Increase::IntrafiExclusionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "intrafi_exclusions",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::IntrafiExclusion,
+          model: Increase::IntrafiExclusion,
           options: options
         )
       end
@@ -93,14 +93,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::IntrafiExclusion]
+      # @return [Increase::IntrafiExclusion]
       #
       # @see Increase::Models::IntrafiExclusionArchiveParams
       def archive(intrafi_exclusion_id, params = {})
         @client.request(
           method: :post,
           path: ["intrafi_exclusions/%1$s/archive", intrafi_exclusion_id],
-          model: Increase::Models::IntrafiExclusion,
+          model: Increase::IntrafiExclusion,
           options: params[:request_options]
         )
       end

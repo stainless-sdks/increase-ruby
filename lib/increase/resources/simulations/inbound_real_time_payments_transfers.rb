@@ -32,17 +32,16 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::InboundRealTimePaymentsTransfer]
+        # @return [Increase::InboundRealTimePaymentsTransfer]
         #
         # @see Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams
         def create(params)
-          parsed, options =
-            Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::InboundRealTimePaymentsTransferCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_real_time_payments_transfers",
             body: parsed,
-            model: Increase::Models::InboundRealTimePaymentsTransfer,
+            model: Increase::InboundRealTimePaymentsTransfer,
             options: options
           )
         end

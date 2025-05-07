@@ -61,17 +61,16 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::InboundWireDrawdownRequest]
+        # @return [Increase::InboundWireDrawdownRequest]
         #
         # @see Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams
         def create(params)
-          parsed, options =
-            Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::InboundWireDrawdownRequestCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_wire_drawdown_requests",
             body: parsed,
-            model: Increase::Models::InboundWireDrawdownRequest,
+            model: Increase::InboundWireDrawdownRequest,
             options: options
           )
         end
