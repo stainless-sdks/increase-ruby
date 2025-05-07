@@ -18,16 +18,13 @@ module Increase
 
       # Options related to how this Account Number should handle inbound ACH transfers.
       sig do
-        returns(
-          T.nilable(Increase::Models::AccountNumberCreateParams::InboundACH)
-        )
+        returns(T.nilable(Increase::AccountNumberCreateParams::InboundACH))
       end
       attr_reader :inbound_ach
 
       sig do
         params(
-          inbound_ach:
-            Increase::Models::AccountNumberCreateParams::InboundACH::OrHash
+          inbound_ach: Increase::AccountNumberCreateParams::InboundACH::OrHash
         ).void
       end
       attr_writer :inbound_ach
@@ -35,16 +32,14 @@ module Increase
       # Options related to how this Account Number should handle inbound check
       # withdrawals.
       sig do
-        returns(
-          T.nilable(Increase::Models::AccountNumberCreateParams::InboundChecks)
-        )
+        returns(T.nilable(Increase::AccountNumberCreateParams::InboundChecks))
       end
       attr_reader :inbound_checks
 
       sig do
         params(
           inbound_checks:
-            Increase::Models::AccountNumberCreateParams::InboundChecks::OrHash
+            Increase::AccountNumberCreateParams::InboundChecks::OrHash
         ).void
       end
       attr_writer :inbound_checks
@@ -53,10 +48,9 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach:
-            Increase::Models::AccountNumberCreateParams::InboundACH::OrHash,
+          inbound_ach: Increase::AccountNumberCreateParams::InboundACH::OrHash,
           inbound_checks:
-            Increase::Models::AccountNumberCreateParams::InboundChecks::OrHash,
+            Increase::AccountNumberCreateParams::InboundChecks::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -80,10 +74,8 @@ module Increase
           {
             account_id: String,
             name: String,
-            inbound_ach:
-              Increase::Models::AccountNumberCreateParams::InboundACH,
-            inbound_checks:
-              Increase::Models::AccountNumberCreateParams::InboundChecks,
+            inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
+            inbound_checks: Increase::AccountNumberCreateParams::InboundChecks,
             request_options: Increase::RequestOptions
           }
         )
@@ -100,7 +92,7 @@ module Increase
         # you do not specify this field, the default is `allowed`.
         sig do
           returns(
-            Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
+            Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
           )
         end
         attr_accessor :debit_status
@@ -109,7 +101,7 @@ module Increase
         sig do
           params(
             debit_status:
-              Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
+              Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -124,7 +116,7 @@ module Increase
           override.returns(
             {
               debit_status:
-                Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
+                Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
             }
           )
         end
@@ -141,7 +133,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus
+                Increase::AccountNumberCreateParams::InboundACH::DebitStatus
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -150,20 +142,20 @@ module Increase
           ALLOWED =
             T.let(
               :allowed,
-              Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
+              Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
             )
 
           # ACH Debits are blocked.
           BLOCKED =
             T.let(
               :blocked,
-              Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
+              Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
+                Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
               ]
             )
           end
@@ -180,7 +172,7 @@ module Increase
         # you do not specify this field, the default is `check_transfers_only`.
         sig do
           returns(
-            Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
+            Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
           )
         end
         attr_accessor :status
@@ -190,7 +182,7 @@ module Increase
         sig do
           params(
             status:
-              Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
+              Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -204,7 +196,7 @@ module Increase
           override.returns(
             {
               status:
-                Increase::Models::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
+                Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
             }
           )
         end
@@ -220,7 +212,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::AccountNumberCreateParams::InboundChecks::Status
+                Increase::AccountNumberCreateParams::InboundChecks::Status
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -229,20 +221,20 @@ module Increase
           ALLOWED =
             T.let(
               :allowed,
-              Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
+              Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
             )
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY =
             T.let(
               :check_transfers_only,
-              Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
+              Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
+                Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
               ]
             )
           end

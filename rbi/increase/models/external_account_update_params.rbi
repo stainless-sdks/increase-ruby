@@ -12,7 +12,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol
+            Increase::ExternalAccountUpdateParams::AccountHolder::OrSymbol
           )
         )
       end
@@ -21,7 +21,7 @@ module Increase
       sig do
         params(
           account_holder:
-            Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol
+            Increase::ExternalAccountUpdateParams::AccountHolder::OrSymbol
         ).void
       end
       attr_writer :account_holder
@@ -36,17 +36,14 @@ module Increase
       # The funding type of the External Account.
       sig do
         returns(
-          T.nilable(
-            Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol
-          )
+          T.nilable(Increase::ExternalAccountUpdateParams::Funding::OrSymbol)
         )
       end
       attr_reader :funding
 
       sig do
         params(
-          funding:
-            Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol
+          funding: Increase::ExternalAccountUpdateParams::Funding::OrSymbol
         ).void
       end
       attr_writer :funding
@@ -54,17 +51,14 @@ module Increase
       # The status of the External Account.
       sig do
         returns(
-          T.nilable(
-            Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol
-          )
+          T.nilable(Increase::ExternalAccountUpdateParams::Status::OrSymbol)
         )
       end
       attr_reader :status
 
       sig do
         params(
-          status:
-            Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol
+          status: Increase::ExternalAccountUpdateParams::Status::OrSymbol
         ).void
       end
       attr_writer :status
@@ -72,12 +66,10 @@ module Increase
       sig do
         params(
           account_holder:
-            Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+            Increase::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
           description: String,
-          funding:
-            Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
-          status:
-            Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
+          funding: Increase::ExternalAccountUpdateParams::Funding::OrSymbol,
+          status: Increase::ExternalAccountUpdateParams::Status::OrSymbol,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -99,12 +91,10 @@ module Increase
         override.returns(
           {
             account_holder:
-              Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+              Increase::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
             description: String,
-            funding:
-              Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
-            status:
-              Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
+            funding: Increase::ExternalAccountUpdateParams::Funding::OrSymbol,
+            status: Increase::ExternalAccountUpdateParams::Status::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -118,10 +108,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Increase::Models::ExternalAccountUpdateParams::AccountHolder
-            )
+            T.all(Symbol, Increase::ExternalAccountUpdateParams::AccountHolder)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -129,20 +116,20 @@ module Increase
         BUSINESS =
           T.let(
             :business,
-            Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol
           )
 
         # The External Account is owned by an individual.
         INDIVIDUAL =
           T.let(
             :individual,
-            Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol
+              Increase::ExternalAccountUpdateParams::AccountHolder::TaggedSymbol
             ]
           )
         end
@@ -156,10 +143,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Increase::Models::ExternalAccountUpdateParams::Funding
-            )
+            T.all(Symbol, Increase::ExternalAccountUpdateParams::Funding)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -167,27 +151,27 @@ module Increase
         CHECKING =
           T.let(
             :checking,
-            Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::Funding::TaggedSymbol
           )
 
         # A savings account.
         SAVINGS =
           T.let(
             :savings,
-            Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::Funding::TaggedSymbol
           )
 
         # A different type of account.
         OTHER =
           T.let(
             :other,
-            Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::Funding::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::ExternalAccountUpdateParams::Funding::TaggedSymbol
+              Increase::ExternalAccountUpdateParams::Funding::TaggedSymbol
             ]
           )
         end
@@ -201,7 +185,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::Models::ExternalAccountUpdateParams::Status)
+            T.all(Symbol, Increase::ExternalAccountUpdateParams::Status)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -209,20 +193,20 @@ module Increase
         ACTIVE =
           T.let(
             :active,
-            Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::Status::TaggedSymbol
           )
 
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED =
           T.let(
             :archived,
-            Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol
+            Increase::ExternalAccountUpdateParams::Status::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::ExternalAccountUpdateParams::Status::TaggedSymbol
+              Increase::ExternalAccountUpdateParams::Status::TaggedSymbol
             ]
           )
         end

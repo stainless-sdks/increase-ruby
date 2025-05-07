@@ -14,26 +14,19 @@ module Increase
       attr_accessor :card_payment_id
 
       # Invoice-level information about the payment.
-      sig do
-        returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
-      end
+      sig { returns(T.nilable(Increase::CardPurchaseSupplement::Invoice)) }
       attr_reader :invoice
 
       sig do
         params(
-          invoice:
-            T.nilable(Increase::Models::CardPurchaseSupplement::Invoice::OrHash)
+          invoice: T.nilable(Increase::CardPurchaseSupplement::Invoice::OrHash)
         ).void
       end
       attr_writer :invoice
 
       # Line item information, such as individual products purchased.
       sig do
-        returns(
-          T.nilable(
-            T::Array[Increase::Models::CardPurchaseSupplement::LineItem]
-          )
-        )
+        returns(T.nilable(T::Array[Increase::CardPurchaseSupplement::LineItem]))
       end
       attr_accessor :line_items
 
@@ -43,9 +36,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `card_purchase_supplement`.
-      sig do
-        returns(Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol)
-      end
+      sig { returns(Increase::CardPurchaseSupplement::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Additional information about a card purchase (e.g., settlement or refund), such
@@ -54,18 +45,13 @@ module Increase
         params(
           id: String,
           card_payment_id: T.nilable(String),
-          invoice:
-            T.nilable(
-              Increase::Models::CardPurchaseSupplement::Invoice::OrHash
-            ),
+          invoice: T.nilable(Increase::CardPurchaseSupplement::Invoice::OrHash),
           line_items:
             T.nilable(
-              T::Array[
-                Increase::Models::CardPurchaseSupplement::LineItem::OrHash
-              ]
+              T::Array[Increase::CardPurchaseSupplement::LineItem::OrHash]
             ),
           transaction_id: String,
-          type: Increase::Models::CardPurchaseSupplement::Type::OrSymbol
+          type: Increase::CardPurchaseSupplement::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -90,14 +76,11 @@ module Increase
           {
             id: String,
             card_payment_id: T.nilable(String),
-            invoice:
-              T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
+            invoice: T.nilable(Increase::CardPurchaseSupplement::Invoice),
             line_items:
-              T.nilable(
-                T::Array[Increase::Models::CardPurchaseSupplement::LineItem]
-              ),
+              T.nilable(T::Array[Increase::CardPurchaseSupplement::LineItem]),
             transaction_id: String,
-            type: Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol
+            type: Increase::CardPurchaseSupplement::Type::TaggedSymbol
           }
         )
       end
@@ -120,7 +103,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
             )
           )
         end
@@ -176,7 +159,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
           )
         end
@@ -193,7 +176,7 @@ module Increase
             discount_currency: T.nilable(String),
             discount_treatment_code:
               T.nilable(
-                Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::OrSymbol
+                Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::OrSymbol
               ),
             duty_tax_amount: T.nilable(Integer),
             duty_tax_currency: T.nilable(String),
@@ -208,7 +191,7 @@ module Increase
             shipping_tax_rate: T.nilable(String),
             tax_treatments:
               T.nilable(
-                Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::OrSymbol
+                Increase::CardPurchaseSupplement::Invoice::TaxTreatments::OrSymbol
               ),
             unique_value_added_tax_invoice_reference: T.nilable(String)
           ).returns(T.attached_class)
@@ -258,7 +241,7 @@ module Increase
               discount_currency: T.nilable(String),
               discount_treatment_code:
                 T.nilable(
-                  Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+                  Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
                 ),
               duty_tax_amount: T.nilable(Integer),
               duty_tax_currency: T.nilable(String),
@@ -273,7 +256,7 @@ module Increase
               shipping_tax_rate: T.nilable(String),
               tax_treatments:
                 T.nilable(
-                  Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+                  Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
                 ),
               unique_value_added_tax_invoice_reference: T.nilable(String)
             }
@@ -290,7 +273,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode
+                Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -299,27 +282,27 @@ module Increase
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED =
             T.let(
               :no_invoice_level_discount_provided,
-              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
             )
 
           # Tax calculated on post discount invoice total
           TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL =
             T.let(
               :tax_calculated_on_post_discount_invoice_total,
-              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
             )
 
           # Tax calculated on pre discount invoice total
           TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL =
             T.let(
               :tax_calculated_on_pre_discount_invoice_total,
-              Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
+                Increase::CardPurchaseSupplement::Invoice::DiscountTreatmentCode::TaggedSymbol
               ]
             )
           end
@@ -335,7 +318,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments
+                Increase::CardPurchaseSupplement::Invoice::TaxTreatments
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -344,41 +327,41 @@ module Increase
           NO_TAX_APPLIES =
             T.let(
               :no_tax_applies,
-              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
 
           # Net price line item level
           NET_PRICE_LINE_ITEM_LEVEL =
             T.let(
               :net_price_line_item_level,
-              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
 
           # Net price invoice level
           NET_PRICE_INVOICE_LEVEL =
             T.let(
               :net_price_invoice_level,
-              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
 
           # Gross price line item level
           GROSS_PRICE_LINE_ITEM_LEVEL =
             T.let(
               :gross_price_line_item_level,
-              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
 
           # Gross price invoice level
           GROSS_PRICE_INVOICE_LEVEL =
             T.let(
               :gross_price_invoice_level,
-              Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+              Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
+                Increase::CardPurchaseSupplement::Invoice::TaxTreatments::TaggedSymbol
               ]
             )
           end
@@ -399,7 +382,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
             )
           )
         end
@@ -417,7 +400,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
             )
           )
         end
@@ -478,13 +461,13 @@ module Increase
             id: String,
             detail_indicator:
               T.nilable(
-                Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::OrSymbol
+                Increase::CardPurchaseSupplement::LineItem::DetailIndicator::OrSymbol
               ),
             discount_amount: T.nilable(Integer),
             discount_currency: T.nilable(String),
             discount_treatment_code:
               T.nilable(
-                Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::OrSymbol
+                Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::OrSymbol
               ),
             item_commodity_code: T.nilable(String),
             item_descriptor: T.nilable(String),
@@ -546,13 +529,13 @@ module Increase
               id: String,
               detail_indicator:
                 T.nilable(
-                  Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
+                  Increase::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
                 ),
               discount_amount: T.nilable(Integer),
               discount_currency: T.nilable(String),
               discount_treatment_code:
                 T.nilable(
-                  Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+                  Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
                 ),
               item_commodity_code: T.nilable(String),
               item_descriptor: T.nilable(String),
@@ -580,7 +563,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator
+                Increase::CardPurchaseSupplement::LineItem::DetailIndicator
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -589,27 +572,27 @@ module Increase
           NORMAL =
             T.let(
               :normal,
-              Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
             )
 
           # Credit
           CREDIT =
             T.let(
               :credit,
-              Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
             )
 
           # Purchase
           PAYMENT =
             T.let(
               :payment,
-              Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
+                Increase::CardPurchaseSupplement::LineItem::DetailIndicator::TaggedSymbol
               ]
             )
           end
@@ -625,7 +608,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode
+                Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -634,27 +617,27 @@ module Increase
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED =
             T.let(
               :no_line_item_level_discount_provided,
-              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
             )
 
           # Tax calculated on post discount line item total
           TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL =
             T.let(
               :tax_calculated_on_post_discount_line_item_total,
-              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
             )
 
           # Tax calculated on pre discount line item total
           TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL =
             T.let(
               :tax_calculated_on_pre_discount_line_item_total,
-              Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+              Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
+                Increase::CardPurchaseSupplement::LineItem::DiscountTreatmentCode::TaggedSymbol
               ]
             )
           end
@@ -669,22 +652,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::CardPurchaseSupplement::Type)
-          end
+          T.type_alias { T.all(Symbol, Increase::CardPurchaseSupplement::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CARD_PURCHASE_SUPPLEMENT =
           T.let(
             :card_purchase_supplement,
-            Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol
+            Increase::CardPurchaseSupplement::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[
-              Increase::Models::CardPurchaseSupplement::Type::TaggedSymbol
-            ]
+            T::Array[Increase::CardPurchaseSupplement::Type::TaggedSymbol]
           )
         end
         def self.values

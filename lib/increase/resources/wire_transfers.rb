@@ -50,7 +50,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::WireTransfer]
+      # @return [Increase::WireTransfer]
       #
       # @see Increase::Models::WireTransferCreateParams
       def create(params)
@@ -59,7 +59,7 @@ module Increase
           method: :post,
           path: "wire_transfers",
           body: parsed,
-          model: Increase::Models::WireTransfer,
+          model: Increase::WireTransfer,
           options: options
         )
       end
@@ -72,14 +72,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::WireTransfer]
+      # @return [Increase::WireTransfer]
       #
       # @see Increase::Models::WireTransferRetrieveParams
       def retrieve(wire_transfer_id, params = {})
         @client.request(
           method: :get,
           path: ["wire_transfers/%1$s", wire_transfer_id],
-          model: Increase::Models::WireTransfer,
+          model: Increase::WireTransfer,
           options: params[:request_options]
         )
       end
@@ -93,7 +93,7 @@ module Increase
       #
       # @param account_id [String] Filter Wire Transfers to those belonging to the specified Account.
       #
-      # @param created_at [Increase::Models::WireTransferListParams::CreatedAt]
+      # @param created_at [Increase::WireTransferListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -107,7 +107,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::WireTransfer>]
+      # @return [Increase::Internal::Page<Increase::WireTransfer>]
       #
       # @see Increase::Models::WireTransferListParams
       def list(params = {})
@@ -117,7 +117,7 @@ module Increase
           path: "wire_transfers",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::WireTransfer,
+          model: Increase::WireTransfer,
           options: options
         )
       end
@@ -130,14 +130,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::WireTransfer]
+      # @return [Increase::WireTransfer]
       #
       # @see Increase::Models::WireTransferApproveParams
       def approve(wire_transfer_id, params = {})
         @client.request(
           method: :post,
           path: ["wire_transfers/%1$s/approve", wire_transfer_id],
-          model: Increase::Models::WireTransfer,
+          model: Increase::WireTransfer,
           options: params[:request_options]
         )
       end
@@ -150,14 +150,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::WireTransfer]
+      # @return [Increase::WireTransfer]
       #
       # @see Increase::Models::WireTransferCancelParams
       def cancel(wire_transfer_id, params = {})
         @client.request(
           method: :post,
           path: ["wire_transfers/%1$s/cancel", wire_transfer_id],
-          model: Increase::Models::WireTransfer,
+          model: Increase::WireTransfer,
           options: params[:request_options]
         )
       end

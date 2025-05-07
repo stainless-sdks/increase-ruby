@@ -9,19 +9,17 @@ module Increase
       OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The type of Entity to create.
-      sig { returns(Increase::Models::EntityCreateParams::Structure::OrSymbol) }
+      sig { returns(Increase::EntityCreateParams::Structure::OrSymbol) }
       attr_accessor :structure
 
       # Details of the corporation entity to create. Required if `structure` is equal to
       # `corporation`.
-      sig do
-        returns(T.nilable(Increase::Models::EntityCreateParams::Corporation))
-      end
+      sig { returns(T.nilable(Increase::EntityCreateParams::Corporation)) }
       attr_reader :corporation
 
       sig do
         params(
-          corporation: Increase::Models::EntityCreateParams::Corporation::OrHash
+          corporation: Increase::EntityCreateParams::Corporation::OrHash
         ).void
       end
       attr_writer :corporation
@@ -36,43 +34,36 @@ module Increase
       # Details of the Government Authority entity to create. Required if `structure` is
       # equal to `Government Authority`.
       sig do
-        returns(
-          T.nilable(Increase::Models::EntityCreateParams::GovernmentAuthority)
-        )
+        returns(T.nilable(Increase::EntityCreateParams::GovernmentAuthority))
       end
       attr_reader :government_authority
 
       sig do
         params(
           government_authority:
-            Increase::Models::EntityCreateParams::GovernmentAuthority::OrHash
+            Increase::EntityCreateParams::GovernmentAuthority::OrHash
         ).void
       end
       attr_writer :government_authority
 
       # Details of the joint entity to create. Required if `structure` is equal to
       # `joint`.
-      sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint)) }
+      sig { returns(T.nilable(Increase::EntityCreateParams::Joint)) }
       attr_reader :joint
 
-      sig do
-        params(joint: Increase::Models::EntityCreateParams::Joint::OrHash).void
-      end
+      sig { params(joint: Increase::EntityCreateParams::Joint::OrHash).void }
       attr_writer :joint
 
       # Details of the natural person entity to create. Required if `structure` is equal
       # to `natural_person`. Natural people entities should be submitted with
       # `social_security_number` or `individual_taxpayer_identification_number`
       # identification methods.
-      sig do
-        returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson))
-      end
+      sig { returns(T.nilable(Increase::EntityCreateParams::NaturalPerson)) }
       attr_reader :natural_person
 
       sig do
         params(
-          natural_person:
-            Increase::Models::EntityCreateParams::NaturalPerson::OrHash
+          natural_person: Increase::EntityCreateParams::NaturalPerson::OrHash
         ).void
       end
       attr_writer :natural_person
@@ -81,7 +72,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            T::Array[Increase::Models::EntityCreateParams::SupplementalDocument]
+            T::Array[Increase::EntityCreateParams::SupplementalDocument]
           )
         )
       end
@@ -90,9 +81,7 @@ module Increase
       sig do
         params(
           supplemental_documents:
-            T::Array[
-              Increase::Models::EntityCreateParams::SupplementalDocument::OrHash
-            ]
+            T::Array[Increase::EntityCreateParams::SupplementalDocument::OrHash]
         ).void
       end
       attr_writer :supplemental_documents
@@ -100,50 +89,42 @@ module Increase
       # A reference to data stored in a third-party verification service. Your
       # integration may or may not use this field.
       sig do
-        returns(
-          T.nilable(
-            Increase::Models::EntityCreateParams::ThirdPartyVerification
-          )
-        )
+        returns(T.nilable(Increase::EntityCreateParams::ThirdPartyVerification))
       end
       attr_reader :third_party_verification
 
       sig do
         params(
           third_party_verification:
-            Increase::Models::EntityCreateParams::ThirdPartyVerification::OrHash
+            Increase::EntityCreateParams::ThirdPartyVerification::OrHash
         ).void
       end
       attr_writer :third_party_verification
 
       # Details of the trust entity to create. Required if `structure` is equal to
       # `trust`.
-      sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust)) }
+      sig { returns(T.nilable(Increase::EntityCreateParams::Trust)) }
       attr_reader :trust
 
-      sig do
-        params(trust: Increase::Models::EntityCreateParams::Trust::OrHash).void
-      end
+      sig { params(trust: Increase::EntityCreateParams::Trust::OrHash).void }
       attr_writer :trust
 
       sig do
         params(
-          structure: Increase::Models::EntityCreateParams::Structure::OrSymbol,
-          corporation:
-            Increase::Models::EntityCreateParams::Corporation::OrHash,
+          structure: Increase::EntityCreateParams::Structure::OrSymbol,
+          corporation: Increase::EntityCreateParams::Corporation::OrHash,
           description: String,
           government_authority:
-            Increase::Models::EntityCreateParams::GovernmentAuthority::OrHash,
-          joint: Increase::Models::EntityCreateParams::Joint::OrHash,
-          natural_person:
-            Increase::Models::EntityCreateParams::NaturalPerson::OrHash,
+            Increase::EntityCreateParams::GovernmentAuthority::OrHash,
+          joint: Increase::EntityCreateParams::Joint::OrHash,
+          natural_person: Increase::EntityCreateParams::NaturalPerson::OrHash,
           supplemental_documents:
             T::Array[
-              Increase::Models::EntityCreateParams::SupplementalDocument::OrHash
+              Increase::EntityCreateParams::SupplementalDocument::OrHash
             ],
           third_party_verification:
-            Increase::Models::EntityCreateParams::ThirdPartyVerification::OrHash,
-          trust: Increase::Models::EntityCreateParams::Trust::OrHash,
+            Increase::EntityCreateParams::ThirdPartyVerification::OrHash,
+          trust: Increase::EntityCreateParams::Trust::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -182,21 +163,18 @@ module Increase
       sig do
         override.returns(
           {
-            structure:
-              Increase::Models::EntityCreateParams::Structure::OrSymbol,
-            corporation: Increase::Models::EntityCreateParams::Corporation,
+            structure: Increase::EntityCreateParams::Structure::OrSymbol,
+            corporation: Increase::EntityCreateParams::Corporation,
             description: String,
             government_authority:
-              Increase::Models::EntityCreateParams::GovernmentAuthority,
-            joint: Increase::Models::EntityCreateParams::Joint,
-            natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
+              Increase::EntityCreateParams::GovernmentAuthority,
+            joint: Increase::EntityCreateParams::Joint,
+            natural_person: Increase::EntityCreateParams::NaturalPerson,
             supplemental_documents:
-              T::Array[
-                Increase::Models::EntityCreateParams::SupplementalDocument
-              ],
+              T::Array[Increase::EntityCreateParams::SupplementalDocument],
             third_party_verification:
-              Increase::Models::EntityCreateParams::ThirdPartyVerification,
-            trust: Increase::Models::EntityCreateParams::Trust,
+              Increase::EntityCreateParams::ThirdPartyVerification,
+            trust: Increase::EntityCreateParams::Trust,
             request_options: Increase::RequestOptions
           }
         )
@@ -210,7 +188,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::Models::EntityCreateParams::Structure)
+            T.all(Symbol, Increase::EntityCreateParams::Structure)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -218,42 +196,34 @@ module Increase
         CORPORATION =
           T.let(
             :corporation,
-            Increase::Models::EntityCreateParams::Structure::TaggedSymbol
+            Increase::EntityCreateParams::Structure::TaggedSymbol
           )
 
         # An individual person.
         NATURAL_PERSON =
           T.let(
             :natural_person,
-            Increase::Models::EntityCreateParams::Structure::TaggedSymbol
+            Increase::EntityCreateParams::Structure::TaggedSymbol
           )
 
         # Multiple individual people.
         JOINT =
-          T.let(
-            :joint,
-            Increase::Models::EntityCreateParams::Structure::TaggedSymbol
-          )
+          T.let(:joint, Increase::EntityCreateParams::Structure::TaggedSymbol)
 
         # A trust.
         TRUST =
-          T.let(
-            :trust,
-            Increase::Models::EntityCreateParams::Structure::TaggedSymbol
-          )
+          T.let(:trust, Increase::EntityCreateParams::Structure::TaggedSymbol)
 
         # A government authority.
         GOVERNMENT_AUTHORITY =
           T.let(
             :government_authority,
-            Increase::Models::EntityCreateParams::Structure::TaggedSymbol
+            Increase::EntityCreateParams::Structure::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[
-              Increase::Models::EntityCreateParams::Structure::TaggedSymbol
-            ]
+            T::Array[Increase::EntityCreateParams::Structure::TaggedSymbol]
           )
         end
         def self.values
@@ -266,15 +236,12 @@ module Increase
 
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         # are disallowed.
-        sig do
-          returns(Increase::Models::EntityCreateParams::Corporation::Address)
-        end
+        sig { returns(Increase::EntityCreateParams::Corporation::Address) }
         attr_reader :address
 
         sig do
           params(
-            address:
-              Increase::Models::EntityCreateParams::Corporation::Address::OrHash
+            address: Increase::EntityCreateParams::Corporation::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -284,9 +251,7 @@ module Increase
         # between 1 and 5 people to this list.
         sig do
           returns(
-            T::Array[
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwner
-            ]
+            T::Array[Increase::EntityCreateParams::Corporation::BeneficialOwner]
           )
         end
         attr_accessor :beneficial_owners
@@ -305,7 +270,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol
+              Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol
             )
           )
         end
@@ -314,7 +279,7 @@ module Increase
         sig do
           params(
             beneficial_ownership_exemption_reason:
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol
+              Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol
           ).void
         end
         attr_writer :beneficial_ownership_exemption_reason
@@ -348,16 +313,15 @@ module Increase
         # `corporation`.
         sig do
           params(
-            address:
-              Increase::Models::EntityCreateParams::Corporation::Address::OrHash,
+            address: Increase::EntityCreateParams::Corporation::Address::OrHash,
             beneficial_owners:
               T::Array[
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::OrHash
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::OrHash
               ],
             name: String,
             tax_identifier: String,
             beneficial_ownership_exemption_reason:
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol,
+              Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol,
             incorporation_state: String,
             industry_code: String,
             website: String
@@ -395,16 +359,15 @@ module Increase
         sig do
           override.returns(
             {
-              address:
-                Increase::Models::EntityCreateParams::Corporation::Address,
+              address: Increase::EntityCreateParams::Corporation::Address,
               beneficial_owners:
                 T::Array[
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner
                 ],
               name: String,
               tax_identifier: String,
               beneficial_ownership_exemption_reason:
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol,
+                Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::OrSymbol,
               incorporation_state: String,
               industry_code: String,
               website: String
@@ -490,7 +453,7 @@ module Increase
           # Personal details for the beneficial owner.
           sig do
             returns(
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual
+              Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual
             )
           end
           attr_reader :individual
@@ -498,7 +461,7 @@ module Increase
           sig do
             params(
               individual:
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::OrHash
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::OrHash
             ).void
           end
           attr_writer :individual
@@ -509,7 +472,7 @@ module Increase
           sig do
             returns(
               T::Array[
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol
               ]
             )
           end
@@ -525,10 +488,10 @@ module Increase
           sig do
             params(
               individual:
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::OrHash,
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::OrHash,
               prongs:
                 T::Array[
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol
                 ],
               company_title: String
             ).returns(T.attached_class)
@@ -549,10 +512,10 @@ module Increase
             override.returns(
               {
                 individual:
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual,
                 prongs:
                   T::Array[
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong::OrSymbol
                   ],
                 company_title: String
               }
@@ -569,7 +532,7 @@ module Increase
             # PMB's are disallowed.
             sig do
               returns(
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address
               )
             end
             attr_reader :address
@@ -577,7 +540,7 @@ module Increase
             sig do
               params(
                 address:
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address::OrHash
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address::OrHash
               ).void
             end
             attr_writer :address
@@ -589,7 +552,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               returns(
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification
               )
             end
             attr_reader :identification
@@ -597,7 +560,7 @@ module Increase
             sig do
               params(
                 identification:
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::OrHash
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::OrHash
               ).void
             end
             attr_writer :identification
@@ -620,10 +583,10 @@ module Increase
             sig do
               params(
                 address:
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address::OrHash,
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address::OrHash,
                 date_of_birth: Date,
                 identification:
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::OrHash,
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::OrHash,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               ).returns(T.attached_class)
@@ -650,10 +613,10 @@ module Increase
               override.returns(
                 {
                   address:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
                   date_of_birth: Date,
                   identification:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
                   name: String,
                   confirmed_no_us_tax_id: T::Boolean
                 }
@@ -757,7 +720,7 @@ module Increase
               # A method that can be used to verify the individual's identity.
               sig do
                 returns(
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol
                 )
               end
               attr_accessor :method_
@@ -772,7 +735,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
                   )
                 )
               end
@@ -781,7 +744,7 @@ module Increase
               sig do
                 params(
                   drivers_license:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense::OrHash
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense::OrHash
                 ).void
               end
               attr_writer :drivers_license
@@ -791,7 +754,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
                   )
                 )
               end
@@ -800,7 +763,7 @@ module Increase
               sig do
                 params(
                   other:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other::OrHash
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other::OrHash
                 ).void
               end
               attr_writer :other
@@ -810,7 +773,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
                   )
                 )
               end
@@ -819,7 +782,7 @@ module Increase
               sig do
                 params(
                   passport:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport::OrHash
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport::OrHash
                 ).void
               end
               attr_writer :passport
@@ -828,14 +791,14 @@ module Increase
               sig do
                 params(
                   method_:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                   number: String,
                   drivers_license:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense::OrHash,
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense::OrHash,
                   other:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other::OrHash,
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other::OrHash,
                   passport:
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport::OrHash
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -860,14 +823,14 @@ module Increase
                 override.returns(
                   {
                     method_:
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                      Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                     number: String,
                     drivers_license:
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+                      Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
                     other:
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+                      Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
                     passport:
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                      Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
                   }
                 )
               end
@@ -882,7 +845,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method
+                      Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -891,41 +854,41 @@ module Increase
                 SOCIAL_SECURITY_NUMBER =
                   T.let(
                     :social_security_number,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # An individual taxpayer identification number (ITIN).
                 INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                   T.let(
                     :individual_taxpayer_identification_number,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A passport number.
                 PASSPORT =
                   T.let(
                     :passport,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A driver's license number.
                 DRIVERS_LICENSE =
                   T.let(
                     :drivers_license,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # Another identifying document.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                      Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                     ]
                   )
                 end
@@ -1125,7 +1088,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1134,20 +1097,20 @@ module Increase
             OWNERSHIP =
               T.let(
                 :ownership,
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
               )
 
             # A person who manages, directs, or has significant control of the entity.
             CONTROL =
               T.let(
                 :control,
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
+                Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
+                  Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong::TaggedSymbol
                 ]
               )
             end
@@ -1166,7 +1129,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason
+                Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1175,27 +1138,27 @@ module Increase
           REGULATED_FINANCIAL_INSTITUTION =
             T.let(
               :regulated_financial_institution,
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+              Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
             )
 
           # A publicly traded company.
           PUBLICLY_TRADED_COMPANY =
             T.let(
               :publicly_traded_company,
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+              Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
             )
 
           # A public entity acting on behalf of the federal or a state government.
           PUBLIC_ENTITY =
             T.let(
               :public_entity,
-              Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+              Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
+                Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason::TaggedSymbol
               ]
             )
           end
@@ -1211,16 +1174,14 @@ module Increase
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         # are disallowed.
         sig do
-          returns(
-            Increase::Models::EntityCreateParams::GovernmentAuthority::Address
-          )
+          returns(Increase::EntityCreateParams::GovernmentAuthority::Address)
         end
         attr_reader :address
 
         sig do
           params(
             address:
-              Increase::Models::EntityCreateParams::GovernmentAuthority::Address::OrHash
+              Increase::EntityCreateParams::GovernmentAuthority::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -1229,7 +1190,7 @@ module Increase
         sig do
           returns(
             T::Array[
-              Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson
+              Increase::EntityCreateParams::GovernmentAuthority::AuthorizedPerson
             ]
           )
         end
@@ -1238,7 +1199,7 @@ module Increase
         # The category of the government authority.
         sig do
           returns(
-            Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol
+            Increase::EntityCreateParams::GovernmentAuthority::Category::OrSymbol
           )
         end
         attr_accessor :category
@@ -1263,13 +1224,13 @@ module Increase
         sig do
           params(
             address:
-              Increase::Models::EntityCreateParams::GovernmentAuthority::Address::OrHash,
+              Increase::EntityCreateParams::GovernmentAuthority::Address::OrHash,
             authorized_persons:
               T::Array[
-                Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson::OrHash
+                Increase::EntityCreateParams::GovernmentAuthority::AuthorizedPerson::OrHash
               ],
             category:
-              Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
+              Increase::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
             name: String,
             tax_identifier: String,
             website: String
@@ -1296,13 +1257,13 @@ module Increase
           override.returns(
             {
               address:
-                Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
+                Increase::EntityCreateParams::GovernmentAuthority::Address,
               authorized_persons:
                 T::Array[
-                  Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson
+                  Increase::EntityCreateParams::GovernmentAuthority::AuthorizedPerson
                 ],
               category:
-                Increase::Models::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
+                Increase::EntityCreateParams::GovernmentAuthority::Category::OrSymbol,
               name: String,
               tax_identifier: String,
               website: String
@@ -1409,7 +1370,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::EntityCreateParams::GovernmentAuthority::Category
+                Increase::EntityCreateParams::GovernmentAuthority::Category
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1418,13 +1379,13 @@ module Increase
           MUNICIPALITY =
             T.let(
               :municipality,
-              Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol
+              Increase::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol
+                Increase::EntityCreateParams::GovernmentAuthority::Category::TaggedSymbol
               ]
             )
           end
@@ -1439,9 +1400,7 @@ module Increase
 
         # The two individuals that share control of the entity.
         sig do
-          returns(
-            T::Array[Increase::Models::EntityCreateParams::Joint::Individual]
-          )
+          returns(T::Array[Increase::EntityCreateParams::Joint::Individual])
         end
         attr_accessor :individuals
 
@@ -1457,9 +1416,7 @@ module Increase
         sig do
           params(
             individuals:
-              T::Array[
-                Increase::Models::EntityCreateParams::Joint::Individual::OrHash
-              ],
+              T::Array[Increase::EntityCreateParams::Joint::Individual::OrHash],
             name: String
           ).returns(T.attached_class)
         end
@@ -1475,9 +1432,7 @@ module Increase
           override.returns(
             {
               individuals:
-                T::Array[
-                  Increase::Models::EntityCreateParams::Joint::Individual
-                ],
+                T::Array[Increase::EntityCreateParams::Joint::Individual],
               name: String
             }
           )
@@ -1492,16 +1447,14 @@ module Increase
           # The individual's physical address. Mail receiving locations like PO Boxes and
           # PMB's are disallowed.
           sig do
-            returns(
-              Increase::Models::EntityCreateParams::Joint::Individual::Address
-            )
+            returns(Increase::EntityCreateParams::Joint::Individual::Address)
           end
           attr_reader :address
 
           sig do
             params(
               address:
-                Increase::Models::EntityCreateParams::Joint::Individual::Address::OrHash
+                Increase::EntityCreateParams::Joint::Individual::Address::OrHash
             ).void
           end
           attr_writer :address
@@ -1513,7 +1466,7 @@ module Increase
           # A means of verifying the person's identity.
           sig do
             returns(
-              Increase::Models::EntityCreateParams::Joint::Individual::Identification
+              Increase::EntityCreateParams::Joint::Individual::Identification
             )
           end
           attr_reader :identification
@@ -1521,7 +1474,7 @@ module Increase
           sig do
             params(
               identification:
-                Increase::Models::EntityCreateParams::Joint::Individual::Identification::OrHash
+                Increase::EntityCreateParams::Joint::Individual::Identification::OrHash
             ).void
           end
           attr_writer :identification
@@ -1543,10 +1496,10 @@ module Increase
           sig do
             params(
               address:
-                Increase::Models::EntityCreateParams::Joint::Individual::Address::OrHash,
+                Increase::EntityCreateParams::Joint::Individual::Address::OrHash,
               date_of_birth: Date,
               identification:
-                Increase::Models::EntityCreateParams::Joint::Individual::Identification::OrHash,
+                Increase::EntityCreateParams::Joint::Individual::Identification::OrHash,
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             ).returns(T.attached_class)
@@ -1573,10 +1526,10 @@ module Increase
             override.returns(
               {
                 address:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Address,
+                  Increase::EntityCreateParams::Joint::Individual::Address,
                 date_of_birth: Date,
                 identification:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification,
+                  Increase::EntityCreateParams::Joint::Individual::Identification,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               }
@@ -1661,7 +1614,7 @@ module Increase
             # A method that can be used to verify the individual's identity.
             sig do
               returns(
-                Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol
+                Increase::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol
               )
             end
             attr_accessor :method_
@@ -1676,7 +1629,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense
+                  Increase::EntityCreateParams::Joint::Individual::Identification::DriversLicense
                 )
               )
             end
@@ -1685,7 +1638,7 @@ module Increase
             sig do
               params(
                 drivers_license:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense::OrHash
+                  Increase::EntityCreateParams::Joint::Individual::Identification::DriversLicense::OrHash
               ).void
             end
             attr_writer :drivers_license
@@ -1695,7 +1648,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Other
                 )
               )
             end
@@ -1704,7 +1657,7 @@ module Increase
             sig do
               params(
                 other:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other::OrHash
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Other::OrHash
               ).void
             end
             attr_writer :other
@@ -1714,7 +1667,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Passport
                 )
               )
             end
@@ -1723,7 +1676,7 @@ module Increase
             sig do
               params(
                 passport:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport::OrHash
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Passport::OrHash
               ).void
             end
             attr_writer :passport
@@ -1732,14 +1685,14 @@ module Increase
             sig do
               params(
                 method_:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol,
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol,
                 number: String,
                 drivers_license:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense::OrHash,
+                  Increase::EntityCreateParams::Joint::Individual::Identification::DriversLicense::OrHash,
                 other:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other::OrHash,
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Other::OrHash,
                 passport:
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport::OrHash
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Passport::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -1764,14 +1717,14 @@ module Increase
               override.returns(
                 {
                   method_:
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol,
+                    Increase::EntityCreateParams::Joint::Individual::Identification::Method::OrSymbol,
                   number: String,
                   drivers_license:
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+                    Increase::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
                   other:
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+                    Increase::EntityCreateParams::Joint::Individual::Identification::Other,
                   passport:
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
+                    Increase::EntityCreateParams::Joint::Individual::Identification::Passport
                 }
               )
             end
@@ -1786,7 +1739,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method
+                    Increase::EntityCreateParams::Joint::Individual::Identification::Method
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1795,41 +1748,41 @@ module Increase
               SOCIAL_SECURITY_NUMBER =
                 T.let(
                   :social_security_number,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # An individual taxpayer identification number (ITIN).
               INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                 T.let(
                   :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A passport number.
               PASSPORT =
                 T.let(
                   :passport,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A driver's license number.
               DRIVERS_LICENSE =
                 T.let(
                   :drivers_license,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               # Another identifying document.
               OTHER =
                 T.let(
                   :other,
-                  Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Joint::Individual::Identification::Method::TaggedSymbol
                   ]
                 )
               end
@@ -2023,15 +1976,13 @@ module Increase
 
         # The individual's physical address. Mail receiving locations like PO Boxes and
         # PMB's are disallowed.
-        sig do
-          returns(Increase::Models::EntityCreateParams::NaturalPerson::Address)
-        end
+        sig { returns(Increase::EntityCreateParams::NaturalPerson::Address) }
         attr_reader :address
 
         sig do
           params(
             address:
-              Increase::Models::EntityCreateParams::NaturalPerson::Address::OrHash
+              Increase::EntityCreateParams::NaturalPerson::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -2042,16 +1993,14 @@ module Increase
 
         # A means of verifying the person's identity.
         sig do
-          returns(
-            Increase::Models::EntityCreateParams::NaturalPerson::Identification
-          )
+          returns(Increase::EntityCreateParams::NaturalPerson::Identification)
         end
         attr_reader :identification
 
         sig do
           params(
             identification:
-              Increase::Models::EntityCreateParams::NaturalPerson::Identification::OrHash
+              Increase::EntityCreateParams::NaturalPerson::Identification::OrHash
           ).void
         end
         attr_writer :identification
@@ -2077,10 +2026,10 @@ module Increase
         sig do
           params(
             address:
-              Increase::Models::EntityCreateParams::NaturalPerson::Address::OrHash,
+              Increase::EntityCreateParams::NaturalPerson::Address::OrHash,
             date_of_birth: Date,
             identification:
-              Increase::Models::EntityCreateParams::NaturalPerson::Identification::OrHash,
+              Increase::EntityCreateParams::NaturalPerson::Identification::OrHash,
             name: String,
             confirmed_no_us_tax_id: T::Boolean
           ).returns(T.attached_class)
@@ -2106,11 +2055,10 @@ module Increase
         sig do
           override.returns(
             {
-              address:
-                Increase::Models::EntityCreateParams::NaturalPerson::Address,
+              address: Increase::EntityCreateParams::NaturalPerson::Address,
               date_of_birth: Date,
               identification:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification,
+                Increase::EntityCreateParams::NaturalPerson::Identification,
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             }
@@ -2195,7 +2143,7 @@ module Increase
           # A method that can be used to verify the individual's identity.
           sig do
             returns(
-              Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol
+              Increase::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol
             )
           end
           attr_accessor :method_
@@ -2210,7 +2158,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense
+                Increase::EntityCreateParams::NaturalPerson::Identification::DriversLicense
               )
             )
           end
@@ -2219,7 +2167,7 @@ module Increase
           sig do
             params(
               drivers_license:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense::OrHash
+                Increase::EntityCreateParams::NaturalPerson::Identification::DriversLicense::OrHash
             ).void
           end
           attr_writer :drivers_license
@@ -2229,7 +2177,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other
+                Increase::EntityCreateParams::NaturalPerson::Identification::Other
               )
             )
           end
@@ -2238,7 +2186,7 @@ module Increase
           sig do
             params(
               other:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other::OrHash
+                Increase::EntityCreateParams::NaturalPerson::Identification::Other::OrHash
             ).void
           end
           attr_writer :other
@@ -2248,7 +2196,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
+                Increase::EntityCreateParams::NaturalPerson::Identification::Passport
               )
             )
           end
@@ -2257,7 +2205,7 @@ module Increase
           sig do
             params(
               passport:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport::OrHash
+                Increase::EntityCreateParams::NaturalPerson::Identification::Passport::OrHash
             ).void
           end
           attr_writer :passport
@@ -2266,14 +2214,14 @@ module Increase
           sig do
             params(
               method_:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol,
+                Increase::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol,
               number: String,
               drivers_license:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense::OrHash,
+                Increase::EntityCreateParams::NaturalPerson::Identification::DriversLicense::OrHash,
               other:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other::OrHash,
+                Increase::EntityCreateParams::NaturalPerson::Identification::Other::OrHash,
               passport:
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport::OrHash
+                Increase::EntityCreateParams::NaturalPerson::Identification::Passport::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -2298,14 +2246,14 @@ module Increase
             override.returns(
               {
                 method_:
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol,
+                  Increase::EntityCreateParams::NaturalPerson::Identification::Method::OrSymbol,
                 number: String,
                 drivers_license:
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+                  Increase::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
                 other:
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+                  Increase::EntityCreateParams::NaturalPerson::Identification::Other,
                 passport:
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
+                  Increase::EntityCreateParams::NaturalPerson::Identification::Passport
               }
             )
           end
@@ -2320,7 +2268,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method
+                  Increase::EntityCreateParams::NaturalPerson::Identification::Method
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2329,41 +2277,41 @@ module Increase
             SOCIAL_SECURITY_NUMBER =
               T.let(
                 :social_security_number,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                Increase::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # An individual taxpayer identification number (ITIN).
             INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
               T.let(
                 :individual_taxpayer_identification_number,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                Increase::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # A passport number.
             PASSPORT =
               T.let(
                 :passport,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                Increase::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # A driver's license number.
             DRIVERS_LICENSE =
               T.let(
                 :drivers_license,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                Increase::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             # Another identifying document.
             OTHER =
               T.let(
                 :other,
-                Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                Increase::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::NaturalPerson::Identification::Method::TaggedSymbol
                 ]
               )
             end
@@ -2581,7 +2529,7 @@ module Increase
         # The vendor that was used to perform the verification.
         sig do
           returns(
-            Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
+            Increase::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
           )
         end
         attr_accessor :vendor
@@ -2592,7 +2540,7 @@ module Increase
           params(
             reference: String,
             vendor:
-              Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
+              Increase::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -2608,7 +2556,7 @@ module Increase
             {
               reference: String,
               vendor:
-                Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
+                Increase::EntityCreateParams::ThirdPartyVerification::Vendor::OrSymbol
             }
           )
         end
@@ -2623,7 +2571,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor
+                Increase::EntityCreateParams::ThirdPartyVerification::Vendor
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2632,20 +2580,20 @@ module Increase
           ALLOY =
             T.let(
               :alloy,
-              Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol
+              Increase::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol
             )
 
           # Middesk. See https://middesk.com for more information.
           MIDDESK =
             T.let(
               :middesk,
-              Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol
+              Increase::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol
+                Increase::EntityCreateParams::ThirdPartyVerification::Vendor::TaggedSymbol
               ]
             )
           end
@@ -2660,13 +2608,12 @@ module Increase
 
         # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
         # are disallowed.
-        sig { returns(Increase::Models::EntityCreateParams::Trust::Address) }
+        sig { returns(Increase::EntityCreateParams::Trust::Address) }
         attr_reader :address
 
         sig do
           params(
-            address:
-              Increase::Models::EntityCreateParams::Trust::Address::OrHash
+            address: Increase::EntityCreateParams::Trust::Address::OrHash
           ).void
         end
         attr_writer :address
@@ -2674,11 +2621,7 @@ module Increase
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         # their own Employer Identification Number. Revocable trusts require information
         # about the individual `grantor` who created the trust.
-        sig do
-          returns(
-            Increase::Models::EntityCreateParams::Trust::Category::OrSymbol
-          )
-        end
+        sig { returns(Increase::EntityCreateParams::Trust::Category::OrSymbol) }
         attr_accessor :category
 
         # The legal name of the trust.
@@ -2686,11 +2629,7 @@ module Increase
         attr_accessor :name
 
         # The trustees of the trust.
-        sig do
-          returns(
-            T::Array[Increase::Models::EntityCreateParams::Trust::Trustee]
-          )
-        end
+        sig { returns(T::Array[Increase::EntityCreateParams::Trust::Trustee]) }
         attr_accessor :trustees
 
         # The identifier of the File containing the formation document of the trust.
@@ -2709,17 +2648,12 @@ module Increase
         attr_writer :formation_state
 
         # The grantor of the trust. Required if `category` is equal to `revocable`.
-        sig do
-          returns(
-            T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor)
-          )
-        end
+        sig { returns(T.nilable(Increase::EntityCreateParams::Trust::Grantor)) }
         attr_reader :grantor
 
         sig do
           params(
-            grantor:
-              Increase::Models::EntityCreateParams::Trust::Grantor::OrHash
+            grantor: Increase::EntityCreateParams::Trust::Grantor::OrHash
           ).void
         end
         attr_writer :grantor
@@ -2736,19 +2670,14 @@ module Increase
         # `trust`.
         sig do
           params(
-            address:
-              Increase::Models::EntityCreateParams::Trust::Address::OrHash,
-            category:
-              Increase::Models::EntityCreateParams::Trust::Category::OrSymbol,
+            address: Increase::EntityCreateParams::Trust::Address::OrHash,
+            category: Increase::EntityCreateParams::Trust::Category::OrSymbol,
             name: String,
             trustees:
-              T::Array[
-                Increase::Models::EntityCreateParams::Trust::Trustee::OrHash
-              ],
+              T::Array[Increase::EntityCreateParams::Trust::Trustee::OrHash],
             formation_document_file_id: String,
             formation_state: String,
-            grantor:
-              Increase::Models::EntityCreateParams::Trust::Grantor::OrHash,
+            grantor: Increase::EntityCreateParams::Trust::Grantor::OrHash,
             tax_identifier: String
           ).returns(T.attached_class)
         end
@@ -2780,15 +2709,13 @@ module Increase
         sig do
           override.returns(
             {
-              address: Increase::Models::EntityCreateParams::Trust::Address,
-              category:
-                Increase::Models::EntityCreateParams::Trust::Category::OrSymbol,
+              address: Increase::EntityCreateParams::Trust::Address,
+              category: Increase::EntityCreateParams::Trust::Category::OrSymbol,
               name: String,
-              trustees:
-                T::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
+              trustees: T::Array[Increase::EntityCreateParams::Trust::Trustee],
               formation_document_file_id: String,
               formation_state: String,
-              grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
+              grantor: Increase::EntityCreateParams::Trust::Grantor,
               tax_identifier: String
             }
           )
@@ -2873,10 +2800,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::EntityCreateParams::Trust::Category
-              )
+              T.all(Symbol, Increase::EntityCreateParams::Trust::Category)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -2884,20 +2808,20 @@ module Increase
           REVOCABLE =
             T.let(
               :revocable,
-              Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol
+              Increase::EntityCreateParams::Trust::Category::TaggedSymbol
             )
 
           # The trust cannot be revoked.
           IRREVOCABLE =
             T.let(
               :irrevocable,
-              Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol
+              Increase::EntityCreateParams::Trust::Category::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::EntityCreateParams::Trust::Category::TaggedSymbol
+                Increase::EntityCreateParams::Trust::Category::TaggedSymbol
               ]
             )
           end
@@ -2912,7 +2836,7 @@ module Increase
           # The structure of the trustee.
           sig do
             returns(
-              Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol
+              Increase::EntityCreateParams::Trust::Trustee::Structure::OrSymbol
             )
           end
           attr_accessor :structure
@@ -2922,7 +2846,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::Models::EntityCreateParams::Trust::Trustee::Individual
+                Increase::EntityCreateParams::Trust::Trustee::Individual
               )
             )
           end
@@ -2931,7 +2855,7 @@ module Increase
           sig do
             params(
               individual:
-                Increase::Models::EntityCreateParams::Trust::Trustee::Individual::OrHash
+                Increase::EntityCreateParams::Trust::Trustee::Individual::OrHash
             ).void
           end
           attr_writer :individual
@@ -2939,9 +2863,9 @@ module Increase
           sig do
             params(
               structure:
-                Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
+                Increase::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
               individual:
-                Increase::Models::EntityCreateParams::Trust::Trustee::Individual::OrHash
+                Increase::EntityCreateParams::Trust::Trustee::Individual::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -2957,9 +2881,9 @@ module Increase
             override.returns(
               {
                 structure:
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
+                  Increase::EntityCreateParams::Trust::Trustee::Structure::OrSymbol,
                 individual:
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual
+                  Increase::EntityCreateParams::Trust::Trustee::Individual
               }
             )
           end
@@ -2974,7 +2898,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Structure
+                  Increase::EntityCreateParams::Trust::Trustee::Structure
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2983,13 +2907,13 @@ module Increase
             INDIVIDUAL =
               T.let(
                 :individual,
-                Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol
+                Increase::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol
+                  Increase::EntityCreateParams::Trust::Trustee::Structure::TaggedSymbol
                 ]
               )
             end
@@ -3005,7 +2929,7 @@ module Increase
             # PMB's are disallowed.
             sig do
               returns(
-                Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address
+                Increase::EntityCreateParams::Trust::Trustee::Individual::Address
               )
             end
             attr_reader :address
@@ -3013,7 +2937,7 @@ module Increase
             sig do
               params(
                 address:
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address::OrHash
+                  Increase::EntityCreateParams::Trust::Trustee::Individual::Address::OrHash
               ).void
             end
             attr_writer :address
@@ -3025,7 +2949,7 @@ module Increase
             # A means of verifying the person's identity.
             sig do
               returns(
-                Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification
+                Increase::EntityCreateParams::Trust::Trustee::Individual::Identification
               )
             end
             attr_reader :identification
@@ -3033,7 +2957,7 @@ module Increase
             sig do
               params(
                 identification:
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::OrHash
+                  Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::OrHash
               ).void
             end
             attr_writer :identification
@@ -3057,10 +2981,10 @@ module Increase
             sig do
               params(
                 address:
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address::OrHash,
+                  Increase::EntityCreateParams::Trust::Trustee::Individual::Address::OrHash,
                 date_of_birth: Date,
                 identification:
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::OrHash,
+                  Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::OrHash,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               ).returns(T.attached_class)
@@ -3087,10 +3011,10 @@ module Increase
               override.returns(
                 {
                   address:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Address,
                   date_of_birth: Date,
                   identification:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification,
                   name: String,
                   confirmed_no_us_tax_id: T::Boolean
                 }
@@ -3175,7 +3099,7 @@ module Increase
               # A method that can be used to verify the individual's identity.
               sig do
                 returns(
-                  Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
+                  Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol
                 )
               end
               attr_accessor :method_
@@ -3190,7 +3114,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
                   )
                 )
               end
@@ -3199,7 +3123,7 @@ module Increase
               sig do
                 params(
                   drivers_license:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense::OrHash
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense::OrHash
                 ).void
               end
               attr_writer :drivers_license
@@ -3209,7 +3133,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other
                   )
                 )
               end
@@ -3218,7 +3142,7 @@ module Increase
               sig do
                 params(
                   other:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other::OrHash
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other::OrHash
                 ).void
               end
               attr_writer :other
@@ -3228,7 +3152,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
                   )
                 )
               end
@@ -3237,7 +3161,7 @@ module Increase
               sig do
                 params(
                   passport:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport::OrHash
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport::OrHash
                 ).void
               end
               attr_writer :passport
@@ -3246,14 +3170,14 @@ module Increase
               sig do
                 params(
                   method_:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol,
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol,
                   number: String,
                   drivers_license:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense::OrHash,
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense::OrHash,
                   other:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other::OrHash,
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other::OrHash,
                   passport:
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport::OrHash
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport::OrHash
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -3278,14 +3202,14 @@ module Increase
                 override.returns(
                   {
                     method_:
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol,
+                      Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::OrSymbol,
                     number: String,
                     drivers_license:
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+                      Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
                     other:
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+                      Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
                     passport:
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
+                      Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
                   }
                 )
               end
@@ -3300,7 +3224,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method
+                      Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3309,41 +3233,41 @@ module Increase
                 SOCIAL_SECURITY_NUMBER =
                   T.let(
                     :social_security_number,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # An individual taxpayer identification number (ITIN).
                 INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                   T.let(
                     :individual_taxpayer_identification_number,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A passport number.
                 PASSPORT =
                   T.let(
                     :passport,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # A driver's license number.
                 DRIVERS_LICENSE =
                   T.let(
                     :drivers_license,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 # Another identifying document.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
+                      Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method::TaggedSymbol
                     ]
                   )
                 end
@@ -3543,17 +3467,13 @@ module Increase
 
           # The individual's physical address. Mail receiving locations like PO Boxes and
           # PMB's are disallowed.
-          sig do
-            returns(
-              Increase::Models::EntityCreateParams::Trust::Grantor::Address
-            )
-          end
+          sig { returns(Increase::EntityCreateParams::Trust::Grantor::Address) }
           attr_reader :address
 
           sig do
             params(
               address:
-                Increase::Models::EntityCreateParams::Trust::Grantor::Address::OrHash
+                Increase::EntityCreateParams::Trust::Grantor::Address::OrHash
             ).void
           end
           attr_writer :address
@@ -3565,7 +3485,7 @@ module Increase
           # A means of verifying the person's identity.
           sig do
             returns(
-              Increase::Models::EntityCreateParams::Trust::Grantor::Identification
+              Increase::EntityCreateParams::Trust::Grantor::Identification
             )
           end
           attr_reader :identification
@@ -3573,7 +3493,7 @@ module Increase
           sig do
             params(
               identification:
-                Increase::Models::EntityCreateParams::Trust::Grantor::Identification::OrHash
+                Increase::EntityCreateParams::Trust::Grantor::Identification::OrHash
             ).void
           end
           attr_writer :identification
@@ -3596,10 +3516,10 @@ module Increase
           sig do
             params(
               address:
-                Increase::Models::EntityCreateParams::Trust::Grantor::Address::OrHash,
+                Increase::EntityCreateParams::Trust::Grantor::Address::OrHash,
               date_of_birth: Date,
               identification:
-                Increase::Models::EntityCreateParams::Trust::Grantor::Identification::OrHash,
+                Increase::EntityCreateParams::Trust::Grantor::Identification::OrHash,
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             ).returns(T.attached_class)
@@ -3625,11 +3545,10 @@ module Increase
           sig do
             override.returns(
               {
-                address:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Address,
+                address: Increase::EntityCreateParams::Trust::Grantor::Address,
                 date_of_birth: Date,
                 identification:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
+                  Increase::EntityCreateParams::Trust::Grantor::Identification,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               }
@@ -3714,7 +3633,7 @@ module Increase
             # A method that can be used to verify the individual's identity.
             sig do
               returns(
-                Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol
+                Increase::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol
               )
             end
             attr_accessor :method_
@@ -3729,7 +3648,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::DriversLicense
                 )
               )
             end
@@ -3738,7 +3657,7 @@ module Increase
             sig do
               params(
                 drivers_license:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense::OrHash
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::DriversLicense::OrHash
               ).void
             end
             attr_writer :drivers_license
@@ -3748,7 +3667,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Other
                 )
               )
             end
@@ -3757,7 +3676,7 @@ module Increase
             sig do
               params(
                 other:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other::OrHash
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Other::OrHash
               ).void
             end
             attr_writer :other
@@ -3767,7 +3686,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Passport
                 )
               )
             end
@@ -3776,7 +3695,7 @@ module Increase
             sig do
               params(
                 passport:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport::OrHash
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Passport::OrHash
               ).void
             end
             attr_writer :passport
@@ -3785,14 +3704,14 @@ module Increase
             sig do
               params(
                 method_:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol,
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol,
                 number: String,
                 drivers_license:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense::OrHash,
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::DriversLicense::OrHash,
                 other:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other::OrHash,
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Other::OrHash,
                 passport:
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport::OrHash
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Passport::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -3817,14 +3736,14 @@ module Increase
               override.returns(
                 {
                   method_:
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol,
+                    Increase::EntityCreateParams::Trust::Grantor::Identification::Method::OrSymbol,
                   number: String,
                   drivers_license:
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+                    Increase::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
                   other:
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+                    Increase::EntityCreateParams::Trust::Grantor::Identification::Other,
                   passport:
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
+                    Increase::EntityCreateParams::Trust::Grantor::Identification::Passport
                 }
               )
             end
@@ -3839,7 +3758,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method
+                    Increase::EntityCreateParams::Trust::Grantor::Identification::Method
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3848,41 +3767,41 @@ module Increase
               SOCIAL_SECURITY_NUMBER =
                 T.let(
                   :social_security_number,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # An individual taxpayer identification number (ITIN).
               INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                 T.let(
                   :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # A passport number.
               PASSPORT =
                 T.let(
                   :passport,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # A driver's license number.
               DRIVERS_LICENSE =
                 T.let(
                   :drivers_license,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               # Another identifying document.
               OTHER =
                 T.let(
                   :other,
-                  Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateParams::Trust::Grantor::Identification::Method::TaggedSymbol
                   ]
                 )
               end

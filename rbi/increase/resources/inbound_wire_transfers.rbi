@@ -8,7 +8,7 @@ module Increase
         params(
           inbound_wire_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundWireTransfer)
+        ).returns(Increase::InboundWireTransfer)
       end
       def retrieve(
         # The identifier of the Inbound Wire Transfer to get details for.
@@ -23,15 +23,12 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            Increase::Models::InboundWireTransferListParams::CreatedAt::OrHash,
+            Increase::InboundWireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status:
-            Increase::Models::InboundWireTransferListParams::Status::OrHash,
+          status: Increase::InboundWireTransferListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::InboundWireTransfer]
-        )
+        ).returns(Increase::Internal::Page[Increase::InboundWireTransfer])
       end
       def list(
         # Filter Inbound Wire Transfers to ones belonging to the specified Account.
@@ -53,10 +50,9 @@ module Increase
       sig do
         params(
           inbound_wire_transfer_id: String,
-          reason:
-            Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
+          reason: Increase::InboundWireTransferReverseParams::Reason::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundWireTransfer)
+        ).returns(Increase::InboundWireTransfer)
       end
       def reverse(
         # The identifier of the Inbound Wire Transfer to reverse.

@@ -15,15 +15,12 @@ module Increase
       sig { params(card_id: String).void }
       attr_writer :card_id
 
-      sig do
-        returns(T.nilable(Increase::Models::PhysicalCardListParams::CreatedAt))
-      end
+      sig { returns(T.nilable(Increase::PhysicalCardListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::PhysicalCardListParams::CreatedAt::OrHash
+          created_at: Increase::PhysicalCardListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -56,8 +53,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at:
-            Increase::Models::PhysicalCardListParams::CreatedAt::OrHash,
+          created_at: Increase::PhysicalCardListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
@@ -87,7 +83,7 @@ module Increase
         override.returns(
           {
             card_id: String,
-            created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
+            created_at: Increase::PhysicalCardListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,

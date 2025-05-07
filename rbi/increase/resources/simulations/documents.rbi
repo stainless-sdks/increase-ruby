@@ -9,7 +9,7 @@ module Increase
           params(
             account_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::Document)
+          ).returns(Increase::Document)
         end
         def create(
           # The identifier of the Account the tax document is for.

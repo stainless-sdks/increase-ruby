@@ -9,16 +9,13 @@ module Increase
       OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       sig do
-        returns(
-          T.nilable(Increase::Models::OAuthApplicationListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::OAuthApplicationListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::OAuthApplicationListParams::CreatedAt::OrHash
+          created_at: Increase::OAuthApplicationListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -38,25 +35,22 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig do
-        returns(T.nilable(Increase::Models::OAuthApplicationListParams::Status))
-      end
+      sig { returns(T.nilable(Increase::OAuthApplicationListParams::Status)) }
       attr_reader :status
 
       sig do
         params(
-          status: Increase::Models::OAuthApplicationListParams::Status::OrHash
+          status: Increase::OAuthApplicationListParams::Status::OrHash
         ).void
       end
       attr_writer :status
 
       sig do
         params(
-          created_at:
-            Increase::Models::OAuthApplicationListParams::CreatedAt::OrHash,
+          created_at: Increase::OAuthApplicationListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status::OrHash,
+          status: Increase::OAuthApplicationListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -76,10 +70,10 @@ module Increase
       sig do
         override.returns(
           {
-            created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+            created_at: Increase::OAuthApplicationListParams::CreatedAt,
             cursor: String,
             limit: Integer,
-            status: Increase::Models::OAuthApplicationListParams::Status,
+            status: Increase::OAuthApplicationListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -166,7 +160,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol
+                Increase::OAuthApplicationListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -177,7 +171,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol
+                Increase::OAuthApplicationListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -187,7 +181,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol
+                Increase::OAuthApplicationListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -203,7 +197,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::OAuthApplicationListParams::Status::In::OrSymbol
+                  Increase::OAuthApplicationListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -216,10 +210,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::OAuthApplicationListParams::Status::In
-              )
+              T.all(Symbol, Increase::OAuthApplicationListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -227,20 +218,20 @@ module Increase
           ACTIVE =
             T.let(
               :active,
-              Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol
+              Increase::OAuthApplicationListParams::Status::In::TaggedSymbol
             )
 
           # The application is deleted.
           DELETED =
             T.let(
               :deleted,
-              Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol
+              Increase::OAuthApplicationListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::OAuthApplicationListParams::Status::In::TaggedSymbol
+                Increase::OAuthApplicationListParams::Status::In::TaggedSymbol
               ]
             )
           end

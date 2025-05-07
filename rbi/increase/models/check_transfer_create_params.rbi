@@ -19,7 +19,7 @@ module Increase
       # Whether Increase will print and mail the check or if you will do it yourself.
       sig do
         returns(
-          Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol
+          Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol
         )
       end
       attr_accessor :fulfillment_method
@@ -42,16 +42,14 @@ module Increase
       # is required if `fulfillment_method` is equal to `physical_check`. It must not be
       # included if any other `fulfillment_method` is provided.
       sig do
-        returns(
-          T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck)
-        )
+        returns(T.nilable(Increase::CheckTransferCreateParams::PhysicalCheck))
       end
       attr_reader :physical_check
 
       sig do
         params(
           physical_check:
-            Increase::Models::CheckTransferCreateParams::PhysicalCheck::OrHash
+            Increase::CheckTransferCreateParams::PhysicalCheck::OrHash
         ).void
       end
       attr_writer :physical_check
@@ -67,16 +65,13 @@ module Increase
       # `fulfillment_method` is equal to `third_party`. It must not be included if any
       # other `fulfillment_method` is provided.
       sig do
-        returns(
-          T.nilable(Increase::Models::CheckTransferCreateParams::ThirdParty)
-        )
+        returns(T.nilable(Increase::CheckTransferCreateParams::ThirdParty))
       end
       attr_reader :third_party
 
       sig do
         params(
-          third_party:
-            Increase::Models::CheckTransferCreateParams::ThirdParty::OrHash
+          third_party: Increase::CheckTransferCreateParams::ThirdParty::OrHash
         ).void
       end
       attr_writer :third_party
@@ -86,14 +81,13 @@ module Increase
           account_id: String,
           amount: Integer,
           fulfillment_method:
-            Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+            Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
           check_number: String,
           physical_check:
-            Increase::Models::CheckTransferCreateParams::PhysicalCheck::OrHash,
+            Increase::CheckTransferCreateParams::PhysicalCheck::OrHash,
           require_approval: T::Boolean,
-          third_party:
-            Increase::Models::CheckTransferCreateParams::ThirdParty::OrHash,
+          third_party: Increase::CheckTransferCreateParams::ThirdParty::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -132,14 +126,12 @@ module Increase
             account_id: String,
             amount: Integer,
             fulfillment_method:
-              Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+              Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
             source_account_number_id: String,
             check_number: String,
-            physical_check:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+            physical_check: Increase::CheckTransferCreateParams::PhysicalCheck,
             require_approval: T::Boolean,
-            third_party:
-              Increase::Models::CheckTransferCreateParams::ThirdParty,
+            third_party: Increase::CheckTransferCreateParams::ThirdParty,
             request_options: Increase::RequestOptions
           }
         )
@@ -155,7 +147,7 @@ module Increase
           T.type_alias do
             T.all(
               Symbol,
-              Increase::Models::CheckTransferCreateParams::FulfillmentMethod
+              Increase::CheckTransferCreateParams::FulfillmentMethod
             )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -164,20 +156,20 @@ module Increase
         PHYSICAL_CHECK =
           T.let(
             :physical_check,
-            Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
+            Increase::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
           )
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY =
           T.let(
             :third_party,
-            Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
+            Increase::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
+              Increase::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
             ]
           )
         end
@@ -192,7 +184,7 @@ module Increase
         # Details for where Increase will mail the check.
         sig do
           returns(
-            Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress
+            Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress
           )
         end
         attr_reader :mailing_address
@@ -200,7 +192,7 @@ module Increase
         sig do
           params(
             mailing_address:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash
+              Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash
           ).void
         end
         attr_writer :mailing_address
@@ -235,7 +227,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
+              Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
             )
           )
         end
@@ -244,7 +236,7 @@ module Increase
         sig do
           params(
             return_address:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash
+              Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash
           ).void
         end
         attr_writer :return_address
@@ -254,7 +246,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
+              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
             )
           )
         end
@@ -263,7 +255,7 @@ module Increase
         sig do
           params(
             shipping_method:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
+              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
           ).void
         end
         attr_writer :shipping_method
@@ -282,15 +274,15 @@ module Increase
         sig do
           params(
             mailing_address:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash,
+              Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash,
             memo: String,
             recipient_name: String,
             attachment_file_id: String,
             note: String,
             return_address:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash,
+              Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash,
             shipping_method:
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
+              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
             signature_text: String
           ).returns(T.attached_class)
         end
@@ -324,15 +316,15 @@ module Increase
           override.returns(
             {
               mailing_address:
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+                Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
               memo: String,
               recipient_name: String,
               attachment_file_id: String,
               note: String,
               return_address:
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+                Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
               shipping_method:
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
+                Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
               signature_text: String
             }
           )
@@ -491,7 +483,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod
+                Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -500,20 +492,20 @@ module Increase
           USPS_FIRST_CLASS =
             T.let(
               :usps_first_class,
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
+              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
             )
 
           # FedEx Overnight
           FEDEX_OVERNIGHT =
             T.let(
               :fedex_overnight,
-              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
+              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
+                Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
               ]
             )
           end

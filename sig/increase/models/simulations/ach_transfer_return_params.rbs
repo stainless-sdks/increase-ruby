@@ -22,7 +22,7 @@ module Increase
           ?request_options: Increase::request_opts
         ) -> void
 
-        def to_hash: -> Increase::Models::Simulations::ach_transfer_return_params
+        def to_hash: -> ::Hash[Symbol, top]
 
         type reason =
           :insufficient_fund

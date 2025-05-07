@@ -12,7 +12,7 @@ module Increase
           front_image_file_id: String,
           program_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCardProfile)
+        ).returns(Increase::PhysicalCardProfile)
       end
       def create(
         # The identifier of the File containing the physical card's carrier image.
@@ -34,7 +34,7 @@ module Increase
         params(
           physical_card_profile_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCardProfile)
+        ).returns(Increase::PhysicalCardProfile)
       end
       def retrieve(
         # The identifier of the Card Profile.
@@ -49,12 +49,9 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            Increase::Models::PhysicalCardProfileListParams::Status::OrHash,
+          status: Increase::PhysicalCardProfileListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::PhysicalCardProfile]
-        )
+        ).returns(Increase::Internal::Page[Increase::PhysicalCardProfile])
       end
       def list(
         # Return the page of entries after this one.
@@ -77,7 +74,7 @@ module Increase
         params(
           physical_card_profile_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCardProfile)
+        ).returns(Increase::PhysicalCardProfile)
       end
       def archive(
         # The identifier of the Physical Card Profile to archive.
@@ -95,9 +92,9 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text:
-            Increase::Models::PhysicalCardProfileCloneParams::FrontText::OrHash,
+            Increase::PhysicalCardProfileCloneParams::FrontText::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCardProfile)
+        ).returns(Increase::PhysicalCardProfile)
       end
       def clone_(
         # The identifier of the Physical Card Profile to clone.

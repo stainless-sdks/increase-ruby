@@ -10,7 +10,7 @@ module Increase
         params(
           account_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiBalance)
+        ).returns(Increase::IntrafiBalance)
       end
       def intrafi_balance(
         # The identifier of the Account to get balances for.

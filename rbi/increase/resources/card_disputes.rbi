@@ -10,7 +10,7 @@ module Increase
           explanation: String,
           amount: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::CardDispute)
+        ).returns(Increase::CardDispute)
       end
       def create(
         # The Transaction you wish to dispute. This Transaction must have a `source_type`
@@ -32,7 +32,7 @@ module Increase
         params(
           card_dispute_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::CardDispute)
+        ).returns(Increase::CardDispute)
       end
       def retrieve(
         # The identifier of the Card Dispute.
@@ -44,14 +44,13 @@ module Increase
       # List Card Disputes
       sig do
         params(
-          created_at:
-            Increase::Models::CardDisputeListParams::CreatedAt::OrHash,
+          created_at: Increase::CardDisputeListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::CardDisputeListParams::Status::OrHash,
+          status: Increase::CardDisputeListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::CardDispute])
+        ).returns(Increase::Internal::Page[Increase::CardDispute])
       end
       def list(
         created_at: nil,

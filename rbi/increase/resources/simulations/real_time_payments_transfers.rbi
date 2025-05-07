@@ -12,9 +12,9 @@ module Increase
           params(
             real_time_payments_transfer_id: String,
             rejection:
-              Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash,
+              Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::RealTimePaymentsTransfer)
+          ).returns(Increase::RealTimePaymentsTransfer)
         end
         def complete(
           # The identifier of the Real-Time Payments Transfer you wish to complete.

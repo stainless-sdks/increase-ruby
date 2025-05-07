@@ -25,7 +25,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol
+            Increase::ExternalAccountCreateParams::AccountHolder::OrSymbol
           )
         )
       end
@@ -34,7 +34,7 @@ module Increase
       sig do
         params(
           account_holder:
-            Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol
+            Increase::ExternalAccountCreateParams::AccountHolder::OrSymbol
         ).void
       end
       attr_writer :account_holder
@@ -42,17 +42,14 @@ module Increase
       # The type of the destination account. Defaults to `checking`.
       sig do
         returns(
-          T.nilable(
-            Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol
-          )
+          T.nilable(Increase::ExternalAccountCreateParams::Funding::OrSymbol)
         )
       end
       attr_reader :funding
 
       sig do
         params(
-          funding:
-            Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol
+          funding: Increase::ExternalAccountCreateParams::Funding::OrSymbol
         ).void
       end
       attr_writer :funding
@@ -63,9 +60,8 @@ module Increase
           description: String,
           routing_number: String,
           account_holder:
-            Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-          funding:
-            Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
+            Increase::ExternalAccountCreateParams::AccountHolder::OrSymbol,
+          funding: Increase::ExternalAccountCreateParams::Funding::OrSymbol,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -93,9 +89,8 @@ module Increase
             description: String,
             routing_number: String,
             account_holder:
-              Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-            funding:
-              Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
+              Increase::ExternalAccountCreateParams::AccountHolder::OrSymbol,
+            funding: Increase::ExternalAccountCreateParams::Funding::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -109,10 +104,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Increase::Models::ExternalAccountCreateParams::AccountHolder
-            )
+            T.all(Symbol, Increase::ExternalAccountCreateParams::AccountHolder)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -120,27 +112,27 @@ module Increase
         BUSINESS =
           T.let(
             :business,
-            Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
+            Increase::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
           )
 
         # The External Account is owned by an individual.
         INDIVIDUAL =
           T.let(
             :individual,
-            Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
+            Increase::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
           )
 
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN =
           T.let(
             :unknown,
-            Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
+            Increase::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
+              Increase::ExternalAccountCreateParams::AccountHolder::TaggedSymbol
             ]
           )
         end
@@ -154,10 +146,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(
-              Symbol,
-              Increase::Models::ExternalAccountCreateParams::Funding
-            )
+            T.all(Symbol, Increase::ExternalAccountCreateParams::Funding)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -165,27 +154,27 @@ module Increase
         CHECKING =
           T.let(
             :checking,
-            Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol
+            Increase::ExternalAccountCreateParams::Funding::TaggedSymbol
           )
 
         # A savings account.
         SAVINGS =
           T.let(
             :savings,
-            Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol
+            Increase::ExternalAccountCreateParams::Funding::TaggedSymbol
           )
 
         # A different type of account.
         OTHER =
           T.let(
             :other,
-            Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol
+            Increase::ExternalAccountCreateParams::Funding::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::ExternalAccountCreateParams::Funding::TaggedSymbol
+              Increase::ExternalAccountCreateParams::Funding::TaggedSymbol
             ]
           )
         end

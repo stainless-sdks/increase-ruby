@@ -8,7 +8,7 @@ module Increase
         params(
           inbound_real_time_payments_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundRealTimePaymentsTransfer)
+        ).returns(Increase::InboundRealTimePaymentsTransfer)
       end
       def retrieve(
         # The identifier of the Inbound Real-Time Payments Transfer to get details for.
@@ -23,14 +23,12 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash,
+            Increase::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
         ).returns(
-          Increase::Internal::Page[
-            Increase::Models::InboundRealTimePaymentsTransfer
-          ]
+          Increase::Internal::Page[Increase::InboundRealTimePaymentsTransfer]
         )
       end
       def list(

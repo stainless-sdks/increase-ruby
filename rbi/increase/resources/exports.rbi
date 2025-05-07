@@ -6,18 +6,17 @@ module Increase
       # Create an Export
       sig do
         params(
-          category: Increase::Models::ExportCreateParams::Category::OrSymbol,
+          category: Increase::ExportCreateParams::Category::OrSymbol,
           account_statement_ofx:
-            Increase::Models::ExportCreateParams::AccountStatementOfx::OrHash,
-          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv::OrHash,
+            Increase::ExportCreateParams::AccountStatementOfx::OrHash,
+          balance_csv: Increase::ExportCreateParams::BalanceCsv::OrHash,
           bookkeeping_account_balance_csv:
-            Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::OrHash,
-          entity_csv: Increase::Models::ExportCreateParams::EntityCsv::OrHash,
-          transaction_csv:
-            Increase::Models::ExportCreateParams::TransactionCsv::OrHash,
+            Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::OrHash,
+          entity_csv: Increase::ExportCreateParams::EntityCsv::OrHash,
+          transaction_csv: Increase::ExportCreateParams::TransactionCsv::OrHash,
           vendor_csv: T.anything,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Export)
+        ).returns(Increase::Export)
       end
       def create(
         # The type of Export to create.
@@ -47,7 +46,7 @@ module Increase
         params(
           export_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Export)
+        ).returns(Increase::Export)
       end
       def retrieve(
         # The identifier of the Export to retrieve.
@@ -59,14 +58,14 @@ module Increase
       # List Exports
       sig do
         params(
-          category: Increase::Models::ExportListParams::Category::OrHash,
-          created_at: Increase::Models::ExportListParams::CreatedAt::OrHash,
+          category: Increase::ExportListParams::Category::OrHash,
+          created_at: Increase::ExportListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::ExportListParams::Status::OrHash,
+          status: Increase::ExportListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::Export])
+        ).returns(Increase::Internal::Page[Increase::Export])
       end
       def list(
         category: nil,

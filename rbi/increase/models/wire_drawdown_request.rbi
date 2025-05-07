@@ -84,29 +84,25 @@ module Increase
       attr_accessor :recipient_routing_number
 
       # The lifecycle status of the drawdown request.
-      sig do
-        returns(Increase::Models::WireDrawdownRequest::Status::TaggedSymbol)
-      end
+      sig { returns(Increase::WireDrawdownRequest::Status::TaggedSymbol) }
       attr_accessor :status
 
       # After the drawdown request is submitted to Fedwire, this will contain
       # supplemental details.
-      sig do
-        returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission))
-      end
+      sig { returns(T.nilable(Increase::WireDrawdownRequest::Submission)) }
       attr_reader :submission
 
       sig do
         params(
           submission:
-            T.nilable(Increase::Models::WireDrawdownRequest::Submission::OrHash)
+            T.nilable(Increase::WireDrawdownRequest::Submission::OrHash)
         ).void
       end
       attr_writer :submission
 
       # A constant representing the object's type. For this resource it will always be
       # `wire_drawdown_request`.
-      sig { returns(Increase::Models::WireDrawdownRequest::Type::TaggedSymbol) }
+      sig { returns(Increase::WireDrawdownRequest::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Wire drawdown requests enable you to request that someone else send you a wire.
@@ -132,12 +128,10 @@ module Increase
           recipient_address_line3: T.nilable(String),
           recipient_name: T.nilable(String),
           recipient_routing_number: String,
-          status: Increase::Models::WireDrawdownRequest::Status::OrSymbol,
+          status: Increase::WireDrawdownRequest::Status::OrSymbol,
           submission:
-            T.nilable(
-              Increase::Models::WireDrawdownRequest::Submission::OrHash
-            ),
-          type: Increase::Models::WireDrawdownRequest::Type::OrSymbol
+            T.nilable(Increase::WireDrawdownRequest::Submission::OrHash),
+          type: Increase::WireDrawdownRequest::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -215,10 +209,9 @@ module Increase
             recipient_address_line3: T.nilable(String),
             recipient_name: T.nilable(String),
             recipient_routing_number: String,
-            status: Increase::Models::WireDrawdownRequest::Status::TaggedSymbol,
-            submission:
-              T.nilable(Increase::Models::WireDrawdownRequest::Submission),
-            type: Increase::Models::WireDrawdownRequest::Type::TaggedSymbol
+            status: Increase::WireDrawdownRequest::Status::TaggedSymbol,
+            submission: T.nilable(Increase::WireDrawdownRequest::Submission),
+            type: Increase::WireDrawdownRequest::Type::TaggedSymbol
           }
         )
       end
@@ -230,44 +223,34 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::WireDrawdownRequest::Status)
-          end
+          T.type_alias { T.all(Symbol, Increase::WireDrawdownRequest::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The drawdown request is queued to be submitted to Fedwire.
         PENDING_SUBMISSION =
           T.let(
             :pending_submission,
-            Increase::Models::WireDrawdownRequest::Status::TaggedSymbol
+            Increase::WireDrawdownRequest::Status::TaggedSymbol
           )
 
         # The drawdown request has been sent and the recipient should respond in some way.
         PENDING_RESPONSE =
           T.let(
             :pending_response,
-            Increase::Models::WireDrawdownRequest::Status::TaggedSymbol
+            Increase::WireDrawdownRequest::Status::TaggedSymbol
           )
 
         # The drawdown request has been fulfilled by the recipient.
         FULFILLED =
-          T.let(
-            :fulfilled,
-            Increase::Models::WireDrawdownRequest::Status::TaggedSymbol
-          )
+          T.let(:fulfilled, Increase::WireDrawdownRequest::Status::TaggedSymbol)
 
         # The drawdown request has been refused by the recipient.
         REFUSED =
-          T.let(
-            :refused,
-            Increase::Models::WireDrawdownRequest::Status::TaggedSymbol
-          )
+          T.let(:refused, Increase::WireDrawdownRequest::Status::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[
-              Increase::Models::WireDrawdownRequest::Status::TaggedSymbol
-            ]
+            T::Array[Increase::WireDrawdownRequest::Status::TaggedSymbol]
           )
         end
         def self.values
@@ -308,20 +291,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::WireDrawdownRequest::Type)
-          end
+          T.type_alias { T.all(Symbol, Increase::WireDrawdownRequest::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         WIRE_DRAWDOWN_REQUEST =
           T.let(
             :wire_drawdown_request,
-            Increase::Models::WireDrawdownRequest::Type::TaggedSymbol
+            Increase::WireDrawdownRequest::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::Models::WireDrawdownRequest::Type::TaggedSymbol]
+            T::Array[Increase::WireDrawdownRequest::Type::TaggedSymbol]
           )
         end
         def self.values

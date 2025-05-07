@@ -14,7 +14,7 @@ module Increase
           params(
             ach_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::ACHTransfer)
+          ).returns(Increase::ACHTransfer)
         end
         def acknowledge(
           # The identifier of the ACH Transfer you wish to become acknowledged.
@@ -29,10 +29,10 @@ module Increase
           params(
             ach_transfer_id: String,
             change_code:
-              Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
+              Increase::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::ACHTransfer)
+          ).returns(Increase::ACHTransfer)
         end
         def create_notification_of_change(
           # The identifier of the ACH Transfer you wish to create a notification of change
@@ -53,9 +53,9 @@ module Increase
           params(
             ach_transfer_id: String,
             reason:
-              Increase::Models::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
+              Increase::Simulations::ACHTransferReturnParams::Reason::OrSymbol,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::ACHTransfer)
+          ).returns(Increase::ACHTransfer)
         end
         def return_(
           # The identifier of the ACH Transfer you wish to return.
@@ -77,7 +77,7 @@ module Increase
           params(
             ach_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::ACHTransfer)
+          ).returns(Increase::ACHTransfer)
         end
         def settle(
           # The identifier of the ACH Transfer you wish to become settled.
@@ -96,7 +96,7 @@ module Increase
           params(
             ach_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::ACHTransfer)
+          ).returns(Increase::ACHTransfer)
         end
         def submit(
           # The identifier of the ACH Transfer you wish to submit.

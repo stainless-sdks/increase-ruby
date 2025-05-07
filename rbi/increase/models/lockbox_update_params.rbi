@@ -24,16 +24,12 @@ module Increase
 
       # This indicates if checks can be sent to the Lockbox.
       sig do
-        returns(
-          T.nilable(Increase::Models::LockboxUpdateParams::Status::OrSymbol)
-        )
+        returns(T.nilable(Increase::LockboxUpdateParams::Status::OrSymbol))
       end
       attr_reader :status
 
       sig do
-        params(
-          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol
-        ).void
+        params(status: Increase::LockboxUpdateParams::Status::OrSymbol).void
       end
       attr_writer :status
 
@@ -41,7 +37,7 @@ module Increase
         params(
           description: String,
           recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
+          status: Increase::LockboxUpdateParams::Status::OrSymbol,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -62,7 +58,7 @@ module Increase
           {
             description: String,
             recipient_name: String,
-            status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
+            status: Increase::LockboxUpdateParams::Status::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -75,30 +71,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::LockboxUpdateParams::Status)
-          end
+          T.type_alias { T.all(Symbol, Increase::LockboxUpdateParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE =
-          T.let(
-            :active,
-            Increase::Models::LockboxUpdateParams::Status::TaggedSymbol
-          )
+          T.let(:active, Increase::LockboxUpdateParams::Status::TaggedSymbol)
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE =
-          T.let(
-            :inactive,
-            Increase::Models::LockboxUpdateParams::Status::TaggedSymbol
-          )
+          T.let(:inactive, Increase::LockboxUpdateParams::Status::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[
-              Increase::Models::LockboxUpdateParams::Status::TaggedSymbol
-            ]
+            T::Array[Increase::LockboxUpdateParams::Status::TaggedSymbol]
           )
         end
         def self.values

@@ -9,7 +9,7 @@ module Increase
           file_id: String,
           expires_at: Time,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::FileLink)
+        ).returns(Increase::FileLink)
       end
       def create(
         # The File to create a File Link for.

@@ -8,7 +8,7 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundACHTransfer)
+        ).returns(Increase::InboundACHTransfer)
       end
       def retrieve(
         # The identifier of the Inbound ACH Transfer to get details for.
@@ -22,16 +22,12 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at:
-            Increase::Models::InboundACHTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::InboundACHTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status:
-            Increase::Models::InboundACHTransferListParams::Status::OrHash,
+          status: Increase::InboundACHTransferListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::InboundACHTransfer]
-        )
+        ).returns(Increase::Internal::Page[Increase::InboundACHTransfer])
       end
       def list(
         # Filter Inbound ACH Transfers to ones belonging to the specified Account.
@@ -56,7 +52,7 @@ module Increase
           updated_account_number: String,
           updated_routing_number: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundACHTransfer)
+        ).returns(Increase::InboundACHTransfer)
       end
       def create_notification_of_change(
         # The identifier of the Inbound ACH Transfer for which to create a notification of
@@ -74,10 +70,9 @@ module Increase
       sig do
         params(
           inbound_ach_transfer_id: String,
-          reason:
-            Increase::Models::InboundACHTransferDeclineParams::Reason::OrSymbol,
+          reason: Increase::InboundACHTransferDeclineParams::Reason::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundACHTransfer)
+        ).returns(Increase::InboundACHTransfer)
       end
       def decline(
         # The identifier of the Inbound ACH Transfer to decline.
@@ -95,9 +90,9 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           reason:
-            Increase::Models::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
+            Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundACHTransfer)
+        ).returns(Increase::InboundACHTransfer)
       end
       def transfer_return(
         # The identifier of the Inbound ACH Transfer to return to the originating

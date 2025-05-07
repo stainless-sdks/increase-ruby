@@ -8,25 +8,19 @@ module Increase
 
       OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
-      sig { returns(T.nilable(Increase::Models::DocumentListParams::Category)) }
+      sig { returns(T.nilable(Increase::DocumentListParams::Category)) }
       attr_reader :category
 
       sig do
-        params(
-          category: Increase::Models::DocumentListParams::Category::OrHash
-        ).void
+        params(category: Increase::DocumentListParams::Category::OrHash).void
       end
       attr_writer :category
 
-      sig do
-        returns(T.nilable(Increase::Models::DocumentListParams::CreatedAt))
-      end
+      sig { returns(T.nilable(Increase::DocumentListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: Increase::Models::DocumentListParams::CreatedAt::OrHash
-        ).void
+        params(created_at: Increase::DocumentListParams::CreatedAt::OrHash).void
       end
       attr_writer :created_at
 
@@ -54,8 +48,8 @@ module Increase
 
       sig do
         params(
-          category: Increase::Models::DocumentListParams::Category::OrHash,
-          created_at: Increase::Models::DocumentListParams::CreatedAt::OrHash,
+          category: Increase::DocumentListParams::Category::OrHash,
+          created_at: Increase::DocumentListParams::CreatedAt::OrHash,
           cursor: String,
           entity_id: String,
           limit: Integer,
@@ -80,8 +74,8 @@ module Increase
       sig do
         override.returns(
           {
-            category: Increase::Models::DocumentListParams::Category,
-            created_at: Increase::Models::DocumentListParams::CreatedAt,
+            category: Increase::DocumentListParams::Category,
+            created_at: Increase::DocumentListParams::CreatedAt,
             cursor: String,
             entity_id: String,
             limit: Integer,
@@ -102,9 +96,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              T::Array[
-                Increase::Models::DocumentListParams::Category::In::OrSymbol
-              ]
+              T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
             )
           )
         end
@@ -112,20 +104,14 @@ module Increase
 
         sig do
           params(
-            in_:
-              T::Array[
-                Increase::Models::DocumentListParams::Category::In::OrSymbol
-              ]
+            in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
           ).void
         end
         attr_writer :in_
 
         sig do
           params(
-            in_:
-              T::Array[
-                Increase::Models::DocumentListParams::Category::In::OrSymbol
-              ]
+            in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -140,9 +126,7 @@ module Increase
           override.returns(
             {
               in_:
-                T::Array[
-                  Increase::Models::DocumentListParams::Category::In::OrSymbol
-                ]
+                T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
             }
           )
         end
@@ -154,7 +138,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::DocumentListParams::Category::In)
+              T.all(Symbol, Increase::DocumentListParams::Category::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -162,35 +146,33 @@ module Increase
           FORM_1099_INT =
             T.let(
               :form_1099_int,
-              Increase::Models::DocumentListParams::Category::In::TaggedSymbol
+              Increase::DocumentListParams::Category::In::TaggedSymbol
             )
 
           # Internal Revenue Service Form 1099-MISC.
           FORM_1099_MISC =
             T.let(
               :form_1099_misc,
-              Increase::Models::DocumentListParams::Category::In::TaggedSymbol
+              Increase::DocumentListParams::Category::In::TaggedSymbol
             )
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
           PROOF_OF_AUTHORIZATION =
             T.let(
               :proof_of_authorization,
-              Increase::Models::DocumentListParams::Category::In::TaggedSymbol
+              Increase::DocumentListParams::Category::In::TaggedSymbol
             )
 
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
           COMPANY_INFORMATION =
             T.let(
               :company_information,
-              Increase::Models::DocumentListParams::Category::In::TaggedSymbol
+              Increase::DocumentListParams::Category::In::TaggedSymbol
             )
 
           sig do
             override.returns(
-              T::Array[
-                Increase::Models::DocumentListParams::Category::In::TaggedSymbol
-              ]
+              T::Array[Increase::DocumentListParams::Category::In::TaggedSymbol]
             )
           end
           def self.values

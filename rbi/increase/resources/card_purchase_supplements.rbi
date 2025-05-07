@@ -8,7 +8,7 @@ module Increase
         params(
           card_purchase_supplement_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::CardPurchaseSupplement)
+        ).returns(Increase::CardPurchaseSupplement)
       end
       def retrieve(
         # The identifier of the Card Purchase Supplement.
@@ -22,13 +22,11 @@ module Increase
         params(
           card_payment_id: String,
           created_at:
-            Increase::Models::CardPurchaseSupplementListParams::CreatedAt::OrHash,
+            Increase::CardPurchaseSupplementListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::CardPurchaseSupplement]
-        )
+        ).returns(Increase::Internal::Page[Increase::CardPurchaseSupplement])
       end
       def list(
         # Filter Card Purchase Supplements to ones belonging to the specified Card

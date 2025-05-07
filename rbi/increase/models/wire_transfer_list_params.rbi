@@ -15,15 +15,12 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig do
-        returns(T.nilable(Increase::Models::WireTransferListParams::CreatedAt))
-      end
+      sig { returns(T.nilable(Increase::WireTransferListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::WireTransferListParams::CreatedAt::OrHash
+          created_at: Increase::WireTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -63,8 +60,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::Models::WireTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::WireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
@@ -97,7 +93,7 @@ module Increase
         override.returns(
           {
             account_id: String,
-            created_at: Increase::Models::WireTransferListParams::CreatedAt,
+            created_at: Increase::WireTransferListParams::CreatedAt,
             cursor: String,
             external_account_id: String,
             idempotency_key: String,

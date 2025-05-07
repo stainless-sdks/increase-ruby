@@ -10,9 +10,7 @@ module Increase
 
       # The credential you request in exchange for the code. In Production, this is
       # always `authorization_code`. In Sandbox, you can pass either enum value.
-      sig do
-        returns(Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
-      end
+      sig { returns(Increase::OAuthTokenCreateParams::GrantType::OrSymbol) }
       attr_accessor :grant_type
 
       # The public identifier for your application.
@@ -50,8 +48,7 @@ module Increase
 
       sig do
         params(
-          grant_type:
-            Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
+          grant_type: Increase::OAuthTokenCreateParams::GrantType::OrSymbol,
           client_id: String,
           client_secret: String,
           code: String,
@@ -84,8 +81,7 @@ module Increase
       sig do
         override.returns(
           {
-            grant_type:
-              Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
+            grant_type: Increase::OAuthTokenCreateParams::GrantType::OrSymbol,
             client_id: String,
             client_secret: String,
             code: String,
@@ -104,7 +100,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType)
+            T.all(Symbol, Increase::OAuthTokenCreateParams::GrantType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -112,21 +108,19 @@ module Increase
         AUTHORIZATION_CODE =
           T.let(
             :authorization_code,
-            Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol
+            Increase::OAuthTokenCreateParams::GrantType::TaggedSymbol
           )
 
         # An OAuth production token.
         PRODUCTION_TOKEN =
           T.let(
             :production_token,
-            Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol
+            Increase::OAuthTokenCreateParams::GrantType::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[
-              Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol
-            ]
+            T::Array[Increase::OAuthTokenCreateParams::GrantType::TaggedSymbol]
           )
         end
         def self.values

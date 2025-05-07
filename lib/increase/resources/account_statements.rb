@@ -11,14 +11,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::AccountStatement]
+      # @return [Increase::AccountStatement]
       #
       # @see Increase::Models::AccountStatementRetrieveParams
       def retrieve(account_statement_id, params = {})
         @client.request(
           method: :get,
           path: ["account_statements/%1$s", account_statement_id],
-          model: Increase::Models::AccountStatement,
+          model: Increase::AccountStatement,
           options: params[:request_options]
         )
       end
@@ -37,11 +37,11 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      # @param statement_period_start [Increase::AccountStatementListParams::StatementPeriodStart]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::AccountStatement>]
+      # @return [Increase::Internal::Page<Increase::AccountStatement>]
       #
       # @see Increase::Models::AccountStatementListParams
       def list(params = {})
@@ -51,7 +51,7 @@ module Increase
           path: "account_statements",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::AccountStatement,
+          model: Increase::AccountStatement,
           options: options
         )
       end

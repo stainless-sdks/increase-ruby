@@ -10,7 +10,7 @@ module Increase
           params(
             transaction_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::Transaction)
+          ).returns(Increase::Transaction)
         end
         def create(
           # The identifier for the Transaction to refund. The Transaction's source must have

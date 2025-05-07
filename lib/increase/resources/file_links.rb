@@ -17,7 +17,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::FileLink]
+      # @return [Increase::FileLink]
       #
       # @see Increase::Models::FileLinkCreateParams
       def create(params)
@@ -26,7 +26,7 @@ module Increase
           method: :post,
           path: "file_links",
           body: parsed,
-          model: Increase::Models::FileLink,
+          model: Increase::FileLink,
           options: options
         )
       end

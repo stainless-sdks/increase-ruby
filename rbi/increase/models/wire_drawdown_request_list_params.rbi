@@ -34,16 +34,13 @@ module Increase
       attr_writer :limit
 
       sig do
-        returns(
-          T.nilable(Increase::Models::WireDrawdownRequestListParams::Status)
-        )
+        returns(T.nilable(Increase::WireDrawdownRequestListParams::Status))
       end
       attr_reader :status
 
       sig do
         params(
-          status:
-            Increase::Models::WireDrawdownRequestListParams::Status::OrHash
+          status: Increase::WireDrawdownRequestListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -53,8 +50,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            Increase::Models::WireDrawdownRequestListParams::Status::OrHash,
+          status: Increase::WireDrawdownRequestListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -81,7 +77,7 @@ module Increase
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::Models::WireDrawdownRequestListParams::Status,
+            status: Increase::WireDrawdownRequestListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -100,7 +96,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
+                Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -111,7 +107,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
+                Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -121,7 +117,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
+                Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -138,7 +134,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
+                  Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -151,10 +147,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::WireDrawdownRequestListParams::Status::In
-              )
+              T.all(Symbol, Increase::WireDrawdownRequestListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -162,34 +155,34 @@ module Increase
           PENDING_SUBMISSION =
             T.let(
               :pending_submission,
-              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           # The drawdown request has been sent and the recipient should respond in some way.
           PENDING_RESPONSE =
             T.let(
               :pending_response,
-              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           # The drawdown request has been fulfilled by the recipient.
           FULFILLED =
             T.let(
               :fulfilled,
-              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           # The drawdown request has been refused by the recipient.
           REFUSED =
             T.let(
               :refused,
-              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+                Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
               ]
             )
           end

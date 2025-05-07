@@ -28,9 +28,8 @@ module Increase
 
       # @!attribute statement_period_start
       #
-      #   @return [Increase::Models::AccountStatementListParams::StatementPeriodStart, nil]
-      optional :statement_period_start,
-               -> { Increase::Models::AccountStatementListParams::StatementPeriodStart }
+      #   @return [Increase::AccountStatementListParams::StatementPeriodStart, nil]
+      optional :statement_period_start, -> { Increase::AccountStatementListParams::StatementPeriodStart }
 
       # @!method initialize(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -43,7 +42,7 @@ module Increase
       #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       #   ...
       #
-      #   @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      #   @param statement_period_start [Increase::AccountStatementListParams::StatementPeriodStart]
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -78,8 +77,7 @@ module Increase
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::AccountStatementListParams::StatementPeriodStart} for more
-        #   details.
+        #   {Increase::AccountStatementListParams::StatementPeriodStart} for more details.
         #
         #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
         #   ...

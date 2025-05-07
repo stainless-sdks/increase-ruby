@@ -16,7 +16,7 @@ module Increase
             amount: Integer,
             check_number: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::InboundCheckDeposit)
+          ).returns(Increase::InboundCheckDeposit)
         end
         def create(
           # The identifier of the Account Number the Inbound Check Deposit will be against.

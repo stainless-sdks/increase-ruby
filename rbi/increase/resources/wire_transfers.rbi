@@ -23,7 +23,7 @@ module Increase
           routing_number: String,
           source_account_number_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::WireTransfer)
+        ).returns(Increase::WireTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -73,7 +73,7 @@ module Increase
         params(
           wire_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::WireTransfer)
+        ).returns(Increase::WireTransfer)
       end
       def retrieve(
         # The identifier of the Wire Transfer.
@@ -86,14 +86,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::Models::WireTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::WireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::WireTransfer])
+        ).returns(Increase::Internal::Page[Increase::WireTransfer])
       end
       def list(
         # Filter Wire Transfers to those belonging to the specified Account.
@@ -120,7 +119,7 @@ module Increase
         params(
           wire_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::WireTransfer)
+        ).returns(Increase::WireTransfer)
       end
       def approve(
         # The identifier of the Wire Transfer to approve.
@@ -134,7 +133,7 @@ module Increase
         params(
           wire_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::WireTransfer)
+        ).returns(Increase::WireTransfer)
       end
       def cancel(
         # The identifier of the pending Wire Transfer to cancel.

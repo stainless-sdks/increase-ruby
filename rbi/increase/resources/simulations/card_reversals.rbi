@@ -13,7 +13,7 @@ module Increase
             card_payment_id: String,
             amount: Integer,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CardPayment)
+          ).returns(Increase::CardPayment)
         end
         def create(
           # The identifier of the Card Payment to create a reversal on.

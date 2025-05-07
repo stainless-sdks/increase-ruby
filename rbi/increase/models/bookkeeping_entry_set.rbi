@@ -18,7 +18,7 @@ module Increase
       attr_accessor :date
 
       # The entries.
-      sig { returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry]) }
+      sig { returns(T::Array[Increase::BookkeepingEntrySet::Entry]) }
       attr_accessor :entries
 
       # The idempotency key you chose for this object. This value is unique across
@@ -33,7 +33,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry_set`.
-      sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
+      sig { returns(Increase::BookkeepingEntrySet::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entry Sets are accounting entries that are transactionally applied. Your
@@ -45,11 +45,10 @@ module Increase
           id: String,
           created_at: Time,
           date: Time,
-          entries:
-            T::Array[Increase::Models::BookkeepingEntrySet::Entry::OrHash],
+          entries: T::Array[Increase::BookkeepingEntrySet::Entry::OrHash],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
-          type: Increase::Models::BookkeepingEntrySet::Type::OrSymbol
+          type: Increase::BookkeepingEntrySet::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -79,10 +78,10 @@ module Increase
             id: String,
             created_at: Time,
             date: Time,
-            entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
+            entries: T::Array[Increase::BookkeepingEntrySet::Entry],
             idempotency_key: T.nilable(String),
             transaction_id: T.nilable(String),
-            type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
+            type: Increase::BookkeepingEntrySet::Type::TaggedSymbol
           }
         )
       end
@@ -133,20 +132,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::BookkeepingEntrySet::Type)
-          end
+          T.type_alias { T.all(Symbol, Increase::BookkeepingEntrySet::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BOOKKEEPING_ENTRY_SET =
           T.let(
             :bookkeeping_entry_set,
-            Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
+            Increase::BookkeepingEntrySet::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol]
+            T::Array[Increase::BookkeepingEntrySet::Type::TaggedSymbol]
           )
         end
         def self.values

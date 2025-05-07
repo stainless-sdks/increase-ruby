@@ -9,7 +9,7 @@ module Increase
           entity_id: String,
           file_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::EntitySupplementalDocument)
+        ).returns(Increase::EntitySupplementalDocument)
       end
       def create(
         # The identifier of the Entity to associate with the supplemental document.
@@ -29,7 +29,7 @@ module Increase
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
         ).returns(
-          Increase::Internal::Page[Increase::Models::EntitySupplementalDocument]
+          Increase::Internal::Page[Increase::EntitySupplementalDocument]
         )
       end
       def list(

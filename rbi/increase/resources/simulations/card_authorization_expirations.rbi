@@ -9,7 +9,7 @@ module Increase
           params(
             card_payment_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CardPayment)
+          ).returns(Increase::CardPayment)
         end
         def create(
           # The identifier of the Card Payment to expire.

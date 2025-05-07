@@ -18,9 +18,7 @@ module Increase
 
       sig do
         returns(
-          T.nilable(
-            Increase::Models::CardPurchaseSupplementListParams::CreatedAt
-          )
+          T.nilable(Increase::CardPurchaseSupplementListParams::CreatedAt)
         )
       end
       attr_reader :created_at
@@ -28,7 +26,7 @@ module Increase
       sig do
         params(
           created_at:
-            Increase::Models::CardPurchaseSupplementListParams::CreatedAt::OrHash
+            Increase::CardPurchaseSupplementListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -52,7 +50,7 @@ module Increase
         params(
           card_payment_id: String,
           created_at:
-            Increase::Models::CardPurchaseSupplementListParams::CreatedAt::OrHash,
+            Increase::CardPurchaseSupplementListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -77,8 +75,7 @@ module Increase
         override.returns(
           {
             card_payment_id: String,
-            created_at:
-              Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
+            created_at: Increase::CardPurchaseSupplementListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             request_options: Increase::RequestOptions

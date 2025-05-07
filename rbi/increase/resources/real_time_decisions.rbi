@@ -8,7 +8,7 @@ module Increase
         params(
           real_time_decision_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::RealTimeDecision)
+        ).returns(Increase::RealTimeDecision)
       end
       def retrieve(
         # The identifier of the Real-Time Decision.
@@ -22,17 +22,17 @@ module Increase
         params(
           real_time_decision_id: String,
           card_authentication:
-            Increase::Models::RealTimeDecisionActionParams::CardAuthentication::OrHash,
+            Increase::RealTimeDecisionActionParams::CardAuthentication::OrHash,
           card_authentication_challenge:
-            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::OrHash,
+            Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::OrHash,
           card_authorization:
-            Increase::Models::RealTimeDecisionActionParams::CardAuthorization::OrHash,
+            Increase::RealTimeDecisionActionParams::CardAuthorization::OrHash,
           digital_wallet_authentication:
-            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash,
+            Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash,
           digital_wallet_token:
-            Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::OrHash,
+            Increase::RealTimeDecisionActionParams::DigitalWalletToken::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::RealTimeDecision)
+        ).returns(Increase::RealTimeDecision)
       end
       def action(
         # The identifier of the Real-Time Decision.

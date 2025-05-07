@@ -41,18 +41,13 @@ module Increase
       attr_writer :limit
 
       sig do
-        returns(
-          T.nilable(
-            Increase::Models::IntrafiAccountEnrollmentListParams::Status
-          )
-        )
+        returns(T.nilable(Increase::IntrafiAccountEnrollmentListParams::Status))
       end
       attr_reader :status
 
       sig do
         params(
-          status:
-            Increase::Models::IntrafiAccountEnrollmentListParams::Status::OrHash
+          status: Increase::IntrafiAccountEnrollmentListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -63,8 +58,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            Increase::Models::IntrafiAccountEnrollmentListParams::Status::OrHash,
+          status: Increase::IntrafiAccountEnrollmentListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -94,8 +88,7 @@ module Increase
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status:
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+            status: Increase::IntrafiAccountEnrollmentListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -114,7 +107,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -125,7 +118,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -135,7 +128,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -152,7 +145,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                  Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -167,7 +160,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In
+                Increase::IntrafiAccountEnrollmentListParams::Status::In
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -176,41 +169,41 @@ module Increase
           PENDING_ENROLLING =
             T.let(
               :pending_enrolling,
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # The account has been enrolled with IntraFi.
           ENROLLED =
             T.let(
               :enrolled,
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # The account is being unenrolled from IntraFi's deposit sweep.
           PENDING_UNENROLLING =
             T.let(
               :pending_unenrolling,
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # The account was once enrolled, but is no longer enrolled at IntraFi.
           UNENROLLED =
             T.let(
               :unenrolled,
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION =
             T.let(
               :requires_attention,
-              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+                Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
               ]
             )
           end

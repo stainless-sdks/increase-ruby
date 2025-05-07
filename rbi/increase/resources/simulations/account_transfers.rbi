@@ -12,7 +12,7 @@ module Increase
           params(
             account_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::AccountTransfer)
+          ).returns(Increase::AccountTransfer)
         end
         def complete(
           # The identifier of the Account Transfer you wish to complete.

@@ -23,16 +23,13 @@ module Increase
       attr_writer :account_number_id
 
       sig do
-        returns(
-          T.nilable(Increase::Models::InboundWireTransferListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::InboundWireTransferListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::InboundWireTransferListParams::CreatedAt::OrHash
+          created_at: Increase::InboundWireTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -53,16 +50,13 @@ module Increase
       attr_writer :limit
 
       sig do
-        returns(
-          T.nilable(Increase::Models::InboundWireTransferListParams::Status)
-        )
+        returns(T.nilable(Increase::InboundWireTransferListParams::Status))
       end
       attr_reader :status
 
       sig do
         params(
-          status:
-            Increase::Models::InboundWireTransferListParams::Status::OrHash
+          status: Increase::InboundWireTransferListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -72,11 +66,10 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            Increase::Models::InboundWireTransferListParams::CreatedAt::OrHash,
+            Increase::InboundWireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status:
-            Increase::Models::InboundWireTransferListParams::Status::OrHash,
+          status: Increase::InboundWireTransferListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -102,11 +95,10 @@ module Increase
           {
             account_id: String,
             account_number_id: String,
-            created_at:
-              Increase::Models::InboundWireTransferListParams::CreatedAt,
+            created_at: Increase::InboundWireTransferListParams::CreatedAt,
             cursor: String,
             limit: Integer,
-            status: Increase::Models::InboundWireTransferListParams::Status,
+            status: Increase::InboundWireTransferListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -194,7 +186,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol
+                Increase::InboundWireTransferListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -205,7 +197,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol
+                Increase::InboundWireTransferListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -215,7 +207,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol
+                Increase::InboundWireTransferListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -232,7 +224,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::InboundWireTransferListParams::Status::In::OrSymbol
+                  Increase::InboundWireTransferListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -245,10 +237,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::InboundWireTransferListParams::Status::In
-              )
+              T.all(Symbol, Increase::InboundWireTransferListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -256,34 +245,34 @@ module Increase
           PENDING =
             T.let(
               :pending,
-              Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundWireTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound Wire Transfer is accepted.
           ACCEPTED =
             T.let(
               :accepted,
-              Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundWireTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound Wire Transfer was declined.
           DECLINED =
             T.let(
               :declined,
-              Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundWireTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound Wire Transfer was reversed.
           REVERSED =
             T.let(
               :reversed,
-              Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundWireTransferListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::InboundWireTransferListParams::Status::In::TaggedSymbol
+                Increase::InboundWireTransferListParams::Status::In::TaggedSymbol
               ]
             )
           end

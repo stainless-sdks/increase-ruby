@@ -8,12 +8,11 @@ module Increase
         params(
           account_id: String,
           name: String,
-          inbound_ach:
-            Increase::Models::AccountNumberCreateParams::InboundACH::OrHash,
+          inbound_ach: Increase::AccountNumberCreateParams::InboundACH::OrHash,
           inbound_checks:
-            Increase::Models::AccountNumberCreateParams::InboundChecks::OrHash,
+            Increase::AccountNumberCreateParams::InboundChecks::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountNumber)
+        ).returns(Increase::AccountNumber)
       end
       def create(
         # The Account the Account Number should belong to.
@@ -34,7 +33,7 @@ module Increase
         params(
           account_number_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountNumber)
+        ).returns(Increase::AccountNumber)
       end
       def retrieve(
         # The identifier of the Account Number to retrieve.
@@ -47,14 +46,13 @@ module Increase
       sig do
         params(
           account_number_id: String,
-          inbound_ach:
-            Increase::Models::AccountNumberUpdateParams::InboundACH::OrHash,
+          inbound_ach: Increase::AccountNumberUpdateParams::InboundACH::OrHash,
           inbound_checks:
-            Increase::Models::AccountNumberUpdateParams::InboundChecks::OrHash,
+            Increase::AccountNumberUpdateParams::InboundChecks::OrHash,
           name: String,
-          status: Increase::Models::AccountNumberUpdateParams::Status::OrSymbol,
+          status: Increase::AccountNumberUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountNumber)
+        ).returns(Increase::AccountNumber)
       end
       def update(
         # The identifier of the Account Number.
@@ -77,15 +75,14 @@ module Increase
         params(
           account_id: String,
           ach_debit_status:
-            Increase::Models::AccountNumberListParams::ACHDebitStatus::OrHash,
-          created_at:
-            Increase::Models::AccountNumberListParams::CreatedAt::OrHash,
+            Increase::AccountNumberListParams::ACHDebitStatus::OrHash,
+          created_at: Increase::AccountNumberListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::AccountNumberListParams::Status::OrHash,
+          status: Increase::AccountNumberListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::AccountNumber])
+        ).returns(Increase::Internal::Page[Increase::AccountNumber])
       end
       def list(
         # Filter Account Numbers to those belonging to the specified Account.

@@ -17,13 +17,13 @@ module Increase
       # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
       # ...
       #
-      # @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder] The type of entity that owns the External Account.
+      # @param account_holder [Symbol, Increase::ExternalAccountCreateParams::AccountHolder] The type of entity that owns the External Account.
       #
-      # @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding] The type of the destination account. Defaults to `checking`.
+      # @param funding [Symbol, Increase::ExternalAccountCreateParams::Funding] The type of the destination account. Defaults to `checking`.
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::ExternalAccount]
+      # @return [Increase::ExternalAccount]
       #
       # @see Increase::Models::ExternalAccountCreateParams
       def create(params)
@@ -32,7 +32,7 @@ module Increase
           method: :post,
           path: "external_accounts",
           body: parsed,
-          model: Increase::Models::ExternalAccount,
+          model: Increase::ExternalAccount,
           options: options
         )
       end
@@ -45,14 +45,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::ExternalAccount]
+      # @return [Increase::ExternalAccount]
       #
       # @see Increase::Models::ExternalAccountRetrieveParams
       def retrieve(external_account_id, params = {})
         @client.request(
           method: :get,
           path: ["external_accounts/%1$s", external_account_id],
-          model: Increase::Models::ExternalAccount,
+          model: Increase::ExternalAccount,
           options: params[:request_options]
         )
       end
@@ -63,17 +63,17 @@ module Increase
       #
       # @param external_account_id [String] The external account identifier.
       #
-      # @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder] The type of entity that owns the External Account.
+      # @param account_holder [Symbol, Increase::ExternalAccountUpdateParams::AccountHolder] The type of entity that owns the External Account.
       #
       # @param description [String] The description you choose to give the external account.
       #
-      # @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding] The funding type of the External Account.
+      # @param funding [Symbol, Increase::ExternalAccountUpdateParams::Funding] The funding type of the External Account.
       #
-      # @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status] The status of the External Account.
+      # @param status [Symbol, Increase::ExternalAccountUpdateParams::Status] The status of the External Account.
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::ExternalAccount]
+      # @return [Increase::ExternalAccount]
       #
       # @see Increase::Models::ExternalAccountUpdateParams
       def update(external_account_id, params = {})
@@ -82,7 +82,7 @@ module Increase
           method: :patch,
           path: ["external_accounts/%1$s", external_account_id],
           body: parsed,
-          model: Increase::Models::ExternalAccount,
+          model: Increase::ExternalAccount,
           options: options
         )
       end
@@ -104,11 +104,11 @@ module Increase
       #
       # @param routing_number [String] Filter External Accounts to those with the specified Routing Number.
       #
-      # @param status [Increase::Models::ExternalAccountListParams::Status]
+      # @param status [Increase::ExternalAccountListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::ExternalAccount>]
+      # @return [Increase::Internal::Page<Increase::ExternalAccount>]
       #
       # @see Increase::Models::ExternalAccountListParams
       def list(params = {})
@@ -118,7 +118,7 @@ module Increase
           path: "external_accounts",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::ExternalAccount,
+          model: Increase::ExternalAccount,
           options: options
         )
       end

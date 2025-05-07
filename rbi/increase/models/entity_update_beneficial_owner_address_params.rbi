@@ -11,16 +11,14 @@ module Increase
       # The individual's physical address. Mail receiving locations like PO Boxes and
       # PMB's are disallowed.
       sig do
-        returns(
-          Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address
-        )
+        returns(Increase::EntityUpdateBeneficialOwnerAddressParams::Address)
       end
       attr_reader :address
 
       sig do
         params(
           address:
-            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash
+            Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash
         ).void
       end
       attr_writer :address
@@ -33,7 +31,7 @@ module Increase
       sig do
         params(
           address:
-            Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
+            Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
           beneficial_owner_id: String,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -54,7 +52,7 @@ module Increase
         override.returns(
           {
             address:
-              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+              Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
             beneficial_owner_id: String,
             request_options: Increase::RequestOptions
           }

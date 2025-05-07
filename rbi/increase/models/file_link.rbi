@@ -31,7 +31,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `file_link`.
-      sig { returns(Increase::Models::FileLink::Type::TaggedSymbol) }
+      sig { returns(Increase::FileLink::Type::TaggedSymbol) }
       attr_accessor :type
 
       # A URL where the File can be downloaded. The URL will expire after the
@@ -48,7 +48,7 @@ module Increase
           expires_at: Time,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::Models::FileLink::Type::OrSymbol,
+          type: Increase::FileLink::Type::OrSymbol,
           unauthenticated_url: String
         ).returns(T.attached_class)
       end
@@ -85,7 +85,7 @@ module Increase
             expires_at: Time,
             file_id: String,
             idempotency_key: T.nilable(String),
-            type: Increase::Models::FileLink::Type::TaggedSymbol,
+            type: Increase::FileLink::Type::TaggedSymbol,
             unauthenticated_url: String
           }
         )
@@ -98,17 +98,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::FileLink::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::FileLink::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        FILE_LINK =
-          T.let(:file_link, Increase::Models::FileLink::Type::TaggedSymbol)
+        FILE_LINK = T.let(:file_link, Increase::FileLink::Type::TaggedSymbol)
 
         sig do
-          override.returns(
-            T::Array[Increase::Models::FileLink::Type::TaggedSymbol]
-          )
+          override.returns(T::Array[Increase::FileLink::Type::TaggedSymbol])
         end
         def self.values
         end

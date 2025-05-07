@@ -15,13 +15,11 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig { returns(T.nilable(Increase::Models::CardListParams::CreatedAt)) }
+      sig { returns(T.nilable(Increase::CardListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: Increase::Models::CardListParams::CreatedAt::OrHash
-        ).void
+        params(created_at: Increase::CardListParams::CreatedAt::OrHash).void
       end
       attr_writer :created_at
 
@@ -50,22 +48,20 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Increase::Models::CardListParams::Status)) }
+      sig { returns(T.nilable(Increase::CardListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(status: Increase::Models::CardListParams::Status::OrHash).void
-      end
+      sig { params(status: Increase::CardListParams::Status::OrHash).void }
       attr_writer :status
 
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::CardListParams::CreatedAt::OrHash,
+          created_at: Increase::CardListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::CardListParams::Status::OrHash,
+          status: Increase::CardListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -93,11 +89,11 @@ module Increase
         override.returns(
           {
             account_id: String,
-            created_at: Increase::Models::CardListParams::CreatedAt,
+            created_at: Increase::CardListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::Models::CardListParams::Status,
+            status: Increase::CardListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -182,25 +178,21 @@ module Increase
         # comma-delimited string, such as `?in=one,two,three`.
         sig do
           returns(
-            T.nilable(
-              T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]
-            )
+            T.nilable(T::Array[Increase::CardListParams::Status::In::OrSymbol])
           )
         end
         attr_reader :in_
 
         sig do
           params(
-            in_:
-              T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]
+            in_: T::Array[Increase::CardListParams::Status::In::OrSymbol]
           ).void
         end
         attr_writer :in_
 
         sig do
           params(
-            in_:
-              T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]
+            in_: T::Array[Increase::CardListParams::Status::In::OrSymbol]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -212,10 +204,7 @@ module Increase
 
         sig do
           override.returns(
-            {
-              in_:
-                T::Array[Increase::Models::CardListParams::Status::In::OrSymbol]
-            }
+            { in_: T::Array[Increase::CardListParams::Status::In::OrSymbol] }
           )
         end
         def to_hash
@@ -225,37 +214,24 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Increase::Models::CardListParams::Status::In)
-            end
+            T.type_alias { T.all(Symbol, Increase::CardListParams::Status::In) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The card is active.
           ACTIVE =
-            T.let(
-              :active,
-              Increase::Models::CardListParams::Status::In::TaggedSymbol
-            )
+            T.let(:active, Increase::CardListParams::Status::In::TaggedSymbol)
 
           # The card is temporarily disabled.
           DISABLED =
-            T.let(
-              :disabled,
-              Increase::Models::CardListParams::Status::In::TaggedSymbol
-            )
+            T.let(:disabled, Increase::CardListParams::Status::In::TaggedSymbol)
 
           # The card is permanently canceled.
           CANCELED =
-            T.let(
-              :canceled,
-              Increase::Models::CardListParams::Status::In::TaggedSymbol
-            )
+            T.let(:canceled, Increase::CardListParams::Status::In::TaggedSymbol)
 
           sig do
             override.returns(
-              T::Array[
-                Increase::Models::CardListParams::Status::In::TaggedSymbol
-              ]
+              T::Array[Increase::CardListParams::Status::In::TaggedSymbol]
             )
           end
           def self.values

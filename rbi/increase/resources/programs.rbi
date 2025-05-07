@@ -8,7 +8,7 @@ module Increase
         params(
           program_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Program)
+        ).returns(Increase::Program)
       end
       def retrieve(
         # The identifier of the Program to retrieve.
@@ -23,7 +23,7 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::Program])
+        ).returns(Increase::Internal::Page[Increase::Program])
       end
       def list(
         # Return the page of entries after this one.

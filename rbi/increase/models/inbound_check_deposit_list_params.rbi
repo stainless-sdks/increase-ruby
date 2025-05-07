@@ -24,16 +24,13 @@ module Increase
       attr_writer :check_transfer_id
 
       sig do
-        returns(
-          T.nilable(Increase::Models::InboundCheckDepositListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::InboundCheckDepositListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::InboundCheckDepositListParams::CreatedAt::OrHash
+          created_at: Increase::InboundCheckDepositListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -58,7 +55,7 @@ module Increase
           account_id: String,
           check_transfer_id: String,
           created_at:
-            Increase::Models::InboundCheckDepositListParams::CreatedAt::OrHash,
+            Increase::InboundCheckDepositListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -86,8 +83,7 @@ module Increase
           {
             account_id: String,
             check_transfer_id: String,
-            created_at:
-              Increase::Models::InboundCheckDepositListParams::CreatedAt,
+            created_at: Increase::InboundCheckDepositListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             request_options: Increase::RequestOptions

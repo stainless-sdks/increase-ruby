@@ -9,10 +9,10 @@ module Increase
           url: String,
           oauth_connection_id: String,
           selected_event_category:
-            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+            Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::EventSubscription)
+        ).returns(Increase::EventSubscription)
       end
       def create(
         # The URL you'd like us to send webhooks to.
@@ -35,7 +35,7 @@ module Increase
         params(
           event_subscription_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::EventSubscription)
+        ).returns(Increase::EventSubscription)
       end
       def retrieve(
         # The identifier of the Event Subscription.
@@ -48,10 +48,9 @@ module Increase
       sig do
         params(
           event_subscription_id: String,
-          status:
-            Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol,
+          status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::EventSubscription)
+        ).returns(Increase::EventSubscription)
       end
       def update(
         # The identifier of the Event Subscription.
@@ -69,7 +68,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::EventSubscription])
+        ).returns(Increase::Internal::Page[Increase::EventSubscription])
       end
       def list(
         # Return the page of entries after this one.

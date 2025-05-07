@@ -12,7 +12,7 @@ module Increase
             lockbox_id: String,
             contents_file_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::InboundMailItem)
+          ).returns(Increase::InboundMailItem)
         end
         def create(
           # The amount of the check to be simulated, in cents.

@@ -12,7 +12,7 @@ module Increase
           front_image_file_id: String,
           description: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::CheckDeposit)
+        ).returns(Increase::CheckDeposit)
       end
       def create(
         # The identifier for the Account to deposit the check in.
@@ -34,7 +34,7 @@ module Increase
         params(
           check_deposit_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::CheckDeposit)
+        ).returns(Increase::CheckDeposit)
       end
       def retrieve(
         # The identifier of the Check Deposit to retrieve.
@@ -47,13 +47,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::Models::CheckDepositListParams::CreatedAt::OrHash,
+          created_at: Increase::CheckDepositListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::CheckDeposit])
+        ).returns(Increase::Internal::Page[Increase::CheckDeposit])
       end
       def list(
         # Filter Check Deposits to those belonging to the specified Account.

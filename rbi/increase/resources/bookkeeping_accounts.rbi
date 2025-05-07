@@ -9,10 +9,10 @@ module Increase
           name: String,
           account_id: String,
           compliance_category:
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BookkeepingAccount)
+        ).returns(Increase::BookkeepingAccount)
       end
       def create(
         # The name you choose for the account.
@@ -33,7 +33,7 @@ module Increase
           bookkeeping_account_id: String,
           name: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BookkeepingAccount)
+        ).returns(Increase::BookkeepingAccount)
       end
       def update(
         # The bookkeeping account you would like to update.
@@ -51,9 +51,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::BookkeepingAccount]
-        )
+        ).returns(Increase::Internal::Page[Increase::BookkeepingAccount])
       end
       def list(
         # Return the page of entries after this one.
@@ -76,7 +74,7 @@ module Increase
           bookkeeping_account_id: String,
           at_time: Time,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BookkeepingBalanceLookup)
+        ).returns(Increase::BookkeepingBalanceLookup)
       end
       def balance(
         # The identifier of the Bookkeeping Account to retrieve.

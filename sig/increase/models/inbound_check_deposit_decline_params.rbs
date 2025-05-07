@@ -9,7 +9,7 @@ module Increase
 
       def initialize: (?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> Increase::Models::inbound_check_deposit_decline_params
+      def to_hash: -> ::Hash[Symbol, top]
     end
   end
 end

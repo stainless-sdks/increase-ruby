@@ -11,12 +11,12 @@ module Increase
       attr_accessor :access_token
 
       # The type of OAuth token.
-      sig { returns(Increase::Models::OAuthToken::TokenType::TaggedSymbol) }
+      sig { returns(Increase::OAuthToken::TokenType::TaggedSymbol) }
       attr_accessor :token_type
 
       # A constant representing the object's type. For this resource it will always be
       # `oauth_token`.
-      sig { returns(Increase::Models::OAuthToken::Type::TaggedSymbol) }
+      sig { returns(Increase::OAuthToken::Type::TaggedSymbol) }
       attr_accessor :type
 
       # A token that is returned to your application when a user completes the OAuth
@@ -25,8 +25,8 @@ module Increase
       sig do
         params(
           access_token: String,
-          token_type: Increase::Models::OAuthToken::TokenType::OrSymbol,
-          type: Increase::Models::OAuthToken::Type::OrSymbol
+          token_type: Increase::OAuthToken::TokenType::OrSymbol,
+          type: Increase::OAuthToken::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -45,8 +45,8 @@ module Increase
         override.returns(
           {
             access_token: String,
-            token_type: Increase::Models::OAuthToken::TokenType::TaggedSymbol,
-            type: Increase::Models::OAuthToken::Type::TaggedSymbol
+            token_type: Increase::OAuthToken::TokenType::TaggedSymbol,
+            type: Increase::OAuthToken::Type::TaggedSymbol
           }
         )
       end
@@ -58,17 +58,14 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::OAuthToken::TokenType)
-          end
+          T.type_alias { T.all(Symbol, Increase::OAuthToken::TokenType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BEARER =
-          T.let(:bearer, Increase::Models::OAuthToken::TokenType::TaggedSymbol)
+        BEARER = T.let(:bearer, Increase::OAuthToken::TokenType::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Increase::Models::OAuthToken::TokenType::TaggedSymbol]
+            T::Array[Increase::OAuthToken::TokenType::TaggedSymbol]
           )
         end
         def self.values
@@ -81,16 +78,14 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::OAuthToken::Type) }
+          T.type_alias { T.all(Symbol, Increase::OAuthToken::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OAUTH_TOKEN =
-          T.let(:oauth_token, Increase::Models::OAuthToken::Type::TaggedSymbol)
+          T.let(:oauth_token, Increase::OAuthToken::Type::TaggedSymbol)
 
         sig do
-          override.returns(
-            T::Array[Increase::Models::OAuthToken::Type::TaggedSymbol]
-          )
+          override.returns(T::Array[Increase::OAuthToken::Type::TaggedSymbol])
         end
         def self.values
         end

@@ -14,7 +14,7 @@ module Increase
       #
       # @param amount [Integer] The transfer amount in USD cents.
       #
-      # @param fulfillment_method [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod] Whether Increase will print and mail the check or if you will do it yourself.
+      # @param fulfillment_method [Symbol, Increase::CheckTransferCreateParams::FulfillmentMethod] Whether Increase will print and mail the check or if you will do it yourself.
       #
       # @param source_account_number_id [String] The identifier of the Account Number from which to send the transfer and print o
       # ...
@@ -22,17 +22,17 @@ module Increase
       # @param check_number [String] The check number Increase should use for the check. This should not contain lead
       # ...
       #
-      # @param physical_check [Increase::Models::CheckTransferCreateParams::PhysicalCheck] Details relating to the physical check that Increase will print and mail. This i
+      # @param physical_check [Increase::CheckTransferCreateParams::PhysicalCheck] Details relating to the physical check that Increase will print and mail. This i
       # ...
       #
       # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
       #
-      # @param third_party [Increase::Models::CheckTransferCreateParams::ThirdParty] Details relating to the custom fulfillment you will perform. This is required if
+      # @param third_party [Increase::CheckTransferCreateParams::ThirdParty] Details relating to the custom fulfillment you will perform. This is required if
       # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CheckTransfer]
+      # @return [Increase::CheckTransfer]
       #
       # @see Increase::Models::CheckTransferCreateParams
       def create(params)
@@ -41,7 +41,7 @@ module Increase
           method: :post,
           path: "check_transfers",
           body: parsed,
-          model: Increase::Models::CheckTransfer,
+          model: Increase::CheckTransfer,
           options: options
         )
       end
@@ -54,14 +54,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CheckTransfer]
+      # @return [Increase::CheckTransfer]
       #
       # @see Increase::Models::CheckTransferRetrieveParams
       def retrieve(check_transfer_id, params = {})
         @client.request(
           method: :get,
           path: ["check_transfers/%1$s", check_transfer_id],
-          model: Increase::Models::CheckTransfer,
+          model: Increase::CheckTransfer,
           options: params[:request_options]
         )
       end
@@ -75,7 +75,7 @@ module Increase
       #
       # @param account_id [String] Filter Check Transfers to those that originated from the specified Account.
       #
-      # @param created_at [Increase::Models::CheckTransferListParams::CreatedAt]
+      # @param created_at [Increase::CheckTransferListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -85,11 +85,11 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::CheckTransferListParams::Status]
+      # @param status [Increase::CheckTransferListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::CheckTransfer>]
+      # @return [Increase::Internal::Page<Increase::CheckTransfer>]
       #
       # @see Increase::Models::CheckTransferListParams
       def list(params = {})
@@ -99,7 +99,7 @@ module Increase
           path: "check_transfers",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::CheckTransfer,
+          model: Increase::CheckTransfer,
           options: options
         )
       end
@@ -112,14 +112,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CheckTransfer]
+      # @return [Increase::CheckTransfer]
       #
       # @see Increase::Models::CheckTransferApproveParams
       def approve(check_transfer_id, params = {})
         @client.request(
           method: :post,
           path: ["check_transfers/%1$s/approve", check_transfer_id],
-          model: Increase::Models::CheckTransfer,
+          model: Increase::CheckTransfer,
           options: params[:request_options]
         )
       end
@@ -132,14 +132,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CheckTransfer]
+      # @return [Increase::CheckTransfer]
       #
       # @see Increase::Models::CheckTransferCancelParams
       def cancel(check_transfer_id, params = {})
         @client.request(
           method: :post,
           path: ["check_transfers/%1$s/cancel", check_transfer_id],
-          model: Increase::Models::CheckTransfer,
+          model: Increase::CheckTransfer,
           options: params[:request_options]
         )
       end
@@ -150,11 +150,11 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param reason [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason] The reason why this transfer should be stopped.
+      # @param reason [Symbol, Increase::CheckTransferStopPaymentParams::Reason] The reason why this transfer should be stopped.
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CheckTransfer]
+      # @return [Increase::CheckTransfer]
       #
       # @see Increase::Models::CheckTransferStopPaymentParams
       def stop_payment(check_transfer_id, params = {})
@@ -163,7 +163,7 @@ module Increase
           method: :post,
           path: ["check_transfers/%1$s/stop_payment", check_transfer_id],
           body: parsed,
-          model: Increase::Models::CheckTransfer,
+          model: Increase::CheckTransfer,
           options: options
         )
       end

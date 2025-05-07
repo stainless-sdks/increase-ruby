@@ -11,7 +11,7 @@ module Increase
           informational_entity_id: String,
           program_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Account)
+        ).returns(Increase::Account)
       end
       def create(
         # The name you choose for the Account.
@@ -33,7 +33,7 @@ module Increase
         params(
           account_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Account)
+        ).returns(Increase::Account)
       end
       def retrieve(
         # The identifier of the Account to retrieve.
@@ -48,7 +48,7 @@ module Increase
           account_id: String,
           name: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Account)
+        ).returns(Increase::Account)
       end
       def update(
         # The identifier of the Account to update.
@@ -62,16 +62,16 @@ module Increase
       # List Accounts
       sig do
         params(
-          created_at: Increase::Models::AccountListParams::CreatedAt::OrHash,
+          created_at: Increase::AccountListParams::CreatedAt::OrHash,
           cursor: String,
           entity_id: String,
           idempotency_key: String,
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Increase::Models::AccountListParams::Status::OrHash,
+          status: Increase::AccountListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::Account])
+        ).returns(Increase::Internal::Page[Increase::Account])
       end
       def list(
         created_at: nil,
@@ -103,7 +103,7 @@ module Increase
           account_id: String,
           at_time: Time,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BalanceLookup)
+        ).returns(Increase::BalanceLookup)
       end
       def balance(
         # The identifier of the Account to retrieve.
@@ -119,7 +119,7 @@ module Increase
         params(
           account_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Account)
+        ).returns(Increase::Account)
       end
       def close(
         # The identifier of the Account to close. The account must have a zero balance.

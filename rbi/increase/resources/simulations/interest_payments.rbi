@@ -14,7 +14,7 @@ module Increase
             period_end: Time,
             period_start: Time,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::Transaction)
+          ).returns(Increase::Transaction)
         end
         def create(
           # The identifier of the Account the Interest Payment should be paid to is for.

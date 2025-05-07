@@ -8,7 +8,7 @@ module Increase
         params(
           transaction_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Transaction)
+        ).returns(Increase::Transaction)
       end
       def retrieve(
         # The identifier of the Transaction to retrieve.
@@ -21,14 +21,13 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::Models::TransactionListParams::Category::OrHash,
-          created_at:
-            Increase::Models::TransactionListParams::CreatedAt::OrHash,
+          category: Increase::TransactionListParams::Category::OrHash,
+          created_at: Increase::TransactionListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           route_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::Transaction])
+        ).returns(Increase::Internal::Page[Increase::Transaction])
       end
       def list(
         # Filter Transactions for those belonging to the specified Account.

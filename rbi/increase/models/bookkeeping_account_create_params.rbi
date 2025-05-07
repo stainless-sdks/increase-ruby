@@ -23,7 +23,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
+            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
           )
         )
       end
@@ -32,7 +32,7 @@ module Increase
       sig do
         params(
           compliance_category:
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
+            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
         ).void
       end
       attr_writer :compliance_category
@@ -49,7 +49,7 @@ module Increase
           name: String,
           account_id: String,
           compliance_category:
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -74,7 +74,7 @@ module Increase
             name: String,
             account_id: String,
             compliance_category:
-              Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+              Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
             entity_id: String,
             request_options: Increase::RequestOptions
           }
@@ -91,7 +91,7 @@ module Increase
           T.type_alias do
             T.all(
               Symbol,
-              Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory
+              Increase::BookkeepingAccountCreateParams::ComplianceCategory
             )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -100,20 +100,20 @@ module Increase
         COMMINGLED_CASH =
           T.let(
             :commingled_cash,
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+            Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
           )
 
         # A customer balance.
         CUSTOMER_BALANCE =
           T.let(
             :customer_balance,
-            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+            Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+              Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
             ]
           )
         end

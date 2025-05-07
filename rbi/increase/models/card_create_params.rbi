@@ -13,15 +13,12 @@ module Increase
       attr_accessor :account_id
 
       # The card's billing address.
-      sig do
-        returns(T.nilable(Increase::Models::CardCreateParams::BillingAddress))
-      end
+      sig { returns(T.nilable(Increase::CardCreateParams::BillingAddress)) }
       attr_reader :billing_address
 
       sig do
         params(
-          billing_address:
-            Increase::Models::CardCreateParams::BillingAddress::OrHash
+          billing_address: Increase::CardCreateParams::BillingAddress::OrHash
         ).void
       end
       attr_writer :billing_address
@@ -38,15 +35,12 @@ module Increase
       # number with this request. Otherwise, subscribe and then action a Real Time
       # Decision with the category `digital_wallet_token_requested` or
       # `digital_wallet_authentication_requested`.
-      sig do
-        returns(T.nilable(Increase::Models::CardCreateParams::DigitalWallet))
-      end
+      sig { returns(T.nilable(Increase::CardCreateParams::DigitalWallet)) }
       attr_reader :digital_wallet
 
       sig do
         params(
-          digital_wallet:
-            Increase::Models::CardCreateParams::DigitalWallet::OrHash
+          digital_wallet: Increase::CardCreateParams::DigitalWallet::OrHash
         ).void
       end
       attr_writer :digital_wallet
@@ -62,11 +56,9 @@ module Increase
       sig do
         params(
           account_id: String,
-          billing_address:
-            Increase::Models::CardCreateParams::BillingAddress::OrHash,
+          billing_address: Increase::CardCreateParams::BillingAddress::OrHash,
           description: String,
-          digital_wallet:
-            Increase::Models::CardCreateParams::DigitalWallet::OrHash,
+          digital_wallet: Increase::CardCreateParams::DigitalWallet::OrHash,
           entity_id: String,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -96,9 +88,9 @@ module Increase
         override.returns(
           {
             account_id: String,
-            billing_address: Increase::Models::CardCreateParams::BillingAddress,
+            billing_address: Increase::CardCreateParams::BillingAddress,
             description: String,
-            digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
+            digital_wallet: Increase::CardCreateParams::DigitalWallet,
             entity_id: String,
             request_options: Increase::RequestOptions
           }

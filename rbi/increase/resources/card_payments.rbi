@@ -8,7 +8,7 @@ module Increase
         params(
           card_payment_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::CardPayment)
+        ).returns(Increase::CardPayment)
       end
       def retrieve(
         # The identifier of the Card Payment.
@@ -22,12 +22,11 @@ module Increase
         params(
           account_id: String,
           card_id: String,
-          created_at:
-            Increase::Models::CardPaymentListParams::CreatedAt::OrHash,
+          created_at: Increase::CardPaymentListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::CardPayment])
+        ).returns(Increase::Internal::Page[Increase::CardPayment])
       end
       def list(
         # Filter Card Payments to ones belonging to the specified Account.

@@ -7,13 +7,11 @@ module Increase
       sig do
         params(
           entries:
-            T::Array[
-              Increase::Models::BookkeepingEntrySetCreateParams::Entry::OrHash
-            ],
+            T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
           date: Time,
           transaction_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BookkeepingEntrySet)
+        ).returns(Increase::BookkeepingEntrySet)
       end
       def create(
         # The bookkeeping entries.
@@ -32,7 +30,7 @@ module Increase
         params(
           bookkeeping_entry_set_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BookkeepingEntrySet)
+        ).returns(Increase::BookkeepingEntrySet)
       end
       def retrieve(
         # The identifier of the Bookkeeping Entry Set.
@@ -49,9 +47,7 @@ module Increase
           limit: Integer,
           transaction_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::BookkeepingEntrySet]
-        )
+        ).returns(Increase::Internal::Page[Increase::BookkeepingEntrySet])
       end
       def list(
         # Return the page of entries after this one.

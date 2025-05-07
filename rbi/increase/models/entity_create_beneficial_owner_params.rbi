@@ -11,16 +11,14 @@ module Increase
       # The identifying details of anyone controlling or owning 25% or more of the
       # corporation.
       sig do
-        returns(
-          Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner
-        )
+        returns(Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner)
       end
       attr_reader :beneficial_owner
 
       sig do
         params(
           beneficial_owner:
-            Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::OrHash
+            Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::OrHash
         ).void
       end
       attr_writer :beneficial_owner
@@ -28,7 +26,7 @@ module Increase
       sig do
         params(
           beneficial_owner:
-            Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::OrHash,
+            Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -45,7 +43,7 @@ module Increase
         override.returns(
           {
             beneficial_owner:
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner,
             request_options: Increase::RequestOptions
           }
         )
@@ -60,7 +58,7 @@ module Increase
         # Personal details for the beneficial owner.
         sig do
           returns(
-            Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual
+            Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual
           )
         end
         attr_reader :individual
@@ -68,7 +66,7 @@ module Increase
         sig do
           params(
             individual:
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::OrHash
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::OrHash
           ).void
         end
         attr_writer :individual
@@ -79,7 +77,7 @@ module Increase
         sig do
           returns(
             T::Array[
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol
             ]
           )
         end
@@ -97,10 +95,10 @@ module Increase
         sig do
           params(
             individual:
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::OrHash,
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::OrHash,
             prongs:
               T::Array[
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol
               ],
             company_title: String
           ).returns(T.attached_class)
@@ -121,10 +119,10 @@ module Increase
           override.returns(
             {
               individual:
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
               prongs:
                 T::Array[
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::OrSymbol
                 ],
               company_title: String
             }
@@ -141,7 +139,7 @@ module Increase
           # PMB's are disallowed.
           sig do
             returns(
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address
             )
           end
           attr_reader :address
@@ -149,7 +147,7 @@ module Increase
           sig do
             params(
               address:
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address::OrHash
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address::OrHash
             ).void
           end
           attr_writer :address
@@ -161,7 +159,7 @@ module Increase
           # A means of verifying the person's identity.
           sig do
             returns(
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification
             )
           end
           attr_reader :identification
@@ -169,7 +167,7 @@ module Increase
           sig do
             params(
               identification:
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::OrHash
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::OrHash
             ).void
           end
           attr_writer :identification
@@ -192,10 +190,10 @@ module Increase
           sig do
             params(
               address:
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address::OrHash,
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address::OrHash,
               date_of_birth: Date,
               identification:
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::OrHash,
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::OrHash,
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             ).returns(T.attached_class)
@@ -222,10 +220,10 @@ module Increase
             override.returns(
               {
                 address:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
                 date_of_birth: Date,
                 identification:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               }
@@ -329,7 +327,7 @@ module Increase
             # A method that can be used to verify the individual's identity.
             sig do
               returns(
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol
               )
             end
             attr_accessor :method_
@@ -344,7 +342,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
                 )
               )
             end
@@ -353,7 +351,7 @@ module Increase
             sig do
               params(
                 drivers_license:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense::OrHash
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense::OrHash
               ).void
             end
             attr_writer :drivers_license
@@ -363,7 +361,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
                 )
               )
             end
@@ -372,7 +370,7 @@ module Increase
             sig do
               params(
                 other:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other::OrHash
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other::OrHash
               ).void
             end
             attr_writer :other
@@ -382,7 +380,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
                 )
               )
             end
@@ -391,7 +389,7 @@ module Increase
             sig do
               params(
                 passport:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport::OrHash
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport::OrHash
               ).void
             end
             attr_writer :passport
@@ -400,14 +398,14 @@ module Increase
             sig do
               params(
                 method_:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                 number: String,
                 drivers_license:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense::OrHash,
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense::OrHash,
                 other:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other::OrHash,
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other::OrHash,
                 passport:
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport::OrHash
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport::OrHash
               ).returns(T.attached_class)
             end
             def self.new(
@@ -432,14 +430,14 @@ module Increase
               override.returns(
                 {
                   method_:
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
+                    Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::OrSymbol,
                   number: String,
                   drivers_license:
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
+                    Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
                   other:
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
+                    Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
                   passport:
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+                    Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
                 }
               )
             end
@@ -454,7 +452,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method
+                    Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -463,41 +461,41 @@ module Increase
               SOCIAL_SECURITY_NUMBER =
                 T.let(
                   :social_security_number,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # An individual taxpayer identification number (ITIN).
               INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER =
                 T.let(
                   :individual_taxpayer_identification_number,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A passport number.
               PASSPORT =
                 T.let(
                   :passport,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # A driver's license number.
               DRIVERS_LICENSE =
                 T.let(
                   :drivers_license,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               # Another identifying document.
               OTHER =
                 T.let(
                   :other,
-                  Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                  Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
+                    Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method::TaggedSymbol
                   ]
                 )
               end
@@ -691,7 +689,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -700,20 +698,20 @@ module Increase
           OWNERSHIP =
             T.let(
               :ownership,
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
             )
 
           # A person who manages, directs, or has significant control of the entity.
           CONTROL =
             T.let(
               :control,
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
+              Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
+                Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong::TaggedSymbol
               ]
             )
           end

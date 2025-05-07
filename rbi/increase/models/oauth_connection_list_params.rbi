@@ -31,15 +31,11 @@ module Increase
       sig { params(oauth_application_id: String).void }
       attr_writer :oauth_application_id
 
-      sig do
-        returns(T.nilable(Increase::Models::OAuthConnectionListParams::Status))
-      end
+      sig { returns(T.nilable(Increase::OAuthConnectionListParams::Status)) }
       attr_reader :status
 
       sig do
-        params(
-          status: Increase::Models::OAuthConnectionListParams::Status::OrHash
-        ).void
+        params(status: Increase::OAuthConnectionListParams::Status::OrHash).void
       end
       attr_writer :status
 
@@ -48,7 +44,7 @@ module Increase
           cursor: String,
           limit: Integer,
           oauth_application_id: String,
-          status: Increase::Models::OAuthConnectionListParams::Status::OrHash,
+          status: Increase::OAuthConnectionListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -73,7 +69,7 @@ module Increase
             cursor: String,
             limit: Integer,
             oauth_application_id: String,
-            status: Increase::Models::OAuthConnectionListParams::Status,
+            status: Increase::OAuthConnectionListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -92,7 +88,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol
+                Increase::OAuthConnectionListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -103,7 +99,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol
+                Increase::OAuthConnectionListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -113,7 +109,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol
+                Increase::OAuthConnectionListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -130,7 +126,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::OAuthConnectionListParams::Status::In::OrSymbol
+                  Increase::OAuthConnectionListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -143,10 +139,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::OAuthConnectionListParams::Status::In
-              )
+              T.all(Symbol, Increase::OAuthConnectionListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -154,20 +147,20 @@ module Increase
           ACTIVE =
             T.let(
               :active,
-              Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol
+              Increase::OAuthConnectionListParams::Status::In::TaggedSymbol
             )
 
           # The OAuth connection is permanently deactivated.
           INACTIVE =
             T.let(
               :inactive,
-              Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol
+              Increase::OAuthConnectionListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::OAuthConnectionListParams::Status::In::TaggedSymbol
+                Increase::OAuthConnectionListParams::Status::In::TaggedSymbol
               ]
             )
           end

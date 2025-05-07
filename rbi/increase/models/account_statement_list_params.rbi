@@ -32,9 +32,7 @@ module Increase
 
       sig do
         returns(
-          T.nilable(
-            Increase::Models::AccountStatementListParams::StatementPeriodStart
-          )
+          T.nilable(Increase::AccountStatementListParams::StatementPeriodStart)
         )
       end
       attr_reader :statement_period_start
@@ -42,7 +40,7 @@ module Increase
       sig do
         params(
           statement_period_start:
-            Increase::Models::AccountStatementListParams::StatementPeriodStart::OrHash
+            Increase::AccountStatementListParams::StatementPeriodStart::OrHash
         ).void
       end
       attr_writer :statement_period_start
@@ -53,7 +51,7 @@ module Increase
           cursor: String,
           limit: Integer,
           statement_period_start:
-            Increase::Models::AccountStatementListParams::StatementPeriodStart::OrHash,
+            Increase::AccountStatementListParams::StatementPeriodStart::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -78,7 +76,7 @@ module Increase
             cursor: String,
             limit: Integer,
             statement_period_start:
-              Increase::Models::AccountStatementListParams::StatementPeriodStart,
+              Increase::AccountStatementListParams::StatementPeriodStart,
             request_options: Increase::RequestOptions
           }
         )

@@ -10,19 +10,19 @@ module Increase
 
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       # are disallowed.
-      sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
+      sig { returns(Increase::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
       sig do
         params(
-          address: Increase::Models::EntityUpdateAddressParams::Address::OrHash
+          address: Increase::EntityUpdateAddressParams::Address::OrHash
         ).void
       end
       attr_writer :address
 
       sig do
         params(
-          address: Increase::Models::EntityUpdateAddressParams::Address::OrHash,
+          address: Increase::EntityUpdateAddressParams::Address::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -38,7 +38,7 @@ module Increase
       sig do
         override.returns(
           {
-            address: Increase::Models::EntityUpdateAddressParams::Address,
+            address: Increase::EntityUpdateAddressParams::Address,
             request_options: Increase::RequestOptions
           }
         )

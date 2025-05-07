@@ -9,7 +9,7 @@ module Increase
           account_id: String,
           email_address: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiAccountEnrollment)
+        ).returns(Increase::IntrafiAccountEnrollment)
       end
       def create(
         # The identifier for the account to be added to IntraFi.
@@ -25,7 +25,7 @@ module Increase
         params(
           intrafi_account_enrollment_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiAccountEnrollment)
+        ).returns(Increase::IntrafiAccountEnrollment)
       end
       def retrieve(
         # The identifier of the IntraFi Account Enrollment to retrieve.
@@ -41,12 +41,9 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            Increase::Models::IntrafiAccountEnrollmentListParams::Status::OrHash,
+          status: Increase::IntrafiAccountEnrollmentListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::IntrafiAccountEnrollment]
-        )
+        ).returns(Increase::Internal::Page[Increase::IntrafiAccountEnrollment])
       end
       def list(
         # Filter IntraFi Account Enrollments to the one belonging to an account.
@@ -71,7 +68,7 @@ module Increase
         params(
           intrafi_account_enrollment_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiAccountEnrollment)
+        ).returns(Increase::IntrafiAccountEnrollment)
       end
       def unenroll(
         # The Identifier of the IntraFi Account Enrollment to remove from IntraFi.

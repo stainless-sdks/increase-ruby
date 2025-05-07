@@ -20,7 +20,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CardDispute]
+      # @return [Increase::CardDispute]
       #
       # @see Increase::Models::CardDisputeCreateParams
       def create(params)
@@ -29,7 +29,7 @@ module Increase
           method: :post,
           path: "card_disputes",
           body: parsed,
-          model: Increase::Models::CardDispute,
+          model: Increase::CardDispute,
           options: options
         )
       end
@@ -42,14 +42,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::CardDispute]
+      # @return [Increase::CardDispute]
       #
       # @see Increase::Models::CardDisputeRetrieveParams
       def retrieve(card_dispute_id, params = {})
         @client.request(
           method: :get,
           path: ["card_disputes/%1$s", card_dispute_id],
-          model: Increase::Models::CardDispute,
+          model: Increase::CardDispute,
           options: params[:request_options]
         )
       end
@@ -61,7 +61,7 @@ module Increase
       #
       # @overload list(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       #
-      # @param created_at [Increase::Models::CardDisputeListParams::CreatedAt]
+      # @param created_at [Increase::CardDisputeListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -71,11 +71,11 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::CardDisputeListParams::Status]
+      # @param status [Increase::CardDisputeListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::CardDispute>]
+      # @return [Increase::Internal::Page<Increase::CardDispute>]
       #
       # @see Increase::Models::CardDisputeListParams
       def list(params = {})
@@ -85,7 +85,7 @@ module Increase
           path: "card_disputes",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::CardDispute,
+          model: Increase::CardDispute,
           options: options
         )
       end

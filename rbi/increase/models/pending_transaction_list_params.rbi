@@ -16,31 +16,25 @@ module Increase
       attr_writer :account_id
 
       sig do
-        returns(
-          T.nilable(Increase::Models::PendingTransactionListParams::Category)
-        )
+        returns(T.nilable(Increase::PendingTransactionListParams::Category))
       end
       attr_reader :category
 
       sig do
         params(
-          category:
-            Increase::Models::PendingTransactionListParams::Category::OrHash
+          category: Increase::PendingTransactionListParams::Category::OrHash
         ).void
       end
       attr_writer :category
 
       sig do
-        returns(
-          T.nilable(Increase::Models::PendingTransactionListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::PendingTransactionListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::PendingTransactionListParams::CreatedAt::OrHash
+          created_at: Increase::PendingTransactionListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -67,16 +61,12 @@ module Increase
       sig { params(route_id: String).void }
       attr_writer :route_id
 
-      sig do
-        returns(
-          T.nilable(Increase::Models::PendingTransactionListParams::Status)
-        )
-      end
+      sig { returns(T.nilable(Increase::PendingTransactionListParams::Status)) }
       attr_reader :status
 
       sig do
         params(
-          status: Increase::Models::PendingTransactionListParams::Status::OrHash
+          status: Increase::PendingTransactionListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -84,15 +74,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          category:
-            Increase::Models::PendingTransactionListParams::Category::OrHash,
-          created_at:
-            Increase::Models::PendingTransactionListParams::CreatedAt::OrHash,
+          category: Increase::PendingTransactionListParams::Category::OrHash,
+          created_at: Increase::PendingTransactionListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           route_id: String,
-          status:
-            Increase::Models::PendingTransactionListParams::Status::OrHash,
+          status: Increase::PendingTransactionListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -118,13 +105,12 @@ module Increase
         override.returns(
           {
             account_id: String,
-            category: Increase::Models::PendingTransactionListParams::Category,
-            created_at:
-              Increase::Models::PendingTransactionListParams::CreatedAt,
+            category: Increase::PendingTransactionListParams::Category,
+            created_at: Increase::PendingTransactionListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             route_id: String,
-            status: Increase::Models::PendingTransactionListParams::Status,
+            status: Increase::PendingTransactionListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -142,7 +128,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+                Increase::PendingTransactionListParams::Category::In::OrSymbol
               ]
             )
           )
@@ -153,7 +139,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+                Increase::PendingTransactionListParams::Category::In::OrSymbol
               ]
           ).void
         end
@@ -163,7 +149,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+                Increase::PendingTransactionListParams::Category::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -179,7 +165,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::PendingTransactionListParams::Category::In::OrSymbol
+                  Increase::PendingTransactionListParams::Category::In::OrSymbol
                 ]
             }
           )
@@ -194,7 +180,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::PendingTransactionListParams::Category::In
+                Increase::PendingTransactionListParams::Category::In
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -203,83 +189,83 @@ module Increase
           ACCOUNT_TRANSFER_INSTRUCTION =
             T.let(
               :account_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # ACH Transfer Instruction: details will be under the `ach_transfer_instruction` object.
           ACH_TRANSFER_INSTRUCTION =
             T.let(
               :ach_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION =
             T.let(
               :card_authorization,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Check Deposit Instruction: details will be under the `check_deposit_instruction` object.
           CHECK_DEPOSIT_INSTRUCTION =
             T.let(
               :check_deposit_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Check Transfer Instruction: details will be under the `check_transfer_instruction` object.
           CHECK_TRANSFER_INSTRUCTION =
             T.let(
               :check_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Inbound Funds Hold: details will be under the `inbound_funds_hold` object.
           INBOUND_FUNDS_HOLD =
             T.let(
               :inbound_funds_hold,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Real-Time Payments Transfer Instruction: details will be under the `real_time_payments_transfer_instruction` object.
           REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION =
             T.let(
               :real_time_payments_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
           WIRE_TRANSFER_INSTRUCTION =
             T.let(
               :wire_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL =
             T.let(
               :inbound_wire_transfer_reversal,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
           SWIFT_TRANSFER_INSTRUCTION =
             T.let(
               :swift_transfer_instruction,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER =
             T.let(
               :other,
-              Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Category::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::PendingTransactionListParams::Category::In::TaggedSymbol
+                Increase::PendingTransactionListParams::Category::In::TaggedSymbol
               ]
             )
           end
@@ -369,7 +355,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::PendingTransactionListParams::Status::In::OrSymbol
+                Increase::PendingTransactionListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -380,7 +366,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::PendingTransactionListParams::Status::In::OrSymbol
+                Increase::PendingTransactionListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -390,7 +376,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::PendingTransactionListParams::Status::In::OrSymbol
+                Increase::PendingTransactionListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -408,7 +394,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::PendingTransactionListParams::Status::In::OrSymbol
+                  Increase::PendingTransactionListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -421,10 +407,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::PendingTransactionListParams::Status::In
-              )
+              T.all(Symbol, Increase::PendingTransactionListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -432,20 +415,20 @@ module Increase
           PENDING =
             T.let(
               :pending,
-              Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Status::In::TaggedSymbol
             )
 
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE =
             T.let(
               :complete,
-              Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol
+              Increase::PendingTransactionListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::PendingTransactionListParams::Status::In::TaggedSymbol
+                Increase::PendingTransactionListParams::Status::In::TaggedSymbol
               ]
             )
           end

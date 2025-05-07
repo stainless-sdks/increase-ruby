@@ -42,7 +42,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `account_statement`.
-      sig { returns(Increase::Models::AccountStatement::Type::TaggedSymbol) }
+      sig { returns(Increase::AccountStatement::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Account Statements are generated monthly for every active Account. You can
@@ -58,7 +58,7 @@ module Increase
           starting_balance: Integer,
           statement_period_end: Time,
           statement_period_start: Time,
-          type: Increase::Models::AccountStatement::Type::OrSymbol
+          type: Increase::AccountStatement::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -98,7 +98,7 @@ module Increase
             starting_balance: Integer,
             statement_period_end: Time,
             statement_period_start: Time,
-            type: Increase::Models::AccountStatement::Type::TaggedSymbol
+            type: Increase::AccountStatement::Type::TaggedSymbol
           }
         )
       end
@@ -111,20 +111,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::AccountStatement::Type)
-          end
+          T.type_alias { T.all(Symbol, Increase::AccountStatement::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCOUNT_STATEMENT =
           T.let(
             :account_statement,
-            Increase::Models::AccountStatement::Type::TaggedSymbol
+            Increase::AccountStatement::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::Models::AccountStatement::Type::TaggedSymbol]
+            T::Array[Increase::AccountStatement::Type::TaggedSymbol]
           )
         end
         def self.values

@@ -10,7 +10,7 @@ module Increase
           params(
             account_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::AccountStatement)
+          ).returns(Increase::AccountStatement)
         end
         def create(
           # The identifier of the Account the statement is for.

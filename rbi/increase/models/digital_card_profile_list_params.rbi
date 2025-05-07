@@ -33,16 +33,12 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig do
-        returns(
-          T.nilable(Increase::Models::DigitalCardProfileListParams::Status)
-        )
-      end
+      sig { returns(T.nilable(Increase::DigitalCardProfileListParams::Status)) }
       attr_reader :status
 
       sig do
         params(
-          status: Increase::Models::DigitalCardProfileListParams::Status::OrHash
+          status: Increase::DigitalCardProfileListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -52,8 +48,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            Increase::Models::DigitalCardProfileListParams::Status::OrHash,
+          status: Increase::DigitalCardProfileListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -80,7 +75,7 @@ module Increase
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::Models::DigitalCardProfileListParams::Status,
+            status: Increase::DigitalCardProfileListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -99,7 +94,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol
+                Increase::DigitalCardProfileListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -110,7 +105,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol
+                Increase::DigitalCardProfileListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -120,7 +115,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol
+                Increase::DigitalCardProfileListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -137,7 +132,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol
+                  Increase::DigitalCardProfileListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -150,10 +145,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::DigitalCardProfileListParams::Status::In
-              )
+              T.all(Symbol, Increase::DigitalCardProfileListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -161,34 +153,34 @@ module Increase
           PENDING =
             T.let(
               :pending,
-              Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # There is an issue with the Card Profile preventing it from use.
           REJECTED =
             T.let(
               :rejected,
-              Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # The Card Profile can be assigned to Cards.
           ACTIVE =
             T.let(
               :active,
-              Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # The Card Profile is no longer in use.
           ARCHIVED =
             T.let(
               :archived,
-              Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol
+                Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
               ]
             )
           end

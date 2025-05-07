@@ -15,17 +15,12 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig do
-        returns(
-          T.nilable(Increase::Models::AccountTransferListParams::CreatedAt)
-        )
-      end
+      sig { returns(T.nilable(Increase::AccountTransferListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::AccountTransferListParams::CreatedAt::OrHash
+          created_at: Increase::AccountTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -58,8 +53,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::Models::AccountTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::AccountTransferListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
@@ -89,7 +83,7 @@ module Increase
         override.returns(
           {
             account_id: String,
-            created_at: Increase::Models::AccountTransferListParams::CreatedAt,
+            created_at: Increase::AccountTransferListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,

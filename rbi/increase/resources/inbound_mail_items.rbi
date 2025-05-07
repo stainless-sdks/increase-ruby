@@ -8,7 +8,7 @@ module Increase
         params(
           inbound_mail_item_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundMailItem)
+        ).returns(Increase::InboundMailItem)
       end
       def retrieve(
         # The identifier of the Inbound Mail Item to retrieve.
@@ -20,13 +20,12 @@ module Increase
       # List Inbound Mail Items
       sig do
         params(
-          created_at:
-            Increase::Models::InboundMailItemListParams::CreatedAt::OrHash,
+          created_at: Increase::InboundMailItemListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           lockbox_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::InboundMailItem])
+        ).returns(Increase::Internal::Page[Increase::InboundMailItem])
       end
       def list(
         created_at: nil,

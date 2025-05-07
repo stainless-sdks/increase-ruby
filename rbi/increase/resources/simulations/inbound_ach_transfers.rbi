@@ -27,9 +27,9 @@ module Increase
             receiver_name: String,
             resolve_at: Time,
             standard_entry_class_code:
-              Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
+              Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::InboundACHTransfer)
+          ).returns(Increase::InboundACHTransfer)
         end
         def create(
           # The identifier of the Account Number the inbound ACH Transfer is for.

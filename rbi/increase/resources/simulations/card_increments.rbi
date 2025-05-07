@@ -12,7 +12,7 @@ module Increase
             card_payment_id: String,
             event_subscription_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CardPayment)
+          ).returns(Increase::CardPayment)
         end
         def create(
           # The amount of the increment in minor units in the card authorization's currency.

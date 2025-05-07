@@ -15,15 +15,12 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig do
-        returns(T.nilable(Increase::Models::CheckTransferListParams::CreatedAt))
-      end
+      sig { returns(T.nilable(Increase::CheckTransferListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::CheckTransferListParams::CreatedAt::OrHash
+          created_at: Increase::CheckTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -53,27 +50,22 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig do
-        returns(T.nilable(Increase::Models::CheckTransferListParams::Status))
-      end
+      sig { returns(T.nilable(Increase::CheckTransferListParams::Status)) }
       attr_reader :status
 
       sig do
-        params(
-          status: Increase::Models::CheckTransferListParams::Status::OrHash
-        ).void
+        params(status: Increase::CheckTransferListParams::Status::OrHash).void
       end
       attr_writer :status
 
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::Models::CheckTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::CheckTransferListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::CheckTransferListParams::Status::OrHash,
+          status: Increase::CheckTransferListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -101,11 +93,11 @@ module Increase
         override.returns(
           {
             account_id: String,
-            created_at: Increase::Models::CheckTransferListParams::CreatedAt,
+            created_at: Increase::CheckTransferListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::Models::CheckTransferListParams::Status,
+            status: Increase::CheckTransferListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -192,9 +184,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              T::Array[
-                Increase::Models::CheckTransferListParams::Status::In::OrSymbol
-              ]
+              T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]
             )
           )
         end
@@ -203,9 +193,7 @@ module Increase
         sig do
           params(
             in_:
-              T::Array[
-                Increase::Models::CheckTransferListParams::Status::In::OrSymbol
-              ]
+              T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]
           ).void
         end
         attr_writer :in_
@@ -213,9 +201,7 @@ module Increase
         sig do
           params(
             in_:
-              T::Array[
-                Increase::Models::CheckTransferListParams::Status::In::OrSymbol
-              ]
+              T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -231,7 +217,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::CheckTransferListParams::Status::In::OrSymbol
+                  Increase::CheckTransferListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -244,10 +230,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::CheckTransferListParams::Status::In
-              )
+              T.all(Symbol, Increase::CheckTransferListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -255,76 +238,76 @@ module Increase
           PENDING_APPROVAL =
             T.let(
               :pending_approval,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The transfer has been canceled.
           CANCELED =
             T.let(
               :canceled,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The transfer is pending submission.
           PENDING_SUBMISSION =
             T.let(
               :pending_submission,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The transfer requires attention from an Increase operator.
           REQUIRES_ATTENTION =
             T.let(
               :requires_attention,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The transfer has been rejected.
           REJECTED =
             T.let(
               :rejected,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The check is queued for mailing.
           PENDING_MAILING =
             T.let(
               :pending_mailing,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The check has been mailed.
           MAILED =
             T.let(
               :mailed,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The check has been deposited.
           DEPOSITED =
             T.let(
               :deposited,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # A stop-payment was requested for this check.
           STOPPED =
             T.let(
               :stopped,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           # The transfer has been returned.
           RETURNED =
             T.let(
               :returned,
-              Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+              Increase::CheckTransferListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::CheckTransferListParams::Status::In::TaggedSymbol
+                Increase::CheckTransferListParams::Status::In::TaggedSymbol
               ]
             )
           end

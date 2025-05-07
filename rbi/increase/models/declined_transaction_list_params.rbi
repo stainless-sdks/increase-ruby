@@ -16,31 +16,25 @@ module Increase
       attr_writer :account_id
 
       sig do
-        returns(
-          T.nilable(Increase::Models::DeclinedTransactionListParams::Category)
-        )
+        returns(T.nilable(Increase::DeclinedTransactionListParams::Category))
       end
       attr_reader :category
 
       sig do
         params(
-          category:
-            Increase::Models::DeclinedTransactionListParams::Category::OrHash
+          category: Increase::DeclinedTransactionListParams::Category::OrHash
         ).void
       end
       attr_writer :category
 
       sig do
-        returns(
-          T.nilable(Increase::Models::DeclinedTransactionListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::DeclinedTransactionListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::DeclinedTransactionListParams::CreatedAt::OrHash
+          created_at: Increase::DeclinedTransactionListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -70,10 +64,9 @@ module Increase
       sig do
         params(
           account_id: String,
-          category:
-            Increase::Models::DeclinedTransactionListParams::Category::OrHash,
+          category: Increase::DeclinedTransactionListParams::Category::OrHash,
           created_at:
-            Increase::Models::DeclinedTransactionListParams::CreatedAt::OrHash,
+            Increase::DeclinedTransactionListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           route_id: String,
@@ -101,9 +94,8 @@ module Increase
         override.returns(
           {
             account_id: String,
-            category: Increase::Models::DeclinedTransactionListParams::Category,
-            created_at:
-              Increase::Models::DeclinedTransactionListParams::CreatedAt,
+            category: Increase::DeclinedTransactionListParams::Category,
+            created_at: Increase::DeclinedTransactionListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             route_id: String,
@@ -124,7 +116,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
+                Increase::DeclinedTransactionListParams::Category::In::OrSymbol
               ]
             )
           )
@@ -135,7 +127,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
+                Increase::DeclinedTransactionListParams::Category::In::OrSymbol
               ]
           ).void
         end
@@ -145,7 +137,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
+                Increase::DeclinedTransactionListParams::Category::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -161,7 +153,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
+                  Increase::DeclinedTransactionListParams::Category::In::OrSymbol
                 ]
             }
           )
@@ -176,7 +168,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::DeclinedTransactionListParams::Category::In
+                Increase::DeclinedTransactionListParams::Category::In
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -185,55 +177,55 @@ module Increase
           ACH_DECLINE =
             T.let(
               :ach_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Card Decline: details will be under the `card_decline` object.
           CARD_DECLINE =
             T.let(
               :card_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Check Decline: details will be under the `check_decline` object.
           CHECK_DECLINE =
             T.let(
               :check_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
           INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
             T.let(
               :inbound_real_time_payments_transfer_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Wire Decline: details will be under the `wire_decline` object.
           WIRE_DECLINE =
             T.let(
               :wire_decline,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Check Deposit Rejection: details will be under the `check_deposit_rejection` object.
           CHECK_DEPOSIT_REJECTION =
             T.let(
               :check_deposit_rejection,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER =
             T.let(
               :other,
-              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
+                Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
               ]
             )
           end

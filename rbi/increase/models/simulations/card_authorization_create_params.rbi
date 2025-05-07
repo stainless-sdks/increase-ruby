@@ -34,7 +34,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol
             )
           )
         end
@@ -43,7 +43,7 @@ module Increase
         sig do
           params(
             decline_reason:
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol
           ).void
         end
         attr_writer :decline_reason
@@ -60,7 +60,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol
             )
           )
         end
@@ -69,7 +69,7 @@ module Increase
         sig do
           params(
             direction:
-              Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol
           ).void
         end
         attr_writer :direction
@@ -132,7 +132,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails
+              Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails
             )
           )
         end
@@ -141,7 +141,7 @@ module Increase
         sig do
           params(
             network_details:
-              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash
+              Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash
           ).void
         end
         attr_writer :network_details
@@ -175,10 +175,10 @@ module Increase
             authenticated_card_payment_id: String,
             card_id: String,
             decline_reason:
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
             digital_wallet_token_id: String,
             direction:
-              Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
+              Increase::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
             event_subscription_id: String,
             merchant_acceptor_id: String,
             merchant_category_code: String,
@@ -187,7 +187,7 @@ module Increase
             merchant_descriptor: String,
             merchant_state: String,
             network_details:
-              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash,
+              Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash,
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
@@ -251,10 +251,10 @@ module Increase
               authenticated_card_payment_id: String,
               card_id: String,
               decline_reason:
-                Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
+                Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
               digital_wallet_token_id: String,
               direction:
-                Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
+                Increase::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
               event_subscription_id: String,
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -263,7 +263,7 @@ module Increase
               merchant_descriptor: String,
               merchant_state: String,
               network_details:
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+                Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails,
               network_risk_score: Integer,
               physical_card_id: String,
               terminal_id: String,
@@ -283,7 +283,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason
+                Increase::Simulations::CardAuthorizationCreateParams::DeclineReason
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -292,132 +292,132 @@ module Increase
           ACCOUNT_CLOSED =
             T.let(
               :account_closed,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The Card was not active.
           CARD_NOT_ACTIVE =
             T.let(
               :card_not_active,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The Card has been canceled.
           CARD_CANCELED =
             T.let(
               :card_canceled,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The Physical Card was not active.
           PHYSICAL_CARD_NOT_ACTIVE =
             T.let(
               :physical_card_not_active,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The account's entity was not active.
           ENTITY_NOT_ACTIVE =
             T.let(
               :entity_not_active,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The account was inactive.
           GROUP_LOCKED =
             T.let(
               :group_locked,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The Card's Account did not have a sufficient available balance.
           INSUFFICIENT_FUNDS =
             T.let(
               :insufficient_funds,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The given CVV2 did not match the card's value.
           CVV2_MISMATCH =
             T.let(
               :cvv2_mismatch,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The given expiration date did not match the card's value. Only applies when a CVV2 is present.
           CARD_EXPIRATION_MISMATCH =
             T.let(
               :card_expiration_mismatch,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The attempted card transaction is not allowed per Increase's terms.
           TRANSACTION_NOT_ALLOWED =
             T.let(
               :transaction_not_allowed,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The transaction was blocked by a Limit.
           BREACHES_LIMIT =
             T.let(
               :breaches_limit,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # Your application declined the transaction via webhook.
           WEBHOOK_DECLINED =
             T.let(
               :webhook_declined,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # Your application webhook did not respond without the required timeout.
           WEBHOOK_TIMED_OUT =
             T.let(
               :webhook_timed_out,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # Declined by stand-in processing.
           DECLINED_BY_STAND_IN_PROCESSING =
             T.let(
               :declined_by_stand_in_processing,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The card read had an invalid CVV, dCVV, or authorization request cryptogram.
           INVALID_PHYSICAL_CARD =
             T.let(
               :invalid_physical_card,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The original card authorization for this incremental authorization does not exist.
           MISSING_ORIGINAL_AUTHORIZATION =
             T.let(
               :missing_original_authorization,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The transaction was declined because the 3DS authentication failed.
           FAILED_3DS_AUTHENTICATION =
             T.let(
               :failed_3ds_authentication,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD =
             T.let(
               :suspected_fraud,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
+                Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::TaggedSymbol
               ]
             )
           end
@@ -434,7 +434,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::Simulations::CardAuthorizationCreateParams::Direction
+                Increase::Simulations::CardAuthorizationCreateParams::Direction
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -443,20 +443,20 @@ module Increase
           SETTLEMENT =
             T.let(
               :settlement,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
             )
 
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND =
             T.let(
               :refund,
-              Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
+              Increase::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
+                Increase::Simulations::CardAuthorizationCreateParams::Direction::TaggedSymbol
               ]
             )
           end
@@ -471,7 +471,7 @@ module Increase
           # Fields specific to the Visa network.
           sig do
             returns(
-              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+              Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
             )
           end
           attr_reader :visa
@@ -479,7 +479,7 @@ module Increase
           sig do
             params(
               visa:
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::OrHash
+                Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::OrHash
             ).void
           end
           attr_writer :visa
@@ -488,7 +488,7 @@ module Increase
           sig do
             params(
               visa:
-                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::OrHash
+                Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::OrHash
             ).returns(T.attached_class)
           end
           def self.new(
@@ -501,7 +501,7 @@ module Increase
             override.returns(
               {
                 visa:
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
               }
             )
           end
@@ -516,7 +516,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                 )
               )
             end
@@ -525,7 +525,7 @@ module Increase
             sig do
               params(
                 stand_in_processing_reason:
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
               ).void
             end
             attr_writer :stand_in_processing_reason
@@ -534,7 +534,7 @@ module Increase
             sig do
               params(
                 stand_in_processing_reason:
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -547,7 +547,7 @@ module Increase
               override.returns(
                 {
                   stand_in_processing_reason:
-                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                    Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                 }
               )
             end
@@ -562,7 +562,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
+                    Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -571,55 +571,55 @@ module Increase
               ISSUER_ERROR =
                 T.let(
                   :issuer_error,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
               INVALID_PHYSICAL_CARD =
                 T.let(
                   :invalid_physical_card,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               # The 3DS cardholder authentication verification value was invalid.
               INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
                 T.let(
                   :invalid_cardholder_authentication_verification_value,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
               INTERNAL_VISA_ERROR =
                 T.let(
                   :internal_visa_error,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
               MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
                 T.let(
                   :merchant_transaction_advisory_service_authentication_required,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
               PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
                 T.let(
                   :payment_fraud_disruption_acquirer_block,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               # An unspecific reason for stand-in processing.
               OTHER =
                 T.let(
                   :other,
-                  Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                  Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   ]
                 )
               end

@@ -25,7 +25,7 @@ module Increase
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::InboundWireTransfer)
+          ).returns(Increase::InboundWireTransfer)
         end
         def create(
           # The identifier of the Account Number the inbound Wire Transfer is for.

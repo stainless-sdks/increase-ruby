@@ -63,7 +63,7 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::InboundWireTransfer]
+        # @return [Increase::InboundWireTransfer]
         #
         # @see Increase::Models::Simulations::InboundWireTransferCreateParams
         def create(params)
@@ -72,7 +72,7 @@ module Increase
             method: :post,
             path: "simulations/inbound_wire_transfers",
             body: parsed,
-            model: Increase::Models::InboundWireTransfer,
+            model: Increase::InboundWireTransfer,
             options: options
           )
         end

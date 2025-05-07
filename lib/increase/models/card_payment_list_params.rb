@@ -21,8 +21,8 @@ module Increase
 
       # @!attribute created_at
       #
-      #   @return [Increase::Models::CardPaymentListParams::CreatedAt, nil]
-      optional :created_at, -> { Increase::Models::CardPaymentListParams::CreatedAt }
+      #   @return [Increase::CardPaymentListParams::CreatedAt, nil]
+      optional :created_at, -> { Increase::CardPaymentListParams::CreatedAt }
 
       # @!attribute cursor
       #   Return the page of entries after this one.
@@ -45,7 +45,7 @@ module Increase
       #
       #   @param card_id [String] Filter Card Payments to ones belonging to the specified Card.
       #
-      #   @param created_at [Increase::Models::CardPaymentListParams::CreatedAt]
+      #   @param created_at [Increase::CardPaymentListParams::CreatedAt]
       #
       #   @param cursor [String] Return the page of entries after this one.
       #
@@ -85,7 +85,7 @@ module Increase
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::CardPaymentListParams::CreatedAt} for more details.
+        #   {Increase::CardPaymentListParams::CreatedAt} for more details.
         #
         #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
         #   ...

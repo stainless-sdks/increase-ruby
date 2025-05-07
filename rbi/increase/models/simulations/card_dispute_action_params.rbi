@@ -13,7 +13,7 @@ module Increase
         # The status to move the dispute to.
         sig do
           returns(
-            Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol
+            Increase::Simulations::CardDisputeActionParams::Status::OrSymbol
           )
         end
         attr_accessor :status
@@ -28,7 +28,7 @@ module Increase
         sig do
           params(
             status:
-              Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
+              Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
             request_options:
               T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
@@ -47,7 +47,7 @@ module Increase
           override.returns(
             {
               status:
-                Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
+                Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
               explanation: String,
               request_options: Increase::RequestOptions
             }
@@ -64,7 +64,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::Models::Simulations::CardDisputeActionParams::Status
+                Increase::Simulations::CardDisputeActionParams::Status
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -73,41 +73,41 @@ module Increase
           PENDING_USER_INFORMATION =
             T.let(
               :pending_user_information,
-              Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
             )
 
           # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
           ACCEPTED =
             T.let(
               :accepted,
-              Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
             )
 
           # The Card Dispute has been rejected.
           REJECTED =
             T.let(
               :rejected,
-              Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
             )
 
           # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
           LOST =
             T.let(
               :lost,
-              Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
             )
 
           # The Card Dispute has been won and no further action can be taken.
           WON =
             T.let(
               :won,
-              Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::Simulations::CardDisputeActionParams::Status::TaggedSymbol
+                Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
               ]
             )
           end

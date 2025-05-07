@@ -9,7 +9,7 @@ module Increase
           bank_name: String,
           entity_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiExclusion)
+        ).returns(Increase::IntrafiExclusion)
       end
       def create(
         # The name of the financial institution to be excluded.
@@ -25,7 +25,7 @@ module Increase
         params(
           intrafi_exclusion_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiExclusion)
+        ).returns(Increase::IntrafiExclusion)
       end
       def retrieve(
         # The identifier of the IntraFi Exclusion to retrieve.
@@ -42,7 +42,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::IntrafiExclusion])
+        ).returns(Increase::Internal::Page[Increase::IntrafiExclusion])
       end
       def list(
         # Return the page of entries after this one.
@@ -66,7 +66,7 @@ module Increase
         params(
           intrafi_exclusion_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::IntrafiExclusion)
+        ).returns(Increase::IntrafiExclusion)
       end
       def archive(
         # The identifier of the IntraFi Exclusion request to archive. It may take 5

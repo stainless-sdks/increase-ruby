@@ -8,13 +8,11 @@ module Increase
 
       OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
-      sig { returns(T.nilable(Increase::Models::AccountListParams::CreatedAt)) }
+      sig { returns(T.nilable(Increase::AccountListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: Increase::Models::AccountListParams::CreatedAt::OrHash
-        ).void
+        params(created_at: Increase::AccountListParams::CreatedAt::OrHash).void
       end
       attr_writer :created_at
 
@@ -64,24 +62,22 @@ module Increase
       sig { params(program_id: String).void }
       attr_writer :program_id
 
-      sig { returns(T.nilable(Increase::Models::AccountListParams::Status)) }
+      sig { returns(T.nilable(Increase::AccountListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(status: Increase::Models::AccountListParams::Status::OrHash).void
-      end
+      sig { params(status: Increase::AccountListParams::Status::OrHash).void }
       attr_writer :status
 
       sig do
         params(
-          created_at: Increase::Models::AccountListParams::CreatedAt::OrHash,
+          created_at: Increase::AccountListParams::CreatedAt::OrHash,
           cursor: String,
           entity_id: String,
           idempotency_key: String,
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Increase::Models::AccountListParams::Status::OrHash,
+          status: Increase::AccountListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -112,14 +108,14 @@ module Increase
       sig do
         override.returns(
           {
-            created_at: Increase::Models::AccountListParams::CreatedAt,
+            created_at: Increase::AccountListParams::CreatedAt,
             cursor: String,
             entity_id: String,
             idempotency_key: String,
             informational_entity_id: String,
             limit: Integer,
             program_id: String,
-            status: Increase::Models::AccountListParams::Status,
+            status: Increase::AccountListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -205,9 +201,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              T::Array[
-                Increase::Models::AccountListParams::Status::In::OrSymbol
-              ]
+              T::Array[Increase::AccountListParams::Status::In::OrSymbol]
             )
           )
         end
@@ -215,20 +209,14 @@ module Increase
 
         sig do
           params(
-            in_:
-              T::Array[
-                Increase::Models::AccountListParams::Status::In::OrSymbol
-              ]
+            in_: T::Array[Increase::AccountListParams::Status::In::OrSymbol]
           ).void
         end
         attr_writer :in_
 
         sig do
           params(
-            in_:
-              T::Array[
-                Increase::Models::AccountListParams::Status::In::OrSymbol
-              ]
+            in_: T::Array[Increase::AccountListParams::Status::In::OrSymbol]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -240,12 +228,7 @@ module Increase
 
         sig do
           override.returns(
-            {
-              in_:
-                T::Array[
-                  Increase::Models::AccountListParams::Status::In::OrSymbol
-                ]
-            }
+            { in_: T::Array[Increase::AccountListParams::Status::In::OrSymbol] }
           )
         end
         def to_hash
@@ -256,7 +239,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::AccountListParams::Status::In)
+              T.all(Symbol, Increase::AccountListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -264,21 +247,16 @@ module Increase
           CLOSED =
             T.let(
               :closed,
-              Increase::Models::AccountListParams::Status::In::TaggedSymbol
+              Increase::AccountListParams::Status::In::TaggedSymbol
             )
 
           # Open Accounts that are ready to use.
           OPEN =
-            T.let(
-              :open,
-              Increase::Models::AccountListParams::Status::In::TaggedSymbol
-            )
+            T.let(:open, Increase::AccountListParams::Status::In::TaggedSymbol)
 
           sig do
             override.returns(
-              T::Array[
-                Increase::Models::AccountListParams::Status::In::TaggedSymbol
-              ]
+              T::Array[Increase::AccountListParams::Status::In::TaggedSymbol]
             )
           end
           def self.values

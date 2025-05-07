@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute created_at
       #
-      #   @return [Increase::Models::AccountTransferListParams::CreatedAt, nil]
-      optional :created_at, -> { Increase::Models::AccountTransferListParams::CreatedAt }
+      #   @return [Increase::AccountTransferListParams::CreatedAt, nil]
+      optional :created_at, -> { Increase::AccountTransferListParams::CreatedAt }
 
       # @!attribute cursor
       #   Return the page of entries after this one.
@@ -46,7 +46,7 @@ module Increase
       #
       #   @param account_id [String] Filter Account Transfers to those that originated from the specified Account.
       #
-      #   @param created_at [Increase::Models::AccountTransferListParams::CreatedAt]
+      #   @param created_at [Increase::AccountTransferListParams::CreatedAt]
       #
       #   @param cursor [String] Return the page of entries after this one.
       #
@@ -89,7 +89,7 @@ module Increase
 
         # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
         #   Some parameter documentations has been truncated, see
-        #   {Increase::Models::AccountTransferListParams::CreatedAt} for more details.
+        #   {Increase::AccountTransferListParams::CreatedAt} for more details.
         #
         #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
         #   ...

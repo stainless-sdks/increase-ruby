@@ -8,17 +8,12 @@ module Increase
 
       OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
-      sig do
-        returns(
-          T.nilable(Increase::Models::InboundMailItemListParams::CreatedAt)
-        )
-      end
+      sig { returns(T.nilable(Increase::InboundMailItemListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::InboundMailItemListParams::CreatedAt::OrHash
+          created_at: Increase::InboundMailItemListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -47,8 +42,7 @@ module Increase
 
       sig do
         params(
-          created_at:
-            Increase::Models::InboundMailItemListParams::CreatedAt::OrHash,
+          created_at: Increase::InboundMailItemListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           lockbox_id: String,
@@ -72,7 +66,7 @@ module Increase
       sig do
         override.returns(
           {
-            created_at: Increase::Models::InboundMailItemListParams::CreatedAt,
+            created_at: Increase::InboundMailItemListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             lockbox_id: String,

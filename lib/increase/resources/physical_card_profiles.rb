@@ -19,7 +19,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::PhysicalCardProfile]
+      # @return [Increase::PhysicalCardProfile]
       #
       # @see Increase::Models::PhysicalCardProfileCreateParams
       def create(params)
@@ -28,7 +28,7 @@ module Increase
           method: :post,
           path: "physical_card_profiles",
           body: parsed,
-          model: Increase::Models::PhysicalCardProfile,
+          model: Increase::PhysicalCardProfile,
           options: options
         )
       end
@@ -41,14 +41,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::PhysicalCardProfile]
+      # @return [Increase::PhysicalCardProfile]
       #
       # @see Increase::Models::PhysicalCardProfileRetrieveParams
       def retrieve(physical_card_profile_id, params = {})
         @client.request(
           method: :get,
           path: ["physical_card_profiles/%1$s", physical_card_profile_id],
-          model: Increase::Models::PhysicalCardProfile,
+          model: Increase::PhysicalCardProfile,
           options: params[:request_options]
         )
       end
@@ -68,11 +68,11 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::PhysicalCardProfileListParams::Status]
+      # @param status [Increase::PhysicalCardProfileListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::PhysicalCardProfile>]
+      # @return [Increase::Internal::Page<Increase::PhysicalCardProfile>]
       #
       # @see Increase::Models::PhysicalCardProfileListParams
       def list(params = {})
@@ -82,7 +82,7 @@ module Increase
           path: "physical_card_profiles",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::PhysicalCardProfile,
+          model: Increase::PhysicalCardProfile,
           options: options
         )
       end
@@ -95,14 +95,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::PhysicalCardProfile]
+      # @return [Increase::PhysicalCardProfile]
       #
       # @see Increase::Models::PhysicalCardProfileArchiveParams
       def archive(physical_card_profile_id, params = {})
         @client.request(
           method: :post,
           path: ["physical_card_profiles/%1$s/archive", physical_card_profile_id],
-          model: Increase::Models::PhysicalCardProfile,
+          model: Increase::PhysicalCardProfile,
           options: params[:request_options]
         )
       end
@@ -124,12 +124,12 @@ module Increase
       #
       # @param front_image_file_id [String] The identifier of the File containing the physical card's front image.
       #
-      # @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText] Text printed on the front of the card. Reach out to [support@increase.com](mailt
+      # @param front_text [Increase::PhysicalCardProfileCloneParams::FrontText] Text printed on the front of the card. Reach out to [support@increase.com](mailt
       # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::PhysicalCardProfile]
+      # @return [Increase::PhysicalCardProfile]
       #
       # @see Increase::Models::PhysicalCardProfileCloneParams
       def clone_(physical_card_profile_id, params = {})
@@ -138,7 +138,7 @@ module Increase
           method: :post,
           path: ["physical_card_profiles/%1$s/clone", physical_card_profile_id],
           body: parsed,
-          model: Increase::Models::PhysicalCardProfile,
+          model: Increase::PhysicalCardProfile,
           options: options
         )
       end

@@ -40,15 +40,11 @@ module Increase
       sig { params(routing_number: String).void }
       attr_writer :routing_number
 
-      sig do
-        returns(T.nilable(Increase::Models::ExternalAccountListParams::Status))
-      end
+      sig { returns(T.nilable(Increase::ExternalAccountListParams::Status)) }
       attr_reader :status
 
       sig do
-        params(
-          status: Increase::Models::ExternalAccountListParams::Status::OrHash
-        ).void
+        params(status: Increase::ExternalAccountListParams::Status::OrHash).void
       end
       attr_writer :status
 
@@ -58,7 +54,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status: Increase::Models::ExternalAccountListParams::Status::OrHash,
+          status: Increase::ExternalAccountListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -88,7 +84,7 @@ module Increase
             idempotency_key: String,
             limit: Integer,
             routing_number: String,
-            status: Increase::Models::ExternalAccountListParams::Status,
+            status: Increase::ExternalAccountListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -107,7 +103,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::ExternalAccountListParams::Status::In::OrSymbol
+                Increase::ExternalAccountListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -118,7 +114,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::ExternalAccountListParams::Status::In::OrSymbol
+                Increase::ExternalAccountListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -128,7 +124,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::ExternalAccountListParams::Status::In::OrSymbol
+                Increase::ExternalAccountListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -145,7 +141,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::ExternalAccountListParams::Status::In::OrSymbol
+                  Increase::ExternalAccountListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -158,10 +154,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::ExternalAccountListParams::Status::In
-              )
+              T.all(Symbol, Increase::ExternalAccountListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -169,20 +162,20 @@ module Increase
           ACTIVE =
             T.let(
               :active,
-              Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol
+              Increase::ExternalAccountListParams::Status::In::TaggedSymbol
             )
 
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED =
             T.let(
               :archived,
-              Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol
+              Increase::ExternalAccountListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::ExternalAccountListParams::Status::In::TaggedSymbol
+                Increase::ExternalAccountListParams::Status::In::TaggedSymbol
               ]
             )
           end

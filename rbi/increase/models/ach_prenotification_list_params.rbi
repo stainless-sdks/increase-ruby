@@ -9,16 +9,13 @@ module Increase
       OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       sig do
-        returns(
-          T.nilable(Increase::Models::ACHPrenotificationListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::ACHPrenotificationListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::ACHPrenotificationListParams::CreatedAt::OrHash
+          created_at: Increase::ACHPrenotificationListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -50,8 +47,7 @@ module Increase
 
       sig do
         params(
-          created_at:
-            Increase::Models::ACHPrenotificationListParams::CreatedAt::OrHash,
+          created_at: Increase::ACHPrenotificationListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
@@ -78,8 +74,7 @@ module Increase
       sig do
         override.returns(
           {
-            created_at:
-              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+            created_at: Increase::ACHPrenotificationListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,

@@ -23,16 +23,13 @@ module Increase
       attr_writer :account_number_id
 
       sig do
-        returns(
-          T.nilable(Increase::Models::InboundACHTransferListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::InboundACHTransferListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::InboundACHTransferListParams::CreatedAt::OrHash
+          created_at: Increase::InboundACHTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -52,16 +49,12 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig do
-        returns(
-          T.nilable(Increase::Models::InboundACHTransferListParams::Status)
-        )
-      end
+      sig { returns(T.nilable(Increase::InboundACHTransferListParams::Status)) }
       attr_reader :status
 
       sig do
         params(
-          status: Increase::Models::InboundACHTransferListParams::Status::OrHash
+          status: Increase::InboundACHTransferListParams::Status::OrHash
         ).void
       end
       attr_writer :status
@@ -70,12 +63,10 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at:
-            Increase::Models::InboundACHTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::InboundACHTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status:
-            Increase::Models::InboundACHTransferListParams::Status::OrHash,
+          status: Increase::InboundACHTransferListParams::Status::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -101,11 +92,10 @@ module Increase
           {
             account_id: String,
             account_number_id: String,
-            created_at:
-              Increase::Models::InboundACHTransferListParams::CreatedAt,
+            created_at: Increase::InboundACHTransferListParams::CreatedAt,
             cursor: String,
             limit: Integer,
-            status: Increase::Models::InboundACHTransferListParams::Status,
+            status: Increase::InboundACHTransferListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -193,7 +183,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
+                Increase::InboundACHTransferListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -204,7 +194,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
+                Increase::InboundACHTransferListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -214,7 +204,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
+                Increase::InboundACHTransferListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -231,7 +221,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
+                  Increase::InboundACHTransferListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -244,10 +234,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::InboundACHTransferListParams::Status::In
-              )
+              T.all(Symbol, Increase::InboundACHTransferListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -255,34 +242,34 @@ module Increase
           PENDING =
             T.let(
               :pending,
-              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound ACH Transfer has been declined.
           DECLINED =
             T.let(
               :declined,
-              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound ACH Transfer is accepted.
           ACCEPTED =
             T.let(
               :accepted,
-              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound ACH Transfer has been returned.
           RETURNED =
             T.let(
               :returned,
-              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
+                Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
               ]
             )
           end

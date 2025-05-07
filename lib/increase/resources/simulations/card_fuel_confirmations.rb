@@ -21,7 +21,7 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::CardPayment]
+        # @return [Increase::CardPayment]
         #
         # @see Increase::Models::Simulations::CardFuelConfirmationCreateParams
         def create(params)
@@ -30,7 +30,7 @@ module Increase
             method: :post,
             path: "simulations/card_fuel_confirmations",
             body: parsed,
-            model: Increase::Models::CardPayment,
+            model: Increase::CardPayment,
             options: options
           )
         end

@@ -39,16 +39,14 @@ module Increase
       # Text printed on the front of the card. Reach out to
       # [support@increase.com](mailto:support@increase.com) for more information.
       sig do
-        returns(
-          T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
-        )
+        returns(T.nilable(Increase::PhysicalCardProfileCloneParams::FrontText))
       end
       attr_reader :front_text
 
       sig do
         params(
           front_text:
-            Increase::Models::PhysicalCardProfileCloneParams::FrontText::OrHash
+            Increase::PhysicalCardProfileCloneParams::FrontText::OrHash
         ).void
       end
       attr_writer :front_text
@@ -60,7 +58,7 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text:
-            Increase::Models::PhysicalCardProfileCloneParams::FrontText::OrHash,
+            Increase::PhysicalCardProfileCloneParams::FrontText::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -88,8 +86,7 @@ module Increase
             contact_phone: String,
             description: String,
             front_image_file_id: String,
-            front_text:
-              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+            front_text: Increase::PhysicalCardProfileCloneParams::FrontText,
             request_options: Increase::RequestOptions
           }
         )

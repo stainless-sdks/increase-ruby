@@ -12,7 +12,7 @@ module Increase
           params(
             wire_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::WireTransfer)
+          ).returns(Increase::WireTransfer)
         end
         def reverse(
           # The identifier of the Wire Transfer you wish to reverse.
@@ -28,7 +28,7 @@ module Increase
           params(
             wire_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::WireTransfer)
+          ).returns(Increase::WireTransfer)
         end
         def submit(
           # The identifier of the Wire Transfer you wish to submit.

@@ -8,7 +8,7 @@ module Increase
         params(
           bookkeeping_entry_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::BookkeepingEntry)
+        ).returns(Increase::BookkeepingEntry)
       end
       def retrieve(
         # The identifier of the Bookkeeping Entry.
@@ -24,7 +24,7 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::BookkeepingEntry])
+        ).returns(Increase::Internal::Page[Increase::BookkeepingEntry])
       end
       def list(
         # The identifier for the Bookkeeping Account to filter by.

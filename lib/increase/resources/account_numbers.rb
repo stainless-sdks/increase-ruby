@@ -14,14 +14,14 @@ module Increase
       #
       # @param name [String] The name you choose for the Account Number.
       #
-      # @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH] Options related to how this Account Number should handle inbound ACH transfers.
+      # @param inbound_ach [Increase::AccountNumberCreateParams::InboundACH] Options related to how this Account Number should handle inbound ACH transfers.
       #
-      # @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
+      # @param inbound_checks [Increase::AccountNumberCreateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
       # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::AccountNumber]
+      # @return [Increase::AccountNumber]
       #
       # @see Increase::Models::AccountNumberCreateParams
       def create(params)
@@ -30,7 +30,7 @@ module Increase
           method: :post,
           path: "account_numbers",
           body: parsed,
-          model: Increase::Models::AccountNumber,
+          model: Increase::AccountNumber,
           options: options
         )
       end
@@ -43,14 +43,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::AccountNumber]
+      # @return [Increase::AccountNumber]
       #
       # @see Increase::Models::AccountNumberRetrieveParams
       def retrieve(account_number_id, params = {})
         @client.request(
           method: :get,
           path: ["account_numbers/%1$s", account_number_id],
-          model: Increase::Models::AccountNumber,
+          model: Increase::AccountNumber,
           options: params[:request_options]
         )
       end
@@ -64,18 +64,18 @@ module Increase
       #
       # @param account_number_id [String] The identifier of the Account Number.
       #
-      # @param inbound_ach [Increase::Models::AccountNumberUpdateParams::InboundACH] Options related to how this Account Number handles inbound ACH transfers.
+      # @param inbound_ach [Increase::AccountNumberUpdateParams::InboundACH] Options related to how this Account Number handles inbound ACH transfers.
       #
-      # @param inbound_checks [Increase::Models::AccountNumberUpdateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
+      # @param inbound_checks [Increase::AccountNumberUpdateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
       # ...
       #
       # @param name [String] The name you choose for the Account Number.
       #
-      # @param status [Symbol, Increase::Models::AccountNumberUpdateParams::Status] This indicates if transfers can be made to the Account Number.
+      # @param status [Symbol, Increase::AccountNumberUpdateParams::Status] This indicates if transfers can be made to the Account Number.
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::AccountNumber]
+      # @return [Increase::AccountNumber]
       #
       # @see Increase::Models::AccountNumberUpdateParams
       def update(account_number_id, params = {})
@@ -84,7 +84,7 @@ module Increase
           method: :patch,
           path: ["account_numbers/%1$s", account_number_id],
           body: parsed,
-          model: Increase::Models::AccountNumber,
+          model: Increase::AccountNumber,
           options: options
         )
       end
@@ -98,9 +98,9 @@ module Increase
       #
       # @param account_id [String] Filter Account Numbers to those belonging to the specified Account.
       #
-      # @param ach_debit_status [Increase::Models::AccountNumberListParams::ACHDebitStatus]
+      # @param ach_debit_status [Increase::AccountNumberListParams::ACHDebitStatus]
       #
-      # @param created_at [Increase::Models::AccountNumberListParams::CreatedAt]
+      # @param created_at [Increase::AccountNumberListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -110,11 +110,11 @@ module Increase
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::AccountNumberListParams::Status]
+      # @param status [Increase::AccountNumberListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::AccountNumber>]
+      # @return [Increase::Internal::Page<Increase::AccountNumber>]
       #
       # @see Increase::Models::AccountNumberListParams
       def list(params = {})
@@ -124,7 +124,7 @@ module Increase
           path: "account_numbers",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::AccountNumber,
+          model: Increase::AccountNumber,
           options: options
         )
       end

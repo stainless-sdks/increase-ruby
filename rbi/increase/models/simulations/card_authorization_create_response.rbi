@@ -10,13 +10,13 @@ module Increase
         # If the authorization attempt fails, this will contain the resulting
         # [Declined Transaction](#declined-transactions) object. The Declined
         # Transaction's `source` will be of `category: card_decline`.
-        sig { returns(T.nilable(Increase::Models::DeclinedTransaction)) }
+        sig { returns(T.nilable(Increase::DeclinedTransaction)) }
         attr_reader :declined_transaction
 
         sig do
           params(
             declined_transaction:
-              T.nilable(Increase::Models::DeclinedTransaction::OrHash)
+              T.nilable(Increase::DeclinedTransaction::OrHash)
           ).void
         end
         attr_writer :declined_transaction
@@ -24,13 +24,12 @@ module Increase
         # If the authorization attempt succeeds, this will contain the resulting Pending
         # Transaction object. The Pending Transaction's `source` will be of
         # `category: card_authorization`.
-        sig { returns(T.nilable(Increase::Models::PendingTransaction)) }
+        sig { returns(T.nilable(Increase::PendingTransaction)) }
         attr_reader :pending_transaction
 
         sig do
           params(
-            pending_transaction:
-              T.nilable(Increase::Models::PendingTransaction::OrHash)
+            pending_transaction: T.nilable(Increase::PendingTransaction::OrHash)
           ).void
         end
         attr_writer :pending_transaction
@@ -48,9 +47,9 @@ module Increase
         sig do
           params(
             declined_transaction:
-              T.nilable(Increase::Models::DeclinedTransaction::OrHash),
+              T.nilable(Increase::DeclinedTransaction::OrHash),
             pending_transaction:
-              T.nilable(Increase::Models::PendingTransaction::OrHash),
+              T.nilable(Increase::PendingTransaction::OrHash),
             type:
               Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::OrSymbol
           ).returns(T.attached_class)
@@ -73,10 +72,8 @@ module Increase
         sig do
           override.returns(
             {
-              declined_transaction:
-                T.nilable(Increase::Models::DeclinedTransaction),
-              pending_transaction:
-                T.nilable(Increase::Models::PendingTransaction),
+              declined_transaction: T.nilable(Increase::DeclinedTransaction),
+              pending_transaction: T.nilable(Increase::PendingTransaction),
               type:
                 Increase::Models::Simulations::CardAuthorizationCreateResponse::Type::TaggedSymbol
             }

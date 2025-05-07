@@ -12,7 +12,7 @@ module Increase
           params(
             check_transfer_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CheckTransfer)
+          ).returns(Increase::CheckTransfer)
         end
         def mail(
           # The identifier of the Check Transfer you wish to mail.

@@ -15,13 +15,11 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig { returns(T.nilable(Increase::Models::LockboxListParams::CreatedAt)) }
+      sig { returns(T.nilable(Increase::LockboxListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(
-          created_at: Increase::Models::LockboxListParams::CreatedAt::OrHash
-        ).void
+        params(created_at: Increase::LockboxListParams::CreatedAt::OrHash).void
       end
       attr_writer :created_at
 
@@ -53,7 +51,7 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::LockboxListParams::CreatedAt::OrHash,
+          created_at: Increase::LockboxListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
@@ -83,7 +81,7 @@ module Increase
         override.returns(
           {
             account_id: String,
-            created_at: Increase::Models::LockboxListParams::CreatedAt,
+            created_at: Increase::LockboxListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,

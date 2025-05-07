@@ -10,9 +10,7 @@ module Increase
 
       # The bookkeeping entries.
       sig do
-        returns(
-          T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]
-        )
+        returns(T::Array[Increase::BookkeepingEntrySetCreateParams::Entry])
       end
       attr_accessor :entries
 
@@ -34,9 +32,7 @@ module Increase
       sig do
         params(
           entries:
-            T::Array[
-              Increase::Models::BookkeepingEntrySetCreateParams::Entry::OrHash
-            ],
+            T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
           date: Time,
           transaction_id: String,
           request_options:
@@ -58,10 +54,7 @@ module Increase
       sig do
         override.returns(
           {
-            entries:
-              T::Array[
-                Increase::Models::BookkeepingEntrySetCreateParams::Entry
-              ],
+            entries: T::Array[Increase::BookkeepingEntrySetCreateParams::Entry],
             date: Time,
             transaction_id: String,
             request_options: Increase::RequestOptions

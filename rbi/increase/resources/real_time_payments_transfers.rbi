@@ -18,7 +18,7 @@ module Increase
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::RealTimePaymentsTransfer)
+        ).returns(Increase::RealTimePaymentsTransfer)
       end
       def create(
         # The transfer amount in USD cents. For Real-Time Payments transfers, must be
@@ -59,7 +59,7 @@ module Increase
         params(
           real_time_payments_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::RealTimePaymentsTransfer)
+        ).returns(Increase::RealTimePaymentsTransfer)
       end
       def retrieve(
         # The identifier of the Real-Time Payments Transfer.
@@ -73,17 +73,14 @@ module Increase
         params(
           account_id: String,
           created_at:
-            Increase::Models::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
+            Increase::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          status:
-            Increase::Models::RealTimePaymentsTransferListParams::Status::OrHash,
+          status: Increase::RealTimePaymentsTransferListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::RealTimePaymentsTransfer]
-        )
+        ).returns(Increase::Internal::Page[Increase::RealTimePaymentsTransfer])
       end
       def list(
         # Filter Real-Time Payments Transfers to those belonging to the specified Account.

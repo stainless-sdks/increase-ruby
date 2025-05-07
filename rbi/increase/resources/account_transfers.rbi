@@ -12,7 +12,7 @@ module Increase
           destination_account_id: String,
           require_approval: T::Boolean,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountTransfer)
+        ).returns(Increase::AccountTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -35,7 +35,7 @@ module Increase
         params(
           account_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountTransfer)
+        ).returns(Increase::AccountTransfer)
       end
       def retrieve(
         # The identifier of the Account Transfer.
@@ -48,13 +48,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::Models::AccountTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::AccountTransferListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::AccountTransfer])
+        ).returns(Increase::Internal::Page[Increase::AccountTransfer])
       end
       def list(
         # Filter Account Transfers to those that originated from the specified Account.
@@ -79,7 +78,7 @@ module Increase
         params(
           account_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountTransfer)
+        ).returns(Increase::AccountTransfer)
       end
       def approve(
         # The identifier of the Account Transfer to approve.
@@ -93,7 +92,7 @@ module Increase
         params(
           account_transfer_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountTransfer)
+        ).returns(Increase::AccountTransfer)
       end
       def cancel(
         # The identifier of the pending Account Transfer to cancel.

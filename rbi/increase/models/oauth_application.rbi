@@ -29,12 +29,12 @@ module Increase
       attr_accessor :name
 
       # Whether the application is active.
-      sig { returns(Increase::Models::OAuthApplication::Status::TaggedSymbol) }
+      sig { returns(Increase::OAuthApplication::Status::TaggedSymbol) }
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       # `oauth_application`.
-      sig { returns(Increase::Models::OAuthApplication::Type::TaggedSymbol) }
+      sig { returns(Increase::OAuthApplication::Type::TaggedSymbol) }
       attr_accessor :type
 
       # An OAuth Application lets you build an application for others to use with their
@@ -48,8 +48,8 @@ module Increase
           created_at: Time,
           deleted_at: T.nilable(Time),
           name: T.nilable(String),
-          status: Increase::Models::OAuthApplication::Status::OrSymbol,
-          type: Increase::Models::OAuthApplication::Type::OrSymbol
+          status: Increase::OAuthApplication::Status::OrSymbol,
+          type: Increase::OAuthApplication::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -82,8 +82,8 @@ module Increase
             created_at: Time,
             deleted_at: T.nilable(Time),
             name: T.nilable(String),
-            status: Increase::Models::OAuthApplication::Status::TaggedSymbol,
-            type: Increase::Models::OAuthApplication::Type::TaggedSymbol
+            status: Increase::OAuthApplication::Status::TaggedSymbol,
+            type: Increase::OAuthApplication::Type::TaggedSymbol
           }
         )
       end
@@ -95,28 +95,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::OAuthApplication::Status)
-          end
+          T.type_alias { T.all(Symbol, Increase::OAuthApplication::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The application is active and can be used by your users.
         ACTIVE =
-          T.let(
-            :active,
-            Increase::Models::OAuthApplication::Status::TaggedSymbol
-          )
+          T.let(:active, Increase::OAuthApplication::Status::TaggedSymbol)
 
         # The application is deleted.
         DELETED =
-          T.let(
-            :deleted,
-            Increase::Models::OAuthApplication::Status::TaggedSymbol
-          )
+          T.let(:deleted, Increase::OAuthApplication::Status::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]
+            T::Array[Increase::OAuthApplication::Status::TaggedSymbol]
           )
         end
         def self.values
@@ -129,20 +121,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::OAuthApplication::Type)
-          end
+          T.type_alias { T.all(Symbol, Increase::OAuthApplication::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         OAUTH_APPLICATION =
           T.let(
             :oauth_application,
-            Increase::Models::OAuthApplication::Type::TaggedSymbol
+            Increase::OAuthApplication::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]
+            T::Array[Increase::OAuthApplication::Type::TaggedSymbol]
           )
         end
         def self.values

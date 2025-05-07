@@ -11,14 +11,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::InboundACHTransfer]
+      # @return [Increase::InboundACHTransfer]
       #
       # @see Increase::Models::InboundACHTransferRetrieveParams
       def retrieve(inbound_ach_transfer_id, params = {})
         @client.request(
           method: :get,
           path: ["inbound_ach_transfers/%1$s", inbound_ach_transfer_id],
-          model: Increase::Models::InboundACHTransfer,
+          model: Increase::InboundACHTransfer,
           options: params[:request_options]
         )
       end
@@ -34,18 +34,18 @@ module Increase
       #
       # @param account_number_id [String] Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
       #
-      # @param created_at [Increase::Models::InboundACHTransferListParams::CreatedAt]
+      # @param created_at [Increase::InboundACHTransferListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
       # ...
       #
-      # @param status [Increase::Models::InboundACHTransferListParams::Status]
+      # @param status [Increase::InboundACHTransferListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::InboundACHTransfer>]
+      # @return [Increase::Internal::Page<Increase::InboundACHTransfer>]
       #
       # @see Increase::Models::InboundACHTransferListParams
       def list(params = {})
@@ -55,7 +55,7 @@ module Increase
           path: "inbound_ach_transfers",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::InboundACHTransfer,
+          model: Increase::InboundACHTransfer,
           options: options
         )
       end
@@ -77,7 +77,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::InboundACHTransfer]
+      # @return [Increase::InboundACHTransfer]
       #
       # @see Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
       def create_notification_of_change(inbound_ach_transfer_id, params = {})
@@ -86,7 +86,7 @@ module Increase
           method: :post,
           path: ["inbound_ach_transfers/%1$s/create_notification_of_change", inbound_ach_transfer_id],
           body: parsed,
-          model: Increase::Models::InboundACHTransfer,
+          model: Increase::InboundACHTransfer,
           options: options
         )
       end
@@ -100,12 +100,12 @@ module Increase
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.
       #
-      # @param reason [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason] The reason why this transfer will be returned. If this parameter is unset, the r
+      # @param reason [Symbol, Increase::InboundACHTransferDeclineParams::Reason] The reason why this transfer will be returned. If this parameter is unset, the r
       # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::InboundACHTransfer]
+      # @return [Increase::InboundACHTransfer]
       #
       # @see Increase::Models::InboundACHTransferDeclineParams
       def decline(inbound_ach_transfer_id, params = {})
@@ -114,7 +114,7 @@ module Increase
           method: :post,
           path: ["inbound_ach_transfers/%1$s/decline", inbound_ach_transfer_id],
           body: parsed,
-          model: Increase::Models::InboundACHTransfer,
+          model: Increase::InboundACHTransfer,
           options: options
         )
       end
@@ -129,12 +129,12 @@ module Increase
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to return to the originating financia
       # ...
       #
-      # @param reason [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason] The reason why this transfer will be returned. The most usual return codes are `
+      # @param reason [Symbol, Increase::InboundACHTransferTransferReturnParams::Reason] The reason why this transfer will be returned. The most usual return codes are `
       # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::InboundACHTransfer]
+      # @return [Increase::InboundACHTransfer]
       #
       # @see Increase::Models::InboundACHTransferTransferReturnParams
       def transfer_return(inbound_ach_transfer_id, params)
@@ -143,7 +143,7 @@ module Increase
           method: :post,
           path: ["inbound_ach_transfers/%1$s/transfer_return", inbound_ach_transfer_id],
           body: parsed,
-          model: Increase::Models::InboundACHTransfer,
+          model: Increase::InboundACHTransfer,
           options: options
         )
       end

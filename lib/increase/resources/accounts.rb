@@ -22,7 +22,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Account]
+      # @return [Increase::Account]
       #
       # @see Increase::Models::AccountCreateParams
       def create(params)
@@ -31,7 +31,7 @@ module Increase
           method: :post,
           path: "accounts",
           body: parsed,
-          model: Increase::Models::Account,
+          model: Increase::Account,
           options: options
         )
       end
@@ -44,14 +44,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Account]
+      # @return [Increase::Account]
       #
       # @see Increase::Models::AccountRetrieveParams
       def retrieve(account_id, params = {})
         @client.request(
           method: :get,
           path: ["accounts/%1$s", account_id],
-          model: Increase::Models::Account,
+          model: Increase::Account,
           options: params[:request_options]
         )
       end
@@ -66,7 +66,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Account]
+      # @return [Increase::Account]
       #
       # @see Increase::Models::AccountUpdateParams
       def update(account_id, params = {})
@@ -75,7 +75,7 @@ module Increase
           method: :patch,
           path: ["accounts/%1$s", account_id],
           body: parsed,
-          model: Increase::Models::Account,
+          model: Increase::Account,
           options: options
         )
       end
@@ -87,7 +87,7 @@ module Increase
       #
       # @overload list(created_at: nil, cursor: nil, entity_id: nil, idempotency_key: nil, informational_entity_id: nil, limit: nil, program_id: nil, status: nil, request_options: {})
       #
-      # @param created_at [Increase::Models::AccountListParams::CreatedAt]
+      # @param created_at [Increase::AccountListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -103,11 +103,11 @@ module Increase
       #
       # @param program_id [String] Filter Accounts for those in a specific Program.
       #
-      # @param status [Increase::Models::AccountListParams::Status]
+      # @param status [Increase::AccountListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::Account>]
+      # @return [Increase::Internal::Page<Increase::Account>]
       #
       # @see Increase::Models::AccountListParams
       def list(params = {})
@@ -117,7 +117,7 @@ module Increase
           path: "accounts",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Models::Account,
+          model: Increase::Account,
           options: options
         )
       end
@@ -133,7 +133,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::BalanceLookup]
+      # @return [Increase::BalanceLookup]
       #
       # @see Increase::Models::AccountBalanceParams
       def balance(account_id, params = {})
@@ -142,7 +142,7 @@ module Increase
           method: :get,
           path: ["accounts/%1$s/balance", account_id],
           query: parsed,
-          model: Increase::Models::BalanceLookup,
+          model: Increase::BalanceLookup,
           options: options
         )
       end
@@ -155,14 +155,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Account]
+      # @return [Increase::Account]
       #
       # @see Increase::Models::AccountCloseParams
       def close(account_id, params = {})
         @client.request(
           method: :post,
           path: ["accounts/%1$s/close", account_id],
-          model: Increase::Models::Account,
+          model: Increase::Account,
           options: params[:request_options]
         )
       end

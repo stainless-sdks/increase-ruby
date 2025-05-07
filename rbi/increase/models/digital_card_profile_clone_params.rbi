@@ -66,16 +66,13 @@ module Increase
 
       # The Card's text color, specified as an RGB triple. The default is white.
       sig do
-        returns(
-          T.nilable(Increase::Models::DigitalCardProfileCloneParams::TextColor)
-        )
+        returns(T.nilable(Increase::DigitalCardProfileCloneParams::TextColor))
       end
       attr_reader :text_color
 
       sig do
         params(
-          text_color:
-            Increase::Models::DigitalCardProfileCloneParams::TextColor::OrHash
+          text_color: Increase::DigitalCardProfileCloneParams::TextColor::OrHash
         ).void
       end
       attr_writer :text_color
@@ -91,7 +88,7 @@ module Increase
           description: String,
           issuer_name: String,
           text_color:
-            Increase::Models::DigitalCardProfileCloneParams::TextColor::OrHash,
+            Increase::DigitalCardProfileCloneParams::TextColor::OrHash,
           request_options:
             T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
@@ -130,8 +127,7 @@ module Increase
             contact_website: String,
             description: String,
             issuer_name: String,
-            text_color:
-              Increase::Models::DigitalCardProfileCloneParams::TextColor,
+            text_color: Increase::DigitalCardProfileCloneParams::TextColor,
             request_options: Increase::RequestOptions
           }
         )

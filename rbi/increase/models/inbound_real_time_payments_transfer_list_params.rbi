@@ -27,7 +27,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt
+            Increase::InboundRealTimePaymentsTransferListParams::CreatedAt
           )
         )
       end
@@ -36,7 +36,7 @@ module Increase
       sig do
         params(
           created_at:
-            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash
+            Increase::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -61,7 +61,7 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash,
+            Increase::InboundRealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -91,7 +91,7 @@ module Increase
             account_id: String,
             account_number_id: String,
             created_at:
-              Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt,
+              Increase::InboundRealTimePaymentsTransferListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             request_options: Increase::RequestOptions

@@ -8,7 +8,7 @@ module Increase
         params(
           account_statement_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::AccountStatement)
+        ).returns(Increase::AccountStatement)
       end
       def retrieve(
         # The identifier of the Account Statement to retrieve.
@@ -24,9 +24,9 @@ module Increase
           cursor: String,
           limit: Integer,
           statement_period_start:
-            Increase::Models::AccountStatementListParams::StatementPeriodStart::OrHash,
+            Increase::AccountStatementListParams::StatementPeriodStart::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::AccountStatement])
+        ).returns(Increase::Internal::Page[Increase::AccountStatement])
       end
       def list(
         # Filter Account Statements to those belonging to the specified Account.

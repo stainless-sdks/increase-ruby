@@ -30,20 +30,18 @@ module Increase
       # If the mail item has been rejected, why it was rejected.
       sig do
         returns(
-          T.nilable(
-            Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol
-          )
+          T.nilable(Increase::InboundMailItem::RejectionReason::TaggedSymbol)
         )
       end
       attr_accessor :rejection_reason
 
       # If the mail item has been processed.
-      sig { returns(Increase::Models::InboundMailItem::Status::TaggedSymbol) }
+      sig { returns(Increase::InboundMailItem::Status::TaggedSymbol) }
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       # `inbound_mail_item`.
-      sig { returns(Increase::Models::InboundMailItem::Type::TaggedSymbol) }
+      sig { returns(Increase::InboundMailItem::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
@@ -55,11 +53,9 @@ module Increase
           lockbox_id: T.nilable(String),
           recipient_name: T.nilable(String),
           rejection_reason:
-            T.nilable(
-              Increase::Models::InboundMailItem::RejectionReason::OrSymbol
-            ),
-          status: Increase::Models::InboundMailItem::Status::OrSymbol,
-          type: Increase::Models::InboundMailItem::Type::OrSymbol
+            T.nilable(Increase::InboundMailItem::RejectionReason::OrSymbol),
+          status: Increase::InboundMailItem::Status::OrSymbol,
+          type: Increase::InboundMailItem::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -95,10 +91,10 @@ module Increase
             recipient_name: T.nilable(String),
             rejection_reason:
               T.nilable(
-                Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol
+                Increase::InboundMailItem::RejectionReason::TaggedSymbol
               ),
-            status: Increase::Models::InboundMailItem::Status::TaggedSymbol,
-            type: Increase::Models::InboundMailItem::Type::TaggedSymbol
+            status: Increase::InboundMailItem::Status::TaggedSymbol,
+            type: Increase::InboundMailItem::Type::TaggedSymbol
           }
         )
       end
@@ -111,7 +107,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::Models::InboundMailItem::RejectionReason)
+            T.all(Symbol, Increase::InboundMailItem::RejectionReason)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -119,28 +115,26 @@ module Increase
         NO_MATCHING_LOCKBOX =
           T.let(
             :no_matching_lockbox,
-            Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol
+            Increase::InboundMailItem::RejectionReason::TaggedSymbol
           )
 
         # The mail item does not contain a check.
         NO_CHECK =
           T.let(
             :no_check,
-            Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol
+            Increase::InboundMailItem::RejectionReason::TaggedSymbol
           )
 
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE =
           T.let(
             :lockbox_not_active,
-            Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol
+            Increase::InboundMailItem::RejectionReason::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[
-              Increase::Models::InboundMailItem::RejectionReason::TaggedSymbol
-            ]
+            T::Array[Increase::InboundMailItem::RejectionReason::TaggedSymbol]
           )
         end
         def self.values
@@ -152,35 +146,24 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::InboundMailItem::Status)
-          end
+          T.type_alias { T.all(Symbol, Increase::InboundMailItem::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The mail item is pending processing.
         PENDING =
-          T.let(
-            :pending,
-            Increase::Models::InboundMailItem::Status::TaggedSymbol
-          )
+          T.let(:pending, Increase::InboundMailItem::Status::TaggedSymbol)
 
         # The mail item has been processed.
         PROCESSED =
-          T.let(
-            :processed,
-            Increase::Models::InboundMailItem::Status::TaggedSymbol
-          )
+          T.let(:processed, Increase::InboundMailItem::Status::TaggedSymbol)
 
         # The mail item has been rejected.
         REJECTED =
-          T.let(
-            :rejected,
-            Increase::Models::InboundMailItem::Status::TaggedSymbol
-          )
+          T.let(:rejected, Increase::InboundMailItem::Status::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Increase::Models::InboundMailItem::Status::TaggedSymbol]
+            T::Array[Increase::InboundMailItem::Status::TaggedSymbol]
           )
         end
         def self.values
@@ -193,20 +176,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::InboundMailItem::Type)
-          end
+          T.type_alias { T.all(Symbol, Increase::InboundMailItem::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         INBOUND_MAIL_ITEM =
           T.let(
             :inbound_mail_item,
-            Increase::Models::InboundMailItem::Type::TaggedSymbol
+            Increase::InboundMailItem::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::Models::InboundMailItem::Type::TaggedSymbol]
+            T::Array[Increase::InboundMailItem::Type::TaggedSymbol]
           )
         end
         def self.values

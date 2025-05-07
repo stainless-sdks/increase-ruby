@@ -23,7 +23,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `card_details`.
-      sig { returns(Increase::Models::CardDetails::Type::TaggedSymbol) }
+      sig { returns(Increase::CardDetails::Type::TaggedSymbol) }
       attr_accessor :type
 
       # The three-digit verification code for the card. It's also known as the Card
@@ -39,7 +39,7 @@ module Increase
           expiration_month: Integer,
           expiration_year: Integer,
           primary_account_number: String,
-          type: Increase::Models::CardDetails::Type::OrSymbol,
+          type: Increase::CardDetails::Type::OrSymbol,
           verification_code: String
         ).returns(T.attached_class)
       end
@@ -69,7 +69,7 @@ module Increase
             expiration_month: Integer,
             expiration_year: Integer,
             primary_account_number: String,
-            type: Increase::Models::CardDetails::Type::TaggedSymbol,
+            type: Increase::CardDetails::Type::TaggedSymbol,
             verification_code: String
           }
         )
@@ -83,19 +83,14 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::CardDetails::Type) }
+          T.type_alias { T.all(Symbol, Increase::CardDetails::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CARD_DETAILS =
-          T.let(
-            :card_details,
-            Increase::Models::CardDetails::Type::TaggedSymbol
-          )
+          T.let(:card_details, Increase::CardDetails::Type::TaggedSymbol)
 
         sig do
-          override.returns(
-            T::Array[Increase::Models::CardDetails::Type::TaggedSymbol]
-          )
+          override.returns(T::Array[Increase::CardDetails::Type::TaggedSymbol])
         end
         def self.values
         end

@@ -23,12 +23,12 @@ module Increase
 
       # If your account requires approvals for transfers and the transfer was approved,
       # this will contain details of the approval.
-      sig { returns(T.nilable(Increase::Models::WireTransfer::Approval)) }
+      sig { returns(T.nilable(Increase::WireTransfer::Approval)) }
       attr_reader :approval
 
       sig do
         params(
-          approval: T.nilable(Increase::Models::WireTransfer::Approval::OrHash)
+          approval: T.nilable(Increase::WireTransfer::Approval::OrHash)
         ).void
       end
       attr_writer :approval
@@ -51,13 +51,12 @@ module Increase
 
       # If your account requires approvals for transfers and the transfer was not
       # approved, this will contain details of the cancellation.
-      sig { returns(T.nilable(Increase::Models::WireTransfer::Cancellation)) }
+      sig { returns(T.nilable(Increase::WireTransfer::Cancellation)) }
       attr_reader :cancellation
 
       sig do
         params(
-          cancellation:
-            T.nilable(Increase::Models::WireTransfer::Cancellation::OrHash)
+          cancellation: T.nilable(Increase::WireTransfer::Cancellation::OrHash)
         ).void
       end
       attr_writer :cancellation
@@ -68,20 +67,19 @@ module Increase
       attr_accessor :created_at
 
       # What object created the transfer, either via the API or the dashboard.
-      sig { returns(T.nilable(Increase::Models::WireTransfer::CreatedBy)) }
+      sig { returns(T.nilable(Increase::WireTransfer::CreatedBy)) }
       attr_reader :created_by
 
       sig do
         params(
-          created_by:
-            T.nilable(Increase::Models::WireTransfer::CreatedBy::OrHash)
+          created_by: T.nilable(Increase::WireTransfer::CreatedBy::OrHash)
         ).void
       end
       attr_writer :created_by
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       # currency. For wire transfers this is always equal to `usd`.
-      sig { returns(Increase::Models::WireTransfer::Currency::TaggedSymbol) }
+      sig { returns(Increase::WireTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
       # The identifier of the External Account the transfer was made to, if any.
@@ -99,7 +97,7 @@ module Increase
       attr_accessor :message_to_recipient
 
       # The transfer's network.
-      sig { returns(Increase::Models::WireTransfer::Network::TaggedSymbol) }
+      sig { returns(Increase::WireTransfer::Network::TaggedSymbol) }
       attr_accessor :network
 
       # The originator's address line 1.
@@ -126,12 +124,12 @@ module Increase
       attr_accessor :pending_transaction_id
 
       # If your transfer is reversed, this will contain details of the reversal.
-      sig { returns(T.nilable(Increase::Models::WireTransfer::Reversal)) }
+      sig { returns(T.nilable(Increase::WireTransfer::Reversal)) }
       attr_reader :reversal
 
       sig do
         params(
-          reversal: T.nilable(Increase::Models::WireTransfer::Reversal::OrHash)
+          reversal: T.nilable(Increase::WireTransfer::Reversal::OrHash)
         ).void
       end
       attr_writer :reversal
@@ -145,18 +143,17 @@ module Increase
       attr_accessor :source_account_number_id
 
       # The lifecycle status of the transfer.
-      sig { returns(Increase::Models::WireTransfer::Status::TaggedSymbol) }
+      sig { returns(Increase::WireTransfer::Status::TaggedSymbol) }
       attr_accessor :status
 
       # After the transfer is submitted to Fedwire, this will contain supplemental
       # details.
-      sig { returns(T.nilable(Increase::Models::WireTransfer::Submission)) }
+      sig { returns(T.nilable(Increase::WireTransfer::Submission)) }
       attr_reader :submission
 
       sig do
         params(
-          submission:
-            T.nilable(Increase::Models::WireTransfer::Submission::OrHash)
+          submission: T.nilable(Increase::WireTransfer::Submission::OrHash)
         ).void
       end
       attr_writer :submission
@@ -167,7 +164,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `wire_transfer`.
-      sig { returns(Increase::Models::WireTransfer::Type::TaggedSymbol) }
+      sig { returns(Increase::WireTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Wire transfers move funds between your Increase account and any other account
@@ -178,34 +175,31 @@ module Increase
           account_id: String,
           account_number: String,
           amount: Integer,
-          approval: T.nilable(Increase::Models::WireTransfer::Approval::OrHash),
+          approval: T.nilable(Increase::WireTransfer::Approval::OrHash),
           beneficiary_address_line1: T.nilable(String),
           beneficiary_address_line2: T.nilable(String),
           beneficiary_address_line3: T.nilable(String),
           beneficiary_name: T.nilable(String),
-          cancellation:
-            T.nilable(Increase::Models::WireTransfer::Cancellation::OrHash),
+          cancellation: T.nilable(Increase::WireTransfer::Cancellation::OrHash),
           created_at: Time,
-          created_by:
-            T.nilable(Increase::Models::WireTransfer::CreatedBy::OrHash),
-          currency: Increase::Models::WireTransfer::Currency::OrSymbol,
+          created_by: T.nilable(Increase::WireTransfer::CreatedBy::OrHash),
+          currency: Increase::WireTransfer::Currency::OrSymbol,
           external_account_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           message_to_recipient: T.nilable(String),
-          network: Increase::Models::WireTransfer::Network::OrSymbol,
+          network: Increase::WireTransfer::Network::OrSymbol,
           originator_address_line1: T.nilable(String),
           originator_address_line2: T.nilable(String),
           originator_address_line3: T.nilable(String),
           originator_name: T.nilable(String),
           pending_transaction_id: T.nilable(String),
-          reversal: T.nilable(Increase::Models::WireTransfer::Reversal::OrHash),
+          reversal: T.nilable(Increase::WireTransfer::Reversal::OrHash),
           routing_number: String,
           source_account_number_id: T.nilable(String),
-          status: Increase::Models::WireTransfer::Status::OrSymbol,
-          submission:
-            T.nilable(Increase::Models::WireTransfer::Submission::OrHash),
+          status: Increase::WireTransfer::Status::OrSymbol,
+          submission: T.nilable(Increase::WireTransfer::Submission::OrHash),
           transaction_id: T.nilable(String),
-          type: Increase::Models::WireTransfer::Type::OrSymbol
+          type: Increase::WireTransfer::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -288,32 +282,31 @@ module Increase
             account_id: String,
             account_number: String,
             amount: Integer,
-            approval: T.nilable(Increase::Models::WireTransfer::Approval),
+            approval: T.nilable(Increase::WireTransfer::Approval),
             beneficiary_address_line1: T.nilable(String),
             beneficiary_address_line2: T.nilable(String),
             beneficiary_address_line3: T.nilable(String),
             beneficiary_name: T.nilable(String),
-            cancellation:
-              T.nilable(Increase::Models::WireTransfer::Cancellation),
+            cancellation: T.nilable(Increase::WireTransfer::Cancellation),
             created_at: Time,
-            created_by: T.nilable(Increase::Models::WireTransfer::CreatedBy),
-            currency: Increase::Models::WireTransfer::Currency::TaggedSymbol,
+            created_by: T.nilable(Increase::WireTransfer::CreatedBy),
+            currency: Increase::WireTransfer::Currency::TaggedSymbol,
             external_account_id: T.nilable(String),
             idempotency_key: T.nilable(String),
             message_to_recipient: T.nilable(String),
-            network: Increase::Models::WireTransfer::Network::TaggedSymbol,
+            network: Increase::WireTransfer::Network::TaggedSymbol,
             originator_address_line1: T.nilable(String),
             originator_address_line2: T.nilable(String),
             originator_address_line3: T.nilable(String),
             originator_name: T.nilable(String),
             pending_transaction_id: T.nilable(String),
-            reversal: T.nilable(Increase::Models::WireTransfer::Reversal),
+            reversal: T.nilable(Increase::WireTransfer::Reversal),
             routing_number: String,
             source_account_number_id: T.nilable(String),
-            status: Increase::Models::WireTransfer::Status::TaggedSymbol,
-            submission: T.nilable(Increase::Models::WireTransfer::Submission),
+            status: Increase::WireTransfer::Status::TaggedSymbol,
+            submission: T.nilable(Increase::WireTransfer::Submission),
             transaction_id: T.nilable(String),
-            type: Increase::Models::WireTransfer::Type::TaggedSymbol
+            type: Increase::WireTransfer::Type::TaggedSymbol
           }
         )
       end
@@ -405,35 +398,27 @@ module Increase
           T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # If present, details about the API key that created the transfer.
-        sig do
-          returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
-        end
+        sig { returns(T.nilable(Increase::WireTransfer::CreatedBy::APIKey)) }
         attr_reader :api_key
 
         sig do
           params(
             api_key:
-              T.nilable(
-                Increase::Models::WireTransfer::CreatedBy::APIKey::OrHash
-              )
+              T.nilable(Increase::WireTransfer::CreatedBy::APIKey::OrHash)
           ).void
         end
         attr_writer :api_key
 
         # The type of object that created this transfer.
         sig do
-          returns(
-            Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol
-          )
+          returns(Increase::WireTransfer::CreatedBy::Category::TaggedSymbol)
         end
         attr_accessor :category
 
         # If present, details about the OAuth Application that created the transfer.
         sig do
           returns(
-            T.nilable(
-              Increase::Models::WireTransfer::CreatedBy::OAuthApplication
-            )
+            T.nilable(Increase::WireTransfer::CreatedBy::OAuthApplication)
           )
         end
         attr_reader :oauth_application
@@ -442,22 +427,19 @@ module Increase
           params(
             oauth_application:
               T.nilable(
-                Increase::Models::WireTransfer::CreatedBy::OAuthApplication::OrHash
+                Increase::WireTransfer::CreatedBy::OAuthApplication::OrHash
               )
           ).void
         end
         attr_writer :oauth_application
 
         # If present, details about the User that created the transfer.
-        sig do
-          returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::User))
-        end
+        sig { returns(T.nilable(Increase::WireTransfer::CreatedBy::User)) }
         attr_reader :user
 
         sig do
           params(
-            user:
-              T.nilable(Increase::Models::WireTransfer::CreatedBy::User::OrHash)
+            user: T.nilable(Increase::WireTransfer::CreatedBy::User::OrHash)
           ).void
         end
         attr_writer :user
@@ -466,17 +448,13 @@ module Increase
         sig do
           params(
             api_key:
-              T.nilable(
-                Increase::Models::WireTransfer::CreatedBy::APIKey::OrHash
-              ),
-            category:
-              Increase::Models::WireTransfer::CreatedBy::Category::OrSymbol,
+              T.nilable(Increase::WireTransfer::CreatedBy::APIKey::OrHash),
+            category: Increase::WireTransfer::CreatedBy::Category::OrSymbol,
             oauth_application:
               T.nilable(
-                Increase::Models::WireTransfer::CreatedBy::OAuthApplication::OrHash
+                Increase::WireTransfer::CreatedBy::OAuthApplication::OrHash
               ),
-            user:
-              T.nilable(Increase::Models::WireTransfer::CreatedBy::User::OrHash)
+            user: T.nilable(Increase::WireTransfer::CreatedBy::User::OrHash)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -494,15 +472,12 @@ module Increase
         sig do
           override.returns(
             {
-              api_key:
-                T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey),
+              api_key: T.nilable(Increase::WireTransfer::CreatedBy::APIKey),
               category:
-                Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol,
+                Increase::WireTransfer::CreatedBy::Category::TaggedSymbol,
               oauth_application:
-                T.nilable(
-                  Increase::Models::WireTransfer::CreatedBy::OAuthApplication
-                ),
-              user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
+                T.nilable(Increase::WireTransfer::CreatedBy::OAuthApplication),
+              user: T.nilable(Increase::WireTransfer::CreatedBy::User)
             }
           )
         end
@@ -538,7 +513,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::Models::WireTransfer::CreatedBy::Category)
+              T.all(Symbol, Increase::WireTransfer::CreatedBy::Category)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -546,27 +521,27 @@ module Increase
           API_KEY =
             T.let(
               :api_key,
-              Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol
+              Increase::WireTransfer::CreatedBy::Category::TaggedSymbol
             )
 
           # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
           OAUTH_APPLICATION =
             T.let(
               :oauth_application,
-              Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol
+              Increase::WireTransfer::CreatedBy::Category::TaggedSymbol
             )
 
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER =
             T.let(
               :user,
-              Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol
+              Increase::WireTransfer::CreatedBy::Category::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::Models::WireTransfer::CreatedBy::Category::TaggedSymbol
+                Increase::WireTransfer::CreatedBy::Category::TaggedSymbol
               ]
             )
           end
@@ -623,38 +598,30 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::WireTransfer::Currency)
-          end
+          T.type_alias { T.all(Symbol, Increase::WireTransfer::Currency) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Canadian Dollar (CAD)
-        CAD =
-          T.let(:CAD, Increase::Models::WireTransfer::Currency::TaggedSymbol)
+        CAD = T.let(:CAD, Increase::WireTransfer::Currency::TaggedSymbol)
 
         # Swiss Franc (CHF)
-        CHF =
-          T.let(:CHF, Increase::Models::WireTransfer::Currency::TaggedSymbol)
+        CHF = T.let(:CHF, Increase::WireTransfer::Currency::TaggedSymbol)
 
         # Euro (EUR)
-        EUR =
-          T.let(:EUR, Increase::Models::WireTransfer::Currency::TaggedSymbol)
+        EUR = T.let(:EUR, Increase::WireTransfer::Currency::TaggedSymbol)
 
         # British Pound (GBP)
-        GBP =
-          T.let(:GBP, Increase::Models::WireTransfer::Currency::TaggedSymbol)
+        GBP = T.let(:GBP, Increase::WireTransfer::Currency::TaggedSymbol)
 
         # Japanese Yen (JPY)
-        JPY =
-          T.let(:JPY, Increase::Models::WireTransfer::Currency::TaggedSymbol)
+        JPY = T.let(:JPY, Increase::WireTransfer::Currency::TaggedSymbol)
 
         # US Dollar (USD)
-        USD =
-          T.let(:USD, Increase::Models::WireTransfer::Currency::TaggedSymbol)
+        USD = T.let(:USD, Increase::WireTransfer::Currency::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Increase::Models::WireTransfer::Currency::TaggedSymbol]
+            T::Array[Increase::WireTransfer::Currency::TaggedSymbol]
           )
         end
         def self.values
@@ -666,17 +633,14 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::Models::WireTransfer::Network)
-          end
+          T.type_alias { T.all(Symbol, Increase::WireTransfer::Network) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WIRE =
-          T.let(:wire, Increase::Models::WireTransfer::Network::TaggedSymbol)
+        WIRE = T.let(:wire, Increase::WireTransfer::Network::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Increase::Models::WireTransfer::Network::TaggedSymbol]
+            T::Array[Increase::WireTransfer::Network::TaggedSymbol]
           )
         end
         def self.values
@@ -859,63 +823,54 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Status) }
+          T.type_alias { T.all(Symbol, Increase::WireTransfer::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The transfer is pending approval.
         PENDING_APPROVAL =
-          T.let(
-            :pending_approval,
-            Increase::Models::WireTransfer::Status::TaggedSymbol
-          )
+          T.let(:pending_approval, Increase::WireTransfer::Status::TaggedSymbol)
 
         # The transfer has been canceled.
         CANCELED =
-          T.let(:canceled, Increase::Models::WireTransfer::Status::TaggedSymbol)
+          T.let(:canceled, Increase::WireTransfer::Status::TaggedSymbol)
 
         # The transfer is pending review by Increase.
         PENDING_REVIEWING =
           T.let(
             :pending_reviewing,
-            Increase::Models::WireTransfer::Status::TaggedSymbol
+            Increase::WireTransfer::Status::TaggedSymbol
           )
 
         # The transfer has been rejected by Increase.
         REJECTED =
-          T.let(:rejected, Increase::Models::WireTransfer::Status::TaggedSymbol)
+          T.let(:rejected, Increase::WireTransfer::Status::TaggedSymbol)
 
         # The transfer requires attention from an Increase operator.
         REQUIRES_ATTENTION =
           T.let(
             :requires_attention,
-            Increase::Models::WireTransfer::Status::TaggedSymbol
+            Increase::WireTransfer::Status::TaggedSymbol
           )
 
         # The transfer is pending creation.
         PENDING_CREATING =
-          T.let(
-            :pending_creating,
-            Increase::Models::WireTransfer::Status::TaggedSymbol
-          )
+          T.let(:pending_creating, Increase::WireTransfer::Status::TaggedSymbol)
 
         # The transfer has been reversed.
         REVERSED =
-          T.let(:reversed, Increase::Models::WireTransfer::Status::TaggedSymbol)
+          T.let(:reversed, Increase::WireTransfer::Status::TaggedSymbol)
 
         # The transfer has been submitted to Fedwire.
         SUBMITTED =
-          T.let(
-            :submitted,
-            Increase::Models::WireTransfer::Status::TaggedSymbol
-          )
+          T.let(:submitted, Increase::WireTransfer::Status::TaggedSymbol)
 
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE =
-          T.let(:complete, Increase::Models::WireTransfer::Status::TaggedSymbol)
+          T.let(:complete, Increase::WireTransfer::Status::TaggedSymbol)
 
         sig do
           override.returns(
-            T::Array[Increase::Models::WireTransfer::Status::TaggedSymbol]
+            T::Array[Increase::WireTransfer::Status::TaggedSymbol]
           )
         end
         def self.values
@@ -965,19 +920,14 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Models::WireTransfer::Type) }
+          T.type_alias { T.all(Symbol, Increase::WireTransfer::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         WIRE_TRANSFER =
-          T.let(
-            :wire_transfer,
-            Increase::Models::WireTransfer::Type::TaggedSymbol
-          )
+          T.let(:wire_transfer, Increase::WireTransfer::Type::TaggedSymbol)
 
         sig do
-          override.returns(
-            T::Array[Increase::Models::WireTransfer::Type::TaggedSymbol]
-          )
+          override.returns(T::Array[Increase::WireTransfer::Type::TaggedSymbol])
         end
         def self.values
         end

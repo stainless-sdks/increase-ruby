@@ -8,7 +8,7 @@ module Increase
         params(
           inbound_check_deposit_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundCheckDeposit)
+        ).returns(Increase::InboundCheckDeposit)
       end
       def retrieve(
         # The identifier of the Inbound Check Deposit to get details for.
@@ -23,13 +23,11 @@ module Increase
           account_id: String,
           check_transfer_id: String,
           created_at:
-            Increase::Models::InboundCheckDepositListParams::CreatedAt::OrHash,
+            Increase::InboundCheckDepositListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::InboundCheckDeposit]
-        )
+        ).returns(Increase::Internal::Page[Increase::InboundCheckDeposit])
       end
       def list(
         # Filter Inbound Check Deposits to those belonging to the specified Account.
@@ -52,7 +50,7 @@ module Increase
         params(
           inbound_check_deposit_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundCheckDeposit)
+        ).returns(Increase::InboundCheckDeposit)
       end
       def decline(
         # The identifier of the Inbound Check Deposit to decline.
@@ -65,10 +63,9 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          reason:
-            Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
+          reason: Increase::InboundCheckDepositReturnParams::Reason::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::InboundCheckDeposit)
+        ).returns(Increase::InboundCheckDeposit)
       end
       def return_(
         # The identifier of the Inbound Check Deposit to return.

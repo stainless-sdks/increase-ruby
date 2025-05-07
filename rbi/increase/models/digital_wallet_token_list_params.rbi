@@ -16,16 +16,13 @@ module Increase
       attr_writer :card_id
 
       sig do
-        returns(
-          T.nilable(Increase::Models::DigitalWalletTokenListParams::CreatedAt)
-        )
+        returns(T.nilable(Increase::DigitalWalletTokenListParams::CreatedAt))
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at:
-            Increase::Models::DigitalWalletTokenListParams::CreatedAt::OrHash
+          created_at: Increase::DigitalWalletTokenListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -48,8 +45,7 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at:
-            Increase::Models::DigitalWalletTokenListParams::CreatedAt::OrHash,
+          created_at: Increase::DigitalWalletTokenListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -73,8 +69,7 @@ module Increase
         override.returns(
           {
             card_id: String,
-            created_at:
-              Increase::Models::DigitalWalletTokenListParams::CreatedAt,
+            created_at: Increase::DigitalWalletTokenListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             request_options: Increase::RequestOptions

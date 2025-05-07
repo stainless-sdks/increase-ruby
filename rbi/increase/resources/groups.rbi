@@ -6,7 +6,7 @@ module Increase
       # Returns details for the currently authenticated Group.
       sig do
         params(request_options: Increase::RequestOptions::OrHash).returns(
-          Increase::Models::Group
+          Increase::Group
         )
       end
       def retrieve(request_options: {})

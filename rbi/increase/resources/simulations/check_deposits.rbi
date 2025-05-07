@@ -11,7 +11,7 @@ module Increase
           params(
             check_deposit_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CheckDeposit)
+          ).returns(Increase::CheckDeposit)
         end
         def reject(
           # The identifier of the Check Deposit you wish to reject.
@@ -26,7 +26,7 @@ module Increase
           params(
             check_deposit_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CheckDeposit)
+          ).returns(Increase::CheckDeposit)
         end
         def return_(
           # The identifier of the Check Deposit you wish to return.
@@ -41,7 +41,7 @@ module Increase
           params(
             check_deposit_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::CheckDeposit)
+          ).returns(Increase::CheckDeposit)
         end
         def submit(
           # The identifier of the Check Deposit you wish to submit.

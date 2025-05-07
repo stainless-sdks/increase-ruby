@@ -22,14 +22,12 @@ module Increase
       sig { params(card_id: String).void }
       attr_writer :card_id
 
-      sig do
-        returns(T.nilable(Increase::Models::CardPaymentListParams::CreatedAt))
-      end
+      sig { returns(T.nilable(Increase::CardPaymentListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
         params(
-          created_at: Increase::Models::CardPaymentListParams::CreatedAt::OrHash
+          created_at: Increase::CardPaymentListParams::CreatedAt::OrHash
         ).void
       end
       attr_writer :created_at
@@ -53,8 +51,7 @@ module Increase
         params(
           account_id: String,
           card_id: String,
-          created_at:
-            Increase::Models::CardPaymentListParams::CreatedAt::OrHash,
+          created_at: Increase::CardPaymentListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options:
@@ -81,7 +78,7 @@ module Increase
           {
             account_id: String,
             card_id: String,
-            created_at: Increase::Models::CardPaymentListParams::CreatedAt,
+            created_at: Increase::CardPaymentListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             request_options: Increase::RequestOptions

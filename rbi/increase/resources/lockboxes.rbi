@@ -10,7 +10,7 @@ module Increase
           description: String,
           recipient_name: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Lockbox)
+        ).returns(Increase::Lockbox)
       end
       def create(
         # The Account checks sent to this Lockbox should be deposited into.
@@ -28,7 +28,7 @@ module Increase
         params(
           lockbox_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Lockbox)
+        ).returns(Increase::Lockbox)
       end
       def retrieve(
         # The identifier of the Lockbox to retrieve.
@@ -43,9 +43,9 @@ module Increase
           lockbox_id: String,
           description: String,
           recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
+          status: Increase::LockboxUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::Lockbox)
+        ).returns(Increase::Lockbox)
       end
       def update(
         # The identifier of the Lockbox.
@@ -64,12 +64,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::Models::LockboxListParams::CreatedAt::OrHash,
+          created_at: Increase::LockboxListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::Lockbox])
+        ).returns(Increase::Internal::Page[Increase::Lockbox])
       end
       def list(
         # Filter Lockboxes to those associated with the provided Account.

@@ -12,7 +12,7 @@ module Increase
           params(
             name: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Models::Program)
+          ).returns(Increase::Program)
         end
         def create(
           # The name of the program being added.

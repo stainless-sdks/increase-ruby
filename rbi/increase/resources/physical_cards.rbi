@@ -7,13 +7,11 @@ module Increase
       sig do
         params(
           card_id: String,
-          cardholder:
-            Increase::Models::PhysicalCardCreateParams::Cardholder::OrHash,
-          shipment:
-            Increase::Models::PhysicalCardCreateParams::Shipment::OrHash,
+          cardholder: Increase::PhysicalCardCreateParams::Cardholder::OrHash,
+          shipment: Increase::PhysicalCardCreateParams::Shipment::OrHash,
           physical_card_profile_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCard)
+        ).returns(Increase::PhysicalCard)
       end
       def create(
         # The underlying card representing this physical card.
@@ -34,7 +32,7 @@ module Increase
         params(
           physical_card_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCard)
+        ).returns(Increase::PhysicalCard)
       end
       def retrieve(
         # The identifier of the Physical Card.
@@ -47,9 +45,9 @@ module Increase
       sig do
         params(
           physical_card_id: String,
-          status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
+          status: Increase::PhysicalCardUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::PhysicalCard)
+        ).returns(Increase::PhysicalCard)
       end
       def update(
         # The Physical Card identifier.
@@ -64,13 +62,12 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at:
-            Increase::Models::PhysicalCardListParams::CreatedAt::OrHash,
+          created_at: Increase::PhysicalCardListParams::CreatedAt::OrHash,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Models::PhysicalCard])
+        ).returns(Increase::Internal::Page[Increase::PhysicalCard])
       end
       def list(
         # Filter Physical Cards to ones belonging to the specified Card.

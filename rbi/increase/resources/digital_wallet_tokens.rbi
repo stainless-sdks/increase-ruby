@@ -8,7 +8,7 @@ module Increase
         params(
           digital_wallet_token_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Models::DigitalWalletToken)
+        ).returns(Increase::DigitalWalletToken)
       end
       def retrieve(
         # The identifier of the Digital Wallet Token.
@@ -21,14 +21,11 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at:
-            Increase::Models::DigitalWalletTokenListParams::CreatedAt::OrHash,
+          created_at: Increase::DigitalWalletTokenListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(
-          Increase::Internal::Page[Increase::Models::DigitalWalletToken]
-        )
+        ).returns(Increase::Internal::Page[Increase::DigitalWalletToken])
       end
       def list(
         # Filter Digital Wallet Tokens to ones belonging to the specified Card.
