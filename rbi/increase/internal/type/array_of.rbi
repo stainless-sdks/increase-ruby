@@ -22,7 +22,7 @@ module Increase
                 Increase::Internal::Type::Converter::Input
               ),
             spec: Increase::Internal::AnyHash
-          ).returns(T.attached_class)
+          ).returns(T.self_type)
         end
         def self.[](type_info, spec = {})
         end

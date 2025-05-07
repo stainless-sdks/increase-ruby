@@ -5,6 +5,7 @@ module Increase
     module Type
       class BaseModel
         extend Increase::Internal::Type::Converter
+        extend Increase::Internal::Util::SorbetRuntimeSupport
 
         abstract!
 
@@ -18,13 +19,23 @@ module Increase
           end
 
         OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              Increase::Internal::Type::BaseModel,
+              Increase::Internal::AnyHash
+            )
+          end
 
         class << self
           # @api private
           #
           # Assumes superclass fields are totally defined before fields are accessed /
           # defined on subclasses.
+          sig { params(child: T.self_type).void }
+          def inherited(child)
+          end
+
+          # @api private
           sig do
             returns(
               T::Hash[
@@ -170,7 +181,7 @@ module Increase
                   ),
                 state: Increase::Internal::Type::Converter::CoerceState
               )
-              .returns(T.any(T.attached_class, T.anything))
+              .returns(T.any(T.self_type, T.anything))
           end
           def coerce(value, state:)
           end
@@ -179,7 +190,7 @@ module Increase
           sig do
             override
               .params(
-                value: T.any(T.attached_class, T.anything),
+                value: T.any(T.self_type, T.anything),
                 state: Increase::Internal::Type::Converter::DumpState
               )
               .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
