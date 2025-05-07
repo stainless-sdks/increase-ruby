@@ -11,8 +11,9 @@ module Increase
           description: String,
           destination_account_id: String,
           require_approval: T::Boolean,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::AccountTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -27,33 +28,28 @@ module Increase
         # Whether the transfer requires explicit approval via the dashboard or API.
         require_approval: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an Account Transfer
       sig do
-        params(
-          account_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+        params(account_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::AccountTransfer)
       end
       def retrieve(
         # The identifier of the Account Transfer.
         account_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Account Transfers
       sig do
         params(
           account_id: String,
-          created_at: Increase::AccountTransferListParams::CreatedAt::OrHash,
+          created_at: T.any(Increase::Models::AccountTransferListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::AccountTransfer])
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Internal::Page[Increase::Models::AccountTransfer])
       end
       def list(
         # Filter Account Transfers to those that originated from the specified Account.
@@ -70,41 +66,30 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Approve an Account Transfer
       sig do
-        params(
-          account_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+        params(account_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::AccountTransfer)
       end
       def approve(
         # The identifier of the Account Transfer to approve.
         account_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancel an Account Transfer
       sig do
-        params(
-          account_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+        params(account_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::AccountTransfer)
       end
       def cancel(
         # The identifier of the pending Account Transfer to cancel.
         account_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

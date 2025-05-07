@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
       attr_accessor :account_id
@@ -17,11 +15,7 @@ module Increase
       attr_accessor :amount
 
       # Whether Increase will print and mail the check or if you will do it yourself.
-      sig do
-        returns(
-          Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol
-        )
-      end
+      sig { returns(Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol) }
       attr_accessor :fulfillment_method
 
       # The identifier of the Account Number from which to send the transfer and print
@@ -41,16 +35,14 @@ module Increase
       # Details relating to the physical check that Increase will print and mail. This
       # is required if `fulfillment_method` is equal to `physical_check`. It must not be
       # included if any other `fulfillment_method` is provided.
-      sig do
-        returns(T.nilable(Increase::CheckTransferCreateParams::PhysicalCheck))
-      end
+      sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck)) }
       attr_reader :physical_check
 
       sig do
         params(
-          physical_check:
-            Increase::CheckTransferCreateParams::PhysicalCheck::OrHash
-        ).void
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Internal::AnyHash)
+        )
+          .void
       end
       attr_writer :physical_check
 
@@ -64,15 +56,14 @@ module Increase
       # Details relating to the custom fulfillment you will perform. This is required if
       # `fulfillment_method` is equal to `third_party`. It must not be included if any
       # other `fulfillment_method` is provided.
-      sig do
-        returns(T.nilable(Increase::CheckTransferCreateParams::ThirdParty))
-      end
+      sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::ThirdParty)) }
       attr_reader :third_party
 
       sig do
         params(
-          third_party: Increase::CheckTransferCreateParams::ThirdParty::OrHash
-        ).void
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Internal::AnyHash)
+        )
+          .void
       end
       attr_writer :third_party
 
@@ -80,16 +71,15 @@ module Increase
         params(
           account_id: String,
           amount: Integer,
-          fulfillment_method:
-            Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+          fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
           check_number: String,
-          physical_check:
-            Increase::CheckTransferCreateParams::PhysicalCheck::OrHash,
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Internal::AnyHash),
           require_approval: T::Boolean,
-          third_party: Increase::CheckTransferCreateParams::ThirdParty::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Internal::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the account that will send the transfer.
@@ -116,83 +106,58 @@ module Increase
         # other `fulfillment_method` is provided.
         third_party: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            fulfillment_method:
-              Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
-            source_account_number_id: String,
-            check_number: String,
-            physical_check: Increase::CheckTransferCreateParams::PhysicalCheck,
-            require_approval: T::Boolean,
-            third_party: Increase::CheckTransferCreateParams::ThirdParty,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+              source_account_number_id: String,
+              check_number: String,
+              physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+              require_approval: T::Boolean,
+              third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Whether Increase will print and mail the check or if you will do it yourself.
       module FulfillmentMethod
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Increase::CheckTransferCreateParams::FulfillmentMethod
-            )
-          end
+          T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK =
-          T.let(
-            :physical_check,
-            Increase::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
-          )
+          T.let(:physical_check, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
 
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY =
-          T.let(
-            :third_party,
-            Increase::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
-          )
+          T.let(:third_party, Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::CheckTransferCreateParams::FulfillmentMethod::TaggedSymbol]) }
+        def self.values; end
       end
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Details for where Increase will mail the check.
-        sig do
-          returns(
-            Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress
-          )
-        end
+        sig { returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress) }
         attr_reader :mailing_address
 
         sig do
           params(
-            mailing_address:
-              Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash
-          ).void
+            mailing_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+              Increase::Internal::AnyHash
+            )
+          )
+            .void
         end
         attr_writer :mailing_address
 
@@ -223,39 +188,30 @@ module Increase
         # The return address to be printed on the check. If omitted this will default to
         # an Increase-owned address that will mark checks as delivery failed and shred
         # them.
-        sig do
-          returns(
-            T.nilable(
-              Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)) }
         attr_reader :return_address
 
         sig do
           params(
-            return_address:
-              Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash
-          ).void
+            return_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+              Increase::Internal::AnyHash
+            )
+          )
+            .void
         end
         attr_writer :return_address
 
         # How to ship the check. For details on pricing, timing, and restrictions, see
         # https://increase.com/documentation/originating-checks#printing-checks .
-        sig do
-          returns(
-            T.nilable(
-              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol)) }
         attr_reader :shipping_method
 
         sig do
           params(
-            shipping_method:
-              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
-          ).void
+            shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol
+          )
+            .void
         end
         attr_writer :shipping_method
 
@@ -272,18 +228,22 @@ module Increase
         # included if any other `fulfillment_method` is provided.
         sig do
           params(
-            mailing_address:
-              Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress::OrHash,
+            mailing_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+              Increase::Internal::AnyHash
+            ),
             memo: String,
             recipient_name: String,
             attachment_file_id: String,
             note: String,
-            return_address:
-              Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress::OrHash,
-            shipping_method:
-              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
+            return_address: T.any(
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+              Increase::Internal::AnyHash
+            ),
+            shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
             signature_text: String
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # Details for where Increase will mail the check.
@@ -308,33 +268,25 @@ module Increase
           # The text that will appear as the signature on the check in cursive font. If not
           # provided, the check will be printed with 'No signature required'.
           signature_text: nil
-        )
-        end
-
+        ); end
         sig do
-          override.returns(
-            {
-              mailing_address:
-                Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-              memo: String,
-              recipient_name: String,
-              attachment_file_id: String,
-              note: String,
-              return_address:
-                Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-              shipping_method:
-                Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
-              signature_text: String
-            }
-          )
+          override
+            .returns(
+              {
+                mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+                memo: String,
+                recipient_name: String,
+                attachment_file_id: String,
+                note: String,
+                return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+                shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::OrSymbol,
+                signature_text: String
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class MailingAddress < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The city component of the check's destination address.
           sig { returns(String) }
           attr_accessor :city
@@ -360,13 +312,8 @@ module Increase
 
           # Details for where Increase will mail the check.
           sig do
-            params(
-              city: String,
-              line1: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            ).returns(T.attached_class)
+            params(city: String, line1: String, postal_code: String, state: String, line2: String)
+              .returns(T.attached_class)
           end
           def self.new(
             # The city component of the check's destination address.
@@ -379,28 +326,14 @@ module Increase
             state:,
             # The second line of the address component of the check's destination address.
             line2: nil
-          )
-          end
-
+          ); end
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                postal_code: String,
-                state: String,
-                line2: String
-              }
-            )
+            override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The city of the return address.
           sig { returns(String) }
           attr_accessor :city
@@ -439,7 +372,8 @@ module Increase
               postal_code: String,
               state: String,
               line2: String
-            ).returns(T.attached_class)
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The city of the return address.
@@ -454,23 +388,19 @@ module Increase
             state:,
             # The second line of the return address.
             line2: nil
-          )
-          end
-
+          ); end
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                name: String,
-                postal_code: String,
-                state: String,
-                line2: String
-              }
-            )
+            override
+              .returns({
+                         city: String,
+                         line1: String,
+                         name: String,
+                         postal_code: String,
+                         state: String,
+                         line2: String
+                       })
           end
-          def to_hash
-          end
+          def to_hash; end
         end
 
         # How to ship the check. For details on pricing, timing, and restrictions, see
@@ -479,44 +409,34 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # USPS First Class
           USPS_FIRST_CLASS =
             T.let(
               :usps_first_class,
-              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
             )
 
           # FedEx Overnight
           FEDEX_OVERNIGHT =
             T.let(
               :fedex_overnight,
-              Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
+              Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
             )
 
           sig do
-            override.returns(
-              T::Array[
-                Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol
-              ]
-            )
+            override
+              .returns(
+                T::Array[Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod::TaggedSymbol]
+              )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
       class ThirdParty < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The pay-to name you will print on the check. If provided, this is used for
         # [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
         # be unable to validate the payee name when the check is deposited.
@@ -535,12 +455,9 @@ module Increase
           # [Positive Pay](/documentation/positive-pay). If this is omitted, Increase will
           # be unable to validate the payee name when the check is deposited.
           recipient_name: nil
-        )
-        end
-
-        sig { override.returns({ recipient_name: String }) }
-        def to_hash
-        end
+        ); end
+        sig { override.returns({recipient_name: String}) }
+        def to_hash; end
       end
     end
   end

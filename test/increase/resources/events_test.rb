@@ -7,7 +7,7 @@ class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
     response = @increase.events.retrieve("event_id")
 
     assert_pattern do
-      response => Increase::Event
+      response => Increase::Models::Event
     end
 
     assert_pattern do
@@ -15,9 +15,9 @@ class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
         id: String,
         associated_object_id: String,
         associated_object_type: String,
-        category: Increase::Event::Category,
+        category: Increase::Models::Event::Category,
         created_at: Time,
-        type: Increase::Event::Type
+        type: Increase::Models::Event::Type
       }
     end
   end
@@ -33,7 +33,7 @@ class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Increase::Event
+      row => Increase::Models::Event
     end
 
     assert_pattern do
@@ -41,9 +41,9 @@ class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
         id: String,
         associated_object_id: String,
         associated_object_type: String,
-        category: Increase::Event::Category,
+        category: Increase::Models::Event::Category,
         created_at: Time,
-        type: Increase::Event::Type
+        type: Increase::Models::Event::Type
       }
     end
   end

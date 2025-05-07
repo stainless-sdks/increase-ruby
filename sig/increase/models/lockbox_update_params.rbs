@@ -33,6 +33,8 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
+      def to_hash: -> Increase::Models::lockbox_update_params
+
       type status = :active | :inactive
 
       module Status

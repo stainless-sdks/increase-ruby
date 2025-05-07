@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier of the File containing the card's icon image.
       sig { returns(String) }
       attr_accessor :app_icon_file_id
@@ -50,16 +48,14 @@ module Increase
       attr_writer :contact_website
 
       # The Card's text color, specified as an RGB triple. The default is white.
-      sig do
-        returns(T.nilable(Increase::DigitalCardProfileCreateParams::TextColor))
-      end
+      sig { returns(T.nilable(Increase::Models::DigitalCardProfileCreateParams::TextColor)) }
       attr_reader :text_color
 
       sig do
         params(
-          text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash
-        ).void
+          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Internal::AnyHash)
+        )
+          .void
       end
       attr_writer :text_color
 
@@ -73,10 +69,10 @@ module Increase
           contact_email: String,
           contact_phone: String,
           contact_website: String,
-          text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          text_color: T.any(Increase::Models::DigitalCardProfileCreateParams::TextColor, Increase::Internal::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier of the File containing the card's icon image.
@@ -98,32 +94,27 @@ module Increase
         # The Card's text color, specified as an RGB triple. The default is white.
         text_color: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            app_icon_file_id: String,
-            background_image_file_id: String,
-            card_description: String,
-            description: String,
-            issuer_name: String,
-            contact_email: String,
-            contact_phone: String,
-            contact_website: String,
-            text_color: Increase::DigitalCardProfileCreateParams::TextColor,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              app_icon_file_id: String,
+              background_image_file_id: String,
+              card_description: String,
+              description: String,
+              issuer_name: String,
+              contact_email: String,
+              contact_phone: String,
+              contact_website: String,
+              text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class TextColor < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue
@@ -137,11 +128,7 @@ module Increase
         attr_accessor :red
 
         # The Card's text color, specified as an RGB triple. The default is white.
-        sig do
-          params(blue: Integer, green: Integer, red: Integer).returns(
-            T.attached_class
-          )
-        end
+        sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
         def self.new(
           # The value of the blue channel in the RGB color.
           blue:,
@@ -149,14 +136,9 @@ module Increase
           green:,
           # The value of the red channel in the RGB color.
           red:
-        )
-        end
-
-        sig do
-          override.returns({ blue: Integer, green: Integer, red: Integer })
-        end
-        def to_hash
-        end
+        ); end
+        sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
+        def to_hash; end
       end
     end
   end

@@ -7,7 +7,7 @@ class Increase::Test::Resources::Simulations::AccountStatementsTest < Increase::
     response = @increase.simulations.account_statements.create(account_id: "account_in71c4amph0vgo2qllky")
 
     assert_pattern do
-      response => Increase::AccountStatement
+      response => Increase::Models::AccountStatement
     end
 
     assert_pattern do
@@ -20,7 +20,7 @@ class Increase::Test::Resources::Simulations::AccountStatementsTest < Increase::
         starting_balance: Integer,
         statement_period_end: Time,
         statement_period_start: Time,
-        type: Increase::AccountStatement::Type
+        type: Increase::Models::AccountStatement::Type
       }
     end
   end

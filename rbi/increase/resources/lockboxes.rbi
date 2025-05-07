@@ -9,8 +9,9 @@ module Increase
           account_id: String,
           description: String,
           recipient_name: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Lockbox)
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::Lockbox)
       end
       def create(
         # The Account checks sent to this Lockbox should be deposited into.
@@ -20,32 +21,24 @@ module Increase
         # The name of the recipient that will receive mail at this location.
         recipient_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Lockbox
-      sig do
-        params(
-          lockbox_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Lockbox)
-      end
+      sig { params(lockbox_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Lockbox) }
       def retrieve(
         # The identifier of the Lockbox to retrieve.
         lockbox_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update a Lockbox
       sig do
         params(
           lockbox_id: String,
           description: String,
           recipient_name: String,
-          status: Increase::LockboxUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Lockbox)
+          status: Increase::Models::LockboxUpdateParams::Status::OrSymbol,
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::Lockbox)
       end
       def update(
         # The identifier of the Lockbox.
@@ -57,19 +50,18 @@ module Increase
         # This indicates if checks can be sent to the Lockbox.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Lockboxes
       sig do
         params(
           account_id: String,
-          created_at: Increase::LockboxListParams::CreatedAt::OrHash,
+          created_at: T.any(Increase::Models::LockboxListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Lockbox])
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Internal::Page[Increase::Models::Lockbox])
       end
       def list(
         # Filter Lockboxes to those associated with the provided Account.
@@ -86,13 +78,10 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

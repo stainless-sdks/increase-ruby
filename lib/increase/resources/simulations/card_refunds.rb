@@ -13,19 +13,20 @@ module Increase
         # @overload create(transaction_id:, request_options: {})
         #
         # @param transaction_id [String] The identifier for the Transaction to refund. The Transaction's source must have
+        # ...
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Transaction]
+        # @return [Increase::Models::Transaction]
         #
         # @see Increase::Models::Simulations::CardRefundCreateParams
         def create(params)
-          parsed, options = Increase::Simulations::CardRefundCreateParams.dump_request(params)
+          parsed, options = Increase::Models::Simulations::CardRefundCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_refunds",
             body: parsed,
-            model: Increase::Transaction,
+            model: Increase::Models::Transaction,
             options: options
           )
         end
