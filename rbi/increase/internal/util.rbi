@@ -4,6 +4,8 @@ module Increase
   module Internal
     # @api private
     module Util
+      extend Increase::Internal::Util::SorbetRuntimeSupport
+
       # @api private
       sig { returns(Float) }
       def self.monotonic_secs
@@ -421,6 +423,27 @@ module Increase
           )
         end
         def decode_sse(lines)
+        end
+      end
+
+      # @api private
+      module SorbetRuntimeSupport
+        class MissingSorbetRuntimeError < ::RuntimeError
+        end
+
+        # @api private
+        sig { returns(T::Hash[Symbol, T.anything]) }
+        protected def sorbet_runtime_constants
+        end
+
+        # @api private
+        sig { params(name: Symbol).void }
+        def const_missing(name)
+        end
+
+        # @api private
+        sig { params(name: Symbol, blk: T.proc.returns(T.anything)).void }
+        private def define_sorbet_constant!(name, &blk)
         end
       end
     end
