@@ -51,7 +51,7 @@ module Increase
       #
       # @see Increase::Models::PendingTransactionListParams
       def list(params = {})
-        parsed, options = Increase::Models::PendingTransactionListParams.dump_request(params)
+        parsed, options = Increase::PendingTransactionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "pending_transactions",

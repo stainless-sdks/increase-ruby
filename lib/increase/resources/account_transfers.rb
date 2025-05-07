@@ -27,7 +27,7 @@ module Increase
       #
       # @see Increase::Models::AccountTransferCreateParams
       def create(params)
-        parsed, options = Increase::Models::AccountTransferCreateParams.dump_request(params)
+        parsed, options = Increase::AccountTransferCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "account_transfers",
@@ -82,7 +82,7 @@ module Increase
       #
       # @see Increase::Models::AccountTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::AccountTransferListParams.dump_request(params)
+        parsed, options = Increase::AccountTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "account_transfers",

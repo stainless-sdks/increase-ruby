@@ -20,7 +20,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams
         def advance_shipment(physical_card_id, params)
-          parsed, options = Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams.dump_request(params)
+          parsed, options = Increase::Simulations::PhysicalCardAdvanceShipmentParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["simulations/physical_cards/%1$s/advance_shipment", physical_card_id],

@@ -36,7 +36,7 @@ module Increase
       #
       # @see Increase::Models::ExportCreateParams
       def create(params)
-        parsed, options = Increase::Models::ExportCreateParams.dump_request(params)
+        parsed, options = Increase::ExportCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "exports",
@@ -93,7 +93,7 @@ module Increase
       #
       # @see Increase::Models::ExportListParams
       def list(params = {})
-        parsed, options = Increase::Models::ExportListParams.dump_request(params)
+        parsed, options = Increase::ExportListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "exports",

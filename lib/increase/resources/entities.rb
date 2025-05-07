@@ -40,7 +40,7 @@ module Increase
       #
       # @see Increase::Models::EntityCreateParams
       def create(params)
-        parsed, options = Increase::Models::EntityCreateParams.dump_request(params)
+        parsed, options = Increase::EntityCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "entities",
@@ -95,7 +95,7 @@ module Increase
       #
       # @see Increase::Models::EntityListParams
       def list(params = {})
-        parsed, options = Increase::Models::EntityListParams.dump_request(params)
+        parsed, options = Increase::EntityListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "entities",
@@ -149,7 +149,7 @@ module Increase
       #
       # @see Increase::Models::EntityArchiveBeneficialOwnerParams
       def archive_beneficial_owner(entity_id, params)
-        parsed, options = Increase::Models::EntityArchiveBeneficialOwnerParams.dump_request(params)
+        parsed, options = Increase::EntityArchiveBeneficialOwnerParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["entities/%1$s/archive_beneficial_owner", entity_id],
@@ -179,7 +179,7 @@ module Increase
       #
       # @see Increase::Models::EntityConfirmParams
       def confirm(entity_id, params = {})
-        parsed, options = Increase::Models::EntityConfirmParams.dump_request(params)
+        parsed, options = Increase::EntityConfirmParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["entities/%1$s/confirm", entity_id],
@@ -207,7 +207,7 @@ module Increase
       #
       # @see Increase::Models::EntityCreateBeneficialOwnerParams
       def create_beneficial_owner(entity_id, params)
-        parsed, options = Increase::Models::EntityCreateBeneficialOwnerParams.dump_request(params)
+        parsed, options = Increase::EntityCreateBeneficialOwnerParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["entities/%1$s/create_beneficial_owner", entity_id],
@@ -235,7 +235,7 @@ module Increase
       #
       # @see Increase::Models::EntityUpdateAddressParams
       def update_address(entity_id, params)
-        parsed, options = Increase::Models::EntityUpdateAddressParams.dump_request(params)
+        parsed, options = Increase::EntityUpdateAddressParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["entities/%1$s/update_address", entity_id],
@@ -267,7 +267,7 @@ module Increase
       #
       # @see Increase::Models::EntityUpdateBeneficialOwnerAddressParams
       def update_beneficial_owner_address(entity_id, params)
-        parsed, options = Increase::Models::EntityUpdateBeneficialOwnerAddressParams.dump_request(params)
+        parsed, options = Increase::EntityUpdateBeneficialOwnerAddressParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["entities/%1$s/update_beneficial_owner_address", entity_id],
@@ -296,7 +296,7 @@ module Increase
       #
       # @see Increase::Models::EntityUpdateIndustryCodeParams
       def update_industry_code(entity_id, params)
-        parsed, options = Increase::Models::EntityUpdateIndustryCodeParams.dump_request(params)
+        parsed, options = Increase::EntityUpdateIndustryCodeParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["entities/%1$s/update_industry_code", entity_id],

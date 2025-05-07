@@ -49,7 +49,7 @@ module Increase
       #
       # @see Increase::Models::InboundACHTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundACHTransferListParams.dump_request(params)
+        parsed, options = Increase::InboundACHTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_ach_transfers",
@@ -81,8 +81,7 @@ module Increase
       #
       # @see Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
       def create_notification_of_change(inbound_ach_transfer_id, params = {})
-        parsed, options =
-          Increase::Models::InboundACHTransferCreateNotificationOfChangeParams.dump_request(params)
+        parsed, options = Increase::InboundACHTransferCreateNotificationOfChangeParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["inbound_ach_transfers/%1$s/create_notification_of_change", inbound_ach_transfer_id],
@@ -110,7 +109,7 @@ module Increase
       #
       # @see Increase::Models::InboundACHTransferDeclineParams
       def decline(inbound_ach_transfer_id, params = {})
-        parsed, options = Increase::Models::InboundACHTransferDeclineParams.dump_request(params)
+        parsed, options = Increase::InboundACHTransferDeclineParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["inbound_ach_transfers/%1$s/decline", inbound_ach_transfer_id],
@@ -139,7 +138,7 @@ module Increase
       #
       # @see Increase::Models::InboundACHTransferTransferReturnParams
       def transfer_return(inbound_ach_transfer_id, params)
-        parsed, options = Increase::Models::InboundACHTransferTransferReturnParams.dump_request(params)
+        parsed, options = Increase::InboundACHTransferTransferReturnParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["inbound_ach_transfers/%1$s/transfer_return", inbound_ach_transfer_id],

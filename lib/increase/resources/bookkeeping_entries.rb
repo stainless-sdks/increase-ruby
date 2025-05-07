@@ -43,7 +43,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingEntryListParams
       def list(params = {})
-        parsed, options = Increase::Models::BookkeepingEntryListParams.dump_request(params)
+        parsed, options = Increase::BookkeepingEntryListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "bookkeeping_entries",

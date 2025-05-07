@@ -30,7 +30,7 @@ module Increase
       #
       # @see Increase::Models::OAuthTokenCreateParams
       def create(params)
-        parsed, options = Increase::Models::OAuthTokenCreateParams.dump_request(params)
+        parsed, options = Increase::OAuthTokenCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "oauth/tokens",

@@ -21,7 +21,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingAccountCreateParams
       def create(params)
-        parsed, options = Increase::Models::BookkeepingAccountCreateParams.dump_request(params)
+        parsed, options = Increase::BookkeepingAccountCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "bookkeeping_accounts",
@@ -45,7 +45,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingAccountUpdateParams
       def update(bookkeeping_account_id, params)
-        parsed, options = Increase::Models::BookkeepingAccountUpdateParams.dump_request(params)
+        parsed, options = Increase::BookkeepingAccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["bookkeeping_accounts/%1$s", bookkeeping_account_id],
@@ -76,7 +76,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingAccountListParams
       def list(params = {})
-        parsed, options = Increase::Models::BookkeepingAccountListParams.dump_request(params)
+        parsed, options = Increase::BookkeepingAccountListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "bookkeeping_accounts",
@@ -101,7 +101,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingAccountBalanceParams
       def balance(bookkeeping_account_id, params = {})
-        parsed, options = Increase::Models::BookkeepingAccountBalanceParams.dump_request(params)
+        parsed, options = Increase::BookkeepingAccountBalanceParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["bookkeeping_accounts/%1$s/balance", bookkeeping_account_id],

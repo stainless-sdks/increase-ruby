@@ -24,7 +24,7 @@ module Increase
       #
       # @see Increase::Models::CardDisputeCreateParams
       def create(params)
-        parsed, options = Increase::Models::CardDisputeCreateParams.dump_request(params)
+        parsed, options = Increase::CardDisputeCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "card_disputes",
@@ -79,7 +79,7 @@ module Increase
       #
       # @see Increase::Models::CardDisputeListParams
       def list(params = {})
-        parsed, options = Increase::Models::CardDisputeListParams.dump_request(params)
+        parsed, options = Increase::CardDisputeListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "card_disputes",

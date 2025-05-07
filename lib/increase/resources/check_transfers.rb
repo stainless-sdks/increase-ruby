@@ -36,7 +36,7 @@ module Increase
       #
       # @see Increase::Models::CheckTransferCreateParams
       def create(params)
-        parsed, options = Increase::Models::CheckTransferCreateParams.dump_request(params)
+        parsed, options = Increase::CheckTransferCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "check_transfers",
@@ -93,7 +93,7 @@ module Increase
       #
       # @see Increase::Models::CheckTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::CheckTransferListParams.dump_request(params)
+        parsed, options = Increase::CheckTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "check_transfers",
@@ -158,7 +158,7 @@ module Increase
       #
       # @see Increase::Models::CheckTransferStopPaymentParams
       def stop_payment(check_transfer_id, params = {})
-        parsed, options = Increase::Models::CheckTransferStopPaymentParams.dump_request(params)
+        parsed, options = Increase::CheckTransferStopPaymentParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["check_transfers/%1$s/stop_payment", check_transfer_id],

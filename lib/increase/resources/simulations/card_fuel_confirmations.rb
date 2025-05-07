@@ -25,7 +25,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::CardFuelConfirmationCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardFuelConfirmationCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardFuelConfirmationCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_fuel_confirmations",

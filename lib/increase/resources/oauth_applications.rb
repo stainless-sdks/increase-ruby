@@ -45,7 +45,7 @@ module Increase
       #
       # @see Increase::Models::OAuthApplicationListParams
       def list(params = {})
-        parsed, options = Increase::Models::OAuthApplicationListParams.dump_request(params)
+        parsed, options = Increase::OAuthApplicationListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "oauth_applications",

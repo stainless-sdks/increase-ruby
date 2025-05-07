@@ -25,7 +25,7 @@ module Increase
       #
       # @see Increase::Models::FileCreateParams
       def create(params)
-        parsed, options = Increase::Models::FileCreateParams.dump_request(params)
+        parsed, options = Increase::FileCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "files",
@@ -81,7 +81,7 @@ module Increase
       #
       # @see Increase::Models::FileListParams
       def list(params = {})
-        parsed, options = Increase::Models::FileListParams.dump_request(params)
+        parsed, options = Increase::FileListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "files",

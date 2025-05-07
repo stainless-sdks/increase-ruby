@@ -23,7 +23,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingEntrySetCreateParams
       def create(params)
-        parsed, options = Increase::Models::BookkeepingEntrySetCreateParams.dump_request(params)
+        parsed, options = Increase::BookkeepingEntrySetCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "bookkeeping_entry_sets",
@@ -76,7 +76,7 @@ module Increase
       #
       # @see Increase::Models::BookkeepingEntrySetListParams
       def list(params = {})
-        parsed, options = Increase::Models::BookkeepingEntrySetListParams.dump_request(params)
+        parsed, options = Increase::BookkeepingEntrySetListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "bookkeeping_entry_sets",

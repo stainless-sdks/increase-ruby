@@ -65,7 +65,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::CardAuthorizationCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::CardAuthorizationCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardAuthorizationCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_authorizations",

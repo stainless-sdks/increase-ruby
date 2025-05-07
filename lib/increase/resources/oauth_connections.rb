@@ -46,7 +46,7 @@ module Increase
       #
       # @see Increase::Models::OAuthConnectionListParams
       def list(params = {})
-        parsed, options = Increase::Models::OAuthConnectionListParams.dump_request(params)
+        parsed, options = Increase::OAuthConnectionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "oauth_connections",

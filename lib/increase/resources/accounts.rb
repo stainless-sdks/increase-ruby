@@ -26,7 +26,7 @@ module Increase
       #
       # @see Increase::Models::AccountCreateParams
       def create(params)
-        parsed, options = Increase::Models::AccountCreateParams.dump_request(params)
+        parsed, options = Increase::AccountCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "accounts",
@@ -70,7 +70,7 @@ module Increase
       #
       # @see Increase::Models::AccountUpdateParams
       def update(account_id, params = {})
-        parsed, options = Increase::Models::AccountUpdateParams.dump_request(params)
+        parsed, options = Increase::AccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["accounts/%1$s", account_id],
@@ -111,7 +111,7 @@ module Increase
       #
       # @see Increase::Models::AccountListParams
       def list(params = {})
-        parsed, options = Increase::Models::AccountListParams.dump_request(params)
+        parsed, options = Increase::AccountListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "accounts",
@@ -137,7 +137,7 @@ module Increase
       #
       # @see Increase::Models::AccountBalanceParams
       def balance(account_id, params = {})
-        parsed, options = Increase::Models::AccountBalanceParams.dump_request(params)
+        parsed, options = Increase::AccountBalanceParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["accounts/%1$s/balance", account_id],

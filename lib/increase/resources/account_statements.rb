@@ -45,7 +45,7 @@ module Increase
       #
       # @see Increase::Models::AccountStatementListParams
       def list(params = {})
-        parsed, options = Increase::Models::AccountStatementListParams.dump_request(params)
+        parsed, options = Increase::AccountStatementListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "account_statements",

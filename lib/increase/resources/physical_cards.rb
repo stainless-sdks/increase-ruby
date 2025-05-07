@@ -25,7 +25,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCardCreateParams
       def create(params)
-        parsed, options = Increase::Models::PhysicalCardCreateParams.dump_request(params)
+        parsed, options = Increase::PhysicalCardCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "physical_cards",
@@ -69,7 +69,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCardUpdateParams
       def update(physical_card_id, params)
-        parsed, options = Increase::Models::PhysicalCardUpdateParams.dump_request(params)
+        parsed, options = Increase::PhysicalCardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["physical_cards/%1$s", physical_card_id],
@@ -104,7 +104,7 @@ module Increase
       #
       # @see Increase::Models::PhysicalCardListParams
       def list(params = {})
-        parsed, options = Increase::Models::PhysicalCardListParams.dump_request(params)
+        parsed, options = Increase::PhysicalCardListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "physical_cards",

@@ -27,7 +27,7 @@ module Increase
       #
       # @see Increase::Models::CheckDepositCreateParams
       def create(params)
-        parsed, options = Increase::Models::CheckDepositCreateParams.dump_request(params)
+        parsed, options = Increase::CheckDepositCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "check_deposits",
@@ -82,7 +82,7 @@ module Increase
       #
       # @see Increase::Models::CheckDepositListParams
       def list(params = {})
-        parsed, options = Increase::Models::CheckDepositListParams.dump_request(params)
+        parsed, options = Increase::CheckDepositListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "check_deposits",

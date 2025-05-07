@@ -50,7 +50,7 @@ module Increase
       #
       # @see Increase::Models::InboundWireTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundWireTransferListParams.dump_request(params)
+        parsed, options = Increase::InboundWireTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_wire_transfers",
@@ -75,7 +75,7 @@ module Increase
       #
       # @see Increase::Models::InboundWireTransferReverseParams
       def reverse(inbound_wire_transfer_id, params)
-        parsed, options = Increase::Models::InboundWireTransferReverseParams.dump_request(params)
+        parsed, options = Increase::InboundWireTransferReverseParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["inbound_wire_transfers/%1$s/reverse", inbound_wire_transfer_id],

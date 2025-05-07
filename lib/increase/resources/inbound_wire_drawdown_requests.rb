@@ -41,7 +41,7 @@ module Increase
       #
       # @see Increase::Models::InboundWireDrawdownRequestListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundWireDrawdownRequestListParams.dump_request(params)
+        parsed, options = Increase::InboundWireDrawdownRequestListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_wire_drawdown_requests",

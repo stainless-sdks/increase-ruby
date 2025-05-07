@@ -19,7 +19,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::ProgramCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::ProgramCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::ProgramCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/programs",

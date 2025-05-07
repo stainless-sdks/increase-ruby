@@ -46,7 +46,7 @@ module Increase
       #
       # @see Increase::Models::WireDrawdownRequestCreateParams
       def create(params)
-        parsed, options = Increase::Models::WireDrawdownRequestCreateParams.dump_request(params)
+        parsed, options = Increase::WireDrawdownRequestCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "wire_drawdown_requests",
@@ -99,7 +99,7 @@ module Increase
       #
       # @see Increase::Models::WireDrawdownRequestListParams
       def list(params = {})
-        parsed, options = Increase::Models::WireDrawdownRequestListParams.dump_request(params)
+        parsed, options = Increase::WireDrawdownRequestListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "wire_drawdown_requests",

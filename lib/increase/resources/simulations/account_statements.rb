@@ -17,7 +17,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::AccountStatementCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::AccountStatementCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::AccountStatementCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/account_statements",
