@@ -17,7 +17,7 @@ module Increase
       #
       # @see Increase::Models::SupplementalDocumentCreateParams
       def create(params)
-        parsed, options = Increase::Models::SupplementalDocumentCreateParams.dump_request(params)
+        parsed, options = Increase::SupplementalDocumentCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "entity_supplemental_documents",
@@ -50,7 +50,7 @@ module Increase
       #
       # @see Increase::Models::SupplementalDocumentListParams
       def list(params)
-        parsed, options = Increase::Models::SupplementalDocumentListParams.dump_request(params)
+        parsed, options = Increase::SupplementalDocumentListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "entity_supplemental_documents",

@@ -25,7 +25,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::InboundMailItemCreateParams
         def create(params)
-          parsed, options = Increase::Models::Simulations::InboundMailItemCreateParams.dump_request(params)
+          parsed, options = Increase::Simulations::InboundMailItemCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_mail_items",

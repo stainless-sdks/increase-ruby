@@ -19,7 +19,7 @@ module Increase
       #
       # @see Increase::Models::LockboxCreateParams
       def create(params)
-        parsed, options = Increase::Models::LockboxCreateParams.dump_request(params)
+        parsed, options = Increase::LockboxCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "lockboxes",
@@ -67,7 +67,7 @@ module Increase
       #
       # @see Increase::Models::LockboxUpdateParams
       def update(lockbox_id, params = {})
-        parsed, options = Increase::Models::LockboxUpdateParams.dump_request(params)
+        parsed, options = Increase::LockboxUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["lockboxes/%1$s", lockbox_id],
@@ -102,7 +102,7 @@ module Increase
       #
       # @see Increase::Models::LockboxListParams
       def list(params = {})
-        parsed, options = Increase::Models::LockboxListParams.dump_request(params)
+        parsed, options = Increase::LockboxListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "lockboxes",

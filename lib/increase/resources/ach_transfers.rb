@@ -66,7 +66,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransferCreateParams
       def create(params)
-        parsed, options = Increase::Models::ACHTransferCreateParams.dump_request(params)
+        parsed, options = Increase::ACHTransferCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "ach_transfers",
@@ -125,7 +125,7 @@ module Increase
       #
       # @see Increase::Models::ACHTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::ACHTransferListParams.dump_request(params)
+        parsed, options = Increase::ACHTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "ach_transfers",

@@ -44,7 +44,7 @@ module Increase
       #
       # @see Increase::Models::RealTimePaymentsTransferCreateParams
       def create(params)
-        parsed, options = Increase::Models::RealTimePaymentsTransferCreateParams.dump_request(params)
+        parsed, options = Increase::RealTimePaymentsTransferCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "real_time_payments_transfers",
@@ -105,7 +105,7 @@ module Increase
       #
       # @see Increase::Models::RealTimePaymentsTransferListParams
       def list(params = {})
-        parsed, options = Increase::Models::RealTimePaymentsTransferListParams.dump_request(params)
+        parsed, options = Increase::RealTimePaymentsTransferListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "real_time_payments_transfers",

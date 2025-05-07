@@ -27,7 +27,7 @@ module Increase
       #
       # @see Increase::Models::EventSubscriptionCreateParams
       def create(params)
-        parsed, options = Increase::Models::EventSubscriptionCreateParams.dump_request(params)
+        parsed, options = Increase::EventSubscriptionCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "event_subscriptions",
@@ -71,7 +71,7 @@ module Increase
       #
       # @see Increase::Models::EventSubscriptionUpdateParams
       def update(event_subscription_id, params = {})
-        parsed, options = Increase::Models::EventSubscriptionUpdateParams.dump_request(params)
+        parsed, options = Increase::EventSubscriptionUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["event_subscriptions/%1$s", event_subscription_id],
@@ -102,7 +102,7 @@ module Increase
       #
       # @see Increase::Models::EventSubscriptionListParams
       def list(params = {})
-        parsed, options = Increase::Models::EventSubscriptionListParams.dump_request(params)
+        parsed, options = Increase::EventSubscriptionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "event_subscriptions",

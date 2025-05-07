@@ -48,7 +48,7 @@ module Increase
       #
       # @see Increase::Models::InboundCheckDepositListParams
       def list(params = {})
-        parsed, options = Increase::Models::InboundCheckDepositListParams.dump_request(params)
+        parsed, options = Increase::InboundCheckDepositListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "inbound_check_deposits",
@@ -93,7 +93,7 @@ module Increase
       #
       # @see Increase::Models::InboundCheckDepositReturnParams
       def return_(inbound_check_deposit_id, params)
-        parsed, options = Increase::Models::InboundCheckDepositReturnParams.dump_request(params)
+        parsed, options = Increase::InboundCheckDepositReturnParams.dump_request(params)
         @client.request(
           method: :post,
           path: ["inbound_check_deposits/%1$s/return", inbound_check_deposit_id],

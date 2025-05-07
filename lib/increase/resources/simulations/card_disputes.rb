@@ -23,7 +23,7 @@ module Increase
         #
         # @see Increase::Models::Simulations::CardDisputeActionParams
         def action(card_dispute_id, params)
-          parsed, options = Increase::Models::Simulations::CardDisputeActionParams.dump_request(params)
+          parsed, options = Increase::Simulations::CardDisputeActionParams.dump_request(params)
           @client.request(
             method: :post,
             path: ["simulations/card_disputes/%1$s/action", card_dispute_id],

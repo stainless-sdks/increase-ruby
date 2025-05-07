@@ -47,7 +47,7 @@ module Increase
       #
       # @see Increase::Models::EventListParams
       def list(params = {})
-        parsed, options = Increase::Models::EventListParams.dump_request(params)
+        parsed, options = Increase::EventListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "events",
