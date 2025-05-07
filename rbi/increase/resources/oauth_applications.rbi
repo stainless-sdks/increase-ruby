@@ -5,24 +5,28 @@ module Increase
     class OAuthApplications
       # Retrieve an OAuth Application
       sig do
-        params(oauth_application_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::OAuthApplication)
+        params(
+          oauth_application_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::OAuthApplication)
       end
       def retrieve(
         # The identifier of the OAuth Application.
         oauth_application_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List OAuth Applications
       sig do
         params(
-          created_at: T.any(Increase::Models::OAuthApplicationListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            Increase::Models::OAuthApplicationListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::OAuthApplicationListParams::Status, Increase::Internal::AnyHash),
-          request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Internal::Page[Increase::Models::OAuthApplication])
+          status: Increase::Models::OAuthApplicationListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Internal::Page[Increase::Models::OAuthApplication])
       end
       def list(
         created_at: nil,
@@ -33,10 +37,13 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

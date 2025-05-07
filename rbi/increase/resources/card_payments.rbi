@@ -5,25 +5,29 @@ module Increase
     class CardPayments
       # Retrieve a Card Payment
       sig do
-        params(card_payment_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::CardPayment)
+        params(
+          card_payment_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::CardPayment)
       end
       def retrieve(
         # The identifier of the Card Payment.
         card_payment_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Card Payments
       sig do
         params(
           account_id: String,
           card_id: String,
-          created_at: T.any(Increase::Models::CardPaymentListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            Increase::Models::CardPaymentListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Internal::Page[Increase::Models::CardPayment])
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Internal::Page[Increase::Models::CardPayment])
       end
       def list(
         # Filter Card Payments to ones belonging to the specified Account.
@@ -37,10 +41,13 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

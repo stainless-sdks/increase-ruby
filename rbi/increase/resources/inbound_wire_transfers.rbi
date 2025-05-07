@@ -5,26 +5,33 @@ module Increase
     class InboundWireTransfers
       # Retrieve an Inbound Wire Transfer
       sig do
-        params(inbound_wire_transfer_id: String, request_options: Increase::RequestOpts)
-          .returns(Increase::Models::InboundWireTransfer)
+        params(
+          inbound_wire_transfer_id: String,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(
         # The identifier of the Inbound Wire Transfer to get details for.
         inbound_wire_transfer_id,
         request_options: {}
-      ); end
+      )
+      end
+
       # List Inbound Wire Transfers
       sig do
         params(
           account_id: String,
           account_number_id: String,
-          created_at: T.any(Increase::Models::InboundWireTransferListParams::CreatedAt, Increase::Internal::AnyHash),
+          created_at:
+            Increase::Models::InboundWireTransferListParams::CreatedAt::OrHash,
           cursor: String,
           limit: Integer,
-          status: T.any(Increase::Models::InboundWireTransferListParams::Status, Increase::Internal::AnyHash),
-          request_options: Increase::RequestOpts
+          status:
+            Increase::Models::InboundWireTransferListParams::Status::OrHash,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(
+          Increase::Internal::Page[Increase::Models::InboundWireTransfer]
         )
-          .returns(Increase::Internal::Page[Increase::Models::InboundWireTransfer])
       end
       def list(
         # Filter Inbound Wire Transfers to ones belonging to the specified Account.
@@ -39,15 +46,17 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Reverse an Inbound Wire Transfer
       sig do
         params(
           inbound_wire_transfer_id: String,
-          reason: Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
-          request_options: Increase::RequestOpts
-        )
-          .returns(Increase::Models::InboundWireTransfer)
+          reason:
+            Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
+          request_options: Increase::RequestOptions::OrHash
+        ).returns(Increase::Models::InboundWireTransfer)
       end
       def reverse(
         # The identifier of the Inbound Wire Transfer to reverse.
@@ -55,10 +64,13 @@ module Increase
         # Reason for the reversal.
         reason:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end
