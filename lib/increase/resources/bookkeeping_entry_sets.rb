@@ -13,7 +13,6 @@ module Increase
       # @param entries [Array<Increase::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
       #
       # @param date [Time] The date of the transaction. Optional if `transaction_id` is provided, in which
-      # ...
       #
       # @param transaction_id [String] The identifier of the Transaction related to this entry set, if any.
       #
@@ -63,10 +62,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param transaction_id [String] Filter to the Bookkeeping Entry Set that maps to this Transaction.
       #

@@ -64,8 +64,6 @@ module Increase
         type: Increase::DigitalCardProfile::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type status = :pending | :rejected | :active | :archived
 
       module Status
@@ -96,8 +94,6 @@ module Increase
         attr_accessor red: Integer
 
         def initialize: (blue: Integer, green: Integer, red: Integer) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type type_ = :digital_card_profile

@@ -15,8 +15,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type address =
         {
           city: String,
@@ -46,8 +44,6 @@ module Increase
           zip: String,
           ?line2: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

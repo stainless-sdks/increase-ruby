@@ -44,8 +44,6 @@ module Increase
         type: Increase::Lockbox::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type address =
         {
           city: String,
@@ -77,8 +75,6 @@ module Increase
           recipient: String?,
           state: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type status = :active | :inactive

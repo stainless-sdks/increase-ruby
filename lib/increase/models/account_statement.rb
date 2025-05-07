@@ -75,7 +75,6 @@ module Increase
       #   @param account_id [String] The identifier for the Account this Account Statement belongs to.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
       #
       #   @param ending_balance [Integer] The Account's balance at the start of its statement period.
       #
@@ -84,13 +83,10 @@ module Increase
       #   @param starting_balance [Integer] The Account's balance at the start of its statement period.
       #
       #   @param statement_period_end [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-      #   ...
       #
       #   @param statement_period_start [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the sta
-      #   ...
       #
       #   @param type [Symbol, Increase::AccountStatement::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `account_statement`.

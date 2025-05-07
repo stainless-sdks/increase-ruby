@@ -54,14 +54,12 @@ module Increase
       #   @param category [Symbol, Increase::Document::Category] The type of document.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Documen
-      #   ...
       #
       #   @param entity_id [String, nil] The identifier of the Entity the document was generated for.
       #
       #   @param file_id [String] The identifier of the File containing the Document's contents.
       #
       #   @param type [Symbol, Increase::Document::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The type of document.
       #

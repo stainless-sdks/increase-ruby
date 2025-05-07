@@ -51,8 +51,6 @@ module Increase
           ?request_for_payment_id: String,
           ?request_options: Increase::request_opts
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

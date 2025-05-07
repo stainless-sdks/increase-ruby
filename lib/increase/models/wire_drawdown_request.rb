@@ -149,21 +149,16 @@ module Increase
       #   @param id [String] The Wire drawdown request identifier.
       #
       #   @param account_number_id [String] The Account Number to which the recipient of this request is being requested to
-      #   ...
       #
       #   @param amount [Integer] The amount being requested in cents.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #   ...
       #
       #   @param fulfillment_inbound_wire_transfer_id [String, nil] If the recipient fulfills the drawdown request by sending funds, then this will
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param message_to_recipient [String] The message the recipient will see as part of the drawdown request.
       #
@@ -190,10 +185,8 @@ module Increase
       #   @param status [Symbol, Increase::WireDrawdownRequest::Status] The lifecycle status of the drawdown request.
       #
       #   @param submission [Increase::WireDrawdownRequest::Submission, nil] After the drawdown request is submitted to Fedwire, this will contain supplement
-      #   ...
       #
       #   @param type [Symbol, Increase::WireDrawdownRequest::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The lifecycle status of the drawdown request.
       #
@@ -234,7 +227,6 @@ module Increase
         #   supplemental details.
         #
         #   @param input_message_accountability_data [String] The input message accountability data (IMAD) uniquely identifying the submission
-        #   ...
       end
 
       # A constant representing the object's type. For this resource it will always be

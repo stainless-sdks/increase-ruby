@@ -63,10 +63,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::PhysicalCardProfileListParams::Status]
       #
@@ -125,7 +123,6 @@ module Increase
       # @param front_image_file_id [String] The identifier of the File containing the physical card's front image.
       #
       # @param front_text [Increase::PhysicalCardProfileCloneParams::FrontText] Text printed on the front of the card. Reach out to [support@increase.com](mailt
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

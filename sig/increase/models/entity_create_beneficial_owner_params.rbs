@@ -17,8 +17,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type beneficial_owner =
         {
           individual: Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
@@ -40,8 +38,6 @@ module Increase
           prongs: ::Array[Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
           ?company_title: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type individual =
           {
@@ -72,8 +68,6 @@ module Increase
             name: String,
             ?confirmed_no_us_tax_id: bool
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type address =
             {
@@ -114,8 +108,6 @@ module Increase
               ?state: String,
               ?zip: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type identification =
@@ -157,8 +149,6 @@ module Increase
               ?other: Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
               ?passport: Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type method_ =
               :social_security_number
@@ -213,8 +203,6 @@ module Increase
                 state: String,
                 ?back_file_id: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type other =
@@ -248,8 +236,6 @@ module Increase
                 ?back_file_id: String,
                 ?expiration_date: Date
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type passport =
@@ -267,8 +253,6 @@ module Increase
                 expiration_date: Date,
                 file_id: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
           end
         end

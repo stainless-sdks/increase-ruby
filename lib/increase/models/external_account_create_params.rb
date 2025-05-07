@@ -47,7 +47,6 @@ module Increase
       #   @param description [String] The name you choose for the Account.
       #
       #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
-      #   ...
       #
       #   @param account_holder [Symbol, Increase::ExternalAccountCreateParams::AccountHolder] The type of entity that owns the External Account.
       #

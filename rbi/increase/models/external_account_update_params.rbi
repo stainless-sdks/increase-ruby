@@ -70,8 +70,7 @@ module Increase
           description: String,
           funding: Increase::ExternalAccountUpdateParams::Funding::OrSymbol,
           status: Increase::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

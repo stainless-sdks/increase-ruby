@@ -88,8 +88,6 @@ module Increase
         type: Increase::InboundCheckDeposit::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type adjustment =
         {
           adjusted_at: Time,
@@ -113,8 +111,6 @@ module Increase
           reason: Increase::InboundCheckDeposit::Adjustment::reason,
           transaction_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type reason =
           :late_return
@@ -186,8 +182,6 @@ module Increase
           returned_at: Time,
           transaction_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type reason =
           :altered_or_fictitious

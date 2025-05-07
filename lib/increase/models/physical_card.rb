@@ -79,10 +79,8 @@ module Increase
       #   @param cardholder [Increase::PhysicalCard::Cardholder] Details about the cardholder, as it appears on the printed card.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param physical_card_profile_id [String, nil] The Physical Card Profile used for this Physical Card.
       #
@@ -91,7 +89,6 @@ module Increase
       #   @param status [Symbol, Increase::PhysicalCard::Status] The status of the Physical Card.
       #
       #   @param type [Symbol, Increase::PhysicalCard::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::PhysicalCard#cardholder
       class Cardholder < Increase::Internal::Type::BaseModel
@@ -314,7 +311,6 @@ module Increase
           #   @param return_reason [String, nil] For returned shipments, this describes why the package was returned.
           #
           #   @param shipped_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
           #
           #   @param updates [Array<Increase::PhysicalCard::Shipment::Tracking::Update>] Tracking updates relating to the physical card's delivery.
 
@@ -362,14 +358,12 @@ module Increase
             #   {Increase::PhysicalCard::Shipment::Tracking::Update} for more details.
             #
             #   @param carrier_estimated_delivery_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the ca
-            #   ...
             #
             #   @param category [Symbol, Increase::PhysicalCard::Shipment::Tracking::Update::Category] The type of tracking event.
             #
             #   @param city [String, nil] The city where the event took place.
             #
             #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-            #   ...
             #
             #   @param postal_code [String, nil] The postal code where the event took place.
             #

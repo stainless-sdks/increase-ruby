@@ -36,8 +36,6 @@ module Increase
         type: Increase::OAuthApplication::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type status = :active | :deleted
 
       module Status

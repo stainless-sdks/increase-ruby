@@ -85,8 +85,7 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           status: Increase::RealTimePaymentsTransferListParams::Status::OrHash,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

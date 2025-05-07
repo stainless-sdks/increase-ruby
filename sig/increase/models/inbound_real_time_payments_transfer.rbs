@@ -72,8 +72,6 @@ module Increase
         type: Increase::InboundRealTimePaymentsTransfer::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type confirmation = { confirmed_at: Time, transaction_id: String }
 
       class Confirmation < Increase::Internal::Type::BaseModel
@@ -82,8 +80,6 @@ module Increase
         attr_accessor transaction_id: String
 
         def initialize: (confirmed_at: Time, transaction_id: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -131,8 +127,6 @@ module Increase
           declined_transaction_id: String,
           reason: Increase::InboundRealTimePaymentsTransfer::Decline::reason
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type reason =
           :account_number_canceled

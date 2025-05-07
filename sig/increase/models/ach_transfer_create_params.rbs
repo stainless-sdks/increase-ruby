@@ -133,8 +133,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type addenda =
         {
           category: Increase::ACHTransferCreateParams::Addenda::category,
@@ -163,8 +161,6 @@ module Increase
           ?payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type category = :freeform | :payment_order_remittance_advice
 
         module Category
@@ -191,16 +187,12 @@ module Increase
             entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type entry = { payment_related_information: String }
 
           class Entry < Increase::Internal::Type::BaseModel
             attr_accessor payment_related_information: String
 
             def initialize: (payment_related_information: String) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
         end
 
@@ -216,8 +208,6 @@ module Increase
             invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type invoice = { invoice_number: String, paid_amount: Integer }
 
           class Invoice < Increase::Internal::Type::BaseModel
@@ -229,8 +219,6 @@ module Increase
               invoice_number: String,
               paid_amount: Integer
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
         end
       end
@@ -287,8 +275,6 @@ module Increase
           ?date: Date,
           ?settlement_schedule: Increase::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type settlement_schedule = :same_day | :future_dated
 

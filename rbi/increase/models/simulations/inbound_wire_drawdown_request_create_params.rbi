@@ -154,8 +154,7 @@ module Increase
             originator_to_beneficiary_information_line2: String,
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
-            request_options:
-              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: Increase::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(

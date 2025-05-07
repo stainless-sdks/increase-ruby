@@ -43,7 +43,6 @@ module Increase
       #   @param shipment [Increase::PhysicalCardCreateParams::Shipment] The details used to ship this physical card.
       #
       #   @param physical_card_profile_id [String] The physical card profile to use for this physical card. The latest default phys
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 

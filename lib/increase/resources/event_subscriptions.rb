@@ -13,13 +13,10 @@ module Increase
       # @param url [String] The URL you'd like us to send webhooks to.
       #
       # @param oauth_connection_id [String] If specified, this subscription will only receive webhooks for Events associated
-      # ...
       #
       # @param selected_event_category [Symbol, Increase::EventSubscriptionCreateParams::SelectedEventCategory] If specified, this subscription will only receive webhooks for Events with the s
-      # ...
       #
       # @param shared_secret [String] The key that will be used to sign webhooks. If no value is passed, a random stri
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -91,10 +88,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

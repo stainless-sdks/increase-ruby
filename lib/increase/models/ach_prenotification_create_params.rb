@@ -99,7 +99,6 @@ module Increase
       #   @param account_number [String] The account number for the destination account.
       #
       #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
-      #   ...
       #
       #   @param addendum [String] Additional information that will be sent to the recipient.
       #
@@ -114,12 +113,10 @@ module Increase
       #   @param credit_debit_indicator [Symbol, Increase::ACHPrenotificationCreateParams::CreditDebitIndicator] Whether the Prenotification is for a future debit or credit.
       #
       #   @param effective_date [Date] The transfer effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601
-      #   ...
       #
       #   @param individual_id [String] Your identifier for the transfer recipient.
       #
       #   @param individual_name [String] The name of the transfer recipient. This value is information and not verified b
-      #   ...
       #
       #   @param standard_entry_class_code [Symbol, Increase::ACHPrenotificationCreateParams::StandardEntryClassCode] The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #

@@ -88,21 +88,18 @@ module Increase
       #   @param account_number [String] The destination account number.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param description [String] The External Account's description for display purposes.
       #
       #   @param funding [Symbol, Increase::ExternalAccount::Funding] The type of the account to which the transfer will be sent.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
       #
       #   @param status [Symbol, Increase::ExternalAccount::Status] The External Account's status.
       #
       #   @param type [Symbol, Increase::ExternalAccount::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
       #
       #   @param verification_status [Symbol, Increase::ExternalAccount::VerificationStatus] If you have verified ownership of the External Account.
 

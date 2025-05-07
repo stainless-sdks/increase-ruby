@@ -39,10 +39,8 @@ module Increase
       #   @param cursor [String] Return the page of entries after this one.
       #
       #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
       #
       #   @param oauth_application_id [String] Filter results to only include OAuth Connections for a specific OAuth Applicatio
-      #   ...
       #
       #   @param status [Increase::OAuthConnectionListParams::Status]
       #
@@ -66,7 +64,6 @@ module Increase
         #   {Increase::OAuthConnectionListParams::Status} for more details.
         #
         #   @param in_ [Array<Symbol, Increase::OAuthConnectionListParams::Status::In>] Filter to OAuth Connections by their status. By default, return only the `active
-        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

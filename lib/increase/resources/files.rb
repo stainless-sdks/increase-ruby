@@ -13,7 +13,6 @@ module Increase
       # @overload create(file:, purpose:, description: nil, request_options: {})
       #
       # @param file [Pathname, StringIO, IO, Increase::FilePart] The file contents. This should follow the specifications of [RFC 7578](https://d
-      # ...
       #
       # @param purpose [Symbol, Increase::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
       #
@@ -68,10 +67,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param purpose [Increase::FileListParams::Purpose]
       #

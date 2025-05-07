@@ -108,16 +108,12 @@ module Increase
         ultimate_debtor_name: String?
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type acknowledgement = { acknowledged_at: Time }
 
       class Acknowledgement < Increase::Internal::Type::BaseModel
         attr_accessor acknowledged_at: Time
 
         def initialize: (acknowledged_at: Time) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type approval = { approved_at: Time, approved_by: String? }
@@ -128,8 +124,6 @@ module Increase
         attr_accessor approved_by: String?
 
         def initialize: (approved_at: Time, approved_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type cancellation = { canceled_at: Time, canceled_by: String? }
@@ -140,8 +134,6 @@ module Increase
         attr_accessor canceled_by: String?
 
         def initialize: (canceled_at: Time, canceled_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type created_by =
@@ -168,16 +160,12 @@ module Increase
           user: Increase::RealTimePaymentsTransfer::CreatedBy::User?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type api_key = { description: String? }
 
         class APIKey < Increase::Internal::Type::BaseModel
           attr_accessor description: String?
 
           def initialize: (description: String?) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :api_key | :oauth_application | :user
@@ -203,8 +191,6 @@ module Increase
           attr_accessor name: String
 
           def initialize: (name: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type user = { email: String }
@@ -213,8 +199,6 @@ module Increase
           attr_accessor email: String
 
           def initialize: (email: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 
@@ -263,8 +247,6 @@ module Increase
           reject_reason_code: Increase::RealTimePaymentsTransfer::Rejection::reject_reason_code,
           rejected_at: Time?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type reject_reason_code =
           :account_closed
@@ -411,8 +393,6 @@ module Increase
           submitted_at: Time?,
           transaction_identification: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type type_ = :real_time_payments_transfer

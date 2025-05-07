@@ -20,8 +20,6 @@ module Increase
         type: Increase::OAuthToken::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type token_type = :bearer
 
       module TokenType

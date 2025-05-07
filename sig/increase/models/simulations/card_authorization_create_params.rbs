@@ -120,8 +120,6 @@ module Increase
           ?request_options: Increase::request_opts
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type decline_reason =
           :account_closed
           | :card_not_active
@@ -228,8 +226,6 @@ module Increase
             visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type visa =
             {
               stand_in_processing_reason: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
@@ -245,8 +241,6 @@ module Increase
             def initialize: (
               ?stand_in_processing_reason: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type stand_in_processing_reason =
               :issuer_error

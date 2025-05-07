@@ -80,8 +80,6 @@ module Increase
         type: Increase::CheckDeposit::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type deposit_acceptance =
         {
           account_number: String,
@@ -117,8 +115,6 @@ module Increase
           routing_number: String,
           serial_number: String?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -178,8 +174,6 @@ module Increase
           reason: Increase::CheckDeposit::DepositRejection::reason,
           rejected_at: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -291,8 +285,6 @@ module Increase
           returned_at: Time,
           transaction_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -448,8 +440,6 @@ module Increase
           front_file_id: String,
           submitted_at: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type inbound_funds_hold =
@@ -499,8 +489,6 @@ module Increase
           status: Increase::CheckDeposit::InboundFundsHold::status,
           type: Increase::CheckDeposit::InboundFundsHold::type_
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 

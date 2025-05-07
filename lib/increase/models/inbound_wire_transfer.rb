@@ -192,12 +192,10 @@ module Increase
       #   @param beneficiary_reference [String, nil] A free-form reference string set by the sender, to help identify the transfer.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param description [String] An Increase-constructed description of the transfer.
       #
       #   @param input_message_accountability_data [String, nil] A unique identifier available to the originating and receiving banks, commonly a
-      #   ...
       #
       #   @param originator_address_line1 [String, nil] The address of the wire originator, set by the sending bank.
       #
@@ -208,7 +206,6 @@ module Increase
       #   @param originator_name [String, nil] The originator of the wire, set by the sending bank.
       #
       #   @param originator_routing_number [String, nil] The American Banking Association (ABA) routing number of the bank originating th
-      #   ...
       #
       #   @param originator_to_beneficiary_information [String, nil] An Increase-created concatenation of the Originator-to-Beneficiary lines.
       #
@@ -221,14 +218,12 @@ module Increase
       #   @param originator_to_beneficiary_information_line4 [String, nil] A free-form message set by the wire originator.
       #
       #   @param reversal [Increase::InboundWireTransfer::Reversal, nil] Information about the reversal of the inbound wire transfer if it has been rever
-      #   ...
       #
       #   @param sender_reference [String, nil] The sending bank's reference number for the wire transfer.
       #
       #   @param status [Symbol, Increase::InboundWireTransfer::Status] The status of the transfer.
       #
       #   @param type [Symbol, Increase::InboundWireTransfer::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::InboundWireTransfer#reversal
       class Reversal < Increase::Internal::Type::BaseModel
@@ -255,7 +250,6 @@ module Increase
         #   @param reason [Symbol, Increase::InboundWireTransfer::Reversal::Reason] The reason for the reversal.
         #
         #   @param reversed_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
 
         # The reason for the reversal.
         #

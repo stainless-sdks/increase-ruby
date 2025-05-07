@@ -86,7 +86,6 @@ module Increase
         #   @param account_number_id [String] The identifier of the Account Number the inbound ACH Transfer is for.
         #
         #   @param amount [Integer] The transfer amount in cents. A positive amount originates a credit transfer pus
-        #   ...
         #
         #   @param company_descriptive_date [String] The description of the date of the transfer.
         #
@@ -103,7 +102,6 @@ module Increase
         #   @param receiver_name [String] The name of the receiver of the transfer.
         #
         #   @param resolve_at [Time] The time at which the transfer should be resolved. If not provided will resolve
-        #   ...
         #
         #   @param standard_entry_class_code [Symbol, Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode] The standard entry class code for the transfer.
         #

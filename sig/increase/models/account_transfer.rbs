@@ -76,8 +76,6 @@ module Increase
         type: Increase::AccountTransfer::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type approval = { approved_at: Time, approved_by: String? }
 
       class Approval < Increase::Internal::Type::BaseModel
@@ -86,8 +84,6 @@ module Increase
         attr_accessor approved_by: String?
 
         def initialize: (approved_at: Time, approved_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type cancellation = { canceled_at: Time, canceled_by: String? }
@@ -98,8 +94,6 @@ module Increase
         attr_accessor canceled_by: String?
 
         def initialize: (canceled_at: Time, canceled_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type created_by =
@@ -126,16 +120,12 @@ module Increase
           user: Increase::AccountTransfer::CreatedBy::User?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type api_key = { description: String? }
 
         class APIKey < Increase::Internal::Type::BaseModel
           attr_accessor description: String?
 
           def initialize: (description: String?) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :api_key | :oauth_application | :user
@@ -161,8 +151,6 @@ module Increase
           attr_accessor name: String
 
           def initialize: (name: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type user = { email: String }
@@ -171,8 +159,6 @@ module Increase
           attr_accessor email: String
 
           def initialize: (email: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 

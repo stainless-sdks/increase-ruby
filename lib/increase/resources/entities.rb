@@ -13,26 +13,20 @@ module Increase
       # @param structure [Symbol, Increase::EntityCreateParams::Structure] The type of Entity to create.
       #
       # @param corporation [Increase::EntityCreateParams::Corporation] Details of the corporation entity to create. Required if `structure` is equal to
-      # ...
       #
       # @param description [String] The description you choose to give the entity.
       #
       # @param government_authority [Increase::EntityCreateParams::GovernmentAuthority] Details of the Government Authority entity to create. Required if `structure` is
-      # ...
       #
       # @param joint [Increase::EntityCreateParams::Joint] Details of the joint entity to create. Required if `structure` is equal to `join
-      # ...
       #
       # @param natural_person [Increase::EntityCreateParams::NaturalPerson] Details of the natural person entity to create. Required if `structure` is equal
-      # ...
       #
       # @param supplemental_documents [Array<Increase::EntityCreateParams::SupplementalDocument>] Additional documentation associated with the entity.
       #
       # @param third_party_verification [Increase::EntityCreateParams::ThirdPartyVerification] A reference to data stored in a third-party verification service. Your integrati
-      # ...
       #
       # @param trust [Increase::EntityCreateParams::Trust] Details of the trust entity to create. Required if `structure` is equal to `trus
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -82,10 +76,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::EntityListParams::Status]
       #
@@ -114,7 +106,6 @@ module Increase
       # @overload archive(entity_id, request_options: {})
       #
       # @param entity_id [String] The identifier of the Entity to archive. Any accounts associated with an entity
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -138,10 +129,8 @@ module Increase
       # @overload archive_beneficial_owner(entity_id, beneficial_owner_id:, request_options: {})
       #
       # @param entity_id [String] The identifier of the Entity associated with the Beneficial Owner that is being
-      # ...
       #
       # @param beneficial_owner_id [String] The identifying details of anyone controlling or owning 25% or more of the corpo
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -171,7 +160,6 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to confirm the details of.
       #
       # @param confirmed_at [Time] When your user confirmed the Entity's details. If not provided, the current time
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -199,7 +187,6 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to associate with the new Beneficial Owner.
       #
       # @param beneficial_owner [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner] The identifying details of anyone controlling or owning 25% or more of the corpo
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -227,7 +214,6 @@ module Increase
       # @param entity_id [String] The identifier of the Entity whose address is being updated.
       #
       # @param address [Increase::EntityUpdateAddressParams::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -253,13 +239,10 @@ module Increase
       # @overload update_beneficial_owner_address(entity_id, address:, beneficial_owner_id:, request_options: {})
       #
       # @param entity_id [String] The identifier of the Entity associated with the Beneficial Owner whose address
-      # ...
       #
       # @param address [Increase::EntityUpdateBeneficialOwnerAddressParams::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-      # ...
       #
       # @param beneficial_owner_id [String] The identifying details of anyone controlling or owning 25% or more of the corpo
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -285,10 +268,8 @@ module Increase
       # @overload update_industry_code(entity_id, industry_code:, request_options: {})
       #
       # @param entity_id [String] The identifier of the Entity to update. This endpoint only accepts `corporation`
-      # ...
       #
       # @param industry_code [String] The North American Industry Classification System (NAICS) code for the corporati
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

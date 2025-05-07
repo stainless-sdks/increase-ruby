@@ -19,7 +19,6 @@ module Increase
       #   {Increase::Models::InboundACHTransferTransferReturnParams} for more details.
       #
       #   @param reason [Symbol, Increase::InboundACHTransferTransferReturnParams::Reason] The reason why this transfer will be returned. The most usual return codes are `
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 

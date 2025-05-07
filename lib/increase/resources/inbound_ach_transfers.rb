@@ -39,7 +39,6 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::InboundACHTransferListParams::Status]
       #
@@ -69,7 +68,6 @@ module Increase
       # @overload create_notification_of_change(inbound_ach_transfer_id, updated_account_number: nil, updated_routing_number: nil, request_options: {})
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer for which to create a notification of
-      # ...
       #
       # @param updated_account_number [String] The updated account number to send in the notification of change.
       #
@@ -101,7 +99,6 @@ module Increase
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.
       #
       # @param reason [Symbol, Increase::InboundACHTransferDeclineParams::Reason] The reason why this transfer will be returned. If this parameter is unset, the r
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -127,10 +124,8 @@ module Increase
       # @overload transfer_return(inbound_ach_transfer_id, reason:, request_options: {})
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to return to the originating financia
-      # ...
       #
       # @param reason [Symbol, Increase::InboundACHTransferTransferReturnParams::Reason] The reason why this transfer will be returned. The most usual return codes are `
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

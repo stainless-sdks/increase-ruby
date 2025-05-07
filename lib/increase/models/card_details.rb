@@ -58,10 +58,8 @@ module Increase
       #   @param primary_account_number [String] The card number.
       #
       #   @param type [Symbol, Increase::CardDetails::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
       #
       #   @param verification_code [String] The three-digit verification code for the card. It's also known as the Card Veri
-      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `card_details`.

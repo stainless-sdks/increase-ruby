@@ -205,7 +205,6 @@ module Increase
       #   @param amount [Integer] The transfer amount in USD cents.
       #
       #   @param approval [Increase::WireTransfer::Approval, nil] If your account requires approvals for transfers and the transfer was approved,
-      #   ...
       #
       #   @param beneficiary_address_line1 [String, nil] The beneficiary's address line 1.
       #
@@ -216,20 +215,16 @@ module Increase
       #   @param beneficiary_name [String, nil] The beneficiary's name.
       #
       #   @param cancellation [Increase::WireTransfer::Cancellation, nil] If your account requires approvals for transfers and the transfer was not approv
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param created_by [Increase::WireTransfer::CreatedBy, nil] What object created the transfer, either via the API or the dashboard.
       #
       #   @param currency [Symbol, Increase::WireTransfer::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's c
-      #   ...
       #
       #   @param external_account_id [String, nil] The identifier of the External Account the transfer was made to, if any.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param message_to_recipient [String, nil] The message that will show on the recipient's bank statement.
       #
@@ -244,7 +239,6 @@ module Increase
       #   @param originator_name [String, nil] The originator's name.
       #
       #   @param pending_transaction_id [String, nil] The ID for the pending transaction representing the transfer. A pending transact
-      #   ...
       #
       #   @param reversal [Increase::WireTransfer::Reversal, nil] If your transfer is reversed, this will contain details of the reversal.
       #
@@ -255,12 +249,10 @@ module Increase
       #   @param status [Symbol, Increase::WireTransfer::Status] The lifecycle status of the transfer.
       #
       #   @param submission [Increase::WireTransfer::Submission, nil] After the transfer is submitted to Fedwire, this will contain supplemental detai
-      #   ...
       #
       #   @param transaction_id [String, nil] The ID for the transaction funding the transfer.
       #
       #   @param type [Symbol, Increase::WireTransfer::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::WireTransfer#approval
       class Approval < Increase::Internal::Type::BaseModel
@@ -286,10 +278,8 @@ module Increase
         #   this will contain details of the approval.
         #
         #   @param approved_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param approved_by [String, nil] If the Transfer was approved by a user in the dashboard, the email address of th
-        #   ...
       end
 
       # @see Increase::WireTransfer#cancellation
@@ -316,10 +306,8 @@ module Increase
         #   approved, this will contain details of the cancellation.
         #
         #   @param canceled_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param canceled_by [String, nil] If the Transfer was canceled by a user in the dashboard, the email address of th
-        #   ...
       end
 
       # @see Increase::WireTransfer#created_by
@@ -580,15 +568,12 @@ module Increase
         #   @param amount [Integer] The amount that was reversed in USD cents.
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param description [String] The description on the reversal message from Fedwire, set by the reversing bank.
-        #   ...
         #
         #   @param financial_institution_to_financial_institution_information [String, nil] Additional financial institution information included in the wire reversal.
         #
         #   @param input_cycle_date [Date] The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00 P
-        #   ...
         #
         #   @param input_message_accountability_data [String] The Fedwire transaction identifier.
         #
@@ -597,10 +582,8 @@ module Increase
         #   @param input_source [String] The Fedwire input source identifier.
         #
         #   @param originator_routing_number [String, nil] The American Banking Association (ABA) routing number of the bank originating th
-        #   ...
         #
         #   @param previous_message_input_cycle_date [Date] The Fedwire cycle date for the wire transfer that is being reversed by this mess
-        #   ...
         #
         #   @param previous_message_input_message_accountability_data [String] The Fedwire transaction identifier for the wire transfer that was reversed.
         #
@@ -609,7 +592,6 @@ module Increase
         #   @param previous_message_input_source [String] The Fedwire input source identifier for the wire transfer that was reversed.
         #
         #   @param receiver_financial_institution_information [String, nil] Information included in the wire reversal for the receiving financial institutio
-        #   ...
         #
         #   @param sender_reference [String, nil] The sending bank's reference number for the wire reversal.
         #

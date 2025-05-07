@@ -64,10 +64,8 @@ module Increase
       #   @param external_account_id [String] Filter ACH Transfers to those made to the specified External Account.
       #
       #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      #   ...
       #
       #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
       #
       #   @param status [Increase::ACHTransferListParams::Status]
       #
@@ -107,16 +105,12 @@ module Increase
         #   {Increase::ACHTransferListParams::CreatedAt} for more details.
         #
         #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
         #
         #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
         #
         #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
         #
         #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -134,7 +128,6 @@ module Increase
         #   {Increase::ACHTransferListParams::Status} for more details.
         #
         #   @param in_ [Array<Symbol, Increase::ACHTransferListParams::Status::In>] Return results whose value is in the provided list. For GET requests, this shoul
-        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

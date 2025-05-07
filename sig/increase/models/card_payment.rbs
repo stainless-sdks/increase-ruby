@@ -44,8 +44,6 @@ module Increase
         type: Increase::CardPayment::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type element =
         {
           card_authentication: Increase::CardPayment::Element::CardAuthentication?,
@@ -105,8 +103,6 @@ module Increase
           created_at: Time,
           other: top?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type card_authentication =
           {
@@ -184,8 +180,6 @@ module Increase
             type: Increase::CardPayment::Element::CardAuthentication::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type category = :payment_authentication | :non_payment_authentication
 
           module Category
@@ -228,8 +222,6 @@ module Increase
               verification_value: String?
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type attempt =
               {
                 created_at: Time,
@@ -245,8 +237,6 @@ module Increase
                 created_at: Time,
                 outcome: Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type outcome = :successful | :failed
 
@@ -501,8 +491,6 @@ module Increase
             verification: Increase::CardPayment::Element::CardAuthorization::Verification
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type actioner = :user | :increase | :network
 
           module Actioner
@@ -576,8 +564,6 @@ module Increase
               visa: Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa?
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type category = :visa
 
             module Category
@@ -608,8 +594,6 @@ module Increase
                 point_of_service_entry_mode: Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
                 stand_in_processing_reason: Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type electronic_commerce_indicator =
                 :mail_phone_order
@@ -756,8 +740,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type processing_category =
@@ -818,8 +800,6 @@ module Increase
               cardholder_address: Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type card_verification_code =
               {
                 result: Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result
@@ -831,8 +811,6 @@ module Increase
               def initialize: (
                 result: Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result = :not_checked | :match | :no_match
 
@@ -879,8 +857,6 @@ module Increase
                 provided_postal_code: String?,
                 result: Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result =
                 :not_checked
@@ -948,8 +924,6 @@ module Increase
             network: Increase::CardPayment::Element::CardAuthorizationExpiration::network,
             type: Increase::CardPayment::Element::CardAuthorizationExpiration::type_
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -1115,8 +1089,6 @@ module Increase
             verification: Increase::CardPayment::Element::CardDecline::Verification
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type actioner = :user | :increase | :network
 
           module Actioner
@@ -1190,8 +1162,6 @@ module Increase
               visa: Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa?
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type category = :visa
 
             module Category
@@ -1222,8 +1192,6 @@ module Increase
                 point_of_service_entry_mode: Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
                 stand_in_processing_reason: Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type electronic_commerce_indicator =
                 :mail_phone_order
@@ -1370,8 +1338,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type processing_category =
@@ -1534,8 +1500,6 @@ module Increase
               cardholder_address: Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type card_verification_code =
               {
                 result: Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result
@@ -1547,8 +1511,6 @@ module Increase
               def initialize: (
                 result: Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result = :not_checked | :match | :no_match
 
@@ -1595,8 +1557,6 @@ module Increase
                 provided_postal_code: String?,
                 result: Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result =
                 :not_checked
@@ -1673,8 +1633,6 @@ module Increase
             updated_authorization_amount: Integer
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
           module Currency
@@ -1731,8 +1689,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type type_ = :card_fuel_confirmation
@@ -1801,8 +1757,6 @@ module Increase
             type: Increase::CardPayment::Element::CardIncrement::type_,
             updated_authorization_amount: Integer
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type actioner = :user | :increase | :network
 
@@ -1877,8 +1831,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type type_ = :card_increment
@@ -1976,8 +1928,6 @@ module Increase
             type: Increase::CardPayment::Element::CardRefund::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type cashback =
             {
               amount: String,
@@ -1993,8 +1943,6 @@ module Increase
               amount: String,
               currency: Increase::CardPayment::Element::CardRefund::Cashback::currency
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -2069,8 +2017,6 @@ module Increase
               currency: Increase::CardPayment::Element::CardRefund::Interchange::currency
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
             module Currency
@@ -2117,8 +2063,6 @@ module Increase
               acquirer_reference_number: String,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type purchase_details =
@@ -2168,8 +2112,6 @@ module Increase
               purchase_identifier_format: Increase::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format?,
               travel: Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type car_rental =
               {
@@ -2242,8 +2184,6 @@ module Increase
                 weekly_rental_rate_amount: Integer?,
                 weekly_rental_rate_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -2364,8 +2304,6 @@ module Increase
                 total_tax_amount: Integer?,
                 total_tax_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -2502,8 +2440,6 @@ module Increase
                 trip_legs: ::Array[Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
               ) -> void
 
-              def to_hash: -> ::Hash[Symbol, top]
-
               type ancillary =
                 {
                   connected_ticket_document_number: String?,
@@ -2531,8 +2467,6 @@ module Increase
                   services: ::Array[Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
 
                 type credit_reason_indicator =
                   :no_credit
@@ -2573,8 +2507,6 @@ module Increase
                     category: Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
                     sub_category: String?
                   ) -> void
-
-                  def to_hash: -> ::Hash[Symbol, top]
 
                   type category =
                     :none
@@ -2779,8 +2711,6 @@ module Increase
                   stop_over_code: Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
                 ) -> void
 
-                def to_hash: -> ::Hash[Symbol, top]
-
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
@@ -2893,8 +2823,6 @@ module Increase
             updated_authorization_amount: Integer
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
           module Currency
@@ -2951,8 +2879,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type reversal_reason =
@@ -3082,8 +3008,6 @@ module Increase
             type: Increase::CardPayment::Element::CardSettlement::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type cashback =
             {
               amount: String,
@@ -3099,8 +3023,6 @@ module Increase
               amount: String,
               currency: Increase::CardPayment::Element::CardSettlement::Cashback::currency
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3175,8 +3097,6 @@ module Increase
               currency: Increase::CardPayment::Element::CardSettlement::Interchange::currency
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
             module Currency
@@ -3223,8 +3143,6 @@ module Increase
               acquirer_reference_number: String,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type purchase_details =
@@ -3274,8 +3192,6 @@ module Increase
               purchase_identifier_format: Increase::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format?,
               travel: Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type car_rental =
               {
@@ -3348,8 +3264,6 @@ module Increase
                 weekly_rental_rate_amount: Integer?,
                 weekly_rental_rate_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -3470,8 +3384,6 @@ module Increase
                 total_tax_amount: Integer?,
                 total_tax_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -3608,8 +3520,6 @@ module Increase
                 trip_legs: ::Array[Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
               ) -> void
 
-              def to_hash: -> ::Hash[Symbol, top]
-
               type ancillary =
                 {
                   connected_ticket_document_number: String?,
@@ -3637,8 +3547,6 @@ module Increase
                   services: ::Array[Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
 
                 type credit_reason_indicator =
                   :no_credit
@@ -3679,8 +3587,6 @@ module Increase
                     category: Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
                     sub_category: String?
                   ) -> void
-
-                  def to_hash: -> ::Hash[Symbol, top]
 
                   type category =
                     :none
@@ -3885,8 +3791,6 @@ module Increase
                   stop_over_code: Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
                 ) -> void
 
-                def to_hash: -> ::Hash[Symbol, top]
-
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
@@ -4007,8 +3911,6 @@ module Increase
             verification: Increase::CardPayment::Element::CardValidation::Verification
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type actioner = :user | :increase | :network
 
           module Actioner
@@ -4068,8 +3970,6 @@ module Increase
               visa: Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa?
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type category = :visa
 
             module Category
@@ -4100,8 +4000,6 @@ module Increase
                 point_of_service_entry_mode: Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode?,
                 stand_in_processing_reason: Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type electronic_commerce_indicator =
                 :mail_phone_order
@@ -4248,8 +4146,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type type_ = :card_validation
@@ -4278,8 +4174,6 @@ module Increase
               cardholder_address: Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type card_verification_code =
               {
                 result: Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result
@@ -4291,8 +4185,6 @@ module Increase
               def initialize: (
                 result: Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result = :not_checked | :match | :no_match
 
@@ -4339,8 +4231,6 @@ module Increase
                 provided_postal_code: String?,
                 result: Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result =
                 :not_checked
@@ -4457,8 +4347,6 @@ module Increase
           reversed_amount: Integer,
           settled_amount: Integer
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type type_ = :card_payment

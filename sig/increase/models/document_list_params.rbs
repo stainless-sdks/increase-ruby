@@ -47,8 +47,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type category =
         { in_: ::Array[Increase::DocumentListParams::Category::in_] }
 
@@ -62,8 +60,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::DocumentListParams::Category::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ =
           :form_1099_int
@@ -116,8 +112,6 @@ module Increase
           ?on_or_after: Time,
           ?on_or_before: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

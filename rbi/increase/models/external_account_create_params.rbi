@@ -62,8 +62,7 @@ module Increase
           account_holder:
             Increase::ExternalAccountCreateParams::AccountHolder::OrSymbol,
           funding: Increase::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

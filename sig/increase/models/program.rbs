@@ -44,8 +44,6 @@ module Increase
         updated_at: Time
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type bank = :core_bank | :first_internet_bank | :grasshopper_bank
 
       module Bank

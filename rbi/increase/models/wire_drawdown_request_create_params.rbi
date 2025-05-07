@@ -104,8 +104,7 @@ module Increase
           recipient_address_line1: String,
           recipient_address_line2: String,
           recipient_address_line3: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

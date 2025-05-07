@@ -27,8 +27,7 @@ module Increase
             change_code:
               Increase::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode::OrSymbol,
             corrected_data: String,
-            request_options:
-              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: Increase::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(

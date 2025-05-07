@@ -69,19 +69,14 @@ module Increase
       #   @param account_id [String] The identifier of the Increase Account being swept into the network.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param intrafi_id [String] The identifier of the account in IntraFi's system. This identifier will be print
-      #   ...
       #
       #   @param status [Symbol, Increase::IntrafiAccountEnrollment::Status] The status of the account in the network. An account takes about one business da
-      #   ...
       #
       #   @param type [Symbol, Increase::IntrafiAccountEnrollment::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The status of the account in the network. An account takes about one business
       # day to go from `pending_enrolling` to `enrolled`.

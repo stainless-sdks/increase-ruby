@@ -118,40 +118,30 @@ module Increase
       #   @param bank [Symbol, Increase::Account::Bank] The bank the Account is with.
       #
       #   @param closed_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
       #
       #   @param currency [Symbol, Increase::Account::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account curr
-      #   ...
       #
       #   @param entity_id [String, nil] The identifier for the Entity the Account belongs to.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param informational_entity_id [String, nil] The identifier of an Entity that, while not owning the Account, is associated wi
-      #   ...
       #
       #   @param interest_accrued [String] The interest accrued but not yet paid, expressed as a string containing a floati
-      #   ...
       #
       #   @param interest_accrued_at [Date, nil] The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which inte
-      #   ...
       #
       #   @param interest_rate [String] The Interest Rate currently being earned on the account, as a string containing
-      #   ...
       #
       #   @param name [String] The name you choose for the Account.
       #
       #   @param program_id [String] The identifier of the Program determining the compliance and commercial terms of
-      #   ...
       #
       #   @param status [Symbol, Increase::Account::Status] The status of the Account.
       #
       #   @param type [Symbol, Increase::Account::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The bank the Account is with.
       #

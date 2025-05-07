@@ -77,26 +77,20 @@ module Increase
       #   @param structure [Symbol, Increase::EntityCreateParams::Structure] The type of Entity to create.
       #
       #   @param corporation [Increase::EntityCreateParams::Corporation] Details of the corporation entity to create. Required if `structure` is equal to
-      #   ...
       #
       #   @param description [String] The description you choose to give the entity.
       #
       #   @param government_authority [Increase::EntityCreateParams::GovernmentAuthority] Details of the Government Authority entity to create. Required if `structure` is
-      #   ...
       #
       #   @param joint [Increase::EntityCreateParams::Joint] Details of the joint entity to create. Required if `structure` is equal to `join
-      #   ...
       #
       #   @param natural_person [Increase::EntityCreateParams::NaturalPerson] Details of the natural person entity to create. Required if `structure` is equal
-      #   ...
       #
       #   @param supplemental_documents [Array<Increase::EntityCreateParams::SupplementalDocument>] Additional documentation associated with the entity.
       #
       #   @param third_party_verification [Increase::EntityCreateParams::ThirdPartyVerification] A reference to data stored in a third-party verification service. Your integrati
-      #   ...
       #
       #   @param trust [Increase::EntityCreateParams::Trust] Details of the trust entity to create. Required if `structure` is equal to `trus
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -193,23 +187,18 @@ module Increase
         #   `corporation`.
         #
         #   @param address [Increase::EntityCreateParams::Corporation::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   ...
         #
         #   @param beneficial_owners [Array<Increase::EntityCreateParams::Corporation::BeneficialOwner>] The identifying details of each person who owns 25% or more of the business and
-        #   ...
         #
         #   @param name [String] The legal name of the corporation.
         #
         #   @param tax_identifier [String] The Employer Identification Number (EIN) for the corporation.
         #
         #   @param beneficial_ownership_exemption_reason [Symbol, Increase::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason] If the entity is exempt from the requirement to submit beneficial owners, provid
-        #   ...
         #
         #   @param incorporation_state [String] The two-letter United States Postal Service (USPS) abbreviation for the corporat
-        #   ...
         #
         #   @param industry_code [String] The North American Industry Classification System (NAICS) code for the corporati
-        #   ...
         #
         #   @param website [String] The website of the corporation.
 
@@ -258,7 +247,6 @@ module Increase
           #   @param line1 [String] The first line of the address. This is usually the street number and street.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
           #
@@ -296,7 +284,6 @@ module Increase
           #   @param individual [Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual] Personal details for the beneficial owner.
           #
           #   @param prongs [Array<Symbol, Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong>] Why this person is considered a beneficial owner of the entity. At least one opt
-          #   ...
           #
           #   @param company_title [String] This person's role or title within the entity.
 
@@ -350,7 +337,6 @@ module Increase
             #   Personal details for the beneficial owner.
             #
             #   @param address [Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-            #   ...
             #
             #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
             #
@@ -359,7 +345,6 @@ module Increase
             #   @param name [String] The person's legal name.
             #
             #   @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's lic
-            #   ...
 
             # @see Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual#address
             class Address < Increase::Internal::Type::BaseModel
@@ -414,12 +399,10 @@ module Increase
               #   @param line1 [String] The first line of the address. This is usually the street number and street.
               #
               #   @param city [String] The city, district, town, or village of the address. Required in certain countri
-              #   ...
               #
               #   @param line2 [String] The second line of the address. This might be the floor or room number.
               #
               #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the US state
-              #   ...
               #
               #   @param zip [String] The ZIP or postal code of the address. Required in certain countries.
             end
@@ -483,16 +466,12 @@ module Increase
               #   @param method_ [Symbol, Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method] A method that can be used to verify the individual's identity.
               #
               #   @param number [String] An identification number that can be used to verify the individual's identity, s
-              #   ...
               #
               #   @param drivers_license [Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification. Re
-              #   ...
               #
               #   @param other [Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-              #   ...
               #
               #   @param passport [Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-              #   ...
 
               # A method that can be used to verify the individual's identity.
               #
@@ -601,14 +580,12 @@ module Increase
                 #   equal to `other`.
                 #
                 #   @param country [String] The two-character ISO 3166-1 code representing the country that issued the docum
-                #   ...
                 #
                 #   @param description [String] A description of the document submitted.
                 #
                 #   @param file_id [String] The identifier of the File containing the front of the document.
                 #
                 #   @param back_file_id [String] The identifier of the File containing the back of the document. Not every docume
-                #   ...
                 #
                 #   @param expiration_date [Date] The document's expiration date in YYYY-MM-DD format.
               end
@@ -731,7 +708,6 @@ module Increase
         #   equal to `Government Authority`.
         #
         #   @param address [Increase::EntityCreateParams::GovernmentAuthority::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   ...
         #
         #   @param authorized_persons [Array<Increase::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>] The identifying details of authorized officials acting on the entity's behalf.
         #
@@ -788,7 +764,6 @@ module Increase
           #   @param line1 [String] The first line of the address. This is usually the street number and street.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
           #
@@ -882,7 +857,6 @@ module Increase
           #   {Increase::EntityCreateParams::Joint::Individual} for more details.
           #
           #   @param address [Increase::EntityCreateParams::Joint::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-          #   ...
           #
           #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
           #
@@ -891,7 +865,6 @@ module Increase
           #   @param name [String] The person's legal name.
           #
           #   @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's lic
-          #   ...
 
           # @see Increase::EntityCreateParams::Joint::Individual#address
           class Address < Increase::Internal::Type::BaseModel
@@ -938,7 +911,6 @@ module Increase
             #   @param line1 [String] The first line of the address. This is usually the street number and street.
             #
             #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   ...
             #
             #   @param zip [String] The ZIP code of the address.
             #
@@ -997,16 +969,12 @@ module Increase
             #   @param method_ [Symbol, Increase::EntityCreateParams::Joint::Individual::Identification::Method] A method that can be used to verify the individual's identity.
             #
             #   @param number [String] An identification number that can be used to verify the individual's identity, s
-            #   ...
             #
             #   @param drivers_license [Increase::EntityCreateParams::Joint::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification. Re
-            #   ...
             #
             #   @param other [Increase::EntityCreateParams::Joint::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-            #   ...
             #
             #   @param passport [Increase::EntityCreateParams::Joint::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-            #   ...
 
             # A method that can be used to verify the individual's identity.
             #
@@ -1115,14 +1083,12 @@ module Increase
               #   equal to `other`.
               #
               #   @param country [String] The two-character ISO 3166-1 code representing the country that issued the docum
-              #   ...
               #
               #   @param description [String] A description of the document submitted.
               #
               #   @param file_id [String] The identifier of the File containing the front of the document.
               #
               #   @param back_file_id [String] The identifier of the File containing the back of the document. Not every docume
-              #   ...
               #
               #   @param expiration_date [Date] The document's expiration date in YYYY-MM-DD format.
             end
@@ -1206,7 +1172,6 @@ module Increase
         #   identification methods.
         #
         #   @param address [Increase::EntityCreateParams::NaturalPerson::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-        #   ...
         #
         #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
         #
@@ -1215,7 +1180,6 @@ module Increase
         #   @param name [String] The person's legal name.
         #
         #   @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's lic
-        #   ...
 
         # @see Increase::EntityCreateParams::NaturalPerson#address
         class Address < Increase::Internal::Type::BaseModel
@@ -1262,7 +1226,6 @@ module Increase
           #   @param line1 [String] The first line of the address. This is usually the street number and street.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
           #
@@ -1317,16 +1280,12 @@ module Increase
           #   @param method_ [Symbol, Increase::EntityCreateParams::NaturalPerson::Identification::Method] A method that can be used to verify the individual's identity.
           #
           #   @param number [String] An identification number that can be used to verify the individual's identity, s
-          #   ...
           #
           #   @param drivers_license [Increase::EntityCreateParams::NaturalPerson::Identification::DriversLicense] Information about the United States driver's license used for identification. Re
-          #   ...
           #
           #   @param other [Increase::EntityCreateParams::NaturalPerson::Identification::Other] Information about the identification document provided. Required if `method` is
-          #   ...
           #
           #   @param passport [Increase::EntityCreateParams::NaturalPerson::Identification::Passport] Information about the passport used for identification. Required if `method` is
-          #   ...
 
           # A method that can be used to verify the individual's identity.
           #
@@ -1435,14 +1394,12 @@ module Increase
             #   equal to `other`.
             #
             #   @param country [String] The two-character ISO 3166-1 code representing the country that issued the docum
-            #   ...
             #
             #   @param description [String] A description of the document submitted.
             #
             #   @param file_id [String] The identifier of the File containing the front of the document.
             #
             #   @param back_file_id [String] The identifier of the File containing the back of the document. Not every docume
-            #   ...
             #
             #   @param expiration_date [Date] The document's expiration date in YYYY-MM-DD format.
           end
@@ -1594,10 +1551,8 @@ module Increase
         #   `trust`.
         #
         #   @param address [Increase::EntityCreateParams::Trust::Address] The trust's physical address. Mail receiving locations like PO Boxes and PMB's a
-        #   ...
         #
         #   @param category [Symbol, Increase::EntityCreateParams::Trust::Category] Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require th
-        #   ...
         #
         #   @param name [String] The legal name of the trust.
         #
@@ -1606,12 +1561,10 @@ module Increase
         #   @param formation_document_file_id [String] The identifier of the File containing the formation document of the trust.
         #
         #   @param formation_state [String] The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   ...
         #
         #   @param grantor [Increase::EntityCreateParams::Trust::Grantor] The grantor of the trust. Required if `category` is equal to `revocable`.
         #
         #   @param tax_identifier [String] The Employer Identification Number (EIN) for the trust. Required if `category` i
-        #   ...
 
         # @see Increase::EntityCreateParams::Trust#address
         class Address < Increase::Internal::Type::BaseModel
@@ -1658,7 +1611,6 @@ module Increase
           #   @param line1 [String] The first line of the address. This is usually the street number and street.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
           #
@@ -1704,7 +1656,6 @@ module Increase
           #   @param structure [Symbol, Increase::EntityCreateParams::Trust::Trustee::Structure] The structure of the trustee.
           #
           #   @param individual [Increase::EntityCreateParams::Trust::Trustee::Individual] Details of the individual trustee. Required when the trustee `structure` is equa
-          #   ...
 
           # The structure of the trustee.
           #
@@ -1766,7 +1717,6 @@ module Increase
             #   equal to `individual`.
             #
             #   @param address [Increase::EntityCreateParams::Trust::Trustee::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-            #   ...
             #
             #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
             #
@@ -1775,7 +1725,6 @@ module Increase
             #   @param name [String] The person's legal name.
             #
             #   @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's lic
-            #   ...
 
             # @see Increase::EntityCreateParams::Trust::Trustee::Individual#address
             class Address < Increase::Internal::Type::BaseModel
@@ -1823,7 +1772,6 @@ module Increase
               #   @param line1 [String] The first line of the address. This is usually the street number and street.
               #
               #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   ...
               #
               #   @param zip [String] The ZIP code of the address.
               #
@@ -1889,16 +1837,12 @@ module Increase
               #   @param method_ [Symbol, Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method] A method that can be used to verify the individual's identity.
               #
               #   @param number [String] An identification number that can be used to verify the individual's identity, s
-              #   ...
               #
               #   @param drivers_license [Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification. Re
-              #   ...
               #
               #   @param other [Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-              #   ...
               #
               #   @param passport [Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-              #   ...
 
               # A method that can be used to verify the individual's identity.
               #
@@ -2007,14 +1951,12 @@ module Increase
                 #   equal to `other`.
                 #
                 #   @param country [String] The two-character ISO 3166-1 code representing the country that issued the docum
-                #   ...
                 #
                 #   @param description [String] A description of the document submitted.
                 #
                 #   @param file_id [String] The identifier of the File containing the front of the document.
                 #
                 #   @param back_file_id [String] The identifier of the File containing the back of the document. Not every docume
-                #   ...
                 #
                 #   @param expiration_date [Date] The document's expiration date in YYYY-MM-DD format.
               end
@@ -2096,7 +2038,6 @@ module Increase
           #   The grantor of the trust. Required if `category` is equal to `revocable`.
           #
           #   @param address [Increase::EntityCreateParams::Trust::Grantor::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-          #   ...
           #
           #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
           #
@@ -2105,7 +2046,6 @@ module Increase
           #   @param name [String] The person's legal name.
           #
           #   @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's lic
-          #   ...
 
           # @see Increase::EntityCreateParams::Trust::Grantor#address
           class Address < Increase::Internal::Type::BaseModel
@@ -2152,7 +2092,6 @@ module Increase
             #   @param line1 [String] The first line of the address. This is usually the street number and street.
             #
             #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   ...
             #
             #   @param zip [String] The ZIP code of the address.
             #
@@ -2207,16 +2146,12 @@ module Increase
             #   @param method_ [Symbol, Increase::EntityCreateParams::Trust::Grantor::Identification::Method] A method that can be used to verify the individual's identity.
             #
             #   @param number [String] An identification number that can be used to verify the individual's identity, s
-            #   ...
             #
             #   @param drivers_license [Increase::EntityCreateParams::Trust::Grantor::Identification::DriversLicense] Information about the United States driver's license used for identification. Re
-            #   ...
             #
             #   @param other [Increase::EntityCreateParams::Trust::Grantor::Identification::Other] Information about the identification document provided. Required if `method` is
-            #   ...
             #
             #   @param passport [Increase::EntityCreateParams::Trust::Grantor::Identification::Passport] Information about the passport used for identification. Required if `method` is
-            #   ...
 
             # A method that can be used to verify the individual's identity.
             #
@@ -2325,14 +2260,12 @@ module Increase
               #   equal to `other`.
               #
               #   @param country [String] The two-character ISO 3166-1 code representing the country that issued the docum
-              #   ...
               #
               #   @param description [String] A description of the document submitted.
               #
               #   @param file_id [String] The identifier of the File containing the front of the document.
               #
               #   @param back_file_id [String] The identifier of the File containing the back of the document. Not every docume
-              #   ...
               #
               #   @param expiration_date [Date] The document's expiration date in YYYY-MM-DD format.
             end

@@ -116,43 +116,32 @@ module Increase
       #   @param id [String] The entity's identifier.
       #
       #   @param corporation [Increase::Entity::Corporation, nil] Details of the corporation entity. Will be present if `structure` is equal to `c
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      #   ...
       #
       #   @param description [String, nil] The entity's description for display purposes.
       #
       #   @param details_confirmed_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity'
-      #   ...
       #
       #   @param government_authority [Increase::Entity::GovernmentAuthority, nil] Details of the government authority entity. Will be present if `structure` is eq
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param joint [Increase::Entity::Joint, nil] Details of the joint entity. Will be present if `structure` is equal to `joint`.
-      #   ...
       #
       #   @param natural_person [Increase::Entity::NaturalPerson, nil] Details of the natural person entity. Will be present if `structure` is equal to
-      #   ...
       #
       #   @param status [Symbol, Increase::Entity::Status] The status of the entity.
       #
       #   @param structure [Symbol, Increase::Entity::Structure] The entity's legal structure.
       #
       #   @param supplemental_documents [Array<Increase::EntitySupplementalDocument>] Additional documentation associated with the entity. This is limited to the firs
-      #   ...
       #
       #   @param third_party_verification [Increase::Entity::ThirdPartyVerification, nil] A reference to data stored in a third-party verification service. Your integrati
-      #   ...
       #
       #   @param trust [Increase::Entity::Trust, nil] Details of the trust entity. Will be present if `structure` is equal to `trust`.
-      #   ...
       #
       #   @param type [Symbol, Increase::Entity::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::Entity#corporation
       class Corporation < Increase::Internal::Type::BaseModel
@@ -212,13 +201,10 @@ module Increase
         #   @param address [Increase::Entity::Corporation::Address] The corporation's address.
         #
         #   @param beneficial_owners [Array<Increase::Entity::Corporation::BeneficialOwner>] The identifying details of anyone controlling or owning 25% or more of the corpo
-        #   ...
         #
         #   @param incorporation_state [String, nil] The two-letter United States Postal Service (USPS) abbreviation for the corporat
-        #   ...
         #
         #   @param industry_code [String, nil] The numeric North American Industry Classification System (NAICS) code submitted
-        #   ...
         #
         #   @param name [String] The legal name of the corporation.
         #
@@ -272,7 +258,6 @@ module Increase
           #   @param line2 [String, nil] The second line of the address.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
         end
@@ -404,7 +389,6 @@ module Increase
               #   @param line2 [String, nil] The second line of the address.
               #
               #   @param state [String, nil] The two-letter United States Postal Service (USPS) abbreviation for the US state
-              #   ...
               #
               #   @param zip [String, nil] The ZIP or postal code of the address.
             end
@@ -438,7 +422,6 @@ module Increase
               #   @param method_ [Symbol, Increase::Entity::Corporation::BeneficialOwner::Individual::Identification::Method] A method that can be used to verify the individual's identity.
               #
               #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-              #   ...
 
               # A method that can be used to verify the individual's identity.
               #
@@ -588,7 +571,6 @@ module Increase
           #   @param line2 [String, nil] The second line of the address.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
         end
@@ -727,7 +709,6 @@ module Increase
             #   @param line2 [String, nil] The second line of the address.
             #
             #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   ...
             #
             #   @param zip [String] The ZIP code of the address.
           end
@@ -758,7 +739,6 @@ module Increase
             #   @param method_ [Symbol, Increase::Entity::Joint::Individual::Identification::Method] A method that can be used to verify the individual's identity.
             #
             #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-            #   ...
 
             # A method that can be used to verify the individual's identity.
             #
@@ -872,7 +852,6 @@ module Increase
           #   @param line2 [String, nil] The second line of the address.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
         end
@@ -905,7 +884,6 @@ module Increase
           #   @param method_ [Symbol, Increase::Entity::NaturalPerson::Identification::Method] A method that can be used to verify the individual's identity.
           #
           #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-          #   ...
 
           # A method that can be used to verify the individual's identity.
           #
@@ -1081,7 +1059,6 @@ module Increase
         #   @param formation_document_file_id [String, nil] The ID for the File containing the formation document of the trust.
         #
         #   @param formation_state [String, nil] The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   ...
         #
         #   @param grantor [Increase::Entity::Trust::Grantor, nil] The grantor of the trust. Will be present if the `category` is `revocable`.
         #
@@ -1137,7 +1114,6 @@ module Increase
           #   @param line2 [String, nil] The second line of the address.
           #
           #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   ...
           #
           #   @param zip [String] The ZIP code of the address.
         end
@@ -1241,7 +1217,6 @@ module Increase
             #   @param line2 [String, nil] The second line of the address.
             #
             #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   ...
             #
             #   @param zip [String] The ZIP code of the address.
           end
@@ -1272,7 +1247,6 @@ module Increase
             #   @param method_ [Symbol, Increase::Entity::Trust::Grantor::Identification::Method] A method that can be used to verify the individual's identity.
             #
             #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-            #   ...
 
             # A method that can be used to verify the individual's identity.
             #
@@ -1320,7 +1294,6 @@ module Increase
           #   {Increase::Entity::Trust::Trustee} for more details.
           #
           #   @param individual [Increase::Entity::Trust::Trustee::Individual, nil] The individual trustee of the trust. Will be present if the trustee's `structure
-          #   ...
           #
           #   @param structure [Symbol, Increase::Entity::Trust::Trustee::Structure] The structure of the trustee. Will always be equal to `individual`.
 
@@ -1408,7 +1381,6 @@ module Increase
               #   @param line2 [String, nil] The second line of the address.
               #
               #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   ...
               #
               #   @param zip [String] The ZIP code of the address.
             end
@@ -1439,7 +1411,6 @@ module Increase
               #   @param method_ [Symbol, Increase::Entity::Trust::Trustee::Individual::Identification::Method] A method that can be used to verify the individual's identity.
               #
               #   @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the in
-              #   ...
 
               # A method that can be used to verify the individual's identity.
               #

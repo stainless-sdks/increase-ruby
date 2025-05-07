@@ -15,7 +15,6 @@ module Increase
         # @overload create(amount:, card_payment_id:, request_options: {})
         #
         # @param amount [Integer] The amount of the fuel_confirmation in minor units in the card authorization's c
-        # ...
         #
         # @param card_payment_id [String] The identifier of the Card Payment to create a fuel_confirmation on.
         #

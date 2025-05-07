@@ -52,8 +52,6 @@ module Increase
         verification_status: Increase::ExternalAccount::verification_status
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type account_holder = :business | :individual | :unknown
 
       module AccountHolder

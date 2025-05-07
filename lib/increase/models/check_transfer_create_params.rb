@@ -73,18 +73,14 @@ module Increase
       #   @param fulfillment_method [Symbol, Increase::CheckTransferCreateParams::FulfillmentMethod] Whether Increase will print and mail the check or if you will do it yourself.
       #
       #   @param source_account_number_id [String] The identifier of the Account Number from which to send the transfer and print o
-      #   ...
       #
       #   @param check_number [String] The check number Increase should use for the check. This should not contain lead
-      #   ...
       #
       #   @param physical_check [Increase::CheckTransferCreateParams::PhysicalCheck] Details relating to the physical check that Increase will print and mail. This i
-      #   ...
       #
       #   @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
       #
       #   @param third_party [Increase::CheckTransferCreateParams::ThirdParty] Details relating to the custom fulfillment you will perform. This is required if
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -175,18 +171,14 @@ module Increase
         #   @param recipient_name [String] The name that will be printed on the check in the 'To:' field.
         #
         #   @param attachment_file_id [String] The ID of a File to be attached to the check. This must have `purpose: check_att
-        #   ...
         #
         #   @param note [String] The descriptor that will be printed on the letter included with the check.
         #
         #   @param return_address [Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress] The return address to be printed on the check. If omitted this will default to a
-        #   ...
         #
         #   @param shipping_method [Symbol, Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod] How to ship the check. For details on pricing, timing, and restrictions, see htt
-        #   ...
         #
         #   @param signature_text [String] The text that will appear as the signature on the check in cursive font. If not
-        #   ...
 
         # @see Increase::CheckTransferCreateParams::PhysicalCheck#mailing_address
         class MailingAddress < Increase::Internal::Type::BaseModel
@@ -326,7 +318,6 @@ module Increase
         #   other `fulfillment_method` is provided.
         #
         #   @param recipient_name [String] The pay-to name you will print on the check. If provided, this is used for [Posi
-        #   ...
       end
     end
   end

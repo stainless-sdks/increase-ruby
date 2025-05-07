@@ -151,53 +151,42 @@ module Increase
       #   @param id [String] The deposit's identifier.
       #
       #   @param accepted_at [Time, nil] If the Inbound Check Deposit was accepted, the [ISO 8601](https://en.wikipedia.o
-      #   ...
       #
       #   @param account_id [String] The Account the check is being deposited against.
       #
       #   @param account_number_id [String, nil] The Account Number the check is being deposited against.
       #
       #   @param adjustments [Array<Increase::InboundCheckDeposit::Adjustment>] If the deposit or the return was adjusted by the sending institution, this will
-      #   ...
       #
       #   @param amount [Integer] The deposited amount in USD cents.
       #
       #   @param back_image_file_id [String, nil] The ID for the File containing the image of the back of the check.
       #
       #   @param bank_of_first_deposit_routing_number [String, nil] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the ban
-      #   ...
       #
       #   @param check_number [String, nil] The check number printed on the check being deposited.
       #
       #   @param check_transfer_id [String, nil] If this deposit is for an existing Check Transfer, the identifier of that Check
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param currency [Symbol, Increase::InboundCheckDeposit::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
       #
       #   @param declined_at [Time, nil] If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.o
-      #   ...
       #
       #   @param declined_transaction_id [String, nil] If the deposit attempt has been rejected, the identifier of the Declined Transac
-      #   ...
       #
       #   @param deposit_return [Increase::InboundCheckDeposit::DepositReturn, nil] If you requested a return of this deposit, this will contain details of the retu
-      #   ...
       #
       #   @param front_image_file_id [String, nil] The ID for the File containing the image of the front of the check.
       #
       #   @param payee_name_analysis [Symbol, Increase::InboundCheckDeposit::PayeeNameAnalysis] Whether the details on the check match the recipient name of the check transfer.
-      #   ...
       #
       #   @param status [Symbol, Increase::InboundCheckDeposit::Status] The status of the Inbound Check Deposit.
       #
       #   @param transaction_id [String, nil] If the deposit attempt has been accepted, the identifier of the Transaction obje
-      #   ...
       #
       #   @param type [Symbol, Increase::InboundCheckDeposit::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       class Adjustment < Increase::Internal::Type::BaseModel
         # @!attribute adjusted_at

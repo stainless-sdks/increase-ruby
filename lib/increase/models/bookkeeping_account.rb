@@ -66,12 +66,10 @@ module Increase
       #   @param entity_id [String, nil] The Entity associated with this bookkeeping account.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param name [String] The name you choose for the account.
       #
       #   @param type [Symbol, Increase::BookkeepingAccount::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The compliance category of the account.
       #

@@ -71,23 +71,18 @@ module Increase
       #   @param id [String] The Export identifier.
       #
       #   @param category [Symbol, Increase::Export::Category] The category of the Export. We may add additional possible values for this enum
-      #   ...
       #
       #   @param created_at [Time] The time the Export was created.
       #
       #   @param file_download_url [String, nil] A URL at which the Export's file can be downloaded. This will be present when th
-      #   ...
       #
       #   @param file_id [String, nil] The File containing the contents of the Export. This will be present when the Ex
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param status [Symbol, Increase::Export::Status] The status of the Export.
       #
       #   @param type [Symbol, Increase::Export::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The category of the Export. We may add additional possible values for this enum
       # over time; your application should be able to handle that gracefully.

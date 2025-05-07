@@ -59,10 +59,8 @@ module Increase
       # @param entity_id [String] Filter IntraFi Exclusions for those belonging to the specified Entity.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -89,7 +87,6 @@ module Increase
       # @overload archive(intrafi_exclusion_id, request_options: {})
       #
       # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion request to archive. It may take 5 busine
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

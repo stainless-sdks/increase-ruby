@@ -31,17 +31,14 @@ module Increase
       # @overload list(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       #
       # @param account_id [String] Filter Inbound Real-Time Payments Transfers to those belonging to the specified
-      # ...
       #
       # @param account_number_id [String] Filter Inbound Real-Time Payments Transfers to ones belonging to the specified A
-      # ...
       #
       # @param created_at [Increase::InboundRealTimePaymentsTransferListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

@@ -61,8 +61,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type ach_debit_status =
         { in_: ::Array[Increase::AccountNumberListParams::ACHDebitStatus::in_] }
 
@@ -76,8 +74,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::AccountNumberListParams::ACHDebitStatus::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ = :allowed | :blocked
 
@@ -120,8 +116,6 @@ module Increase
           ?on_or_after: Time,
           ?on_or_before: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type status =
@@ -137,8 +131,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::AccountNumberListParams::Status::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ = :active | :disabled | :canceled
 

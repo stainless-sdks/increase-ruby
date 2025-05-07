@@ -52,10 +52,8 @@ module Increase
       #   @param activation_status [Symbol, Increase::Group::ActivationStatus] If the Group is activated or not.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group w
-      #   ...
       #
       #   @param type [Symbol, Increase::Group::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # If the Group is allowed to create ACH debits.
       #

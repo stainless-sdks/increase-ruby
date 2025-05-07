@@ -33,14 +33,12 @@ module Increase
       # @param account_id [String] Filter Inbound Wire Transfers to ones belonging to the specified Account.
       #
       # @param account_number_id [String] Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
-      # ...
       #
       # @param created_at [Increase::InboundWireTransferListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::InboundWireTransferListParams::Status]
       #

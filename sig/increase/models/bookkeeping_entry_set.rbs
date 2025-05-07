@@ -36,8 +36,6 @@ module Increase
         type: Increase::BookkeepingEntrySet::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type entry = { id: String, account_id: String, amount: Integer }
 
       class Entry < Increase::Internal::Type::BaseModel
@@ -52,8 +50,6 @@ module Increase
           account_id: String,
           amount: Integer
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type type_ = :bookkeeping_entry_set

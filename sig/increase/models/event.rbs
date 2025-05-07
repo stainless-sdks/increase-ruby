@@ -32,8 +32,6 @@ module Increase
         type: Increase::Event::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type category =
         :"account.created"
         | :"account.updated"

@@ -45,8 +45,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type billing_address =
         {
           city: String,
@@ -76,8 +74,6 @@ module Increase
           state: String,
           ?line2: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type digital_wallet =
@@ -101,8 +97,6 @@ module Increase
           ?email: String,
           ?phone: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

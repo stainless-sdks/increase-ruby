@@ -94,33 +94,26 @@ module Increase
       #   @param id [String] The Card Dispute identifier.
       #
       #   @param acceptance [Increase::CardDispute::Acceptance, nil] If the Card Dispute's status is `accepted`, this will contain details of the suc
-      #   ...
       #
       #   @param amount [Integer, nil] The amount of the dispute, if provided, or the transaction amount otherwise.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param disputed_transaction_id [String] The identifier of the Transaction that was disputed.
       #
       #   @param explanation [String] Why you disputed the Transaction in question.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param loss [Increase::CardDispute::Loss, nil] If the Card Dispute's status is `lost`, this will contain details of the lost di
-      #   ...
       #
       #   @param rejection [Increase::CardDispute::Rejection, nil] If the Card Dispute's status is `rejected`, this will contain details of the uns
-      #   ...
       #
       #   @param status [Symbol, Increase::CardDispute::Status] The results of the Dispute investigation.
       #
       #   @param type [Symbol, Increase::CardDispute::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
       #
       #   @param win [Increase::CardDispute::Win, nil] If the Card Dispute's status is `won`, this will contain details of the won disp
-      #   ...
 
       # @see Increase::CardDispute#acceptance
       class Acceptance < Increase::Internal::Type::BaseModel
@@ -152,12 +145,10 @@ module Increase
         #   successful dispute.
         #
         #   @param accepted_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param card_dispute_id [String] The identifier of the Card Dispute that was accepted.
         #
         #   @param transaction_id [String] The identifier of the Transaction that was created to return the disputed funds
-        #   ...
       end
 
       # @see Increase::CardDispute#loss
@@ -200,10 +191,8 @@ module Increase
         #   @param explanation [String] Why the Card Dispute was lost.
         #
         #   @param lost_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param transaction_id [String] The identifier of the Transaction that was created to debit the disputed funds f
-        #   ...
       end
 
       # @see Increase::CardDispute#rejection
@@ -239,7 +228,6 @@ module Increase
         #   @param explanation [String] Why the Card Dispute was rejected.
         #
         #   @param rejected_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
       end
 
       # The results of the Dispute investigation.
@@ -308,7 +296,6 @@ module Increase
         #   @param card_dispute_id [String] The identifier of the Card Dispute that was won.
         #
         #   @param won_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
       end
     end
   end

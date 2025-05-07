@@ -29,8 +29,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type entry = { account_id: String, amount: Integer }
 
       class Entry < Increase::Internal::Type::BaseModel
@@ -39,8 +37,6 @@ module Increase
         attr_accessor amount: Integer
 
         def initialize: (account_id: String, amount: Integer) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

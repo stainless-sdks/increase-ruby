@@ -62,20 +62,16 @@ module Increase
       #   @param id [String] The OAuth Application's identifier.
       #
       #   @param client_id [String] The OAuth Application's client_id. Use this to authenticate with the OAuth Appli
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   ...
       #
       #   @param deleted_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   ...
       #
       #   @param name [String, nil] The name you chose for this OAuth Application.
       #
       #   @param status [Symbol, Increase::OAuthApplication::Status] Whether the application is active.
       #
       #   @param type [Symbol, Increase::OAuthApplication::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # Whether the application is active.
       #

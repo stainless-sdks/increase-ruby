@@ -79,8 +79,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type structure =
         :corporation | :natural_person | :joint | :trust | :government_authority
 
@@ -155,8 +153,6 @@ module Increase
           ?website: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -186,8 +182,6 @@ module Increase
             zip: String,
             ?line2: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type beneficial_owner =
@@ -211,8 +205,6 @@ module Increase
             prongs: ::Array[Increase::EntityCreateParams::Corporation::BeneficialOwner::prong],
             ?company_title: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type individual =
             {
@@ -243,8 +235,6 @@ module Increase
               name: String,
               ?confirmed_no_us_tax_id: bool
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type address =
               {
@@ -285,8 +275,6 @@ module Increase
                 ?state: String,
                 ?zip: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type identification =
@@ -328,8 +316,6 @@ module Increase
                 ?other: Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
                 ?passport: Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type method_ =
                 :social_security_number
@@ -384,8 +370,6 @@ module Increase
                   state: String,
                   ?back_file_id: String
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
 
               type other =
@@ -419,8 +403,6 @@ module Increase
                   ?back_file_id: String,
                   ?expiration_date: Date
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
 
               type passport =
@@ -438,8 +420,6 @@ module Increase
                   expiration_date: Date,
                   file_id: String
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
             end
           end
@@ -514,8 +494,6 @@ module Increase
           ?website: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -545,8 +523,6 @@ module Increase
             zip: String,
             ?line2: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type authorized_person = { name: String }
@@ -555,8 +531,6 @@ module Increase
           attr_accessor name: String
 
           def initialize: (name: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :municipality
@@ -589,8 +563,6 @@ module Increase
           ?name: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type individual =
           {
             address: Increase::EntityCreateParams::Joint::Individual::Address,
@@ -621,8 +593,6 @@ module Increase
             ?confirmed_no_us_tax_id: bool
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type address =
             {
               city: String,
@@ -652,8 +622,6 @@ module Increase
               zip: String,
               ?line2: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type identification =
@@ -695,8 +663,6 @@ module Increase
               ?other: Increase::EntityCreateParams::Joint::Individual::Identification::Other,
               ?passport: Increase::EntityCreateParams::Joint::Individual::Identification::Passport
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type method_ =
               :social_security_number
@@ -751,8 +717,6 @@ module Increase
                 state: String,
                 ?back_file_id: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type other =
@@ -786,8 +750,6 @@ module Increase
                 ?back_file_id: String,
                 ?expiration_date: Date
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type passport =
@@ -805,8 +767,6 @@ module Increase
                 expiration_date: Date,
                 file_id: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
           end
         end
@@ -842,8 +802,6 @@ module Increase
           ?confirmed_no_us_tax_id: bool
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -873,8 +831,6 @@ module Increase
             zip: String,
             ?line2: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type identification =
@@ -916,8 +872,6 @@ module Increase
             ?other: Increase::EntityCreateParams::NaturalPerson::Identification::Other,
             ?passport: Increase::EntityCreateParams::NaturalPerson::Identification::Passport
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type method_ =
             :social_security_number
@@ -972,8 +926,6 @@ module Increase
               state: String,
               ?back_file_id: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type other =
@@ -1007,8 +959,6 @@ module Increase
               ?back_file_id: String,
               ?expiration_date: Date
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type passport =
@@ -1026,8 +976,6 @@ module Increase
               expiration_date: Date,
               file_id: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
         end
       end
@@ -1038,8 +986,6 @@ module Increase
         attr_accessor file_id: String
 
         def initialize: (file_id: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type third_party_verification =
@@ -1057,8 +1003,6 @@ module Increase
           reference: String,
           vendor: Increase::EntityCreateParams::ThirdPartyVerification::vendor
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type vendor = :alloy | :middesk
 
@@ -1125,8 +1069,6 @@ module Increase
           ?tax_identifier: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -1156,8 +1098,6 @@ module Increase
             zip: String,
             ?line2: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :revocable | :irrevocable
@@ -1193,8 +1133,6 @@ module Increase
             structure: Increase::EntityCreateParams::Trust::Trustee::structure,
             ?individual: Increase::EntityCreateParams::Trust::Trustee::Individual
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type structure = :individual
 
@@ -1237,8 +1175,6 @@ module Increase
               ?confirmed_no_us_tax_id: bool
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type address =
               {
                 city: String,
@@ -1268,8 +1204,6 @@ module Increase
                 zip: String,
                 ?line2: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type identification =
@@ -1311,8 +1245,6 @@ module Increase
                 ?other: Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
                 ?passport: Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type method_ =
                 :social_security_number
@@ -1367,8 +1299,6 @@ module Increase
                   state: String,
                   ?back_file_id: String
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
 
               type other =
@@ -1402,8 +1332,6 @@ module Increase
                   ?back_file_id: String,
                   ?expiration_date: Date
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
 
               type passport =
@@ -1421,8 +1349,6 @@ module Increase
                   expiration_date: Date,
                   file_id: String
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
             end
           end
@@ -1458,8 +1384,6 @@ module Increase
             ?confirmed_no_us_tax_id: bool
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type address =
             {
               city: String,
@@ -1489,8 +1413,6 @@ module Increase
               zip: String,
               ?line2: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type identification =
@@ -1532,8 +1454,6 @@ module Increase
               ?other: Increase::EntityCreateParams::Trust::Grantor::Identification::Other,
               ?passport: Increase::EntityCreateParams::Trust::Grantor::Identification::Passport
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type method_ =
               :social_security_number
@@ -1588,8 +1508,6 @@ module Increase
                 state: String,
                 ?back_file_id: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type other =
@@ -1623,8 +1541,6 @@ module Increase
                 ?back_file_id: String,
                 ?expiration_date: Date
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type passport =
@@ -1642,8 +1558,6 @@ module Increase
                 expiration_date: Date,
                 file_id: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
           end
         end

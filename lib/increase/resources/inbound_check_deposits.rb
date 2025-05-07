@@ -33,14 +33,12 @@ module Increase
       # @param account_id [String] Filter Inbound Check Deposits to those belonging to the specified Account.
       #
       # @param check_transfer_id [String] Filter Inbound Check Deposits to those belonging to the specified Check Transfer
-      # ...
       #
       # @param created_at [Increase::InboundCheckDepositListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

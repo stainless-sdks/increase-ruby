@@ -39,7 +39,6 @@ module Increase
         # @overload create_notification_of_change(ach_transfer_id, change_code:, corrected_data:, request_options: {})
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change f
-        # ...
         #
         # @param change_code [Symbol, Increase::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode] The reason for the notification of change.
         #
@@ -73,7 +72,6 @@ module Increase
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
         #
         # @param reason [Symbol, Increase::Simulations::ACHTransferReturnParams::Reason] The reason why the Federal Reserve or destination bank returned this transfer. D
-        # ...
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #

@@ -40,8 +40,6 @@ module Increase
         url: String
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type selected_event_category =
         :"account.created"
         | :"account.updated"

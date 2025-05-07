@@ -33,8 +33,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type status = :active | :inactive
 
       module Status

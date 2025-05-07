@@ -261,18 +261,14 @@ module Increase
       #   @param account_number [String] The destination account number.
       #
       #   @param acknowledgement [Increase::ACHTransfer::Acknowledgement, nil] After the transfer is acknowledged by FedACH, this will contain supplemental det
-      #   ...
       #
       #   @param addenda [Increase::ACHTransfer::Addenda, nil] Additional information that will be sent to the recipient.
       #
       #   @param amount [Integer] The transfer amount in USD cents. A positive amount indicates a credit transfer
-      #   ...
       #
       #   @param approval [Increase::ACHTransfer::Approval, nil] If your account requires approvals for transfers and the transfer was approved,
-      #   ...
       #
       #   @param cancellation [Increase::ACHTransfer::Cancellation, nil] If your account requires approvals for transfers and the transfer was not approv
-      #   ...
       #
       #   @param company_descriptive_date [String, nil] The description of the date of the transfer.
       #
@@ -285,48 +281,38 @@ module Increase
       #   @param company_name [String, nil] The name by which the recipient knows you.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param created_by [Increase::ACHTransfer::CreatedBy, nil] What object created the transfer, either via the API or the dashboard.
       #
       #   @param currency [Symbol, Increase::ACHTransfer::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's c
-      #   ...
       #
       #   @param destination_account_holder [Symbol, Increase::ACHTransfer::DestinationAccountHolder] The type of entity that owns the account to which the ACH Transfer is being sent
-      #   ...
       #
       #   @param external_account_id [String, nil] The identifier of the External Account the transfer was made to, if any.
       #
       #   @param funding [Symbol, Increase::ACHTransfer::Funding] The type of the account to which the transfer will be sent.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param inbound_funds_hold [Increase::ACHTransfer::InboundFundsHold, nil] Increase will sometimes hold the funds for ACH debit transfers. If funds are hel
-      #   ...
       #
       #   @param individual_id [String, nil] Your identifier for the transfer recipient.
       #
       #   @param individual_name [String, nil] The name of the transfer recipient. This value is information and not verified b
-      #   ...
       #
       #   @param network [Symbol, Increase::ACHTransfer::Network] The transfer's network.
       #
       #   @param notifications_of_change [Array<Increase::ACHTransfer::NotificationsOfChange>] If the receiving bank accepts the transfer but notifies that future transfers sh
-      #   ...
       #
       #   @param pending_transaction_id [String, nil] The ID for the pending transaction representing the transfer. A pending transact
-      #   ...
       #
       #   @param preferred_effective_date [Increase::ACHTransfer::PreferredEffectiveDate] Configuration for how the effective date of the transfer will be set. This deter
-      #   ...
       #
       #   @param return_ [Increase::ACHTransfer::Return, nil] If your transfer is returned, this will contain details of the return.
       #
       #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
       #
       #   @param settlement [Increase::ACHTransfer::Settlement, nil] A subhash containing information about when and how the transfer settled at the
-      #   ...
       #
       #   @param standard_entry_class_code [Symbol, Increase::ACHTransfer::StandardEntryClassCode] The Standard Entry Class (SEC) code to use for the transfer.
       #
@@ -335,12 +321,10 @@ module Increase
       #   @param status [Symbol, Increase::ACHTransfer::Status] The lifecycle status of the transfer.
       #
       #   @param submission [Increase::ACHTransfer::Submission, nil] After the transfer is submitted to FedACH, this will contain supplemental detail
-      #   ...
       #
       #   @param transaction_id [String, nil] The ID for the transaction funding the transfer.
       #
       #   @param type [Symbol, Increase::ACHTransfer::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::ACHTransfer#acknowledgement
       class Acknowledgement < Increase::Internal::Type::BaseModel
@@ -360,7 +344,6 @@ module Increase
         #   Increase submits.
         #
         #   @param acknowledged_at [String] When the Federal Reserve acknowledged the submitted file containing this transfe
-        #   ...
       end
 
       # @see Increase::ACHTransfer#addenda
@@ -394,12 +377,10 @@ module Increase
         #   Additional information that will be sent to the recipient.
         #
         #   @param category [Symbol, Increase::ACHTransfer::Addenda::Category] The type of the resource. We may add additional possible values for this enum ov
-        #   ...
         #
         #   @param freeform [Increase::ACHTransfer::Addenda::Freeform, nil] Unstructured `payment_related_information` passed through with the transfer.
         #
         #   @param payment_order_remittance_advice [Increase::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil] Structured ASC X12 820 remittance advice records. Please reach out to [support@i
-        #   ...
 
         # The type of the resource. We may add additional possible values for this enum
         # over time; your application should be able to handle such additions gracefully.
@@ -486,7 +467,6 @@ module Increase
             #   @param invoice_number [String] The invoice number for this reference, determined in advance with the receiver.
             #
             #   @param paid_amount [Integer] The amount that was paid for this invoice in the minor unit of its currency. For
-            #   ...
           end
         end
       end
@@ -515,10 +495,8 @@ module Increase
         #   this will contain details of the approval.
         #
         #   @param approved_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param approved_by [String, nil] If the Transfer was approved by a user in the dashboard, the email address of th
-        #   ...
       end
 
       # @see Increase::ACHTransfer#cancellation
@@ -545,10 +523,8 @@ module Increase
         #   approved, this will contain details of the cancellation.
         #
         #   @param canceled_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param canceled_by [String, nil] If the Transfer was canceled by a user in the dashboard, the email address of th
-        #   ...
       end
 
       # @see Increase::ACHTransfer#created_by
@@ -792,16 +768,12 @@ module Increase
         #   @param id [String] The Inbound Funds Hold identifier.
         #
         #   @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for ex
-        #   ...
         #
         #   @param automatically_releases_at [Time] When the hold will be released automatically. Certain conditions may cause it to
-        #   ...
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold wa
-        #   ...
         #
         #   @param currency [Symbol, Increase::ACHTransfer::InboundFundsHold::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's curre
-        #   ...
         #
         #   @param held_transaction_id [String, nil] The ID of the Transaction for which funds were held.
         #
@@ -812,7 +784,6 @@ module Increase
         #   @param status [Symbol, Increase::ACHTransfer::InboundFundsHold::Status] The status of the hold.
         #
         #   @param type [Symbol, Increase::ACHTransfer::InboundFundsHold::Type] A constant representing the object's type. For this resource it will always be `
-        #   ...
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         # currency.
@@ -915,13 +886,10 @@ module Increase
         #   {Increase::ACHTransfer::NotificationsOfChange} for more details.
         #
         #   @param change_code [Symbol, Increase::ACHTransfer::NotificationsOfChange::ChangeCode] The required type of change that is being signaled by the receiving financial in
-        #   ...
         #
         #   @param corrected_data [String] The corrected data that should be used in future ACHs to this account. This may
-        #   ...
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
 
         # The required type of change that is being signaled by the receiving financial
         # institution.
@@ -1025,7 +993,6 @@ module Increase
         #   must be set.
         #
         #   @param date [Date, nil] A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
-        #   ...
         #
         #   @param settlement_schedule [Symbol, Increase::ACHTransfer::PreferredEffectiveDate::SettlementSchedule, nil] A schedule by which Increase will choose an effective date for the transfer.
 
@@ -1099,15 +1066,12 @@ module Increase
         #   If your transfer is returned, this will contain details of the return.
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param raw_return_reason_code [String] The three character ACH return code, in the range R01 to R85.
         #
         #   @param return_reason_code [Symbol, Increase::ACHTransfer::Return::ReturnReasonCode] Why the ACH Transfer was returned. This reason code is sent by the receiving ban
-        #   ...
         #
         #   @param trace_number [String] A 15 digit number that was generated by the bank that initiated the return. The
-        #   ...
         #
         #   @param transaction_id [String] The identifier of the Transaction associated with this return.
         #
@@ -1355,7 +1319,6 @@ module Increase
         #   Federal Reserve.
         #
         #   @param settled_at [Time] When the funds for this transfer have settled at the destination bank at the Fed
-        #   ...
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
@@ -1473,18 +1436,14 @@ module Increase
         #   [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         #
         #   @param effective_date [Date] The ACH transfer's effective date as sent to the Federal Reserve. If a specific
-        #   ...
         #
         #   @param expected_funds_settlement_at [Time] When the transfer is expected to settle in the recipient's account. Credits may
-        #   ...
         #
         #   @param expected_settlement_schedule [Symbol, Increase::ACHTransfer::Submission::ExpectedSettlementSchedule] The settlement schedule the transfer is expected to follow. This expectation tak
-        #   ...
         #
         #   @param submitted_at [Time] When the ACH transfer was sent to FedACH.
         #
         #   @param trace_number [String] A 15 digit number recorded in the Nacha file and transmitted to the receiving ba
-        #   ...
 
         # The settlement schedule the transfer is expected to follow. This expectation
         # takes into account the `effective_date`, `submitted_at`, and the amount of the

@@ -32,12 +32,10 @@ module Increase
       #   point in time.
       #
       #   @param balance [Integer] The Bookkeeping Account's current balance, representing the sum of all Bookkeepi
-      #   ...
       #
       #   @param bookkeeping_account_id [String] The identifier for the account for which the balance was queried.
       #
       #   @param type [Symbol, Increase::BookkeepingBalanceLookup::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_balance_lookup`.

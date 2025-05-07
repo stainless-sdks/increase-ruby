@@ -36,8 +36,6 @@ module Increase
         type: Increase::BookkeepingAccount::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type compliance_category = :commingled_cash | :customer_balance
 
       module ComplianceCategory

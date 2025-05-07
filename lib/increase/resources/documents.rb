@@ -39,7 +39,6 @@ module Increase
       # @param entity_id [String] Filter Documents to ones belonging to the specified Entity.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

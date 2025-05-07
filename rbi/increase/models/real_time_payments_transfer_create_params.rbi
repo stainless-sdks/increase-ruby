@@ -93,8 +93,7 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

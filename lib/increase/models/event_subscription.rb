@@ -75,18 +75,14 @@ module Increase
       #   @param created_at [Time] The time the event subscription was created.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param oauth_connection_id [String, nil] If specified, this subscription will only receive webhooks for Events associated
-      #   ...
       #
       #   @param selected_event_category [Symbol, Increase::EventSubscription::SelectedEventCategory, nil] If specified, this subscription will only receive webhooks for Events with the s
-      #   ...
       #
       #   @param status [Symbol, Increase::EventSubscription::Status] This indicates if we'll send notifications to this subscription.
       #
       #   @param type [Symbol, Increase::EventSubscription::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
       #
       #   @param url [String] The webhook url where we'll send notifications.
 

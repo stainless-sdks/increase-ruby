@@ -87,27 +87,20 @@ module Increase
       #   @param account_id [String] The identifier for the Account the Transaction belongs to.
       #
       #   @param amount [Integer] The Transaction amount in the minor unit of its currency. For dollars, for examp
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transac
-      #   ...
       #
       #   @param currency [Symbol, Increase::Transaction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction'
-      #   ...
       #
       #   @param description [String] An informational message describing this transaction. Use the fields in `source`
-      #   ...
       #
       #   @param route_id [String, nil] The identifier for the route this Transaction came through. Routes are things li
-      #   ...
       #
       #   @param route_type [Symbol, Increase::Transaction::RouteType, nil] The type of the route this Transaction came through.
       #
       #   @param source [Increase::Transaction::Source] This is an object giving more details on the network-level event that caused the
-      #   ...
       #
       #   @param type [Symbol, Increase::Transaction::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       # Transaction's currency. This will match the currency on the Transaction's
@@ -489,97 +482,66 @@ module Increase
         #   deprecated and will be removed in the future.
         #
         #   @param account_transfer_intention [Increase::Transaction::Source::AccountTransferIntention, nil] An Account Transfer Intention object. This field will be present in the JSON res
-        #   ...
         #
         #   @param ach_transfer_intention [Increase::Transaction::Source::ACHTransferIntention, nil] An ACH Transfer Intention object. This field will be present in the JSON respons
-        #   ...
         #
         #   @param ach_transfer_rejection [Increase::Transaction::Source::ACHTransferRejection, nil] An ACH Transfer Rejection object. This field will be present in the JSON respons
-        #   ...
         #
         #   @param ach_transfer_return [Increase::Transaction::Source::ACHTransferReturn, nil] An ACH Transfer Return object. This field will be present in the JSON response i
-        #   ...
         #
         #   @param card_dispute_acceptance [Increase::Transaction::Source::CardDisputeAcceptance, nil] A Card Dispute Acceptance object. This field will be present in the JSON respons
-        #   ...
         #
         #   @param card_dispute_loss [Increase::Transaction::Source::CardDisputeLoss, nil] A Card Dispute Loss object. This field will be present in the JSON response if a
-        #   ...
         #
         #   @param card_refund [Increase::Transaction::Source::CardRefund, nil] A Card Refund object. This field will be present in the JSON response if and onl
-        #   ...
         #
         #   @param card_revenue_payment [Increase::Transaction::Source::CardRevenuePayment, nil] A Card Revenue Payment object. This field will be present in the JSON response i
-        #   ...
         #
         #   @param card_settlement [Increase::Transaction::Source::CardSettlement, nil] A Card Settlement object. This field will be present in the JSON response if and
-        #   ...
         #
         #   @param cashback_payment [Increase::Transaction::Source::CashbackPayment, nil] A Cashback Payment object. This field will be present in the JSON response if an
-        #   ...
         #
         #   @param category [Symbol, Increase::Transaction::Source::Category] The type of the resource. We may add additional possible values for this enum ov
-        #   ...
         #
         #   @param check_deposit_acceptance [Increase::Transaction::Source::CheckDepositAcceptance, nil] A Check Deposit Acceptance object. This field will be present in the JSON respon
-        #   ...
         #
         #   @param check_deposit_return [Increase::Transaction::Source::CheckDepositReturn, nil] A Check Deposit Return object. This field will be present in the JSON response i
-        #   ...
         #
         #   @param check_transfer_deposit [Increase::Transaction::Source::CheckTransferDeposit, nil] A Check Transfer Deposit object. This field will be present in the JSON response
-        #   ...
         #
         #   @param fee_payment [Increase::Transaction::Source::FeePayment, nil] A Fee Payment object. This field will be present in the JSON response if and onl
-        #   ...
         #
         #   @param inbound_ach_transfer [Increase::Transaction::Source::InboundACHTransfer, nil] An Inbound ACH Transfer Intention object. This field will be present in the JSON
-        #   ...
         #
         #   @param inbound_ach_transfer_return_intention [Increase::Transaction::Source::InboundACHTransferReturnIntention, nil] An Inbound ACH Transfer Return Intention object. This field will be present in t
-        #   ...
         #
         #   @param inbound_check_adjustment [Increase::Transaction::Source::InboundCheckAdjustment, nil] An Inbound Check Adjustment object. This field will be present in the JSON respo
-        #   ...
         #
         #   @param inbound_check_deposit_return_intention [Increase::Transaction::Source::InboundCheckDepositReturnIntention, nil] An Inbound Check Deposit Return Intention object. This field will be present in
-        #   ...
         #
         #   @param inbound_real_time_payments_transfer_confirmation [Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil] An Inbound Real-Time Payments Transfer Confirmation object. This field will be p
-        #   ...
         #
         #   @param inbound_real_time_payments_transfer_decline [Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil] An Inbound Real-Time Payments Transfer Decline object. This field will be presen
-        #   ...
         #
         #   @param inbound_wire_reversal [Increase::Transaction::Source::InboundWireReversal, nil] An Inbound Wire Reversal object. This field will be present in the JSON response
-        #   ...
         #
         #   @param inbound_wire_transfer [Increase::Transaction::Source::InboundWireTransfer, nil] An Inbound Wire Transfer Intention object. This field will be present in the JSO
-        #   ...
         #
         #   @param inbound_wire_transfer_reversal [Increase::Transaction::Source::InboundWireTransferReversal, nil] An Inbound Wire Transfer Reversal Intention object. This field will be present i
-        #   ...
         #
         #   @param interest_payment [Increase::Transaction::Source::InterestPayment, nil] An Interest Payment object. This field will be present in the JSON response if a
-        #   ...
         #
         #   @param internal_source [Increase::Transaction::Source::InternalSource, nil] An Internal Source object. This field will be present in the JSON response if an
-        #   ...
         #
         #   @param other [Object, nil] If the category of this Transaction source is equal to `other`, this field will
-        #   ...
         #
         #   @param real_time_payments_transfer_acknowledgement [Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil] A Real-Time Payments Transfer Acknowledgement object. This field will be present
-        #   ...
         #
         #   @param sample_funds [Increase::Transaction::Source::SampleFunds, nil] A Sample Funds object. This field will be present in the JSON response if and on
-        #   ...
         #
         #   @param swift_transfer_intention [Increase::Transaction::Source::SwiftTransferIntention, nil] A Swift Transfer Intention object. This field will be present in the JSON respon
-        #   ...
         #
         #   @param wire_transfer_intention [Increase::Transaction::Source::WireTransferIntention, nil] A Wire Transfer Intention object. This field will be present in the JSON respons
-        #   ...
 
         # @see Increase::Transaction::Source#account_transfer_intention
         class AccountTransferIntention < Increase::Internal::Type::BaseModel
@@ -631,10 +593,8 @@ module Increase
           #   decrements the source account, and the other increments the destination account.
           #
           #   @param amount [Integer] The pending amount in the minor unit of the transaction's currency. For dollars,
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::AccountTransferIntention::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   ...
           #
           #   @param description [String] The description you chose to give the transfer.
           #
@@ -720,10 +680,8 @@ module Increase
           #   @param account_number [String] The account number for the destination account.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
-          #   ...
           #
           #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
-          #   ...
           #
           #   @param statement_descriptor [String] A description set when the ACH Transfer was created.
           #
@@ -803,15 +761,12 @@ module Increase
           #   later.
           #
           #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
           #
           #   @param raw_return_reason_code [String] The three character ACH return code, in the range R01 to R85.
           #
           #   @param return_reason_code [Symbol, Increase::Transaction::Source::ACHTransferReturn::ReturnReasonCode] Why the ACH Transfer was returned. This reason code is sent by the receiving ban
-          #   ...
           #
           #   @param trace_number [String] A 15 digit number that was generated by the bank that initiated the return. The
-          #   ...
           #
           #   @param transaction_id [String] The identifier of the Transaction associated with this return.
           #
@@ -1073,12 +1028,10 @@ module Increase
           #   Contains the details of a successful Card Dispute.
           #
           #   @param accepted_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
           #
           #   @param card_dispute_id [String] The identifier of the Card Dispute that was accepted.
           #
           #   @param transaction_id [String] The identifier of the Transaction that was created to return the disputed funds
-          #   ...
         end
 
         # @see Increase::Transaction::Source#card_dispute_loss
@@ -1122,10 +1075,8 @@ module Increase
           #   @param explanation [String] Why the Card Dispute was lost.
           #
           #   @param lost_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
           #
           #   @param transaction_id [String] The identifier of the Transaction that was created to debit the disputed funds f
-          #   ...
         end
 
         # @see Increase::Transaction::Source#card_refund
@@ -1268,20 +1219,16 @@ module Increase
           #   @param id [String] The Card Refund identifier.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's settlement currency. For dolla
-          #   ...
           #
           #   @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
           #
           #   @param cashback [Increase::Transaction::Source::CardRefund::Cashback, nil] Cashback debited for this transaction, if eligible. Cashback is paid out in aggr
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::CardRefund::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param interchange [Increase::Transaction::Source::CardRefund::Interchange, nil] Interchange assessed as a part of this transaciton.
           #
           #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
-          #   ...
           #
           #   @param merchant_category_code [String] The 4-digit MCC describing the merchant's business.
           #
@@ -1300,15 +1247,12 @@ module Increase
           #   @param presentment_amount [Integer] The amount in the minor unit of the transaction's presentment currency.
           #
           #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param purchase_details [Increase::Transaction::Source::CardRefund::PurchaseDetails, nil] Additional details about the card purchase, such as tax and industry-specific fi
-          #   ...
           #
           #   @param transaction_id [String] The identifier of the Transaction associated with this Transaction.
           #
           #   @param type [Symbol, Increase::Transaction::Source::CardRefund::Type] A constant representing the object's type. For this resource it will always be `
-          #   ...
 
           # @see Increase::Transaction::Source::CardRefund#cashback
           class Cashback < Increase::Internal::Type::BaseModel
@@ -1334,7 +1278,6 @@ module Increase
             #   aggregate, monthly.
             #
             #   @param amount [String] The cashback amount given as a string containing a decimal number. The amount is
-            #   ...
             #
             #   @param currency [Symbol, Increase::Transaction::Source::CardRefund::Cashback::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
 
@@ -1427,12 +1370,10 @@ module Increase
             #   Interchange assessed as a part of this transaciton.
             #
             #   @param amount [String] The interchange amount given as a string containing a decimal number in major un
-            #   ...
             #
             #   @param code [String, nil] The card network specific interchange code.
             #
             #   @param currency [Symbol, Increase::Transaction::Source::CardRefund::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   ...
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             # reimbursement.
@@ -1494,12 +1435,10 @@ module Increase
             #   Network-specific identifiers for this refund.
             #
             #   @param acquirer_business_id [String] A network assigned business ID that identifies the acquirer that processed this
-            #   ...
             #
             #   @param acquirer_reference_number [String] A globally unique identifier for this settlement.
             #
             #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
-            #   ...
           end
 
           # @see Increase::Transaction::Source::CardRefund#purchase_details
@@ -1594,14 +1533,12 @@ module Increase
             #   @param local_tax_amount [Integer, nil] The state or provincial tax amount in minor units.
             #
             #   @param local_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax as
-            #   ...
             #
             #   @param lodging [Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging, nil] Fields specific to lodging.
             #
             #   @param national_tax_amount [Integer, nil] The national tax amount in minor units.
             #
             #   @param national_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax as
-            #   ...
             #
             #   @param purchase_identifier [String, nil] An identifier from the merchant for the purchase to the issuer and cardholder.
             #
@@ -1733,12 +1670,10 @@ module Increase
               #   @param car_class_code [String, nil] Code indicating the vehicle's class.
               #
               #   @param checkout_date [Date, nil] Date the customer picked up the car or, in the case of a no-show or pre-pay tran
-              #   ...
               #
               #   @param daily_rental_rate_amount [Integer, nil] Daily rate being charged for the vehicle.
               #
               #   @param daily_rental_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   ...
               #
               #   @param days_rented [Integer, nil] Number of days the vehicle was rented.
               #
@@ -1747,28 +1682,22 @@ module Increase
               #   @param fuel_charges_amount [Integer, nil] Fuel charges for the vehicle.
               #
               #   @param fuel_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   ...
               #
               #   @param insurance_charges_amount [Integer, nil] Any insurance being charged for the vehicle.
               #
               #   @param insurance_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance ch
-              #   ...
               #
               #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil] An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   ...
               #
               #   @param one_way_drop_off_charges_amount [Integer, nil] Charges for returning the vehicle at a different location than where it was pick
-              #   ...
               #
               #   @param one_way_drop_off_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way drop
-              #   ...
               #
               #   @param renter_name [String, nil] Name of the person renting the vehicle.
               #
               #   @param weekly_rental_rate_amount [Integer, nil] Weekly rate being charged for the vehicle.
               #
               #   @param weekly_rental_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly renta
-              #   ...
 
               # Additional charges (gas, late fee, etc.) being billed.
               #
@@ -1941,39 +1870,32 @@ module Increase
               #   @param daily_room_rate_amount [Integer, nil] Daily rate being charged for the room.
               #
               #   @param daily_room_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room r
-              #   ...
               #
               #   @param extra_charges [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil] Additional charges (phone, late check-out, etc.) being billed.
               #
               #   @param folio_cash_advances_amount [Integer, nil] Folio cash advances for the room.
               #
               #   @param folio_cash_advances_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash a
-              #   ...
               #
               #   @param food_beverage_charges_amount [Integer, nil] Food and beverage charges for the room.
               #
               #   @param food_beverage_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and bev
-              #   ...
               #
               #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil] Indicator that the cardholder is being billed for a reserved room that was not a
-              #   ...
               #
               #   @param prepaid_expenses_amount [Integer, nil] Prepaid expenses being charged for the room.
               #
               #   @param prepaid_expenses_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid expe
-              #   ...
               #
               #   @param room_nights [Integer, nil] Number of nights the room was rented.
               #
               #   @param total_room_tax_amount [Integer, nil] Total room tax being charged.
               #
               #   @param total_room_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room t
-              #   ...
               #
               #   @param total_tax_amount [Integer, nil] Total tax being charged for the room.
               #
               #   @param total_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax as
-              #   ...
 
               # Additional charges (phone, late check-out, etc.) being billed.
               #
@@ -2217,7 +2139,6 @@ module Increase
                 #   Ancillary purchases in addition to the airfare.
                 #
                 #   @param connected_ticket_document_number [String, nil] If this purchase has a connection or relationship to another purchase, such as a
-                #   ...
                 #
                 #   @param credit_reason_indicator [Symbol, Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
                 #
@@ -2555,10 +2476,8 @@ module Increase
           #   Payments reflect earnings from fees on card transactions.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::CardRevenuePayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   ...
           #
           #   @param period_end [Time] The end of the period for which this transaction paid interest.
           #
@@ -2750,23 +2669,18 @@ module Increase
           #   @param id [String] The Card Settlement identifier.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's settlement currency. For dolla
-          #   ...
           #
           #   @param card_authorization [String, nil] The Card Authorization that was created prior to this Card Settlement, if one ex
-          #   ...
           #
           #   @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
           #
           #   @param cashback [Increase::Transaction::Source::CardSettlement::Cashback, nil] Cashback earned on this transaction, if eligible. Cashback is paid out in aggreg
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::CardSettlement::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param interchange [Increase::Transaction::Source::CardSettlement::Interchange, nil] Interchange assessed as a part of this transaction.
           #
           #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
-          #   ...
           #
           #   @param merchant_category_code [String] The 4-digit MCC describing the merchant's business.
           #
@@ -2787,15 +2701,12 @@ module Increase
           #   @param presentment_amount [Integer] The amount in the minor unit of the transaction's presentment currency.
           #
           #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param purchase_details [Increase::Transaction::Source::CardSettlement::PurchaseDetails, nil] Additional details about the card purchase, such as tax and industry-specific fi
-          #   ...
           #
           #   @param transaction_id [String] The identifier of the Transaction associated with this Transaction.
           #
           #   @param type [Symbol, Increase::Transaction::Source::CardSettlement::Type] A constant representing the object's type. For this resource it will always be `
-          #   ...
 
           # @see Increase::Transaction::Source::CardSettlement#cashback
           class Cashback < Increase::Internal::Type::BaseModel
@@ -2821,7 +2732,6 @@ module Increase
             #   aggregate, monthly.
             #
             #   @param amount [String] The cashback amount given as a string containing a decimal number. The amount is
-            #   ...
             #
             #   @param currency [Symbol, Increase::Transaction::Source::CardSettlement::Cashback::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
 
@@ -2917,12 +2827,10 @@ module Increase
             #   Interchange assessed as a part of this transaction.
             #
             #   @param amount [String] The interchange amount given as a string containing a decimal number in major un
-            #   ...
             #
             #   @param code [String, nil] The card network specific interchange code.
             #
             #   @param currency [Symbol, Increase::Transaction::Source::CardSettlement::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   ...
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             # reimbursement.
@@ -2984,12 +2892,10 @@ module Increase
             #   Network-specific identifiers for this refund.
             #
             #   @param acquirer_business_id [String] A network assigned business ID that identifies the acquirer that processed this
-            #   ...
             #
             #   @param acquirer_reference_number [String] A globally unique identifier for this settlement.
             #
             #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
-            #   ...
           end
 
           # @see Increase::Transaction::Source::CardSettlement#purchase_details
@@ -3081,14 +2987,12 @@ module Increase
             #   @param local_tax_amount [Integer, nil] The state or provincial tax amount in minor units.
             #
             #   @param local_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax as
-            #   ...
             #
             #   @param lodging [Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging, nil] Fields specific to lodging.
             #
             #   @param national_tax_amount [Integer, nil] The national tax amount in minor units.
             #
             #   @param national_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax as
-            #   ...
             #
             #   @param purchase_identifier [String, nil] An identifier from the merchant for the purchase to the issuer and cardholder.
             #
@@ -3220,12 +3124,10 @@ module Increase
               #   @param car_class_code [String, nil] Code indicating the vehicle's class.
               #
               #   @param checkout_date [Date, nil] Date the customer picked up the car or, in the case of a no-show or pre-pay tran
-              #   ...
               #
               #   @param daily_rental_rate_amount [Integer, nil] Daily rate being charged for the vehicle.
               #
               #   @param daily_rental_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   ...
               #
               #   @param days_rented [Integer, nil] Number of days the vehicle was rented.
               #
@@ -3234,28 +3136,22 @@ module Increase
               #   @param fuel_charges_amount [Integer, nil] Fuel charges for the vehicle.
               #
               #   @param fuel_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   ...
               #
               #   @param insurance_charges_amount [Integer, nil] Any insurance being charged for the vehicle.
               #
               #   @param insurance_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance ch
-              #   ...
               #
               #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil] An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   ...
               #
               #   @param one_way_drop_off_charges_amount [Integer, nil] Charges for returning the vehicle at a different location than where it was pick
-              #   ...
               #
               #   @param one_way_drop_off_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way drop
-              #   ...
               #
               #   @param renter_name [String, nil] Name of the person renting the vehicle.
               #
               #   @param weekly_rental_rate_amount [Integer, nil] Weekly rate being charged for the vehicle.
               #
               #   @param weekly_rental_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly renta
-              #   ...
 
               # Additional charges (gas, late fee, etc.) being billed.
               #
@@ -3428,39 +3324,32 @@ module Increase
               #   @param daily_room_rate_amount [Integer, nil] Daily rate being charged for the room.
               #
               #   @param daily_room_rate_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room r
-              #   ...
               #
               #   @param extra_charges [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil] Additional charges (phone, late check-out, etc.) being billed.
               #
               #   @param folio_cash_advances_amount [Integer, nil] Folio cash advances for the room.
               #
               #   @param folio_cash_advances_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash a
-              #   ...
               #
               #   @param food_beverage_charges_amount [Integer, nil] Food and beverage charges for the room.
               #
               #   @param food_beverage_charges_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and bev
-              #   ...
               #
               #   @param no_show_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil] Indicator that the cardholder is being billed for a reserved room that was not a
-              #   ...
               #
               #   @param prepaid_expenses_amount [Integer, nil] Prepaid expenses being charged for the room.
               #
               #   @param prepaid_expenses_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid expe
-              #   ...
               #
               #   @param room_nights [Integer, nil] Number of nights the room was rented.
               #
               #   @param total_room_tax_amount [Integer, nil] Total room tax being charged.
               #
               #   @param total_room_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room t
-              #   ...
               #
               #   @param total_tax_amount [Integer, nil] Total tax being charged for the room.
               #
               #   @param total_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax as
-              #   ...
 
               # Additional charges (phone, late check-out, etc.) being billed.
               #
@@ -3706,7 +3595,6 @@ module Increase
                 #   Ancillary purchases in addition to the airfare.
                 #
                 #   @param connected_ticket_document_number [String, nil] If this purchase has a connection or relationship to another purchase, such as a
-                #   ...
                 #
                 #   @param credit_reason_indicator [Symbol, Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil] Indicates the reason for a credit to the cardholder.
                 #
@@ -4047,10 +3935,8 @@ module Increase
           #   @param accrued_on_card_id [String, nil] The card on which the cashback was accrued.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::CashbackPayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   ...
           #
           #   @param period_end [Time] The end of the period for which this transaction paid cashback.
           #
@@ -4248,20 +4134,16 @@ module Increase
           #   @param account_number [String] The account number printed on the check.
           #
           #   @param amount [Integer] The amount to be deposited in the minor unit of the transaction's currency. For
-          #   ...
           #
           #   @param auxiliary_on_us [String, nil] An additional line of metadata printed on the check. This typically includes the
-          #   ...
           #
           #   @param check_deposit_id [String] The ID of the Check Deposit that was accepted.
           #
           #   @param currency [Symbol, Increase::Transaction::Source::CheckDepositAcceptance::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param routing_number [String] The routing number printed on the check.
           #
           #   @param serial_number [String, nil] The check serial number, if present, for consumer checks. For business checks, t
-          #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
@@ -4354,16 +4236,12 @@ module Increase
           #   @param check_deposit_id [String] The identifier of the Check Deposit that was returned.
           #
           #   @param currency [Symbol, Increase::Transaction::Source::CheckDepositReturn::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param return_reason [Symbol, Increase::Transaction::Source::CheckDepositReturn::ReturnReason] Why this check was returned by the bank holding the account it was drawn against
-          #   ...
           #
           #   @param returned_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
           #
           #   @param transaction_id [String] The identifier of the transaction that reversed the original check deposit trans
-          #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
@@ -4550,25 +4428,20 @@ module Increase
           #   bank account. These types of checks are not pre-registered.
           #
           #   @param back_image_file_id [String, nil] The identifier of the API File object containing an image of the back of the dep
-          #   ...
           #
           #   @param bank_of_first_deposit_routing_number [String, nil] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the ban
-          #   ...
           #
           #   @param deposited_at [Time] When the check was deposited.
           #
           #   @param front_image_file_id [String, nil] The identifier of the API File object containing an image of the front of the de
-          #   ...
           #
           #   @param inbound_check_deposit_id [String, nil] The identifier of the Inbound Check Deposit object associated with this transact
-          #   ...
           #
           #   @param transaction_id [String, nil] The identifier of the Transaction object created when the check was deposited.
           #
           #   @param transfer_id [String, nil] The identifier of the Check Transfer object that was deposited.
           #
           #   @param type [Symbol, Increase::Transaction::Source::CheckTransferDeposit::Type] A constant representing the object's type. For this resource it will always be `
-          #   ...
 
           # A constant representing the object's type. For this resource it will always be
           # `check_transfer_deposit`.
@@ -4621,10 +4494,8 @@ module Increase
           #   made to Increase.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::FeePayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   ...
           #
           #   @param fee_period_start [Date] The start of this payment's fee period, usually the first day of a month.
           #
@@ -4754,17 +4625,14 @@ module Increase
           #   @param originator_company_entry_description [String] An informational description of the transfer.
           #
           #   @param originator_company_id [String] An identifier for the originating company. This is generally, but not always, a
-          #   ...
           #
           #   @param originator_company_name [String] A name set by the originator to identify themselves.
           #
           #   @param receiver_id_number [String, nil] The originator's identifier for the transfer recipient.
           #
           #   @param receiver_name [String, nil] The name of the transfer recipient. This value is informational and not verified
-          #   ...
           #
           #   @param trace_number [String] A 15 digit number recorded in the Nacha file and available to both the originati
-          #   ...
           #
           #   @param transfer_id [String] The Inbound ACH Transfer's identifier.
 
@@ -5009,12 +4877,10 @@ module Increase
           #   initiated at another bank and received by Increase.
           #
           #   @param amount [Integer] The amount in the minor unit of the transfer's currency. For dollars, for exampl
-          #   ...
           #
           #   @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
           #
           #   @param currency [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's cu
-          #   ...
           #
           #   @param debtor_account_number [String] The account number of the account that sent the transfer.
           #
@@ -5137,12 +5003,10 @@ module Increase
           #   `inbound_real_time_payments_transfer_decline`.
           #
           #   @param amount [Integer] The declined amount in the minor unit of the destination account currency. For d
-          #   ...
           #
           #   @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
           #
           #   @param currency [Symbol, Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined tran
-          #   ...
           #
           #   @param debtor_account_number [String] The account number of the account that sent the transfer.
           #
@@ -5339,15 +5203,12 @@ module Increase
           #   @param amount [Integer] The amount that was reversed in USD cents.
           #
           #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
           #
           #   @param description [String] The description on the reversal message from Fedwire, set by the reversing bank.
-          #   ...
           #
           #   @param financial_institution_to_financial_institution_information [String, nil] Additional financial institution information included in the wire reversal.
           #
           #   @param input_cycle_date [Date] The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00 P
-          #   ...
           #
           #   @param input_message_accountability_data [String] The Fedwire transaction identifier.
           #
@@ -5356,10 +5217,8 @@ module Increase
           #   @param input_source [String] The Fedwire input source identifier.
           #
           #   @param originator_routing_number [String, nil] The American Banking Association (ABA) routing number of the bank originating th
-          #   ...
           #
           #   @param previous_message_input_cycle_date [Date] The Fedwire cycle date for the wire transfer that is being reversed by this mess
-          #   ...
           #
           #   @param previous_message_input_message_accountability_data [String] The Fedwire transaction identifier for the wire transfer that was reversed.
           #
@@ -5368,7 +5227,6 @@ module Increase
           #   @param previous_message_input_source [String] The Fedwire input source identifier for the wire transfer that was reversed.
           #
           #   @param receiver_financial_institution_information [String, nil] Information included in the wire reversal for the receiving financial institutio
-          #   ...
           #
           #   @param sender_reference [String, nil] The sending bank's reference number for the wire reversal.
           #
@@ -5520,7 +5378,6 @@ module Increase
           #   @param description [String] An Increase-constructed description of the transfer.
           #
           #   @param input_message_accountability_data [String, nil] A unique identifier available to the originating and receiving banks, commonly a
-          #   ...
           #
           #   @param originator_address_line1 [String, nil] The address of the wire originator, set by the sending bank.
           #
@@ -5531,7 +5388,6 @@ module Increase
           #   @param originator_name [String, nil] The originator of the wire, set by the sending bank.
           #
           #   @param originator_routing_number [String, nil] The American Banking Association (ABA) routing number of the bank originating th
-          #   ...
           #
           #   @param originator_to_beneficiary_information [String, nil] An Increase-created concatenation of the Originator-to-Beneficiary lines.
           #
@@ -5610,10 +5466,8 @@ module Increase
           #   @param accrued_on_account_id [String] The account on which the interest was accrued.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::InterestPayment::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   ...
           #
           #   @param period_end [Time] The end of the period for which this transaction paid interest.
           #
@@ -5681,13 +5535,10 @@ module Increase
           #   user and Increase. See the `reason` attribute for more information.
           #
           #   @param amount [Integer] The amount in the minor unit of the transaction's currency. For dollars, for exa
-          #   ...
           #
           #   @param currency [Symbol, Increase::Transaction::Source::InternalSource::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   ...
           #
           #   @param reason [Symbol, Increase::Transaction::Source::InternalSource::Reason] An Internal Source is a transaction between you and Increase. This describes the
-          #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           # currency.

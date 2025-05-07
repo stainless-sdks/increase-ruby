@@ -11,10 +11,9 @@ module Increase
           T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         sig do
-          params(
-            request_options:
-              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-          ).returns(T.attached_class)
+          params(request_options: Increase::RequestOptions::OrHash).returns(
+            T.attached_class
+          )
         end
         def self.new(request_options: {})
         end

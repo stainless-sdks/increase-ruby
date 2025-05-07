@@ -27,24 +27,18 @@ module Increase
       # @param beneficiary_address_line3 [String] The beneficiary's address line 3.
       #
       # @param external_account_id [String] The ID of an External Account to initiate a transfer to. If this parameter is pr
-      # ...
       #
       # @param originator_address_line1 [String] The originator's address line 1. This is only necessary if you're transferring f
-      # ...
       #
       # @param originator_address_line2 [String] The originator's address line 2. This is only necessary if you're transferring f
-      # ...
       #
       # @param originator_address_line3 [String] The originator's address line 3. This is only necessary if you're transferring f
-      # ...
       #
       # @param originator_name [String] The originator's name. This is only necessary if you're transferring from a comm
-      # ...
       #
       # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
       #
       # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
-      # ...
       #
       # @param source_account_number_id [String] The ID of an Account Number that will be passed to the wire's recipient
       #
@@ -100,10 +94,8 @@ module Increase
       # @param external_account_id [String] Filter Wire Transfers to those made to the specified External Account.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

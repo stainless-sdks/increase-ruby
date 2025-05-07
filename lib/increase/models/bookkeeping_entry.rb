@@ -55,14 +55,12 @@ module Increase
       #   @param account_id [String] The identifier for the Account the Entry belongs to.
       #
       #   @param amount [Integer] The Entry amount in the minor unit of its currency. For dollars, for example, th
-      #   ...
       #
       #   @param created_at [Time] When the entry set was created.
       #
       #   @param entry_set_id [String] The identifier for the Account the Entry belongs to.
       #
       #   @param type [Symbol, Increase::BookkeepingEntry::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry`.

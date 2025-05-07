@@ -49,10 +49,8 @@ module Increase
       #   @param cursor [String] Return the page of entries after this one.
       #
       #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      #   ...
       #
       #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
       #
       #   @param status [Increase::IntrafiAccountEnrollmentListParams::Status]
       #
@@ -76,7 +74,6 @@ module Increase
         #   {Increase::IntrafiAccountEnrollmentListParams::Status} for more details.
         #
         #   @param in_ [Array<Symbol, Increase::IntrafiAccountEnrollmentListParams::Status::In>] Filter IntraFi Account Enrollments for those with the specified status or status
-        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

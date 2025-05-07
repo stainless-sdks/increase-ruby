@@ -32,8 +32,6 @@ module Increase
         type: Increase::CardPurchaseSupplement::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type invoice =
         {
           discount_amount: Integer?,
@@ -105,8 +103,6 @@ module Increase
           tax_treatments: Increase::CardPurchaseSupplement::Invoice::tax_treatments?,
           unique_value_added_tax_invoice_reference: String?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type discount_treatment_code =
           :no_invoice_level_discount_provided
@@ -232,8 +228,6 @@ module Increase
           unit_cost_currency: String?,
           unit_of_measure_code: String?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type detail_indicator = :normal | :credit | :payment
 

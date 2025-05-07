@@ -104,12 +104,10 @@ module Increase
       #   @param billing_address [Increase::Card::BillingAddress] The Card's billing address.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param description [String, nil] The card's description for display purposes.
       #
       #   @param digital_wallet [Increase::Card::DigitalWallet, nil] The contact information used in the two-factor steps for digital wallet card cre
-      #   ...
       #
       #   @param entity_id [String, nil] The identifier for the entity associated with this card.
       #
@@ -118,14 +116,12 @@ module Increase
       #   @param expiration_year [Integer] The year the card expires in YYYY format (e.g., 2025).
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param last4 [String] The last 4 digits of the Card's Primary Account Number.
       #
       #   @param status [Symbol, Increase::Card::Status] This indicates if payments can be made with the card.
       #
       #   @param type [Symbol, Increase::Card::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::Card#billing_address
       class BillingAddress < Increase::Internal::Type::BaseModel
@@ -205,13 +201,10 @@ module Increase
         #   steps.
         #
         #   @param digital_card_profile_id [String, nil] The digital card profile assigned to this digital card. Card profiles may also b
-        #   ...
         #
         #   @param email [String, nil] An email address that can be used to verify the cardholder via one-time passcode
-        #   ...
         #
         #   @param phone [String, nil] A phone number that can be used to verify the cardholder via one-time passcode o
-        #   ...
       end
 
       # This indicates if payments can be made with the card.

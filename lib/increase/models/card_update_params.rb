@@ -49,10 +49,8 @@ module Increase
       #   @param description [String] The description you choose to give the card.
       #
       #   @param digital_wallet [Increase::CardUpdateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
-      #   ...
       #
       #   @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      #   ...
       #
       #   @param status [Symbol, Increase::CardUpdateParams::Status] The status to update the Card with.
       #
@@ -135,10 +133,8 @@ module Increase
         #   @param digital_card_profile_id [String] The digital card profile assigned to this digital card.
         #
         #   @param email [String] An email address that can be used to verify the cardholder via one-time passcode
-        #   ...
         #
         #   @param phone [String] A phone number that can be used to verify the cardholder via one-time passcode o
-        #   ...
       end
 
       # The status to update the Card with.

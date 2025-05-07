@@ -13,22 +13,18 @@ module Increase
       # @param category [Symbol, Increase::ExportCreateParams::Category] The type of Export to create.
       #
       # @param account_statement_ofx [Increase::ExportCreateParams::AccountStatementOfx] Options for the created export. Required if `category` is equal to `account_stat
-      # ...
       #
       # @param balance_csv [Increase::ExportCreateParams::BalanceCsv] Options for the created export. Required if `category` is equal to `balance_csv`
-      # ...
       #
       # @param bookkeeping_account_balance_csv [Increase::ExportCreateParams::BookkeepingAccountBalanceCsv] Options for the created export. Required if `category` is equal to
-      # `bookkeeping\_ ...
+      # `bookkeeping\_
       #
       # @param entity_csv [Increase::ExportCreateParams::EntityCsv] Options for the created export. Required if `category` is equal to `entity_csv`.
-      # ...
       #
       # @param transaction_csv [Increase::ExportCreateParams::TransactionCsv] Options for the created export. Required if `category` is equal to
-      # `transaction\_ ...
+      # `transaction\_
       #
       # @param vendor_csv [Object] Options for the created export. Required if `category` is equal to `vendor_csv`.
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -80,10 +76,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::ExportListParams::Status]
       #

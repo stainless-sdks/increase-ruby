@@ -26,10 +26,8 @@ module Increase
       #   {Increase::Models::EntityUpdateBeneficialOwnerAddressParams} for more details.
       #
       #   @param address [Increase::EntityUpdateBeneficialOwnerAddressParams::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-      #   ...
       #
       #   @param beneficial_owner_id [String] The identifying details of anyone controlling or owning 25% or more of the corpo
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -84,12 +82,10 @@ module Increase
         #   @param line1 [String] The first line of the address. This is usually the street number and street.
         #
         #   @param city [String] The city, district, town, or village of the address. Required in certain countri
-        #   ...
         #
         #   @param line2 [String] The second line of the address. This might be the floor or room number.
         #
         #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the US state
-        #   ...
         #
         #   @param zip [String] The ZIP or postal code of the address. Required in certain countries.
       end

@@ -19,7 +19,6 @@ module Increase
       #   {Increase::Models::EntityCreateBeneficialOwnerParams} for more details.
       #
       #   @param beneficial_owner [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner] The identifying details of anyone controlling or owning 25% or more of the corpo
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -57,7 +56,6 @@ module Increase
         #   @param individual [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual] Personal details for the beneficial owner.
         #
         #   @param prongs [Array<Symbol, Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>] Why this person is considered a beneficial owner of the entity. At least one opt
-        #   ...
         #
         #   @param company_title [String] This person's role or title within the entity.
 
@@ -109,7 +107,6 @@ module Increase
           #   Personal details for the beneficial owner.
           #
           #   @param address [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and PM
-          #   ...
           #
           #   @param date_of_birth [Date] The person's date of birth in YYYY-MM-DD format.
           #
@@ -118,7 +115,6 @@ module Increase
           #   @param name [String] The person's legal name.
           #
           #   @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's lic
-          #   ...
 
           # @see Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual#address
           class Address < Increase::Internal::Type::BaseModel
@@ -173,12 +169,10 @@ module Increase
             #   @param line1 [String] The first line of the address. This is usually the street number and street.
             #
             #   @param city [String] The city, district, town, or village of the address. Required in certain countri
-            #   ...
             #
             #   @param line2 [String] The second line of the address. This might be the floor or room number.
             #
             #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the US state
-            #   ...
             #
             #   @param zip [String] The ZIP or postal code of the address. Required in certain countries.
           end
@@ -242,16 +236,12 @@ module Increase
             #   @param method_ [Symbol, Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method] A method that can be used to verify the individual's identity.
             #
             #   @param number [String] An identification number that can be used to verify the individual's identity, s
-            #   ...
             #
             #   @param drivers_license [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification. Re
-            #   ...
             #
             #   @param other [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-            #   ...
             #
             #   @param passport [Increase::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-            #   ...
 
             # A method that can be used to verify the individual's identity.
             #
@@ -360,14 +350,12 @@ module Increase
               #   equal to `other`.
               #
               #   @param country [String] The two-character ISO 3166-1 code representing the country that issued the docum
-              #   ...
               #
               #   @param description [String] A description of the document submitted.
               #
               #   @param file_id [String] The identifier of the File containing the front of the document.
               #
               #   @param back_file_id [String] The identifier of the File containing the back of the document. Not every docume
-              #   ...
               #
               #   @param expiration_date [Date] The document's expiration date in YYYY-MM-DD format.
             end

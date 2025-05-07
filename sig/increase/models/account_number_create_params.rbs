@@ -37,8 +37,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type inbound_ach =
         {
           debit_status: Increase::AccountNumberCreateParams::InboundACH::debit_status
@@ -50,8 +48,6 @@ module Increase
         def initialize: (
           debit_status: Increase::AccountNumberCreateParams::InboundACH::debit_status
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type debit_status = :allowed | :blocked
 
@@ -77,8 +73,6 @@ module Increase
         def initialize: (
           status: Increase::AccountNumberCreateParams::InboundChecks::status
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type status = :allowed | :check_transfers_only
 

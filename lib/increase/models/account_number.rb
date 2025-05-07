@@ -92,15 +92,12 @@ module Increase
       #   @param account_number [String] The account number.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param inbound_ach [Increase::AccountNumber::InboundACH] Properties related to how this Account Number handles inbound ACH transfers.
       #
       #   @param inbound_checks [Increase::AccountNumber::InboundChecks] Properties related to how this Account Number should handle inbound check withdr
-      #   ...
       #
       #   @param name [String] The name you choose for the Account Number.
       #
@@ -109,7 +106,6 @@ module Increase
       #   @param status [Symbol, Increase::AccountNumber::Status] This indicates if payments can be made to the Account Number.
       #
       #   @param type [Symbol, Increase::AccountNumber::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::AccountNumber#inbound_ach
       class InboundACH < Increase::Internal::Type::BaseModel
@@ -127,7 +123,6 @@ module Increase
         #   Properties related to how this Account Number handles inbound ACH transfers.
         #
         #   @param debit_status [Symbol, Increase::AccountNumber::InboundACH::DebitStatus] Whether ACH debits are allowed against this Account Number. Note that they will
-        #   ...
 
         # Whether ACH debits are allowed against this Account Number. Note that they will
         # still be declined if this is `allowed` if the Account Number is not active.

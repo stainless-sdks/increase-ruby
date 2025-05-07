@@ -28,8 +28,6 @@ module Increase
         type: Increase::Group::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type ach_debit_status = :disabled | :enabled
 
       module ACHDebitStatus

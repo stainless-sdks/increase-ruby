@@ -79,20 +79,16 @@ module Increase
       #   @param billing_account_id [String, nil] The Program billing account.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   ...
       #
       #   @param default_digital_card_profile_id [String, nil] The default configuration for digital cards attached to this Program.
       #
       #   @param interest_rate [String] The Interest Rate currently being earned on the accounts in this program, as a s
-      #   ...
       #
       #   @param name [String] The name of the Program.
       #
       #   @param type [Symbol, Increase::Program::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
       #
       #   @param updated_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   ...
 
       # The Bank the Program is with.
       #

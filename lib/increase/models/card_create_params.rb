@@ -53,10 +53,8 @@ module Increase
       #   @param description [String] The description you choose to give the card.
       #
       #   @param digital_wallet [Increase::CardCreateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
-      #   ...
       #
       #   @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -139,10 +137,8 @@ module Increase
         #   @param digital_card_profile_id [String] The digital card profile assigned to this digital card.
         #
         #   @param email [String] An email address that can be used to contact and verify the cardholder via one-t
-        #   ...
         #
         #   @param phone [String] A phone number that can be used to contact and verify the cardholder via one-tim
-        #   ...
       end
     end
   end

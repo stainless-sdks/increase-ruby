@@ -15,10 +15,8 @@ module Increase
       # @param entity_id [String] The identifier for the Entity that will own the Account.
       #
       # @param informational_entity_id [String] The identifier of an Entity that, while not owning the Account, is associated wi
-      # ...
       #
       # @param program_id [String] The identifier for the Program that this Account falls under. Required if you op
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -94,12 +92,10 @@ module Increase
       # @param entity_id [String] Filter Accounts for those belonging to the specified Entity.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param informational_entity_id [String] Filter Accounts for those belonging to the specified Entity as informational.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param program_id [String] Filter Accounts for those in a specific Program.
       #

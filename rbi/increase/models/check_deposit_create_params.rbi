@@ -38,8 +38,7 @@ module Increase
           back_image_file_id: String,
           front_image_file_id: String,
           description: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

@@ -33,19 +33,14 @@ module Increase
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       #
       # @param card_authentication [Increase::RealTimeDecisionActionParams::CardAuthentication] If the Real-Time Decision relates to a 3DS card authentication attempt, this obj
-      # ...
       #
       # @param card_authentication_challenge [Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge] If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      # ...
       #
       # @param card_authorization [Increase::RealTimeDecisionActionParams::CardAuthorization] If the Real-Time Decision relates to a card authorization attempt, this object c
-      # ...
       #
       # @param digital_wallet_authentication [Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication] If the Real-Time Decision relates to a digital wallet authentication attempt, th
-      # ...
       #
       # @param digital_wallet_token [Increase::RealTimeDecisionActionParams::DigitalWalletToken] If the Real-Time Decision relates to a digital wallet token provisioning attempt
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #

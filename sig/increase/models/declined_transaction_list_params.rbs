@@ -53,8 +53,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type category =
         { in_: ::Array[Increase::DeclinedTransactionListParams::Category::in_] }
 
@@ -68,8 +66,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::DeclinedTransactionListParams::Category::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ =
           :ach_decline
@@ -134,8 +130,6 @@ module Increase
           ?on_or_after: Time,
           ?on_or_before: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

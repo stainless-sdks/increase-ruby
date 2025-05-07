@@ -53,8 +53,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type card_authentication =
         {
           decision: Increase::RealTimeDecisionActionParams::CardAuthentication::decision
@@ -66,8 +64,6 @@ module Increase
         def initialize: (
           decision: Increase::RealTimeDecisionActionParams::CardAuthentication::decision
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type decision = :approve | :challenge | :deny
 
@@ -98,8 +94,6 @@ module Increase
         def initialize: (
           result: Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::result
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type result = :success | :failure
 
@@ -135,8 +129,6 @@ module Increase
           decision: Increase::RealTimeDecisionActionParams::CardAuthorization::decision,
           ?decline_reason: Increase::RealTimeDecisionActionParams::CardAuthorization::decline_reason
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type decision = :approve | :decline
 
@@ -205,8 +197,6 @@ module Increase
           ?success: Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type result = :success | :failure
 
         module Result
@@ -233,8 +223,6 @@ module Increase
           def phone=: (String) -> String
 
           def initialize: (?email: String, ?phone: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 
@@ -262,8 +250,6 @@ module Increase
           ?decline: Increase::RealTimeDecisionActionParams::DigitalWalletToken::Decline
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type approval = { email: String, phone: String }
 
         class Approval < Increase::Internal::Type::BaseModel
@@ -276,8 +262,6 @@ module Increase
           def phone=: (String) -> String
 
           def initialize: (?email: String, ?phone: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type decline = { reason: String }
@@ -288,8 +272,6 @@ module Increase
           def reason=: (String) -> String
 
           def initialize: (?reason: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
     end

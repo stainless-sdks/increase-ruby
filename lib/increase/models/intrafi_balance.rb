@@ -55,18 +55,14 @@ module Increase
       #   @param id [String] The identifier of this balance.
       #
       #   @param balances [Array<Increase::IntrafiBalance::Balance>] Each entry represents a balance held at a different bank. IntraFi separates the
-      #   ...
       #
       #   @param currency [Symbol, Increase::IntrafiBalance::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account curr
-      #   ...
       #
       #   @param effective_date [Date] The date this balance reflects.
       #
       #   @param total_balance [Integer] The total balance, in minor units of `currency`. Increase reports this balance t
-      #   ...
       #
       #   @param type [Symbol, Increase::IntrafiBalance::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       class Balance < Increase::Internal::Type::BaseModel
         # @!attribute id
@@ -114,7 +110,6 @@ module Increase
         #   @param bank_location [Increase::IntrafiBalance::Balance::BankLocation, nil] The primary location of the bank.
         #
         #   @param fdic_certificate_number [String] The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-        #   ...
 
         # @see Increase::IntrafiBalance::Balance#bank_location
         class BankLocation < Increase::Internal::Type::BaseModel

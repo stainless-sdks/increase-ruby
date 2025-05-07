@@ -100,33 +100,24 @@ module Increase
       #   @param account_id [String] The identifier for the account this Pending Transaction belongs to.
       #
       #   @param amount [Integer] The Pending Transaction amount in the minor unit of its currency. For dollars, f
-      #   ...
       #
       #   @param completed_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
-      #   ...
       #
       #   @param currency [Symbol, Increase::PendingTransaction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Tran
-      #   ...
       #
       #   @param description [String] For a Pending Transaction related to a transfer, this is the description you pro
-      #   ...
       #
       #   @param route_id [String, nil] The identifier for the route this Pending Transaction came through. Routes are t
-      #   ...
       #
       #   @param route_type [Symbol, Increase::PendingTransaction::RouteType, nil] The type of the route this Pending Transaction came through.
       #
       #   @param source [Increase::PendingTransaction::Source] This is an object giving more details on the network-level event that caused the
-      #   ...
       #
       #   @param status [Symbol, Increase::PendingTransaction::Status] Whether the Pending Transaction has been confirmed and has an associated Transac
-      #   ...
       #
       #   @param type [Symbol, Increase::PendingTransaction::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
       # Transaction's currency. This will match the currency on the Pending
@@ -303,40 +294,28 @@ module Increase
         #   merchant's industry and location.
         #
         #   @param account_transfer_instruction [Increase::PendingTransaction::Source::AccountTransferInstruction, nil] An Account Transfer Instruction object. This field will be present in the JSON r
-        #   ...
         #
         #   @param ach_transfer_instruction [Increase::PendingTransaction::Source::ACHTransferInstruction, nil] An ACH Transfer Instruction object. This field will be present in the JSON respo
-        #   ...
         #
         #   @param card_authorization [Increase::PendingTransaction::Source::CardAuthorization, nil] A Card Authorization object. This field will be present in the JSON response if
-        #   ...
         #
         #   @param category [Symbol, Increase::PendingTransaction::Source::Category] The type of the resource. We may add additional possible values for this enum ov
-        #   ...
         #
         #   @param check_deposit_instruction [Increase::PendingTransaction::Source::CheckDepositInstruction, nil] A Check Deposit Instruction object. This field will be present in the JSON respo
-        #   ...
         #
         #   @param check_transfer_instruction [Increase::PendingTransaction::Source::CheckTransferInstruction, nil] A Check Transfer Instruction object. This field will be present in the JSON resp
-        #   ...
         #
         #   @param inbound_funds_hold [Increase::PendingTransaction::Source::InboundFundsHold, nil] An Inbound Funds Hold object. This field will be present in the JSON response if
-        #   ...
         #
         #   @param inbound_wire_transfer_reversal [Increase::PendingTransaction::Source::InboundWireTransferReversal, nil] An Inbound Wire Transfer Reversal object. This field will be present in the JSON
-        #   ...
         #
         #   @param other [Object, nil] If the category of this Transaction source is equal to `other`, this field will
-        #   ...
         #
         #   @param real_time_payments_transfer_instruction [Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction, nil] A Real-Time Payments Transfer Instruction object. This field will be present in
-        #   ...
         #
         #   @param swift_transfer_instruction [Increase::PendingTransaction::Source::SwiftTransferInstruction, nil] A Swift Transfer Instruction object. This field will be present in the JSON resp
-        #   ...
         #
         #   @param wire_transfer_instruction [Increase::PendingTransaction::Source::WireTransferInstruction, nil] A Wire Transfer Instruction object. This field will be present in the JSON respo
-        #   ...
 
         # @see Increase::PendingTransaction::Source#account_transfer_instruction
         class AccountTransferInstruction < Increase::Internal::Type::BaseModel
@@ -370,10 +349,8 @@ module Increase
           #   response if and only if `category` is equal to `account_transfer_instruction`.
           #
           #   @param amount [Integer] The pending amount in the minor unit of the transaction's currency. For dollars,
-          #   ...
           #
           #   @param currency [Symbol, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   ...
           #
           #   @param transfer_id [String] The identifier of the Account Transfer that led to this Pending Transaction.
 
@@ -627,30 +604,22 @@ module Increase
           #   @param id [String] The Card Authorization identifier.
           #
           #   @param actioner [Symbol, Increase::PendingTransaction::Source::CardAuthorization::Actioner] Whether this authorization was approved by Increase, the card network through st
-          #   ...
           #
           #   @param amount [Integer] The pending amount in the minor unit of the transaction's currency. For dollars,
-          #   ...
           #
           #   @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
           #
           #   @param currency [Symbol, Increase::PendingTransaction::Source::CardAuthorization::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param digital_wallet_token_id [String, nil] If the authorization was made via a Digital Wallet Token (such as an Apple Pay p
-          #   ...
           #
           #   @param direction [Symbol, Increase::PendingTransaction::Source::CardAuthorization::Direction] The direction describes the direction the funds will move, either from the cardh
-          #   ...
           #
           #   @param expires_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization w
-          #   ...
           #
           #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
-          #   ...
           #
           #   @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the car
-          #   ...
           #
           #   @param merchant_city [String, nil] The city the merchant resides in.
           #
@@ -659,7 +628,6 @@ module Increase
           #   @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
           #
           #   @param merchant_postal_code [String, nil] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ...
           #
           #   @param merchant_state [String, nil] The state the merchant resides in.
           #
@@ -668,29 +636,22 @@ module Increase
           #   @param network_identifiers [Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers] Network-specific identifiers for a specific request or transaction.
           #
           #   @param network_risk_score [Integer, nil] The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   ...
           #
           #   @param pending_transaction_id [String, nil] The identifier of the Pending Transaction associated with this Transaction.
           #
           #   @param physical_card_id [String, nil] If the authorization was made in-person with a physical card, the Physical Card
-          #   ...
           #
           #   @param presentment_amount [Integer] The pending amount in the minor unit of the transaction's presentment currency.
           #
           #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param processing_category [Symbol, Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory] The processing category describes the intent behind the authorization, such as w
-          #   ...
           #
           #   @param real_time_decision_id [String, nil] The identifier of the Real-Time Decision sent to approve or decline this transac
-          #   ...
           #
           #   @param terminal_id [String, nil] The terminal identifier (commonly abbreviated as TID) of the terminal the card i
-          #   ...
           #
           #   @param type [Symbol, Increase::PendingTransaction::Source::CardAuthorization::Type] A constant representing the object's type. For this resource it will always be `
-          #   ...
           #
           #   @param verification [Increase::PendingTransaction::Source::CardAuthorization::Verification] Fields related to verification of cardholder-provided values.
 
@@ -843,13 +804,10 @@ module Increase
               #   Fields specific to the `visa` network.
               #
               #   @param electronic_commerce_indicator [Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil] For electronic commerce transactions, this identifies the level of security used
-              #   ...
               #
               #   @param point_of_service_entry_mode [Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil] The method used to enter the cardholder's primary account number and card expira
-              #   ...
               #
               #   @param stand_in_processing_reason [Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil] Only present when `actioner: network`. Describes why a card authorization was ap
-              #   ...
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -997,13 +955,10 @@ module Increase
             #   Network-specific identifiers for a specific request or transaction.
             #
             #   @param retrieval_reference_number [String, nil] A life-cycle identifier used across e.g., an authorization and a reversal. Expec
-            #   ...
             #
             #   @param trace_number [String, nil] A counter used to verify an individual authorization. Expected to be unique per
-            #   ...
             #
             #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
-            #   ...
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -1078,10 +1033,8 @@ module Increase
             #   Fields related to verification of cardholder-provided values.
             #
             #   @param card_verification_code [Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode] Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   ...
             #
             #   @param cardholder_address [Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress] Cardholder address provided in the authorization request and the address on file
-            #   ...
 
             # @see Increase::PendingTransaction::Source::CardAuthorization::Verification#card_verification_code
             class CardVerificationCode < Increase::Internal::Type::BaseModel
@@ -1169,7 +1122,6 @@ module Increase
               #   @param actual_postal_code [String, nil] The postal code of the address on file for the cardholder.
               #
               #   @param provided_line1 [String, nil] The cardholder address line 1 provided for verification in the authorization req
-              #   ...
               #
               #   @param provided_postal_code [String, nil] The postal code provided for verification in the authorization request.
               #
@@ -1299,15 +1251,12 @@ module Increase
           #   @param amount [Integer] The pending amount in USD cents.
           #
           #   @param back_image_file_id [String, nil] The identifier of the File containing the image of the back of the check that wa
-          #   ...
           #
           #   @param check_deposit_id [String, nil] The identifier of the Check Deposit.
           #
           #   @param currency [Symbol, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param front_image_file_id [String] The identifier of the File containing the image of the front of the check that w
-          #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
@@ -1374,7 +1323,6 @@ module Increase
           #   @param amount [Integer] The transfer amount in USD cents.
           #
           #   @param currency [Symbol, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's curr
-          #   ...
           #
           #   @param transfer_id [String] The identifier of the Check Transfer that led to this Pending Transaction.
 
@@ -1487,16 +1435,12 @@ module Increase
           #   @param id [String] The Inbound Funds Hold identifier.
           #
           #   @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for ex
-          #   ...
           #
           #   @param automatically_releases_at [Time] When the hold will be released automatically. Certain conditions may cause it to
-          #   ...
           #
           #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold wa
-          #   ...
           #
           #   @param currency [Symbol, Increase::PendingTransaction::Source::InboundFundsHold::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's curre
-          #   ...
           #
           #   @param held_transaction_id [String, nil] The ID of the Transaction for which funds were held.
           #
@@ -1507,7 +1451,6 @@ module Increase
           #   @param status [Symbol, Increase::PendingTransaction::Source::InboundFundsHold::Status] The status of the hold.
           #
           #   @param type [Symbol, Increase::PendingTransaction::Source::InboundFundsHold::Type] A constant representing the object's type. For this resource it will always be `
-          #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           # currency.
@@ -1612,7 +1555,6 @@ module Increase
           #   @param amount [Integer] The transfer amount in USD cents.
           #
           #   @param transfer_id [String] The identifier of the Real-Time Payments Transfer that led to this Pending Trans
-          #   ...
         end
 
         # @see Increase::PendingTransaction::Source#swift_transfer_instruction
@@ -1678,7 +1620,6 @@ module Increase
           #   @param message_to_recipient [String] The message that will show on the recipient's bank statement.
           #
           #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the des
-          #   ...
           #
           #   @param transfer_id [String] The identifier of the Wire Transfer that led to this Pending Transaction.
         end

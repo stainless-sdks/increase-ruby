@@ -61,22 +61,18 @@ module Increase
       #   @param category [Symbol, Increase::ExportCreateParams::Category] The type of Export to create.
       #
       #   @param account_statement_ofx [Increase::ExportCreateParams::AccountStatementOfx] Options for the created export. Required if `category` is equal to `account_stat
-      #   ...
       #
       #   @param balance_csv [Increase::ExportCreateParams::BalanceCsv] Options for the created export. Required if `category` is equal to `balance_csv`
-      #   ...
       #
       #   @param bookkeeping_account_balance_csv [Increase::ExportCreateParams::BookkeepingAccountBalanceCsv] Options for the created export. Required if `category` is equal to
-      #   `bookkeeping\_ ...
+      #   `bookkeeping\_
       #
       #   @param entity_csv [Increase::ExportCreateParams::EntityCsv] Options for the created export. Required if `category` is equal to `entity_csv`.
-      #   ...
       #
       #   @param transaction_csv [Increase::ExportCreateParams::TransactionCsv] Options for the created export. Required if `category` is equal to
-      #   `transaction\_ ...
+      #   `transaction\_
       #
       #   @param vendor_csv [Object] Options for the created export. Required if `category` is equal to `vendor_csv`.
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -164,16 +160,12 @@ module Increase
           #   Filter results by time range on the `created_at` attribute.
           #
           #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-          #   ...
           #
           #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-          #   ...
           #
           #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-          #   ...
           #
           #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-          #   ...
         end
       end
 
@@ -243,16 +235,12 @@ module Increase
           #   Filter results by time range on the `created_at` attribute.
           #
           #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-          #   ...
           #
           #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-          #   ...
           #
           #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-          #   ...
           #
           #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-          #   ...
         end
       end
 
@@ -315,16 +303,12 @@ module Increase
           #   Filter results by time range on the `created_at` attribute.
           #
           #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-          #   ...
           #
           #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-          #   ...
           #
           #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-          #   ...
           #
           #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-          #   ...
         end
       end
 
@@ -360,7 +344,6 @@ module Increase
           #   Entity statuses to filter by.
           #
           #   @param in_ [Array<Symbol, Increase::ExportCreateParams::EntityCsv::Status::In>] Entity statuses to filter by. For GET requests, this should be encoded as a comm
-          #   ...
 
           module In
             extend Increase::Internal::Type::Enum
@@ -446,16 +429,12 @@ module Increase
           #   Filter results by time range on the `created_at` attribute.
           #
           #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-          #   ...
           #
           #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-          #   ...
           #
           #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-          #   ...
           #
           #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-          #   ...
         end
       end
     end

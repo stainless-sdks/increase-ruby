@@ -89,8 +89,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type credit_debit_indicator = :credit | :debit
 
       module CreditDebitIndicator

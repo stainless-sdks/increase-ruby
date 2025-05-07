@@ -34,7 +34,6 @@ module Increase
       #   @param entries [Array<Increase::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
       #
       #   @param date [Time] The date of the transaction. Optional if `transaction_id` is provided, in which
-      #   ...
       #
       #   @param transaction_id [String] The identifier of the Transaction related to this entry set, if any.
       #
@@ -62,7 +61,6 @@ module Increase
         #   @param account_id [String] The identifier for the Bookkeeping Account impacted by this entry.
         #
         #   @param amount [Integer] The entry amount in the minor unit of the account currency. For dollars, for exa
-        #   ...
       end
     end
   end

@@ -60,8 +60,6 @@ module Increase
         type: Increase::PhysicalCardProfile::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type creator = :increase | :user
 
       module Creator

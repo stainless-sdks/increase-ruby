@@ -109,8 +109,7 @@ module Increase
             resolve_at: Time,
             standard_entry_class_code:
               Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-            request_options:
-              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: Increase::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(

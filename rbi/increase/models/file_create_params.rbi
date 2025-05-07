@@ -30,8 +30,7 @@ module Increase
           file: T.any(Pathname, StringIO, IO, Increase::FilePart),
           purpose: Increase::FileCreateParams::Purpose::OrSymbol,
           description: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

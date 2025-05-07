@@ -23,16 +23,12 @@ module Increase
       # @param recipient_routing_number [String] The drawdown request's recipient's routing number.
       #
       # @param originator_address_line1 [String] The drawdown request originator's address line 1. This is only necessary if you'
-      # ...
       #
       # @param originator_address_line2 [String] The drawdown request originator's address line 2. This is only necessary if you'
-      # ...
       #
       # @param originator_address_line3 [String] The drawdown request originator's address line 3. This is only necessary if you'
-      # ...
       #
       # @param originator_name [String] The drawdown request originator's name. This is only necessary if you're request
-      # ...
       #
       # @param recipient_address_line1 [String] Line 1 of the drawdown request's recipient's address.
       #
@@ -86,10 +82,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::WireDrawdownRequestListParams::Status]
       #

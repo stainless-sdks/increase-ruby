@@ -17,18 +17,14 @@ module Increase
       # @param fulfillment_method [Symbol, Increase::CheckTransferCreateParams::FulfillmentMethod] Whether Increase will print and mail the check or if you will do it yourself.
       #
       # @param source_account_number_id [String] The identifier of the Account Number from which to send the transfer and print o
-      # ...
       #
       # @param check_number [String] The check number Increase should use for the check. This should not contain lead
-      # ...
       #
       # @param physical_check [Increase::CheckTransferCreateParams::PhysicalCheck] Details relating to the physical check that Increase will print and mail. This i
-      # ...
       #
       # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
       #
       # @param third_party [Increase::CheckTransferCreateParams::ThirdParty] Details relating to the custom fulfillment you will perform. This is required if
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -80,10 +76,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::CheckTransferListParams::Status]
       #

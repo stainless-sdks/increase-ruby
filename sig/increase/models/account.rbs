@@ -68,8 +68,6 @@ module Increase
         type: Increase::Account::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type bank = :core_bank | :first_internet_bank | :grasshopper_bank
 
       module Bank

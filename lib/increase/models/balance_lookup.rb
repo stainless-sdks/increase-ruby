@@ -41,13 +41,10 @@ module Increase
       #   @param account_id [String] The identifier for the account for which the balance was queried.
       #
       #   @param available_balance [Integer] The Account's available balance, representing the current balance less any open
-      #   ...
       #
       #   @param current_balance [Integer] The Account's current balance, representing the sum of all posted Transactions o
-      #   ...
       #
       #   @param type [Symbol, Increase::BalanceLookup::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `balance_lookup`.

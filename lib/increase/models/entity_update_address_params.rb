@@ -19,7 +19,6 @@ module Increase
       #   {Increase::Models::EntityUpdateAddressParams} for more details.
       #
       #   @param address [Increase::EntityUpdateAddressParams::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -67,7 +66,6 @@ module Increase
         #   @param line1 [String] The first line of the address. This is usually the street number and street.
         #
         #   @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   ...
         #
         #   @param zip [String] The ZIP code of the address.
         #

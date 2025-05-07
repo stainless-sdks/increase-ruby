@@ -35,8 +35,7 @@ module Increase
             T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
           date: Time,
           transaction_id: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

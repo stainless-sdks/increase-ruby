@@ -17,7 +17,6 @@ module Increase
       # @param inbound_ach [Increase::AccountNumberCreateParams::InboundACH] Options related to how this Account Number should handle inbound ACH transfers.
       #
       # @param inbound_checks [Increase::AccountNumberCreateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -67,7 +66,6 @@ module Increase
       # @param inbound_ach [Increase::AccountNumberUpdateParams::InboundACH] Options related to how this Account Number handles inbound ACH transfers.
       #
       # @param inbound_checks [Increase::AccountNumberUpdateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
-      # ...
       #
       # @param name [String] The name you choose for the Account Number.
       #
@@ -105,10 +103,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::AccountNumberListParams::Status]
       #

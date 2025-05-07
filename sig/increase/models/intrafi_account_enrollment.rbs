@@ -36,8 +36,6 @@ module Increase
         type: Increase::IntrafiAccountEnrollment::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type status =
         :pending_enrolling
         | :enrolled

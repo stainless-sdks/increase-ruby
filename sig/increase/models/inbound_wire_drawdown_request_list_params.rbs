@@ -21,8 +21,6 @@ module Increase
         ?limit: Integer,
         ?request_options: Increase::request_opts
       ) -> void
-
-      def to_hash: -> ::Hash[Symbol, top]
     end
   end
 end

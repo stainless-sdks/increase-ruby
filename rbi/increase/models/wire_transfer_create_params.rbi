@@ -132,8 +132,7 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

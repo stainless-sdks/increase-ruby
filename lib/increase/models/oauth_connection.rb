@@ -60,10 +60,8 @@ module Increase
       #   @param id [String] The OAuth Connection's identifier.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   ...
       #
       #   @param deleted_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   ...
       #
       #   @param group_id [String] The identifier of the Group that has authorized your OAuth application.
       #
@@ -72,7 +70,6 @@ module Increase
       #   @param status [Symbol, Increase::OAuthConnection::Status] Whether the connection is active.
       #
       #   @param type [Symbol, Increase::OAuthConnection::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # Whether the connection is active.
       #

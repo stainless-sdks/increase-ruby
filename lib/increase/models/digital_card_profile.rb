@@ -115,12 +115,10 @@ module Increase
       #   @param contact_website [String, nil] A website the user can visit to view and receive support for their card.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param description [String] A description you can use to identify the Card Profile.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param issuer_name [String] A user-facing description for whoever is issuing the card.
       #
@@ -129,7 +127,6 @@ module Increase
       #   @param text_color [Increase::DigitalCardProfile::TextColor] The Card's text color, specified as an RGB triple.
       #
       #   @param type [Symbol, Increase::DigitalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The status of the Card Profile.
       #

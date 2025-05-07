@@ -100,8 +100,6 @@ module Increase
         type: Increase::CheckTransfer::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type approval = { approved_at: Time, approved_by: String? }
 
       class Approval < Increase::Internal::Type::BaseModel
@@ -110,8 +108,6 @@ module Increase
         attr_accessor approved_by: String?
 
         def initialize: (approved_at: Time, approved_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type cancellation = { canceled_at: Time, canceled_by: String? }
@@ -122,8 +118,6 @@ module Increase
         attr_accessor canceled_by: String?
 
         def initialize: (canceled_at: Time, canceled_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type created_by =
@@ -150,16 +144,12 @@ module Increase
           user: Increase::CheckTransfer::CreatedBy::User?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type api_key = { description: String? }
 
         class APIKey < Increase::Internal::Type::BaseModel
           attr_accessor description: String?
 
           def initialize: (description: String?) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :api_key | :oauth_application | :user
@@ -185,8 +175,6 @@ module Increase
           attr_accessor name: String
 
           def initialize: (name: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type user = { email: String }
@@ -195,8 +183,6 @@ module Increase
           attr_accessor email: String
 
           def initialize: (email: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 
@@ -255,8 +241,6 @@ module Increase
           mailed_at: Time,
           tracking_number: String?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type physical_check =
@@ -303,8 +287,6 @@ module Increase
           tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type mailing_address =
           {
             city: String?,
@@ -336,8 +318,6 @@ module Increase
             postal_code: String?,
             state: String?
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type return_address =
@@ -371,8 +351,6 @@ module Increase
             postal_code: String?,
             state: String?
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type shipping_method = :usps_first_class | :fedex_overnight
@@ -408,8 +386,6 @@ module Increase
             created_at: Time,
             postal_code: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type category =
             :in_transit
@@ -509,8 +485,6 @@ module Increase
           type: Increase::CheckTransfer::StopPaymentRequest::type_
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type reason =
           :mail_delivery_failed
           | :rejected_by_increase
@@ -565,8 +539,6 @@ module Increase
           submitted_address: Increase::CheckTransfer::Submission::SubmittedAddress,
           submitted_at: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type address_correction_action =
           :none
@@ -623,8 +595,6 @@ module Increase
             state: String,
             zip: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 
@@ -634,8 +604,6 @@ module Increase
         attr_accessor recipient_name: String?
 
         def initialize: (recipient_name: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type type_ = :check_transfer

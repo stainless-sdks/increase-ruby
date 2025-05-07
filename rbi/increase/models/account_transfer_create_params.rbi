@@ -39,8 +39,7 @@ module Increase
           description: String,
           destination_account_id: String,
           require_approval: T::Boolean,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

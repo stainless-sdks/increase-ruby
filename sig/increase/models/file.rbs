@@ -44,8 +44,6 @@ module Increase
         type: Increase::File::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type direction = :to_increase | :from_increase
 
       module Direction

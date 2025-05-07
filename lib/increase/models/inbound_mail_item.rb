@@ -64,12 +64,10 @@ module Increase
       #   @param id [String] The Inbound Mail Item identifier.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      #   ...
       #
       #   @param file_id [String] The identifier for the File containing the scanned contents of the mail item.
       #
       #   @param lockbox_id [String, nil] The identifier for the Lockbox that received this mail item. For mail items that
-      #   ...
       #
       #   @param recipient_name [String, nil] The recipient name as written on the mail item.
       #
@@ -78,7 +76,6 @@ module Increase
       #   @param status [Symbol, Increase::InboundMailItem::Status] If the mail item has been processed.
       #
       #   @param type [Symbol, Increase::InboundMailItem::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # If the mail item has been rejected, why it was rejected.
       #

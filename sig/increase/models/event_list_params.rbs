@@ -47,8 +47,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type category = { in_: ::Array[Increase::EventListParams::Category::in_] }
 
       class Category < Increase::Internal::Type::BaseModel
@@ -61,8 +59,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::EventListParams::Category::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ =
           :"account.created"
@@ -443,8 +439,6 @@ module Increase
           ?on_or_after: Time,
           ?on_or_before: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

@@ -28,8 +28,6 @@ module Increase
         type: Increase::EntitySupplementalDocument::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type type_ = :entity_supplemental_document
 
       module Type

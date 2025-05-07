@@ -109,8 +109,7 @@ module Increase
             Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash,
           digital_wallet_token:
             Increase::RealTimeDecisionActionParams::DigitalWalletToken::OrHash,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

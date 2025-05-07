@@ -49,19 +49,14 @@ module Increase
       #   {Increase::Models::RealTimeDecisionActionParams} for more details.
       #
       #   @param card_authentication [Increase::RealTimeDecisionActionParams::CardAuthentication] If the Real-Time Decision relates to a 3DS card authentication attempt, this obj
-      #   ...
       #
       #   @param card_authentication_challenge [Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge] If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      #   ...
       #
       #   @param card_authorization [Increase::RealTimeDecisionActionParams::CardAuthorization] If the Real-Time Decision relates to a card authorization attempt, this object c
-      #   ...
       #
       #   @param digital_wallet_authentication [Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication] If the Real-Time Decision relates to a digital wallet authentication attempt, th
-      #   ...
       #
       #   @param digital_wallet_token [Increase::RealTimeDecisionActionParams::DigitalWalletToken] If the Real-Time Decision relates to a digital wallet token provisioning attempt
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -118,7 +113,6 @@ module Increase
         #   this object contains your response.
         #
         #   @param result [Symbol, Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result] Whether the card authentication challenge was successfully delivered to the card
-        #   ...
 
         # Whether the card authentication challenge was successfully delivered to the
         # cardholder.
@@ -163,7 +157,6 @@ module Increase
         #   @param decision [Symbol, Increase::RealTimeDecisionActionParams::CardAuthorization::Decision] Whether the card authorization should be approved or declined.
         #
         #   @param decline_reason [Symbol, Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason] The reason the card authorization was declined. This translates to a specific de
-        #   ...
 
         # Whether the card authorization should be approved or declined.
         #
@@ -273,7 +266,6 @@ module Increase
           #   @param email [String] The email address that was used to verify the cardholder via one-time passcode.
           #
           #   @param phone [String] The phone number that was used to verify the cardholder via one-time passcode ov
-          #   ...
         end
       end
 
@@ -300,10 +292,8 @@ module Increase
         #   attempt, this object contains your response to the attempt.
         #
         #   @param approval [Increase::RealTimeDecisionActionParams::DigitalWalletToken::Approval] If your application approves the provisioning attempt, this contains metadata ab
-        #   ...
         #
         #   @param decline [Increase::RealTimeDecisionActionParams::DigitalWalletToken::Decline] If your application declines the provisioning attempt, this contains details abo
-        #   ...
 
         # @see Increase::RealTimeDecisionActionParams::DigitalWalletToken#approval
         class Approval < Increase::Internal::Type::BaseModel
@@ -330,10 +320,8 @@ module Increase
           #   about the digital wallet token that will be generated.
           #
           #   @param email [String] An email address that can be used to verify the cardholder via one-time passcode
-          #   ...
           #
           #   @param phone [String] A phone number that can be used to verify the cardholder via one-time passcode o
-          #   ...
         end
 
         # @see Increase::RealTimeDecisionActionParams::DigitalWalletToken#decline
@@ -354,7 +342,6 @@ module Increase
           #   about the decline.
           #
           #   @param reason [String] Why the tokenization attempt was declined. This is for logging purposes only and
-          #   ...
         end
       end
     end

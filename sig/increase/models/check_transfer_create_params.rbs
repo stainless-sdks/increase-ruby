@@ -57,8 +57,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type fulfillment_method = :physical_check | :third_party
 
       module FulfillmentMethod
@@ -127,8 +125,6 @@ module Increase
           ?signature_text: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type mailing_address =
           {
             city: String,
@@ -158,8 +154,6 @@ module Increase
             state: String,
             ?line2: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type return_address =
@@ -195,8 +189,6 @@ module Increase
             state: String,
             ?line2: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type shipping_method = :usps_first_class | :fedex_overnight
@@ -222,8 +214,6 @@ module Increase
         def recipient_name=: (String) -> String
 
         def initialize: (?recipient_name: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

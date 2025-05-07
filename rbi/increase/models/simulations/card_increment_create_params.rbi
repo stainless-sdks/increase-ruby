@@ -33,8 +33,7 @@ module Increase
             amount: Integer,
             card_payment_id: String,
             event_subscription_id: String,
-            request_options:
-              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: Increase::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(

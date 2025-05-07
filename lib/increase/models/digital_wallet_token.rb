@@ -75,7 +75,6 @@ module Increase
       #   @param cardholder [Increase::DigitalWalletToken::Cardholder] The cardholder information given when the Digital Wallet Token was created.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param device [Increase::DigitalWalletToken::Device] The device that was used to create the Digital Wallet Token.
       #
@@ -84,7 +83,6 @@ module Increase
       #   @param token_requestor [Symbol, Increase::DigitalWalletToken::TokenRequestor] The digital wallet app being used.
       #
       #   @param type [Symbol, Increase::DigitalWalletToken::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
       #
       #   @param updates [Array<Increase::DigitalWalletToken::Update>] Updates to the Digital Wallet Token.
 
@@ -255,7 +253,6 @@ module Increase
         #   @param status [Symbol, Increase::DigitalWalletToken::Update::Status] The status the update changed this Digital Wallet Token to.
         #
         #   @param timestamp [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
 
         # The status the update changed this Digital Wallet Token to.
         #

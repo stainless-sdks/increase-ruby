@@ -58,12 +58,10 @@ module Increase
       #   @param associated_object_type [String] The type of the object that generated this Event.
       #
       #   @param category [Symbol, Increase::Event::Category] The category of the Event. We may add additional possible values for this enum o
-      #   ...
       #
       #   @param created_at [Time] The time the Event was created.
       #
       #   @param type [Symbol, Increase::Event::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The category of the Event. We may add additional possible values for this enum
       # over time; your application should be able to handle such additions gracefully.

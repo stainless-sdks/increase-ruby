@@ -49,7 +49,6 @@ module Increase
       #   @param entity_id [String] Filter Documents to ones belonging to the specified Entity.
       #
       #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -69,7 +68,6 @@ module Increase
         #   {Increase::DocumentListParams::Category} for more details.
         #
         #   @param in_ [Array<Symbol, Increase::DocumentListParams::Category::In>] Filter Documents for those with the specified category or categories. For GET re
-        #   ...
 
         module In
           extend Increase::Internal::Type::Enum
@@ -125,16 +123,12 @@ module Increase
         #   {Increase::DocumentListParams::CreatedAt} for more details.
         #
         #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
         #
         #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
         #
         #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
         #
         #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
       end
     end
   end

@@ -48,8 +48,6 @@ module Increase
         type: Increase::DeclinedTransaction::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
       module Currency
@@ -133,8 +131,6 @@ module Increase
           wire_decline: Increase::DeclinedTransaction::Source::WireDecline?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type ach_decline =
           {
             id: String,
@@ -190,8 +186,6 @@ module Increase
             trace_number: String,
             type: Increase::DeclinedTransaction::Source::ACHDecline::type_
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type reason =
             :ach_route_canceled
@@ -396,8 +390,6 @@ module Increase
             verification: Increase::DeclinedTransaction::Source::CardDecline::Verification
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type actioner = :user | :increase | :network
 
           module Actioner
@@ -471,8 +463,6 @@ module Increase
               visa: Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa?
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type category = :visa
 
             module Category
@@ -503,8 +493,6 @@ module Increase
                 point_of_service_entry_mode: Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
                 stand_in_processing_reason: Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type electronic_commerce_indicator =
                 :mail_phone_order
@@ -651,8 +639,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type processing_category =
@@ -815,8 +801,6 @@ module Increase
               cardholder_address: Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type card_verification_code =
               {
                 result: Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result
@@ -828,8 +812,6 @@ module Increase
               def initialize: (
                 result: Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result = :not_checked | :match | :no_match
 
@@ -876,8 +858,6 @@ module Increase
                 provided_postal_code: String?,
                 result: Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result =
                 :not_checked
@@ -985,8 +965,6 @@ module Increase
             inbound_check_deposit_id: String?,
             reason: Increase::DeclinedTransaction::Source::CheckDecline::reason
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type reason =
             :ach_route_disabled
@@ -1096,8 +1074,6 @@ module Increase
             reason: Increase::DeclinedTransaction::Source::CheckDepositRejection::reason,
             rejected_at: Time
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -1226,8 +1202,6 @@ module Increase
             transfer_id: String
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
           module Currency
@@ -1302,8 +1276,6 @@ module Increase
             inbound_wire_transfer_id: String,
             reason: Increase::DeclinedTransaction::Source::WireDecline::reason
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type reason =
             :account_number_canceled

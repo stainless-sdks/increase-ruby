@@ -20,7 +20,6 @@ module Increase
       #   {Increase::Models::InboundACHTransferDeclineParams} for more details.
       #
       #   @param reason [Symbol, Increase::InboundACHTransferDeclineParams::Reason] The reason why this transfer will be returned. If this parameter is unset, the r
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 

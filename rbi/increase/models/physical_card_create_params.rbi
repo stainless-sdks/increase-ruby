@@ -48,8 +48,7 @@ module Increase
           cardholder: Increase::PhysicalCardCreateParams::Cardholder::OrHash,
           shipment: Increase::PhysicalCardCreateParams::Shipment::OrHash,
           physical_card_profile_id: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

@@ -31,8 +31,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type cardholder = { first_name: String, last_name: String }
 
       class Cardholder < Increase::Internal::Type::BaseModel
@@ -41,8 +39,6 @@ module Increase
         attr_accessor last_name: String
 
         def initialize: (first_name: String, last_name: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type shipment =
@@ -60,8 +56,6 @@ module Increase
           address: Increase::PhysicalCardCreateParams::Shipment::Address,
           method_: Increase::PhysicalCardCreateParams::Shipment::method_
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type address =
           {
@@ -108,8 +102,6 @@ module Increase
             ?line3: String,
             ?phone_number: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type method_ = :usps | :fedex_priority_overnight | :fedex_2_day

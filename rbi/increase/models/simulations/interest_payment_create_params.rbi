@@ -46,8 +46,7 @@ module Increase
             accrued_on_account_id: String,
             period_end: Time,
             period_start: Time,
-            request_options:
-              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+            request_options: Increase::RequestOptions::OrHash
           ).returns(T.attached_class)
         end
         def self.new(

@@ -111,8 +111,6 @@ module Increase
           ?sender_reference: String,
           ?request_options: Increase::request_opts
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

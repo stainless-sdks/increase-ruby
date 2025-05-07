@@ -17,10 +17,8 @@ module Increase
       # @param description [String] The description you choose to give the card.
       #
       # @param digital_wallet [Increase::CardCreateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
-      # ...
       #
       # @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -66,10 +64,8 @@ module Increase
       # @param description [String] The description you choose to give the card.
       #
       # @param digital_wallet [Increase::CardUpdateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card cre
-      # ...
       #
       # @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      # ...
       #
       # @param status [Symbol, Increase::CardUpdateParams::Status] The status to update the Card with.
       #
@@ -103,10 +99,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::CardListParams::Status]
       #

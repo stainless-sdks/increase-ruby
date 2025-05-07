@@ -121,12 +121,10 @@ module Increase
       #   @param confirmation [Increase::InboundRealTimePaymentsTransfer::Confirmation, nil] If your transfer is confirmed, this will contain details of the confirmation.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
       #
       #   @param currency [Symbol, Increase::InboundRealTimePaymentsTransfer::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's cu
-      #   ...
       #
       #   @param debtor_account_number [String] The account number of the account that sent the transfer.
       #
@@ -143,7 +141,6 @@ module Increase
       #   @param transaction_identification [String] The Real-Time Payments network identification of the transfer.
       #
       #   @param type [Symbol, Increase::InboundRealTimePaymentsTransfer::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::InboundRealTimePaymentsTransfer#confirmation
       class Confirmation < Increase::Internal::Type::BaseModel

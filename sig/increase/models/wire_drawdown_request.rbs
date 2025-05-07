@@ -92,8 +92,6 @@ module Increase
         type: Increase::WireDrawdownRequest::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type status =
         :pending_submission | :pending_response | :fulfilled | :refused
 
@@ -121,8 +119,6 @@ module Increase
         attr_accessor input_message_accountability_data: String
 
         def initialize: (input_message_accountability_data: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type type_ = :wire_drawdown_request

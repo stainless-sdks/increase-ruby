@@ -198,22 +198,18 @@ module Increase
       #   @param automatically_resolves_at [Time] The time at which the transfer will be automatically resolved.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param decline [Increase::InboundACHTransfer::Decline, nil] If your transfer is declined, this will contain details of the decline.
       #
       #   @param direction [Symbol, Increase::InboundACHTransfer::Direction] The direction of the transfer.
       #
       #   @param effective_date [Date] The effective date of the transfer. This is sent by the sending bank and is a fa
-      #   ...
       #
       #   @param expected_settlement_schedule [Symbol, Increase::InboundACHTransfer::ExpectedSettlementSchedule] The settlement schedule the transfer is expected to follow.
       #
       #   @param international_addenda [Increase::InboundACHTransfer::InternationalAddenda, nil] If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will co
-      #   ...
       #
       #   @param notification_of_change [Increase::InboundACHTransfer::NotificationOfChange, nil] If you initiate a notification of change in response to the transfer, this will
-      #   ...
       #
       #   @param originator_company_descriptive_date [String, nil] The descriptive date of the transfer.
       #
@@ -226,7 +222,6 @@ module Increase
       #   @param originator_company_name [String] The name of the company that initiated the transfer.
       #
       #   @param originator_routing_number [String] The American Banking Association (ABA) routing number of the bank originating th
-      #   ...
       #
       #   @param receiver_id_number [String, nil] The id of the receiver of the transfer.
       #
@@ -237,12 +232,10 @@ module Increase
       #   @param status [Symbol, Increase::InboundACHTransfer::Status] The status of the transfer.
       #
       #   @param trace_number [String] A 15 digit number set by the sending bank and transmitted to the receiving bank.
-      #   ...
       #
       #   @param transfer_return [Increase::InboundACHTransfer::TransferReturn, nil] If your transfer is returned, this will contain details of the return.
       #
       #   @param type [Symbol, Increase::InboundACHTransfer::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::InboundACHTransfer#acceptance
       class Acceptance < Increase::Internal::Type::BaseModel
@@ -695,48 +688,36 @@ module Increase
         #   contain fields pertaining to the International ACH Transaction.
         #
         #   @param destination_country_code [String] The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 countr
-        #   ...
         #
         #   @param destination_currency_code [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the des
-        #   ...
         #
         #   @param foreign_exchange_indicator [Symbol, Increase::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator] A description of how the foreign exchange rate was calculated.
         #
         #   @param foreign_exchange_reference [String, nil] Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a r
-        #   ...
         #
         #   @param foreign_exchange_reference_indicator [Symbol, Increase::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator] An instruction of how to interpret the `foreign_exchange_reference` field for th
-        #   ...
         #
         #   @param foreign_payment_amount [Integer] The amount in the minor unit of the foreign payment currency. For dollars, for e
-        #   ...
         #
         #   @param foreign_trace_number [String, nil] A reference number in the foreign banking infrastructure.
         #
         #   @param international_transaction_type_code [Symbol, Increase::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode] The type of transfer. Set by the originator.
         #
         #   @param originating_currency_code [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the ori
-        #   ...
         #
         #   @param originating_depository_financial_institution_branch_country [String] The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 countr
-        #   ...
         #
         #   @param originating_depository_financial_institution_id [String] An identifier for the originating bank. One of an International Bank Account Num
-        #   ...
         #
         #   @param originating_depository_financial_institution_id_qualifier [Symbol, Increase::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier] An instruction of how to interpret the `originating_depository_financial_institu
-        #   ...
         #
         #   @param originating_depository_financial_institution_name [String] The name of the originating bank. Sometimes this will refer to an American bank
-        #   ...
         #
         #   @param originator_city [String] A portion of the originator address. This may be incomplete.
         #
         #   @param originator_country [String] A portion of the originator address. The [ISO 3166](https://en.wikipedia.org/wik
-        #   ...
         #
         #   @param originator_identification [String] An identifier for the originating company. This is generally stable across multi
-        #   ...
         #
         #   @param originator_name [String] Either the name of the originator or an intermediary money transmitter.
         #
@@ -753,7 +734,6 @@ module Increase
         #   @param receiver_city [String] A portion of the receiver address. This may be incomplete.
         #
         #   @param receiver_country [String] A portion of the receiver address. The [ISO 3166](https://en.wikipedia.org/wiki/
-        #   ...
         #
         #   @param receiver_identification_number [String, nil] An identification number the originator uses for the receiver.
         #
@@ -766,13 +746,10 @@ module Increase
         #   @param receiving_company_or_individual_name [String] The name of the receiver of the transfer. This is not verified by Increase.
         #
         #   @param receiving_depository_financial_institution_country [String] The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 countr
-        #   ...
         #
         #   @param receiving_depository_financial_institution_id [String] An identifier for the receiving bank. One of an International Bank Account Numbe
-        #   ...
         #
         #   @param receiving_depository_financial_institution_id_qualifier [Symbol, Increase::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier] An instruction of how to interpret the `receiving_depository_financial_instituti
-        #   ...
         #
         #   @param receiving_depository_financial_institution_name [String] The name of the receiving bank, as set by the sending financial institution.
 

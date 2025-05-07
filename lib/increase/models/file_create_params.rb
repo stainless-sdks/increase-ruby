@@ -32,7 +32,6 @@ module Increase
       #   {Increase::Models::FileCreateParams} for more details.
       #
       #   @param file [Pathname, StringIO, IO, Increase::FilePart] The file contents. This should follow the specifications of [RFC 7578](https://d
-      #   ...
       #
       #   @param purpose [Symbol, Increase::FileCreateParams::Purpose] What the File will be used for in Increase's systems.
       #

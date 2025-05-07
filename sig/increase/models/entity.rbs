@@ -68,8 +68,6 @@ module Increase
         type: Increase::Entity::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type corporation =
         {
           address: Increase::Entity::Corporation::Address,
@@ -106,8 +104,6 @@ module Increase
           website: String?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -135,8 +131,6 @@ module Increase
             state: String,
             zip: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type beneficial_owner =
@@ -163,8 +157,6 @@ module Increase
             prong: Increase::Entity::Corporation::BeneficialOwner::prong
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type individual =
             {
               address: Increase::Entity::Corporation::BeneficialOwner::Individual::Address,
@@ -188,8 +180,6 @@ module Increase
               identification: Increase::Entity::Corporation::BeneficialOwner::Individual::Identification,
               name: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type address =
               {
@@ -222,8 +212,6 @@ module Increase
                 state: String?,
                 zip: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type identification =
@@ -241,8 +229,6 @@ module Increase
                 method_: Increase::Entity::Corporation::BeneficialOwner::Individual::Identification::method_,
                 number_last4: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type method_ =
                 :social_security_number
@@ -322,8 +308,6 @@ module Increase
           website: String?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -351,8 +335,6 @@ module Increase
             state: String,
             zip: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type authorized_person = { authorized_person_id: String, name: String }
@@ -363,8 +345,6 @@ module Increase
           attr_accessor name: String
 
           def initialize: (authorized_person_id: String, name: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :municipality
@@ -395,8 +375,6 @@ module Increase
           name: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type individual =
           {
             address: Increase::Entity::Joint::Individual::Address,
@@ -420,8 +398,6 @@ module Increase
             identification: Increase::Entity::Joint::Individual::Identification,
             name: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type address =
             {
@@ -450,8 +426,6 @@ module Increase
               state: String,
               zip: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type identification =
@@ -469,8 +443,6 @@ module Increase
               method_: Increase::Entity::Joint::Individual::Identification::method_,
               number_last4: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type method_ =
               :social_security_number
@@ -527,8 +499,6 @@ module Increase
           name: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -556,8 +526,6 @@ module Increase
             state: String,
             zip: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type identification =
@@ -575,8 +543,6 @@ module Increase
             method_: Increase::Entity::NaturalPerson::Identification::method_,
             number_last4: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type method_ =
             :social_security_number
@@ -665,8 +631,6 @@ module Increase
           vendor: Increase::Entity::ThirdPartyVerification::vendor
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type vendor = :alloy | :middesk
 
         module Vendor
@@ -722,8 +686,6 @@ module Increase
           trustees: ::Array[Increase::Entity::Trust::Trustee]
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type address =
           {
             city: String,
@@ -751,8 +713,6 @@ module Increase
             state: String,
             zip: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :revocable | :irrevocable
@@ -793,8 +753,6 @@ module Increase
             name: String
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type address =
             {
               city: String,
@@ -822,8 +780,6 @@ module Increase
               state: String,
               zip: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type identification =
@@ -841,8 +797,6 @@ module Increase
               method_: Increase::Entity::Trust::Grantor::Identification::method_,
               number_last4: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type method_ =
               :social_security_number
@@ -890,8 +844,6 @@ module Increase
             structure: Increase::Entity::Trust::Trustee::structure
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type individual =
             {
               address: Increase::Entity::Trust::Trustee::Individual::Address,
@@ -915,8 +867,6 @@ module Increase
               identification: Increase::Entity::Trust::Trustee::Individual::Identification,
               name: String
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type address =
               {
@@ -945,8 +895,6 @@ module Increase
                 state: String,
                 zip: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
             end
 
             type identification =
@@ -964,8 +912,6 @@ module Increase
                 method_: Increase::Entity::Trust::Trustee::Individual::Identification::method_,
                 number_last4: String
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type method_ =
                 :social_security_number

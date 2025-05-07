@@ -116,8 +116,6 @@ module Increase
         type: Increase::InboundACHTransfer::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type acceptance = { accepted_at: Time, transaction_id: String }
 
       class Acceptance < Increase::Internal::Type::BaseModel
@@ -126,8 +124,6 @@ module Increase
         attr_accessor transaction_id: String
 
         def initialize: (accepted_at: Time, transaction_id: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type addenda =
@@ -145,8 +141,6 @@ module Increase
           category: Increase::InboundACHTransfer::Addenda::category,
           freeform: Increase::InboundACHTransfer::Addenda::Freeform?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type category = :freeform
 
@@ -171,16 +165,12 @@ module Increase
             entries: ::Array[Increase::InboundACHTransfer::Addenda::Freeform::Entry]
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type entry = { payment_related_information: String }
 
           class Entry < Increase::Internal::Type::BaseModel
             attr_accessor payment_related_information: String
 
             def initialize: (payment_related_information: String) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
         end
       end
@@ -204,8 +194,6 @@ module Increase
           declined_transaction_id: String,
           reason: Increase::InboundACHTransfer::Decline::reason
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type reason =
           :ach_route_canceled
@@ -452,8 +440,6 @@ module Increase
           receiving_depository_financial_institution_name: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type foreign_exchange_indicator =
           :fixed_to_variable | :variable_to_fixed | :fixed_to_fixed
 
@@ -627,8 +613,6 @@ module Increase
           updated_account_number: String?,
           updated_routing_number: String?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type standard_entry_class_code =
@@ -742,8 +726,6 @@ module Increase
           returned_at: Time,
           transaction_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type reason =
           :insufficient_funds

@@ -43,7 +43,6 @@ module Increase
       #   @param inbound_ach [Increase::AccountNumberCreateParams::InboundACH] Options related to how this Account Number should handle inbound ACH transfers.
       #
       #   @param inbound_checks [Increase::AccountNumberCreateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
-      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
@@ -63,7 +62,6 @@ module Increase
         #   Options related to how this Account Number should handle inbound ACH transfers.
         #
         #   @param debit_status [Symbol, Increase::AccountNumberCreateParams::InboundACH::DebitStatus] Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   ...
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active. If
@@ -100,7 +98,6 @@ module Increase
         #   withdrawals.
         #
         #   @param status [Symbol, Increase::AccountNumberCreateParams::InboundChecks::Status] How Increase should process checks with this account number printed on them. If
-        #   ...
 
         # How Increase should process checks with this account number printed on them. If
         # you do not specify this field, the default is `check_transfers_only`.

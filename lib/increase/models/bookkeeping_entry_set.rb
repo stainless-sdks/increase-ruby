@@ -67,12 +67,10 @@ module Increase
       #   @param entries [Array<Increase::BookkeepingEntrySet::Entry>] The entries.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param transaction_id [String, nil] The transaction identifier, if any.
       #
       #   @param type [Symbol, Increase::BookkeepingEntrySet::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       class Entry < Increase::Internal::Type::BaseModel
         # @!attribute id

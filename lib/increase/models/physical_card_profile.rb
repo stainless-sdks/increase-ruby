@@ -104,7 +104,6 @@ module Increase
       #   @param contact_phone [String, nil] A phone number the user can contact to receive support for their card.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param creator [Symbol, Increase::PhysicalCardProfile::Creator] The creator of this Physical Card Profile.
       #
@@ -113,17 +112,14 @@ module Increase
       #   @param front_image_file_id [String, nil] The identifier of the File containing the physical card's front image.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param is_default [Boolean] Whether this Physical Card Profile is the default for all cards in its Increase
-      #   ...
       #
       #   @param program_id [String] The identifier for the Program this Physical Card Profile belongs to.
       #
       #   @param status [Symbol, Increase::PhysicalCardProfile::Status] The status of the Physical Card Profile.
       #
       #   @param type [Symbol, Increase::PhysicalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The creator of this Physical Card Profile.
       #

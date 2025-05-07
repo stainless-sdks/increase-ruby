@@ -48,8 +48,6 @@ module Increase
         type: Increase::Transaction::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
       module Currency
@@ -225,8 +223,6 @@ module Increase
           wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type account_transfer_intention =
           {
             amount: Integer,
@@ -258,8 +254,6 @@ module Increase
             source_account_id: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -315,8 +309,6 @@ module Increase
             statement_descriptor: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type ach_transfer_rejection = { transfer_id: String }
@@ -325,8 +317,6 @@ module Increase
           attr_accessor transfer_id: String
 
           def initialize: (transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type ach_transfer_return =
@@ -360,8 +350,6 @@ module Increase
             transaction_id: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type return_reason_code =
             :insufficient_fund
@@ -667,8 +655,6 @@ module Increase
             card_dispute_id: String,
             transaction_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type card_dispute_loss =
@@ -694,8 +680,6 @@ module Increase
             lost_at: Time,
             transaction_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type card_refund =
@@ -782,8 +766,6 @@ module Increase
             type: Increase::Transaction::Source::CardRefund::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type cashback =
             {
               amount: String,
@@ -799,8 +781,6 @@ module Increase
               amount: String,
               currency: Increase::Transaction::Source::CardRefund::Cashback::currency
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -875,8 +855,6 @@ module Increase
               currency: Increase::Transaction::Source::CardRefund::Interchange::currency
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
             module Currency
@@ -923,8 +901,6 @@ module Increase
               acquirer_reference_number: String,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type purchase_details =
@@ -974,8 +950,6 @@ module Increase
               purchase_identifier_format: Increase::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format?,
               travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type car_rental =
               {
@@ -1048,8 +1022,6 @@ module Increase
                 weekly_rental_rate_amount: Integer?,
                 weekly_rental_rate_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -1170,8 +1142,6 @@ module Increase
                 total_tax_amount: Integer?,
                 total_tax_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -1308,8 +1278,6 @@ module Increase
                 trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
               ) -> void
 
-              def to_hash: -> ::Hash[Symbol, top]
-
               type ancillary =
                 {
                   connected_ticket_document_number: String?,
@@ -1337,8 +1305,6 @@ module Increase
                   services: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
 
                 type credit_reason_indicator =
                   :no_credit
@@ -1379,8 +1345,6 @@ module Increase
                     category: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
                     sub_category: String?
                   ) -> void
-
-                  def to_hash: -> ::Hash[Symbol, top]
 
                   type category =
                     :none
@@ -1585,8 +1549,6 @@ module Increase
                   stop_over_code: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
                 ) -> void
 
-                def to_hash: -> ::Hash[Symbol, top]
-
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
@@ -1646,8 +1608,6 @@ module Increase
             period_start: Time,
             transacted_on_account_id: String?
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -1768,8 +1728,6 @@ module Increase
             type: Increase::Transaction::Source::CardSettlement::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type cashback =
             {
               amount: String,
@@ -1785,8 +1743,6 @@ module Increase
               amount: String,
               currency: Increase::Transaction::Source::CardSettlement::Cashback::currency
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -1861,8 +1817,6 @@ module Increase
               currency: Increase::Transaction::Source::CardSettlement::Interchange::currency
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
             module Currency
@@ -1909,8 +1863,6 @@ module Increase
               acquirer_reference_number: String,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type purchase_details =
@@ -1960,8 +1912,6 @@ module Increase
               purchase_identifier_format: Increase::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format?,
               travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type car_rental =
               {
@@ -2034,8 +1984,6 @@ module Increase
                 weekly_rental_rate_amount: Integer?,
                 weekly_rental_rate_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -2156,8 +2104,6 @@ module Increase
                 total_tax_amount: Integer?,
                 total_tax_currency: String?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type extra_charges =
                 :no_extra_charge
@@ -2294,8 +2240,6 @@ module Increase
                 trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
               ) -> void
 
-              def to_hash: -> ::Hash[Symbol, top]
-
               type ancillary =
                 {
                   connected_ticket_document_number: String?,
@@ -2323,8 +2267,6 @@ module Increase
                   services: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 ) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
 
                 type credit_reason_indicator =
                   :no_credit
@@ -2365,8 +2307,6 @@ module Increase
                     category: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
                     sub_category: String?
                   ) -> void
-
-                  def to_hash: -> ::Hash[Symbol, top]
 
                   type category =
                     :none
@@ -2571,8 +2511,6 @@ module Increase
                   stop_over_code: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
                 ) -> void
 
-                def to_hash: -> ::Hash[Symbol, top]
-
                 type stop_over_code =
                   :none | :stop_over_allowed | :stop_over_not_allowed
 
@@ -2632,8 +2570,6 @@ module Increase
             period_end: Time,
             period_start: Time
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -2826,8 +2762,6 @@ module Increase
             serial_number: String?
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
           module Currency
@@ -2886,8 +2820,6 @@ module Increase
             returned_at: Time,
             transaction_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3068,8 +3000,6 @@ module Increase
             type: Increase::Transaction::Source::CheckTransferDeposit::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type type_ = :check_transfer_deposit
 
           module Type
@@ -3104,8 +3034,6 @@ module Increase
             fee_period_start: Date,
             program_id: String?
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3186,8 +3114,6 @@ module Increase
             transfer_id: String
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type addenda =
             {
               category: Increase::Transaction::Source::InboundACHTransfer::Addenda::category,
@@ -3203,8 +3129,6 @@ module Increase
               category: Increase::Transaction::Source::InboundACHTransfer::Addenda::category,
               freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type category = :freeform
 
@@ -3229,16 +3153,12 @@ module Increase
                 entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
               ) -> void
 
-              def to_hash: -> ::Hash[Symbol, top]
-
               type entry = { payment_related_information: String }
 
               class Entry < Increase::Internal::Type::BaseModel
                 attr_accessor payment_related_information: String
 
                 def initialize: (payment_related_information: String) -> void
-
-                def to_hash: -> ::Hash[Symbol, top]
               end
             end
           end
@@ -3251,8 +3171,6 @@ module Increase
           attr_accessor inbound_ach_transfer_id: String
 
           def initialize: (inbound_ach_transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type inbound_check_adjustment =
@@ -3274,8 +3192,6 @@ module Increase
             amount: Integer,
             reason: Increase::Transaction::Source::InboundCheckAdjustment::reason
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type reason =
             :late_return
@@ -3314,8 +3230,6 @@ module Increase
             inbound_check_deposit_id: String,
             transfer_id: String?
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type inbound_real_time_payments_transfer_confirmation =
@@ -3361,8 +3275,6 @@ module Increase
             transaction_identification: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3438,8 +3350,6 @@ module Increase
             transaction_identification: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3575,8 +3485,6 @@ module Increase
             transaction_id: String,
             wire_transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type inbound_wire_transfer =
@@ -3662,8 +3570,6 @@ module Increase
             originator_to_beneficiary_information_line4: String?,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type inbound_wire_transfer_reversal =
@@ -3673,8 +3579,6 @@ module Increase
           attr_accessor inbound_wire_transfer_id: String
 
           def initialize: (inbound_wire_transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type interest_payment =
@@ -3704,8 +3608,6 @@ module Increase
             period_end: Time,
             period_start: Time
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3753,8 +3655,6 @@ module Increase
             currency: Increase::Transaction::Source::InternalSource::currency,
             reason: Increase::Transaction::Source::InternalSource::reason
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -3878,8 +3778,6 @@ module Increase
             remittance_information: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type sample_funds = { originator: String }
@@ -3888,8 +3786,6 @@ module Increase
           attr_accessor originator: String
 
           def initialize: (originator: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type swift_transfer_intention = { transfer_id: String }
@@ -3898,8 +3794,6 @@ module Increase
           attr_accessor transfer_id: String
 
           def initialize: (transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type wire_transfer_intention =
@@ -3929,8 +3823,6 @@ module Increase
             routing_number: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 

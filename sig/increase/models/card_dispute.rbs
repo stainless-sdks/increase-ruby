@@ -56,8 +56,6 @@ module Increase
         win: Increase::CardDispute::Win?
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type acceptance =
         { accepted_at: Time, card_dispute_id: String, transaction_id: String }
 
@@ -73,8 +71,6 @@ module Increase
           card_dispute_id: String,
           transaction_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type loss =
@@ -100,8 +96,6 @@ module Increase
           lost_at: Time,
           transaction_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type rejection =
@@ -119,8 +113,6 @@ module Increase
           explanation: String,
           rejected_at: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type status =
@@ -173,8 +165,6 @@ module Increase
         attr_accessor won_at: Time
 
         def initialize: (card_dispute_id: String, won_at: Time) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
     end
   end

@@ -87,26 +87,20 @@ module Increase
       #   @param account_id [String] The identifier for the Account the Declined Transaction belongs to.
       #
       #   @param amount [Integer] The Declined Transaction amount in the minor unit of its currency. For dollars,
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transac
-      #   ...
       #
       #   @param currency [Symbol, Increase::DeclinedTransaction::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Tra
-      #   ...
       #
       #   @param description [String] This is the description the vendor provides.
       #
       #   @param route_id [String, nil] The identifier for the route this Declined Transaction came through. Routes are
-      #   ...
       #
       #   @param route_type [Symbol, Increase::DeclinedTransaction::RouteType, nil] The type of the route this Declined Transaction came through.
       #
       #   @param source [Increase::DeclinedTransaction::Source] This is an object giving more details on the network-level event that caused the
-      #   ...
       #
       #   @param type [Symbol, Increase::DeclinedTransaction::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       # Transaction's currency. This will match the currency on the Declined
@@ -231,28 +225,20 @@ module Increase
         #   as deprecated and will be removed in the future.
         #
         #   @param ach_decline [Increase::DeclinedTransaction::Source::ACHDecline, nil] An ACH Decline object. This field will be present in the JSON response if and on
-        #   ...
         #
         #   @param card_decline [Increase::DeclinedTransaction::Source::CardDecline, nil] A Card Decline object. This field will be present in the JSON response if and on
-        #   ...
         #
         #   @param category [Symbol, Increase::DeclinedTransaction::Source::Category] The type of the resource. We may add additional possible values for this enum ov
-        #   ...
         #
         #   @param check_decline [Increase::DeclinedTransaction::Source::CheckDecline, nil] A Check Decline object. This field will be present in the JSON response if and o
-        #   ...
         #
         #   @param check_deposit_rejection [Increase::DeclinedTransaction::Source::CheckDepositRejection, nil] A Check Deposit Rejection object. This field will be present in the JSON respons
-        #   ...
         #
         #   @param inbound_real_time_payments_transfer_decline [Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline, nil] An Inbound Real-Time Payments Transfer Decline object. This field will be presen
-        #   ...
         #
         #   @param other [Object, nil] If the category of this Transaction source is equal to `other`, this field will
-        #   ...
         #
         #   @param wire_decline [Increase::DeclinedTransaction::Source::WireDecline, nil] A Wire Decline object. This field will be present in the JSON response if and on
-        #   ...
 
         # @see Increase::DeclinedTransaction::Source#ach_decline
         class ACHDecline < Increase::Internal::Type::BaseModel
@@ -359,7 +345,6 @@ module Increase
           #   @param trace_number [String] The trace number of the transfer.
           #
           #   @param type [Symbol, Increase::DeclinedTransaction::Source::ACHDecline::Type] A constant representing the object's type. For this resource it will always be `
-          #   ...
 
           # Why the ACH transfer was declined.
           #
@@ -631,29 +616,22 @@ module Increase
           #   @param id [String] The Card Decline identifier.
           #
           #   @param actioner [Symbol, Increase::DeclinedTransaction::Source::CardDecline::Actioner] Whether this authorization was approved by Increase, the card network through st
-          #   ...
           #
           #   @param amount [Integer] The declined amount in the minor unit of the destination account currency. For d
-          #   ...
           #
           #   @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
           #
           #   @param currency [Symbol, Increase::DeclinedTransaction::Source::CardDecline::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   ...
           #
           #   @param declined_transaction_id [String] The identifier of the declined transaction created for this Card Decline.
           #
           #   @param digital_wallet_token_id [String, nil] If the authorization was made via a Digital Wallet Token (such as an Apple Pay p
-          #   ...
           #
           #   @param direction [Symbol, Increase::DeclinedTransaction::Source::CardDecline::Direction] The direction describes the direction the funds will move, either from the cardh
-          #   ...
           #
           #   @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card i
-          #   ...
           #
           #   @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the car
-          #   ...
           #
           #   @param merchant_city [String, nil] The city the merchant resides in.
           #
@@ -662,7 +640,6 @@ module Increase
           #   @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
           #
           #   @param merchant_postal_code [String, nil] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ...
           #
           #   @param merchant_state [String, nil] The state the merchant resides in.
           #
@@ -671,30 +648,22 @@ module Increase
           #   @param network_identifiers [Increase::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers] Network-specific identifiers for a specific request or transaction.
           #
           #   @param network_risk_score [Integer, nil] The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   ...
           #
           #   @param physical_card_id [String, nil] If the authorization was made in-person with a physical card, the Physical Card
-          #   ...
           #
           #   @param presentment_amount [Integer] The declined amount in the minor unit of the transaction's presentment currency.
-          #   ...
           #
           #   @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction'
-          #   ...
           #
           #   @param processing_category [Symbol, Increase::DeclinedTransaction::Source::CardDecline::ProcessingCategory] The processing category describes the intent behind the authorization, such as w
-          #   ...
           #
           #   @param real_time_decision_id [String, nil] The identifier of the Real-Time Decision sent to approve or decline this transac
-          #   ...
           #
           #   @param real_time_decision_reason [Symbol, Increase::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason, nil] This is present if a specific decline reason was given in the real-time decision
-          #   ...
           #
           #   @param reason [Symbol, Increase::DeclinedTransaction::Source::CardDecline::Reason] Why the transaction was declined.
           #
           #   @param terminal_id [String, nil] The terminal identifier (commonly abbreviated as TID) of the terminal the card i
-          #   ...
           #
           #   @param verification [Increase::DeclinedTransaction::Source::CardDecline::Verification] Fields related to verification of cardholder-provided values.
 
@@ -845,13 +814,10 @@ module Increase
               #   Fields specific to the `visa` network.
               #
               #   @param electronic_commerce_indicator [Symbol, Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator, nil] For electronic commerce transactions, this identifies the level of security used
-              #   ...
               #
               #   @param point_of_service_entry_mode [Symbol, Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode, nil] The method used to enter the cardholder's primary account number and card expira
-              #   ...
               #
               #   @param stand_in_processing_reason [Symbol, Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason, nil] Only present when `actioner: network`. Describes why a card authorization was ap
-              #   ...
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -999,13 +965,10 @@ module Increase
             #   Network-specific identifiers for a specific request or transaction.
             #
             #   @param retrieval_reference_number [String, nil] A life-cycle identifier used across e.g., an authorization and a reversal. Expec
-            #   ...
             #
             #   @param trace_number [String, nil] A counter used to verify an individual authorization. Expected to be unique per
-            #   ...
             #
             #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
-            #   ...
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -1160,10 +1123,8 @@ module Increase
             #   Fields related to verification of cardholder-provided values.
             #
             #   @param card_verification_code [Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode] Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   ...
             #
             #   @param cardholder_address [Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress] Cardholder address provided in the authorization request and the address on file
-            #   ...
 
             # @see Increase::DeclinedTransaction::Source::CardDecline::Verification#card_verification_code
             class CardVerificationCode < Increase::Internal::Type::BaseModel
@@ -1251,7 +1212,6 @@ module Increase
               #   @param actual_postal_code [String, nil] The postal code of the address on file for the cardholder.
               #
               #   @param provided_line1 [String, nil] The cardholder address line 1 provided for verification in the authorization req
-              #   ...
               #
               #   @param provided_postal_code [String, nil] The postal code provided for verification in the authorization request.
               #
@@ -1378,18 +1338,14 @@ module Increase
           #   @param amount [Integer] The declined amount in USD cents.
           #
           #   @param auxiliary_on_us [String, nil] A computer-readable number printed on the MICR line of business checks, usually
-          #   ...
           #
           #   @param back_image_file_id [String, nil] The identifier of the API File object containing an image of the back of the dec
-          #   ...
           #
           #   @param check_transfer_id [String, nil] The identifier of the Check Transfer object associated with this decline.
           #
           #   @param front_image_file_id [String, nil] The identifier of the API File object containing an image of the front of the de
-          #   ...
           #
           #   @param inbound_check_deposit_id [String, nil] The identifier of the Inbound Check Deposit object associated with this decline.
-          #   ...
           #
           #   @param reason [Symbol, Increase::DeclinedTransaction::Source::CheckDecline::Reason] Why the check was declined.
 
@@ -1507,19 +1463,16 @@ module Increase
           #   response if and only if `category` is equal to `check_deposit_rejection`.
           #
           #   @param amount [Integer] The rejected amount in the minor unit of check's currency. For dollars, for exam
-          #   ...
           #
           #   @param check_deposit_id [String] The identifier of the Check Deposit that was rejected.
           #
           #   @param currency [Symbol, Increase::DeclinedTransaction::Source::CheckDepositRejection::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's curr
-          #   ...
           #
           #   @param declined_transaction_id [String] The identifier of the associated declined transaction.
           #
           #   @param reason [Symbol, Increase::DeclinedTransaction::Source::CheckDepositRejection::Reason] Why the check deposit was rejected.
           #
           #   @param rejected_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-          #   ...
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           # currency.
@@ -1675,12 +1628,10 @@ module Increase
           #   `inbound_real_time_payments_transfer_decline`.
           #
           #   @param amount [Integer] The declined amount in the minor unit of the destination account currency. For d
-          #   ...
           #
           #   @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
           #
           #   @param currency [Symbol, Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined tran
-          #   ...
           #
           #   @param debtor_account_number [String] The account number of the account that sent the transfer.
           #

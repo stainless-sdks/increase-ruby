@@ -61,7 +61,6 @@ module Increase
       #   @param transaction_id [String] The ID of the transaction.
       #
       #   @param type [Symbol, Increase::CardPurchaseSupplement::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::CardPurchaseSupplement#invoice
       class Invoice < Increase::Internal::Type::BaseModel
@@ -188,7 +187,6 @@ module Increase
         #   @param shipping_amount [Integer, nil] The shipping cost.
         #
         #   @param shipping_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping cos
-        #   ...
         #
         #   @param shipping_destination_country_code [String, nil] Country code of the shipping destination.
         #
@@ -199,7 +197,6 @@ module Increase
         #   @param shipping_tax_amount [Integer, nil] Taxes paid for freight and shipping.
         #
         #   @param shipping_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping tax
-        #   ...
         #
         #   @param shipping_tax_rate [String, nil] Tax rate for freight and shipping.
         #
@@ -386,14 +383,12 @@ module Increase
         #   @param sales_tax_amount [Integer, nil] Sales tax amount for this line item.
         #
         #   @param sales_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax as
-        #   ...
         #
         #   @param sales_tax_rate [String, nil] Sales tax rate for this line item.
         #
         #   @param total_amount [Integer, nil] Total amount of all line items.
         #
         #   @param total_amount_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total amount
-        #   ...
         #
         #   @param unit_cost [String, nil] Cost of line item per unit of measure, in major units.
         #

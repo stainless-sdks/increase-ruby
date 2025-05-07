@@ -20,7 +20,6 @@ module Increase
         #   {Increase::Models::Simulations::ACHTransferReturnParams} for more details.
         #
         #   @param reason [Symbol, Increase::Simulations::ACHTransferReturnParams::Reason] The reason why the Federal Reserve or destination bank returned this transfer. D
-        #   ...
         #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 

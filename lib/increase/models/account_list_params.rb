@@ -68,12 +68,10 @@ module Increase
       #   @param entity_id [String] Filter Accounts for those belonging to the specified Entity.
       #
       #   @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      #   ...
       #
       #   @param informational_entity_id [String] Filter Accounts for those belonging to the specified Entity as informational.
       #
       #   @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      #   ...
       #
       #   @param program_id [String] Filter Accounts for those in a specific Program.
       #
@@ -115,16 +113,12 @@ module Increase
         #   {Increase::AccountListParams::CreatedAt} for more details.
         #
         #   @param after [Time] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) tim
-        #   ...
         #
         #   @param before [Time] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) ti
-        #   ...
         #
         #   @param on_or_after [Time] Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_860
-        #   ...
         #
         #   @param on_or_before [Time] Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_86
-        #   ...
       end
 
       class Status < Increase::Internal::Type::BaseModel
@@ -142,7 +136,6 @@ module Increase
         #   {Increase::AccountListParams::Status} for more details.
         #
         #   @param in_ [Array<Symbol, Increase::AccountListParams::Status::In>] Filter Accounts for those with the specified status. For GET requests, this shou
-        #   ...
 
         module In
           extend Increase::Internal::Type::Enum

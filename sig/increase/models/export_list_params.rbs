@@ -55,8 +55,6 @@ module Increase
         ?request_options: Increase::request_opts
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type category =
         { in_: ::Array[Increase::ExportListParams::Category::in_] }
 
@@ -70,8 +68,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::ExportListParams::Category::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ =
           :account_statement_ofx
@@ -136,8 +132,6 @@ module Increase
           ?on_or_after: Time,
           ?on_or_before: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type status = { in_: ::Array[Increase::ExportListParams::Status::in_] }
@@ -152,8 +146,6 @@ module Increase
         def initialize: (
           ?in_: ::Array[Increase::ExportListParams::Status::in_]
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type in_ = :pending | :complete | :failed
 

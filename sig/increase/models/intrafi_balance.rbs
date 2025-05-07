@@ -32,8 +32,6 @@ module Increase
         type: Increase::IntrafiBalance::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type balance =
         {
           id: String,
@@ -62,8 +60,6 @@ module Increase
           fdic_certificate_number: String
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type bank_location = { city: String, state: String }
 
         class BankLocation < Increase::Internal::Type::BaseModel
@@ -72,8 +68,6 @@ module Increase
           attr_accessor state: String
 
           def initialize: (city: String, state: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 

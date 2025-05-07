@@ -48,8 +48,6 @@ module Increase
         type: Increase::IntrafiExclusion::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type status = :pending | :completed | :archived
 
       module Status

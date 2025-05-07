@@ -39,7 +39,6 @@ module Increase
       #   @param inbound_ach [Increase::AccountNumberUpdateParams::InboundACH] Options related to how this Account Number handles inbound ACH transfers.
       #
       #   @param inbound_checks [Increase::AccountNumberUpdateParams::InboundChecks] Options related to how this Account Number should handle inbound check withdrawa
-      #   ...
       #
       #   @param name [String] The name you choose for the Account Number.
       #
@@ -62,7 +61,6 @@ module Increase
         #   Options related to how this Account Number handles inbound ACH transfers.
         #
         #   @param debit_status [Symbol, Increase::AccountNumberUpdateParams::InboundACH::DebitStatus] Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   ...
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active.

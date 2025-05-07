@@ -72,8 +72,6 @@ module Increase
         type: Increase::ACHPrenotification::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type credit_debit_indicator = :credit | :debit
 
       module CreditDebitIndicator
@@ -107,8 +105,6 @@ module Increase
           corrected_data: String,
           created_at: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type change_code =
           :incorrect_account_number
@@ -210,8 +206,6 @@ module Increase
           created_at: Time,
           return_reason_code: Increase::ACHPrenotification::PrenotificationReturn::return_reason_code
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type return_reason_code =
           :insufficient_fund

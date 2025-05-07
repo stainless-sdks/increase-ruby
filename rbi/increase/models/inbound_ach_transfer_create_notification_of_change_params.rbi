@@ -26,8 +26,7 @@ module Increase
         params(
           updated_account_number: String,
           updated_routing_number: String,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

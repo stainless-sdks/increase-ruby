@@ -56,8 +56,6 @@ module Increase
         type: Increase::PendingTransaction::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
       module Currency
@@ -157,8 +155,6 @@ module Increase
           wire_transfer_instruction: Increase::PendingTransaction::Source::WireTransferInstruction?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type account_transfer_instruction =
           {
             amount: Integer,
@@ -178,8 +174,6 @@ module Increase
             currency: Increase::PendingTransaction::Source::AccountTransferInstruction::currency,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -216,8 +210,6 @@ module Increase
           attr_accessor transfer_id: String
 
           def initialize: (amount: Integer, transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type card_authorization =
@@ -336,8 +328,6 @@ module Increase
             verification: Increase::PendingTransaction::Source::CardAuthorization::Verification
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type actioner = :user | :increase | :network
 
           module Actioner
@@ -411,8 +401,6 @@ module Increase
               visa: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa?
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type category = :visa
 
             module Category
@@ -443,8 +431,6 @@ module Increase
                 point_of_service_entry_mode: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
                 stand_in_processing_reason: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type electronic_commerce_indicator =
                 :mail_phone_order
@@ -591,8 +577,6 @@ module Increase
               trace_number: String?,
               transaction_id: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
 
           type processing_category =
@@ -653,8 +637,6 @@ module Increase
               cardholder_address: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
             ) -> void
 
-            def to_hash: -> ::Hash[Symbol, top]
-
             type card_verification_code =
               {
                 result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
@@ -666,8 +648,6 @@ module Increase
               def initialize: (
                 result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result = :not_checked | :match | :no_match
 
@@ -714,8 +694,6 @@ module Increase
                 provided_postal_code: String?,
                 result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result
               ) -> void
-
-              def to_hash: -> ::Hash[Symbol, top]
 
               type result =
                 :not_checked
@@ -832,8 +810,6 @@ module Increase
             front_image_file_id: String
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
           module Currency
@@ -880,8 +856,6 @@ module Increase
             currency: Increase::PendingTransaction::Source::CheckTransferInstruction::currency,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
@@ -958,8 +932,6 @@ module Increase
             type: Increase::PendingTransaction::Source::InboundFundsHold::type_
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
           module Currency
@@ -1018,8 +990,6 @@ module Increase
           attr_accessor inbound_wire_transfer_id: String
 
           def initialize: (inbound_wire_transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type real_time_payments_transfer_instruction =
@@ -1031,8 +1001,6 @@ module Increase
           attr_accessor transfer_id: String
 
           def initialize: (amount: Integer, transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type swift_transfer_instruction = { transfer_id: String }
@@ -1041,8 +1009,6 @@ module Increase
           attr_accessor transfer_id: String
 
           def initialize: (transfer_id: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type wire_transfer_instruction =
@@ -1072,8 +1038,6 @@ module Increase
             routing_number: String,
             transfer_id: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 

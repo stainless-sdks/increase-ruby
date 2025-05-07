@@ -128,21 +128,16 @@ module Increase
       #   @param account_id [String] The Account to which the transfer belongs.
       #
       #   @param amount [Integer] The transfer amount in the minor unit of the destination account currency. For d
-      #   ...
       #
       #   @param approval [Increase::AccountTransfer::Approval, nil] If your account requires approvals for transfers and the transfer was approved,
-      #   ...
       #
       #   @param cancellation [Increase::AccountTransfer::Cancellation, nil] If your account requires approvals for transfers and the transfer was not approv
-      #   ...
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param created_by [Increase::AccountTransfer::CreatedBy, nil] What object created the transfer, either via the API or the dashboard.
       #
       #   @param currency [Symbol, Increase::AccountTransfer::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      #   ...
       #
       #   @param description [String] The description that will show on the transactions.
       #
@@ -151,19 +146,16 @@ module Increase
       #   @param destination_transaction_id [String, nil] The ID for the transaction receiving the transfer.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param network [Symbol, Increase::AccountTransfer::Network] The transfer's network.
       #
       #   @param pending_transaction_id [String, nil] The ID for the pending transaction representing the transfer. A pending transact
-      #   ...
       #
       #   @param status [Symbol, Increase::AccountTransfer::Status] The lifecycle status of the transfer.
       #
       #   @param transaction_id [String, nil] The ID for the transaction funding the transfer.
       #
       #   @param type [Symbol, Increase::AccountTransfer::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # @see Increase::AccountTransfer#approval
       class Approval < Increase::Internal::Type::BaseModel
@@ -189,10 +181,8 @@ module Increase
         #   this will contain details of the approval.
         #
         #   @param approved_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param approved_by [String, nil] If the Transfer was approved by a user in the dashboard, the email address of th
-        #   ...
       end
 
       # @see Increase::AccountTransfer#cancellation
@@ -219,10 +209,8 @@ module Increase
         #   approved, this will contain details of the cancellation.
         #
         #   @param canceled_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param canceled_by [String, nil] If the Transfer was canceled by a user in the dashboard, the email address of th
-        #   ...
       end
 
       # @see Increase::AccountTransfer#created_by

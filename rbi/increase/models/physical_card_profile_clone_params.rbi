@@ -59,8 +59,7 @@ module Increase
           front_image_file_id: String,
           front_text:
             Increase::PhysicalCardProfileCloneParams::FrontText::OrHash,
-          request_options:
-            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+          request_options: Increase::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(

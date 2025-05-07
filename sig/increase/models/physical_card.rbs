@@ -44,8 +44,6 @@ module Increase
         type: Increase::PhysicalCard::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type cardholder = { first_name: String, last_name: String }
 
       class Cardholder < Increase::Internal::Type::BaseModel
@@ -54,8 +52,6 @@ module Increase
         attr_accessor last_name: String
 
         def initialize: (first_name: String, last_name: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type shipment =
@@ -81,8 +77,6 @@ module Increase
           status: Increase::PhysicalCard::Shipment::status,
           tracking: Increase::PhysicalCard::Shipment::Tracking?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type address =
           {
@@ -119,8 +113,6 @@ module Increase
             postal_code: String,
             state: String
           ) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type method_ = :usps | :fedex_priority_overnight | :fedex_2_day
@@ -204,8 +196,6 @@ module Increase
             updates: ::Array[Increase::PhysicalCard::Shipment::Tracking::Update]
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type update =
             {
               carrier_estimated_delivery_at: Time?,
@@ -237,8 +227,6 @@ module Increase
               postal_code: String?,
               state: String?
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
 
             type category =
               :in_transit

@@ -11,12 +11,10 @@ module Increase
       # @overload create(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       #
       # @param disputed_transaction_id [String] The Transaction you wish to dispute. This Transaction must have a `source_type`
-      # ...
       #
       # @param explanation [String] Why you are disputing this Transaction.
       #
       # @param amount [Integer] The monetary amount of the part of the transaction that is being disputed. This
-      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -66,10 +64,8 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
-      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
-      # ...
       #
       # @param status [Increase::CardDisputeListParams::Status]
       #

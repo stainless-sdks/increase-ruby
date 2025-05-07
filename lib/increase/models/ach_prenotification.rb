@@ -130,18 +130,14 @@ module Increase
       #   @param company_name [String, nil] The name by which you know the company.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-      #   ...
       #
       #   @param credit_debit_indicator [Symbol, Increase::ACHPrenotification::CreditDebitIndicator, nil] If the notification is for a future credit or debit.
       #
       #   @param effective_date [Time, nil] The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
-      #   ...
       #
       #   @param notifications_of_change [Array<Increase::ACHPrenotification::NotificationsOfChange>] If the receiving bank notifies that future transfers should use different detail
-      #   ...
       #
       #   @param prenotification_return [Increase::ACHPrenotification::PrenotificationReturn, nil] If your prenotification is returned, this will contain details of the return.
       #
@@ -150,7 +146,6 @@ module Increase
       #   @param status [Symbol, Increase::ACHPrenotification::Status] The lifecycle status of the ACH Prenotification.
       #
       #   @param type [Symbol, Increase::ACHPrenotification::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # If the notification is for a future credit or debit.
       #
@@ -198,13 +193,10 @@ module Increase
         #   {Increase::ACHPrenotification::NotificationsOfChange} for more details.
         #
         #   @param change_code [Symbol, Increase::ACHPrenotification::NotificationsOfChange::ChangeCode] The required type of change that is being signaled by the receiving financial in
-        #   ...
         #
         #   @param corrected_data [String] The corrected data that should be used in future ACHs to this account. This may
-        #   ...
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
 
         # The required type of change that is being signaled by the receiving financial
         # institution.
@@ -304,7 +296,6 @@ module Increase
         #   If your prenotification is returned, this will contain details of the return.
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
-        #   ...
         #
         #   @param return_reason_code [Symbol, Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode] Why the Prenotification was returned.
 

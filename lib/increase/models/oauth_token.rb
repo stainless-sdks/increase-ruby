@@ -33,12 +33,10 @@ module Increase
       #   [here](/documentation/oauth).
       #
       #   @param access_token [String] You may use this token in place of an API key to make OAuth requests on a user's
-      #   ...
       #
       #   @param token_type [Symbol, Increase::OAuthToken::TokenType] The type of OAuth token.
       #
       #   @param type [Symbol, Increase::OAuthToken::Type] A constant representing the object's type. For this resource it will always be `
-      #   ...
 
       # The type of OAuth token.
       #

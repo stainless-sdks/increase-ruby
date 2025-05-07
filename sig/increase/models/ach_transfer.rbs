@@ -152,16 +152,12 @@ module Increase
         type: Increase::ACHTransfer::type_
       ) -> void
 
-      def to_hash: -> ::Hash[Symbol, top]
-
       type acknowledgement = { acknowledged_at: String }
 
       class Acknowledgement < Increase::Internal::Type::BaseModel
         attr_accessor acknowledged_at: String
 
         def initialize: (acknowledged_at: String) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type addenda =
@@ -183,8 +179,6 @@ module Increase
           freeform: Increase::ACHTransfer::Addenda::Freeform?,
           payment_order_remittance_advice: Increase::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice?
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type category = :freeform | :payment_order_remittance_advice | :other
 
@@ -213,16 +207,12 @@ module Increase
             entries: ::Array[Increase::ACHTransfer::Addenda::Freeform::Entry]
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type entry = { payment_related_information: String }
 
           class Entry < Increase::Internal::Type::BaseModel
             attr_accessor payment_related_information: String
 
             def initialize: (payment_related_information: String) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
         end
 
@@ -238,8 +228,6 @@ module Increase
             invoices: ::Array[Increase::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]
           ) -> void
 
-          def to_hash: -> ::Hash[Symbol, top]
-
           type invoice = { invoice_number: String, paid_amount: Integer }
 
           class Invoice < Increase::Internal::Type::BaseModel
@@ -251,8 +239,6 @@ module Increase
               invoice_number: String,
               paid_amount: Integer
             ) -> void
-
-            def to_hash: -> ::Hash[Symbol, top]
           end
         end
       end
@@ -265,8 +251,6 @@ module Increase
         attr_accessor approved_by: String?
 
         def initialize: (approved_at: Time, approved_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type cancellation = { canceled_at: Time, canceled_by: String? }
@@ -277,8 +261,6 @@ module Increase
         attr_accessor canceled_by: String?
 
         def initialize: (canceled_at: Time, canceled_by: String?) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type created_by =
@@ -305,16 +287,12 @@ module Increase
           user: Increase::ACHTransfer::CreatedBy::User?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type api_key = { description: String? }
 
         class APIKey < Increase::Internal::Type::BaseModel
           attr_accessor description: String?
 
           def initialize: (description: String?) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type category = :api_key | :oauth_application | :user
@@ -340,8 +318,6 @@ module Increase
           attr_accessor name: String
 
           def initialize: (name: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
 
         type user = { email: String }
@@ -350,8 +326,6 @@ module Increase
           attr_accessor email: String
 
           def initialize: (email: String) -> void
-
-          def to_hash: -> ::Hash[Symbol, top]
         end
       end
 
@@ -460,8 +434,6 @@ module Increase
           type: Increase::ACHTransfer::InboundFundsHold::type_
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
 
         module Currency
@@ -542,8 +514,6 @@ module Increase
           corrected_data: String,
           created_at: Time
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type change_code =
           :incorrect_account_number
@@ -646,8 +616,6 @@ module Increase
           settlement_schedule: Increase::ACHTransfer::PreferredEffectiveDate::settlement_schedule?
         ) -> void
 
-        def to_hash: -> ::Hash[Symbol, top]
-
         type settlement_schedule = :same_day | :future_dated
 
         module SettlementSchedule
@@ -697,8 +665,6 @@ module Increase
           transaction_id: String,
           transfer_id: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type return_reason_code =
           :insufficient_fund
@@ -995,8 +961,6 @@ module Increase
         attr_accessor settled_at: Time
 
         def initialize: (settled_at: Time) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
       end
 
       type standard_entry_class_code =
@@ -1094,8 +1058,6 @@ module Increase
           submitted_at: Time,
           trace_number: String
         ) -> void
-
-        def to_hash: -> ::Hash[Symbol, top]
 
         type expected_settlement_schedule = :same_day | :future_dated
 
