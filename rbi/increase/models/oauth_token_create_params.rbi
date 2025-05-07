@@ -6,11 +6,11 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The credential you request in exchange for the code. In Production, this is
       # always `authorization_code`. In Sandbox, you can pass either enum value.
-      sig { returns(Increase::OAuthTokenCreateParams::GrantType::OrSymbol) }
+      sig do
+        returns(Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol)
+      end
       attr_accessor :grant_type
 
       # The public identifier for your application.
@@ -48,12 +48,14 @@ module Increase
 
       sig do
         params(
-          grant_type: Increase::OAuthTokenCreateParams::GrantType::OrSymbol,
+          grant_type:
+            Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
           client_id: String,
           client_secret: String,
           code: String,
           production_token: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -80,7 +82,8 @@ module Increase
       sig do
         override.returns(
           {
-            grant_type: Increase::OAuthTokenCreateParams::GrantType::OrSymbol,
+            grant_type:
+              Increase::Models::OAuthTokenCreateParams::GrantType::OrSymbol,
             client_id: String,
             client_secret: String,
             code: String,
@@ -99,7 +102,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::OAuthTokenCreateParams::GrantType)
+            T.all(Symbol, Increase::Models::OAuthTokenCreateParams::GrantType)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -107,19 +110,21 @@ module Increase
         AUTHORIZATION_CODE =
           T.let(
             :authorization_code,
-            Increase::OAuthTokenCreateParams::GrantType::TaggedSymbol
+            Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol
           )
 
         # An OAuth production token.
         PRODUCTION_TOKEN =
           T.let(
             :production_token,
-            Increase::OAuthTokenCreateParams::GrantType::TaggedSymbol
+            Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::OAuthTokenCreateParams::GrantType::TaggedSymbol]
+            T::Array[
+              Increase::Models::OAuthTokenCreateParams::GrantType::TaggedSymbol
+            ]
           )
         end
         def self.values

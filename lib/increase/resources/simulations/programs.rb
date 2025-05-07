@@ -15,16 +15,16 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Program]
+        # @return [Increase::Models::Program]
         #
         # @see Increase::Models::Simulations::ProgramCreateParams
         def create(params)
-          parsed, options = Increase::Simulations::ProgramCreateParams.dump_request(params)
+          parsed, options = Increase::Models::Simulations::ProgramCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/programs",
             body: parsed,
-            model: Increase::Program,
+            model: Increase::Models::Program,
             options: options
           )
         end

@@ -11,8 +11,8 @@ module Increase
           params(
             amount: Integer,
             card_payment_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::CardPayment)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::CardPayment)
         end
         def create(
           # The amount of the fuel_confirmation in minor units in the card authorization's

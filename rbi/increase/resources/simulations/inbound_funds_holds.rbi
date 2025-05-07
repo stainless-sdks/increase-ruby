@@ -9,7 +9,7 @@ module Increase
         sig do
           params(
             inbound_funds_hold_id: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options: Increase::RequestOpts
           ).returns(
             Increase::Models::Simulations::InboundFundsHoldReleaseResponse
           )

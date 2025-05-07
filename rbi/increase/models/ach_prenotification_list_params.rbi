@@ -6,16 +6,20 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       sig do
-        returns(T.nilable(Increase::ACHPrenotificationListParams::CreatedAt))
+        returns(
+          T.nilable(Increase::Models::ACHPrenotificationListParams::CreatedAt)
+        )
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at: Increase::ACHPrenotificationListParams::CreatedAt::OrHash
+          created_at:
+            T.any(
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :created_at
@@ -47,11 +51,16 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::ACHPrenotificationListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -73,7 +82,8 @@ module Increase
       sig do
         override.returns(
           {
-            created_at: Increase::ACHPrenotificationListParams::CreatedAt,
+            created_at:
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,
@@ -85,9 +95,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

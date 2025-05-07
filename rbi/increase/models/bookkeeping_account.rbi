@@ -3,8 +3,6 @@
 module Increase
   module Models
     class BookkeepingAccount < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The account identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -17,7 +15,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
+            Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol
           )
         )
       end
@@ -39,7 +37,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_account`.
-      sig { returns(Increase::BookkeepingAccount::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::BookkeepingAccount::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Accounts are T-accounts. They can store accounting entries. Your compliance
@@ -51,12 +49,12 @@ module Increase
           account_id: T.nilable(String),
           compliance_category:
             T.nilable(
-              Increase::BookkeepingAccount::ComplianceCategory::OrSymbol
+              Increase::Models::BookkeepingAccount::ComplianceCategory::OrSymbol
             ),
           entity_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           name: String,
-          type: Increase::BookkeepingAccount::Type::OrSymbol
+          type: Increase::Models::BookkeepingAccount::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -87,12 +85,12 @@ module Increase
             account_id: T.nilable(String),
             compliance_category:
               T.nilable(
-                Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
+                Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol
               ),
             entity_id: T.nilable(String),
             idempotency_key: T.nilable(String),
             name: String,
-            type: Increase::BookkeepingAccount::Type::TaggedSymbol
+            type: Increase::Models::BookkeepingAccount::Type::TaggedSymbol
           }
         )
       end
@@ -105,7 +103,10 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::BookkeepingAccount::ComplianceCategory)
+            T.all(
+              Symbol,
+              Increase::Models::BookkeepingAccount::ComplianceCategory
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -113,20 +114,20 @@ module Increase
         COMMINGLED_CASH =
           T.let(
             :commingled_cash,
-            Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
+            Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol
           )
 
         # A customer balance.
         CUSTOMER_BALANCE =
           T.let(
             :customer_balance,
-            Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
+            Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
+              Increase::Models::BookkeepingAccount::ComplianceCategory::TaggedSymbol
             ]
           )
         end
@@ -140,18 +141,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::BookkeepingAccount::Type) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::BookkeepingAccount::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BOOKKEEPING_ACCOUNT =
           T.let(
             :bookkeeping_account,
-            Increase::BookkeepingAccount::Type::TaggedSymbol
+            Increase::Models::BookkeepingAccount::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::BookkeepingAccount::Type::TaggedSymbol]
+            T::Array[Increase::Models::BookkeepingAccount::Type::TaggedSymbol]
           )
         end
         def self.values

@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Account Number to which the recipient should send funds.
       sig { returns(String) }
       attr_accessor :account_number_id
@@ -104,7 +102,8 @@ module Increase
           recipient_address_line1: String,
           recipient_address_line2: String,
           recipient_address_line3: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(

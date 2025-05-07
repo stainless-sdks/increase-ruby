@@ -9,8 +9,8 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::AccountStatement)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::AccountStatement)
         end
         def create(
           # The identifier of the Account the statement is for.

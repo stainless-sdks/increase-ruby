@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::InboundCheckDeposit)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundCheckDeposit)
       end
       def retrieve(
         # The identifier of the Inbound Check Deposit to get details for.
@@ -23,11 +23,16 @@ module Increase
           account_id: String,
           check_transfer_id: String,
           created_at:
-            Increase::InboundCheckDepositListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::InboundCheckDepositListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::InboundCheckDeposit])
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::InboundCheckDeposit]
+        )
       end
       def list(
         # Filter Inbound Check Deposits to those belonging to the specified Account.
@@ -49,8 +54,8 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::InboundCheckDeposit)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundCheckDeposit)
       end
       def decline(
         # The identifier of the Inbound Check Deposit to decline.
@@ -63,9 +68,10 @@ module Increase
       sig do
         params(
           inbound_check_deposit_id: String,
-          reason: Increase::InboundCheckDepositReturnParams::Reason::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::InboundCheckDeposit)
+          reason:
+            Increase::Models::InboundCheckDepositReturnParams::Reason::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundCheckDeposit)
       end
       def return_(
         # The identifier of the Inbound Check Deposit to return.

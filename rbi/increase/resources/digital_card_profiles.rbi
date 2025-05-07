@@ -15,9 +15,12 @@ module Increase
           contact_phone: String,
           contact_website: String,
           text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::DigitalCardProfile)
+            T.any(
+              Increase::Models::DigitalCardProfileCreateParams::TextColor,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::DigitalCardProfile)
       end
       def create(
         # The identifier of the File containing the card's icon image.
@@ -46,8 +49,8 @@ module Increase
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::DigitalCardProfile)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::DigitalCardProfile)
       end
       def retrieve(
         # The identifier of the Digital Card Profile.
@@ -62,9 +65,15 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::DigitalCardProfileListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::DigitalCardProfile])
+          status:
+            T.any(
+              Increase::Models::DigitalCardProfileListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::DigitalCardProfile]
+        )
       end
       def list(
         # Return the page of entries after this one.
@@ -86,8 +95,8 @@ module Increase
       sig do
         params(
           digital_card_profile_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::DigitalCardProfile)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::DigitalCardProfile)
       end
       def archive(
         # The identifier of the Digital Card Profile to archive.
@@ -109,9 +118,12 @@ module Increase
           description: String,
           issuer_name: String,
           text_color:
-            Increase::DigitalCardProfileCloneParams::TextColor::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::DigitalCardProfile)
+            T.any(
+              Increase::Models::DigitalCardProfileCloneParams::TextColor,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::DigitalCardProfile)
       end
       def clone_(
         # The identifier of the Digital Card Profile to clone.

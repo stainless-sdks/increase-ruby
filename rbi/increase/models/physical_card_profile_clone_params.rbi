@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
       attr_reader :carrier_image_file_id
@@ -39,14 +37,19 @@ module Increase
       # Text printed on the front of the card. Reach out to
       # [support@increase.com](mailto:support@increase.com) for more information.
       sig do
-        returns(T.nilable(Increase::PhysicalCardProfileCloneParams::FrontText))
+        returns(
+          T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
+        )
       end
       attr_reader :front_text
 
       sig do
         params(
           front_text:
-            Increase::PhysicalCardProfileCloneParams::FrontText::OrHash
+            T.any(
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :front_text
@@ -58,8 +61,12 @@ module Increase
           description: String,
           front_image_file_id: String,
           front_text:
-            Increase::PhysicalCardProfileCloneParams::FrontText::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+            T.any(
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -85,7 +92,8 @@ module Increase
             contact_phone: String,
             description: String,
             front_image_file_id: String,
-            front_text: Increase::PhysicalCardProfileCloneParams::FrontText,
+            front_text:
+              Increase::Models::PhysicalCardProfileCloneParams::FrontText,
             request_options: Increase::RequestOptions
           }
         )
@@ -94,9 +102,6 @@ module Increase
       end
 
       class FrontText < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The first line of text on the front of the card.
         sig { returns(String) }
         attr_accessor :line1

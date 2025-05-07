@@ -3,8 +3,6 @@
 module Increase
   module Models
     class CardPayment < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Card Payment identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -27,7 +25,7 @@ module Increase
       attr_accessor :digital_wallet_token_id
 
       # The interactions related to this card payment.
-      sig { returns(T::Array[Increase::CardPayment::Element]) }
+      sig { returns(T::Array[Increase::Models::CardPayment::Element]) }
       attr_accessor :elements
 
       # The Physical Card identifier for this payment.
@@ -35,15 +33,23 @@ module Increase
       attr_accessor :physical_card_id
 
       # The summarized state of this card payment.
-      sig { returns(Increase::CardPayment::State) }
+      sig { returns(Increase::Models::CardPayment::State) }
       attr_reader :state
 
-      sig { params(state: Increase::CardPayment::State::OrHash).void }
+      sig do
+        params(
+          state:
+            T.any(
+              Increase::Models::CardPayment::State,
+              Increase::Internal::AnyHash
+            )
+        ).void
+      end
       attr_writer :state
 
       # A constant representing the object's type. For this resource it will always be
       # `card_payment`.
-      sig { returns(Increase::CardPayment::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::CardPayment::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Card Payments group together interactions related to a single card payment, such
@@ -55,10 +61,20 @@ module Increase
           card_id: String,
           created_at: Time,
           digital_wallet_token_id: T.nilable(String),
-          elements: T::Array[Increase::CardPayment::Element::OrHash],
+          elements:
+            T::Array[
+              T.any(
+                Increase::Models::CardPayment::Element,
+                Increase::Internal::AnyHash
+              )
+            ],
           physical_card_id: T.nilable(String),
-          state: Increase::CardPayment::State::OrHash,
-          type: Increase::CardPayment::Type::OrSymbol
+          state:
+            T.any(
+              Increase::Models::CardPayment::State,
+              Increase::Internal::AnyHash
+            ),
+          type: Increase::Models::CardPayment::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -93,10 +109,10 @@ module Increase
             card_id: String,
             created_at: Time,
             digital_wallet_token_id: T.nilable(String),
-            elements: T::Array[Increase::CardPayment::Element],
+            elements: T::Array[Increase::Models::CardPayment::Element],
             physical_card_id: T.nilable(String),
-            state: Increase::CardPayment::State,
-            type: Increase::CardPayment::Type::TaggedSymbol
+            state: Increase::Models::CardPayment::State,
+            type: Increase::Models::CardPayment::Type::TaggedSymbol
           }
         )
       end
@@ -104,14 +120,15 @@ module Increase
       end
 
       class Element < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # A Card Authentication object. This field will be present in the JSON response if
         # and only if `category` is equal to `card_authentication`. Card Authentications
         # are attempts to authenticate a transaction or a card with 3DS.
         sig do
-          returns(T.nilable(Increase::CardPayment::Element::CardAuthentication))
+          returns(
+            T.nilable(
+              Increase::Models::CardPayment::Element::CardAuthentication
+            )
+          )
         end
         attr_reader :card_authentication
 
@@ -119,7 +136,10 @@ module Increase
           params(
             card_authentication:
               T.nilable(
-                Increase::CardPayment::Element::CardAuthentication::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthentication,
+                  Increase::Internal::AnyHash
+                )
               )
           ).void
         end
@@ -130,7 +150,9 @@ module Increase
         # temporary holds placed on a customers funds with the intent to later clear a
         # transaction.
         sig do
-          returns(T.nilable(Increase::CardPayment::Element::CardAuthorization))
+          returns(
+            T.nilable(Increase::Models::CardPayment::Element::CardAuthorization)
+          )
         end
         attr_reader :card_authorization
 
@@ -138,7 +160,10 @@ module Increase
           params(
             card_authorization:
               T.nilable(
-                Increase::CardPayment::Element::CardAuthorization::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization,
+                  Increase::Internal::AnyHash
+                )
               )
           ).void
         end
@@ -151,7 +176,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::CardPayment::Element::CardAuthorizationExpiration
+              Increase::Models::CardPayment::Element::CardAuthorizationExpiration
             )
           )
         end
@@ -161,7 +186,10 @@ module Increase
           params(
             card_authorization_expiration:
               T.nilable(
-                Increase::CardPayment::Element::CardAuthorizationExpiration::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration,
+                  Increase::Internal::AnyHash
+                )
               )
           ).void
         end
@@ -169,13 +197,22 @@ module Increase
 
         # A Card Decline object. This field will be present in the JSON response if and
         # only if `category` is equal to `card_decline`.
-        sig { returns(T.nilable(Increase::CardPayment::Element::CardDecline)) }
+        sig do
+          returns(
+            T.nilable(Increase::Models::CardPayment::Element::CardDecline)
+          )
+        end
         attr_reader :card_decline
 
         sig do
           params(
             card_decline:
-              T.nilable(Increase::CardPayment::Element::CardDecline::OrHash)
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline,
+                  Increase::Internal::AnyHash
+                )
+              )
           ).void
         end
         attr_writer :card_decline
@@ -186,7 +223,9 @@ module Increase
         # transaction is completed.
         sig do
           returns(
-            T.nilable(Increase::CardPayment::Element::CardFuelConfirmation)
+            T.nilable(
+              Increase::Models::CardPayment::Element::CardFuelConfirmation
+            )
           )
         end
         attr_reader :card_fuel_confirmation
@@ -195,7 +234,10 @@ module Increase
           params(
             card_fuel_confirmation:
               T.nilable(
-                Increase::CardPayment::Element::CardFuelConfirmation::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation,
+                  Increase::Internal::AnyHash
+                )
               )
           ).void
         end
@@ -205,14 +247,21 @@ module Increase
         # only if `category` is equal to `card_increment`. Card Increments increase the
         # pending amount of an authorized transaction.
         sig do
-          returns(T.nilable(Increase::CardPayment::Element::CardIncrement))
+          returns(
+            T.nilable(Increase::Models::CardPayment::Element::CardIncrement)
+          )
         end
         attr_reader :card_increment
 
         sig do
           params(
             card_increment:
-              T.nilable(Increase::CardPayment::Element::CardIncrement::OrHash)
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardIncrement,
+                  Increase::Internal::AnyHash
+                )
+              )
           ).void
         end
         attr_writer :card_increment
@@ -222,13 +271,20 @@ module Increase
         # the cardholder. While they are usually connected to a Card Settlement an
         # acquirer can also refund money directly to a card without relation to a
         # transaction.
-        sig { returns(T.nilable(Increase::CardPayment::Element::CardRefund)) }
+        sig do
+          returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund))
+        end
         attr_reader :card_refund
 
         sig do
           params(
             card_refund:
-              T.nilable(Increase::CardPayment::Element::CardRefund::OrHash)
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardRefund,
+                  Increase::Internal::AnyHash
+                )
+              )
           ).void
         end
         attr_writer :card_refund
@@ -236,13 +292,22 @@ module Increase
         # A Card Reversal object. This field will be present in the JSON response if and
         # only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
         # or the entirety of an existing Card Authorization.
-        sig { returns(T.nilable(Increase::CardPayment::Element::CardReversal)) }
+        sig do
+          returns(
+            T.nilable(Increase::Models::CardPayment::Element::CardReversal)
+          )
+        end
         attr_reader :card_reversal
 
         sig do
           params(
             card_reversal:
-              T.nilable(Increase::CardPayment::Element::CardReversal::OrHash)
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardReversal,
+                  Increase::Internal::AnyHash
+                )
+              )
           ).void
         end
         attr_writer :card_reversal
@@ -253,14 +318,21 @@ module Increase
         # preceded by an authorization, an acquirer can also directly clear a transaction
         # without first authorizing it.
         sig do
-          returns(T.nilable(Increase::CardPayment::Element::CardSettlement))
+          returns(
+            T.nilable(Increase::Models::CardPayment::Element::CardSettlement)
+          )
         end
         attr_reader :card_settlement
 
         sig do
           params(
             card_settlement:
-              T.nilable(Increase::CardPayment::Element::CardSettlement::OrHash)
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement,
+                  Increase::Internal::AnyHash
+                )
+              )
           ).void
         end
         attr_writer :card_settlement
@@ -270,21 +342,32 @@ module Increase
         # from a merchant to verify that a card number and optionally its address and/or
         # Card Verification Value are valid.
         sig do
-          returns(T.nilable(Increase::CardPayment::Element::CardValidation))
+          returns(
+            T.nilable(Increase::Models::CardPayment::Element::CardValidation)
+          )
         end
         attr_reader :card_validation
 
         sig do
           params(
             card_validation:
-              T.nilable(Increase::CardPayment::Element::CardValidation::OrHash)
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation,
+                  Increase::Internal::AnyHash
+                )
+              )
           ).void
         end
         attr_writer :card_validation
 
         # The type of the resource. We may add additional possible values for this enum
         # over time; your application should be able to handle such additions gracefully.
-        sig { returns(Increase::CardPayment::Element::Category::TaggedSymbol) }
+        sig do
+          returns(
+            Increase::Models::CardPayment::Element::Category::TaggedSymbol
+          )
+        end
         attr_accessor :category
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -301,33 +384,76 @@ module Increase
           params(
             card_authentication:
               T.nilable(
-                Increase::CardPayment::Element::CardAuthentication::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthentication,
+                  Increase::Internal::AnyHash
+                )
               ),
             card_authorization:
               T.nilable(
-                Increase::CardPayment::Element::CardAuthorization::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization,
+                  Increase::Internal::AnyHash
+                )
               ),
             card_authorization_expiration:
               T.nilable(
-                Increase::CardPayment::Element::CardAuthorizationExpiration::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration,
+                  Increase::Internal::AnyHash
+                )
               ),
             card_decline:
-              T.nilable(Increase::CardPayment::Element::CardDecline::OrHash),
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline,
+                  Increase::Internal::AnyHash
+                )
+              ),
             card_fuel_confirmation:
               T.nilable(
-                Increase::CardPayment::Element::CardFuelConfirmation::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation,
+                  Increase::Internal::AnyHash
+                )
               ),
             card_increment:
-              T.nilable(Increase::CardPayment::Element::CardIncrement::OrHash),
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardIncrement,
+                  Increase::Internal::AnyHash
+                )
+              ),
             card_refund:
-              T.nilable(Increase::CardPayment::Element::CardRefund::OrHash),
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardRefund,
+                  Increase::Internal::AnyHash
+                )
+              ),
             card_reversal:
-              T.nilable(Increase::CardPayment::Element::CardReversal::OrHash),
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardReversal,
+                  Increase::Internal::AnyHash
+                )
+              ),
             card_settlement:
-              T.nilable(Increase::CardPayment::Element::CardSettlement::OrHash),
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement,
+                  Increase::Internal::AnyHash
+                )
+              ),
             card_validation:
-              T.nilable(Increase::CardPayment::Element::CardValidation::OrHash),
-            category: Increase::CardPayment::Element::Category::OrSymbol,
+              T.nilable(
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation,
+                  Increase::Internal::AnyHash
+                )
+              ),
+            category:
+              Increase::Models::CardPayment::Element::Category::OrSymbol,
             created_at: Time,
             other: T.nilable(T.anything)
           ).returns(T.attached_class)
@@ -396,28 +522,41 @@ module Increase
           override.returns(
             {
               card_authentication:
-                T.nilable(Increase::CardPayment::Element::CardAuthentication),
+                T.nilable(
+                  Increase::Models::CardPayment::Element::CardAuthentication
+                ),
               card_authorization:
-                T.nilable(Increase::CardPayment::Element::CardAuthorization),
+                T.nilable(
+                  Increase::Models::CardPayment::Element::CardAuthorization
+                ),
               card_authorization_expiration:
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthorizationExpiration
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration
                 ),
               card_decline:
-                T.nilable(Increase::CardPayment::Element::CardDecline),
+                T.nilable(Increase::Models::CardPayment::Element::CardDecline),
               card_fuel_confirmation:
-                T.nilable(Increase::CardPayment::Element::CardFuelConfirmation),
+                T.nilable(
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation
+                ),
               card_increment:
-                T.nilable(Increase::CardPayment::Element::CardIncrement),
+                T.nilable(
+                  Increase::Models::CardPayment::Element::CardIncrement
+                ),
               card_refund:
-                T.nilable(Increase::CardPayment::Element::CardRefund),
+                T.nilable(Increase::Models::CardPayment::Element::CardRefund),
               card_reversal:
-                T.nilable(Increase::CardPayment::Element::CardReversal),
+                T.nilable(Increase::Models::CardPayment::Element::CardReversal),
               card_settlement:
-                T.nilable(Increase::CardPayment::Element::CardSettlement),
+                T.nilable(
+                  Increase::Models::CardPayment::Element::CardSettlement
+                ),
               card_validation:
-                T.nilable(Increase::CardPayment::Element::CardValidation),
-              category: Increase::CardPayment::Element::Category::TaggedSymbol,
+                T.nilable(
+                  Increase::Models::CardPayment::Element::CardValidation
+                ),
+              category:
+                Increase::Models::CardPayment::Element::Category::TaggedSymbol,
               created_at: Time,
               other: T.nilable(T.anything)
             }
@@ -427,9 +566,6 @@ module Increase
         end
 
         class CardAuthentication < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Authentication identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -446,7 +582,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
               )
             )
           end
@@ -456,7 +592,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardAuthentication::Challenge
+                Increase::Models::CardPayment::Element::CardAuthentication::Challenge
               )
             )
           end
@@ -466,7 +602,10 @@ module Increase
             params(
               challenge:
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -481,7 +620,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
             )
           end
@@ -491,7 +630,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
               )
             )
           end
@@ -532,7 +671,7 @@ module Increase
           # The status of the card authentication.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
             )
           end
           attr_accessor :status
@@ -541,7 +680,7 @@ module Increase
           # `card_authentication`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -556,20 +695,23 @@ module Increase
               card_payment_id: String,
               category:
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthentication::Category::OrSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Category::OrSymbol
                 ),
               challenge:
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               created_at: Time,
               deny_reason:
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthentication::DenyReason::OrSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::OrSymbol
                 ),
               device_channel:
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthentication::DeviceChannel::OrSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::OrSymbol
                 ),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -579,9 +721,9 @@ module Increase
               purchase_currency: T.nilable(String),
               real_time_decision_id: T.nilable(String),
               status:
-                Increase::CardPayment::Element::CardAuthentication::Status::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::OrSymbol,
               type:
-                Increase::CardPayment::Element::CardAuthentication::Type::OrSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Type::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -636,20 +778,20 @@ module Increase
                 card_payment_id: String,
                 category:
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
                   ),
                 challenge:
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthentication::Challenge
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge
                   ),
                 created_at: Time,
                 deny_reason:
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
                   ),
                 device_channel:
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
                   ),
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
@@ -659,9 +801,9 @@ module Increase
                 purchase_currency: T.nilable(String),
                 real_time_decision_id: T.nilable(String),
                 status:
-                  Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol,
                 type:
-                  Increase::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
               }
             )
           end
@@ -676,7 +818,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthentication::Category
+                  Increase::Models::CardPayment::Element::CardAuthentication::Category
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -685,20 +827,20 @@ module Increase
             PAYMENT_AUTHENTICATION =
               T.let(
                 :payment_authentication,
-                Increase::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
               )
 
             # The authentication attempt is not for a payment.
             NON_PAYMENT_AUTHENTICATION =
               T.let(
                 :non_payment_authentication,
-                Increase::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Category::TaggedSymbol
                 ]
               )
             end
@@ -707,14 +849,11 @@ module Increase
           end
 
           class Challenge < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # Details about the challenge verification attempts, if any happened.
             sig do
               returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt
                 ]
               )
             end
@@ -732,7 +871,7 @@ module Increase
             # The method used to verify the Card Authentication Challenge.
             sig do
               returns(
-                Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
               )
             end
             attr_accessor :verification_method
@@ -747,12 +886,15 @@ module Increase
               params(
                 attempts:
                   T::Array[
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt,
+                      Increase::Internal::AnyHash
+                    )
                   ],
                 created_at: Time,
                 one_time_code: String,
                 verification_method:
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::OrSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::OrSymbol,
                 verification_value: T.nilable(String)
               ).returns(T.attached_class)
             end
@@ -777,12 +919,12 @@ module Increase
                 {
                   attempts:
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt
+                      Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt
                     ],
                   created_at: Time,
                   one_time_code: String,
                   verification_method:
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol,
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol,
                   verification_value: T.nilable(String)
                 }
               )
@@ -791,9 +933,6 @@ module Increase
             end
 
             class Attempt < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
               # Authentication Challenge Attempt.
               sig { returns(Time) }
@@ -802,7 +941,7 @@ module Increase
               # The outcome of the Card Authentication Challenge Attempt.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
                 )
               end
               attr_accessor :outcome
@@ -811,7 +950,7 @@ module Increase
                 params(
                   created_at: Time,
                   outcome:
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::OrSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -828,7 +967,7 @@ module Increase
                   {
                     created_at: Time,
                     outcome:
-                      Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
                   }
                 )
               end
@@ -843,7 +982,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome
+                      Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -852,20 +991,20 @@ module Increase
                 SUCCESSFUL =
                   T.let(
                     :successful,
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
                   )
 
                 # The attempt was unsuccessful.
                 FAILED =
                   T.let(
                     :failed,
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome::TaggedSymbol
                     ]
                   )
                 end
@@ -882,7 +1021,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -891,27 +1030,27 @@ module Increase
               TEXT_MESSAGE =
                 T.let(
                   :text_message,
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
                 )
 
               # The one-time code was sent via email.
               EMAIL =
                 T.let(
                   :email,
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
                 )
 
               # The one-time code was not successfully delivered.
               NONE_AVAILABLE =
                 T.let(
                   :none_available,
-                  Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod::TaggedSymbol
                   ]
                 )
               end
@@ -928,7 +1067,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthentication::DenyReason
+                  Increase::Models::CardPayment::Element::CardAuthentication::DenyReason
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -937,48 +1076,48 @@ module Increase
             GROUP_LOCKED =
               T.let(
                 :group_locked,
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
             # The card was not active.
             CARD_NOT_ACTIVE =
               T.let(
                 :card_not_active,
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
             # The entity was not active.
             ENTITY_NOT_ACTIVE =
               T.let(
                 :entity_not_active,
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
             # The transaction was not allowed.
             TRANSACTION_NOT_ALLOWED =
               T.let(
                 :transaction_not_allowed,
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
             # The webhook was denied.
             WEBHOOK_DENIED =
               T.let(
                 :webhook_denied,
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
             # The webhook timed out.
             WEBHOOK_TIMED_OUT =
               T.let(
                 :webhook_timed_out,
-                Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::DenyReason::TaggedSymbol
                 ]
               )
             end
@@ -994,7 +1133,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthentication::DeviceChannel
+                  Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1003,27 +1142,27 @@ module Increase
             APP =
               T.let(
                 :app,
-                Increase::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
               )
 
             # The authentication attempt was made from a browser.
             BROWSER =
               T.let(
                 :browser,
-                Increase::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
               )
 
             # The authentication attempt was initiated by the 3DS Requestor.
             THREE_DS_REQUESTOR_INITIATED =
               T.let(
                 :three_ds_requestor_initiated,
-                Increase::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel::TaggedSymbol
                 ]
               )
             end
@@ -1039,7 +1178,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthentication::Status
+                  Increase::Models::CardPayment::Element::CardAuthentication::Status
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1048,69 +1187,69 @@ module Increase
             DENIED =
               T.let(
                 :denied,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt was authenticated with a challenge.
             AUTHENTICATED_WITH_CHALLENGE =
               T.let(
                 :authenticated_with_challenge,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt was authenticated without a challenge.
             AUTHENTICATED_WITHOUT_CHALLENGE =
               T.let(
                 :authenticated_without_challenge,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt is awaiting a challenge.
             AWAITING_CHALLENGE =
               T.let(
                 :awaiting_challenge,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt is validating a challenge.
             VALIDATING_CHALLENGE =
               T.let(
                 :validating_challenge,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt was canceled.
             CANCELED =
               T.let(
                 :canceled,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt timed out while awaiting a challenge.
             TIMED_OUT_AWAITING_CHALLENGE =
               T.let(
                 :timed_out_awaiting_challenge,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt errored.
             ERRORED =
               T.let(
                 :errored,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             # The authentication attempt exceeded the attempt threshold.
             EXCEEDED_ATTEMPT_THRESHOLD =
               T.let(
                 :exceeded_attempt_threshold,
-                Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Status::TaggedSymbol
                 ]
               )
             end
@@ -1127,7 +1266,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthentication::Type
+                  Increase::Models::CardPayment::Element::CardAuthentication::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1135,13 +1274,13 @@ module Increase
             CARD_AUTHENTICATION =
               T.let(
                 :card_authentication,
-                Increase::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthentication::Type::TaggedSymbol
                 ]
               )
             end
@@ -1151,9 +1290,6 @@ module Increase
         end
 
         class CardAuthorization < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Authorization identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -1162,7 +1298,7 @@ module Increase
           # stand-in processing, or the user through a real-time decision.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
             )
           end
           attr_accessor :actioner
@@ -1180,7 +1316,7 @@ module Increase
           # transaction's currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -1194,7 +1330,7 @@ module Increase
           # cardholder to the merchant or from the merchant to the cardholder.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
             )
           end
           attr_accessor :direction
@@ -1238,7 +1374,7 @@ module Increase
           # Fields specific to the `network`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::NetworkDetails
+              Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails
             )
           end
           attr_reader :network_details
@@ -1246,7 +1382,10 @@ module Increase
           sig do
             params(
               network_details:
-                Increase::CardPayment::Element::CardAuthorization::NetworkDetails::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_details
@@ -1254,7 +1393,7 @@ module Increase
           # Network-specific identifiers for a specific request or transaction.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -1262,7 +1401,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardAuthorization::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -1294,7 +1436,7 @@ module Increase
           # whether it was used for bill payments or an automatic fuel dispenser.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
             )
           end
           attr_accessor :processing_category
@@ -1313,7 +1455,7 @@ module Increase
           # `card_authorization`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -1321,7 +1463,7 @@ module Increase
           # Fields related to verification of cardholder-provided values.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorization::Verification
+              Increase::Models::CardPayment::Element::CardAuthorization::Verification
             )
           end
           attr_reader :verification
@@ -1329,7 +1471,10 @@ module Increase
           sig do
             params(
               verification:
-                Increase::CardPayment::Element::CardAuthorization::Verification::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :verification
@@ -1342,14 +1487,14 @@ module Increase
             params(
               id: String,
               actioner:
-                Increase::CardPayment::Element::CardAuthorization::Actioner::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorization::Actioner::OrSymbol,
               amount: Integer,
               card_payment_id: String,
               currency:
-                Increase::CardPayment::Element::CardAuthorization::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::OrSymbol,
               digital_wallet_token_id: T.nilable(String),
               direction:
-                Increase::CardPayment::Element::CardAuthorization::Direction::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorization::Direction::OrSymbol,
               expires_at: Time,
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -1359,22 +1504,31 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_details:
-                Increase::CardPayment::Element::CardAuthorization::NetworkDetails::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+                  Increase::Internal::AnyHash
+                ),
               network_identifiers:
-                Increase::CardPayment::Element::CardAuthorization::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
               processing_category:
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::OrSymbol,
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
               type:
-                Increase::CardPayment::Element::CardAuthorization::Type::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorization::Type::OrSymbol,
               verification:
-                Increase::CardPayment::Element::CardAuthorization::Verification::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification,
+                  Increase::Internal::AnyHash
+                )
             ).returns(T.attached_class)
           end
           def self.new(
@@ -1456,14 +1610,14 @@ module Increase
               {
                 id: String,
                 actioner:
-                  Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol,
                 amount: Integer,
                 card_payment_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol,
                 digital_wallet_token_id: T.nilable(String),
                 direction:
-                  Increase::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol,
                 expires_at: Time,
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
@@ -1473,22 +1627,22 @@ module Increase
                 merchant_postal_code: T.nilable(String),
                 merchant_state: T.nilable(String),
                 network_details:
-                  Increase::CardPayment::Element::CardAuthorization::NetworkDetails,
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
                 network_identifiers:
-                  Increase::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
                 network_risk_score: T.nilable(Integer),
                 pending_transaction_id: T.nilable(String),
                 physical_card_id: T.nilable(String),
                 presentment_amount: Integer,
                 presentment_currency: String,
                 processing_category:
-                  Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol,
                 real_time_decision_id: T.nilable(String),
                 terminal_id: T.nilable(String),
                 type:
-                  Increase::CardPayment::Element::CardAuthorization::Type::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol,
                 verification:
-                  Increase::CardPayment::Element::CardAuthorization::Verification
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification
               }
             )
           end
@@ -1504,7 +1658,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorization::Actioner
+                  Increase::Models::CardPayment::Element::CardAuthorization::Actioner
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1513,27 +1667,27 @@ module Increase
             USER =
               T.let(
                 :user,
-                Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
               )
 
             # This object was actioned by Increase without user intervention.
             INCREASE =
               T.let(
                 :increase,
-                Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
               )
 
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
               T.let(
                 :network,
-                Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
                 ]
               )
             end
@@ -1550,7 +1704,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorization::Currency
+                  Increase::Models::CardPayment::Element::CardAuthorization::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1559,48 +1713,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
                 ]
               )
             end
@@ -1617,7 +1771,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorization::Direction
+                  Increase::Models::CardPayment::Element::CardAuthorization::Direction
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1626,20 +1780,20 @@ module Increase
             SETTLEMENT =
               T.let(
                 :settlement,
-                Increase::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
               )
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
               T.let(
                 :refund,
-                Increase::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
                 ]
               )
             end
@@ -1648,13 +1802,10 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The payment network used to process this card authorization.
             sig do
               returns(
-                Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
               )
             end
             attr_accessor :category
@@ -1663,7 +1814,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
                 )
               )
             end
@@ -1673,7 +1824,10 @@ module Increase
               params(
                 visa:
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -1683,10 +1837,13 @@ module Increase
             sig do
               params(
                 category:
-                  Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Category::OrSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::OrSymbol,
                 visa:
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).returns(T.attached_class)
             end
@@ -1702,10 +1859,10 @@ module Increase
               override.returns(
                 {
                   category:
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
                   visa:
                     T.nilable(
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
                     )
                 }
               )
@@ -1721,7 +1878,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Category
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1730,13 +1887,13 @@ module Increase
               VISA =
                 T.let(
                   :visa,
-                  Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category::TaggedSymbol
                   ]
                 )
               end
@@ -1745,16 +1902,13 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
               # transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
                 )
               end
@@ -1765,7 +1919,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
                 )
               end
@@ -1776,7 +1930,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
                 )
               end
@@ -1787,15 +1941,15 @@ module Increase
                 params(
                   electronic_commerce_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
                     ),
                   point_of_service_entry_mode:
                     T.nilable(
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
                     ),
                   stand_in_processing_reason:
                     T.nilable(
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                     )
                 ).returns(T.attached_class)
               end
@@ -1818,15 +1972,15 @@ module Increase
                   {
                     electronic_commerce_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ),
                     point_of_service_entry_mode:
                       T.nilable(
-                        Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ),
                     stand_in_processing_reason:
                       T.nilable(
-                        Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       )
                   }
                 )
@@ -1844,7 +1998,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1853,62 +2007,62 @@ module Increase
                 MAIL_PHONE_ORDER =
                   T.let(
                     :mail_phone_order,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
                 RECURRING =
                   T.let(
                     :recurring,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
                 INSTALLMENT =
                   T.let(
                     :installment,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
                 UNKNOWN_MAIL_PHONE_ORDER =
                   T.let(
                     :unknown_mail_phone_order,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
                 SECURE_ELECTRONIC_COMMERCE =
                   T.let(
                     :secure_electronic_commerce,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
                   T.let(
                     :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION =
                   T.let(
                     :non_authenticated_security_transaction,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION =
                   T.let(
                     :non_secure_transaction,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -1925,7 +2079,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -1934,76 +2088,76 @@ module Increase
                 UNKNOWN =
                   T.let(
                     :unknown,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Manual key entry
                 MANUAL =
                   T.let(
                     :manual,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Magnetic stripe read, without card verification value
                 MAGNETIC_STRIPE_NO_CVV =
                   T.let(
                     :magnetic_stripe_no_cvv,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Optical code
                 OPTICAL_CODE =
                   T.let(
                     :optical_code,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contact chip card
                 INTEGRATED_CIRCUIT_CARD =
                   T.let(
                     :integrated_circuit_card,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contactless read of chip card
                 CONTACTLESS =
                   T.let(
                     :contactless,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Transaction initiated using a credential that has previously been stored on file
                 CREDENTIAL_ON_FILE =
                   T.let(
                     :credential_on_file,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Magnetic stripe read
                 MAGNETIC_STRIPE =
                   T.let(
                     :magnetic_stripe,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contactless read of magnetic stripe data
                 CONTACTLESS_MAGNETIC_STRIPE =
                   T.let(
                     :contactless_magnetic_stripe,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV =
                   T.let(
                     :integrated_circuit_card_no_cvv,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                     ]
                   )
                 end
@@ -2020,7 +2174,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2029,55 +2183,55 @@ module Increase
                 ISSUER_ERROR =
                   T.let(
                     :issuer_error,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
                 INVALID_PHYSICAL_CARD =
                   T.let(
                     :invalid_physical_card,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
                   T.let(
                     :invalid_cardholder_authentication_verification_value,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR =
                   T.let(
                     :internal_visa_error,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
                   T.let(
                     :merchant_transaction_advisory_service_authentication_required,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
                   T.let(
                     :payment_fraud_disruption_acquirer_block,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # An unspecific reason for stand-in processing.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                     ]
                   )
                 end
@@ -2088,9 +2242,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -2151,7 +2302,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorization::ProcessingCategory
+                  Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2160,48 +2311,48 @@ module Increase
             ACCOUNT_FUNDING =
               T.let(
                 :account_funding,
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
             # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
             AUTOMATIC_FUEL_DISPENSER =
               T.let(
                 :automatic_fuel_dispenser,
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
             # A transaction used to pay a bill.
             BILL_PAYMENT =
               T.let(
                 :bill_payment,
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
             # A regular purchase.
             PURCHASE =
               T.let(
                 :purchase,
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
             # Quasi-cash transactions represent purchases of items which may be convertible to cash.
             QUASI_CASH =
               T.let(
                 :quasi_cash,
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
               T.let(
                 :refund,
-                Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
                 ]
               )
             end
@@ -2218,7 +2369,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorization::Type
+                  Increase::Models::CardPayment::Element::CardAuthorization::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2226,13 +2377,13 @@ module Increase
             CARD_AUTHORIZATION =
               T.let(
                 :card_authorization,
-                Increase::CardPayment::Element::CardAuthorization::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorization::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::Type::TaggedSymbol
                 ]
               )
             end
@@ -2241,14 +2392,11 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
             sig do
               returns(
-                Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode
+                Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode
               )
             end
             attr_reader :card_verification_code
@@ -2256,7 +2404,10 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                    Increase::Internal::AnyHash
+                  )
               ).void
             end
             attr_writer :card_verification_code
@@ -2265,7 +2416,7 @@ module Increase
             # we verified it against.
             sig do
               returns(
-                Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
+                Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
               )
             end
             attr_reader :cardholder_address
@@ -2273,7 +2424,10 @@ module Increase
             sig do
               params(
                 cardholder_address:
-                  Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
+                    Increase::Internal::AnyHash
+                  )
               ).void
             end
             attr_writer :cardholder_address
@@ -2282,9 +2436,15 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::OrHash,
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                    Increase::Internal::AnyHash
+                  ),
                 cardholder_address:
-                  Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
+                    Increase::Internal::AnyHash
+                  )
               ).returns(T.attached_class)
             end
             def self.new(
@@ -2301,9 +2461,9 @@ module Increase
               override.returns(
                 {
                   card_verification_code:
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
                   cardholder_address:
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
                 }
               )
             end
@@ -2311,13 +2471,10 @@ module Increase
             end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # The result of verifying the Card Verification Code.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                 )
               end
               attr_accessor :result
@@ -2327,7 +2484,7 @@ module Increase
               sig do
                 params(
                   result:
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2340,7 +2497,7 @@ module Increase
                 override.returns(
                   {
                     result:
-                      Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   }
                 )
               end
@@ -2355,7 +2512,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result
+                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2364,27 +2521,27 @@ module Increase
                 NOT_CHECKED =
                   T.let(
                     :not_checked,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 # The card verification code matched the one on file.
                 MATCH =
                   T.let(
                     :match,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 # The card verification code did not match the one on file.
                 NO_MATCH =
                   T.let(
                     :no_match,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
                     ]
                   )
                 end
@@ -2394,9 +2551,6 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
@@ -2417,7 +2571,7 @@ module Increase
               # The address verification result returned to the card network.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                 )
               end
               attr_accessor :result
@@ -2431,7 +2585,7 @@ module Increase
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
                   result:
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -2457,7 +2611,7 @@ module Increase
                     provided_line1: T.nilable(String),
                     provided_postal_code: T.nilable(String),
                     result:
-                      Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   }
                 )
               end
@@ -2472,7 +2626,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result
+                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2481,48 +2635,48 @@ module Increase
                 NOT_CHECKED =
                   T.let(
                     :not_checked,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code matches, but the street address was not verified.
                 POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
                   T.let(
                     :postal_code_match_address_not_checked,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code matches, but the street address does not match.
                 POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
                   T.let(
                     :postal_code_match_address_no_match,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code does not match, but the street address matches.
                 POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
                   T.let(
                     :postal_code_no_match_address_match,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code and street address match.
                 MATCH =
                   T.let(
                     :match,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code and street address do not match.
                 NO_MATCH =
                   T.let(
                     :no_match,
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
                     ]
                   )
                 end
@@ -2534,9 +2688,6 @@ module Increase
         end
 
         class CardAuthorizationExpiration < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Authorization Expiration identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -2549,7 +2700,7 @@ module Increase
           # currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -2562,7 +2713,7 @@ module Increase
           # The card network used to process this card authorization.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol
             )
           end
           attr_accessor :network
@@ -2571,7 +2722,7 @@ module Increase
           # `card_authorization_expiration`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -2585,12 +2736,12 @@ module Increase
               id: String,
               card_authorization_id: String,
               currency:
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::OrSymbol,
               expired_amount: Integer,
               network:
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Network::OrSymbol,
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::OrSymbol,
               type:
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Type::OrSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -2618,12 +2769,12 @@ module Increase
                 id: String,
                 card_authorization_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol,
                 expired_amount: Integer,
                 network:
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol,
                 type:
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
               }
             )
           end
@@ -2639,7 +2790,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Currency
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2648,48 +2799,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
                 ]
               )
             end
@@ -2705,7 +2856,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Network
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2714,13 +2865,13 @@ module Increase
             VISA =
               T.let(
                 :visa,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network::TaggedSymbol
                 ]
               )
             end
@@ -2737,7 +2888,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Type
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -2745,13 +2896,13 @@ module Increase
             CARD_AUTHORIZATION_EXPIRATION =
               T.let(
                 :card_authorization_expiration,
-                Increase::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type::TaggedSymbol
                 ]
               )
             end
@@ -2761,9 +2912,6 @@ module Increase
         end
 
         class CardDecline < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Decline identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -2772,7 +2920,7 @@ module Increase
           # stand-in processing, or the user through a real-time decision.
           sig do
             returns(
-              Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
             )
           end
           attr_accessor :actioner
@@ -2790,7 +2938,7 @@ module Increase
           # account currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -2808,7 +2956,7 @@ module Increase
           # cardholder to the merchant or from the merchant to the cardholder.
           sig do
             returns(
-              Increase::CardPayment::Element::CardDecline::Direction::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol
             )
           end
           attr_accessor :direction
@@ -2846,14 +2994,19 @@ module Increase
 
           # Fields specific to the `network`.
           sig do
-            returns(Increase::CardPayment::Element::CardDecline::NetworkDetails)
+            returns(
+              Increase::Models::CardPayment::Element::CardDecline::NetworkDetails
+            )
           end
           attr_reader :network_details
 
           sig do
             params(
               network_details:
-                Increase::CardPayment::Element::CardDecline::NetworkDetails::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_details
@@ -2861,7 +3014,7 @@ module Increase
           # Network-specific identifiers for a specific request or transaction.
           sig do
             returns(
-              Increase::CardPayment::Element::CardDecline::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -2869,7 +3022,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardDecline::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -2897,7 +3053,7 @@ module Increase
           # whether it was used for bill payments or an automatic fuel dispenser.
           sig do
             returns(
-              Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
             )
           end
           attr_accessor :processing_category
@@ -2912,7 +3068,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
             )
           end
@@ -2921,7 +3077,7 @@ module Increase
           # Why the transaction was declined.
           sig do
             returns(
-              Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
             )
           end
           attr_accessor :reason
@@ -2933,14 +3089,19 @@ module Increase
 
           # Fields related to verification of cardholder-provided values.
           sig do
-            returns(Increase::CardPayment::Element::CardDecline::Verification)
+            returns(
+              Increase::Models::CardPayment::Element::CardDecline::Verification
+            )
           end
           attr_reader :verification
 
           sig do
             params(
               verification:
-                Increase::CardPayment::Element::CardDecline::Verification::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::Verification,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :verification
@@ -2951,15 +3112,15 @@ module Increase
             params(
               id: String,
               actioner:
-                Increase::CardPayment::Element::CardDecline::Actioner::OrSymbol,
+                Increase::Models::CardPayment::Element::CardDecline::Actioner::OrSymbol,
               amount: Integer,
               card_payment_id: String,
               currency:
-                Increase::CardPayment::Element::CardDecline::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardDecline::Currency::OrSymbol,
               declined_transaction_id: String,
               digital_wallet_token_id: T.nilable(String),
               direction:
-                Increase::CardPayment::Element::CardDecline::Direction::OrSymbol,
+                Increase::Models::CardPayment::Element::CardDecline::Direction::OrSymbol,
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: T.nilable(String),
@@ -2968,25 +3129,34 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_details:
-                Increase::CardPayment::Element::CardDecline::NetworkDetails::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+                  Increase::Internal::AnyHash
+                ),
               network_identifiers:
-                Increase::CardPayment::Element::CardDecline::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
               processing_category:
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::OrSymbol,
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::OrSymbol,
               real_time_decision_id: T.nilable(String),
               real_time_decision_reason:
                 T.nilable(
-                  Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::OrSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::OrSymbol
                 ),
               reason:
-                Increase::CardPayment::Element::CardDecline::Reason::OrSymbol,
+                Increase::Models::CardPayment::Element::CardDecline::Reason::OrSymbol,
               terminal_id: T.nilable(String),
               verification:
-                Increase::CardPayment::Element::CardDecline::Verification::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardDecline::Verification,
+                  Increase::Internal::AnyHash
+                )
             ).returns(T.attached_class)
           end
           def self.new(
@@ -3067,15 +3237,15 @@ module Increase
               {
                 id: String,
                 actioner:
-                  Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol,
                 amount: Integer,
                 card_payment_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol,
                 declined_transaction_id: String,
                 digital_wallet_token_id: T.nilable(String),
                 direction:
-                  Increase::CardPayment::Element::CardDecline::Direction::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol,
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
                 merchant_city: T.nilable(String),
@@ -3084,25 +3254,25 @@ module Increase
                 merchant_postal_code: T.nilable(String),
                 merchant_state: T.nilable(String),
                 network_details:
-                  Increase::CardPayment::Element::CardDecline::NetworkDetails,
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
                 network_identifiers:
-                  Increase::CardPayment::Element::CardDecline::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
                 network_risk_score: T.nilable(Integer),
                 physical_card_id: T.nilable(String),
                 presentment_amount: Integer,
                 presentment_currency: String,
                 processing_category:
-                  Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol,
                 real_time_decision_id: T.nilable(String),
                 real_time_decision_reason:
                   T.nilable(
-                    Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
                   ),
                 reason:
-                  Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol,
                 terminal_id: T.nilable(String),
                 verification:
-                  Increase::CardPayment::Element::CardDecline::Verification
+                  Increase::Models::CardPayment::Element::CardDecline::Verification
               }
             )
           end
@@ -3118,7 +3288,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardDecline::Actioner
+                  Increase::Models::CardPayment::Element::CardDecline::Actioner
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3127,27 +3297,27 @@ module Increase
             USER =
               T.let(
                 :user,
-                Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
               )
 
             # This object was actioned by Increase without user intervention.
             INCREASE =
               T.let(
                 :increase,
-                Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
               )
 
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
               T.let(
                 :network,
-                Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
                 ]
               )
             end
@@ -3164,7 +3334,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardDecline::Currency
+                  Increase::Models::CardPayment::Element::CardDecline::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3173,48 +3343,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::Currency::TaggedSymbol
                 ]
               )
             end
@@ -3231,7 +3401,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardDecline::Direction
+                  Increase::Models::CardPayment::Element::CardDecline::Direction
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3240,20 +3410,20 @@ module Increase
             SETTLEMENT =
               T.let(
                 :settlement,
-                Increase::CardPayment::Element::CardDecline::Direction::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol
               )
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
               T.let(
                 :refund,
-                Increase::CardPayment::Element::CardDecline::Direction::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardDecline::Direction::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::Direction::TaggedSymbol
                 ]
               )
             end
@@ -3262,13 +3432,10 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The payment network used to process this card authorization.
             sig do
               returns(
-                Increase::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol
               )
             end
             attr_accessor :category
@@ -3277,7 +3444,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa
                 )
               )
             end
@@ -3287,7 +3454,10 @@ module Increase
               params(
                 visa:
                   T.nilable(
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -3297,10 +3467,13 @@ module Increase
             sig do
               params(
                 category:
-                  Increase::CardPayment::Element::CardDecline::NetworkDetails::Category::OrSymbol,
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::OrSymbol,
                 visa:
                   T.nilable(
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).returns(T.attached_class)
             end
@@ -3316,10 +3489,10 @@ module Increase
               override.returns(
                 {
                   category:
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol,
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol,
                   visa:
                     T.nilable(
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa
                     )
                 }
               )
@@ -3335,7 +3508,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Category
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3344,13 +3517,13 @@ module Increase
               VISA =
                 T.let(
                   :visa,
-                  Increase::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category::TaggedSymbol
                   ]
                 )
               end
@@ -3359,16 +3532,13 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
               # transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
                 )
               end
@@ -3379,7 +3549,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
                 )
               end
@@ -3390,7 +3560,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
                 )
               end
@@ -3401,15 +3571,15 @@ module Increase
                 params(
                   electronic_commerce_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
                     ),
                   point_of_service_entry_mode:
                     T.nilable(
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
                     ),
                   stand_in_processing_reason:
                     T.nilable(
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                     )
                 ).returns(T.attached_class)
               end
@@ -3432,15 +3602,15 @@ module Increase
                   {
                     electronic_commerce_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ),
                     point_of_service_entry_mode:
                       T.nilable(
-                        Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ),
                     stand_in_processing_reason:
                       T.nilable(
-                        Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       )
                   }
                 )
@@ -3458,7 +3628,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3467,62 +3637,62 @@ module Increase
                 MAIL_PHONE_ORDER =
                   T.let(
                     :mail_phone_order,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
                 RECURRING =
                   T.let(
                     :recurring,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
                 INSTALLMENT =
                   T.let(
                     :installment,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
                 UNKNOWN_MAIL_PHONE_ORDER =
                   T.let(
                     :unknown_mail_phone_order,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
                 SECURE_ELECTRONIC_COMMERCE =
                   T.let(
                     :secure_electronic_commerce,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
                   T.let(
                     :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION =
                   T.let(
                     :non_authenticated_security_transaction,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION =
                   T.let(
                     :non_secure_transaction,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -3539,7 +3709,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3548,76 +3718,76 @@ module Increase
                 UNKNOWN =
                   T.let(
                     :unknown,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Manual key entry
                 MANUAL =
                   T.let(
                     :manual,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Magnetic stripe read, without card verification value
                 MAGNETIC_STRIPE_NO_CVV =
                   T.let(
                     :magnetic_stripe_no_cvv,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Optical code
                 OPTICAL_CODE =
                   T.let(
                     :optical_code,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contact chip card
                 INTEGRATED_CIRCUIT_CARD =
                   T.let(
                     :integrated_circuit_card,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contactless read of chip card
                 CONTACTLESS =
                   T.let(
                     :contactless,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Transaction initiated using a credential that has previously been stored on file
                 CREDENTIAL_ON_FILE =
                   T.let(
                     :credential_on_file,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Magnetic stripe read
                 MAGNETIC_STRIPE =
                   T.let(
                     :magnetic_stripe,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contactless read of magnetic stripe data
                 CONTACTLESS_MAGNETIC_STRIPE =
                   T.let(
                     :contactless_magnetic_stripe,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV =
                   T.let(
                     :integrated_circuit_card_no_cvv,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                     ]
                   )
                 end
@@ -3634,7 +3804,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3643,55 +3813,55 @@ module Increase
                 ISSUER_ERROR =
                   T.let(
                     :issuer_error,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
                 INVALID_PHYSICAL_CARD =
                   T.let(
                     :invalid_physical_card,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
                   T.let(
                     :invalid_cardholder_authentication_verification_value,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR =
                   T.let(
                     :internal_visa_error,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
                   T.let(
                     :merchant_transaction_advisory_service_authentication_required,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
                   T.let(
                     :payment_fraud_disruption_acquirer_block,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # An unspecific reason for stand-in processing.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                     ]
                   )
                 end
@@ -3702,9 +3872,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -3765,7 +3932,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardDecline::ProcessingCategory
+                  Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3774,48 +3941,48 @@ module Increase
             ACCOUNT_FUNDING =
               T.let(
                 :account_funding,
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
             # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
             AUTOMATIC_FUEL_DISPENSER =
               T.let(
                 :automatic_fuel_dispenser,
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
             # A transaction used to pay a bill.
             BILL_PAYMENT =
               T.let(
                 :bill_payment,
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
             # A regular purchase.
             PURCHASE =
               T.let(
                 :purchase,
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
             # Quasi-cash transactions represent purchases of items which may be convertible to cash.
             QUASI_CASH =
               T.let(
                 :quasi_cash,
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
               T.let(
                 :refund,
-                Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
                 ]
               )
             end
@@ -3832,7 +3999,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason
+                  Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3841,48 +4008,48 @@ module Increase
             INSUFFICIENT_FUNDS =
               T.let(
                 :insufficient_funds,
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
             # This type of transaction is not allowed for this card. This transaction should not be retried.
             TRANSACTION_NEVER_ALLOWED =
               T.let(
                 :transaction_never_allowed,
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
             # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
             EXCEEDS_APPROVAL_LIMIT =
               T.let(
                 :exceeds_approval_limit,
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
             # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
             CARD_TEMPORARILY_DISABLED =
               T.let(
                 :card_temporarily_disabled,
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
             # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
             SUSPECTED_FRAUD =
               T.let(
                 :suspected_fraud,
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER =
               T.let(
                 :other,
-                Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason::TaggedSymbol
                 ]
               )
             end
@@ -3898,7 +4065,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardDecline::Reason
+                  Increase::Models::CardPayment::Element::CardDecline::Reason
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -3907,132 +4074,132 @@ module Increase
             ACCOUNT_CLOSED =
               T.let(
                 :account_closed,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The Card was not active.
             CARD_NOT_ACTIVE =
               T.let(
                 :card_not_active,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The Card has been canceled.
             CARD_CANCELED =
               T.let(
                 :card_canceled,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The Physical Card was not active.
             PHYSICAL_CARD_NOT_ACTIVE =
               T.let(
                 :physical_card_not_active,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The account's entity was not active.
             ENTITY_NOT_ACTIVE =
               T.let(
                 :entity_not_active,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The account was inactive.
             GROUP_LOCKED =
               T.let(
                 :group_locked,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The Card's Account did not have a sufficient available balance.
             INSUFFICIENT_FUNDS =
               T.let(
                 :insufficient_funds,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The given CVV2 did not match the card's value.
             CVV2_MISMATCH =
               T.let(
                 :cvv2_mismatch,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The given expiration date did not match the card's value. Only applies when a CVV2 is present.
             CARD_EXPIRATION_MISMATCH =
               T.let(
                 :card_expiration_mismatch,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The attempted card transaction is not allowed per Increase's terms.
             TRANSACTION_NOT_ALLOWED =
               T.let(
                 :transaction_not_allowed,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The transaction was blocked by a Limit.
             BREACHES_LIMIT =
               T.let(
                 :breaches_limit,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # Your application declined the transaction via webhook.
             WEBHOOK_DECLINED =
               T.let(
                 :webhook_declined,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # Your application webhook did not respond without the required timeout.
             WEBHOOK_TIMED_OUT =
               T.let(
                 :webhook_timed_out,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # Declined by stand-in processing.
             DECLINED_BY_STAND_IN_PROCESSING =
               T.let(
                 :declined_by_stand_in_processing,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The card read had an invalid CVV, dCVV, or authorization request cryptogram.
             INVALID_PHYSICAL_CARD =
               T.let(
                 :invalid_physical_card,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The original card authorization for this incremental authorization does not exist.
             MISSING_ORIGINAL_AUTHORIZATION =
               T.let(
                 :missing_original_authorization,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The transaction was declined because the 3DS authentication failed.
             FAILED_3DS_AUTHENTICATION =
               T.let(
                 :failed_3ds_authentication,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD =
               T.let(
                 :suspected_fraud,
-                Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardDecline::Reason::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::Reason::TaggedSymbol
                 ]
               )
             end
@@ -4041,14 +4208,11 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
             sig do
               returns(
-                Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode
+                Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode
               )
             end
             attr_reader :card_verification_code
@@ -4056,7 +4220,10 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                    Increase::Internal::AnyHash
+                  )
               ).void
             end
             attr_writer :card_verification_code
@@ -4065,7 +4232,7 @@ module Increase
             # we verified it against.
             sig do
               returns(
-                Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress
+                Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
               )
             end
             attr_reader :cardholder_address
@@ -4073,7 +4240,10 @@ module Increase
             sig do
               params(
                 cardholder_address:
-                  Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
+                    Increase::Internal::AnyHash
+                  )
               ).void
             end
             attr_writer :cardholder_address
@@ -4082,9 +4252,15 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::OrHash,
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                    Increase::Internal::AnyHash
+                  ),
                 cardholder_address:
-                  Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress,
+                    Increase::Internal::AnyHash
+                  )
               ).returns(T.attached_class)
             end
             def self.new(
@@ -4101,9 +4277,9 @@ module Increase
               override.returns(
                 {
                   card_verification_code:
-                    Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
                   cardholder_address:
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
                 }
               )
             end
@@ -4111,13 +4287,10 @@ module Increase
             end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # The result of verifying the Card Verification Code.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                 )
               end
               attr_accessor :result
@@ -4127,7 +4300,7 @@ module Increase
               sig do
                 params(
                   result:
-                    Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::OrSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -4140,7 +4313,7 @@ module Increase
                 override.returns(
                   {
                     result:
-                      Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   }
                 )
               end
@@ -4155,7 +4328,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result
+                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4164,27 +4337,27 @@ module Increase
                 NOT_CHECKED =
                   T.let(
                     :not_checked,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 # The card verification code matched the one on file.
                 MATCH =
                   T.let(
                     :match,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 # The card verification code did not match the one on file.
                 NO_MATCH =
                   T.let(
                     :no_match,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result::TaggedSymbol
                     ]
                   )
                 end
@@ -4194,9 +4367,6 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
@@ -4217,7 +4387,7 @@ module Increase
               # The address verification result returned to the card network.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                 )
               end
               attr_accessor :result
@@ -4231,7 +4401,7 @@ module Increase
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
                   result:
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::OrSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -4257,7 +4427,7 @@ module Increase
                     provided_line1: T.nilable(String),
                     provided_postal_code: T.nilable(String),
                     result:
-                      Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   }
                 )
               end
@@ -4272,7 +4442,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result
+                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4281,48 +4451,48 @@ module Increase
                 NOT_CHECKED =
                   T.let(
                     :not_checked,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code matches, but the street address was not verified.
                 POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
                   T.let(
                     :postal_code_match_address_not_checked,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code matches, but the street address does not match.
                 POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
                   T.let(
                     :postal_code_match_address_no_match,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code does not match, but the street address matches.
                 POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
                   T.let(
                     :postal_code_no_match_address_match,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code and street address match.
                 MATCH =
                   T.let(
                     :match,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code and street address do not match.
                 NO_MATCH =
                   T.let(
                     :no_match,
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result::TaggedSymbol
                     ]
                   )
                 end
@@ -4334,9 +4504,6 @@ module Increase
         end
 
         class CardFuelConfirmation < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Fuel Confirmation identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -4349,7 +4516,7 @@ module Increase
           # currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -4357,7 +4524,7 @@ module Increase
           # The card network used to process this card authorization.
           sig do
             returns(
-              Increase::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol
             )
           end
           attr_accessor :network
@@ -4365,7 +4532,7 @@ module Increase
           # Network-specific identifiers for a specific request or transaction.
           sig do
             returns(
-              Increase::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -4373,7 +4540,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -4387,7 +4557,7 @@ module Increase
           # `card_fuel_confirmation`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -4406,14 +4576,17 @@ module Increase
               id: String,
               card_authorization_id: String,
               currency:
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::OrSymbol,
               network:
-                Increase::CardPayment::Element::CardFuelConfirmation::Network::OrSymbol,
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::OrSymbol,
               network_identifiers:
-                Increase::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               pending_transaction_id: T.nilable(String),
               type:
-                Increase::CardPayment::Element::CardFuelConfirmation::Type::OrSymbol,
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::OrSymbol,
               updated_authorization_amount: Integer
             ).returns(T.attached_class)
           end
@@ -4447,14 +4620,14 @@ module Increase
                 id: String,
                 card_authorization_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol,
                 network:
-                  Increase::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol,
                 network_identifiers:
-                  Increase::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
                 pending_transaction_id: T.nilable(String),
                 type:
-                  Increase::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol,
                 updated_authorization_amount: Integer
               }
             )
@@ -4471,7 +4644,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardFuelConfirmation::Currency
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4480,48 +4653,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
                 ]
               )
             end
@@ -4537,7 +4710,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardFuelConfirmation::Network
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Network
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4546,13 +4719,13 @@ module Increase
             VISA =
               T.let(
                 :visa,
-                Increase::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Network::TaggedSymbol
                 ]
               )
             end
@@ -4561,9 +4734,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -4624,7 +4794,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardFuelConfirmation::Type
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4632,13 +4802,13 @@ module Increase
             CARD_FUEL_CONFIRMATION =
               T.let(
                 :card_fuel_confirmation,
-                Increase::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardFuelConfirmation::Type::TaggedSymbol
                 ]
               )
             end
@@ -4648,9 +4818,6 @@ module Increase
         end
 
         class CardIncrement < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Increment identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -4659,7 +4826,7 @@ module Increase
           # stand-in processing, or the user through a real-time decision.
           sig do
             returns(
-              Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
             )
           end
           attr_accessor :actioner
@@ -4677,7 +4844,7 @@ module Increase
           # currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -4685,7 +4852,7 @@ module Increase
           # The card network used to process this card authorization.
           sig do
             returns(
-              Increase::CardPayment::Element::CardIncrement::Network::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol
             )
           end
           attr_accessor :network
@@ -4693,7 +4860,7 @@ module Increase
           # Network-specific identifiers for a specific request or transaction.
           sig do
             returns(
-              Increase::CardPayment::Element::CardIncrement::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -4701,7 +4868,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardIncrement::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -4724,7 +4894,7 @@ module Increase
           # `card_increment`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardIncrement::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -4741,20 +4911,23 @@ module Increase
             params(
               id: String,
               actioner:
-                Increase::CardPayment::Element::CardIncrement::Actioner::OrSymbol,
+                Increase::Models::CardPayment::Element::CardIncrement::Actioner::OrSymbol,
               amount: Integer,
               card_authorization_id: String,
               currency:
-                Increase::CardPayment::Element::CardIncrement::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::OrSymbol,
               network:
-                Increase::CardPayment::Element::CardIncrement::Network::OrSymbol,
+                Increase::Models::CardPayment::Element::CardIncrement::Network::OrSymbol,
               network_identifiers:
-                Increase::CardPayment::Element::CardIncrement::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               real_time_decision_id: T.nilable(String),
               type:
-                Increase::CardPayment::Element::CardIncrement::Type::OrSymbol,
+                Increase::Models::CardPayment::Element::CardIncrement::Type::OrSymbol,
               updated_authorization_amount: Integer
             ).returns(T.attached_class)
           end
@@ -4798,20 +4971,20 @@ module Increase
               {
                 id: String,
                 actioner:
-                  Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol,
                 amount: Integer,
                 card_authorization_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol,
                 network:
-                  Increase::CardPayment::Element::CardIncrement::Network::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol,
                 network_identifiers:
-                  Increase::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
                 network_risk_score: T.nilable(Integer),
                 pending_transaction_id: T.nilable(String),
                 real_time_decision_id: T.nilable(String),
                 type:
-                  Increase::CardPayment::Element::CardIncrement::Type::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol,
                 updated_authorization_amount: Integer
               }
             )
@@ -4828,7 +5001,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardIncrement::Actioner
+                  Increase::Models::CardPayment::Element::CardIncrement::Actioner
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4837,27 +5010,27 @@ module Increase
             USER =
               T.let(
                 :user,
-                Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
               )
 
             # This object was actioned by Increase without user intervention.
             INCREASE =
               T.let(
                 :increase,
-                Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
               )
 
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
               T.let(
                 :network,
-                Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
                 ]
               )
             end
@@ -4874,7 +5047,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardIncrement::Currency
+                  Increase::Models::CardPayment::Element::CardIncrement::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4883,48 +5056,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
                 ]
               )
             end
@@ -4940,7 +5113,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardIncrement::Network
+                  Increase::Models::CardPayment::Element::CardIncrement::Network
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -4949,13 +5122,13 @@ module Increase
             VISA =
               T.let(
                 :visa,
-                Increase::CardPayment::Element::CardIncrement::Network::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardIncrement::Network::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardIncrement::Network::TaggedSymbol
                 ]
               )
             end
@@ -4964,9 +5137,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -5027,7 +5197,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardIncrement::Type
+                  Increase::Models::CardPayment::Element::CardIncrement::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5035,13 +5205,13 @@ module Increase
             CARD_INCREMENT =
               T.let(
                 :card_increment,
-                Increase::CardPayment::Element::CardIncrement::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardIncrement::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardIncrement::Type::TaggedSymbol
                 ]
               )
             end
@@ -5051,9 +5221,6 @@ module Increase
         end
 
         class CardRefund < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Refund identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -5071,7 +5238,9 @@ module Increase
           # aggregate, monthly.
           sig do
             returns(
-              T.nilable(Increase::CardPayment::Element::CardRefund::Cashback)
+              T.nilable(
+                Increase::Models::CardPayment::Element::CardRefund::Cashback
+              )
             )
           end
           attr_reader :cashback
@@ -5080,7 +5249,10 @@ module Increase
             params(
               cashback:
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::Cashback::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::Cashback,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -5090,7 +5262,7 @@ module Increase
           # transaction's settlement currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -5098,7 +5270,9 @@ module Increase
           # Interchange assessed as a part of this transaciton.
           sig do
             returns(
-              T.nilable(Increase::CardPayment::Element::CardRefund::Interchange)
+              T.nilable(
+                Increase::Models::CardPayment::Element::CardRefund::Interchange
+              )
             )
           end
           attr_reader :interchange
@@ -5107,7 +5281,10 @@ module Increase
             params(
               interchange:
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::Interchange::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::Interchange,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -5145,7 +5322,7 @@ module Increase
           # Network-specific identifiers for this refund.
           sig do
             returns(
-              Increase::CardPayment::Element::CardRefund::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -5153,7 +5330,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardRefund::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -5172,7 +5352,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardRefund::PurchaseDetails
+                Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails
               )
             )
           end
@@ -5182,7 +5362,10 @@ module Increase
             params(
               purchase_details:
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -5196,7 +5379,7 @@ module Increase
           # `card_refund`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardRefund::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -5213,13 +5396,19 @@ module Increase
               card_payment_id: String,
               cashback:
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::Cashback::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::Cashback,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               currency:
-                Increase::CardPayment::Element::CardRefund::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardRefund::Currency::OrSymbol,
               interchange:
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::Interchange::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::Interchange,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -5229,15 +5418,22 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_identifiers:
-                Increase::CardPayment::Element::CardRefund::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               presentment_amount: Integer,
               presentment_currency: String,
               purchase_details:
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               transaction_id: String,
-              type: Increase::CardPayment::Element::CardRefund::Type::OrSymbol
+              type:
+                Increase::Models::CardPayment::Element::CardRefund::Type::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -5297,13 +5493,13 @@ module Increase
                 card_payment_id: String,
                 cashback:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::Cashback
+                    Increase::Models::CardPayment::Element::CardRefund::Cashback
                   ),
                 currency:
-                  Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol,
                 interchange:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::Interchange
+                    Increase::Models::CardPayment::Element::CardRefund::Interchange
                   ),
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
@@ -5313,16 +5509,16 @@ module Increase
                 merchant_postal_code: T.nilable(String),
                 merchant_state: T.nilable(String),
                 network_identifiers:
-                  Increase::CardPayment::Element::CardRefund::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
                 presentment_amount: Integer,
                 presentment_currency: String,
                 purchase_details:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails
                   ),
                 transaction_id: String,
                 type:
-                  Increase::CardPayment::Element::CardRefund::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol
               }
             )
           end
@@ -5330,9 +5526,6 @@ module Increase
           end
 
           class Cashback < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The cashback amount given as a string containing a decimal number. The amount is
             # a positive number if it will be credited to you (e.g., settlements) and a
             # negative number if it will be debited (e.g., refunds).
@@ -5342,7 +5535,7 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             sig do
               returns(
-                Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
               )
             end
             attr_accessor :currency
@@ -5353,7 +5546,7 @@ module Increase
               params(
                 amount: String,
                 currency:
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::OrSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -5371,7 +5564,7 @@ module Increase
                 {
                   amount: String,
                   currency:
-                    Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 }
               )
             end
@@ -5386,7 +5579,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardRefund::Cashback::Currency
+                    Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5395,48 +5588,48 @@ module Increase
               CAD =
                 T.let(
                   :CAD,
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 )
 
               # Swiss Franc (CHF)
               CHF =
                 T.let(
                   :CHF,
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 )
 
               # Euro (EUR)
               EUR =
                 T.let(
                   :EUR,
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 )
 
               # British Pound (GBP)
               GBP =
                 T.let(
                   :GBP,
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 )
 
               # Japanese Yen (JPY)
               JPY =
                 T.let(
                   :JPY,
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 )
 
               # US Dollar (USD)
               USD =
                 T.let(
                   :USD,
-                  Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency::TaggedSymbol
                   ]
                 )
               end
@@ -5454,7 +5647,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardRefund::Currency
+                  Increase::Models::CardPayment::Element::CardRefund::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5463,48 +5656,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Currency::TaggedSymbol
                 ]
               )
             end
@@ -5513,9 +5706,6 @@ module Increase
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The interchange amount given as a string containing a decimal number in major
             # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
             # credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -5531,7 +5721,7 @@ module Increase
             # reimbursement.
             sig do
               returns(
-                Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
               )
             end
             attr_accessor :currency
@@ -5542,7 +5732,7 @@ module Increase
                 amount: String,
                 code: T.nilable(String),
                 currency:
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::OrSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -5565,7 +5755,7 @@ module Increase
                   amount: String,
                   code: T.nilable(String),
                   currency:
-                    Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 }
               )
             end
@@ -5581,7 +5771,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardRefund::Interchange::Currency
+                    Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -5590,48 +5780,48 @@ module Increase
               CAD =
                 T.let(
                   :CAD,
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 )
 
               # Swiss Franc (CHF)
               CHF =
                 T.let(
                   :CHF,
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 )
 
               # Euro (EUR)
               EUR =
                 T.let(
                   :EUR,
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 )
 
               # British Pound (GBP)
               GBP =
                 T.let(
                   :GBP,
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 )
 
               # Japanese Yen (JPY)
               JPY =
                 T.let(
                   :JPY,
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 )
 
               # US Dollar (USD)
               USD =
                 T.let(
                   :USD,
-                  Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
                   ]
                 )
               end
@@ -5641,9 +5831,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A network assigned business ID that identifies the acquirer that processed this
             # transaction.
             sig { returns(String) }
@@ -5692,14 +5879,11 @@ module Increase
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # Fields specific to car rentals.
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental
                 )
               )
             end
@@ -5709,7 +5893,10 @@ module Increase
               params(
                 car_rental:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -5732,7 +5919,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
                 )
               )
             end
@@ -5742,7 +5929,10 @@ module Increase
               params(
                 lodging:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -5765,7 +5955,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
               )
             end
@@ -5775,7 +5965,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel
                 )
               )
             end
@@ -5785,7 +5975,10 @@ module Increase
               params(
                 travel:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -5797,25 +5990,34 @@ module Increase
               params(
                 car_rental:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
+                      Increase::Internal::AnyHash
+                    )
                   ),
                 customer_reference_identifier: T.nilable(String),
                 local_tax_amount: T.nilable(Integer),
                 local_tax_currency: T.nilable(String),
                 lodging:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
+                      Increase::Internal::AnyHash
+                    )
                   ),
                 national_tax_amount: T.nilable(Integer),
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
                 purchase_identifier_format:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
                   ),
                 travel:
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).returns(T.attached_class)
             end
@@ -5850,25 +6052,25 @@ module Increase
                 {
                   car_rental:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental
                     ),
                   customer_reference_identifier: T.nilable(String),
                   local_tax_amount: T.nilable(Integer),
                   local_tax_currency: T.nilable(String),
                   lodging:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
                     ),
                   national_tax_amount: T.nilable(Integer),
                   national_tax_currency: T.nilable(String),
                   purchase_identifier: T.nilable(String),
                   purchase_identifier_format:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                     ),
                   travel:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel
                     )
                 }
               )
@@ -5877,9 +6079,6 @@ module Increase
             end
 
             class CarRental < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
               attr_accessor :car_class_code
@@ -5906,7 +6105,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
                 )
               end
@@ -5935,7 +6134,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
                 )
               end
@@ -5974,7 +6173,7 @@ module Increase
                   days_rented: T.nilable(Integer),
                   extra_charges:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
                     ),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
@@ -5982,7 +6181,7 @@ module Increase
                   insurance_charges_currency: T.nilable(String),
                   no_show_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
                     ),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
@@ -6045,7 +6244,7 @@ module Increase
                     days_rented: T.nilable(Integer),
                     extra_charges:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                       ),
                     fuel_charges_amount: T.nilable(Integer),
                     fuel_charges_currency: T.nilable(String),
@@ -6053,7 +6252,7 @@ module Increase
                     insurance_charges_currency: T.nilable(String),
                     no_show_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                       ),
                     one_way_drop_off_charges_amount: T.nilable(Integer),
                     one_way_drop_off_charges_currency: T.nilable(String),
@@ -6074,7 +6273,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6083,48 +6282,48 @@ module Increase
                 NO_EXTRA_CHARGE =
                   T.let(
                     :no_extra_charge,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Gas
                 GAS =
                   T.let(
                     :gas,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Extra mileage
                 EXTRA_MILEAGE =
                   T.let(
                     :extra_mileage,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Late return
                 LATE_RETURN =
                   T.let(
                     :late_return,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # One way service fee
                 ONE_WAY_SERVICE_FEE =
                   T.let(
                     :one_way_service_fee,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Parking violation
                 PARKING_VIOLATION =
                   T.let(
                     :parking_violation,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                     ]
                   )
                 end
@@ -6141,7 +6340,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6150,20 +6349,20 @@ module Increase
                 NOT_APPLICABLE =
                   T.let(
                     :not_applicable,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
 
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE =
                   T.let(
                     :no_show_for_specialized_vehicle,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -6173,9 +6372,6 @@ module Increase
             end
 
             class Lodging < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
               attr_accessor :check_in_date
@@ -6193,7 +6389,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
                 )
               end
@@ -6222,7 +6418,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
                 )
               end
@@ -6267,7 +6463,7 @@ module Increase
                   daily_room_rate_currency: T.nilable(String),
                   extra_charges:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
                     ),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
@@ -6275,7 +6471,7 @@ module Increase
                   food_beverage_charges_currency: T.nilable(String),
                   no_show_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
                     ),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
@@ -6337,7 +6533,7 @@ module Increase
                     daily_room_rate_currency: T.nilable(String),
                     extra_charges:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                       ),
                     folio_cash_advances_amount: T.nilable(Integer),
                     folio_cash_advances_currency: T.nilable(String),
@@ -6345,7 +6541,7 @@ module Increase
                     food_beverage_charges_currency: T.nilable(String),
                     no_show_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                       ),
                     prepaid_expenses_amount: T.nilable(Integer),
                     prepaid_expenses_currency: T.nilable(String),
@@ -6368,7 +6564,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6377,55 +6573,55 @@ module Increase
                 NO_EXTRA_CHARGE =
                   T.let(
                     :no_extra_charge,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Restaurant
                 RESTAURANT =
                   T.let(
                     :restaurant,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Gift shop
                 GIFT_SHOP =
                   T.let(
                     :gift_shop,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Mini bar
                 MINI_BAR =
                   T.let(
                     :mini_bar,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Telephone
                 TELEPHONE =
                   T.let(
                     :telephone,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Other
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Laundry
                 LAUNDRY =
                   T.let(
                     :laundry,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                     ]
                   )
                 end
@@ -6442,7 +6638,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6451,20 +6647,20 @@ module Increase
                 NOT_APPLICABLE =
                   T.let(
                     :not_applicable,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
 
                 # No show
                 NO_SHOW =
                   T.let(
                     :no_show,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -6481,7 +6677,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6490,41 +6686,41 @@ module Increase
               FREE_TEXT =
                 T.let(
                   :free_text,
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Order number
               ORDER_NUMBER =
                 T.let(
                   :order_number,
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Rental agreement number
               RENTAL_AGREEMENT_NUMBER =
                 T.let(
                   :rental_agreement_number,
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Hotel folio number
               HOTEL_FOLIO_NUMBER =
                 T.let(
                   :hotel_folio_number,
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Invoice number
               INVOICE_NUMBER =
                 T.let(
                   :invoice_number,
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                   ]
                 )
               end
@@ -6533,14 +6729,11 @@ module Increase
             end
 
             class Travel < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Ancillary purchases in addition to the airfare.
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary
                   )
                 )
               end
@@ -6550,7 +6743,10 @@ module Increase
                 params(
                   ancillary:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::OrHash
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
+                        Increase::Internal::AnyHash
+                      )
                     )
                 ).void
               end
@@ -6564,7 +6760,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
                 )
               end
@@ -6586,7 +6782,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
                 )
               end
@@ -6596,7 +6792,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
                 )
               end
@@ -6619,7 +6815,7 @@ module Increase
                 returns(
                   T.nilable(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
                     ]
                   )
                 )
@@ -6631,23 +6827,26 @@ module Increase
                 params(
                   ancillary:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::OrHash
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
+                        Increase::Internal::AnyHash
+                      )
                     ),
                   computerized_reservation_system: T.nilable(String),
                   credit_reason_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
                     ),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
                   restricted_ticket_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
                     ),
                   ticket_change_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
                     ),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
@@ -6655,7 +6854,10 @@ module Increase
                   trip_legs:
                     T.nilable(
                       T::Array[
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::OrHash
+                        T.any(
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg,
+                          Increase::Internal::AnyHash
+                        )
                       ]
                     )
                 ).returns(T.attached_class)
@@ -6693,23 +6895,23 @@ module Increase
                   {
                     ancillary:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary
                       ),
                     computerized_reservation_system: T.nilable(String),
                     credit_reason_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                       ),
                     departure_date: T.nilable(Date),
                     origination_city_airport_code: T.nilable(String),
                     passenger_name: T.nilable(String),
                     restricted_ticket_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                       ),
                     ticket_change_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                       ),
                     ticket_number: T.nilable(String),
                     travel_agency_code: T.nilable(String),
@@ -6717,7 +6919,7 @@ module Increase
                     trip_legs:
                       T.nilable(
                         T::Array[
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
                         ]
                       )
                   }
@@ -6727,11 +6929,6 @@ module Increase
               end
 
               class Ancillary < Increase::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(T.self_type, Increase::Internal::AnyHash)
-                  end
-
                 # If this purchase has a connection or relationship to another purchase, such as a
                 # baggage fee for a passenger transport ticket, this field should contain the
                 # ticket document number for the other purchase.
@@ -6742,7 +6939,7 @@ module Increase
                 sig do
                   returns(
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
                   )
                 end
@@ -6756,7 +6953,7 @@ module Increase
                 sig do
                   returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
                     ]
                   )
                 end
@@ -6772,12 +6969,15 @@ module Increase
                     connected_ticket_document_number: T.nilable(String),
                     credit_reason_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
                       ),
                     passenger_name_or_description: T.nilable(String),
                     services:
                       T::Array[
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::OrHash
+                        T.any(
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
+                          Increase::Internal::AnyHash
+                        )
                       ],
                     ticket_document_number: T.nilable(String)
                   ).returns(T.attached_class)
@@ -6804,12 +7004,12 @@ module Increase
                       connected_ticket_document_number: T.nilable(String),
                       credit_reason_indicator:
                         T.nilable(
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                         ),
                       passenger_name_or_description: T.nilable(String),
                       services:
                         T::Array[
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
                         ],
                       ticket_document_number: T.nilable(String)
                     }
@@ -6826,7 +7026,7 @@ module Increase
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6835,34 +7035,34 @@ module Increase
                   NO_CREDIT =
                     T.let(
                       :no_credit,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   # Passenger transport ancillary purchase cancellation
                   PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                     T.let(
                       :passenger_transport_ancillary_purchase_cancellation,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
                   AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                     T.let(
                       :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   # Other
                   OTHER =
                     T.let(
                       :other,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                       ]
                     )
                   end
@@ -6871,16 +7071,11 @@ module Increase
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
-                  OrHash =
-                    T.type_alias do
-                      T.any(T.self_type, Increase::Internal::AnyHash)
-                    end
-
                   # Category of the ancillary service.
                   sig do
                     returns(
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
                     )
                   end
@@ -6894,7 +7089,7 @@ module Increase
                     params(
                       category:
                         T.nilable(
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
                         ),
                       sub_category: T.nilable(String)
                     ).returns(T.attached_class)
@@ -6912,7 +7107,7 @@ module Increase
                       {
                         category:
                           T.nilable(
-                            Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                           ),
                         sub_category: T.nilable(String)
                       }
@@ -6929,7 +7124,7 @@ module Increase
                       T.type_alias do
                         T.all(
                           Symbol,
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -6938,174 +7133,174 @@ module Increase
                     NONE =
                       T.let(
                         :none,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Bundled service
                     BUNDLED_SERVICE =
                       T.let(
                         :bundled_service,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Baggage fee
                     BAGGAGE_FEE =
                       T.let(
                         :baggage_fee,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Change fee
                     CHANGE_FEE =
                       T.let(
                         :change_fee,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Cargo
                     CARGO =
                       T.let(
                         :cargo,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Carbon offset
                     CARBON_OFFSET =
                       T.let(
                         :carbon_offset,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Frequent flyer
                     FREQUENT_FLYER =
                       T.let(
                         :frequent_flyer,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Gift card
                     GIFT_CARD =
                       T.let(
                         :gift_card,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Ground transport
                     GROUND_TRANSPORT =
                       T.let(
                         :ground_transport,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # In-flight entertainment
                     IN_FLIGHT_ENTERTAINMENT =
                       T.let(
                         :in_flight_entertainment,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Lounge
                     LOUNGE =
                       T.let(
                         :lounge,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Medical
                     MEDICAL =
                       T.let(
                         :medical,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Meal beverage
                     MEAL_BEVERAGE =
                       T.let(
                         :meal_beverage,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Other
                     OTHER =
                       T.let(
                         :other,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Passenger assist fee
                     PASSENGER_ASSIST_FEE =
                       T.let(
                         :passenger_assist_fee,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Pets
                     PETS =
                       T.let(
                         :pets,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Seat fees
                     SEAT_FEES =
                       T.let(
                         :seat_fees,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Standby
                     STANDBY =
                       T.let(
                         :standby,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Service fee
                     SERVICE_FEE =
                       T.let(
                         :service_fee,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Store
                     STORE =
                       T.let(
                         :store,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Travel service
                     TRAVEL_SERVICE =
                       T.let(
                         :travel_service,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Unaccompanied travel
                     UNACCOMPANIED_TRAVEL =
                       T.let(
                         :unaccompanied_travel,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Upgrades
                     UPGRADES =
                       T.let(
                         :upgrades,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Wi-fi
                     WIFI =
                       T.let(
                         :wifi,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                         ]
                       )
                     end
@@ -7123,7 +7318,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7132,48 +7327,48 @@ module Increase
                 NO_CREDIT =
                   T.let(
                     :no_credit,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Passenger transport ancillary purchase cancellation
                 PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                   T.let(
                     :passenger_transport_ancillary_purchase_cancellation,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
                 AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                   T.let(
                     :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION =
                   T.let(
                     :airline_ticket_cancellation,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Other
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET =
                   T.let(
                     :partial_refund_of_airline_ticket,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -7189,7 +7384,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7198,20 +7393,20 @@ module Increase
                 NO_RESTRICTIONS =
                   T.let(
                     :no_restrictions,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
 
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET =
                   T.let(
                     :restricted_non_refundable_ticket,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -7227,7 +7422,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7236,27 +7431,27 @@ module Increase
                 NONE =
                   T.let(
                     :none,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
                 # Change to existing ticket
                 CHANGE_TO_EXISTING_TICKET =
                   T.let(
                     :change_to_existing_ticket,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
                 # New ticket
                 NEW_TICKET =
                   T.let(
                     :new_ticket,
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -7265,11 +7460,6 @@ module Increase
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(T.self_type, Increase::Internal::AnyHash)
-                  end
-
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
                 attr_accessor :carrier_code
@@ -7294,7 +7484,7 @@ module Increase
                 sig do
                   returns(
                     T.nilable(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
                   )
                 end
@@ -7309,7 +7499,7 @@ module Increase
                     service_class: T.nilable(String),
                     stop_over_code:
                       T.nilable(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
                       )
                   ).returns(T.attached_class)
                 end
@@ -7339,7 +7529,7 @@ module Increase
                       service_class: T.nilable(String),
                       stop_over_code:
                         T.nilable(
-                          Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                         )
                     }
                   )
@@ -7355,7 +7545,7 @@ module Increase
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7364,27 +7554,27 @@ module Increase
                   NONE =
                     T.let(
                       :none,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
                   # Stop over allowed
                   STOP_OVER_ALLOWED =
                     T.let(
                       :stop_over_allowed,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED =
                     T.let(
                       :stop_over_not_allowed,
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                       ]
                     )
                   end
@@ -7402,20 +7592,23 @@ module Increase
 
             TaggedSymbol =
               T.type_alias do
-                T.all(Symbol, Increase::CardPayment::Element::CardRefund::Type)
+                T.all(
+                  Symbol,
+                  Increase::Models::CardPayment::Element::CardRefund::Type
+                )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CARD_REFUND =
               T.let(
                 :card_refund,
-                Increase::CardPayment::Element::CardRefund::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardRefund::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardRefund::Type::TaggedSymbol
                 ]
               )
             end
@@ -7425,9 +7618,6 @@ module Increase
         end
 
         class CardReversal < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Reversal identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -7440,7 +7630,7 @@ module Increase
           # currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -7479,7 +7669,7 @@ module Increase
           # The card network used to process this card authorization.
           sig do
             returns(
-              Increase::CardPayment::Element::CardReversal::Network::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol
             )
           end
           attr_accessor :network
@@ -7487,7 +7677,7 @@ module Increase
           # Network-specific identifiers for a specific request or transaction.
           sig do
             returns(
-              Increase::CardPayment::Element::CardReversal::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -7495,7 +7685,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardReversal::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -7513,7 +7706,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
               )
             )
           end
@@ -7528,7 +7721,7 @@ module Increase
           # `card_reversal`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardReversal::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -7546,7 +7739,7 @@ module Increase
               id: String,
               card_authorization_id: String,
               currency:
-                Increase::CardPayment::Element::CardReversal::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardReversal::Currency::OrSymbol,
               merchant_acceptor_id: String,
               merchant_category_code: String,
               merchant_city: T.nilable(String),
@@ -7555,18 +7748,21 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network:
-                Increase::CardPayment::Element::CardReversal::Network::OrSymbol,
+                Increase::Models::CardPayment::Element::CardReversal::Network::OrSymbol,
               network_identifiers:
-                Increase::CardPayment::Element::CardReversal::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               pending_transaction_id: T.nilable(String),
               reversal_amount: Integer,
               reversal_reason:
                 T.nilable(
-                  Increase::CardPayment::Element::CardReversal::ReversalReason::OrSymbol
+                  Increase::Models::CardPayment::Element::CardReversal::ReversalReason::OrSymbol
                 ),
               terminal_id: T.nilable(String),
               type:
-                Increase::CardPayment::Element::CardReversal::Type::OrSymbol,
+                Increase::Models::CardPayment::Element::CardReversal::Type::OrSymbol,
               updated_authorization_amount: Integer
             ).returns(T.attached_class)
           end
@@ -7624,7 +7820,7 @@ module Increase
                 id: String,
                 card_authorization_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol,
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
                 merchant_city: T.nilable(String),
@@ -7633,18 +7829,18 @@ module Increase
                 merchant_postal_code: T.nilable(String),
                 merchant_state: T.nilable(String),
                 network:
-                  Increase::CardPayment::Element::CardReversal::Network::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol,
                 network_identifiers:
-                  Increase::CardPayment::Element::CardReversal::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
                 pending_transaction_id: T.nilable(String),
                 reversal_amount: Integer,
                 reversal_reason:
                   T.nilable(
-                    Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
                   ),
                 terminal_id: T.nilable(String),
                 type:
-                  Increase::CardPayment::Element::CardReversal::Type::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol,
                 updated_authorization_amount: Integer
               }
             )
@@ -7661,7 +7857,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardReversal::Currency
+                  Increase::Models::CardPayment::Element::CardReversal::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7670,48 +7866,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardReversal::Currency::TaggedSymbol
                 ]
               )
             end
@@ -7727,7 +7923,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardReversal::Network
+                  Increase::Models::CardPayment::Element::CardReversal::Network
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7736,13 +7932,13 @@ module Increase
             VISA =
               T.let(
                 :visa,
-                Increase::CardPayment::Element::CardReversal::Network::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardReversal::Network::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardReversal::Network::TaggedSymbol
                 ]
               )
             end
@@ -7751,9 +7947,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -7813,7 +8006,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardReversal::ReversalReason
+                  Increase::Models::CardPayment::Element::CardReversal::ReversalReason
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7822,34 +8015,34 @@ module Increase
             REVERSED_BY_CUSTOMER =
               T.let(
                 :reversed_by_customer,
-                Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
               )
 
             # The Card Reversal was initiated by the network or acquirer.
             REVERSED_BY_NETWORK_OR_ACQUIRER =
               T.let(
                 :reversed_by_network_or_acquirer,
-                Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
               )
 
             # The Card Reversal was initiated by the point of sale device.
             REVERSED_BY_POINT_OF_SALE =
               T.let(
                 :reversed_by_point_of_sale,
-                Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
               )
 
             # The Card Reversal was a partial reversal, for any reason.
             PARTIAL_REVERSAL =
               T.let(
                 :partial_reversal,
-                Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardReversal::ReversalReason::TaggedSymbol
                 ]
               )
             end
@@ -7866,7 +8059,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardReversal::Type
+                  Increase::Models::CardPayment::Element::CardReversal::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -7874,13 +8067,13 @@ module Increase
             CARD_REVERSAL =
               T.let(
                 :card_reversal,
-                Increase::CardPayment::Element::CardReversal::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardReversal::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardReversal::Type::TaggedSymbol
                 ]
               )
             end
@@ -7890,9 +8083,6 @@ module Increase
         end
 
         class CardSettlement < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Settlement identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -7916,7 +8106,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardSettlement::Cashback
+                Increase::Models::CardPayment::Element::CardSettlement::Cashback
               )
             )
           end
@@ -7926,7 +8116,10 @@ module Increase
             params(
               cashback:
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::Cashback::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::Cashback,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -7936,7 +8129,7 @@ module Increase
           # transaction's settlement currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -7945,7 +8138,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardSettlement::Interchange
+                Increase::Models::CardPayment::Element::CardSettlement::Interchange
               )
             )
           end
@@ -7955,7 +8148,10 @@ module Increase
             params(
               interchange:
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::Interchange::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::Interchange,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -7993,7 +8189,7 @@ module Increase
           # Network-specific identifiers for this refund.
           sig do
             returns(
-              Increase::CardPayment::Element::CardSettlement::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -8001,7 +8197,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardSettlement::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -8024,7 +8223,7 @@ module Increase
           sig do
             returns(
               T.nilable(
-                Increase::CardPayment::Element::CardSettlement::PurchaseDetails
+                Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails
               )
             )
           end
@@ -8034,7 +8233,10 @@ module Increase
             params(
               purchase_details:
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails,
+                    Increase::Internal::AnyHash
+                  )
                 )
             ).void
           end
@@ -8048,7 +8250,7 @@ module Increase
           # `card_settlement`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardSettlement::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -8066,13 +8268,19 @@ module Increase
               card_payment_id: String,
               cashback:
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::Cashback::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::Cashback,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               currency:
-                Increase::CardPayment::Element::CardSettlement::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::OrSymbol,
               interchange:
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::Interchange::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::Interchange,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -8082,17 +8290,23 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_identifiers:
-                Increase::CardPayment::Element::CardSettlement::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               pending_transaction_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
               purchase_details:
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails,
+                    Increase::Internal::AnyHash
+                  )
                 ),
               transaction_id: String,
               type:
-                Increase::CardPayment::Element::CardSettlement::Type::OrSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Type::OrSymbol
             ).returns(T.attached_class)
           end
           def self.new(
@@ -8158,13 +8372,13 @@ module Increase
                 card_payment_id: String,
                 cashback:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::Cashback
+                    Increase::Models::CardPayment::Element::CardSettlement::Cashback
                   ),
                 currency:
-                  Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol,
                 interchange:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::Interchange
+                    Increase::Models::CardPayment::Element::CardSettlement::Interchange
                   ),
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
@@ -8174,17 +8388,17 @@ module Increase
                 merchant_postal_code: T.nilable(String),
                 merchant_state: T.nilable(String),
                 network_identifiers:
-                  Increase::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
                 pending_transaction_id: T.nilable(String),
                 presentment_amount: Integer,
                 presentment_currency: String,
                 purchase_details:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails
                   ),
                 transaction_id: String,
                 type:
-                  Increase::CardPayment::Element::CardSettlement::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol
               }
             )
           end
@@ -8192,9 +8406,6 @@ module Increase
           end
 
           class Cashback < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The cashback amount given as a string containing a decimal number. The amount is
             # a positive number if it will be credited to you (e.g., settlements) and a
             # negative number if it will be debited (e.g., refunds).
@@ -8204,7 +8415,7 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             sig do
               returns(
-                Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
               )
             end
             attr_accessor :currency
@@ -8215,7 +8426,7 @@ module Increase
               params(
                 amount: String,
                 currency:
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::OrSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -8233,7 +8444,7 @@ module Increase
                 {
                   amount: String,
                   currency:
-                    Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 }
               )
             end
@@ -8248,7 +8459,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardSettlement::Cashback::Currency
+                    Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -8257,48 +8468,48 @@ module Increase
               CAD =
                 T.let(
                   :CAD,
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 )
 
               # Swiss Franc (CHF)
               CHF =
                 T.let(
                   :CHF,
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 )
 
               # Euro (EUR)
               EUR =
                 T.let(
                   :EUR,
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 )
 
               # British Pound (GBP)
               GBP =
                 T.let(
                   :GBP,
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 )
 
               # Japanese Yen (JPY)
               JPY =
                 T.let(
                   :JPY,
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 )
 
               # US Dollar (USD)
               USD =
                 T.let(
                   :USD,
-                  Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency::TaggedSymbol
                   ]
                 )
               end
@@ -8316,7 +8527,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardSettlement::Currency
+                  Increase::Models::CardPayment::Element::CardSettlement::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -8325,48 +8536,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
                 ]
               )
             end
@@ -8375,9 +8586,6 @@ module Increase
           end
 
           class Interchange < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The interchange amount given as a string containing a decimal number in major
             # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
             # credited to Increase (e.g., settlements) and a negative number if it is debited
@@ -8393,7 +8601,7 @@ module Increase
             # reimbursement.
             sig do
               returns(
-                Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
               )
             end
             attr_accessor :currency
@@ -8404,7 +8612,7 @@ module Increase
                 amount: String,
                 code: T.nilable(String),
                 currency:
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::OrSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::OrSymbol
               ).returns(T.attached_class)
             end
             def self.new(
@@ -8427,7 +8635,7 @@ module Increase
                   amount: String,
                   code: T.nilable(String),
                   currency:
-                    Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 }
               )
             end
@@ -8443,7 +8651,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardSettlement::Interchange::Currency
+                    Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -8452,48 +8660,48 @@ module Increase
               CAD =
                 T.let(
                   :CAD,
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 )
 
               # Swiss Franc (CHF)
               CHF =
                 T.let(
                   :CHF,
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 )
 
               # Euro (EUR)
               EUR =
                 T.let(
                   :EUR,
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 )
 
               # British Pound (GBP)
               GBP =
                 T.let(
                   :GBP,
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 )
 
               # Japanese Yen (JPY)
               JPY =
                 T.let(
                   :JPY,
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 )
 
               # US Dollar (USD)
               USD =
                 T.let(
                   :USD,
-                  Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
                   ]
                 )
               end
@@ -8503,9 +8711,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A network assigned business ID that identifies the acquirer that processed this
             # transaction.
             sig { returns(String) }
@@ -8554,14 +8759,11 @@ module Increase
           end
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # Fields specific to car rentals.
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental
                 )
               )
             end
@@ -8571,7 +8773,10 @@ module Increase
               params(
                 car_rental:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -8594,7 +8799,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
                 )
               )
             end
@@ -8604,7 +8809,10 @@ module Increase
               params(
                 lodging:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -8627,7 +8835,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
               )
             end
@@ -8637,7 +8845,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
                 )
               )
             end
@@ -8647,7 +8855,10 @@ module Increase
               params(
                 travel:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -8659,25 +8870,34 @@ module Increase
               params(
                 car_rental:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
+                      Increase::Internal::AnyHash
+                    )
                   ),
                 customer_reference_identifier: T.nilable(String),
                 local_tax_amount: T.nilable(Integer),
                 local_tax_currency: T.nilable(String),
                 lodging:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
+                      Increase::Internal::AnyHash
+                    )
                   ),
                 national_tax_amount: T.nilable(Integer),
                 national_tax_currency: T.nilable(String),
                 purchase_identifier: T.nilable(String),
                 purchase_identifier_format:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::OrSymbol
                   ),
                 travel:
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).returns(T.attached_class)
             end
@@ -8712,25 +8932,25 @@ module Increase
                 {
                   car_rental:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental
                     ),
                   customer_reference_identifier: T.nilable(String),
                   local_tax_amount: T.nilable(Integer),
                   local_tax_currency: T.nilable(String),
                   lodging:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
                     ),
                   national_tax_amount: T.nilable(Integer),
                   national_tax_currency: T.nilable(String),
                   purchase_identifier: T.nilable(String),
                   purchase_identifier_format:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                     ),
                   travel:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
                     )
                 }
               )
@@ -8739,9 +8959,6 @@ module Increase
             end
 
             class CarRental < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
               attr_accessor :car_class_code
@@ -8768,7 +8985,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
                 )
               end
@@ -8797,7 +9014,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
                 )
               end
@@ -8836,7 +9053,7 @@ module Increase
                   days_rented: T.nilable(Integer),
                   extra_charges:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::OrSymbol
                     ),
                   fuel_charges_amount: T.nilable(Integer),
                   fuel_charges_currency: T.nilable(String),
@@ -8844,7 +9061,7 @@ module Increase
                   insurance_charges_currency: T.nilable(String),
                   no_show_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::OrSymbol
                     ),
                   one_way_drop_off_charges_amount: T.nilable(Integer),
                   one_way_drop_off_charges_currency: T.nilable(String),
@@ -8907,7 +9124,7 @@ module Increase
                     days_rented: T.nilable(Integer),
                     extra_charges:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                       ),
                     fuel_charges_amount: T.nilable(Integer),
                     fuel_charges_currency: T.nilable(String),
@@ -8915,7 +9132,7 @@ module Increase
                     insurance_charges_currency: T.nilable(String),
                     no_show_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                       ),
                     one_way_drop_off_charges_amount: T.nilable(Integer),
                     one_way_drop_off_charges_currency: T.nilable(String),
@@ -8936,7 +9153,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -8945,48 +9162,48 @@ module Increase
                 NO_EXTRA_CHARGE =
                   T.let(
                     :no_extra_charge,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Gas
                 GAS =
                   T.let(
                     :gas,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Extra mileage
                 EXTRA_MILEAGE =
                   T.let(
                     :extra_mileage,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Late return
                 LATE_RETURN =
                   T.let(
                     :late_return,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # One way service fee
                 ONE_WAY_SERVICE_FEE =
                   T.let(
                     :one_way_service_fee,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 # Parking violation
                 PARKING_VIOLATION =
                   T.let(
                     :parking_violation,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges::TaggedSymbol
                     ]
                   )
                 end
@@ -9003,7 +9220,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9012,20 +9229,20 @@ module Increase
                 NOT_APPLICABLE =
                   T.let(
                     :not_applicable,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
 
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE =
                   T.let(
                     :no_show_for_specialized_vehicle,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -9035,9 +9252,6 @@ module Increase
             end
 
             class Lodging < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
               attr_accessor :check_in_date
@@ -9055,7 +9269,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
                 )
               end
@@ -9084,7 +9298,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
                 )
               end
@@ -9129,7 +9343,7 @@ module Increase
                   daily_room_rate_currency: T.nilable(String),
                   extra_charges:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::OrSymbol
                     ),
                   folio_cash_advances_amount: T.nilable(Integer),
                   folio_cash_advances_currency: T.nilable(String),
@@ -9137,7 +9351,7 @@ module Increase
                   food_beverage_charges_currency: T.nilable(String),
                   no_show_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::OrSymbol
                     ),
                   prepaid_expenses_amount: T.nilable(Integer),
                   prepaid_expenses_currency: T.nilable(String),
@@ -9199,7 +9413,7 @@ module Increase
                     daily_room_rate_currency: T.nilable(String),
                     extra_charges:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                       ),
                     folio_cash_advances_amount: T.nilable(Integer),
                     folio_cash_advances_currency: T.nilable(String),
@@ -9207,7 +9421,7 @@ module Increase
                     food_beverage_charges_currency: T.nilable(String),
                     no_show_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                       ),
                     prepaid_expenses_amount: T.nilable(Integer),
                     prepaid_expenses_currency: T.nilable(String),
@@ -9230,7 +9444,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9239,55 +9453,55 @@ module Increase
                 NO_EXTRA_CHARGE =
                   T.let(
                     :no_extra_charge,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Restaurant
                 RESTAURANT =
                   T.let(
                     :restaurant,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Gift shop
                 GIFT_SHOP =
                   T.let(
                     :gift_shop,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Mini bar
                 MINI_BAR =
                   T.let(
                     :mini_bar,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Telephone
                 TELEPHONE =
                   T.let(
                     :telephone,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Other
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 # Laundry
                 LAUNDRY =
                   T.let(
                     :laundry,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges::TaggedSymbol
                     ]
                   )
                 end
@@ -9304,7 +9518,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9313,20 +9527,20 @@ module Increase
                 NOT_APPLICABLE =
                   T.let(
                     :not_applicable,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
 
                 # No show
                 NO_SHOW =
                   T.let(
                     :no_show,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -9343,7 +9557,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9352,41 +9566,41 @@ module Increase
               FREE_TEXT =
                 T.let(
                   :free_text,
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Order number
               ORDER_NUMBER =
                 T.let(
                   :order_number,
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Rental agreement number
               RENTAL_AGREEMENT_NUMBER =
                 T.let(
                   :rental_agreement_number,
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Hotel folio number
               HOTEL_FOLIO_NUMBER =
                 T.let(
                   :hotel_folio_number,
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               # Invoice number
               INVOICE_NUMBER =
                 T.let(
                   :invoice_number,
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat::TaggedSymbol
                   ]
                 )
               end
@@ -9395,14 +9609,11 @@ module Increase
             end
 
             class Travel < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Ancillary purchases in addition to the airfare.
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary
                   )
                 )
               end
@@ -9412,7 +9623,10 @@ module Increase
                 params(
                   ancillary:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::OrHash
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
+                        Increase::Internal::AnyHash
+                      )
                     )
                 ).void
               end
@@ -9426,7 +9640,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
                 )
               end
@@ -9448,7 +9662,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
                 )
               end
@@ -9458,7 +9672,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
                 )
               end
@@ -9481,7 +9695,7 @@ module Increase
                 returns(
                   T.nilable(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
                     ]
                   )
                 )
@@ -9493,23 +9707,26 @@ module Increase
                 params(
                   ancillary:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::OrHash
+                      T.any(
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
+                        Increase::Internal::AnyHash
+                      )
                     ),
                   computerized_reservation_system: T.nilable(String),
                   credit_reason_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::OrSymbol
                     ),
                   departure_date: T.nilable(Date),
                   origination_city_airport_code: T.nilable(String),
                   passenger_name: T.nilable(String),
                   restricted_ticket_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::OrSymbol
                     ),
                   ticket_change_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::OrSymbol
                     ),
                   ticket_number: T.nilable(String),
                   travel_agency_code: T.nilable(String),
@@ -9517,7 +9734,10 @@ module Increase
                   trip_legs:
                     T.nilable(
                       T::Array[
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::OrHash
+                        T.any(
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg,
+                          Increase::Internal::AnyHash
+                        )
                       ]
                     )
                 ).returns(T.attached_class)
@@ -9555,23 +9775,23 @@ module Increase
                   {
                     ancillary:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary
                       ),
                     computerized_reservation_system: T.nilable(String),
                     credit_reason_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                       ),
                     departure_date: T.nilable(Date),
                     origination_city_airport_code: T.nilable(String),
                     passenger_name: T.nilable(String),
                     restricted_ticket_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                       ),
                     ticket_change_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                       ),
                     ticket_number: T.nilable(String),
                     travel_agency_code: T.nilable(String),
@@ -9579,7 +9799,7 @@ module Increase
                     trip_legs:
                       T.nilable(
                         T::Array[
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
                         ]
                       )
                   }
@@ -9589,11 +9809,6 @@ module Increase
               end
 
               class Ancillary < Increase::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(T.self_type, Increase::Internal::AnyHash)
-                  end
-
                 # If this purchase has a connection or relationship to another purchase, such as a
                 # baggage fee for a passenger transport ticket, this field should contain the
                 # ticket document number for the other purchase.
@@ -9604,7 +9819,7 @@ module Increase
                 sig do
                   returns(
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
                   )
                 end
@@ -9618,7 +9833,7 @@ module Increase
                 sig do
                   returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
                     ]
                   )
                 end
@@ -9634,12 +9849,15 @@ module Increase
                     connected_ticket_document_number: T.nilable(String),
                     credit_reason_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::OrSymbol
                       ),
                     passenger_name_or_description: T.nilable(String),
                     services:
                       T::Array[
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::OrHash
+                        T.any(
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
+                          Increase::Internal::AnyHash
+                        )
                       ],
                     ticket_document_number: T.nilable(String)
                   ).returns(T.attached_class)
@@ -9666,12 +9884,12 @@ module Increase
                       connected_ticket_document_number: T.nilable(String),
                       credit_reason_indicator:
                         T.nilable(
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                         ),
                       passenger_name_or_description: T.nilable(String),
                       services:
                         T::Array[
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
                         ],
                       ticket_document_number: T.nilable(String)
                     }
@@ -9688,7 +9906,7 @@ module Increase
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9697,34 +9915,34 @@ module Increase
                   NO_CREDIT =
                     T.let(
                       :no_credit,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   # Passenger transport ancillary purchase cancellation
                   PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                     T.let(
                       :passenger_transport_ancillary_purchase_cancellation,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
                   AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                     T.let(
                       :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   # Other
                   OTHER =
                     T.let(
                       :other,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator::TaggedSymbol
                       ]
                     )
                   end
@@ -9733,16 +9951,11 @@ module Increase
                 end
 
                 class Service < Increase::Internal::Type::BaseModel
-                  OrHash =
-                    T.type_alias do
-                      T.any(T.self_type, Increase::Internal::AnyHash)
-                    end
-
                   # Category of the ancillary service.
                   sig do
                     returns(
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
                     )
                   end
@@ -9756,7 +9969,7 @@ module Increase
                     params(
                       category:
                         T.nilable(
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::OrSymbol
                         ),
                       sub_category: T.nilable(String)
                     ).returns(T.attached_class)
@@ -9774,7 +9987,7 @@ module Increase
                       {
                         category:
                           T.nilable(
-                            Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                           ),
                         sub_category: T.nilable(String)
                       }
@@ -9791,7 +10004,7 @@ module Increase
                       T.type_alias do
                         T.all(
                           Symbol,
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
                         )
                       end
                     OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9800,174 +10013,174 @@ module Increase
                     NONE =
                       T.let(
                         :none,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Bundled service
                     BUNDLED_SERVICE =
                       T.let(
                         :bundled_service,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Baggage fee
                     BAGGAGE_FEE =
                       T.let(
                         :baggage_fee,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Change fee
                     CHANGE_FEE =
                       T.let(
                         :change_fee,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Cargo
                     CARGO =
                       T.let(
                         :cargo,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Carbon offset
                     CARBON_OFFSET =
                       T.let(
                         :carbon_offset,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Frequent flyer
                     FREQUENT_FLYER =
                       T.let(
                         :frequent_flyer,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Gift card
                     GIFT_CARD =
                       T.let(
                         :gift_card,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Ground transport
                     GROUND_TRANSPORT =
                       T.let(
                         :ground_transport,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # In-flight entertainment
                     IN_FLIGHT_ENTERTAINMENT =
                       T.let(
                         :in_flight_entertainment,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Lounge
                     LOUNGE =
                       T.let(
                         :lounge,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Medical
                     MEDICAL =
                       T.let(
                         :medical,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Meal beverage
                     MEAL_BEVERAGE =
                       T.let(
                         :meal_beverage,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Other
                     OTHER =
                       T.let(
                         :other,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Passenger assist fee
                     PASSENGER_ASSIST_FEE =
                       T.let(
                         :passenger_assist_fee,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Pets
                     PETS =
                       T.let(
                         :pets,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Seat fees
                     SEAT_FEES =
                       T.let(
                         :seat_fees,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Standby
                     STANDBY =
                       T.let(
                         :standby,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Service fee
                     SERVICE_FEE =
                       T.let(
                         :service_fee,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Store
                     STORE =
                       T.let(
                         :store,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Travel service
                     TRAVEL_SERVICE =
                       T.let(
                         :travel_service,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Unaccompanied travel
                     UNACCOMPANIED_TRAVEL =
                       T.let(
                         :unaccompanied_travel,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Upgrades
                     UPGRADES =
                       T.let(
                         :upgrades,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     # Wi-fi
                     WIFI =
                       T.let(
                         :wifi,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                       )
 
                     sig do
                       override.returns(
                         T::Array[
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category::TaggedSymbol
                         ]
                       )
                     end
@@ -9985,7 +10198,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -9994,48 +10207,48 @@ module Increase
                 NO_CREDIT =
                   T.let(
                     :no_credit,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Passenger transport ancillary purchase cancellation
                 PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                   T.let(
                     :passenger_transport_ancillary_purchase_cancellation,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
                 AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION =
                   T.let(
                     :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION =
                   T.let(
                     :airline_ticket_cancellation,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Other
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET =
                   T.let(
                     :partial_refund_of_airline_ticket,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -10051,7 +10264,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10060,20 +10273,20 @@ module Increase
                 NO_RESTRICTIONS =
                   T.let(
                     :no_restrictions,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
 
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET =
                   T.let(
                     :restricted_non_refundable_ticket,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -10089,7 +10302,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10098,27 +10311,27 @@ module Increase
                 NONE =
                   T.let(
                     :none,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
                 # Change to existing ticket
                 CHANGE_TO_EXISTING_TICKET =
                   T.let(
                     :change_to_existing_ticket,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
                 # New ticket
                 NEW_TICKET =
                   T.let(
                     :new_ticket,
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -10127,11 +10340,6 @@ module Increase
               end
 
               class TripLeg < Increase::Internal::Type::BaseModel
-                OrHash =
-                  T.type_alias do
-                    T.any(T.self_type, Increase::Internal::AnyHash)
-                  end
-
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
                 attr_accessor :carrier_code
@@ -10156,7 +10364,7 @@ module Increase
                 sig do
                   returns(
                     T.nilable(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
                   )
                 end
@@ -10171,7 +10379,7 @@ module Increase
                     service_class: T.nilable(String),
                     stop_over_code:
                       T.nilable(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::OrSymbol
                       )
                   ).returns(T.attached_class)
                 end
@@ -10201,7 +10409,7 @@ module Increase
                       service_class: T.nilable(String),
                       stop_over_code:
                         T.nilable(
-                          Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                         )
                     }
                   )
@@ -10217,7 +10425,7 @@ module Increase
                     T.type_alias do
                       T.all(
                         Symbol,
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
                       )
                     end
                   OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10226,27 +10434,27 @@ module Increase
                   NONE =
                     T.let(
                       :none,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
                   # Stop over allowed
                   STOP_OVER_ALLOWED =
                     T.let(
                       :stop_over_allowed,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED =
                     T.let(
                       :stop_over_not_allowed,
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                     )
 
                   sig do
                     override.returns(
                       T::Array[
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode::TaggedSymbol
                       ]
                     )
                   end
@@ -10266,7 +10474,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardSettlement::Type
+                  Increase::Models::CardPayment::Element::CardSettlement::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10274,13 +10482,13 @@ module Increase
             CARD_SETTLEMENT =
               T.let(
                 :card_settlement,
-                Increase::CardPayment::Element::CardSettlement::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardSettlement::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardSettlement::Type::TaggedSymbol
                 ]
               )
             end
@@ -10290,9 +10498,6 @@ module Increase
         end
 
         class CardValidation < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The Card Validation identifier.
           sig { returns(String) }
           attr_accessor :id
@@ -10301,7 +10506,7 @@ module Increase
           # stand-in processing, or the user through a real-time decision.
           sig do
             returns(
-              Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
             )
           end
           attr_accessor :actioner
@@ -10314,7 +10519,7 @@ module Increase
           # transaction's currency.
           sig do
             returns(
-              Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
             )
           end
           attr_accessor :currency
@@ -10358,7 +10563,7 @@ module Increase
           # Fields specific to the `network`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardValidation::NetworkDetails
+              Increase::Models::CardPayment::Element::CardValidation::NetworkDetails
             )
           end
           attr_reader :network_details
@@ -10366,7 +10571,10 @@ module Increase
           sig do
             params(
               network_details:
-                Increase::CardPayment::Element::CardValidation::NetworkDetails::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_details
@@ -10374,7 +10582,7 @@ module Increase
           # Network-specific identifiers for a specific request or transaction.
           sig do
             returns(
-              Increase::CardPayment::Element::CardValidation::NetworkIdentifiers
+              Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers
             )
           end
           attr_reader :network_identifiers
@@ -10382,7 +10590,10 @@ module Increase
           sig do
             params(
               network_identifiers:
-                Increase::CardPayment::Element::CardValidation::NetworkIdentifiers::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :network_identifiers
@@ -10411,7 +10622,7 @@ module Increase
           # `card_validation`.
           sig do
             returns(
-              Increase::CardPayment::Element::CardValidation::Type::TaggedSymbol
+              Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol
             )
           end
           attr_accessor :type
@@ -10419,7 +10630,7 @@ module Increase
           # Fields related to verification of cardholder-provided values.
           sig do
             returns(
-              Increase::CardPayment::Element::CardValidation::Verification
+              Increase::Models::CardPayment::Element::CardValidation::Verification
             )
           end
           attr_reader :verification
@@ -10427,7 +10638,10 @@ module Increase
           sig do
             params(
               verification:
-                Increase::CardPayment::Element::CardValidation::Verification::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::Verification,
+                  Increase::Internal::AnyHash
+                )
             ).void
           end
           attr_writer :verification
@@ -10440,10 +10654,10 @@ module Increase
             params(
               id: String,
               actioner:
-                Increase::CardPayment::Element::CardValidation::Actioner::OrSymbol,
+                Increase::Models::CardPayment::Element::CardValidation::Actioner::OrSymbol,
               card_payment_id: String,
               currency:
-                Increase::CardPayment::Element::CardValidation::Currency::OrSymbol,
+                Increase::Models::CardPayment::Element::CardValidation::Currency::OrSymbol,
               digital_wallet_token_id: T.nilable(String),
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -10453,17 +10667,26 @@ module Increase
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
               network_details:
-                Increase::CardPayment::Element::CardValidation::NetworkDetails::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+                  Increase::Internal::AnyHash
+                ),
               network_identifiers:
-                Increase::CardPayment::Element::CardValidation::NetworkIdentifiers::OrHash,
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
+                  Increase::Internal::AnyHash
+                ),
               network_risk_score: T.nilable(Integer),
               physical_card_id: T.nilable(String),
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
               type:
-                Increase::CardPayment::Element::CardValidation::Type::OrSymbol,
+                Increase::Models::CardPayment::Element::CardValidation::Type::OrSymbol,
               verification:
-                Increase::CardPayment::Element::CardValidation::Verification::OrHash
+                T.any(
+                  Increase::Models::CardPayment::Element::CardValidation::Verification,
+                  Increase::Internal::AnyHash
+                )
             ).returns(T.attached_class)
           end
           def self.new(
@@ -10526,10 +10749,10 @@ module Increase
               {
                 id: String,
                 actioner:
-                  Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol,
                 card_payment_id: String,
                 currency:
-                  Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol,
                 digital_wallet_token_id: T.nilable(String),
                 merchant_acceptor_id: String,
                 merchant_category_code: String,
@@ -10539,17 +10762,17 @@ module Increase
                 merchant_postal_code: T.nilable(String),
                 merchant_state: T.nilable(String),
                 network_details:
-                  Increase::CardPayment::Element::CardValidation::NetworkDetails,
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
                 network_identifiers:
-                  Increase::CardPayment::Element::CardValidation::NetworkIdentifiers,
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
                 network_risk_score: T.nilable(Integer),
                 physical_card_id: T.nilable(String),
                 real_time_decision_id: T.nilable(String),
                 terminal_id: T.nilable(String),
                 type:
-                  Increase::CardPayment::Element::CardValidation::Type::TaggedSymbol,
+                  Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol,
                 verification:
-                  Increase::CardPayment::Element::CardValidation::Verification
+                  Increase::Models::CardPayment::Element::CardValidation::Verification
               }
             )
           end
@@ -10565,7 +10788,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardValidation::Actioner
+                  Increase::Models::CardPayment::Element::CardValidation::Actioner
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10574,27 +10797,27 @@ module Increase
             USER =
               T.let(
                 :user,
-                Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
               )
 
             # This object was actioned by Increase without user intervention.
             INCREASE =
               T.let(
                 :increase,
-                Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
               )
 
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
               T.let(
                 :network,
-                Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
                 ]
               )
             end
@@ -10611,7 +10834,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardValidation::Currency
+                  Increase::Models::CardPayment::Element::CardValidation::Currency
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10620,48 +10843,48 @@ module Increase
             CAD =
               T.let(
                 :CAD,
-                Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
               )
 
             # Swiss Franc (CHF)
             CHF =
               T.let(
                 :CHF,
-                Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
               )
 
             # Euro (EUR)
             EUR =
               T.let(
                 :EUR,
-                Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
               )
 
             # British Pound (GBP)
             GBP =
               T.let(
                 :GBP,
-                Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
               )
 
             # Japanese Yen (JPY)
             JPY =
               T.let(
                 :JPY,
-                Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
               )
 
             # US Dollar (USD)
             USD =
               T.let(
                 :USD,
-                Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardValidation::Currency::TaggedSymbol
                 ]
               )
             end
@@ -10670,13 +10893,10 @@ module Increase
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # The payment network used to process this card authorization.
             sig do
               returns(
-                Increase::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
               )
             end
             attr_accessor :category
@@ -10685,7 +10905,7 @@ module Increase
             sig do
               returns(
                 T.nilable(
-                  Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa
                 )
               )
             end
@@ -10695,7 +10915,10 @@ module Increase
               params(
                 visa:
                   T.nilable(
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).void
             end
@@ -10705,10 +10928,13 @@ module Increase
             sig do
               params(
                 category:
-                  Increase::CardPayment::Element::CardValidation::NetworkDetails::Category::OrSymbol,
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::OrSymbol,
                 visa:
                   T.nilable(
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::OrHash
+                    T.any(
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa,
+                      Increase::Internal::AnyHash
+                    )
                   )
               ).returns(T.attached_class)
             end
@@ -10724,10 +10950,10 @@ module Increase
               override.returns(
                 {
                   category:
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol,
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol,
                   visa:
                     T.nilable(
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa
                     )
                 }
               )
@@ -10743,7 +10969,7 @@ module Increase
                 T.type_alias do
                   T.all(
                     Symbol,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Category
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category
                   )
                 end
               OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10752,13 +10978,13 @@ module Increase
               VISA =
                 T.let(
                   :visa,
-                  Increase::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
                 )
 
               sig do
                 override.returns(
                   T::Array[
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category::TaggedSymbol
                   ]
                 )
               end
@@ -10767,16 +10993,13 @@ module Increase
             end
 
             class Visa < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
               # transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
                 )
               end
@@ -10787,7 +11010,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
                 )
               end
@@ -10798,7 +11021,7 @@ module Increase
               sig do
                 returns(
                   T.nilable(
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
                 )
               end
@@ -10809,15 +11032,15 @@ module Increase
                 params(
                   electronic_commerce_indicator:
                     T.nilable(
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
                     ),
                   point_of_service_entry_mode:
                     T.nilable(
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
                     ),
                   stand_in_processing_reason:
                     T.nilable(
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
                     )
                 ).returns(T.attached_class)
               end
@@ -10840,15 +11063,15 @@ module Increase
                   {
                     electronic_commerce_indicator:
                       T.nilable(
-                        Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ),
                     point_of_service_entry_mode:
                       T.nilable(
-                        Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ),
                     stand_in_processing_reason:
                       T.nilable(
-                        Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       )
                   }
                 )
@@ -10866,7 +11089,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10875,62 +11098,62 @@ module Increase
                 MAIL_PHONE_ORDER =
                   T.let(
                     :mail_phone_order,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
                 RECURRING =
                   T.let(
                     :recurring,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
                 INSTALLMENT =
                   T.let(
                     :installment,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
                 UNKNOWN_MAIL_PHONE_ORDER =
                   T.let(
                     :unknown_mail_phone_order,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
                 SECURE_ELECTRONIC_COMMERCE =
                   T.let(
                     :secure_electronic_commerce,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT =
                   T.let(
                     :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
                 NON_AUTHENTICATED_SECURITY_TRANSACTION =
                   T.let(
                     :non_authenticated_security_transaction,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION =
                   T.let(
                     :non_secure_transaction,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                     ]
                   )
                 end
@@ -10947,7 +11170,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -10956,76 +11179,76 @@ module Increase
                 UNKNOWN =
                   T.let(
                     :unknown,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Manual key entry
                 MANUAL =
                   T.let(
                     :manual,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Magnetic stripe read, without card verification value
                 MAGNETIC_STRIPE_NO_CVV =
                   T.let(
                     :magnetic_stripe_no_cvv,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Optical code
                 OPTICAL_CODE =
                   T.let(
                     :optical_code,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contact chip card
                 INTEGRATED_CIRCUIT_CARD =
                   T.let(
                     :integrated_circuit_card,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contactless read of chip card
                 CONTACTLESS =
                   T.let(
                     :contactless,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Transaction initiated using a credential that has previously been stored on file
                 CREDENTIAL_ON_FILE =
                   T.let(
                     :credential_on_file,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Magnetic stripe read
                 MAGNETIC_STRIPE =
                   T.let(
                     :magnetic_stripe,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contactless read of magnetic stripe data
                 CONTACTLESS_MAGNETIC_STRIPE =
                   T.let(
                     :contactless_magnetic_stripe,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV =
                   T.let(
                     :integrated_circuit_card_no_cvv,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                     ]
                   )
                 end
@@ -11042,7 +11265,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11051,55 +11274,55 @@ module Increase
                 ISSUER_ERROR =
                   T.let(
                     :issuer_error,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
                 INVALID_PHYSICAL_CARD =
                   T.let(
                     :invalid_physical_card,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The 3DS cardholder authentication verification value was invalid.
                 INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE =
                   T.let(
                     :invalid_cardholder_authentication_verification_value,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR =
                   T.let(
                     :internal_visa_error,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
                 MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED =
                   T.let(
                     :merchant_transaction_advisory_service_authentication_required,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
                 PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK =
                   T.let(
                     :payment_fraud_disruption_acquirer_block,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 # An unspecific reason for stand-in processing.
                 OTHER =
                   T.let(
                     :other,
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                     ]
                   )
                 end
@@ -11110,9 +11333,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
             # networks the retrieval reference number includes the trace counter.
@@ -11173,7 +11393,7 @@ module Increase
               T.type_alias do
                 T.all(
                   Symbol,
-                  Increase::CardPayment::Element::CardValidation::Type
+                  Increase::Models::CardPayment::Element::CardValidation::Type
                 )
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11181,13 +11401,13 @@ module Increase
             CARD_VALIDATION =
               T.let(
                 :card_validation,
-                Increase::CardPayment::Element::CardValidation::Type::TaggedSymbol
+                Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol
               )
 
             sig do
               override.returns(
                 T::Array[
-                  Increase::CardPayment::Element::CardValidation::Type::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardValidation::Type::TaggedSymbol
                 ]
               )
             end
@@ -11196,14 +11416,11 @@ module Increase
           end
 
           class Verification < Increase::Internal::Type::BaseModel
-            OrHash =
-              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
             sig do
               returns(
-                Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode
+                Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode
               )
             end
             attr_reader :card_verification_code
@@ -11211,7 +11428,10 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                    Increase::Internal::AnyHash
+                  )
               ).void
             end
             attr_writer :card_verification_code
@@ -11220,7 +11440,7 @@ module Increase
             # we verified it against.
             sig do
               returns(
-                Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress
+                Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
               )
             end
             attr_reader :cardholder_address
@@ -11228,7 +11448,10 @@ module Increase
             sig do
               params(
                 cardholder_address:
-                  Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
+                    Increase::Internal::AnyHash
+                  )
               ).void
             end
             attr_writer :cardholder_address
@@ -11237,9 +11460,15 @@ module Increase
             sig do
               params(
                 card_verification_code:
-                  Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::OrHash,
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                    Increase::Internal::AnyHash
+                  ),
                 cardholder_address:
-                  Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::OrHash
+                  T.any(
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress,
+                    Increase::Internal::AnyHash
+                  )
               ).returns(T.attached_class)
             end
             def self.new(
@@ -11256,9 +11485,9 @@ module Increase
               override.returns(
                 {
                   card_verification_code:
-                    Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
                   cardholder_address:
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
                 }
               )
             end
@@ -11266,13 +11495,10 @@ module Increase
             end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # The result of verifying the Card Verification Code.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                 )
               end
               attr_accessor :result
@@ -11282,7 +11508,7 @@ module Increase
               sig do
                 params(
                   result:
-                    Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::OrSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -11295,7 +11521,7 @@ module Increase
                 override.returns(
                   {
                     result:
-                      Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                   }
                 )
               end
@@ -11310,7 +11536,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result
+                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11319,27 +11545,27 @@ module Increase
                 NOT_CHECKED =
                   T.let(
                     :not_checked,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 # The card verification code matched the one on file.
                 MATCH =
                   T.let(
                     :match,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 # The card verification code did not match the one on file.
                 NO_MATCH =
                   T.let(
                     :no_match,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result::TaggedSymbol
                     ]
                   )
                 end
@@ -11349,9 +11575,6 @@ module Increase
             end
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
-              OrHash =
-                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               attr_accessor :actual_line1
@@ -11372,7 +11595,7 @@ module Increase
               # The address verification result returned to the card network.
               sig do
                 returns(
-                  Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                  Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                 )
               end
               attr_accessor :result
@@ -11386,7 +11609,7 @@ module Increase
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
                   result:
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::OrSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::OrSymbol
                 ).returns(T.attached_class)
               end
               def self.new(
@@ -11412,7 +11635,7 @@ module Increase
                     provided_line1: T.nilable(String),
                     provided_postal_code: T.nilable(String),
                     result:
-                      Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   }
                 )
               end
@@ -11427,7 +11650,7 @@ module Increase
                   T.type_alias do
                     T.all(
                       Symbol,
-                      Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result
+                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result
                     )
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -11436,48 +11659,48 @@ module Increase
                 NOT_CHECKED =
                   T.let(
                     :not_checked,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code matches, but the street address was not verified.
                 POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED =
                   T.let(
                     :postal_code_match_address_not_checked,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code matches, but the street address does not match.
                 POSTAL_CODE_MATCH_ADDRESS_NO_MATCH =
                   T.let(
                     :postal_code_match_address_no_match,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code does not match, but the street address matches.
                 POSTAL_CODE_NO_MATCH_ADDRESS_MATCH =
                   T.let(
                     :postal_code_no_match_address_match,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code and street address match.
                 MATCH =
                   T.let(
                     :match,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 # Postal code and street address do not match.
                 NO_MATCH =
                   T.let(
                     :no_match,
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                    Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                   )
 
                 sig do
                   override.returns(
                     T::Array[
-                      Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
+                      Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result::TaggedSymbol
                     ]
                   )
                 end
@@ -11495,7 +11718,7 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::CardPayment::Element::Category)
+              T.all(Symbol, Increase::Models::CardPayment::Element::Category)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -11503,82 +11726,84 @@ module Increase
           CARD_AUTHORIZATION =
             T.let(
               :card_authorization,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Authentication: details will be under the `card_authentication` object.
           CARD_AUTHENTICATION =
             T.let(
               :card_authentication,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Validation: details will be under the `card_validation` object.
           CARD_VALIDATION =
             T.let(
               :card_validation,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Decline: details will be under the `card_decline` object.
           CARD_DECLINE =
             T.let(
               :card_decline,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Reversal: details will be under the `card_reversal` object.
           CARD_REVERSAL =
             T.let(
               :card_reversal,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Authorization Expiration: details will be under the `card_authorization_expiration` object.
           CARD_AUTHORIZATION_EXPIRATION =
             T.let(
               :card_authorization_expiration,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Increment: details will be under the `card_increment` object.
           CARD_INCREMENT =
             T.let(
               :card_increment,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Settlement: details will be under the `card_settlement` object.
           CARD_SETTLEMENT =
             T.let(
               :card_settlement,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Refund: details will be under the `card_refund` object.
           CARD_REFUND =
             T.let(
               :card_refund,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Card Fuel Confirmation: details will be under the `card_fuel_confirmation` object.
           CARD_FUEL_CONFIRMATION =
             T.let(
               :card_fuel_confirmation,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           # Unknown card payment element.
           OTHER =
             T.let(
               :other,
-              Increase::CardPayment::Element::Category::TaggedSymbol
+              Increase::Models::CardPayment::Element::Category::TaggedSymbol
             )
 
           sig do
             override.returns(
-              T::Array[Increase::CardPayment::Element::Category::TaggedSymbol]
+              T::Array[
+                Increase::Models::CardPayment::Element::Category::TaggedSymbol
+              ]
             )
           end
           def self.values
@@ -11587,9 +11812,6 @@ module Increase
       end
 
       class State < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The total authorized amount in the minor unit of the transaction's currency. For
         # dollars, for example, this is cents.
         sig { returns(Integer) }
@@ -11665,14 +11887,19 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::CardPayment::Type) }
+          T.type_alias { T.all(Symbol, Increase::Models::CardPayment::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CARD_PAYMENT =
-          T.let(:card_payment, Increase::CardPayment::Type::TaggedSymbol)
+          T.let(
+            :card_payment,
+            Increase::Models::CardPayment::Type::TaggedSymbol
+          )
 
         sig do
-          override.returns(T::Array[Increase::CardPayment::Type::TaggedSymbol])
+          override.returns(
+            T::Array[Increase::Models::CardPayment::Type::TaggedSymbol]
+          )
         end
         def self.values
         end

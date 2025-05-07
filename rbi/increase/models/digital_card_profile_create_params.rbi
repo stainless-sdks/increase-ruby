@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier of the File containing the card's icon image.
       sig { returns(String) }
       attr_accessor :app_icon_file_id
@@ -51,14 +49,19 @@ module Increase
 
       # The Card's text color, specified as an RGB triple. The default is white.
       sig do
-        returns(T.nilable(Increase::DigitalCardProfileCreateParams::TextColor))
+        returns(
+          T.nilable(Increase::Models::DigitalCardProfileCreateParams::TextColor)
+        )
       end
       attr_reader :text_color
 
       sig do
         params(
           text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash
+            T.any(
+              Increase::Models::DigitalCardProfileCreateParams::TextColor,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :text_color
@@ -74,8 +77,12 @@ module Increase
           contact_phone: String,
           contact_website: String,
           text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+            T.any(
+              Increase::Models::DigitalCardProfileCreateParams::TextColor,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -112,7 +119,8 @@ module Increase
             contact_email: String,
             contact_phone: String,
             contact_website: String,
-            text_color: Increase::DigitalCardProfileCreateParams::TextColor,
+            text_color:
+              Increase::Models::DigitalCardProfileCreateParams::TextColor,
             request_options: Increase::RequestOptions
           }
         )
@@ -121,9 +129,6 @@ module Increase
       end
 
       class TextColor < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue

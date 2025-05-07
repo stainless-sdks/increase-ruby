@@ -6,11 +6,11 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The bookkeeping entries.
       sig do
-        returns(T::Array[Increase::BookkeepingEntrySetCreateParams::Entry])
+        returns(
+          T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]
+        )
       end
       attr_accessor :entries
 
@@ -32,10 +32,16 @@ module Increase
       sig do
         params(
           entries:
-            T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
+            T::Array[
+              T.any(
+                Increase::Models::BookkeepingEntrySetCreateParams::Entry,
+                Increase::Internal::AnyHash
+              )
+            ],
           date: Time,
           transaction_id: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -53,7 +59,10 @@ module Increase
       sig do
         override.returns(
           {
-            entries: T::Array[Increase::BookkeepingEntrySetCreateParams::Entry],
+            entries:
+              T::Array[
+                Increase::Models::BookkeepingEntrySetCreateParams::Entry
+              ],
             date: Time,
             transaction_id: String,
             request_options: Increase::RequestOptions
@@ -64,9 +73,6 @@ module Increase
       end
 
       class Entry < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }
         attr_accessor :account_id

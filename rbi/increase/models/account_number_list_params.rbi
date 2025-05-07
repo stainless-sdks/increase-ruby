@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter Account Numbers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -16,24 +14,35 @@ module Increase
       attr_writer :account_id
 
       sig do
-        returns(T.nilable(Increase::AccountNumberListParams::ACHDebitStatus))
+        returns(
+          T.nilable(Increase::Models::AccountNumberListParams::ACHDebitStatus)
+        )
       end
       attr_reader :ach_debit_status
 
       sig do
         params(
           ach_debit_status:
-            Increase::AccountNumberListParams::ACHDebitStatus::OrHash
+            T.any(
+              Increase::Models::AccountNumberListParams::ACHDebitStatus,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :ach_debit_status
 
-      sig { returns(T.nilable(Increase::AccountNumberListParams::CreatedAt)) }
+      sig do
+        returns(T.nilable(Increase::Models::AccountNumberListParams::CreatedAt))
+      end
       attr_reader :created_at
 
       sig do
         params(
-          created_at: Increase::AccountNumberListParams::CreatedAt::OrHash
+          created_at:
+            T.any(
+              Increase::Models::AccountNumberListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :created_at
@@ -63,11 +72,19 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Increase::AccountNumberListParams::Status)) }
+      sig do
+        returns(T.nilable(Increase::Models::AccountNumberListParams::Status))
+      end
       attr_reader :status
 
       sig do
-        params(status: Increase::AccountNumberListParams::Status::OrHash).void
+        params(
+          status:
+            T.any(
+              Increase::Models::AccountNumberListParams::Status,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :status
 
@@ -75,13 +92,25 @@ module Increase
         params(
           account_id: String,
           ach_debit_status:
-            Increase::AccountNumberListParams::ACHDebitStatus::OrHash,
-          created_at: Increase::AccountNumberListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::AccountNumberListParams::ACHDebitStatus,
+              Increase::Internal::AnyHash
+            ),
+          created_at:
+            T.any(
+              Increase::Models::AccountNumberListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::AccountNumberListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          status:
+            T.any(
+              Increase::Models::AccountNumberListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -108,12 +137,13 @@ module Increase
         override.returns(
           {
             account_id: String,
-            ach_debit_status: Increase::AccountNumberListParams::ACHDebitStatus,
-            created_at: Increase::AccountNumberListParams::CreatedAt,
+            ach_debit_status:
+              Increase::Models::AccountNumberListParams::ACHDebitStatus,
+            created_at: Increase::Models::AccountNumberListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::AccountNumberListParams::Status,
+            status: Increase::Models::AccountNumberListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -122,16 +152,13 @@ module Increase
       end
 
       class ACHDebitStatus < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The ACH Debit status to retrieve Account Numbers for. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do
           returns(
             T.nilable(
               T::Array[
-                Increase::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
+                Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
               ]
             )
           )
@@ -142,7 +169,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
+                Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
               ]
           ).void
         end
@@ -152,7 +179,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
+                Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -168,7 +195,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
+                  Increase::Models::AccountNumberListParams::ACHDebitStatus::In::OrSymbol
                 ]
             }
           )
@@ -183,7 +210,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::AccountNumberListParams::ACHDebitStatus::In
+                Increase::Models::AccountNumberListParams::ACHDebitStatus::In
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -192,20 +219,20 @@ module Increase
           ALLOWED =
             T.let(
               :allowed,
-              Increase::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol
+              Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol
             )
 
           # ACH Debits are blocked.
           BLOCKED =
             T.let(
               :blocked,
-              Increase::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol
+              Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol
+                Increase::Models::AccountNumberListParams::ACHDebitStatus::In::TaggedSymbol
               ]
             )
           end
@@ -215,9 +242,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -284,15 +308,14 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The status to retrieve Account Numbers for. For GET requests, this should be
         # encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do
           returns(
             T.nilable(
-              T::Array[Increase::AccountNumberListParams::Status::In::OrSymbol]
+              T::Array[
+                Increase::Models::AccountNumberListParams::Status::In::OrSymbol
+              ]
             )
           )
         end
@@ -301,7 +324,9 @@ module Increase
         sig do
           params(
             in_:
-              T::Array[Increase::AccountNumberListParams::Status::In::OrSymbol]
+              T::Array[
+                Increase::Models::AccountNumberListParams::Status::In::OrSymbol
+              ]
           ).void
         end
         attr_writer :in_
@@ -309,7 +334,9 @@ module Increase
         sig do
           params(
             in_:
-              T::Array[Increase::AccountNumberListParams::Status::In::OrSymbol]
+              T::Array[
+                Increase::Models::AccountNumberListParams::Status::In::OrSymbol
+              ]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -324,7 +351,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::AccountNumberListParams::Status::In::OrSymbol
+                  Increase::Models::AccountNumberListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -337,7 +364,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::AccountNumberListParams::Status::In)
+              T.all(
+                Symbol,
+                Increase::Models::AccountNumberListParams::Status::In
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -345,27 +375,27 @@ module Increase
           ACTIVE =
             T.let(
               :active,
-              Increase::AccountNumberListParams::Status::In::TaggedSymbol
+              Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol
             )
 
           # The account number is temporarily disabled.
           DISABLED =
             T.let(
               :disabled,
-              Increase::AccountNumberListParams::Status::In::TaggedSymbol
+              Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol
             )
 
           # The account number is permanently disabled.
           CANCELED =
             T.let(
               :canceled,
-              Increase::AccountNumberListParams::Status::In::TaggedSymbol
+              Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::AccountNumberListParams::Status::In::TaggedSymbol
+                Increase::Models::AccountNumberListParams::Status::In::TaggedSymbol
               ]
             )
           end

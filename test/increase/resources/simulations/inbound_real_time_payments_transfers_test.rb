@@ -11,7 +11,7 @@ class Increase::Test::Resources::Simulations::InboundRealTimePaymentsTransfersTe
       )
 
     assert_pattern do
-      response => Increase::InboundRealTimePaymentsTransfer
+      response => Increase::Models::InboundRealTimePaymentsTransfer
     end
 
     assert_pattern do
@@ -20,18 +20,18 @@ class Increase::Test::Resources::Simulations::InboundRealTimePaymentsTransfersTe
         account_id: String,
         account_number_id: String,
         amount: Integer,
-        confirmation: Increase::InboundRealTimePaymentsTransfer::Confirmation | nil,
+        confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation | nil,
         created_at: Time,
         creditor_name: String,
-        currency: Increase::InboundRealTimePaymentsTransfer::Currency,
+        currency: Increase::Models::InboundRealTimePaymentsTransfer::Currency,
         debtor_account_number: String,
         debtor_name: String,
         debtor_routing_number: String,
-        decline: Increase::InboundRealTimePaymentsTransfer::Decline | nil,
+        decline: Increase::Models::InboundRealTimePaymentsTransfer::Decline | nil,
         remittance_information: String | nil,
-        status: Increase::InboundRealTimePaymentsTransfer::Status,
+        status: Increase::Models::InboundRealTimePaymentsTransfer::Status,
         transaction_identification: String,
-        type: Increase::InboundRealTimePaymentsTransfer::Type
+        type: Increase::Models::InboundRealTimePaymentsTransfer::Type
       }
     end
   end

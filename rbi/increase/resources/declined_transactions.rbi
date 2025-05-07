@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           declined_transaction_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::DeclinedTransaction)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::DeclinedTransaction)
       end
       def retrieve(
         # The identifier of the Declined Transaction.
@@ -21,14 +21,23 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::DeclinedTransactionListParams::Category::OrHash,
+          category:
+            T.any(
+              Increase::Models::DeclinedTransactionListParams::Category,
+              Increase::Internal::AnyHash
+            ),
           created_at:
-            Increase::DeclinedTransactionListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::DeclinedTransactionListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::DeclinedTransaction])
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::DeclinedTransaction]
+        )
       end
       def list(
         # Filter Declined Transactions to ones belonging to the specified Account.

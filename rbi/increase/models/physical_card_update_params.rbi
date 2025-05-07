@@ -6,16 +6,17 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The status to update the Physical Card to.
-      sig { returns(Increase::PhysicalCardUpdateParams::Status::OrSymbol) }
+      sig do
+        returns(Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol)
+      end
       attr_accessor :status
 
       sig do
         params(
-          status: Increase::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
+          status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -28,7 +29,8 @@ module Increase
       sig do
         override.returns(
           {
-            status: Increase::PhysicalCardUpdateParams::Status::OrSymbol,
+            status:
+              Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -42,7 +44,7 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::PhysicalCardUpdateParams::Status)
+            T.all(Symbol, Increase::Models::PhysicalCardUpdateParams::Status)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -50,26 +52,28 @@ module Increase
         ACTIVE =
           T.let(
             :active,
-            Increase::PhysicalCardUpdateParams::Status::TaggedSymbol
+            Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol
           )
 
         # The physical card is temporarily disabled.
         DISABLED =
           T.let(
             :disabled,
-            Increase::PhysicalCardUpdateParams::Status::TaggedSymbol
+            Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol
           )
 
         # The physical card is permanently canceled.
         CANCELED =
           T.let(
             :canceled,
-            Increase::PhysicalCardUpdateParams::Status::TaggedSymbol
+            Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::PhysicalCardUpdateParams::Status::TaggedSymbol]
+            T::Array[
+              Increase::Models::PhysicalCardUpdateParams::Status::TaggedSymbol
+            ]
           )
         end
         def self.values

@@ -49,7 +49,7 @@ module Increase
                 ),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(Increase::Internal::Type::Converter::Input),
-              options: T.nilable(Increase::RequestOptions::OrHash)
+              options: T.nilable(Increase::RequestOpts)
             }
           end
 
@@ -251,7 +251,7 @@ module Increase
               ),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(Increase::Internal::Type::Converter::Input),
-            options: T.nilable(Increase::RequestOptions::OrHash)
+            options: T.nilable(Increase::RequestOpts)
           ).returns(T.anything)
         end
         def request(

@@ -3,8 +3,6 @@
 module Increase
   module Models
     class EntitySupplementalDocument < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
       # Supplemental Document was created.
       sig { returns(Time) }
@@ -26,7 +24,11 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `entity_supplemental_document`.
-      sig { returns(Increase::EntitySupplementalDocument::Type::TaggedSymbol) }
+      sig do
+        returns(
+          Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
+        )
+      end
       attr_accessor :type
 
       # Supplemental Documents are uploaded files connected to an Entity during
@@ -37,7 +39,7 @@ module Increase
           entity_id: String,
           file_id: String,
           idempotency_key: T.nilable(String),
-          type: Increase::EntitySupplementalDocument::Type::OrSymbol
+          type: Increase::Models::EntitySupplementalDocument::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -65,7 +67,8 @@ module Increase
             entity_id: String,
             file_id: String,
             idempotency_key: T.nilable(String),
-            type: Increase::EntitySupplementalDocument::Type::TaggedSymbol
+            type:
+              Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
           }
         )
       end
@@ -79,19 +82,21 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::EntitySupplementalDocument::Type)
+            T.all(Symbol, Increase::Models::EntitySupplementalDocument::Type)
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ENTITY_SUPPLEMENTAL_DOCUMENT =
           T.let(
             :entity_supplemental_document,
-            Increase::EntitySupplementalDocument::Type::TaggedSymbol
+            Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::EntitySupplementalDocument::Type::TaggedSymbol]
+            T::Array[
+              Increase::Models::EntitySupplementalDocument::Type::TaggedSymbol
+            ]
           )
         end
         def self.values

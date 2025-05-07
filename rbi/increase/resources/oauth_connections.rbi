@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           oauth_connection_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::OAuthConnection)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::OAuthConnection)
       end
       def retrieve(
         # The identifier of the OAuth Connection.
@@ -23,9 +23,13 @@ module Increase
           cursor: String,
           limit: Integer,
           oauth_application_id: String,
-          status: Increase::OAuthConnectionListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::OAuthConnection])
+          status:
+            T.any(
+              Increase::Models::OAuthConnectionListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::OAuthConnection])
       end
       def list(
         # Return the page of entries after this one.

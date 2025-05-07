@@ -7,9 +7,6 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The amount of the increment in minor units in the card authorization's currency.
         sig { returns(Integer) }
         attr_accessor :amount
@@ -33,7 +30,8 @@ module Increase
             amount: Integer,
             card_payment_id: String,
             event_subscription_id: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
         end
         def self.new(

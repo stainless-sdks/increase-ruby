@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter Inbound ACH Transfers to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -23,13 +21,19 @@ module Increase
       attr_writer :account_number_id
 
       sig do
-        returns(T.nilable(Increase::InboundACHTransferListParams::CreatedAt))
+        returns(
+          T.nilable(Increase::Models::InboundACHTransferListParams::CreatedAt)
+        )
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at: Increase::InboundACHTransferListParams::CreatedAt::OrHash
+          created_at:
+            T.any(
+              Increase::Models::InboundACHTransferListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :created_at
@@ -49,12 +53,20 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Increase::InboundACHTransferListParams::Status)) }
+      sig do
+        returns(
+          T.nilable(Increase::Models::InboundACHTransferListParams::Status)
+        )
+      end
       attr_reader :status
 
       sig do
         params(
-          status: Increase::InboundACHTransferListParams::Status::OrHash
+          status:
+            T.any(
+              Increase::Models::InboundACHTransferListParams::Status,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :status
@@ -63,11 +75,20 @@ module Increase
         params(
           account_id: String,
           account_number_id: String,
-          created_at: Increase::InboundACHTransferListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::InboundACHTransferListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          status: Increase::InboundACHTransferListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          status:
+            T.any(
+              Increase::Models::InboundACHTransferListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -91,10 +112,11 @@ module Increase
           {
             account_id: String,
             account_number_id: String,
-            created_at: Increase::InboundACHTransferListParams::CreatedAt,
+            created_at:
+              Increase::Models::InboundACHTransferListParams::CreatedAt,
             cursor: String,
             limit: Integer,
-            status: Increase::InboundACHTransferListParams::Status,
+            status: Increase::Models::InboundACHTransferListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -103,9 +125,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -172,9 +191,6 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Filter Inbound ACH Transfers to those with the specified status. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
@@ -182,7 +198,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::InboundACHTransferListParams::Status::In::OrSymbol
+                Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -193,7 +209,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::InboundACHTransferListParams::Status::In::OrSymbol
+                Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -203,7 +219,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::InboundACHTransferListParams::Status::In::OrSymbol
+                Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -220,7 +236,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::InboundACHTransferListParams::Status::In::OrSymbol
+                  Increase::Models::InboundACHTransferListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -233,7 +249,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::InboundACHTransferListParams::Status::In)
+              T.all(
+                Symbol,
+                Increase::Models::InboundACHTransferListParams::Status::In
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -241,34 +260,34 @@ module Increase
           PENDING =
             T.let(
               :pending,
-              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound ACH Transfer has been declined.
           DECLINED =
             T.let(
               :declined,
-              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound ACH Transfer is accepted.
           ACCEPTED =
             T.let(
               :accepted,
-              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           # The Inbound ACH Transfer has been returned.
           RETURNED =
             T.let(
               :returned,
-              Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
+              Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::InboundACHTransferListParams::Status::In::TaggedSymbol
+                Increase::Models::InboundACHTransferListParams::Status::In::TaggedSymbol
               ]
             )
           end

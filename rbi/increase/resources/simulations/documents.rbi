@@ -8,8 +8,8 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Document)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::Document)
         end
         def create(
           # The identifier of the Account the tax document is for.

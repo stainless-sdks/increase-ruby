@@ -4,9 +4,6 @@ module Increase
   module Models
     module Simulations
       class InboundFundsHoldReleaseResponse < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
         attr_accessor :id

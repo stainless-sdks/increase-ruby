@@ -3,8 +3,6 @@
 module Increase
   module Models
     class InboundWireTransfer < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The inbound wire transfer's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -99,12 +97,20 @@ module Increase
 
       # Information about the reversal of the inbound wire transfer if it has been
       # reversed.
-      sig { returns(T.nilable(Increase::InboundWireTransfer::Reversal)) }
+      sig do
+        returns(T.nilable(Increase::Models::InboundWireTransfer::Reversal))
+      end
       attr_reader :reversal
 
       sig do
         params(
-          reversal: T.nilable(Increase::InboundWireTransfer::Reversal::OrHash)
+          reversal:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundWireTransfer::Reversal,
+                Increase::Internal::AnyHash
+              )
+            )
         ).void
       end
       attr_writer :reversal
@@ -114,12 +120,14 @@ module Increase
       attr_accessor :sender_reference
 
       # The status of the transfer.
-      sig { returns(Increase::InboundWireTransfer::Status::TaggedSymbol) }
+      sig do
+        returns(Increase::Models::InboundWireTransfer::Status::TaggedSymbol)
+      end
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       # `inbound_wire_transfer`.
-      sig { returns(Increase::InboundWireTransfer::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::InboundWireTransfer::Type::TaggedSymbol) }
       attr_accessor :type
 
       # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
@@ -148,10 +156,16 @@ module Increase
           originator_to_beneficiary_information_line2: T.nilable(String),
           originator_to_beneficiary_information_line3: T.nilable(String),
           originator_to_beneficiary_information_line4: T.nilable(String),
-          reversal: T.nilable(Increase::InboundWireTransfer::Reversal::OrHash),
+          reversal:
+            T.nilable(
+              T.any(
+                Increase::Models::InboundWireTransfer::Reversal,
+                Increase::Internal::AnyHash
+              )
+            ),
           sender_reference: T.nilable(String),
-          status: Increase::InboundWireTransfer::Status::OrSymbol,
-          type: Increase::InboundWireTransfer::Type::OrSymbol
+          status: Increase::Models::InboundWireTransfer::Status::OrSymbol,
+          type: Increase::Models::InboundWireTransfer::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -241,10 +255,11 @@ module Increase
             originator_to_beneficiary_information_line2: T.nilable(String),
             originator_to_beneficiary_information_line3: T.nilable(String),
             originator_to_beneficiary_information_line4: T.nilable(String),
-            reversal: T.nilable(Increase::InboundWireTransfer::Reversal),
+            reversal:
+              T.nilable(Increase::Models::InboundWireTransfer::Reversal),
             sender_reference: T.nilable(String),
-            status: Increase::InboundWireTransfer::Status::TaggedSymbol,
-            type: Increase::InboundWireTransfer::Type::TaggedSymbol
+            status: Increase::Models::InboundWireTransfer::Status::TaggedSymbol,
+            type: Increase::Models::InboundWireTransfer::Type::TaggedSymbol
           }
         )
       end
@@ -252,12 +267,11 @@ module Increase
       end
 
       class Reversal < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The reason for the reversal.
         sig do
-          returns(Increase::InboundWireTransfer::Reversal::Reason::TaggedSymbol)
+          returns(
+            Increase::Models::InboundWireTransfer::Reversal::Reason::TaggedSymbol
+          )
         end
         attr_accessor :reason
 
@@ -270,7 +284,8 @@ module Increase
         # reversed.
         sig do
           params(
-            reason: Increase::InboundWireTransfer::Reversal::Reason::OrSymbol,
+            reason:
+              Increase::Models::InboundWireTransfer::Reversal::Reason::OrSymbol,
             reversed_at: Time
           ).returns(T.attached_class)
         end
@@ -287,7 +302,7 @@ module Increase
           override.returns(
             {
               reason:
-                Increase::InboundWireTransfer::Reversal::Reason::TaggedSymbol,
+                Increase::Models::InboundWireTransfer::Reversal::Reason::TaggedSymbol,
               reversed_at: Time
             }
           )
@@ -301,7 +316,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::InboundWireTransfer::Reversal::Reason)
+              T.all(
+                Symbol,
+                Increase::Models::InboundWireTransfer::Reversal::Reason
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -309,20 +327,20 @@ module Increase
           DUPLICATE =
             T.let(
               :duplicate,
-              Increase::InboundWireTransfer::Reversal::Reason::TaggedSymbol
+              Increase::Models::InboundWireTransfer::Reversal::Reason::TaggedSymbol
             )
 
           # The recipient of the wire transfer requested the funds be returned to the sender.
           CREDITOR_REQUEST =
             T.let(
               :creditor_request,
-              Increase::InboundWireTransfer::Reversal::Reason::TaggedSymbol
+              Increase::Models::InboundWireTransfer::Reversal::Reason::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::InboundWireTransfer::Reversal::Reason::TaggedSymbol
+                Increase::Models::InboundWireTransfer::Reversal::Reason::TaggedSymbol
               ]
             )
           end
@@ -336,28 +354,44 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::InboundWireTransfer::Status) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::InboundWireTransfer::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING =
-          T.let(:pending, Increase::InboundWireTransfer::Status::TaggedSymbol)
+          T.let(
+            :pending,
+            Increase::Models::InboundWireTransfer::Status::TaggedSymbol
+          )
 
         # The Inbound Wire Transfer is accepted.
         ACCEPTED =
-          T.let(:accepted, Increase::InboundWireTransfer::Status::TaggedSymbol)
+          T.let(
+            :accepted,
+            Increase::Models::InboundWireTransfer::Status::TaggedSymbol
+          )
 
         # The Inbound Wire Transfer was declined.
         DECLINED =
-          T.let(:declined, Increase::InboundWireTransfer::Status::TaggedSymbol)
+          T.let(
+            :declined,
+            Increase::Models::InboundWireTransfer::Status::TaggedSymbol
+          )
 
         # The Inbound Wire Transfer was reversed.
         REVERSED =
-          T.let(:reversed, Increase::InboundWireTransfer::Status::TaggedSymbol)
+          T.let(
+            :reversed,
+            Increase::Models::InboundWireTransfer::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(
-            T::Array[Increase::InboundWireTransfer::Status::TaggedSymbol]
+            T::Array[
+              Increase::Models::InboundWireTransfer::Status::TaggedSymbol
+            ]
           )
         end
         def self.values
@@ -370,18 +404,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::InboundWireTransfer::Type) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::InboundWireTransfer::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         INBOUND_WIRE_TRANSFER =
           T.let(
             :inbound_wire_transfer,
-            Increase::InboundWireTransfer::Type::TaggedSymbol
+            Increase::Models::InboundWireTransfer::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::InboundWireTransfer::Type::TaggedSymbol]
+            T::Array[Increase::Models::InboundWireTransfer::Type::TaggedSymbol]
           )
         end
         def self.values

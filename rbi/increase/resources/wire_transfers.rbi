@@ -22,8 +22,8 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::WireTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -72,8 +72,8 @@ module Increase
       sig do
         params(
           wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::WireTransfer)
       end
       def retrieve(
         # The identifier of the Wire Transfer.
@@ -86,13 +86,17 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::WireTransferListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::WireTransferListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::WireTransfer])
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::WireTransfer])
       end
       def list(
         # Filter Wire Transfers to those belonging to the specified Account.
@@ -118,8 +122,8 @@ module Increase
       sig do
         params(
           wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::WireTransfer)
       end
       def approve(
         # The identifier of the Wire Transfer to approve.
@@ -132,8 +136,8 @@ module Increase
       sig do
         params(
           wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::WireTransfer)
       end
       def cancel(
         # The identifier of the pending Wire Transfer to cancel.

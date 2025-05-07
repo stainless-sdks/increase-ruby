@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter Inbound Check Deposits to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -24,13 +22,19 @@ module Increase
       attr_writer :check_transfer_id
 
       sig do
-        returns(T.nilable(Increase::InboundCheckDepositListParams::CreatedAt))
+        returns(
+          T.nilable(Increase::Models::InboundCheckDepositListParams::CreatedAt)
+        )
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at: Increase::InboundCheckDepositListParams::CreatedAt::OrHash
+          created_at:
+            T.any(
+              Increase::Models::InboundCheckDepositListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :created_at
@@ -55,10 +59,14 @@ module Increase
           account_id: String,
           check_transfer_id: String,
           created_at:
-            Increase::InboundCheckDepositListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::InboundCheckDepositListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -82,7 +90,8 @@ module Increase
           {
             account_id: String,
             check_transfer_id: String,
-            created_at: Increase::InboundCheckDepositListParams::CreatedAt,
+            created_at:
+              Increase::Models::InboundCheckDepositListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             request_options: Increase::RequestOptions
@@ -93,9 +102,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

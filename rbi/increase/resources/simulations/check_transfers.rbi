@@ -11,8 +11,8 @@ module Increase
         sig do
           params(
             check_transfer_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::CheckTransfer)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::CheckTransfer)
         end
         def mail(
           # The identifier of the Check Transfer you wish to mail.

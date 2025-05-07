@@ -12,10 +12,10 @@ module Increase
           params(
             card_dispute_id: String,
             status:
-              Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
+              Increase::Models::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::CardDispute)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::CardDispute)
         end
         def action(
           # The dispute you would like to action.

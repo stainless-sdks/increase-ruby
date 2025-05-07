@@ -6,13 +6,13 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # If the Real-Time Decision relates to a 3DS card authentication attempt, this
       # object contains your response to the authentication.
       sig do
         returns(
-          T.nilable(Increase::RealTimeDecisionActionParams::CardAuthentication)
+          T.nilable(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthentication
+          )
         )
       end
       attr_reader :card_authentication
@@ -20,7 +20,10 @@ module Increase
       sig do
         params(
           card_authentication:
-            Increase::RealTimeDecisionActionParams::CardAuthentication::OrHash
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :card_authentication
@@ -30,7 +33,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge
+            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge
           )
         )
       end
@@ -39,7 +42,10 @@ module Increase
       sig do
         params(
           card_authentication_challenge:
-            Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::OrHash
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :card_authentication_challenge
@@ -48,7 +54,9 @@ module Increase
       # contains your response to the authorization.
       sig do
         returns(
-          T.nilable(Increase::RealTimeDecisionActionParams::CardAuthorization)
+          T.nilable(
+            Increase::Models::RealTimeDecisionActionParams::CardAuthorization
+          )
         )
       end
       attr_reader :card_authorization
@@ -56,7 +64,10 @@ module Increase
       sig do
         params(
           card_authorization:
-            Increase::RealTimeDecisionActionParams::CardAuthorization::OrHash
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :card_authorization
@@ -66,7 +77,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication
           )
         )
       end
@@ -75,7 +86,10 @@ module Increase
       sig do
         params(
           digital_wallet_authentication:
-            Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :digital_wallet_authentication
@@ -84,7 +98,9 @@ module Increase
       # attempt, this object contains your response to the attempt.
       sig do
         returns(
-          T.nilable(Increase::RealTimeDecisionActionParams::DigitalWalletToken)
+          T.nilable(
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken
+          )
         )
       end
       attr_reader :digital_wallet_token
@@ -92,7 +108,10 @@ module Increase
       sig do
         params(
           digital_wallet_token:
-            Increase::RealTimeDecisionActionParams::DigitalWalletToken::OrHash
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :digital_wallet_token
@@ -100,16 +119,32 @@ module Increase
       sig do
         params(
           card_authentication:
-            Increase::RealTimeDecisionActionParams::CardAuthentication::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+              Increase::Internal::AnyHash
+            ),
           card_authentication_challenge:
-            Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+              Increase::Internal::AnyHash
+            ),
           card_authorization:
-            Increase::RealTimeDecisionActionParams::CardAuthorization::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+              Increase::Internal::AnyHash
+            ),
           digital_wallet_authentication:
-            Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+              Increase::Internal::AnyHash
+            ),
           digital_wallet_token:
-            Increase::RealTimeDecisionActionParams::DigitalWalletToken::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -136,15 +171,15 @@ module Increase
         override.returns(
           {
             card_authentication:
-              Increase::RealTimeDecisionActionParams::CardAuthentication,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
             card_authentication_challenge:
-              Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
             card_authorization:
-              Increase::RealTimeDecisionActionParams::CardAuthorization,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
             digital_wallet_authentication:
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
             digital_wallet_token:
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken,
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
             request_options: Increase::RequestOptions
           }
         )
@@ -153,13 +188,10 @@ module Increase
       end
 
       class CardAuthentication < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Whether the card authentication attempt should be approved or declined.
         sig do
           returns(
-            Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol
+            Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol
           )
         end
         attr_accessor :decision
@@ -169,7 +201,7 @@ module Increase
         sig do
           params(
             decision:
-              Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -182,7 +214,7 @@ module Increase
           override.returns(
             {
               decision:
-                Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::OrSymbol
             }
           )
         end
@@ -197,7 +229,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::RealTimeDecisionActionParams::CardAuthentication::Decision
+                Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -206,27 +238,27 @@ module Increase
           APPROVE =
             T.let(
               :approve,
-              Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
             )
 
           # Request further validation before approving the authentication attempt.
           CHALLENGE =
             T.let(
               :challenge,
-              Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
             )
 
           # Deny the authentication attempt.
           DENY =
             T.let(
               :deny,
-              Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision::TaggedSymbol
               ]
             )
           end
@@ -236,14 +268,11 @@ module Increase
       end
 
       class CardAuthenticationChallenge < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Whether the card authentication challenge was successfully delivered to the
         # cardholder.
         sig do
           returns(
-            Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
+            Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
           )
         end
         attr_accessor :result
@@ -253,7 +282,7 @@ module Increase
         sig do
           params(
             result:
-              Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -267,7 +296,7 @@ module Increase
           override.returns(
             {
               result:
-                Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
             }
           )
         end
@@ -283,7 +312,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
+                Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -292,20 +321,20 @@ module Increase
           SUCCESS =
             T.let(
               :success,
-              Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
             )
 
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE =
             T.let(
               :failure,
-              Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::TaggedSymbol
               ]
             )
           end
@@ -315,13 +344,10 @@ module Increase
       end
 
       class CardAuthorization < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Whether the card authorization should be approved or declined.
         sig do
           returns(
-            Increase::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol
+            Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol
           )
         end
         attr_accessor :decision
@@ -331,7 +357,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
             )
           )
         end
@@ -340,7 +366,7 @@ module Increase
         sig do
           params(
             decline_reason:
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
           ).void
         end
         attr_writer :decline_reason
@@ -350,9 +376,9 @@ module Increase
         sig do
           params(
             decision:
-              Increase::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
             decline_reason:
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -368,9 +394,9 @@ module Increase
           override.returns(
             {
               decision:
-                Increase::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::OrSymbol,
               decline_reason:
-                Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::OrSymbol
             }
           )
         end
@@ -385,7 +411,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::RealTimeDecisionActionParams::CardAuthorization::Decision
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -394,20 +420,20 @@ module Increase
           APPROVE =
             T.let(
               :approve,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
             )
 
           # Decline the authorization.
           DECLINE =
             T.let(
               :decline,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision::TaggedSymbol
               ]
             )
           end
@@ -424,7 +450,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -433,48 +459,48 @@ module Increase
           INSUFFICIENT_FUNDS =
             T.let(
               :insufficient_funds,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # This type of transaction is not allowed for this card. This transaction should not be retried.
           TRANSACTION_NEVER_ALLOWED =
             T.let(
               :transaction_never_allowed,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
           EXCEEDS_APPROVAL_LIMIT =
             T.let(
               :exceeds_approval_limit,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
           CARD_TEMPORARILY_DISABLED =
             T.let(
               :card_temporarily_disabled,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
           SUSPECTED_FRAUD =
             T.let(
               :suspected_fraud,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER =
             T.let(
               :other,
-              Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
+                Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason::TaggedSymbol
               ]
             )
           end
@@ -484,13 +510,10 @@ module Increase
       end
 
       class DigitalWalletAuthentication < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Whether your application was able to deliver the one-time passcode.
         sig do
           returns(
-            Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol
+            Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol
           )
         end
         attr_accessor :result
@@ -498,7 +521,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
             )
           )
         end
@@ -507,7 +530,10 @@ module Increase
         sig do
           params(
             success:
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success::OrHash
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
+                Increase::Internal::AnyHash
+              )
           ).void
         end
         attr_writer :success
@@ -517,9 +543,12 @@ module Increase
         sig do
           params(
             result:
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
             success:
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success::OrHash
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success,
+                Increase::Internal::AnyHash
+              )
           ).returns(T.attached_class)
         end
         def self.new(
@@ -533,9 +562,9 @@ module Increase
           override.returns(
             {
               result:
-                Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::OrSymbol,
               success:
-                Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
             }
           )
         end
@@ -550,7 +579,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -559,20 +588,20 @@ module Increase
           SUCCESS =
             T.let(
               :success,
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
             )
 
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE =
             T.let(
               :failure,
-              Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result::TaggedSymbol
               ]
             )
           end
@@ -581,9 +610,6 @@ module Increase
         end
 
         class Success < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # The email address that was used to verify the cardholder via one-time passcode.
           sig { returns(T.nilable(String)) }
           attr_reader :email
@@ -616,15 +642,12 @@ module Increase
       end
 
       class DigitalWalletToken < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # If your application approves the provisioning attempt, this contains metadata
         # about the digital wallet token that will be generated.
         sig do
           returns(
             T.nilable(
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken::Approval
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval
             )
           )
         end
@@ -633,7 +656,10 @@ module Increase
         sig do
           params(
             approval:
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken::Approval::OrHash
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+                Increase::Internal::AnyHash
+              )
           ).void
         end
         attr_writer :approval
@@ -643,7 +669,7 @@ module Increase
         sig do
           returns(
             T.nilable(
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken::Decline
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
             )
           )
         end
@@ -652,7 +678,10 @@ module Increase
         sig do
           params(
             decline:
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken::Decline::OrHash
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
+                Increase::Internal::AnyHash
+              )
           ).void
         end
         attr_writer :decline
@@ -662,9 +691,15 @@ module Increase
         sig do
           params(
             approval:
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken::Approval::OrHash,
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+                Increase::Internal::AnyHash
+              ),
             decline:
-              Increase::RealTimeDecisionActionParams::DigitalWalletToken::Decline::OrHash
+              T.any(
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline,
+                Increase::Internal::AnyHash
+              )
           ).returns(T.attached_class)
         end
         def self.new(
@@ -681,9 +716,9 @@ module Increase
           override.returns(
             {
               approval:
-                Increase::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
               decline:
-                Increase::RealTimeDecisionActionParams::DigitalWalletToken::Decline
+                Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
             }
           )
         end
@@ -691,9 +726,6 @@ module Increase
         end
 
         class Approval < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # An email address that can be used to verify the cardholder via one-time
           # passcode.
           sig { returns(T.nilable(String)) }
@@ -729,9 +761,6 @@ module Increase
         end
 
         class Decline < Increase::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
           # Why the tokenization attempt was declined. This is for logging purposes only and
           # is not displayed to the end-user.
           sig { returns(T.nilable(String)) }

@@ -6,19 +6,23 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Account the card should belong to.
       sig { returns(String) }
       attr_accessor :account_id
 
       # The card's billing address.
-      sig { returns(T.nilable(Increase::CardCreateParams::BillingAddress)) }
+      sig do
+        returns(T.nilable(Increase::Models::CardCreateParams::BillingAddress))
+      end
       attr_reader :billing_address
 
       sig do
         params(
-          billing_address: Increase::CardCreateParams::BillingAddress::OrHash
+          billing_address:
+            T.any(
+              Increase::Models::CardCreateParams::BillingAddress,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :billing_address
@@ -35,12 +39,18 @@ module Increase
       # number with this request. Otherwise, subscribe and then action a Real Time
       # Decision with the category `digital_wallet_token_requested` or
       # `digital_wallet_authentication_requested`.
-      sig { returns(T.nilable(Increase::CardCreateParams::DigitalWallet)) }
+      sig do
+        returns(T.nilable(Increase::Models::CardCreateParams::DigitalWallet))
+      end
       attr_reader :digital_wallet
 
       sig do
         params(
-          digital_wallet: Increase::CardCreateParams::DigitalWallet::OrHash
+          digital_wallet:
+            T.any(
+              Increase::Models::CardCreateParams::DigitalWallet,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :digital_wallet
@@ -56,11 +66,20 @@ module Increase
       sig do
         params(
           account_id: String,
-          billing_address: Increase::CardCreateParams::BillingAddress::OrHash,
+          billing_address:
+            T.any(
+              Increase::Models::CardCreateParams::BillingAddress,
+              Increase::Internal::AnyHash
+            ),
           description: String,
-          digital_wallet: Increase::CardCreateParams::DigitalWallet::OrHash,
+          digital_wallet:
+            T.any(
+              Increase::Models::CardCreateParams::DigitalWallet,
+              Increase::Internal::AnyHash
+            ),
           entity_id: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -87,9 +106,9 @@ module Increase
         override.returns(
           {
             account_id: String,
-            billing_address: Increase::CardCreateParams::BillingAddress,
+            billing_address: Increase::Models::CardCreateParams::BillingAddress,
             description: String,
-            digital_wallet: Increase::CardCreateParams::DigitalWallet,
+            digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
             entity_id: String,
             request_options: Increase::RequestOptions
           }
@@ -99,9 +118,6 @@ module Increase
       end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The city of the billing address.
         sig { returns(String) }
         attr_accessor :city
@@ -165,9 +181,6 @@ module Increase
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
         attr_reader :digital_card_profile_id

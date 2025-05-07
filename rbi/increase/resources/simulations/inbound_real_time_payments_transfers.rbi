@@ -16,8 +16,8 @@ module Increase
             debtor_routing_number: String,
             remittance_information: String,
             request_for_payment_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::InboundRealTimePaymentsTransfer)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::InboundRealTimePaymentsTransfer)
         end
         def create(
           # The identifier of the Account Number the inbound Real-Time Payments Transfer is

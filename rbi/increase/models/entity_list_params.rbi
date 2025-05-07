@@ -6,13 +6,17 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
-      sig { returns(T.nilable(Increase::EntityListParams::CreatedAt)) }
+      sig { returns(T.nilable(Increase::Models::EntityListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(created_at: Increase::EntityListParams::CreatedAt::OrHash).void
+        params(
+          created_at:
+            T.any(
+              Increase::Models::EntityListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :created_at
 
@@ -41,20 +45,37 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Increase::EntityListParams::Status)) }
+      sig { returns(T.nilable(Increase::Models::EntityListParams::Status)) }
       attr_reader :status
 
-      sig { params(status: Increase::EntityListParams::Status::OrHash).void }
+      sig do
+        params(
+          status:
+            T.any(
+              Increase::Models::EntityListParams::Status,
+              Increase::Internal::AnyHash
+            )
+        ).void
+      end
       attr_writer :status
 
       sig do
         params(
-          created_at: Increase::EntityListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::EntityListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::EntityListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          status:
+            T.any(
+              Increase::Models::EntityListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -77,11 +98,11 @@ module Increase
       sig do
         override.returns(
           {
-            created_at: Increase::EntityListParams::CreatedAt,
+            created_at: Increase::Models::EntityListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::EntityListParams::Status,
+            status: Increase::Models::EntityListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -90,9 +111,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }
@@ -159,16 +177,13 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Filter Entities for those with the specified status or statuses. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
         sig do
           returns(
             T.nilable(
-              T::Array[Increase::EntityListParams::Status::In::OrSymbol]
+              T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]
             )
           )
         end
@@ -176,14 +191,16 @@ module Increase
 
         sig do
           params(
-            in_: T::Array[Increase::EntityListParams::Status::In::OrSymbol]
+            in_:
+              T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]
           ).void
         end
         attr_writer :in_
 
         sig do
           params(
-            in_: T::Array[Increase::EntityListParams::Status::In::OrSymbol]
+            in_:
+              T::Array[Increase::Models::EntityListParams::Status::In::OrSymbol]
           ).returns(T.attached_class)
         end
         def self.new(
@@ -196,7 +213,12 @@ module Increase
 
         sig do
           override.returns(
-            { in_: T::Array[Increase::EntityListParams::Status::In::OrSymbol] }
+            {
+              in_:
+                T::Array[
+                  Increase::Models::EntityListParams::Status::In::OrSymbol
+                ]
+            }
           )
         end
         def to_hash
@@ -207,31 +229,36 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::EntityListParams::Status::In)
+              T.all(Symbol, Increase::Models::EntityListParams::Status::In)
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The entity is active.
           ACTIVE =
-            T.let(:active, Increase::EntityListParams::Status::In::TaggedSymbol)
+            T.let(
+              :active,
+              Increase::Models::EntityListParams::Status::In::TaggedSymbol
+            )
 
           # The entity is archived, and can no longer be used to create accounts.
           ARCHIVED =
             T.let(
               :archived,
-              Increase::EntityListParams::Status::In::TaggedSymbol
+              Increase::Models::EntityListParams::Status::In::TaggedSymbol
             )
 
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED =
             T.let(
               :disabled,
-              Increase::EntityListParams::Status::In::TaggedSymbol
+              Increase::Models::EntityListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
-              T::Array[Increase::EntityListParams::Status::In::TaggedSymbol]
+              T::Array[
+                Increase::Models::EntityListParams::Status::In::TaggedSymbol
+              ]
             )
           end
           def self.values

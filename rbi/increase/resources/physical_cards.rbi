@@ -7,11 +7,19 @@ module Increase
       sig do
         params(
           card_id: String,
-          cardholder: Increase::PhysicalCardCreateParams::Cardholder::OrHash,
-          shipment: Increase::PhysicalCardCreateParams::Shipment::OrHash,
+          cardholder:
+            T.any(
+              Increase::Models::PhysicalCardCreateParams::Cardholder,
+              Increase::Internal::AnyHash
+            ),
+          shipment:
+            T.any(
+              Increase::Models::PhysicalCardCreateParams::Shipment,
+              Increase::Internal::AnyHash
+            ),
           physical_card_profile_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCard)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::PhysicalCard)
       end
       def create(
         # The underlying card representing this physical card.
@@ -31,8 +39,8 @@ module Increase
       sig do
         params(
           physical_card_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCard)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::PhysicalCard)
       end
       def retrieve(
         # The identifier of the Physical Card.
@@ -45,9 +53,9 @@ module Increase
       sig do
         params(
           physical_card_id: String,
-          status: Increase::PhysicalCardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCard)
+          status: Increase::Models::PhysicalCardUpdateParams::Status::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::PhysicalCard)
       end
       def update(
         # The Physical Card identifier.
@@ -62,12 +70,16 @@ module Increase
       sig do
         params(
           card_id: String,
-          created_at: Increase::PhysicalCardListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::PhysicalCardListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::PhysicalCard])
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::PhysicalCard])
       end
       def list(
         # Filter Physical Cards to ones belonging to the specified Card.

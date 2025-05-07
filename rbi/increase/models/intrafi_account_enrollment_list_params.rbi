@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter IntraFi Account Enrollments to the one belonging to an account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -41,13 +39,21 @@ module Increase
       attr_writer :limit
 
       sig do
-        returns(T.nilable(Increase::IntrafiAccountEnrollmentListParams::Status))
+        returns(
+          T.nilable(
+            Increase::Models::IntrafiAccountEnrollmentListParams::Status
+          )
+        )
       end
       attr_reader :status
 
       sig do
         params(
-          status: Increase::IntrafiAccountEnrollmentListParams::Status::OrHash
+          status:
+            T.any(
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :status
@@ -58,8 +64,13 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::IntrafiAccountEnrollmentListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          status:
+            T.any(
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -87,7 +98,8 @@ module Increase
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::IntrafiAccountEnrollmentListParams::Status,
+            status:
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -96,9 +108,6 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Filter IntraFi Account Enrollments for those with the specified status or
         # statuses. For GET requests, this should be encoded as a comma-delimited string,
         # such as `?in=one,two,three`.
@@ -106,7 +115,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -117,7 +126,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -127,7 +136,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -144,7 +153,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
+                  Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -159,7 +168,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::IntrafiAccountEnrollmentListParams::Status::In
+                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -168,41 +177,41 @@ module Increase
           PENDING_ENROLLING =
             T.let(
               :pending_enrolling,
-              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # The account has been enrolled with IntraFi.
           ENROLLED =
             T.let(
               :enrolled,
-              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # The account is being unenrolled from IntraFi's deposit sweep.
           PENDING_UNENROLLING =
             T.let(
               :pending_unenrolling,
-              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # The account was once enrolled, but is no longer enrolled at IntraFi.
           UNENROLLED =
             T.let(
               :unenrolled,
-              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION =
             T.let(
               :requires_attention,
-              Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
+                Increase::Models::IntrafiAccountEnrollmentListParams::Status::In::TaggedSymbol
               ]
             )
           end

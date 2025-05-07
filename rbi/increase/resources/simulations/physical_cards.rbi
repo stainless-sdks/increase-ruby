@@ -11,9 +11,9 @@ module Increase
           params(
             physical_card_id: String,
             shipment_status:
-              Increase::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::PhysicalCard)
+              Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus::OrSymbol,
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::PhysicalCard)
         end
         def advance_shipment(
           # The Physical Card you would like to action.

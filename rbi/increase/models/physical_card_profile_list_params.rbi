@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
@@ -34,13 +32,19 @@ module Increase
       attr_writer :limit
 
       sig do
-        returns(T.nilable(Increase::PhysicalCardProfileListParams::Status))
+        returns(
+          T.nilable(Increase::Models::PhysicalCardProfileListParams::Status)
+        )
       end
       attr_reader :status
 
       sig do
         params(
-          status: Increase::PhysicalCardProfileListParams::Status::OrHash
+          status:
+            T.any(
+              Increase::Models::PhysicalCardProfileListParams::Status,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :status
@@ -50,8 +54,13 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::PhysicalCardProfileListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          status:
+            T.any(
+              Increase::Models::PhysicalCardProfileListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -76,7 +85,7 @@ module Increase
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::PhysicalCardProfileListParams::Status,
+            status: Increase::Models::PhysicalCardProfileListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -85,9 +94,6 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Filter Physical Card Profiles for those with the specified statuses. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
@@ -95,7 +101,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::PhysicalCardProfileListParams::Status::In::OrSymbol
+                Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -106,7 +112,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::PhysicalCardProfileListParams::Status::In::OrSymbol
+                Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -116,7 +122,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::PhysicalCardProfileListParams::Status::In::OrSymbol
+                Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -133,7 +139,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::PhysicalCardProfileListParams::Status::In::OrSymbol
+                  Increase::Models::PhysicalCardProfileListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -146,7 +152,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::PhysicalCardProfileListParams::Status::In)
+              T.all(
+                Symbol,
+                Increase::Models::PhysicalCardProfileListParams::Status::In
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -154,48 +163,48 @@ module Increase
           PENDING_CREATING =
             T.let(
               :pending_creating,
-              Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # The card profile is awaiting review by Increase.
           PENDING_REVIEWING =
             T.let(
               :pending_reviewing,
-              Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # There is an issue with the Physical Card Profile preventing it from use.
           REJECTED =
             T.let(
               :rejected,
-              Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # The card profile is awaiting submission to the fulfillment provider.
           PENDING_SUBMITTING =
             T.let(
               :pending_submitting,
-              Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
           ACTIVE =
             T.let(
               :active,
-              Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           # The Physical Card Profile has been archived.
           ARCHIVED =
             T.let(
               :archived,
-              Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+              Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::PhysicalCardProfileListParams::Status::In::TaggedSymbol
+                Increase::Models::PhysicalCardProfileListParams::Status::In::TaggedSymbol
               ]
             )
           end

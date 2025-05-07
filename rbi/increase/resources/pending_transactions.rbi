@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           pending_transaction_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PendingTransaction)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::PendingTransaction)
       end
       def retrieve(
         # The identifier of the Pending Transaction.
@@ -21,14 +21,28 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::PendingTransactionListParams::Category::OrHash,
-          created_at: Increase::PendingTransactionListParams::CreatedAt::OrHash,
+          category:
+            T.any(
+              Increase::Models::PendingTransactionListParams::Category,
+              Increase::Internal::AnyHash
+            ),
+          created_at:
+            T.any(
+              Increase::Models::PendingTransactionListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
           route_id: String,
-          status: Increase::PendingTransactionListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::PendingTransaction])
+          status:
+            T.any(
+              Increase::Models::PendingTransactionListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::PendingTransaction]
+        )
       end
       def list(
         # Filter pending transactions to those belonging to the specified Account.

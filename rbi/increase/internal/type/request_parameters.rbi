@@ -6,11 +6,8 @@ module Increase
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(Increase::RequestOptions) }
-        attr_reader :request_options
-
-        sig { params(request_options: Increase::RequestOptions::OrHash).void }
-        attr_writer :request_options
+        sig { returns(Increase::RequestOpts) }
+        attr_accessor :request_options
 
         # @api private
         module Converter

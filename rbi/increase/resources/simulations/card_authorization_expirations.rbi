@@ -8,8 +8,8 @@ module Increase
         sig do
           params(
             card_payment_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::CardPayment)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::CardPayment)
         end
         def create(
           # The identifier of the Card Payment to expire.

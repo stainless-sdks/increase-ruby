@@ -7,9 +7,6 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The identifier of the Account Number the inbound Real-Time Payments Transfer is
         # for.
         sig { returns(String) }
@@ -63,7 +60,8 @@ module Increase
             debtor_routing_number: String,
             remittance_information: String,
             request_for_payment_id: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
         end
         def self.new(

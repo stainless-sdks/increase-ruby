@@ -7,9 +7,6 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The identifier of the Account the Interest Payment should be paid to is for.
         sig { returns(String) }
         attr_accessor :account_id
@@ -46,7 +43,8 @@ module Increase
             accrued_on_account_id: String,
             period_end: Time,
             period_start: Time,
-            request_options: Increase::RequestOptions::OrHash
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
         end
         def self.new(

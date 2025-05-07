@@ -6,24 +6,31 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       # are disallowed.
-      sig { returns(Increase::EntityUpdateAddressParams::Address) }
+      sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
       sig do
         params(
-          address: Increase::EntityUpdateAddressParams::Address::OrHash
+          address:
+            T.any(
+              Increase::Models::EntityUpdateAddressParams::Address,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :address
 
       sig do
         params(
-          address: Increase::EntityUpdateAddressParams::Address::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          address:
+            T.any(
+              Increase::Models::EntityUpdateAddressParams::Address,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -37,7 +44,7 @@ module Increase
       sig do
         override.returns(
           {
-            address: Increase::EntityUpdateAddressParams::Address,
+            address: Increase::Models::EntityUpdateAddressParams::Address,
             request_options: Increase::RequestOptions
           }
         )
@@ -46,9 +53,6 @@ module Increase
       end
 
       class Address < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The city of the address.
         sig { returns(String) }
         attr_accessor :city

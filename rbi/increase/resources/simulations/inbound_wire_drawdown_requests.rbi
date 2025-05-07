@@ -28,8 +28,8 @@ module Increase
             originator_to_beneficiary_information_line2: String,
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::InboundWireDrawdownRequest)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::InboundWireDrawdownRequest)
         end
         def create(
           # The amount being requested in cents.

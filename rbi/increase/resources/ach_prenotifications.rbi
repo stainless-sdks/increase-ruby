@@ -15,14 +15,14 @@ module Increase
           company_entry_description: String,
           company_name: String,
           credit_debit_indicator:
-            Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
           effective_date: Date,
           individual_id: String,
           individual_name: String,
           standard_entry_class_code:
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::ACHPrenotification)
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::ACHPrenotification)
       end
       def create(
         # The Increase identifier for the account that will send the transfer.
@@ -62,8 +62,8 @@ module Increase
       sig do
         params(
           ach_prenotification_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::ACHPrenotification)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::ACHPrenotification)
       end
       def retrieve(
         # The identifier of the ACH Prenotification to retrieve.
@@ -75,12 +75,18 @@ module Increase
       # List ACH Prenotifications
       sig do
         params(
-          created_at: Increase::ACHPrenotificationListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::ACHPrenotificationListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::ACHPrenotification])
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::ACHPrenotification]
+        )
       end
       def list(
         created_at: nil,

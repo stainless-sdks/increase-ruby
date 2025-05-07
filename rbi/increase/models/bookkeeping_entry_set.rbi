@@ -3,8 +3,6 @@
 module Increase
   module Models
     class BookkeepingEntrySet < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The entry set identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -18,7 +16,7 @@ module Increase
       attr_accessor :date
 
       # The entries.
-      sig { returns(T::Array[Increase::BookkeepingEntrySet::Entry]) }
+      sig { returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry]) }
       attr_accessor :entries
 
       # The idempotency key you chose for this object. This value is unique across
@@ -33,7 +31,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry_set`.
-      sig { returns(Increase::BookkeepingEntrySet::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entry Sets are accounting entries that are transactionally applied. Your
@@ -45,10 +43,16 @@ module Increase
           id: String,
           created_at: Time,
           date: Time,
-          entries: T::Array[Increase::BookkeepingEntrySet::Entry::OrHash],
+          entries:
+            T::Array[
+              T.any(
+                Increase::Models::BookkeepingEntrySet::Entry,
+                Increase::Internal::AnyHash
+              )
+            ],
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
-          type: Increase::BookkeepingEntrySet::Type::OrSymbol
+          type: Increase::Models::BookkeepingEntrySet::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -78,10 +82,10 @@ module Increase
             id: String,
             created_at: Time,
             date: Time,
-            entries: T::Array[Increase::BookkeepingEntrySet::Entry],
+            entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
             idempotency_key: T.nilable(String),
             transaction_id: T.nilable(String),
-            type: Increase::BookkeepingEntrySet::Type::TaggedSymbol
+            type: Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
           }
         )
       end
@@ -89,9 +93,6 @@ module Increase
       end
 
       class Entry < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The entry identifier.
         sig { returns(String) }
         attr_accessor :id
@@ -132,18 +133,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::BookkeepingEntrySet::Type) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::BookkeepingEntrySet::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BOOKKEEPING_ENTRY_SET =
           T.let(
             :bookkeeping_entry_set,
-            Increase::BookkeepingEntrySet::Type::TaggedSymbol
+            Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::BookkeepingEntrySet::Type::TaggedSymbol]
+            T::Array[Increase::Models::BookkeepingEntrySet::Type::TaggedSymbol]
           )
         end
         def self.values

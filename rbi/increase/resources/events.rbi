@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           event_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Event)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::Event)
       end
       def retrieve(
         # The identifier of the Event.
@@ -21,12 +21,20 @@ module Increase
       sig do
         params(
           associated_object_id: String,
-          category: Increase::EventListParams::Category::OrHash,
-          created_at: Increase::EventListParams::CreatedAt::OrHash,
+          category:
+            T.any(
+              Increase::Models::EventListParams::Category,
+              Increase::Internal::AnyHash
+            ),
+          created_at:
+            T.any(
+              Increase::Models::EventListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Event])
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::Event])
       end
       def list(
         # Filter Events to those belonging to the object with the provided identifier.

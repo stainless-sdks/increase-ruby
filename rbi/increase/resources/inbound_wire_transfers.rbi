@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           inbound_wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::InboundWireTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(
         # The identifier of the Inbound Wire Transfer to get details for.
@@ -23,12 +23,21 @@ module Increase
           account_id: String,
           account_number_id: String,
           created_at:
-            Increase::InboundWireTransferListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::InboundWireTransferListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          status: Increase::InboundWireTransferListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::InboundWireTransfer])
+          status:
+            T.any(
+              Increase::Models::InboundWireTransferListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::InboundWireTransfer]
+        )
       end
       def list(
         # Filter Inbound Wire Transfers to ones belonging to the specified Account.
@@ -50,9 +59,10 @@ module Increase
       sig do
         params(
           inbound_wire_transfer_id: String,
-          reason: Increase::InboundWireTransferReverseParams::Reason::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::InboundWireTransfer)
+          reason:
+            Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundWireTransfer)
       end
       def reverse(
         # The identifier of the Inbound Wire Transfer to reverse.

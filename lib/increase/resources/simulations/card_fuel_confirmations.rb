@@ -15,21 +15,22 @@ module Increase
         # @overload create(amount:, card_payment_id:, request_options: {})
         #
         # @param amount [Integer] The amount of the fuel_confirmation in minor units in the card authorization's c
+        # ...
         #
         # @param card_payment_id [String] The identifier of the Card Payment to create a fuel_confirmation on.
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::CardPayment]
+        # @return [Increase::Models::CardPayment]
         #
         # @see Increase::Models::Simulations::CardFuelConfirmationCreateParams
         def create(params)
-          parsed, options = Increase::Simulations::CardFuelConfirmationCreateParams.dump_request(params)
+          parsed, options = Increase::Models::Simulations::CardFuelConfirmationCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/card_fuel_confirmations",
             body: parsed,
-            model: Increase::CardPayment,
+            model: Increase::Models::CardPayment,
             options: options
           )
         end

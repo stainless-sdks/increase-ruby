@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter Account Statements to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -32,7 +30,9 @@ module Increase
 
       sig do
         returns(
-          T.nilable(Increase::AccountStatementListParams::StatementPeriodStart)
+          T.nilable(
+            Increase::Models::AccountStatementListParams::StatementPeriodStart
+          )
         )
       end
       attr_reader :statement_period_start
@@ -40,7 +40,10 @@ module Increase
       sig do
         params(
           statement_period_start:
-            Increase::AccountStatementListParams::StatementPeriodStart::OrHash
+            T.any(
+              Increase::Models::AccountStatementListParams::StatementPeriodStart,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :statement_period_start
@@ -51,8 +54,12 @@ module Increase
           cursor: String,
           limit: Integer,
           statement_period_start:
-            Increase::AccountStatementListParams::StatementPeriodStart::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+            T.any(
+              Increase::Models::AccountStatementListParams::StatementPeriodStart,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -75,7 +82,7 @@ module Increase
             cursor: String,
             limit: Integer,
             statement_period_start:
-              Increase::AccountStatementListParams::StatementPeriodStart,
+              Increase::Models::AccountStatementListParams::StatementPeriodStart,
             request_options: Increase::RequestOptions
           }
         )
@@ -84,9 +91,6 @@ module Increase
       end
 
       class StatementPeriodStart < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

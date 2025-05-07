@@ -9,8 +9,8 @@ module Increase
         sig do
           params(
             transaction_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Transaction)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::Transaction)
         end
         def create(
           # The identifier for the Transaction to refund. The Transaction's source must have

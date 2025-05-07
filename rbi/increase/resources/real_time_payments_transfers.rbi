@@ -17,8 +17,8 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::RealTimePaymentsTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def create(
         # The transfer amount in USD cents. For Real-Time Payments transfers, must be
@@ -58,8 +58,8 @@ module Increase
       sig do
         params(
           real_time_payments_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::RealTimePaymentsTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def retrieve(
         # The identifier of the Real-Time Payments Transfer.
@@ -73,14 +73,23 @@ module Increase
         params(
           account_id: String,
           created_at:
-            Increase::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::RealTimePaymentsTransferListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::RealTimePaymentsTransfer])
+          status:
+            T.any(
+              Increase::Models::RealTimePaymentsTransferListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::RealTimePaymentsTransfer]
+        )
       end
       def list(
         # Filter Real-Time Payments Transfers to those belonging to the specified Account.

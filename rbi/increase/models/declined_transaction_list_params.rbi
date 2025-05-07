@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter Declined Transactions to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -16,25 +14,37 @@ module Increase
       attr_writer :account_id
 
       sig do
-        returns(T.nilable(Increase::DeclinedTransactionListParams::Category))
+        returns(
+          T.nilable(Increase::Models::DeclinedTransactionListParams::Category)
+        )
       end
       attr_reader :category
 
       sig do
         params(
-          category: Increase::DeclinedTransactionListParams::Category::OrHash
+          category:
+            T.any(
+              Increase::Models::DeclinedTransactionListParams::Category,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :category
 
       sig do
-        returns(T.nilable(Increase::DeclinedTransactionListParams::CreatedAt))
+        returns(
+          T.nilable(Increase::Models::DeclinedTransactionListParams::CreatedAt)
+        )
       end
       attr_reader :created_at
 
       sig do
         params(
-          created_at: Increase::DeclinedTransactionListParams::CreatedAt::OrHash
+          created_at:
+            T.any(
+              Increase::Models::DeclinedTransactionListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :created_at
@@ -64,13 +74,21 @@ module Increase
       sig do
         params(
           account_id: String,
-          category: Increase::DeclinedTransactionListParams::Category::OrHash,
+          category:
+            T.any(
+              Increase::Models::DeclinedTransactionListParams::Category,
+              Increase::Internal::AnyHash
+            ),
           created_at:
-            Increase::DeclinedTransactionListParams::CreatedAt::OrHash,
+            T.any(
+              Increase::Models::DeclinedTransactionListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
           route_id: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -93,8 +111,9 @@ module Increase
         override.returns(
           {
             account_id: String,
-            category: Increase::DeclinedTransactionListParams::Category,
-            created_at: Increase::DeclinedTransactionListParams::CreatedAt,
+            category: Increase::Models::DeclinedTransactionListParams::Category,
+            created_at:
+              Increase::Models::DeclinedTransactionListParams::CreatedAt,
             cursor: String,
             limit: Integer,
             route_id: String,
@@ -106,16 +125,13 @@ module Increase
       end
 
       class Category < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results whose value is in the provided list. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig do
           returns(
             T.nilable(
               T::Array[
-                Increase::DeclinedTransactionListParams::Category::In::OrSymbol
+                Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
               ]
             )
           )
@@ -126,7 +142,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::DeclinedTransactionListParams::Category::In::OrSymbol
+                Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
               ]
           ).void
         end
@@ -136,7 +152,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::DeclinedTransactionListParams::Category::In::OrSymbol
+                Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -152,7 +168,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::DeclinedTransactionListParams::Category::In::OrSymbol
+                  Increase::Models::DeclinedTransactionListParams::Category::In::OrSymbol
                 ]
             }
           )
@@ -167,7 +183,7 @@ module Increase
             T.type_alias do
               T.all(
                 Symbol,
-                Increase::DeclinedTransactionListParams::Category::In
+                Increase::Models::DeclinedTransactionListParams::Category::In
               )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -176,55 +192,55 @@ module Increase
           ACH_DECLINE =
             T.let(
               :ach_decline,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Card Decline: details will be under the `card_decline` object.
           CARD_DECLINE =
             T.let(
               :card_decline,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Check Decline: details will be under the `check_decline` object.
           CHECK_DECLINE =
             T.let(
               :check_decline,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
           INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE =
             T.let(
               :inbound_real_time_payments_transfer_decline,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Wire Decline: details will be under the `wire_decline` object.
           WIRE_DECLINE =
             T.let(
               :wire_decline,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # Check Deposit Rejection: details will be under the `check_deposit_rejection` object.
           CHECK_DEPOSIT_REJECTION =
             T.let(
               :check_deposit_rejection,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER =
             T.let(
               :other,
-              Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+              Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::DeclinedTransactionListParams::Category::In::TaggedSymbol
+                Increase::Models::DeclinedTransactionListParams::Category::In::TaggedSymbol
               ]
             )
           end
@@ -234,9 +250,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

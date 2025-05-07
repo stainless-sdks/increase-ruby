@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           inbound_wire_drawdown_request_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::InboundWireDrawdownRequest)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::InboundWireDrawdownRequest)
       end
       def retrieve(
         # The identifier of the Inbound Wire Drawdown Request to retrieve.
@@ -22,9 +22,9 @@ module Increase
         params(
           cursor: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
+          request_options: Increase::RequestOpts
         ).returns(
-          Increase::Internal::Page[Increase::InboundWireDrawdownRequest]
+          Increase::Internal::Page[Increase::Models::InboundWireDrawdownRequest]
         )
       end
       def list(

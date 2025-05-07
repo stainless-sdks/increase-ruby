@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
       attr_accessor :account_id
@@ -60,7 +58,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
           )
         )
       end
@@ -69,7 +67,7 @@ module Increase
       sig do
         params(
           credit_debit_indicator:
-            Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol
         ).void
       end
       attr_writer :credit_debit_indicator
@@ -101,7 +99,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
           )
         )
       end
@@ -110,7 +108,7 @@ module Increase
       sig do
         params(
           standard_entry_class_code:
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol
         ).void
       end
       attr_writer :standard_entry_class_code
@@ -126,13 +124,14 @@ module Increase
           company_entry_description: String,
           company_name: String,
           credit_debit_indicator:
-            Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
           effective_date: Date,
           individual_id: String,
           individual_name: String,
           standard_entry_class_code:
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -181,12 +180,12 @@ module Increase
             company_entry_description: String,
             company_name: String,
             credit_debit_indicator:
-              Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
+              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::OrSymbol,
             effective_date: Date,
             individual_id: String,
             individual_name: String,
             standard_entry_class_code:
-              Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
+              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -202,7 +201,7 @@ module Increase
           T.type_alias do
             T.all(
               Symbol,
-              Increase::ACHPrenotificationCreateParams::CreditDebitIndicator
+              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator
             )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -211,20 +210,20 @@ module Increase
         CREDIT =
           T.let(
             :credit,
-            Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
           )
 
         # The Prenotification is for an anticipated debit.
         DEBIT =
           T.let(
             :debit,
-            Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
+            Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
+              Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator::TaggedSymbol
             ]
           )
         end
@@ -240,7 +239,7 @@ module Increase
           T.type_alias do
             T.all(
               Symbol,
-              Increase::ACHPrenotificationCreateParams::StandardEntryClassCode
+              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode
             )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -249,34 +248,34 @@ module Increase
         CORPORATE_CREDIT_OR_DEBIT =
           T.let(
             :corporate_credit_or_debit,
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Corporate Trade Exchange (CTX).
         CORPORATE_TRADE_EXCHANGE =
           T.let(
             :corporate_trade_exchange,
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Prearranged Payments and Deposits (PPD).
         PREARRANGED_PAYMENTS_AND_DEPOSIT =
           T.let(
             :prearranged_payments_and_deposit,
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         # Internet Initiated (WEB).
         INTERNET_INITIATED =
           T.let(
             :internet_initiated,
-            Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
+            Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
+              Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode::TaggedSymbol
             ]
           )
         end

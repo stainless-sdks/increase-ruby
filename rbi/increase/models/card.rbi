@@ -3,8 +3,6 @@
 module Increase
   module Models
     class Card < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The card identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -14,11 +12,17 @@ module Increase
       attr_accessor :account_id
 
       # The Card's billing address.
-      sig { returns(Increase::Card::BillingAddress) }
+      sig { returns(Increase::Models::Card::BillingAddress) }
       attr_reader :billing_address
 
       sig do
-        params(billing_address: Increase::Card::BillingAddress::OrHash).void
+        params(
+          billing_address:
+            T.any(
+              Increase::Models::Card::BillingAddress,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :billing_address
 
@@ -34,12 +38,18 @@ module Increase
       # The contact information used in the two-factor steps for digital wallet card
       # creation. At least one field must be present to complete the digital wallet
       # steps.
-      sig { returns(T.nilable(Increase::Card::DigitalWallet)) }
+      sig { returns(T.nilable(Increase::Models::Card::DigitalWallet)) }
       attr_reader :digital_wallet
 
       sig do
         params(
-          digital_wallet: T.nilable(Increase::Card::DigitalWallet::OrHash)
+          digital_wallet:
+            T.nilable(
+              T.any(
+                Increase::Models::Card::DigitalWallet,
+                Increase::Internal::AnyHash
+              )
+            )
         ).void
       end
       attr_writer :digital_wallet
@@ -67,12 +77,12 @@ module Increase
       attr_accessor :last4
 
       # This indicates if payments can be made with the card.
-      sig { returns(Increase::Card::Status::TaggedSymbol) }
+      sig { returns(Increase::Models::Card::Status::TaggedSymbol) }
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       # `card`.
-      sig { returns(Increase::Card::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::Card::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Cards are commercial credit cards. They'll immediately work for online purchases
@@ -83,17 +93,27 @@ module Increase
         params(
           id: String,
           account_id: String,
-          billing_address: Increase::Card::BillingAddress::OrHash,
+          billing_address:
+            T.any(
+              Increase::Models::Card::BillingAddress,
+              Increase::Internal::AnyHash
+            ),
           created_at: Time,
           description: T.nilable(String),
-          digital_wallet: T.nilable(Increase::Card::DigitalWallet::OrHash),
+          digital_wallet:
+            T.nilable(
+              T.any(
+                Increase::Models::Card::DigitalWallet,
+                Increase::Internal::AnyHash
+              )
+            ),
           entity_id: T.nilable(String),
           expiration_month: Integer,
           expiration_year: Integer,
           idempotency_key: T.nilable(String),
           last4: String,
-          status: Increase::Card::Status::OrSymbol,
-          type: Increase::Card::Type::OrSymbol
+          status: Increase::Models::Card::Status::OrSymbol,
+          type: Increase::Models::Card::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -137,17 +157,17 @@ module Increase
           {
             id: String,
             account_id: String,
-            billing_address: Increase::Card::BillingAddress,
+            billing_address: Increase::Models::Card::BillingAddress,
             created_at: Time,
             description: T.nilable(String),
-            digital_wallet: T.nilable(Increase::Card::DigitalWallet),
+            digital_wallet: T.nilable(Increase::Models::Card::DigitalWallet),
             entity_id: T.nilable(String),
             expiration_month: Integer,
             expiration_year: Integer,
             idempotency_key: T.nilable(String),
             last4: String,
-            status: Increase::Card::Status::TaggedSymbol,
-            type: Increase::Card::Type::TaggedSymbol
+            status: Increase::Models::Card::Status::TaggedSymbol,
+            type: Increase::Models::Card::Type::TaggedSymbol
           }
         )
       end
@@ -155,9 +175,6 @@ module Increase
       end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The city of the billing address.
         sig { returns(T.nilable(String)) }
         attr_accessor :city
@@ -218,9 +235,6 @@ module Increase
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The digital card profile assigned to this digital card. Card profiles may also
         # be assigned at the program level.
         sig { returns(T.nilable(String)) }
@@ -276,19 +290,26 @@ module Increase
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Card::Status) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Card::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The card is active.
-        ACTIVE = T.let(:active, Increase::Card::Status::TaggedSymbol)
+        ACTIVE = T.let(:active, Increase::Models::Card::Status::TaggedSymbol)
 
         # The card is temporarily disabled.
-        DISABLED = T.let(:disabled, Increase::Card::Status::TaggedSymbol)
+        DISABLED =
+          T.let(:disabled, Increase::Models::Card::Status::TaggedSymbol)
 
         # The card is permanently canceled.
-        CANCELED = T.let(:canceled, Increase::Card::Status::TaggedSymbol)
+        CANCELED =
+          T.let(:canceled, Increase::Models::Card::Status::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Card::Status::TaggedSymbol]) }
+        sig do
+          override.returns(
+            T::Array[Increase::Models::Card::Status::TaggedSymbol]
+          )
+        end
         def self.values
         end
       end
@@ -298,12 +319,15 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Card::Type) }
+        TaggedSymbol =
+          T.type_alias { T.all(Symbol, Increase::Models::Card::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CARD = T.let(:card, Increase::Card::Type::TaggedSymbol)
+        CARD = T.let(:card, Increase::Models::Card::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Card::Type::TaggedSymbol]) }
+        sig do
+          override.returns(T::Array[Increase::Models::Card::Type::TaggedSymbol])
+        end
         def self.values
         end
       end

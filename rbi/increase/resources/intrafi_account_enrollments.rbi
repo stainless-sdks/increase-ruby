@@ -8,8 +8,8 @@ module Increase
         params(
           account_id: String,
           email_address: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::IntrafiAccountEnrollment)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def create(
         # The identifier for the account to be added to IntraFi.
@@ -24,8 +24,8 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::IntrafiAccountEnrollment)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def retrieve(
         # The identifier of the IntraFi Account Enrollment to retrieve.
@@ -41,9 +41,15 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::IntrafiAccountEnrollmentListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::IntrafiAccountEnrollment])
+          status:
+            T.any(
+              Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::IntrafiAccountEnrollment]
+        )
       end
       def list(
         # Filter IntraFi Account Enrollments to the one belonging to an account.
@@ -67,8 +73,8 @@ module Increase
       sig do
         params(
           intrafi_account_enrollment_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::IntrafiAccountEnrollment)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::IntrafiAccountEnrollment)
       end
       def unenroll(
         # The Identifier of the IntraFi Account Enrollment to remove from IntraFi.

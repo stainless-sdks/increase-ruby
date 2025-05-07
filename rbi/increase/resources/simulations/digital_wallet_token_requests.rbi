@@ -9,7 +9,7 @@ module Increase
         sig do
           params(
             card_id: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options: Increase::RequestOpts
           ).returns(
             Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
           )

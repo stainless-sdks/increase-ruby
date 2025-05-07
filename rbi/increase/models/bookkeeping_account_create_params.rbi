@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The name you choose for the account.
       sig { returns(String) }
       attr_accessor :name
@@ -23,7 +21,7 @@ module Increase
       sig do
         returns(
           T.nilable(
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
           )
         )
       end
@@ -32,7 +30,7 @@ module Increase
       sig do
         params(
           compliance_category:
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
         ).void
       end
       attr_writer :compliance_category
@@ -49,9 +47,10 @@ module Increase
           name: String,
           account_id: String,
           compliance_category:
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -73,7 +72,7 @@ module Increase
             name: String,
             account_id: String,
             compliance_category:
-              Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+              Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
             entity_id: String,
             request_options: Increase::RequestOptions
           }
@@ -90,7 +89,7 @@ module Increase
           T.type_alias do
             T.all(
               Symbol,
-              Increase::BookkeepingAccountCreateParams::ComplianceCategory
+              Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory
             )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
@@ -99,20 +98,20 @@ module Increase
         COMMINGLED_CASH =
           T.let(
             :commingled_cash,
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
           )
 
         # A customer balance.
         CUSTOMER_BALANCE =
           T.let(
             :customer_balance,
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+            Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
+              Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
             ]
           )
         end

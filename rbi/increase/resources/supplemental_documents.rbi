@@ -8,8 +8,8 @@ module Increase
         params(
           entity_id: String,
           file_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EntitySupplementalDocument)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::EntitySupplementalDocument)
       end
       def create(
         # The identifier of the Entity to associate with the supplemental document.
@@ -27,9 +27,9 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
+          request_options: Increase::RequestOpts
         ).returns(
-          Increase::Internal::Page[Increase::EntitySupplementalDocument]
+          Increase::Internal::Page[Increase::Models::EntitySupplementalDocument]
         )
       end
       def list(

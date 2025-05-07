@@ -11,8 +11,8 @@ module Increase
         sig do
           params(
             account_transfer_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::AccountTransfer)
+            request_options: Increase::RequestOpts
+          ).returns(Increase::Models::AccountTransfer)
         end
         def complete(
           # The identifier of the Account Transfer you wish to complete.

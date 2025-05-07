@@ -19,8 +19,8 @@ module Increase
           recipient_address_line1: String,
           recipient_address_line2: String,
           recipient_address_line3: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireDrawdownRequest)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::WireDrawdownRequest)
       end
       def create(
         # The Account Number to which the recipient should send funds.
@@ -65,8 +65,8 @@ module Increase
       sig do
         params(
           wire_drawdown_request_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireDrawdownRequest)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::WireDrawdownRequest)
       end
       def retrieve(
         # The identifier of the Wire Drawdown Request to retrieve.
@@ -81,9 +81,15 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::WireDrawdownRequestListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::WireDrawdownRequest])
+          status:
+            T.any(
+              Increase::Models::WireDrawdownRequestListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(
+          Increase::Internal::Page[Increase::Models::WireDrawdownRequest]
+        )
       end
       def list(
         # Return the page of entries after this one.

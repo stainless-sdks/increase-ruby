@@ -76,25 +76,25 @@ module Increase
       # @!attribute status
       #   The status of the Card Profile.
       #
-      #   @return [Symbol, Increase::DigitalCardProfile::Status]
-      required :status, enum: -> { Increase::DigitalCardProfile::Status }
+      #   @return [Symbol, Increase::Models::DigitalCardProfile::Status]
+      required :status, enum: -> { Increase::Models::DigitalCardProfile::Status }
 
       # @!attribute text_color
       #   The Card's text color, specified as an RGB triple.
       #
-      #   @return [Increase::DigitalCardProfile::TextColor]
-      required :text_color, -> { Increase::DigitalCardProfile::TextColor }
+      #   @return [Increase::Models::DigitalCardProfile::TextColor]
+      required :text_color, -> { Increase::Models::DigitalCardProfile::TextColor }
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
       #
-      #   @return [Symbol, Increase::DigitalCardProfile::Type]
-      required :type, enum: -> { Increase::DigitalCardProfile::Type }
+      #   @return [Symbol, Increase::Models::DigitalCardProfile::Type]
+      required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
 
       # @!method initialize(id:, app_icon_file_id:, background_image_file_id:, card_description:, contact_email:, contact_phone:, contact_website:, created_at:, description:, idempotency_key:, issuer_name:, status:, text_color:, type:)
       #   Some parameter documentations has been truncated, see
-      #   {Increase::DigitalCardProfile} for more details.
+      #   {Increase::Models::DigitalCardProfile} for more details.
       #
       #   This contains artwork and metadata relating to a Card's appearance in digital
       #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
@@ -115,22 +115,25 @@ module Increase
       #   @param contact_website [String, nil] A website the user can visit to view and receive support for their card.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
       #
       #   @param description [String] A description you can use to identify the Card Profile.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
       #
       #   @param issuer_name [String] A user-facing description for whoever is issuing the card.
       #
-      #   @param status [Symbol, Increase::DigitalCardProfile::Status] The status of the Card Profile.
+      #   @param status [Symbol, Increase::Models::DigitalCardProfile::Status] The status of the Card Profile.
       #
-      #   @param text_color [Increase::DigitalCardProfile::TextColor] The Card's text color, specified as an RGB triple.
+      #   @param text_color [Increase::Models::DigitalCardProfile::TextColor] The Card's text color, specified as an RGB triple.
       #
-      #   @param type [Symbol, Increase::DigitalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::Models::DigitalCardProfile::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The status of the Card Profile.
       #
-      # @see Increase::DigitalCardProfile#status
+      # @see Increase::Models::DigitalCardProfile#status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -150,7 +153,7 @@ module Increase
         #   @return [Array<Symbol>]
       end
 
-      # @see Increase::DigitalCardProfile#text_color
+      # @see Increase::Models::DigitalCardProfile#text_color
       class TextColor < Increase::Internal::Type::BaseModel
         # @!attribute blue
         #   The value of the blue channel in the RGB color.
@@ -183,7 +186,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       # `digital_card_profile`.
       #
-      # @see Increase::DigitalCardProfile#type
+      # @see Increase::Models::DigitalCardProfile#type
       module Type
         extend Increase::Internal::Type::Enum
 

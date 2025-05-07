@@ -6,19 +6,22 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The individual's physical address. Mail receiving locations like PO Boxes and
       # PMB's are disallowed.
       sig do
-        returns(Increase::EntityUpdateBeneficialOwnerAddressParams::Address)
+        returns(
+          Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address
+        )
       end
       attr_reader :address
 
       sig do
         params(
           address:
-            Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash
+            T.any(
+              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :address
@@ -31,9 +34,13 @@ module Increase
       sig do
         params(
           address:
-            Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
+            T.any(
+              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+              Increase::Internal::AnyHash
+            ),
           beneficial_owner_id: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -51,7 +58,7 @@ module Increase
         override.returns(
           {
             address:
-              Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
+              Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
             beneficial_owner_id: String,
             request_options: Increase::RequestOptions
           }
@@ -61,9 +68,6 @@ module Increase
       end
 
       class Address < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
         sig { returns(String) }
         attr_accessor :country

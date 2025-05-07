@@ -19,6 +19,7 @@ module Increase
       #   {Increase::Models::EntityConfirmParams} for more details.
       #
       #   @param confirmed_at [Time] When your user confirmed the Entity's details. If not provided, the current time
+      #   ...
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
     end

@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
@@ -34,13 +32,19 @@ module Increase
       attr_writer :limit
 
       sig do
-        returns(T.nilable(Increase::WireDrawdownRequestListParams::Status))
+        returns(
+          T.nilable(Increase::Models::WireDrawdownRequestListParams::Status)
+        )
       end
       attr_reader :status
 
       sig do
         params(
-          status: Increase::WireDrawdownRequestListParams::Status::OrHash
+          status:
+            T.any(
+              Increase::Models::WireDrawdownRequestListParams::Status,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :status
@@ -50,8 +54,13 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::WireDrawdownRequestListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
+          status:
+            T.any(
+              Increase::Models::WireDrawdownRequestListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -76,7 +85,7 @@ module Increase
             cursor: String,
             idempotency_key: String,
             limit: Integer,
-            status: Increase::WireDrawdownRequestListParams::Status,
+            status: Increase::Models::WireDrawdownRequestListParams::Status,
             request_options: Increase::RequestOptions
           }
         )
@@ -85,9 +94,6 @@ module Increase
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Filter Wire Drawdown Requests for those with the specified status. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
@@ -95,7 +101,7 @@ module Increase
           returns(
             T.nilable(
               T::Array[
-                Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
+                Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
               ]
             )
           )
@@ -106,7 +112,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
+                Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
               ]
           ).void
         end
@@ -116,7 +122,7 @@ module Increase
           params(
             in_:
               T::Array[
-                Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
+                Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
               ]
           ).returns(T.attached_class)
         end
@@ -133,7 +139,7 @@ module Increase
             {
               in_:
                 T::Array[
-                  Increase::WireDrawdownRequestListParams::Status::In::OrSymbol
+                  Increase::Models::WireDrawdownRequestListParams::Status::In::OrSymbol
                 ]
             }
           )
@@ -146,7 +152,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::WireDrawdownRequestListParams::Status::In)
+              T.all(
+                Symbol,
+                Increase::Models::WireDrawdownRequestListParams::Status::In
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -154,34 +163,34 @@ module Increase
           PENDING_SUBMISSION =
             T.let(
               :pending_submission,
-              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           # The drawdown request has been sent and the recipient should respond in some way.
           PENDING_RESPONSE =
             T.let(
               :pending_response,
-              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           # The drawdown request has been fulfilled by the recipient.
           FULFILLED =
             T.let(
               :fulfilled,
-              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           # The drawdown request has been refused by the recipient.
           REFUSED =
             T.let(
               :refused,
-              Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+              Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::WireDrawdownRequestListParams::Status::In::TaggedSymbol
+                Increase::Models::WireDrawdownRequestListParams::Status::In::TaggedSymbol
               ]
             )
           end

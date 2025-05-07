@@ -9,14 +9,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Group]
+      # @return [Increase::Models::Group]
       #
       # @see Increase::Models::GroupRetrieveParams
       def retrieve(params = {})
         @client.request(
           method: :get,
           path: "groups/current",
-          model: Increase::Group,
+          model: Increase::Models::Group,
           options: params[:request_options]
         )
       end

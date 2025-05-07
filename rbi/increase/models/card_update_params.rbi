@@ -6,15 +6,19 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The card's updated billing address.
-      sig { returns(T.nilable(Increase::CardUpdateParams::BillingAddress)) }
+      sig do
+        returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress))
+      end
       attr_reader :billing_address
 
       sig do
         params(
-          billing_address: Increase::CardUpdateParams::BillingAddress::OrHash
+          billing_address:
+            T.any(
+              Increase::Models::CardUpdateParams::BillingAddress,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :billing_address
@@ -29,12 +33,18 @@ module Increase
       # The contact information used in the two-factor steps for digital wallet card
       # creation. At least one field must be present to complete the digital wallet
       # steps.
-      sig { returns(T.nilable(Increase::CardUpdateParams::DigitalWallet)) }
+      sig do
+        returns(T.nilable(Increase::Models::CardUpdateParams::DigitalWallet))
+      end
       attr_reader :digital_wallet
 
       sig do
         params(
-          digital_wallet: Increase::CardUpdateParams::DigitalWallet::OrHash
+          digital_wallet:
+            T.any(
+              Increase::Models::CardUpdateParams::DigitalWallet,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :digital_wallet
@@ -48,20 +58,35 @@ module Increase
       attr_writer :entity_id
 
       # The status to update the Card with.
-      sig { returns(T.nilable(Increase::CardUpdateParams::Status::OrSymbol)) }
+      sig do
+        returns(T.nilable(Increase::Models::CardUpdateParams::Status::OrSymbol))
+      end
       attr_reader :status
 
-      sig { params(status: Increase::CardUpdateParams::Status::OrSymbol).void }
+      sig do
+        params(
+          status: Increase::Models::CardUpdateParams::Status::OrSymbol
+        ).void
+      end
       attr_writer :status
 
       sig do
         params(
-          billing_address: Increase::CardUpdateParams::BillingAddress::OrHash,
+          billing_address:
+            T.any(
+              Increase::Models::CardUpdateParams::BillingAddress,
+              Increase::Internal::AnyHash
+            ),
           description: String,
-          digital_wallet: Increase::CardUpdateParams::DigitalWallet::OrHash,
+          digital_wallet:
+            T.any(
+              Increase::Models::CardUpdateParams::DigitalWallet,
+              Increase::Internal::AnyHash
+            ),
           entity_id: String,
-          status: Increase::CardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
+          status: Increase::Models::CardUpdateParams::Status::OrSymbol,
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -85,11 +110,11 @@ module Increase
       sig do
         override.returns(
           {
-            billing_address: Increase::CardUpdateParams::BillingAddress,
+            billing_address: Increase::Models::CardUpdateParams::BillingAddress,
             description: String,
-            digital_wallet: Increase::CardUpdateParams::DigitalWallet,
+            digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
             entity_id: String,
-            status: Increase::CardUpdateParams::Status::OrSymbol,
+            status: Increase::Models::CardUpdateParams::Status::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -98,9 +123,6 @@ module Increase
       end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The city of the billing address.
         sig { returns(String) }
         attr_accessor :city
@@ -164,9 +186,6 @@ module Increase
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
         attr_reader :digital_card_profile_id
@@ -226,24 +245,35 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::CardUpdateParams::Status) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::CardUpdateParams::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The card is active.
         ACTIVE =
-          T.let(:active, Increase::CardUpdateParams::Status::TaggedSymbol)
+          T.let(
+            :active,
+            Increase::Models::CardUpdateParams::Status::TaggedSymbol
+          )
 
         # The card is temporarily disabled.
         DISABLED =
-          T.let(:disabled, Increase::CardUpdateParams::Status::TaggedSymbol)
+          T.let(
+            :disabled,
+            Increase::Models::CardUpdateParams::Status::TaggedSymbol
+          )
 
         # The card is permanently canceled.
         CANCELED =
-          T.let(:canceled, Increase::CardUpdateParams::Status::TaggedSymbol)
+          T.let(
+            :canceled,
+            Increase::Models::CardUpdateParams::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(
-            T::Array[Increase::CardUpdateParams::Status::TaggedSymbol]
+            T::Array[Increase::Models::CardUpdateParams::Status::TaggedSymbol]
           )
         end
         def self.values

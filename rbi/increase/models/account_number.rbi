@@ -3,8 +3,6 @@
 module Increase
   module Models
     class AccountNumber < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Account Number identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -29,22 +27,32 @@ module Increase
       attr_accessor :idempotency_key
 
       # Properties related to how this Account Number handles inbound ACH transfers.
-      sig { returns(Increase::AccountNumber::InboundACH) }
+      sig { returns(Increase::Models::AccountNumber::InboundACH) }
       attr_reader :inbound_ach
 
       sig do
-        params(inbound_ach: Increase::AccountNumber::InboundACH::OrHash).void
+        params(
+          inbound_ach:
+            T.any(
+              Increase::Models::AccountNumber::InboundACH,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :inbound_ach
 
       # Properties related to how this Account Number should handle inbound check
       # withdrawals.
-      sig { returns(Increase::AccountNumber::InboundChecks) }
+      sig { returns(Increase::Models::AccountNumber::InboundChecks) }
       attr_reader :inbound_checks
 
       sig do
         params(
-          inbound_checks: Increase::AccountNumber::InboundChecks::OrHash
+          inbound_checks:
+            T.any(
+              Increase::Models::AccountNumber::InboundChecks,
+              Increase::Internal::AnyHash
+            )
         ).void
       end
       attr_writer :inbound_checks
@@ -58,12 +66,12 @@ module Increase
       attr_accessor :routing_number
 
       # This indicates if payments can be made to the Account Number.
-      sig { returns(Increase::AccountNumber::Status::TaggedSymbol) }
+      sig { returns(Increase::Models::AccountNumber::Status::TaggedSymbol) }
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       # `account_number`.
-      sig { returns(Increase::AccountNumber::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::AccountNumber::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Each account can have multiple account and routing numbers. We recommend that
@@ -78,12 +86,20 @@ module Increase
           account_number: String,
           created_at: Time,
           idempotency_key: T.nilable(String),
-          inbound_ach: Increase::AccountNumber::InboundACH::OrHash,
-          inbound_checks: Increase::AccountNumber::InboundChecks::OrHash,
+          inbound_ach:
+            T.any(
+              Increase::Models::AccountNumber::InboundACH,
+              Increase::Internal::AnyHash
+            ),
+          inbound_checks:
+            T.any(
+              Increase::Models::AccountNumber::InboundChecks,
+              Increase::Internal::AnyHash
+            ),
           name: String,
           routing_number: String,
-          status: Increase::AccountNumber::Status::OrSymbol,
-          type: Increase::AccountNumber::Type::OrSymbol
+          status: Increase::Models::AccountNumber::Status::OrSymbol,
+          type: Increase::Models::AccountNumber::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -125,12 +141,12 @@ module Increase
             account_number: String,
             created_at: Time,
             idempotency_key: T.nilable(String),
-            inbound_ach: Increase::AccountNumber::InboundACH,
-            inbound_checks: Increase::AccountNumber::InboundChecks,
+            inbound_ach: Increase::Models::AccountNumber::InboundACH,
+            inbound_checks: Increase::Models::AccountNumber::InboundChecks,
             name: String,
             routing_number: String,
-            status: Increase::AccountNumber::Status::TaggedSymbol,
-            type: Increase::AccountNumber::Type::TaggedSymbol
+            status: Increase::Models::AccountNumber::Status::TaggedSymbol,
+            type: Increase::Models::AccountNumber::Type::TaggedSymbol
           }
         )
       end
@@ -138,14 +154,11 @@ module Increase
       end
 
       class InboundACH < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Whether ACH debits are allowed against this Account Number. Note that they will
         # still be declined if this is `allowed` if the Account Number is not active.
         sig do
           returns(
-            Increase::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
+            Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
           )
         end
         attr_accessor :debit_status
@@ -154,7 +167,7 @@ module Increase
         sig do
           params(
             debit_status:
-              Increase::AccountNumber::InboundACH::DebitStatus::OrSymbol
+              Increase::Models::AccountNumber::InboundACH::DebitStatus::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -168,7 +181,7 @@ module Increase
           override.returns(
             {
               debit_status:
-                Increase::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
+                Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
             }
           )
         end
@@ -182,7 +195,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::AccountNumber::InboundACH::DebitStatus)
+              T.all(
+                Symbol,
+                Increase::Models::AccountNumber::InboundACH::DebitStatus
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -190,20 +206,20 @@ module Increase
           ALLOWED =
             T.let(
               :allowed,
-              Increase::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
+              Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
             )
 
           # ACH Debits are blocked.
           BLOCKED =
             T.let(
               :blocked,
-              Increase::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
+              Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
+                Increase::Models::AccountNumber::InboundACH::DebitStatus::TaggedSymbol
               ]
             )
           end
@@ -213,12 +229,11 @@ module Increase
       end
 
       class InboundChecks < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # How Increase should process checks with this account number printed on them.
         sig do
-          returns(Increase::AccountNumber::InboundChecks::Status::TaggedSymbol)
+          returns(
+            Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol
+          )
         end
         attr_accessor :status
 
@@ -226,7 +241,8 @@ module Increase
         # withdrawals.
         sig do
           params(
-            status: Increase::AccountNumber::InboundChecks::Status::OrSymbol
+            status:
+              Increase::Models::AccountNumber::InboundChecks::Status::OrSymbol
           ).returns(T.attached_class)
         end
         def self.new(
@@ -239,7 +255,7 @@ module Increase
           override.returns(
             {
               status:
-                Increase::AccountNumber::InboundChecks::Status::TaggedSymbol
+                Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol
             }
           )
         end
@@ -252,7 +268,10 @@ module Increase
 
           TaggedSymbol =
             T.type_alias do
-              T.all(Symbol, Increase::AccountNumber::InboundChecks::Status)
+              T.all(
+                Symbol,
+                Increase::Models::AccountNumber::InboundChecks::Status
+              )
             end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -260,20 +279,20 @@ module Increase
           ALLOWED =
             T.let(
               :allowed,
-              Increase::AccountNumber::InboundChecks::Status::TaggedSymbol
+              Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol
             )
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY =
             T.let(
               :check_transfers_only,
-              Increase::AccountNumber::InboundChecks::Status::TaggedSymbol
+              Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol
             )
 
           sig do
             override.returns(
               T::Array[
-                Increase::AccountNumber::InboundChecks::Status::TaggedSymbol
+                Increase::Models::AccountNumber::InboundChecks::Status::TaggedSymbol
               ]
             )
           end
@@ -287,23 +306,32 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::AccountNumber::Status) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::AccountNumber::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The account number is active.
-        ACTIVE = T.let(:active, Increase::AccountNumber::Status::TaggedSymbol)
+        ACTIVE =
+          T.let(:active, Increase::Models::AccountNumber::Status::TaggedSymbol)
 
         # The account number is temporarily disabled.
         DISABLED =
-          T.let(:disabled, Increase::AccountNumber::Status::TaggedSymbol)
+          T.let(
+            :disabled,
+            Increase::Models::AccountNumber::Status::TaggedSymbol
+          )
 
         # The account number is permanently disabled.
         CANCELED =
-          T.let(:canceled, Increase::AccountNumber::Status::TaggedSymbol)
+          T.let(
+            :canceled,
+            Increase::Models::AccountNumber::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(
-            T::Array[Increase::AccountNumber::Status::TaggedSymbol]
+            T::Array[Increase::Models::AccountNumber::Status::TaggedSymbol]
           )
         end
         def self.values
@@ -316,15 +344,18 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::AccountNumber::Type) }
+          T.type_alias { T.all(Symbol, Increase::Models::AccountNumber::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ACCOUNT_NUMBER =
-          T.let(:account_number, Increase::AccountNumber::Type::TaggedSymbol)
+          T.let(
+            :account_number,
+            Increase::Models::AccountNumber::Type::TaggedSymbol
+          )
 
         sig do
           override.returns(
-            T::Array[Increase::AccountNumber::Type::TaggedSymbol]
+            T::Array[Increase::Models::AccountNumber::Type::TaggedSymbol]
           )
         end
         def self.values

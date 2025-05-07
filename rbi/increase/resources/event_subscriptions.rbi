@@ -9,10 +9,10 @@ module Increase
           url: String,
           oauth_connection_id: String,
           selected_event_category:
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+            Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EventSubscription)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::EventSubscription)
       end
       def create(
         # The URL you'd like us to send webhooks to.
@@ -34,8 +34,8 @@ module Increase
       sig do
         params(
           event_subscription_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EventSubscription)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::EventSubscription)
       end
       def retrieve(
         # The identifier of the Event Subscription.
@@ -48,9 +48,10 @@ module Increase
       sig do
         params(
           event_subscription_id: String,
-          status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EventSubscription)
+          status:
+            Increase::Models::EventSubscriptionUpdateParams::Status::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::EventSubscription)
       end
       def update(
         # The identifier of the Event Subscription.
@@ -67,8 +68,8 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::EventSubscription])
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::EventSubscription])
       end
       def list(
         # Return the page of entries after this one.

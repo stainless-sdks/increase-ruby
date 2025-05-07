@@ -10,10 +10,11 @@ module Increase
           description: String,
           routing_number: String,
           account_holder:
-            Increase::ExternalAccountCreateParams::AccountHolder::OrSymbol,
-          funding: Increase::ExternalAccountCreateParams::Funding::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::ExternalAccount)
+            Increase::Models::ExternalAccountCreateParams::AccountHolder::OrSymbol,
+          funding:
+            Increase::Models::ExternalAccountCreateParams::Funding::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::ExternalAccount)
       end
       def create(
         # The account number for the destination account.
@@ -35,8 +36,8 @@ module Increase
       sig do
         params(
           external_account_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::ExternalAccount)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::ExternalAccount)
       end
       def retrieve(
         # The identifier of the External Account.
@@ -50,12 +51,14 @@ module Increase
         params(
           external_account_id: String,
           account_holder:
-            Increase::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
+            Increase::Models::ExternalAccountUpdateParams::AccountHolder::OrSymbol,
           description: String,
-          funding: Increase::ExternalAccountUpdateParams::Funding::OrSymbol,
-          status: Increase::ExternalAccountUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::ExternalAccount)
+          funding:
+            Increase::Models::ExternalAccountUpdateParams::Funding::OrSymbol,
+          status:
+            Increase::Models::ExternalAccountUpdateParams::Status::OrSymbol,
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::ExternalAccount)
       end
       def update(
         # The external account identifier.
@@ -79,9 +82,13 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           routing_number: String,
-          status: Increase::ExternalAccountListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::ExternalAccount])
+          status:
+            T.any(
+              Increase::Models::ExternalAccountListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::ExternalAccount])
       end
       def list(
         # Return the page of entries after this one.

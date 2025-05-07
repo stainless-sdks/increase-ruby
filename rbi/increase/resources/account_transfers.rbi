@@ -11,8 +11,8 @@ module Increase
           description: String,
           destination_account_id: String,
           require_approval: T::Boolean,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::AccountTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -34,8 +34,8 @@ module Increase
       sig do
         params(
           account_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::AccountTransfer)
       end
       def retrieve(
         # The identifier of the Account Transfer.
@@ -48,12 +48,16 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::AccountTransferListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::AccountTransferListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::AccountTransfer])
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::AccountTransfer])
       end
       def list(
         # Filter Account Transfers to those that originated from the specified Account.
@@ -77,8 +81,8 @@ module Increase
       sig do
         params(
           account_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::AccountTransfer)
       end
       def approve(
         # The identifier of the Account Transfer to approve.
@@ -91,8 +95,8 @@ module Increase
       sig do
         params(
           account_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::AccountTransfer)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::AccountTransfer)
       end
       def cancel(
         # The identifier of the pending Account Transfer to cancel.

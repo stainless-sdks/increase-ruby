@@ -3,8 +3,6 @@
 module Increase
   module Models
     class DigitalCardProfile < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Card Profile identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -53,21 +51,29 @@ module Increase
       attr_accessor :issuer_name
 
       # The status of the Card Profile.
-      sig { returns(Increase::DigitalCardProfile::Status::TaggedSymbol) }
+      sig do
+        returns(Increase::Models::DigitalCardProfile::Status::TaggedSymbol)
+      end
       attr_accessor :status
 
       # The Card's text color, specified as an RGB triple.
-      sig { returns(Increase::DigitalCardProfile::TextColor) }
+      sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
       attr_reader :text_color
 
       sig do
-        params(text_color: Increase::DigitalCardProfile::TextColor::OrHash).void
+        params(
+          text_color:
+            T.any(
+              Increase::Models::DigitalCardProfile::TextColor,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :text_color
 
       # A constant representing the object's type. For this resource it will always be
       # `digital_card_profile`.
-      sig { returns(Increase::DigitalCardProfile::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::DigitalCardProfile::Type::TaggedSymbol) }
       attr_accessor :type
 
       # This contains artwork and metadata relating to a Card's appearance in digital
@@ -86,9 +92,13 @@ module Increase
           description: String,
           idempotency_key: T.nilable(String),
           issuer_name: String,
-          status: Increase::DigitalCardProfile::Status::OrSymbol,
-          text_color: Increase::DigitalCardProfile::TextColor::OrHash,
-          type: Increase::DigitalCardProfile::Type::OrSymbol
+          status: Increase::Models::DigitalCardProfile::Status::OrSymbol,
+          text_color:
+            T.any(
+              Increase::Models::DigitalCardProfile::TextColor,
+              Increase::Internal::AnyHash
+            ),
+          type: Increase::Models::DigitalCardProfile::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -141,9 +151,9 @@ module Increase
             description: String,
             idempotency_key: T.nilable(String),
             issuer_name: String,
-            status: Increase::DigitalCardProfile::Status::TaggedSymbol,
-            text_color: Increase::DigitalCardProfile::TextColor,
-            type: Increase::DigitalCardProfile::Type::TaggedSymbol
+            status: Increase::Models::DigitalCardProfile::Status::TaggedSymbol,
+            text_color: Increase::Models::DigitalCardProfile::TextColor,
+            type: Increase::Models::DigitalCardProfile::Type::TaggedSymbol
           }
         )
       end
@@ -155,28 +165,42 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::DigitalCardProfile::Status) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::DigitalCardProfile::Status)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING =
-          T.let(:pending, Increase::DigitalCardProfile::Status::TaggedSymbol)
+          T.let(
+            :pending,
+            Increase::Models::DigitalCardProfile::Status::TaggedSymbol
+          )
 
         # There is an issue with the Card Profile preventing it from use.
         REJECTED =
-          T.let(:rejected, Increase::DigitalCardProfile::Status::TaggedSymbol)
+          T.let(
+            :rejected,
+            Increase::Models::DigitalCardProfile::Status::TaggedSymbol
+          )
 
         # The Card Profile can be assigned to Cards.
         ACTIVE =
-          T.let(:active, Increase::DigitalCardProfile::Status::TaggedSymbol)
+          T.let(
+            :active,
+            Increase::Models::DigitalCardProfile::Status::TaggedSymbol
+          )
 
         # The Card Profile is no longer in use.
         ARCHIVED =
-          T.let(:archived, Increase::DigitalCardProfile::Status::TaggedSymbol)
+          T.let(
+            :archived,
+            Increase::Models::DigitalCardProfile::Status::TaggedSymbol
+          )
 
         sig do
           override.returns(
-            T::Array[Increase::DigitalCardProfile::Status::TaggedSymbol]
+            T::Array[Increase::Models::DigitalCardProfile::Status::TaggedSymbol]
           )
         end
         def self.values
@@ -184,9 +208,6 @@ module Increase
       end
 
       class TextColor < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         attr_accessor :blue
@@ -228,18 +249,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::DigitalCardProfile::Type) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::DigitalCardProfile::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         DIGITAL_CARD_PROFILE =
           T.let(
             :digital_card_profile,
-            Increase::DigitalCardProfile::Type::TaggedSymbol
+            Increase::Models::DigitalCardProfile::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::DigitalCardProfile::Type::TaggedSymbol]
+            T::Array[Increase::Models::DigitalCardProfile::Type::TaggedSymbol]
           )
         end
         def self.values

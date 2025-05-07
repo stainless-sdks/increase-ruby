@@ -3,8 +3,6 @@
 module Increase
   module Models
     class BookkeepingEntry < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The entry identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -28,7 +26,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry`.
-      sig { returns(Increase::BookkeepingEntry::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::BookkeepingEntry::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Entries are T-account entries recording debits and credits. Your compliance
@@ -41,7 +39,7 @@ module Increase
           amount: Integer,
           created_at: Time,
           entry_set_id: String,
-          type: Increase::BookkeepingEntry::Type::OrSymbol
+          type: Increase::Models::BookkeepingEntry::Type::OrSymbol
         ).returns(T.attached_class)
       end
       def self.new(
@@ -70,7 +68,7 @@ module Increase
             amount: Integer,
             created_at: Time,
             entry_set_id: String,
-            type: Increase::BookkeepingEntry::Type::TaggedSymbol
+            type: Increase::Models::BookkeepingEntry::Type::TaggedSymbol
           }
         )
       end
@@ -83,18 +81,20 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::BookkeepingEntry::Type) }
+          T.type_alias do
+            T.all(Symbol, Increase::Models::BookkeepingEntry::Type)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         BOOKKEEPING_ENTRY =
           T.let(
             :bookkeeping_entry,
-            Increase::BookkeepingEntry::Type::TaggedSymbol
+            Increase::Models::BookkeepingEntry::Type::TaggedSymbol
           )
 
         sig do
           override.returns(
-            T::Array[Increase::BookkeepingEntry::Type::TaggedSymbol]
+            T::Array[Increase::Models::BookkeepingEntry::Type::TaggedSymbol]
           )
         end
         def self.values

@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Filter Lockboxes to those associated with the provided Account.
       sig { returns(T.nilable(String)) }
       attr_reader :account_id
@@ -15,11 +13,17 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig { returns(T.nilable(Increase::LockboxListParams::CreatedAt)) }
+      sig { returns(T.nilable(Increase::Models::LockboxListParams::CreatedAt)) }
       attr_reader :created_at
 
       sig do
-        params(created_at: Increase::LockboxListParams::CreatedAt::OrHash).void
+        params(
+          created_at:
+            T.any(
+              Increase::Models::LockboxListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            )
+        ).void
       end
       attr_writer :created_at
 
@@ -51,11 +55,16 @@ module Increase
       sig do
         params(
           account_id: String,
-          created_at: Increase::LockboxListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::LockboxListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -80,7 +89,7 @@ module Increase
         override.returns(
           {
             account_id: String,
-            created_at: Increase::LockboxListParams::CreatedAt,
+            created_at: Increase::Models::LockboxListParams::CreatedAt,
             cursor: String,
             idempotency_key: String,
             limit: Integer,
@@ -92,9 +101,6 @@ module Increase
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
         sig { returns(T.nilable(Time)) }

@@ -17,10 +17,10 @@ module Increase
             authenticated_card_payment_id: String,
             card_id: String,
             decline_reason:
-              Increase::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
+              Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason::OrSymbol,
             digital_wallet_token_id: String,
             direction:
-              Increase::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
+              Increase::Models::Simulations::CardAuthorizationCreateParams::Direction::OrSymbol,
             event_subscription_id: String,
             merchant_acceptor_id: String,
             merchant_category_code: String,
@@ -29,11 +29,14 @@ module Increase
             merchant_descriptor: String,
             merchant_state: String,
             network_details:
-              Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::OrHash,
+              T.any(
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+                Increase::Internal::AnyHash
+              ),
             network_risk_score: Integer,
             physical_card_id: String,
             terminal_id: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options: Increase::RequestOpts
           ).returns(
             Increase::Models::Simulations::CardAuthorizationCreateResponse
           )

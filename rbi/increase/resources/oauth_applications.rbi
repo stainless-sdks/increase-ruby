@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           oauth_application_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::OAuthApplication)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::OAuthApplication)
       end
       def retrieve(
         # The identifier of the OAuth Application.
@@ -20,12 +20,20 @@ module Increase
       # List OAuth Applications
       sig do
         params(
-          created_at: Increase::OAuthApplicationListParams::CreatedAt::OrHash,
+          created_at:
+            T.any(
+              Increase::Models::OAuthApplicationListParams::CreatedAt,
+              Increase::Internal::AnyHash
+            ),
           cursor: String,
           limit: Integer,
-          status: Increase::OAuthApplicationListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::OAuthApplication])
+          status:
+            T.any(
+              Increase::Models::OAuthApplicationListParams::Status,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Internal::Page[Increase::Models::OAuthApplication])
       end
       def list(
         created_at: nil,

@@ -6,18 +6,20 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Reason for the reversal.
       sig do
-        returns(Increase::InboundWireTransferReverseParams::Reason::OrSymbol)
+        returns(
+          Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol
+        )
       end
       attr_accessor :reason
 
       sig do
         params(
-          reason: Increase::InboundWireTransferReverseParams::Reason::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
+          reason:
+            Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(
@@ -31,7 +33,7 @@ module Increase
         override.returns(
           {
             reason:
-              Increase::InboundWireTransferReverseParams::Reason::OrSymbol,
+              Increase::Models::InboundWireTransferReverseParams::Reason::OrSymbol,
             request_options: Increase::RequestOptions
           }
         )
@@ -45,7 +47,10 @@ module Increase
 
         TaggedSymbol =
           T.type_alias do
-            T.all(Symbol, Increase::InboundWireTransferReverseParams::Reason)
+            T.all(
+              Symbol,
+              Increase::Models::InboundWireTransferReverseParams::Reason
+            )
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -53,20 +58,20 @@ module Increase
         DUPLICATE =
           T.let(
             :duplicate,
-            Increase::InboundWireTransferReverseParams::Reason::TaggedSymbol
+            Increase::Models::InboundWireTransferReverseParams::Reason::TaggedSymbol
           )
 
         # The recipient of the wire transfer requested the funds be returned to the sender.
         CREDITOR_REQUEST =
           T.let(
             :creditor_request,
-            Increase::InboundWireTransferReverseParams::Reason::TaggedSymbol
+            Increase::Models::InboundWireTransferReverseParams::Reason::TaggedSymbol
           )
 
         sig do
           override.returns(
             T::Array[
-              Increase::InboundWireTransferReverseParams::Reason::TaggedSymbol
+              Increase::Models::InboundWireTransferReverseParams::Reason::TaggedSymbol
             ]
           )
         end

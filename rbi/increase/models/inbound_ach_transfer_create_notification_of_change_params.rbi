@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The updated account number to send in the notification of change.
       sig { returns(T.nilable(String)) }
       attr_reader :updated_account_number
@@ -26,7 +24,8 @@ module Increase
         params(
           updated_account_number: String,
           updated_routing_number: String,
-          request_options: Increase::RequestOptions::OrHash
+          request_options:
+            T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
         ).returns(T.attached_class)
       end
       def self.new(

@@ -7,8 +7,8 @@ module Increase
       sig do
         params(
           real_time_decision_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::RealTimeDecision)
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::RealTimeDecision)
       end
       def retrieve(
         # The identifier of the Real-Time Decision.
@@ -22,17 +22,32 @@ module Increase
         params(
           real_time_decision_id: String,
           card_authentication:
-            Increase::RealTimeDecisionActionParams::CardAuthentication::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+              Increase::Internal::AnyHash
+            ),
           card_authentication_challenge:
-            Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+              Increase::Internal::AnyHash
+            ),
           card_authorization:
-            Increase::RealTimeDecisionActionParams::CardAuthorization::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+              Increase::Internal::AnyHash
+            ),
           digital_wallet_authentication:
-            Increase::RealTimeDecisionActionParams::DigitalWalletAuthentication::OrHash,
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+              Increase::Internal::AnyHash
+            ),
           digital_wallet_token:
-            Increase::RealTimeDecisionActionParams::DigitalWalletToken::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::RealTimeDecision)
+            T.any(
+              Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+              Increase::Internal::AnyHash
+            ),
+          request_options: Increase::RequestOpts
+        ).returns(Increase::Models::RealTimeDecision)
       end
       def action(
         # The identifier of the Real-Time Decision.

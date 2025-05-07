@@ -10,9 +10,9 @@ module Increase
       # @!attribute entries
       #   The bookkeeping entries.
       #
-      #   @return [Array<Increase::BookkeepingEntrySetCreateParams::Entry>]
+      #   @return [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
       required :entries,
-               -> { Increase::Internal::Type::ArrayOf[Increase::BookkeepingEntrySetCreateParams::Entry] }
+               -> { Increase::Internal::Type::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
 
       # @!attribute date
       #   The date of the transaction. Optional if `transaction_id` is provided, in which
@@ -31,9 +31,10 @@ module Increase
       #   Some parameter documentations has been truncated, see
       #   {Increase::Models::BookkeepingEntrySetCreateParams} for more details.
       #
-      #   @param entries [Array<Increase::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
+      #   @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
       #
       #   @param date [Time] The date of the transaction. Optional if `transaction_id` is provided, in which
+      #   ...
       #
       #   @param transaction_id [String] The identifier of the Transaction related to this entry set, if any.
       #
@@ -56,11 +57,12 @@ module Increase
 
         # @!method initialize(account_id:, amount:)
         #   Some parameter documentations has been truncated, see
-        #   {Increase::BookkeepingEntrySetCreateParams::Entry} for more details.
+        #   {Increase::Models::BookkeepingEntrySetCreateParams::Entry} for more details.
         #
         #   @param account_id [String] The identifier for the Bookkeeping Account impacted by this entry.
         #
         #   @param amount [Integer] The entry amount in the minor unit of the account currency. For dollars, for exa
+        #   ...
       end
     end
   end

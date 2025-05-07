@@ -7,9 +7,6 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The identifier of the Card Payment to create a reversal on.
         sig { returns(String) }
         attr_accessor :card_payment_id
@@ -26,7 +23,8 @@ module Increase
           params(
             card_payment_id: String,
             amount: Integer,
-            request_options: Increase::RequestOptions::OrHash
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
         end
         def self.new(

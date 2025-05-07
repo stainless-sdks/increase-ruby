@@ -7,9 +7,6 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The amount being requested in cents.
         sig { returns(Integer) }
         attr_accessor :amount
@@ -154,7 +151,8 @@ module Increase
             originator_to_beneficiary_information_line2: String,
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
         end
         def self.new(

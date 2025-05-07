@@ -7,9 +7,6 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The identifier of the Account Number the Inbound Check Deposit will be against.
         sig { returns(String) }
         attr_accessor :account_number_id
@@ -27,7 +24,8 @@ module Increase
             account_number_id: String,
             amount: Integer,
             check_number: String,
-            request_options: Increase::RequestOptions::OrHash
+            request_options:
+              T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
           ).returns(T.attached_class)
         end
         def self.new(
