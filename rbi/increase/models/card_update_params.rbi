@@ -6,16 +6,15 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The card's updated billing address.
-      sig { returns(T.nilable(Increase::CardUpdateParams::BillingAddress)) }
+      sig { returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress)) }
       attr_reader :billing_address
 
       sig do
         params(
-          billing_address: Increase::CardUpdateParams::BillingAddress::OrHash
-        ).void
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::AnyHash)
+        )
+          .void
       end
       attr_writer :billing_address
 
@@ -29,13 +28,14 @@ module Increase
       # The contact information used in the two-factor steps for digital wallet card
       # creation. At least one field must be present to complete the digital wallet
       # steps.
-      sig { returns(T.nilable(Increase::CardUpdateParams::DigitalWallet)) }
+      sig { returns(T.nilable(Increase::Models::CardUpdateParams::DigitalWallet)) }
       attr_reader :digital_wallet
 
       sig do
         params(
-          digital_wallet: Increase::CardUpdateParams::DigitalWallet::OrHash
-        ).void
+          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::AnyHash)
+        )
+          .void
       end
       attr_writer :digital_wallet
 
@@ -48,21 +48,22 @@ module Increase
       attr_writer :entity_id
 
       # The status to update the Card with.
-      sig { returns(T.nilable(Increase::CardUpdateParams::Status::OrSymbol)) }
+      sig { returns(T.nilable(Increase::Models::CardUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
-      sig { params(status: Increase::CardUpdateParams::Status::OrSymbol).void }
+      sig { params(status: Increase::Models::CardUpdateParams::Status::OrSymbol).void }
       attr_writer :status
 
       sig do
         params(
-          billing_address: Increase::CardUpdateParams::BillingAddress::OrHash,
+          billing_address: T.any(Increase::Models::CardUpdateParams::BillingAddress, Increase::Internal::AnyHash),
           description: String,
-          digital_wallet: Increase::CardUpdateParams::DigitalWallet::OrHash,
+          digital_wallet: T.any(Increase::Models::CardUpdateParams::DigitalWallet, Increase::Internal::AnyHash),
           entity_id: String,
-          status: Increase::CardUpdateParams::Status::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          status: Increase::Models::CardUpdateParams::Status::OrSymbol,
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The card's updated billing address.
@@ -79,28 +80,23 @@ module Increase
         # The status to update the Card with.
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            billing_address: Increase::CardUpdateParams::BillingAddress,
-            description: String,
-            digital_wallet: Increase::CardUpdateParams::DigitalWallet,
-            entity_id: String,
-            status: Increase::CardUpdateParams::Status::OrSymbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+              description: String,
+              digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+              entity_id: String,
+              status: Increase::Models::CardUpdateParams::Status::OrSymbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The city of the billing address.
         sig { returns(String) }
         attr_accessor :city
@@ -126,13 +122,8 @@ module Increase
 
         # The card's updated billing address.
         sig do
-          params(
-            city: String,
-            line1: String,
-            postal_code: String,
-            state: String,
-            line2: String
-          ).returns(T.attached_class)
+          params(city: String, line1: String, postal_code: String, state: String, line2: String)
+            .returns(T.attached_class)
         end
         def self.new(
           # The city of the billing address.
@@ -145,28 +136,14 @@ module Increase
           state:,
           # The second line of the billing address.
           line2: nil
-        )
-        end
-
+        ); end
         sig do
-          override.returns(
-            {
-              city: String,
-              line1: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            }
-          )
+          override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
         attr_reader :digital_card_profile_id
@@ -194,11 +171,7 @@ module Increase
         # creation. At least one field must be present to complete the digital wallet
         # steps.
         sig do
-          params(
-            digital_card_profile_id: String,
-            email: String,
-            phone: String
-          ).returns(T.attached_class)
+          params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
         end
         def self.new(
           # The digital card profile assigned to this digital card.
@@ -209,45 +182,29 @@ module Increase
           # A phone number that can be used to verify the cardholder via one-time passcode
           # over SMS.
           phone: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            { digital_card_profile_id: String, email: String, phone: String }
-          )
-        end
-        def to_hash
-        end
+        ); end
+        sig { override.returns({digital_card_profile_id: String, email: String, phone: String}) }
+        def to_hash; end
       end
 
       # The status to update the Card with.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::CardUpdateParams::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::CardUpdateParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The card is active.
-        ACTIVE =
-          T.let(:active, Increase::CardUpdateParams::Status::TaggedSymbol)
+        ACTIVE = T.let(:active, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
 
         # The card is temporarily disabled.
-        DISABLED =
-          T.let(:disabled, Increase::CardUpdateParams::Status::TaggedSymbol)
+        DISABLED = T.let(:disabled, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
 
         # The card is permanently canceled.
-        CANCELED =
-          T.let(:canceled, Increase::CardUpdateParams::Status::TaggedSymbol)
+        CANCELED = T.let(:canceled, Increase::Models::CardUpdateParams::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::CardUpdateParams::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::CardUpdateParams::Status::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

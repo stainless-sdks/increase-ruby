@@ -14,8 +14,9 @@ module Increase
             card_id: String,
             pending_transaction_id: String,
             amount: Integer,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::Transaction)
+            request_options: Increase::RequestOpts
+          )
+            .returns(Increase::Models::Transaction)
         end
         def create(
           # The identifier of the Card to create a settlement on.
@@ -27,13 +28,10 @@ module Increase
           # being settled.
           amount: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

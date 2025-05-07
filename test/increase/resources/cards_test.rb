@@ -7,24 +7,24 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
     response = @increase.cards.create(account_id: "account_in71c4amph0vgo2qllky")
 
     assert_pattern do
-      response => Increase::Card
+      response => Increase::Models::Card
     end
 
     assert_pattern do
       response => {
         id: String,
         account_id: String,
-        billing_address: Increase::Card::BillingAddress,
+        billing_address: Increase::Models::Card::BillingAddress,
         created_at: Time,
         description: String | nil,
-        digital_wallet: Increase::Card::DigitalWallet | nil,
+        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
         entity_id: String | nil,
         expiration_month: Integer,
         expiration_year: Integer,
         idempotency_key: String | nil,
         last4: String,
-        status: Increase::Card::Status,
-        type: Increase::Card::Type
+        status: Increase::Models::Card::Status,
+        type: Increase::Models::Card::Type
       }
     end
   end
@@ -33,24 +33,24 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
     response = @increase.cards.retrieve("card_id")
 
     assert_pattern do
-      response => Increase::Card
+      response => Increase::Models::Card
     end
 
     assert_pattern do
       response => {
         id: String,
         account_id: String,
-        billing_address: Increase::Card::BillingAddress,
+        billing_address: Increase::Models::Card::BillingAddress,
         created_at: Time,
         description: String | nil,
-        digital_wallet: Increase::Card::DigitalWallet | nil,
+        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
         entity_id: String | nil,
         expiration_month: Integer,
         expiration_year: Integer,
         idempotency_key: String | nil,
         last4: String,
-        status: Increase::Card::Status,
-        type: Increase::Card::Type
+        status: Increase::Models::Card::Status,
+        type: Increase::Models::Card::Type
       }
     end
   end
@@ -59,24 +59,24 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
     response = @increase.cards.update("card_id")
 
     assert_pattern do
-      response => Increase::Card
+      response => Increase::Models::Card
     end
 
     assert_pattern do
       response => {
         id: String,
         account_id: String,
-        billing_address: Increase::Card::BillingAddress,
+        billing_address: Increase::Models::Card::BillingAddress,
         created_at: Time,
         description: String | nil,
-        digital_wallet: Increase::Card::DigitalWallet | nil,
+        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
         entity_id: String | nil,
         expiration_month: Integer,
         expiration_year: Integer,
         idempotency_key: String | nil,
         last4: String,
-        status: Increase::Card::Status,
-        type: Increase::Card::Type
+        status: Increase::Models::Card::Status,
+        type: Increase::Models::Card::Type
       }
     end
   end
@@ -92,24 +92,24 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Increase::Card
+      row => Increase::Models::Card
     end
 
     assert_pattern do
       row => {
         id: String,
         account_id: String,
-        billing_address: Increase::Card::BillingAddress,
+        billing_address: Increase::Models::Card::BillingAddress,
         created_at: Time,
         description: String | nil,
-        digital_wallet: Increase::Card::DigitalWallet | nil,
+        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
         entity_id: String | nil,
         expiration_month: Integer,
         expiration_year: Integer,
         idempotency_key: String | nil,
         last4: String,
-        status: Increase::Card::Status,
-        type: Increase::Card::Type
+        status: Increase::Models::Card::Status,
+        type: Increase::Models::Card::Type
       }
     end
   end
@@ -118,7 +118,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
     response = @increase.cards.details("card_id")
 
     assert_pattern do
-      response => Increase::CardDetails
+      response => Increase::Models::CardDetails
     end
 
     assert_pattern do
@@ -127,7 +127,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
         expiration_month: Integer,
         expiration_year: Integer,
         primary_account_number: String,
-        type: Increase::CardDetails::Type,
+        type: Increase::Models::CardDetails::Type,
         verification_code: String
       }
     end

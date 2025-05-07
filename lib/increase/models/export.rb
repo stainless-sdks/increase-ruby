@@ -14,8 +14,8 @@ module Increase
       #   The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
       #
-      #   @return [Symbol, Increase::Export::Category]
-      required :category, enum: -> { Increase::Export::Category }
+      #   @return [Symbol, Increase::Models::Export::Category]
+      required :category, enum: -> { Increase::Models::Export::Category }
 
       # @!attribute created_at
       #   The time the Export was created.
@@ -48,19 +48,19 @@ module Increase
       # @!attribute status
       #   The status of the Export.
       #
-      #   @return [Symbol, Increase::Export::Status]
-      required :status, enum: -> { Increase::Export::Status }
+      #   @return [Symbol, Increase::Models::Export::Status]
+      required :status, enum: -> { Increase::Models::Export::Status }
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
       #   `export`.
       #
-      #   @return [Symbol, Increase::Export::Type]
-      required :type, enum: -> { Increase::Export::Type }
+      #   @return [Symbol, Increase::Models::Export::Type]
+      required :type, enum: -> { Increase::Models::Export::Type }
 
       # @!method initialize(id:, category:, created_at:, file_download_url:, file_id:, idempotency_key:, status:, type:)
-      #   Some parameter documentations has been truncated, see {Increase::Export} for
-      #   more details.
+      #   Some parameter documentations has been truncated, see {Increase::Models::Export}
+      #   for more details.
       #
       #   Exports are batch summaries of your Increase data. You can make them from the
       #   API or dashboard. Since they can take a while, they are generated
@@ -70,24 +70,29 @@ module Increase
       #
       #   @param id [String] The Export identifier.
       #
-      #   @param category [Symbol, Increase::Export::Category] The category of the Export. We may add additional possible values for this enum
+      #   @param category [Symbol, Increase::Models::Export::Category] The category of the Export. We may add additional possible values for this enum
+      #   ...
       #
       #   @param created_at [Time] The time the Export was created.
       #
       #   @param file_download_url [String, nil] A URL at which the Export's file can be downloaded. This will be present when th
+      #   ...
       #
       #   @param file_id [String, nil] The File containing the contents of the Export. This will be present when the Ex
+      #   ...
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
       #
-      #   @param status [Symbol, Increase::Export::Status] The status of the Export.
+      #   @param status [Symbol, Increase::Models::Export::Status] The status of the Export.
       #
-      #   @param type [Symbol, Increase::Export::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::Models::Export::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # The category of the Export. We may add additional possible values for this enum
       # over time; your application should be able to handle that gracefully.
       #
-      # @see Increase::Export#category
+      # @see Increase::Models::Export#category
       module Category
         extend Increase::Internal::Type::Enum
 
@@ -118,7 +123,7 @@ module Increase
 
       # The status of the Export.
       #
-      # @see Increase::Export#status
+      # @see Increase::Models::Export#status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -138,7 +143,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       # `export`.
       #
-      # @see Increase::Export#type
+      # @see Increase::Models::Export#type
       module Type
         extend Increase::Internal::Type::Enum
 

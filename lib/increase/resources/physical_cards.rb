@@ -12,24 +12,25 @@ module Increase
       #
       # @param card_id [String] The underlying card representing this physical card.
       #
-      # @param cardholder [Increase::PhysicalCardCreateParams::Cardholder] Details about the cardholder, as it will appear on the physical card.
+      # @param cardholder [Increase::Models::PhysicalCardCreateParams::Cardholder] Details about the cardholder, as it will appear on the physical card.
       #
-      # @param shipment [Increase::PhysicalCardCreateParams::Shipment] The details used to ship this physical card.
+      # @param shipment [Increase::Models::PhysicalCardCreateParams::Shipment] The details used to ship this physical card.
       #
       # @param physical_card_profile_id [String] The physical card profile to use for this physical card. The latest default phys
+      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::PhysicalCard]
+      # @return [Increase::Models::PhysicalCard]
       #
       # @see Increase::Models::PhysicalCardCreateParams
       def create(params)
-        parsed, options = Increase::PhysicalCardCreateParams.dump_request(params)
+        parsed, options = Increase::Models::PhysicalCardCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "physical_cards",
           body: parsed,
-          model: Increase::PhysicalCard,
+          model: Increase::Models::PhysicalCard,
           options: options
         )
       end
@@ -42,14 +43,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::PhysicalCard]
+      # @return [Increase::Models::PhysicalCard]
       #
       # @see Increase::Models::PhysicalCardRetrieveParams
       def retrieve(physical_card_id, params = {})
         @client.request(
           method: :get,
           path: ["physical_cards/%1$s", physical_card_id],
-          model: Increase::PhysicalCard,
+          model: Increase::Models::PhysicalCard,
           options: params[:request_options]
         )
       end
@@ -60,20 +61,20 @@ module Increase
       #
       # @param physical_card_id [String] The Physical Card identifier.
       #
-      # @param status [Symbol, Increase::PhysicalCardUpdateParams::Status] The status to update the Physical Card to.
+      # @param status [Symbol, Increase::Models::PhysicalCardUpdateParams::Status] The status to update the Physical Card to.
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::PhysicalCard]
+      # @return [Increase::Models::PhysicalCard]
       #
       # @see Increase::Models::PhysicalCardUpdateParams
       def update(physical_card_id, params)
-        parsed, options = Increase::PhysicalCardUpdateParams.dump_request(params)
+        parsed, options = Increase::Models::PhysicalCardUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["physical_cards/%1$s", physical_card_id],
           body: parsed,
-          model: Increase::PhysicalCard,
+          model: Increase::Models::PhysicalCard,
           options: options
         )
       end
@@ -87,27 +88,29 @@ module Increase
       #
       # @param card_id [String] Filter Physical Cards to ones belonging to the specified Card.
       #
-      # @param created_at [Increase::PhysicalCardListParams::CreatedAt]
+      # @param created_at [Increase::Models::PhysicalCardListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::PhysicalCard>]
+      # @return [Increase::Internal::Page<Increase::Models::PhysicalCard>]
       #
       # @see Increase::Models::PhysicalCardListParams
       def list(params = {})
-        parsed, options = Increase::PhysicalCardListParams.dump_request(params)
+        parsed, options = Increase::Models::PhysicalCardListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "physical_cards",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::PhysicalCard,
+          model: Increase::Models::PhysicalCard,
           options: options
         )
       end

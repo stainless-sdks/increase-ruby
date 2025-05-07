@@ -10,8 +10,9 @@ module Increase
           entity_id: String,
           informational_entity_id: String,
           program_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Account)
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::Account)
       end
       def create(
         # The name you choose for the Account.
@@ -25,30 +26,18 @@ module Increase
         # operate more than one Program.
         program_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve an Account
-      sig do
-        params(
-          account_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Account)
-      end
+      sig { params(account_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Account) }
       def retrieve(
         # The identifier of the Account to retrieve.
         account_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Update an Account
       sig do
-        params(
-          account_id: String,
-          name: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Account)
+        params(account_id: String, name: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::Account)
       end
       def update(
         # The identifier of the Account to update.
@@ -56,22 +45,21 @@ module Increase
         # The new name of the Account.
         name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Accounts
       sig do
         params(
-          created_at: Increase::AccountListParams::CreatedAt::OrHash,
+          created_at: T.any(Increase::Models::AccountListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           entity_id: String,
           idempotency_key: String,
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Increase::AccountListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Account])
+          status: T.any(Increase::Models::AccountListParams::Status, Increase::Internal::AnyHash),
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Internal::Page[Increase::Models::Account])
       end
       def list(
         created_at: nil,
@@ -93,17 +81,12 @@ module Increase
         program_id: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve the current and available balances for an account in minor units of the
       # account's currency. Learn more about [account balances](/documentation/balance).
       sig do
-        params(
-          account_id: String,
-          at_time: Time,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::BalanceLookup)
+        params(account_id: String, at_time: Time, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::BalanceLookup)
       end
       def balance(
         # The identifier of the Account to retrieve.
@@ -111,27 +94,17 @@ module Increase
         # The moment to query the balance at. If not set, returns the current balances.
         at_time: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Close an Account
-      sig do
-        params(
-          account_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Account)
-      end
+      sig { params(account_id: String, request_options: Increase::RequestOpts).returns(Increase::Models::Account) }
       def close(
         # The identifier of the Account to close. The account must have a zero balance.
         account_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

@@ -5,7 +5,7 @@ module Increase
         def create: (
           name: String,
           ?request_options: Increase::request_opts
-        ) -> Increase::Program
+        ) -> Increase::Models::Program
 
         def initialize: (client: Increase::Client) -> void
       end

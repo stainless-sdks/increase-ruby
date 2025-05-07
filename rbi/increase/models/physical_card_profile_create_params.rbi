@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier of the File containing the physical card's carrier image.
       sig { returns(String) }
       attr_accessor :carrier_image_file_id
@@ -35,8 +33,9 @@ module Increase
           description: String,
           front_image_file_id: String,
           program_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier of the File containing the physical card's carrier image.
@@ -50,23 +49,21 @@ module Increase
         # The identifier for the Program that this Physical Card Profile falls under.
         program_id:,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            carrier_image_file_id: String,
-            contact_phone: String,
-            description: String,
-            front_image_file_id: String,
-            program_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              carrier_image_file_id: String,
+              contact_phone: String,
+              description: String,
+              front_image_file_id: String,
+              program_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

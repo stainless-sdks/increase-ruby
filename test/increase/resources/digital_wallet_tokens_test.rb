@@ -7,20 +7,20 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::Resou
     response = @increase.digital_wallet_tokens.retrieve("digital_wallet_token_id")
 
     assert_pattern do
-      response => Increase::DigitalWalletToken
+      response => Increase::Models::DigitalWalletToken
     end
 
     assert_pattern do
       response => {
         id: String,
         card_id: String,
-        cardholder: Increase::DigitalWalletToken::Cardholder,
+        cardholder: Increase::Models::DigitalWalletToken::Cardholder,
         created_at: Time,
-        device: Increase::DigitalWalletToken::Device,
-        status: Increase::DigitalWalletToken::Status,
-        token_requestor: Increase::DigitalWalletToken::TokenRequestor,
-        type: Increase::DigitalWalletToken::Type,
-        updates: ^(Increase::Internal::Type::ArrayOf[Increase::DigitalWalletToken::Update])
+        device: Increase::Models::DigitalWalletToken::Device,
+        status: Increase::Models::DigitalWalletToken::Status,
+        token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
+        type: Increase::Models::DigitalWalletToken::Type,
+        updates: ^(Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update])
       }
     end
   end
@@ -36,20 +36,20 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::Resou
     return if row.nil?
 
     assert_pattern do
-      row => Increase::DigitalWalletToken
+      row => Increase::Models::DigitalWalletToken
     end
 
     assert_pattern do
       row => {
         id: String,
         card_id: String,
-        cardholder: Increase::DigitalWalletToken::Cardholder,
+        cardholder: Increase::Models::DigitalWalletToken::Cardholder,
         created_at: Time,
-        device: Increase::DigitalWalletToken::Device,
-        status: Increase::DigitalWalletToken::Status,
-        token_requestor: Increase::DigitalWalletToken::TokenRequestor,
-        type: Increase::DigitalWalletToken::Type,
-        updates: ^(Increase::Internal::Type::ArrayOf[Increase::DigitalWalletToken::Update])
+        device: Increase::Models::DigitalWalletToken::Device,
+        status: Increase::Models::DigitalWalletToken::Status,
+        token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
+        type: Increase::Models::DigitalWalletToken::Type,
+        updates: ^(Increase::Internal::Type::ArrayOf[Increase::Models::DigitalWalletToken::Update])
       }
     end
   end

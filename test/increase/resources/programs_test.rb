@@ -7,19 +7,19 @@ class Increase::Test::Resources::ProgramsTest < Increase::Test::ResourceTest
     response = @increase.programs.retrieve("program_id")
 
     assert_pattern do
-      response => Increase::Program
+      response => Increase::Models::Program
     end
 
     assert_pattern do
       response => {
         id: String,
-        bank: Increase::Program::Bank,
+        bank: Increase::Models::Program::Bank,
         billing_account_id: String | nil,
         created_at: Time,
         default_digital_card_profile_id: String | nil,
         interest_rate: String,
         name: String,
-        type: Increase::Program::Type,
+        type: Increase::Models::Program::Type,
         updated_at: Time
       }
     end
@@ -36,19 +36,19 @@ class Increase::Test::Resources::ProgramsTest < Increase::Test::ResourceTest
     return if row.nil?
 
     assert_pattern do
-      row => Increase::Program
+      row => Increase::Models::Program
     end
 
     assert_pattern do
       row => {
         id: String,
-        bank: Increase::Program::Bank,
+        bank: Increase::Models::Program::Bank,
         billing_account_id: String | nil,
         created_at: Time,
         default_digital_card_profile_id: String | nil,
         interest_rate: String,
         name: String,
-        type: Increase::Program::Type,
+        type: Increase::Models::Program::Type,
         updated_at: Time
       }
     end

@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Account Number to which the recipient should send funds.
       sig { returns(String) }
       attr_accessor :account_number_id
@@ -104,8 +102,9 @@ module Increase
           recipient_address_line1: String,
           recipient_address_line2: String,
           recipient_address_line3: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account Number to which the recipient should send funds.
@@ -143,31 +142,29 @@ module Increase
         # Line 3 of the drawdown request's recipient's address.
         recipient_address_line3: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            account_number_id: String,
-            amount: Integer,
-            message_to_recipient: String,
-            recipient_account_number: String,
-            recipient_name: String,
-            recipient_routing_number: String,
-            originator_address_line1: String,
-            originator_address_line2: String,
-            originator_address_line3: String,
-            originator_name: String,
-            recipient_address_line1: String,
-            recipient_address_line2: String,
-            recipient_address_line3: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_number_id: String,
+              amount: Integer,
+              message_to_recipient: String,
+              recipient_account_number: String,
+              recipient_name: String,
+              recipient_routing_number: String,
+              originator_address_line1: String,
+              originator_address_line2: String,
+              originator_address_line3: String,
+              originator_name: String,
+              recipient_address_line1: String,
+              recipient_address_line2: String,
+              recipient_address_line3: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

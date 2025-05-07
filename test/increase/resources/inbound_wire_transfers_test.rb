@@ -7,7 +7,7 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
     response = @increase.inbound_wire_transfers.retrieve("inbound_wire_transfer_id")
 
     assert_pattern do
-      response => Increase::InboundWireTransfer
+      response => Increase::Models::InboundWireTransfer
     end
 
     assert_pattern do
@@ -34,10 +34,10 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
         originator_to_beneficiary_information_line2: String | nil,
         originator_to_beneficiary_information_line3: String | nil,
         originator_to_beneficiary_information_line4: String | nil,
-        reversal: Increase::InboundWireTransfer::Reversal | nil,
+        reversal: Increase::Models::InboundWireTransfer::Reversal | nil,
         sender_reference: String | nil,
-        status: Increase::InboundWireTransfer::Status,
-        type: Increase::InboundWireTransfer::Type
+        status: Increase::Models::InboundWireTransfer::Status,
+        type: Increase::Models::InboundWireTransfer::Type
       }
     end
   end
@@ -53,7 +53,7 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
     return if row.nil?
 
     assert_pattern do
-      row => Increase::InboundWireTransfer
+      row => Increase::Models::InboundWireTransfer
     end
 
     assert_pattern do
@@ -80,10 +80,10 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
         originator_to_beneficiary_information_line2: String | nil,
         originator_to_beneficiary_information_line3: String | nil,
         originator_to_beneficiary_information_line4: String | nil,
-        reversal: Increase::InboundWireTransfer::Reversal | nil,
+        reversal: Increase::Models::InboundWireTransfer::Reversal | nil,
         sender_reference: String | nil,
-        status: Increase::InboundWireTransfer::Status,
-        type: Increase::InboundWireTransfer::Type
+        status: Increase::Models::InboundWireTransfer::Status,
+        type: Increase::Models::InboundWireTransfer::Type
       }
     end
   end
@@ -93,7 +93,7 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
       @increase.inbound_wire_transfers.reverse("inbound_wire_transfer_id", reason: :creditor_request)
 
     assert_pattern do
-      response => Increase::InboundWireTransfer
+      response => Increase::Models::InboundWireTransfer
     end
 
     assert_pattern do
@@ -120,10 +120,10 @@ class Increase::Test::Resources::InboundWireTransfersTest < Increase::Test::Reso
         originator_to_beneficiary_information_line2: String | nil,
         originator_to_beneficiary_information_line3: String | nil,
         originator_to_beneficiary_information_line4: String | nil,
-        reversal: Increase::InboundWireTransfer::Reversal | nil,
+        reversal: Increase::Models::InboundWireTransfer::Reversal | nil,
         sender_reference: String | nil,
-        status: Increase::InboundWireTransfer::Status,
-        type: Increase::InboundWireTransfer::Type
+        status: Increase::Models::InboundWireTransfer::Status,
+        type: Increase::Models::InboundWireTransfer::Type
       }
     end
   end
