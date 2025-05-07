@@ -4,15 +4,15 @@ module Increase
       def retrieve: (
         String oauth_application_id,
         ?request_options: Increase::request_opts
-      ) -> Increase::OAuthApplication
+      ) -> Increase::Models::OAuthApplication
 
       def list: (
-        ?created_at: Increase::OAuthApplicationListParams::CreatedAt,
+        ?created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
         ?cursor: String,
         ?limit: Integer,
-        ?status: Increase::OAuthApplicationListParams::Status,
+        ?status: Increase::Models::OAuthApplicationListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::OAuthApplication]
+      ) -> Increase::Internal::Page[Increase::Models::OAuthApplication]
 
       def initialize: (client: Increase::Client) -> void
     end

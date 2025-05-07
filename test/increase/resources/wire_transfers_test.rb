@@ -13,7 +13,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
       )
 
     assert_pattern do
-      response => Increase::WireTransfer
+      response => Increase::Models::WireTransfer
     end
 
     assert_pattern do
@@ -22,31 +22,31 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
         account_id: String,
         account_number: String,
         amount: Integer,
-        approval: Increase::WireTransfer::Approval | nil,
+        approval: Increase::Models::WireTransfer::Approval | nil,
         beneficiary_address_line1: String | nil,
         beneficiary_address_line2: String | nil,
         beneficiary_address_line3: String | nil,
         beneficiary_name: String | nil,
-        cancellation: Increase::WireTransfer::Cancellation | nil,
+        cancellation: Increase::Models::WireTransfer::Cancellation | nil,
         created_at: Time,
-        created_by: Increase::WireTransfer::CreatedBy | nil,
-        currency: Increase::WireTransfer::Currency,
+        created_by: Increase::Models::WireTransfer::CreatedBy | nil,
+        currency: Increase::Models::WireTransfer::Currency,
         external_account_id: String | nil,
         idempotency_key: String | nil,
         message_to_recipient: String | nil,
-        network: Increase::WireTransfer::Network,
+        network: Increase::Models::WireTransfer::Network,
         originator_address_line1: String | nil,
         originator_address_line2: String | nil,
         originator_address_line3: String | nil,
         originator_name: String | nil,
         pending_transaction_id: String | nil,
-        reversal: Increase::WireTransfer::Reversal | nil,
+        reversal: Increase::Models::WireTransfer::Reversal | nil,
         routing_number: String,
         source_account_number_id: String | nil,
-        status: Increase::WireTransfer::Status,
-        submission: Increase::WireTransfer::Submission | nil,
+        status: Increase::Models::WireTransfer::Status,
+        submission: Increase::Models::WireTransfer::Submission | nil,
         transaction_id: String | nil,
-        type: Increase::WireTransfer::Type
+        type: Increase::Models::WireTransfer::Type
       }
     end
   end
@@ -55,7 +55,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
     response = @increase.wire_transfers.retrieve("wire_transfer_id")
 
     assert_pattern do
-      response => Increase::WireTransfer
+      response => Increase::Models::WireTransfer
     end
 
     assert_pattern do
@@ -64,31 +64,31 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
         account_id: String,
         account_number: String,
         amount: Integer,
-        approval: Increase::WireTransfer::Approval | nil,
+        approval: Increase::Models::WireTransfer::Approval | nil,
         beneficiary_address_line1: String | nil,
         beneficiary_address_line2: String | nil,
         beneficiary_address_line3: String | nil,
         beneficiary_name: String | nil,
-        cancellation: Increase::WireTransfer::Cancellation | nil,
+        cancellation: Increase::Models::WireTransfer::Cancellation | nil,
         created_at: Time,
-        created_by: Increase::WireTransfer::CreatedBy | nil,
-        currency: Increase::WireTransfer::Currency,
+        created_by: Increase::Models::WireTransfer::CreatedBy | nil,
+        currency: Increase::Models::WireTransfer::Currency,
         external_account_id: String | nil,
         idempotency_key: String | nil,
         message_to_recipient: String | nil,
-        network: Increase::WireTransfer::Network,
+        network: Increase::Models::WireTransfer::Network,
         originator_address_line1: String | nil,
         originator_address_line2: String | nil,
         originator_address_line3: String | nil,
         originator_name: String | nil,
         pending_transaction_id: String | nil,
-        reversal: Increase::WireTransfer::Reversal | nil,
+        reversal: Increase::Models::WireTransfer::Reversal | nil,
         routing_number: String,
         source_account_number_id: String | nil,
-        status: Increase::WireTransfer::Status,
-        submission: Increase::WireTransfer::Submission | nil,
+        status: Increase::Models::WireTransfer::Status,
+        submission: Increase::Models::WireTransfer::Submission | nil,
         transaction_id: String | nil,
-        type: Increase::WireTransfer::Type
+        type: Increase::Models::WireTransfer::Type
       }
     end
   end
@@ -104,7 +104,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Increase::WireTransfer
+      row => Increase::Models::WireTransfer
     end
 
     assert_pattern do
@@ -113,31 +113,31 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
         account_id: String,
         account_number: String,
         amount: Integer,
-        approval: Increase::WireTransfer::Approval | nil,
+        approval: Increase::Models::WireTransfer::Approval | nil,
         beneficiary_address_line1: String | nil,
         beneficiary_address_line2: String | nil,
         beneficiary_address_line3: String | nil,
         beneficiary_name: String | nil,
-        cancellation: Increase::WireTransfer::Cancellation | nil,
+        cancellation: Increase::Models::WireTransfer::Cancellation | nil,
         created_at: Time,
-        created_by: Increase::WireTransfer::CreatedBy | nil,
-        currency: Increase::WireTransfer::Currency,
+        created_by: Increase::Models::WireTransfer::CreatedBy | nil,
+        currency: Increase::Models::WireTransfer::Currency,
         external_account_id: String | nil,
         idempotency_key: String | nil,
         message_to_recipient: String | nil,
-        network: Increase::WireTransfer::Network,
+        network: Increase::Models::WireTransfer::Network,
         originator_address_line1: String | nil,
         originator_address_line2: String | nil,
         originator_address_line3: String | nil,
         originator_name: String | nil,
         pending_transaction_id: String | nil,
-        reversal: Increase::WireTransfer::Reversal | nil,
+        reversal: Increase::Models::WireTransfer::Reversal | nil,
         routing_number: String,
         source_account_number_id: String | nil,
-        status: Increase::WireTransfer::Status,
-        submission: Increase::WireTransfer::Submission | nil,
+        status: Increase::Models::WireTransfer::Status,
+        submission: Increase::Models::WireTransfer::Submission | nil,
         transaction_id: String | nil,
-        type: Increase::WireTransfer::Type
+        type: Increase::Models::WireTransfer::Type
       }
     end
   end
@@ -146,7 +146,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
     response = @increase.wire_transfers.approve("wire_transfer_id")
 
     assert_pattern do
-      response => Increase::WireTransfer
+      response => Increase::Models::WireTransfer
     end
 
     assert_pattern do
@@ -155,31 +155,31 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
         account_id: String,
         account_number: String,
         amount: Integer,
-        approval: Increase::WireTransfer::Approval | nil,
+        approval: Increase::Models::WireTransfer::Approval | nil,
         beneficiary_address_line1: String | nil,
         beneficiary_address_line2: String | nil,
         beneficiary_address_line3: String | nil,
         beneficiary_name: String | nil,
-        cancellation: Increase::WireTransfer::Cancellation | nil,
+        cancellation: Increase::Models::WireTransfer::Cancellation | nil,
         created_at: Time,
-        created_by: Increase::WireTransfer::CreatedBy | nil,
-        currency: Increase::WireTransfer::Currency,
+        created_by: Increase::Models::WireTransfer::CreatedBy | nil,
+        currency: Increase::Models::WireTransfer::Currency,
         external_account_id: String | nil,
         idempotency_key: String | nil,
         message_to_recipient: String | nil,
-        network: Increase::WireTransfer::Network,
+        network: Increase::Models::WireTransfer::Network,
         originator_address_line1: String | nil,
         originator_address_line2: String | nil,
         originator_address_line3: String | nil,
         originator_name: String | nil,
         pending_transaction_id: String | nil,
-        reversal: Increase::WireTransfer::Reversal | nil,
+        reversal: Increase::Models::WireTransfer::Reversal | nil,
         routing_number: String,
         source_account_number_id: String | nil,
-        status: Increase::WireTransfer::Status,
-        submission: Increase::WireTransfer::Submission | nil,
+        status: Increase::Models::WireTransfer::Status,
+        submission: Increase::Models::WireTransfer::Submission | nil,
         transaction_id: String | nil,
-        type: Increase::WireTransfer::Type
+        type: Increase::Models::WireTransfer::Type
       }
     end
   end
@@ -188,7 +188,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
     response = @increase.wire_transfers.cancel("wire_transfer_id")
 
     assert_pattern do
-      response => Increase::WireTransfer
+      response => Increase::Models::WireTransfer
     end
 
     assert_pattern do
@@ -197,31 +197,31 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
         account_id: String,
         account_number: String,
         amount: Integer,
-        approval: Increase::WireTransfer::Approval | nil,
+        approval: Increase::Models::WireTransfer::Approval | nil,
         beneficiary_address_line1: String | nil,
         beneficiary_address_line2: String | nil,
         beneficiary_address_line3: String | nil,
         beneficiary_name: String | nil,
-        cancellation: Increase::WireTransfer::Cancellation | nil,
+        cancellation: Increase::Models::WireTransfer::Cancellation | nil,
         created_at: Time,
-        created_by: Increase::WireTransfer::CreatedBy | nil,
-        currency: Increase::WireTransfer::Currency,
+        created_by: Increase::Models::WireTransfer::CreatedBy | nil,
+        currency: Increase::Models::WireTransfer::Currency,
         external_account_id: String | nil,
         idempotency_key: String | nil,
         message_to_recipient: String | nil,
-        network: Increase::WireTransfer::Network,
+        network: Increase::Models::WireTransfer::Network,
         originator_address_line1: String | nil,
         originator_address_line2: String | nil,
         originator_address_line3: String | nil,
         originator_name: String | nil,
         pending_transaction_id: String | nil,
-        reversal: Increase::WireTransfer::Reversal | nil,
+        reversal: Increase::Models::WireTransfer::Reversal | nil,
         routing_number: String,
         source_account_number_id: String | nil,
-        status: Increase::WireTransfer::Status,
-        submission: Increase::WireTransfer::Submission | nil,
+        status: Increase::Models::WireTransfer::Status,
+        submission: Increase::Models::WireTransfer::Submission | nil,
         transaction_id: String | nil,
-        type: Increase::WireTransfer::Type
+        type: Increase::Models::WireTransfer::Type
       }
     end
   end

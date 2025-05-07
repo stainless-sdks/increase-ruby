@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier for the Account to deposit the check in.
       sig { returns(String) }
       attr_accessor :account_id
@@ -38,8 +36,9 @@ module Increase
           back_image_file_id: String,
           front_image_file_id: String,
           description: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the Account to deposit the check in.
@@ -53,23 +52,21 @@ module Increase
         # The description you choose to give the Check Deposit, for display purposes only.
         description: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            back_image_file_id: String,
-            front_image_file_id: String,
-            description: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              back_image_file_id: String,
+              front_image_file_id: String,
+              description: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

@@ -470,7 +470,7 @@ module Increase
       # @type [Regexp]
       JSON_CONTENT = %r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}
       # @type [Regexp]
-      JSONL_CONTENT = %r{^application/(:?x-(?:n|l)djson)|(:?(?:x-)?jsonl)}
+      JSONL_CONTENT = %r{^application/(?:x-)?jsonl}
 
       class << self
         # @api private
@@ -535,7 +535,7 @@ module Increase
             filename = ERB::Util.url_encode(val.filename)
             y << "; filename=\"#{filename}\""
           in Pathname | IO
-            filename = ERB::Util.url_encode(::File.basename(val.to_path))
+            filename = ERB::Util.url_encode(File.basename(val.to_path))
             y << "; filename=\"#{filename}\""
           else
           end

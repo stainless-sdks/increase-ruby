@@ -5,7 +5,7 @@ module Increase
         def create: (
           card_payment_id: String,
           ?request_options: Increase::request_opts
-        ) -> Increase::CardPayment
+        ) -> Increase::Models::CardPayment
 
         def initialize: (client: Increase::Client) -> void
       end

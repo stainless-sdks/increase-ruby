@@ -21,16 +21,16 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::InboundCheckDeposit]
+        # @return [Increase::Models::InboundCheckDeposit]
         #
         # @see Increase::Models::Simulations::InboundCheckDepositCreateParams
         def create(params)
-          parsed, options = Increase::Simulations::InboundCheckDepositCreateParams.dump_request(params)
+          parsed, options = Increase::Models::Simulations::InboundCheckDepositCreateParams.dump_request(params)
           @client.request(
             method: :post,
             path: "simulations/inbound_check_deposits",
             body: parsed,
-            model: Increase::InboundCheckDeposit,
+            model: Increase::Models::InboundCheckDeposit,
             options: options
           )
         end

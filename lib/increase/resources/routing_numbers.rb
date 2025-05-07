@@ -18,6 +18,7 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -25,7 +26,7 @@ module Increase
       #
       # @see Increase::Models::RoutingNumberListParams
       def list(params)
-        parsed, options = Increase::RoutingNumberListParams.dump_request(params)
+        parsed, options = Increase::Models::RoutingNumberListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "routing_numbers",

@@ -11,14 +11,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::PendingTransaction]
+      # @return [Increase::Models::PendingTransaction]
       #
       # @see Increase::Models::PendingTransactionRetrieveParams
       def retrieve(pending_transaction_id, params = {})
         @client.request(
           method: :get,
           path: ["pending_transactions/%1$s", pending_transaction_id],
-          model: Increase::PendingTransaction,
+          model: Increase::Models::PendingTransaction,
           options: params[:request_options]
         )
       end
@@ -32,31 +32,32 @@ module Increase
       #
       # @param account_id [String] Filter pending transactions to those belonging to the specified Account.
       #
-      # @param category [Increase::PendingTransactionListParams::Category]
+      # @param category [Increase::Models::PendingTransactionListParams::Category]
       #
-      # @param created_at [Increase::PendingTransactionListParams::CreatedAt]
+      # @param created_at [Increase::Models::PendingTransactionListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
       #
       # @param route_id [String] Filter pending transactions to those belonging to the specified Route.
       #
-      # @param status [Increase::PendingTransactionListParams::Status]
+      # @param status [Increase::Models::PendingTransactionListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::PendingTransaction>]
+      # @return [Increase::Internal::Page<Increase::Models::PendingTransaction>]
       #
       # @see Increase::Models::PendingTransactionListParams
       def list(params = {})
-        parsed, options = Increase::PendingTransactionListParams.dump_request(params)
+        parsed, options = Increase::Models::PendingTransactionListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "pending_transactions",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::PendingTransaction,
+          model: Increase::Models::PendingTransaction,
           options: options
         )
       end

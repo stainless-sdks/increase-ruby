@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
@@ -33,13 +31,12 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig { returns(T.nilable(Increase::DigitalCardProfileListParams::Status)) }
+      sig { returns(T.nilable(Increase::Models::DigitalCardProfileListParams::Status)) }
       attr_reader :status
 
       sig do
-        params(
-          status: Increase::DigitalCardProfileListParams::Status::OrHash
-        ).void
+        params(status: T.any(Increase::Models::DigitalCardProfileListParams::Status, Increase::Internal::AnyHash))
+          .void
       end
       attr_writer :status
 
@@ -48,9 +45,10 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::DigitalCardProfileListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          status: T.any(Increase::Models::DigitalCardProfileListParams::Status, Increase::Internal::AnyHash),
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # Return the page of entries after this one.
@@ -65,126 +63,64 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::DigitalCardProfileListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::DigitalCardProfileListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # Filter Digital Card Profiles for those with the specified digital wallet status
         # or statuses. For GET requests, this should be encoded as a comma-delimited
         # string, such as `?in=one,two,three`.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[
-                Increase::DigitalCardProfileListParams::Status::In::OrSymbol
-              ]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 
-        sig do
-          params(
-            in_:
-              T::Array[
-                Increase::DigitalCardProfileListParams::Status::In::OrSymbol
-              ]
-          ).void
-        end
+        sig { params(in_: T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol]).void }
         attr_writer :in_
 
         sig do
-          params(
-            in_:
-              T::Array[
-                Increase::DigitalCardProfileListParams::Status::In::OrSymbol
-              ]
-          ).returns(T.attached_class)
+          params(in_: T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
         end
         def self.new(
           # Filter Digital Card Profiles for those with the specified digital wallet status
           # or statuses. For GET requests, this should be encoded as a comma-delimited
           # string, such as `?in=one,two,three`.
           in_: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              in_:
-                T::Array[
-                  Increase::DigitalCardProfileListParams::Status::In::OrSymbol
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
+        ); end
+        sig { override.returns({in_: T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::OrSymbol]}) }
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Increase::DigitalCardProfileListParams::Status::In)
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::DigitalCardProfileListParams::Status::In) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
-          PENDING =
-            T.let(
-              :pending,
-              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
-            )
+          PENDING = T.let(:pending, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           # There is an issue with the Card Profile preventing it from use.
-          REJECTED =
-            T.let(
-              :rejected,
-              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
-            )
+          REJECTED = T.let(:rejected, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The Card Profile can be assigned to Cards.
-          ACTIVE =
-            T.let(
-              :active,
-              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
-            )
+          ACTIVE = T.let(:active, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
           # The Card Profile is no longer in use.
-          ARCHIVED =
-            T.let(
-              :archived,
-              Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
-            )
+          ARCHIVED = T.let(:archived, Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::DigitalCardProfileListParams::Status::In::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::Models::DigitalCardProfileListParams::Status::In::TaggedSymbol]) }
+          def self.values; end
         end
       end
     end

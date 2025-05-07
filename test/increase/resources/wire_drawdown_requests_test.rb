@@ -15,7 +15,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
       )
 
     assert_pattern do
-      response => Increase::WireDrawdownRequest
+      response => Increase::Models::WireDrawdownRequest
     end
 
     assert_pattern do
@@ -38,9 +38,9 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
         recipient_address_line3: String | nil,
         recipient_name: String | nil,
         recipient_routing_number: String,
-        status: Increase::WireDrawdownRequest::Status,
-        submission: Increase::WireDrawdownRequest::Submission | nil,
-        type: Increase::WireDrawdownRequest::Type
+        status: Increase::Models::WireDrawdownRequest::Status,
+        submission: Increase::Models::WireDrawdownRequest::Submission | nil,
+        type: Increase::Models::WireDrawdownRequest::Type
       }
     end
   end
@@ -49,7 +49,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
     response = @increase.wire_drawdown_requests.retrieve("wire_drawdown_request_id")
 
     assert_pattern do
-      response => Increase::WireDrawdownRequest
+      response => Increase::Models::WireDrawdownRequest
     end
 
     assert_pattern do
@@ -72,9 +72,9 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
         recipient_address_line3: String | nil,
         recipient_name: String | nil,
         recipient_routing_number: String,
-        status: Increase::WireDrawdownRequest::Status,
-        submission: Increase::WireDrawdownRequest::Submission | nil,
-        type: Increase::WireDrawdownRequest::Type
+        status: Increase::Models::WireDrawdownRequest::Status,
+        submission: Increase::Models::WireDrawdownRequest::Submission | nil,
+        type: Increase::Models::WireDrawdownRequest::Type
       }
     end
   end
@@ -90,7 +90,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
     return if row.nil?
 
     assert_pattern do
-      row => Increase::WireDrawdownRequest
+      row => Increase::Models::WireDrawdownRequest
     end
 
     assert_pattern do
@@ -113,9 +113,9 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
         recipient_address_line3: String | nil,
         recipient_name: String | nil,
         recipient_routing_number: String,
-        status: Increase::WireDrawdownRequest::Status,
-        submission: Increase::WireDrawdownRequest::Submission | nil,
-        type: Increase::WireDrawdownRequest::Type
+        status: Increase::Models::WireDrawdownRequest::Status,
+        submission: Increase::Models::WireDrawdownRequest::Submission | nil,
+        type: Increase::Models::WireDrawdownRequest::Type
       }
     end
   end
