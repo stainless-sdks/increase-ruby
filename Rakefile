@@ -35,7 +35,6 @@ multitask(:test) do
 end
 
 xargs = %w[xargs --no-run-if-empty --null --max-procs=0 --max-args=300 --]
-locale = {"LC_ALL" => "C.UTF-8"}
 
 desc("Lint `*.rb(i)`")
 multitask(:"lint:rubocop") do
@@ -63,7 +62,7 @@ desc("Format `*.rbi`")
 multitask(:"format:rbi") do
   find = %w[find ./rbi -type f -and -name *.rbi -print0]
   fmt = xargs + %w[stree write --]
-  sh(locale, "#{find.shelljoin} | #{fmt.shelljoin}")
+  sh("#{find.shelljoin} | #{fmt.shelljoin}")
 end
 
 desc("Format `*.rbs`")
@@ -99,7 +98,7 @@ multitask(:"format:rbs") do
   # transform class aliases to type aliases, which syntax tree has no trouble with
   sh("#{find.shelljoin} | #{pre.shelljoin}")
   # run syntax tree to format `*.rbs` files
-  sh(locale, "#{find.shelljoin} | #{fmt.shelljoin}") do
+  sh("#{find.shelljoin} | #{fmt.shelljoin}") do
     success = _1
   end
   # transform type aliases back to class aliases
