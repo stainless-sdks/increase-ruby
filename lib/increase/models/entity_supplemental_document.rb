@@ -35,30 +35,33 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
       #
-      #   @return [Symbol, Increase::EntitySupplementalDocument::Type]
-      required :type, enum: -> { Increase::EntitySupplementalDocument::Type }
+      #   @return [Symbol, Increase::Models::EntitySupplementalDocument::Type]
+      required :type, enum: -> { Increase::Models::EntitySupplementalDocument::Type }
 
       # @!method initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
       #   Some parameter documentations has been truncated, see
-      #   {Increase::EntitySupplementalDocument} for more details.
+      #   {Increase::Models::EntitySupplementalDocument} for more details.
       #
       #   Supplemental Documents are uploaded files connected to an Entity during
       #   onboarding.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Supplem
+      #   ...
       #
       #   @param entity_id [String] The Entity the supplemental document is attached to.
       #
       #   @param file_id [String] The File containing the document.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
       #
-      #   @param type [Symbol, Increase::EntitySupplementalDocument::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::Models::EntitySupplementalDocument::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
 
       # A constant representing the object's type. For this resource it will always be
       # `entity_supplemental_document`.
       #
-      # @see Increase::EntitySupplementalDocument#type
+      # @see Increase::Models::EntitySupplementalDocument#type
       module Type
         extend Increase::Internal::Type::Enum
 

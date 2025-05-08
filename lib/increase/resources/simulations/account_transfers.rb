@@ -15,14 +15,14 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::AccountTransfer]
+        # @return [Increase::Models::AccountTransfer]
         #
         # @see Increase::Models::Simulations::AccountTransferCompleteParams
         def complete(account_transfer_id, params = {})
           @client.request(
             method: :post,
             path: ["simulations/account_transfers/%1$s/complete", account_transfer_id],
-            model: Increase::AccountTransfer,
+            model: Increase::Models::AccountTransfer,
             options: params[:request_options]
           )
         end

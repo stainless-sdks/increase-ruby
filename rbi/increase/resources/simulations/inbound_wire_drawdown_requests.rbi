@@ -28,8 +28,9 @@ module Increase
             originator_to_beneficiary_information_line2: String,
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::InboundWireDrawdownRequest)
+            request_options: Increase::RequestOpts
+          )
+            .returns(Increase::Models::InboundWireDrawdownRequest)
         end
         def create(
           # The amount being requested in cents.
@@ -79,13 +80,10 @@ module Increase
           # beneficiary.
           originator_to_beneficiary_information_line4: nil,
           request_options: {}
-        )
-        end
-
+        ); end
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

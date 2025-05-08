@@ -5,10 +5,10 @@ module Increase
     module Type
       # @api private
       module RequestParameters
-        # @!attribute request_options
-        # Options to specify HTTP behaviour for this request.
-        #
-        #   @return [Increase::RequestOptions, Hash{Symbol=>Object}]
+        # @!parse
+        #   # Options to specify HTTP behaviour for this request.
+        #   # @return [Increase::RequestOptions, Hash{Symbol=>Object}]
+        #   attr_accessor :request_options
 
         # @param mod [Module]
         def self.included(mod)

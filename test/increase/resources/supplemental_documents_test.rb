@@ -11,7 +11,7 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
       )
 
     assert_pattern do
-      response => Increase::EntitySupplementalDocument
+      response => Increase::Models::EntitySupplementalDocument
     end
 
     assert_pattern do
@@ -20,7 +20,7 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
         entity_id: String,
         file_id: String,
         idempotency_key: String | nil,
-        type: Increase::EntitySupplementalDocument::Type
+        type: Increase::Models::EntitySupplementalDocument::Type
       }
     end
   end
@@ -36,7 +36,7 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
     return if row.nil?
 
     assert_pattern do
-      row => Increase::EntitySupplementalDocument
+      row => Increase::Models::EntitySupplementalDocument
     end
 
     assert_pattern do
@@ -45,7 +45,7 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
         entity_id: String,
         file_id: String,
         idempotency_key: String | nil,
-        type: Increase::EntitySupplementalDocument::Type
+        type: Increase::Models::EntitySupplementalDocument::Type
       }
     end
   end

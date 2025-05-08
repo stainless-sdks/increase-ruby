@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The identifier of the Entity to associate with the supplemental document.
       sig { returns(String) }
       attr_accessor :entity_id
@@ -20,8 +18,9 @@ module Increase
         params(
           entity_id: String,
           file_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier of the Entity to associate with the supplemental document.
@@ -29,20 +28,11 @@ module Increase
         # The identifier of the File containing the document.
         file_id:,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            entity_id: String,
-            file_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions})
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

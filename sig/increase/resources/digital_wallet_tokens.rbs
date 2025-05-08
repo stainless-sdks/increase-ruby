@@ -4,15 +4,15 @@ module Increase
       def retrieve: (
         String digital_wallet_token_id,
         ?request_options: Increase::request_opts
-      ) -> Increase::DigitalWalletToken
+      ) -> Increase::Models::DigitalWalletToken
 
       def list: (
         ?card_id: String,
-        ?created_at: Increase::DigitalWalletTokenListParams::CreatedAt,
+        ?created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
         ?cursor: String,
         ?limit: Integer,
         ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::DigitalWalletToken]
+      ) -> Increase::Internal::Page[Increase::Models::DigitalWalletToken]
 
       def initialize: (client: Increase::Client) -> void
     end

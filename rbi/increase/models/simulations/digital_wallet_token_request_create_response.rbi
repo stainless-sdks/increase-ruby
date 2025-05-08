@@ -4,9 +4,6 @@ module Increase
   module Models
     module Simulations
       class DigitalWalletTokenRequestCreateResponse < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
         # If the simulated tokenization attempt was declined, this field contains details
         # as to why.
         sig do
@@ -25,24 +22,17 @@ module Increase
 
         # A constant representing the object's type. For this resource it will always be
         # `inbound_digital_wallet_token_request_simulation_result`.
-        sig do
-          returns(
-            Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
-          )
-        end
+        sig { returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol) }
         attr_accessor :type
 
         # The results of a Digital Wallet Token simulation.
         sig do
           params(
-            decline_reason:
-              T.nilable(
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::OrSymbol
-              ),
+            decline_reason: T.nilable(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::OrSymbol),
             digital_wallet_token_id: T.nilable(String),
-            type:
-              Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::OrSymbol
-          ).returns(T.attached_class)
+            type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::OrSymbol
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # If the simulated tokenization attempt was declined, this field contains details
@@ -54,24 +44,20 @@ module Increase
           # A constant representing the object's type. For this resource it will always be
           # `inbound_digital_wallet_token_request_simulation_result`.
           type:
-        )
-        end
-
+        ); end
         sig do
-          override.returns(
-            {
-              decline_reason:
-                T.nilable(
+          override
+            .returns(
+              {
+                decline_reason: T.nilable(
                   Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
                 ),
-              digital_wallet_token_id: T.nilable(String),
-              type:
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
-            }
-          )
+                digital_wallet_token_id: T.nilable(String),
+                type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # If the simulated tokenization attempt was declined, this field contains details
         # as to why.
@@ -79,12 +65,7 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The card is not active.
@@ -116,14 +97,12 @@ module Increase
             )
 
           sig do
-            override.returns(
-              T::Array[
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol
-              ]
-            )
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason::TaggedSymbol]
+              )
           end
-          def self.values
-          end
+          def self.values; end
         end
 
         # A constant representing the object's type. For this resource it will always be
@@ -132,12 +111,7 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT =
@@ -147,14 +121,12 @@ module Increase
             )
 
           sig do
-            override.returns(
-              T::Array[
-                Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol
-              ]
-            )
+            override
+              .returns(
+                T::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type::TaggedSymbol]
+              )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

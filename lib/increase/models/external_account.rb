@@ -13,8 +13,8 @@ module Increase
       # @!attribute account_holder
       #   The type of entity that owns the External Account.
       #
-      #   @return [Symbol, Increase::ExternalAccount::AccountHolder]
-      required :account_holder, enum: -> { Increase::ExternalAccount::AccountHolder }
+      #   @return [Symbol, Increase::Models::ExternalAccount::AccountHolder]
+      required :account_holder, enum: -> { Increase::Models::ExternalAccount::AccountHolder }
 
       # @!attribute account_number
       #   The destination account number.
@@ -38,8 +38,8 @@ module Increase
       # @!attribute funding
       #   The type of the account to which the transfer will be sent.
       #
-      #   @return [Symbol, Increase::ExternalAccount::Funding]
-      required :funding, enum: -> { Increase::ExternalAccount::Funding }
+      #   @return [Symbol, Increase::Models::ExternalAccount::Funding]
+      required :funding, enum: -> { Increase::Models::ExternalAccount::Funding }
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
@@ -58,54 +58,57 @@ module Increase
       # @!attribute status
       #   The External Account's status.
       #
-      #   @return [Symbol, Increase::ExternalAccount::Status]
-      required :status, enum: -> { Increase::ExternalAccount::Status }
+      #   @return [Symbol, Increase::Models::ExternalAccount::Status]
+      required :status, enum: -> { Increase::Models::ExternalAccount::Status }
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be
       #   `external_account`.
       #
-      #   @return [Symbol, Increase::ExternalAccount::Type]
-      required :type, enum: -> { Increase::ExternalAccount::Type }
+      #   @return [Symbol, Increase::Models::ExternalAccount::Type]
+      required :type, enum: -> { Increase::Models::ExternalAccount::Type }
 
       # @!attribute verification_status
       #   If you have verified ownership of the External Account.
       #
-      #   @return [Symbol, Increase::ExternalAccount::VerificationStatus]
-      required :verification_status, enum: -> { Increase::ExternalAccount::VerificationStatus }
+      #   @return [Symbol, Increase::Models::ExternalAccount::VerificationStatus]
+      required :verification_status, enum: -> { Increase::Models::ExternalAccount::VerificationStatus }
 
       # @!method initialize(id:, account_holder:, account_number:, created_at:, description:, funding:, idempotency_key:, routing_number:, status:, type:, verification_status:)
       #   Some parameter documentations has been truncated, see
-      #   {Increase::ExternalAccount} for more details.
+      #   {Increase::Models::ExternalAccount} for more details.
       #
       #   External Accounts represent accounts at financial institutions other than
       #   Increase. You can use this API to store their details for reuse.
       #
       #   @param id [String] The External Account's identifier.
       #
-      #   @param account_holder [Symbol, Increase::ExternalAccount::AccountHolder] The type of entity that owns the External Account.
+      #   @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder] The type of entity that owns the External Account.
       #
       #   @param account_number [String] The destination account number.
       #
       #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
+      #   ...
       #
       #   @param description [String] The External Account's description for display purposes.
       #
-      #   @param funding [Symbol, Increase::ExternalAccount::Funding] The type of the account to which the transfer will be sent.
+      #   @param funding [Symbol, Increase::Models::ExternalAccount::Funding] The type of the account to which the transfer will be sent.
       #
       #   @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across Incre
+      #   ...
       #
       #   @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
       #
-      #   @param status [Symbol, Increase::ExternalAccount::Status] The External Account's status.
+      #   @param status [Symbol, Increase::Models::ExternalAccount::Status] The External Account's status.
       #
-      #   @param type [Symbol, Increase::ExternalAccount::Type] A constant representing the object's type. For this resource it will always be `
+      #   @param type [Symbol, Increase::Models::ExternalAccount::Type] A constant representing the object's type. For this resource it will always be `
+      #   ...
       #
-      #   @param verification_status [Symbol, Increase::ExternalAccount::VerificationStatus] If you have verified ownership of the External Account.
+      #   @param verification_status [Symbol, Increase::Models::ExternalAccount::VerificationStatus] If you have verified ownership of the External Account.
 
       # The type of entity that owns the External Account.
       #
-      # @see Increase::ExternalAccount#account_holder
+      # @see Increase::Models::ExternalAccount#account_holder
       module AccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -124,7 +127,7 @@ module Increase
 
       # The type of the account to which the transfer will be sent.
       #
-      # @see Increase::ExternalAccount#funding
+      # @see Increase::Models::ExternalAccount#funding
       module Funding
         extend Increase::Internal::Type::Enum
 
@@ -143,7 +146,7 @@ module Increase
 
       # The External Account's status.
       #
-      # @see Increase::ExternalAccount#status
+      # @see Increase::Models::ExternalAccount#status
       module Status
         extend Increase::Internal::Type::Enum
 
@@ -160,7 +163,7 @@ module Increase
       # A constant representing the object's type. For this resource it will always be
       # `external_account`.
       #
-      # @see Increase::ExternalAccount#type
+      # @see Increase::Models::ExternalAccount#type
       module Type
         extend Increase::Internal::Type::Enum
 
@@ -172,7 +175,7 @@ module Increase
 
       # If you have verified ownership of the External Account.
       #
-      # @see Increase::ExternalAccount#verification_status
+      # @see Increase::Models::ExternalAccount#verification_status
       module VerificationStatus
         extend Increase::Internal::Type::Enum
 

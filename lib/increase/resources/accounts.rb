@@ -15,21 +15,23 @@ module Increase
       # @param entity_id [String] The identifier for the Entity that will own the Account.
       #
       # @param informational_entity_id [String] The identifier of an Entity that, while not owning the Account, is associated wi
+      # ...
       #
       # @param program_id [String] The identifier for the Program that this Account falls under. Required if you op
+      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Account]
+      # @return [Increase::Models::Account]
       #
       # @see Increase::Models::AccountCreateParams
       def create(params)
-        parsed, options = Increase::AccountCreateParams.dump_request(params)
+        parsed, options = Increase::Models::AccountCreateParams.dump_request(params)
         @client.request(
           method: :post,
           path: "accounts",
           body: parsed,
-          model: Increase::Account,
+          model: Increase::Models::Account,
           options: options
         )
       end
@@ -42,14 +44,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Account]
+      # @return [Increase::Models::Account]
       #
       # @see Increase::Models::AccountRetrieveParams
       def retrieve(account_id, params = {})
         @client.request(
           method: :get,
           path: ["accounts/%1$s", account_id],
-          model: Increase::Account,
+          model: Increase::Models::Account,
           options: params[:request_options]
         )
       end
@@ -64,16 +66,16 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Account]
+      # @return [Increase::Models::Account]
       #
       # @see Increase::Models::AccountUpdateParams
       def update(account_id, params = {})
-        parsed, options = Increase::AccountUpdateParams.dump_request(params)
+        parsed, options = Increase::Models::AccountUpdateParams.dump_request(params)
         @client.request(
           method: :patch,
           path: ["accounts/%1$s", account_id],
           body: parsed,
-          model: Increase::Account,
+          model: Increase::Models::Account,
           options: options
         )
       end
@@ -85,35 +87,37 @@ module Increase
       #
       # @overload list(created_at: nil, cursor: nil, entity_id: nil, idempotency_key: nil, informational_entity_id: nil, limit: nil, program_id: nil, status: nil, request_options: {})
       #
-      # @param created_at [Increase::AccountListParams::CreatedAt]
+      # @param created_at [Increase::Models::AccountListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param entity_id [String] Filter Accounts for those belonging to the specified Entity.
       #
       # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for tha
+      # ...
       #
       # @param informational_entity_id [String] Filter Accounts for those belonging to the specified Entity as informational.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
       #
       # @param program_id [String] Filter Accounts for those in a specific Program.
       #
-      # @param status [Increase::AccountListParams::Status]
+      # @param status [Increase::Models::AccountListParams::Status]
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Account>]
+      # @return [Increase::Internal::Page<Increase::Models::Account>]
       #
       # @see Increase::Models::AccountListParams
       def list(params = {})
-        parsed, options = Increase::AccountListParams.dump_request(params)
+        parsed, options = Increase::Models::AccountListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "accounts",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::Account,
+          model: Increase::Models::Account,
           options: options
         )
       end
@@ -129,16 +133,16 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::BalanceLookup]
+      # @return [Increase::Models::BalanceLookup]
       #
       # @see Increase::Models::AccountBalanceParams
       def balance(account_id, params = {})
-        parsed, options = Increase::AccountBalanceParams.dump_request(params)
+        parsed, options = Increase::Models::AccountBalanceParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["accounts/%1$s/balance", account_id],
           query: parsed,
-          model: Increase::BalanceLookup,
+          model: Increase::Models::BalanceLookup,
           options: options
         )
       end
@@ -151,14 +155,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Account]
+      # @return [Increase::Models::Account]
       #
       # @see Increase::Models::AccountCloseParams
       def close(account_id, params = {})
         @client.request(
           method: :post,
           path: ["accounts/%1$s/close", account_id],
-          model: Increase::Account,
+          model: Increase::Models::Account,
           options: params[:request_options]
         )
       end

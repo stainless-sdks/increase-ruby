@@ -6,8 +6,6 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The transfer amount in USD cents. For Real-Time Payments transfers, must be
       # positive.
       sig { returns(Integer) }
@@ -93,8 +91,9 @@ module Increase
           require_approval: T::Boolean,
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+          request_options: T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The transfer amount in USD cents. For Real-Time Payments transfers, must be
@@ -127,29 +126,27 @@ module Increase
         # sent on behalf of someone who is not the account holder at Increase.
         ultimate_debtor_name: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            amount: Integer,
-            creditor_name: String,
-            remittance_information: String,
-            source_account_number_id: String,
-            debtor_name: String,
-            destination_account_number: String,
-            destination_routing_number: String,
-            external_account_id: String,
-            require_approval: T::Boolean,
-            ultimate_creditor_name: String,
-            ultimate_debtor_name: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              amount: Integer,
+              creditor_name: String,
+              remittance_information: String,
+              source_account_number_id: String,
+              debtor_name: String,
+              destination_account_number: String,
+              destination_routing_number: String,
+              external_account_id: String,
+              require_approval: T::Boolean,
+              ultimate_creditor_name: String,
+              ultimate_debtor_name: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

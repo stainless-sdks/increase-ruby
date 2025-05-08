@@ -3,8 +3,6 @@
 module Increase
   module Models
     class OAuthApplication < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The OAuth Application's identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -29,12 +27,12 @@ module Increase
       attr_accessor :name
 
       # Whether the application is active.
-      sig { returns(Increase::OAuthApplication::Status::TaggedSymbol) }
+      sig { returns(Increase::Models::OAuthApplication::Status::TaggedSymbol) }
       attr_accessor :status
 
       # A constant representing the object's type. For this resource it will always be
       # `oauth_application`.
-      sig { returns(Increase::OAuthApplication::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::OAuthApplication::Type::TaggedSymbol) }
       attr_accessor :type
 
       # An OAuth Application lets you build an application for others to use with their
@@ -48,9 +46,10 @@ module Increase
           created_at: Time,
           deleted_at: T.nilable(Time),
           name: T.nilable(String),
-          status: Increase::OAuthApplication::Status::OrSymbol,
-          type: Increase::OAuthApplication::Type::OrSymbol
-        ).returns(T.attached_class)
+          status: Increase::Models::OAuthApplication::Status::OrSymbol,
+          type: Increase::Models::OAuthApplication::Type::OrSymbol
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The OAuth Application's identifier.
@@ -71,48 +70,38 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `oauth_application`.
         type:
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            id: String,
-            client_id: String,
-            created_at: Time,
-            deleted_at: T.nilable(Time),
-            name: T.nilable(String),
-            status: Increase::OAuthApplication::Status::TaggedSymbol,
-            type: Increase::OAuthApplication::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              client_id: String,
+              created_at: Time,
+              deleted_at: T.nilable(Time),
+              name: T.nilable(String),
+              status: Increase::Models::OAuthApplication::Status::TaggedSymbol,
+              type: Increase::Models::OAuthApplication::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # Whether the application is active.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::OAuthApplication::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplication::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The application is active and can be used by your users.
-        ACTIVE =
-          T.let(:active, Increase::OAuthApplication::Status::TaggedSymbol)
+        ACTIVE = T.let(:active, Increase::Models::OAuthApplication::Status::TaggedSymbol)
 
         # The application is deleted.
-        DELETED =
-          T.let(:deleted, Increase::OAuthApplication::Status::TaggedSymbol)
+        DELETED = T.let(:deleted, Increase::Models::OAuthApplication::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::OAuthApplication::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::OAuthApplication::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -120,23 +109,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::OAuthApplication::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::OAuthApplication::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        OAUTH_APPLICATION =
-          T.let(
-            :oauth_application,
-            Increase::OAuthApplication::Type::TaggedSymbol
-          )
+        OAUTH_APPLICATION = T.let(:oauth_application, Increase::Models::OAuthApplication::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::OAuthApplication::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::OAuthApplication::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

@@ -7,17 +7,17 @@ class Increase::Test::Resources::CardPurchaseSupplementsTest < Increase::Test::R
     response = @increase.card_purchase_supplements.retrieve("card_purchase_supplement_id")
 
     assert_pattern do
-      response => Increase::CardPurchaseSupplement
+      response => Increase::Models::CardPurchaseSupplement
     end
 
     assert_pattern do
       response => {
         id: String,
         card_payment_id: String | nil,
-        invoice: Increase::CardPurchaseSupplement::Invoice | nil,
-        line_items: ^(Increase::Internal::Type::ArrayOf[Increase::CardPurchaseSupplement::LineItem]) | nil,
+        invoice: Increase::Models::CardPurchaseSupplement::Invoice | nil,
+        line_items: ^(Increase::Internal::Type::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem]) | nil,
         transaction_id: String,
-        type: Increase::CardPurchaseSupplement::Type
+        type: Increase::Models::CardPurchaseSupplement::Type
       }
     end
   end
@@ -33,17 +33,17 @@ class Increase::Test::Resources::CardPurchaseSupplementsTest < Increase::Test::R
     return if row.nil?
 
     assert_pattern do
-      row => Increase::CardPurchaseSupplement
+      row => Increase::Models::CardPurchaseSupplement
     end
 
     assert_pattern do
       row => {
         id: String,
         card_payment_id: String | nil,
-        invoice: Increase::CardPurchaseSupplement::Invoice | nil,
-        line_items: ^(Increase::Internal::Type::ArrayOf[Increase::CardPurchaseSupplement::LineItem]) | nil,
+        invoice: Increase::Models::CardPurchaseSupplement::Invoice | nil,
+        line_items: ^(Increase::Internal::Type::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem]) | nil,
         transaction_id: String,
-        type: Increase::CardPurchaseSupplement::Type
+        type: Increase::Models::CardPurchaseSupplement::Type
       }
     end
   end

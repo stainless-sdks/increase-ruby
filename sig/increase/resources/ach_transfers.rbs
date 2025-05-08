@@ -6,7 +6,7 @@ module Increase
         amount: Integer,
         statement_descriptor: String,
         ?account_number: String,
-        ?addenda: Increase::ACHTransferCreateParams::Addenda,
+        ?addenda: Increase::Models::ACHTransferCreateParams::Addenda,
         ?company_descriptive_date: String,
         ?company_discretionary_data: String,
         ?company_entry_description: String,
@@ -16,39 +16,39 @@ module Increase
         ?funding: Increase::Models::ACHTransferCreateParams::funding,
         ?individual_id: String,
         ?individual_name: String,
-        ?preferred_effective_date: Increase::ACHTransferCreateParams::PreferredEffectiveDate,
+        ?preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
         ?require_approval: bool,
         ?routing_number: String,
         ?standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
         ?transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing,
         ?request_options: Increase::request_opts
-      ) -> Increase::ACHTransfer
+      ) -> Increase::Models::ACHTransfer
 
       def retrieve: (
         String ach_transfer_id,
         ?request_options: Increase::request_opts
-      ) -> Increase::ACHTransfer
+      ) -> Increase::Models::ACHTransfer
 
       def list: (
         ?account_id: String,
-        ?created_at: Increase::ACHTransferListParams::CreatedAt,
+        ?created_at: Increase::Models::ACHTransferListParams::CreatedAt,
         ?cursor: String,
         ?external_account_id: String,
         ?idempotency_key: String,
         ?limit: Integer,
-        ?status: Increase::ACHTransferListParams::Status,
+        ?status: Increase::Models::ACHTransferListParams::Status,
         ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::ACHTransfer]
+      ) -> Increase::Internal::Page[Increase::Models::ACHTransfer]
 
       def approve: (
         String ach_transfer_id,
         ?request_options: Increase::request_opts
-      ) -> Increase::ACHTransfer
+      ) -> Increase::Models::ACHTransfer
 
       def cancel: (
         String ach_transfer_id,
         ?request_options: Increase::request_opts
-      ) -> Increase::ACHTransfer
+      ) -> Increase::Models::ACHTransfer
 
       def initialize: (client: Increase::Client) -> void
     end

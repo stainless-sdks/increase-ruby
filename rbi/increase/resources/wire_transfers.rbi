@@ -22,8 +22,9 @@ module Increase
           require_approval: T::Boolean,
           routing_number: String,
           source_account_number_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::WireTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -65,34 +66,29 @@ module Increase
         # The ID of an Account Number that will be passed to the wire's recipient
         source_account_number_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Wire Transfer
       sig do
-        params(
-          wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+        params(wire_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::WireTransfer)
       end
       def retrieve(
         # The identifier of the Wire Transfer.
         wire_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Wire Transfers
       sig do
         params(
           account_id: String,
-          created_at: Increase::WireTransferListParams::CreatedAt::OrHash,
+          created_at: T.any(Increase::Models::WireTransferListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::WireTransfer])
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Internal::Page[Increase::Models::WireTransfer])
       end
       def list(
         # Filter Wire Transfers to those belonging to the specified Account.
@@ -111,41 +107,30 @@ module Increase
         # objects.
         limit: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Approve a Wire Transfer
       sig do
-        params(
-          wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+        params(wire_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::WireTransfer)
       end
       def approve(
         # The identifier of the Wire Transfer to approve.
         wire_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancel a pending Wire Transfer
       sig do
-        params(
-          wire_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::WireTransfer)
+        params(wire_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::WireTransfer)
       end
       def cancel(
         # The identifier of the pending Wire Transfer to cancel.
         wire_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

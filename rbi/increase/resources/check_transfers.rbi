@@ -8,16 +8,15 @@ module Increase
         params(
           account_id: String,
           amount: Integer,
-          fulfillment_method:
-            Increase::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
+          fulfillment_method: Increase::Models::CheckTransferCreateParams::FulfillmentMethod::OrSymbol,
           source_account_number_id: String,
           check_number: String,
-          physical_check:
-            Increase::CheckTransferCreateParams::PhysicalCheck::OrHash,
+          physical_check: T.any(Increase::Models::CheckTransferCreateParams::PhysicalCheck, Increase::Internal::AnyHash),
           require_approval: T::Boolean,
-          third_party: Increase::CheckTransferCreateParams::ThirdParty::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::CheckTransfer)
+          third_party: T.any(Increase::Models::CheckTransferCreateParams::ThirdParty, Increase::Internal::AnyHash),
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def create(
         # The identifier for the account that will send the transfer.
@@ -44,34 +43,29 @@ module Increase
         # other `fulfillment_method` is provided.
         third_party: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Check Transfer
       sig do
-        params(
-          check_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::CheckTransfer)
+        params(check_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::CheckTransfer)
       end
       def retrieve(
         # The identifier of the Check Transfer.
         check_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Check Transfers
       sig do
         params(
           account_id: String,
-          created_at: Increase::CheckTransferListParams::CreatedAt::OrHash,
+          created_at: T.any(Increase::Models::CheckTransferListParams::CreatedAt, Increase::Internal::AnyHash),
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::CheckTransferListParams::Status::OrHash,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::CheckTransfer])
+          status: T.any(Increase::Models::CheckTransferListParams::Status, Increase::Internal::AnyHash),
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Internal::Page[Increase::Models::CheckTransfer])
       end
       def list(
         # Filter Check Transfers to those that originated from the specified Account.
@@ -89,44 +83,35 @@ module Increase
         limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Approve a Check Transfer
       sig do
-        params(
-          check_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::CheckTransfer)
+        params(check_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::CheckTransfer)
       end
       def approve(
         # The identifier of the Check Transfer to approve.
         check_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Cancel a pending Check Transfer
       sig do
-        params(
-          check_transfer_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::CheckTransfer)
+        params(check_transfer_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::CheckTransfer)
       end
       def cancel(
         # The identifier of the pending Check Transfer to cancel.
         check_transfer_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # Request a stop payment on a Check Transfer
       sig do
         params(
           check_transfer_id: String,
-          reason: Increase::CheckTransferStopPaymentParams::Reason::OrSymbol,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::CheckTransfer)
+          reason: Increase::Models::CheckTransferStopPaymentParams::Reason::OrSymbol,
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def stop_payment(
         # The identifier of the Check Transfer.
@@ -134,13 +119,10 @@ module Increase
         # The reason why this transfer should be stopped.
         reason: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

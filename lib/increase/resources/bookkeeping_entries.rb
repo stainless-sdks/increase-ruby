@@ -11,14 +11,14 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::BookkeepingEntry]
+      # @return [Increase::Models::BookkeepingEntry]
       #
       # @see Increase::Models::BookkeepingEntryRetrieveParams
       def retrieve(bookkeeping_entry_id, params = {})
         @client.request(
           method: :get,
           path: ["bookkeeping_entries/%1$s", bookkeeping_entry_id],
-          model: Increase::BookkeepingEntry,
+          model: Increase::Models::BookkeepingEntry,
           options: params[:request_options]
         )
       end
@@ -35,20 +35,21 @@ module Increase
       # @param cursor [String] Return the page of entries after this one.
       #
       # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100 ob
+      # ...
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::BookkeepingEntry>]
+      # @return [Increase::Internal::Page<Increase::Models::BookkeepingEntry>]
       #
       # @see Increase::Models::BookkeepingEntryListParams
       def list(params = {})
-        parsed, options = Increase::BookkeepingEntryListParams.dump_request(params)
+        parsed, options = Increase::Models::BookkeepingEntryListParams.dump_request(params)
         @client.request(
           method: :get,
           path: "bookkeeping_entries",
           query: parsed,
           page: Increase::Internal::Page,
-          model: Increase::BookkeepingEntry,
+          model: Increase::Models::BookkeepingEntry,
           options: options
         )
       end

@@ -21,20 +21,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
       )
 
     assert_pattern do
-      response => Increase::PhysicalCard
+      response => Increase::Models::PhysicalCard
     end
 
     assert_pattern do
       response => {
         id: String,
         card_id: String,
-        cardholder: Increase::PhysicalCard::Cardholder,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
         created_at: Time,
         idempotency_key: String | nil,
         physical_card_profile_id: String | nil,
-        shipment: Increase::PhysicalCard::Shipment,
-        status: Increase::PhysicalCard::Status,
-        type: Increase::PhysicalCard::Type
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
       }
     end
   end
@@ -43,20 +43,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
     response = @increase.physical_cards.retrieve("physical_card_id")
 
     assert_pattern do
-      response => Increase::PhysicalCard
+      response => Increase::Models::PhysicalCard
     end
 
     assert_pattern do
       response => {
         id: String,
         card_id: String,
-        cardholder: Increase::PhysicalCard::Cardholder,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
         created_at: Time,
         idempotency_key: String | nil,
         physical_card_profile_id: String | nil,
-        shipment: Increase::PhysicalCard::Shipment,
-        status: Increase::PhysicalCard::Status,
-        type: Increase::PhysicalCard::Type
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
       }
     end
   end
@@ -65,20 +65,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
     response = @increase.physical_cards.update("physical_card_id", status: :disabled)
 
     assert_pattern do
-      response => Increase::PhysicalCard
+      response => Increase::Models::PhysicalCard
     end
 
     assert_pattern do
       response => {
         id: String,
         card_id: String,
-        cardholder: Increase::PhysicalCard::Cardholder,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
         created_at: Time,
         idempotency_key: String | nil,
         physical_card_profile_id: String | nil,
-        shipment: Increase::PhysicalCard::Shipment,
-        status: Increase::PhysicalCard::Status,
-        type: Increase::PhysicalCard::Type
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
       }
     end
   end
@@ -94,20 +94,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
     return if row.nil?
 
     assert_pattern do
-      row => Increase::PhysicalCard
+      row => Increase::Models::PhysicalCard
     end
 
     assert_pattern do
       row => {
         id: String,
         card_id: String,
-        cardholder: Increase::PhysicalCard::Cardholder,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
         created_at: Time,
         idempotency_key: String | nil,
         physical_card_profile_id: String | nil,
-        shipment: Increase::PhysicalCard::Shipment,
-        status: Increase::PhysicalCard::Status,
-        type: Increase::PhysicalCard::Type
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
       }
     end
   end

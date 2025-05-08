@@ -6,12 +6,12 @@ module Increase
       # Create a Bookkeeping Entry Set
       sig do
         params(
-          entries:
-            T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
+          entries: T::Array[T.any(Increase::Models::BookkeepingEntrySetCreateParams::Entry, Increase::Internal::AnyHash)],
           date: Time,
           transaction_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::BookkeepingEntrySet)
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Models::BookkeepingEntrySet)
       end
       def create(
         # The bookkeeping entries.
@@ -22,23 +22,17 @@ module Increase
         # The identifier of the Transaction related to this entry set, if any.
         transaction_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Retrieve a Bookkeeping Entry Set
       sig do
-        params(
-          bookkeeping_entry_set_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::BookkeepingEntrySet)
+        params(bookkeeping_entry_set_id: String, request_options: Increase::RequestOpts)
+          .returns(Increase::Models::BookkeepingEntrySet)
       end
       def retrieve(
         # The identifier of the Bookkeeping Entry Set.
         bookkeeping_entry_set_id,
         request_options: {}
-      )
-      end
-
+      ); end
       # List Bookkeeping Entry Sets
       sig do
         params(
@@ -46,8 +40,9 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           transaction_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::BookkeepingEntrySet])
+          request_options: Increase::RequestOpts
+        )
+          .returns(Increase::Internal::Page[Increase::Models::BookkeepingEntrySet])
       end
       def list(
         # Return the page of entries after this one.
@@ -63,13 +58,10 @@ module Increase
         # Filter to the Bookkeeping Entry Set that maps to this Transaction.
         transaction_id: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

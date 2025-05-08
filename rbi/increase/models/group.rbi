@@ -3,18 +3,16 @@
 module Increase
   module Models
     class Group < Increase::Internal::Type::BaseModel
-      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
-
       # The Group identifier.
       sig { returns(String) }
       attr_accessor :id
 
       # If the Group is allowed to create ACH debits.
-      sig { returns(Increase::Group::ACHDebitStatus::TaggedSymbol) }
+      sig { returns(Increase::Models::Group::ACHDebitStatus::TaggedSymbol) }
       attr_accessor :ach_debit_status
 
       # If the Group is activated or not.
-      sig { returns(Increase::Group::ActivationStatus::TaggedSymbol) }
+      sig { returns(Increase::Models::Group::ActivationStatus::TaggedSymbol) }
       attr_accessor :activation_status
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
@@ -24,7 +22,7 @@ module Increase
 
       # A constant representing the object's type. For this resource it will always be
       # `group`.
-      sig { returns(Increase::Group::Type::TaggedSymbol) }
+      sig { returns(Increase::Models::Group::Type::TaggedSymbol) }
       attr_accessor :type
 
       # Groups represent organizations using Increase. You can retrieve information
@@ -34,11 +32,12 @@ module Increase
       sig do
         params(
           id: String,
-          ach_debit_status: Increase::Group::ACHDebitStatus::OrSymbol,
-          activation_status: Increase::Group::ActivationStatus::OrSymbol,
+          ach_debit_status: Increase::Models::Group::ACHDebitStatus::OrSymbol,
+          activation_status: Increase::Models::Group::ActivationStatus::OrSymbol,
           created_at: Time,
-          type: Increase::Group::Type::OrSymbol
-        ).returns(T.attached_class)
+          type: Increase::Models::Group::Type::OrSymbol
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Group identifier.
@@ -53,70 +52,53 @@ module Increase
         # A constant representing the object's type. For this resource it will always be
         # `group`.
         type:
-      )
-      end
-
+      ); end
       sig do
-        override.returns(
-          {
-            id: String,
-            ach_debit_status: Increase::Group::ACHDebitStatus::TaggedSymbol,
-            activation_status: Increase::Group::ActivationStatus::TaggedSymbol,
-            created_at: Time,
-            type: Increase::Group::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              ach_debit_status: Increase::Models::Group::ACHDebitStatus::TaggedSymbol,
+              activation_status: Increase::Models::Group::ActivationStatus::TaggedSymbol,
+              created_at: Time,
+              type: Increase::Models::Group::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If the Group is allowed to create ACH debits.
       module ACHDebitStatus
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Group::ACHDebitStatus) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ACHDebitStatus) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Group cannot make ACH debits.
-        DISABLED =
-          T.let(:disabled, Increase::Group::ACHDebitStatus::TaggedSymbol)
+        DISABLED = T.let(:disabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
 
         # The Group can make ACH debits.
-        ENABLED = T.let(:enabled, Increase::Group::ACHDebitStatus::TaggedSymbol)
+        ENABLED = T.let(:enabled, Increase::Models::Group::ACHDebitStatus::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::Group::ACHDebitStatus::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::Group::ACHDebitStatus::TaggedSymbol]) }
+        def self.values; end
       end
 
       # If the Group is activated or not.
       module ActivationStatus
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Group::ActivationStatus) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::ActivationStatus) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Group is not activated.
-        UNACTIVATED =
-          T.let(:unactivated, Increase::Group::ActivationStatus::TaggedSymbol)
+        UNACTIVATED = T.let(:unactivated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
 
         # The Group is activated.
-        ACTIVATED =
-          T.let(:activated, Increase::Group::ActivationStatus::TaggedSymbol)
+        ACTIVATED = T.let(:activated, Increase::Models::Group::ActivationStatus::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::Group::ActivationStatus::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::Group::ActivationStatus::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -124,14 +106,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Group::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Models::Group::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        GROUP = T.let(:group, Increase::Group::Type::TaggedSymbol)
+        GROUP = T.let(:group, Increase::Models::Group::Type::TaggedSymbol)
 
-        sig { override.returns(T::Array[Increase::Group::Type::TaggedSymbol]) }
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Models::Group::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end
