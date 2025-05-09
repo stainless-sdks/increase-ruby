@@ -12,13 +12,9 @@ The REST API documentation can be found on [increase.com](https://increase.com/d
 
 To use this gem, install via Bundler by adding the following to your application's `Gemfile`:
 
-<!-- x-release-please-start-version -->
-
 ```ruby
-gem "increase", "~> 0.1.0.pre.alpha.20"
+gem "increase", "~> 0.0.1.pre.alpha.0"
 ```
-
-<!-- x-release-please-end -->
 
 ## Usage
 
@@ -96,7 +92,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  account = increase.accounts.create(name: "New Account!")
+  account = increase.accounts.create
 rescue Increase::Errors::APIError => e
   puts(e.status) # 400
 end
