@@ -3,10 +3,7 @@
 module Increase
   module Models
     class WireDrawdownRequest < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::WireDrawdownRequest, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Wire drawdown request identifier.
       sig { returns(String) }
@@ -262,12 +259,7 @@ module Increase
 
       class Submission < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::WireDrawdownRequest::Submission,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The input message accountability data (IMAD) uniquely identifying the submission
         # with Fedwire.

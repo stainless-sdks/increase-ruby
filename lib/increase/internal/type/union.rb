@@ -6,7 +6,6 @@ module Increase
       # @api private
       module Union
         include Increase::Internal::Type::Converter
-        include Increase::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

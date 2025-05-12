@@ -3,10 +3,7 @@
 module Increase
   module Models
     class DigitalWalletToken < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::DigitalWalletToken, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Digital Wallet Token identifier.
       sig { returns(String) }
@@ -120,12 +117,7 @@ module Increase
 
       class Cardholder < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DigitalWalletToken::Cardholder,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # Name of the cardholder, for example "John Smith".
         sig { returns(T.nilable(String)) }
@@ -146,12 +138,7 @@ module Increase
 
       class Device < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DigitalWalletToken::Device,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # Device type.
         sig do
@@ -409,12 +396,7 @@ module Increase
 
       class Update < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DigitalWalletToken::Update,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The status the update changed this Digital Wallet Token to.
         sig do

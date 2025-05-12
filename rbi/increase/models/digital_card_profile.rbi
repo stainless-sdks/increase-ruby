@@ -3,10 +3,7 @@
 module Increase
   module Models
     class DigitalCardProfile < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::DigitalCardProfile, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Card Profile identifier.
       sig { returns(String) }
@@ -188,12 +185,7 @@ module Increase
 
       class TextColor < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DigitalCardProfile::TextColor,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }

@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::ACHTransferCreateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
@@ -329,12 +326,7 @@ module Increase
 
       class Addenda < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransferCreateParams::Addenda,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The type of addenda to pass with the transfer.
         sig do
@@ -456,12 +448,7 @@ module Increase
 
         class Freeform < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransferCreateParams::Addenda::Freeform,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # Each entry represents an addendum sent with the transfer. Please reach out to
           # [support@increase.com](mailto:support@increase.com) to send more than one
@@ -507,12 +494,7 @@ module Increase
 
           class Entry < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::ACHTransferCreateParams::Addenda::Freeform::Entry,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment related information passed in the addendum.
             sig { returns(String) }
@@ -537,12 +519,7 @@ module Increase
 
         class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # ASC X12 RMR records for this specific transfer.
           sig do
@@ -585,12 +562,7 @@ module Increase
 
           class Invoice < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The invoice number for this reference, determined in advance with the receiver.
             sig { returns(String) }
@@ -705,12 +677,7 @@ module Increase
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransferCreateParams::PreferredEffectiveDate,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
         # use as the effective date when submitting this transfer.

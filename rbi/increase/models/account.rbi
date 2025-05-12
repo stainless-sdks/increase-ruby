@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Account < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Account, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Account identifier.
       sig { returns(String) }

@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::InboundMailItemListParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       sig { returns(T.nilable(Increase::InboundMailItemListParams::CreatedAt)) }
       attr_reader :created_at
@@ -84,12 +78,7 @@ module Increase
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundMailItemListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.

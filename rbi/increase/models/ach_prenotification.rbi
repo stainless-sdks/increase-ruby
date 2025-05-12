@@ -3,10 +3,7 @@
 module Increase
   module Models
     class ACHPrenotification < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::ACHPrenotification, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The ACH Prenotification's identifier.
       sig { returns(String) }
@@ -236,12 +233,7 @@ module Increase
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHPrenotification::NotificationsOfChange,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The required type of change that is being signaled by the receiving financial
         # institution.
@@ -463,12 +455,7 @@ module Increase
 
       class PrenotificationReturn < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHPrenotification::PrenotificationReturn,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Prenotification was returned.

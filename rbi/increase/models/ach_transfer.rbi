@@ -3,10 +3,7 @@
 module Increase
   module Models
     class ACHTransfer < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::ACHTransfer, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The ACH transfer's identifier.
       sig { returns(String) }
@@ -453,12 +450,7 @@ module Increase
 
       class Acknowledgement < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::Acknowledgement,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # When the Federal Reserve acknowledged the submitted file containing this
         # transfer.
@@ -483,9 +475,7 @@ module Increase
 
       class Addenda < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::ACHTransfer::Addenda, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The type of the resource. We may add additional possible values for this enum
         # over time; your application should be able to handle such additions gracefully.
@@ -607,12 +597,7 @@ module Increase
 
         class Freeform < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransfer::Addenda::Freeform,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # Each entry represents an addendum sent with the transfer.
           sig do
@@ -648,12 +633,7 @@ module Increase
 
           class Entry < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::ACHTransfer::Addenda::Freeform::Entry,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment related information passed in the addendum.
             sig { returns(String) }
@@ -678,12 +658,7 @@ module Increase
 
         class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # ASC X12 RMR records for this specific transfer.
           sig do
@@ -726,12 +701,7 @@ module Increase
 
           class Invoice < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The invoice number for this reference, determined in advance with the receiver.
             sig { returns(String) }
@@ -767,9 +737,7 @@ module Increase
 
       class Approval < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::ACHTransfer::Approval, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was approved.
@@ -809,12 +777,7 @@ module Increase
 
       class Cancellation < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::Cancellation,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Transfer was canceled.
@@ -854,9 +817,7 @@ module Increase
 
       class CreatedBy < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::ACHTransfer::CreatedBy, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::ACHTransfer::CreatedBy::APIKey)) }
@@ -944,12 +905,7 @@ module Increase
 
         class APIKey < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransfer::CreatedBy::APIKey,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
@@ -1012,12 +968,7 @@ module Increase
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransfer::CreatedBy::OAuthApplication,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The name of the OAuth Application.
           sig { returns(String) }
@@ -1038,12 +989,7 @@ module Increase
 
         class User < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::ACHTransfer::CreatedBy::User,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The email address of the User.
           sig { returns(String) }
@@ -1168,12 +1114,7 @@ module Increase
 
       class InboundFundsHold < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::InboundFundsHold,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The Inbound Funds Hold identifier.
         sig { returns(String) }
@@ -1444,12 +1385,7 @@ module Increase
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::NotificationsOfChange,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The required type of change that is being signaled by the receiving financial
         # institution.
@@ -1671,12 +1607,7 @@ module Increase
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::PreferredEffectiveDate,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
         # use as the effective date when submitting this transfer.
@@ -1773,9 +1704,7 @@ module Increase
 
       class Return < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::ACHTransfer::Return, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was created.
@@ -2372,12 +2301,7 @@ module Increase
 
       class Settlement < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::Settlement,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # When the funds for this transfer have settled at the destination bank at the
         # Federal Reserve.
@@ -2509,12 +2433,7 @@ module Increase
 
       class Submission < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHTransfer::Submission,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The ACH transfer's effective date as sent to the Federal Reserve. If a specific
         # date was configured using `preferred_effective_date`, this will match that

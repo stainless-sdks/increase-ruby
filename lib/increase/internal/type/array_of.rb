@@ -29,7 +29,7 @@ module Increase
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [self]
+        # @return [Increase::Internal::Type::ArrayOf]
         def self.[](...) = new(...)
 
         # @api public

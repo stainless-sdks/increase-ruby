@@ -3,8 +3,7 @@
 module Increase
   module Models
     class File < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::File, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The File's identifier.
       sig { returns(String) }

@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardReversalCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The identifier of the Card Payment to create a reversal on.
         sig { returns(String) }

@@ -5,9 +5,7 @@ module Increase
     module Transport
       # @api private
       class PooledNetRequester
-        extend Increase::Internal::Util::SorbetRuntimeSupport
-
-        Request =
+        RequestShape =
           T.type_alias do
             {
               method: Symbol,
@@ -37,7 +35,7 @@ module Increase
           sig do
             params(
               request:
-                Increase::Internal::Transport::PooledNetRequester::Request,
+                Increase::Internal::Transport::PooledNetRequester::RequestShape,
               blk: T.proc.params(arg0: String).void
             ).returns([Net::HTTPGenericRequest, T.proc.void])
           end
@@ -59,7 +57,8 @@ module Increase
         # @api private
         sig do
           params(
-            request: Increase::Internal::Transport::PooledNetRequester::Request
+            request:
+              Increase::Internal::Transport::PooledNetRequester::RequestShape
           ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
         def execute(request)

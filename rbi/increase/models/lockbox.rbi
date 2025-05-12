@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Lockbox < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Lockbox, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Lockbox identifier.
       sig { returns(String) }
@@ -112,9 +111,7 @@ module Increase
 
       class Address < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::Lockbox::Address, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The city of the address.
         sig { returns(String) }

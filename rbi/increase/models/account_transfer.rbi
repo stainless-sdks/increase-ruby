@@ -3,10 +3,7 @@
 module Increase
   module Models
     class AccountTransfer < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::AccountTransfer, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The account transfer's identifier.
       sig { returns(String) }
@@ -209,12 +206,7 @@ module Increase
 
       class Approval < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::AccountTransfer::Approval,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the transfer was approved.
@@ -254,12 +246,7 @@ module Increase
 
       class Cancellation < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::AccountTransfer::Cancellation,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Transfer was canceled.
@@ -299,12 +286,7 @@ module Increase
 
       class CreatedBy < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::AccountTransfer::CreatedBy,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # If present, details about the API key that created the transfer.
         sig { returns(T.nilable(Increase::AccountTransfer::CreatedBy::APIKey)) }
@@ -397,12 +379,7 @@ module Increase
 
         class APIKey < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::AccountTransfer::CreatedBy::APIKey,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The description set for the API key when it was created.
           sig { returns(T.nilable(String)) }
@@ -467,12 +444,7 @@ module Increase
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::AccountTransfer::CreatedBy::OAuthApplication,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The name of the OAuth Application.
           sig { returns(String) }
@@ -493,12 +465,7 @@ module Increase
 
         class User < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::AccountTransfer::CreatedBy::User,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The email address of the User.
           sig { returns(String) }

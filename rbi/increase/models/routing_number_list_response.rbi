@@ -3,13 +3,7 @@
 module Increase
   module Models
     class RoutingNumberListResponse < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::Models::RoutingNumberListResponse,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # This routing number's support for ACH Transfers.
       sig do

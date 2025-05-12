@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::BookkeepingEntrySetCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The bookkeeping entries.
       sig do
@@ -71,12 +65,7 @@ module Increase
 
       class Entry < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::BookkeepingEntrySetCreateParams::Entry,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }

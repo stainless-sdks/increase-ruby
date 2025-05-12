@@ -3,8 +3,7 @@
 module Increase
   module Models
     class FileLink < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::FileLink, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The File Link identifier.
       sig { returns(String) }

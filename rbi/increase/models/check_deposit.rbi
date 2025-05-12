@@ -3,10 +3,7 @@
 module Increase
   module Models
     class CheckDeposit < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::CheckDeposit, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The deposit's identifier.
       sig { returns(String) }
@@ -243,12 +240,7 @@ module Increase
 
       class DepositAcceptance < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckDeposit::DepositAcceptance,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The account number printed on the check.
         sig { returns(String) }
@@ -406,12 +398,7 @@ module Increase
 
       class DepositRejection < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckDeposit::DepositRejection,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The rejected amount in the minor unit of check's currency. For dollars, for
         # example, this is cents.
@@ -662,12 +649,7 @@ module Increase
 
       class DepositReturn < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckDeposit::DepositReturn,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The returned amount in USD cents.
         sig { returns(Integer) }
@@ -1024,12 +1006,7 @@ module Increase
 
       class DepositSubmission < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckDeposit::DepositSubmission,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The ID for the File containing the check back image that was submitted to the
         # Check21 network.
@@ -1081,12 +1058,7 @@ module Increase
 
       class InboundFundsHold < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckDeposit::InboundFundsHold,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The Inbound Funds Hold identifier.
         sig { returns(String) }

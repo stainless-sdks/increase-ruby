@@ -17,7 +17,6 @@ module Increase
       # values safely.
       module Enum
         include Increase::Internal::Type::Converter
-        include Increase::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         #
