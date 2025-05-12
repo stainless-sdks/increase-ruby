@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module Increase
+  [Increase::Internal::Type::BaseModel, *Increase::Internal::Type::BaseModel.subclasses].each do |cls|
+    cls.define_sorbet_constant!(:OrHash) { T.type_alias(T.any(cls, Increase::Internal::AnyHash)) }
+  end
+
   Account = Increase::Models::Account
 
   AccountBalanceParams = Increase::Models::AccountBalanceParams
