@@ -2,8 +2,6 @@ module Increase
   module Internal
     module Transport
       class BaseClient
-        extend Increase::Internal::Util::SorbetRuntimeSupport
-
         type request_components =
           {
             method: Symbol,
@@ -22,6 +20,7 @@ module Increase
             model: Increase::Internal::Type::Converter::input?,
             options: Increase::request_opts?
           }
+
         type request_input =
           {
             method: Symbol,

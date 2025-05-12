@@ -3,10 +3,7 @@
 module Increase
   module Models
     class CardPayment < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::CardPayment, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Card Payment identifier.
       sig { returns(String) }
@@ -108,9 +105,7 @@ module Increase
 
       class Element < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::CardPayment::Element, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # A Card Authentication object. This field will be present in the JSON response if
         # and only if `category` is equal to `card_authentication`. Card Authentications
@@ -433,12 +428,7 @@ module Increase
 
         class CardAuthentication < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardAuthentication,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Authentication identifier.
           sig { returns(String) }
@@ -718,12 +708,7 @@ module Increase
 
           class Challenge < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardAuthentication::Challenge,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Details about the challenge verification attempts, if any happened.
             sig do
@@ -807,12 +792,7 @@ module Increase
 
             class Attempt < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardAuthentication::Challenge::Attempt,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
               # Authentication Challenge Attempt.
@@ -1172,12 +1152,7 @@ module Increase
 
         class CardAuthorization < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardAuthorization,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Authorization identifier.
           sig { returns(String) }
@@ -1674,12 +1649,7 @@ module Increase
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardAuthorization::NetworkDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment network used to process this card authorization.
             sig do
@@ -1776,12 +1746,7 @@ module Increase
 
             class Visa < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardAuthorization::NetworkDetails::Visa,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -2124,12 +2089,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -2282,12 +2242,7 @@ module Increase
 
           class Verification < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardAuthorization::Verification,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
@@ -2357,12 +2312,7 @@ module Increase
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # The result of verifying the Card Verification Code.
               sig do
@@ -2445,12 +2395,7 @@ module Increase
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardAuthorization::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
@@ -2590,12 +2535,7 @@ module Increase
 
         class CardAuthorizationExpiration < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardAuthorizationExpiration,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Authorization Expiration identifier.
           sig { returns(String) }
@@ -2822,12 +2762,7 @@ module Increase
 
         class CardDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Decline identifier.
           sig { returns(String) }
@@ -3328,12 +3263,7 @@ module Increase
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardDecline::NetworkDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment network used to process this card authorization.
             sig do
@@ -3430,12 +3360,7 @@ module Increase
 
             class Visa < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardDecline::NetworkDetails::Visa,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -3778,12 +3703,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardDecline::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -4122,12 +4042,7 @@ module Increase
 
           class Verification < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardDecline::Verification,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
@@ -4197,12 +4112,7 @@ module Increase
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # The result of verifying the Card Verification Code.
               sig do
@@ -4285,12 +4195,7 @@ module Increase
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardDecline::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
@@ -4430,12 +4335,7 @@ module Increase
 
         class CardFuelConfirmation < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardFuelConfirmation,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Fuel Confirmation identifier.
           sig { returns(String) }
@@ -4662,12 +4562,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -4754,12 +4649,7 @@ module Increase
 
         class CardIncrement < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardIncrement,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Increment identifier.
           sig { returns(String) }
@@ -5075,12 +4965,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardIncrement::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -5167,12 +5052,7 @@ module Increase
 
         class CardRefund < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardRefund,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Refund identifier.
           sig { returns(String) }
@@ -5451,12 +5331,7 @@ module Increase
 
           class Cashback < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardRefund::Cashback,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The cashback amount given as a string containing a decimal number. The amount is
             # a positive number if it will be credited to you (e.g., settlements) and a
@@ -5639,12 +5514,7 @@ module Increase
 
           class Interchange < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardRefund::Interchange,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The interchange amount given as a string containing a decimal number in major
             # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
@@ -5772,12 +5642,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardRefund::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A network assigned business ID that identifies the acquirer that processed this
             # transaction.
@@ -5828,12 +5693,7 @@ module Increase
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardRefund::PurchaseDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields specific to car rentals.
             sig do
@@ -6018,12 +5878,7 @@ module Increase
 
             class CarRental < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
@@ -6319,12 +6174,7 @@ module Increase
 
             class Lodging < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
@@ -6684,12 +6534,7 @@ module Increase
 
             class Travel < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Ancillary purchases in addition to the airfare.
               sig do
@@ -6884,10 +6729,7 @@ module Increase
               class Ancillary < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -7031,10 +6873,7 @@ module Increase
                 class Service < Increase::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(
-                        Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
-                        Increase::Internal::AnyHash
-                      )
+                      T.any(T.self_type, Increase::Internal::AnyHash)
                     end
 
                   # Category of the ancillary service.
@@ -7428,10 +7267,7 @@ module Increase
               class TripLeg < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -7590,12 +7426,7 @@ module Increase
 
         class CardReversal < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardReversal,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Reversal identifier.
           sig { returns(String) }
@@ -7921,12 +7752,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardReversal::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -8065,12 +7891,7 @@ module Increase
 
         class CardSettlement < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardSettlement,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Settlement identifier.
           sig { returns(String) }
@@ -8372,12 +8193,7 @@ module Increase
 
           class Cashback < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardSettlement::Cashback,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The cashback amount given as a string containing a decimal number. The amount is
             # a positive number if it will be credited to you (e.g., settlements) and a
@@ -8560,12 +8376,7 @@ module Increase
 
           class Interchange < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardSettlement::Interchange,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The interchange amount given as a string containing a decimal number in major
             # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
@@ -8693,12 +8504,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardSettlement::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A network assigned business ID that identifies the acquirer that processed this
             # transaction.
@@ -8749,12 +8555,7 @@ module Increase
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardSettlement::PurchaseDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields specific to car rentals.
             sig do
@@ -8939,12 +8740,7 @@ module Increase
 
             class CarRental < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
@@ -9240,12 +9036,7 @@ module Increase
 
             class Lodging < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
@@ -9605,12 +9396,7 @@ module Increase
 
             class Travel < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Ancillary purchases in addition to the airfare.
               sig do
@@ -9805,10 +9591,7 @@ module Increase
               class Ancillary < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -9952,10 +9735,7 @@ module Increase
                 class Service < Increase::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(
-                        Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
-                        Increase::Internal::AnyHash
-                      )
+                      T.any(T.self_type, Increase::Internal::AnyHash)
                     end
 
                   # Category of the ancillary service.
@@ -10349,10 +10129,7 @@ module Increase
               class TripLeg < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -10514,12 +10291,7 @@ module Increase
 
         class CardValidation < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::CardPayment::Element::CardValidation,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Validation identifier.
           sig { returns(String) }
@@ -10899,12 +10671,7 @@ module Increase
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardValidation::NetworkDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment network used to process this card authorization.
             sig do
@@ -11001,12 +10768,7 @@ module Increase
 
             class Visa < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardValidation::NetworkDetails::Visa,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -11349,12 +11111,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardValidation::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -11440,12 +11197,7 @@ module Increase
 
           class Verification < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::CardPayment::Element::CardValidation::Verification,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
@@ -11515,12 +11267,7 @@ module Increase
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # The result of verifying the Card Verification Code.
               sig do
@@ -11603,12 +11350,7 @@ module Increase
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::CardPayment::Element::CardValidation::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
@@ -11846,9 +11588,7 @@ module Increase
 
       class State < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::CardPayment::State, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The total authorized amount in the minor unit of the transaction's currency. For
         # dollars, for example, this is cents.

@@ -3,10 +3,7 @@
 module Increase
   module Models
     class BalanceLookup < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::BalanceLookup, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The identifier for the account for which the balance was queried.
       sig { returns(String) }

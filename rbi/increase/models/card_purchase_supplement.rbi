@@ -3,10 +3,7 @@
 module Increase
   module Models
     class CardPurchaseSupplement < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::CardPurchaseSupplement, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Card Purchase Supplement identifier.
       sig { returns(String) }
@@ -92,12 +89,7 @@ module Increase
 
       class Invoice < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CardPurchaseSupplement::Invoice,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # Discount given to cardholder.
         sig { returns(T.nilable(Integer)) }
@@ -380,12 +372,7 @@ module Increase
 
       class LineItem < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CardPurchaseSupplement::LineItem,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The Card Purchase Supplement Line Item identifier.
         sig { returns(String) }

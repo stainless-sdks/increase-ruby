@@ -3,10 +3,7 @@
 module Increase
   module Models
     class InboundACHTransfer < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::InboundACHTransfer, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The inbound ACH transfer's identifier.
       sig { returns(String) }
@@ -340,12 +337,7 @@ module Increase
 
       class Acceptance < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundACHTransfer::Acceptance,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The time at which the transfer was accepted.
         sig { returns(Time) }
@@ -376,12 +368,7 @@ module Increase
 
       class Addenda < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundACHTransfer::Addenda,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The type of addendum.
         sig do
@@ -462,12 +449,7 @@ module Increase
 
         class Freeform < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::InboundACHTransfer::Addenda::Freeform,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # Each entry represents an addendum received from the originator.
           sig do
@@ -507,12 +489,7 @@ module Increase
 
           class Entry < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::InboundACHTransfer::Addenda::Freeform::Entry,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment related information passed in the addendum.
             sig { returns(String) }
@@ -538,12 +515,7 @@ module Increase
 
       class Decline < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundACHTransfer::Decline,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The time at which the transfer was declined.
         sig { returns(Time) }
@@ -798,12 +770,7 @@ module Increase
 
       class InternationalAddenda < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundACHTransfer::InternationalAddenda,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
         # country code of the destination country.
@@ -1509,12 +1476,7 @@ module Increase
 
       class NotificationOfChange < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundACHTransfer::NotificationOfChange,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The new account number provided in the notification of change.
         sig { returns(T.nilable(String)) }
@@ -1720,12 +1682,7 @@ module Increase
 
       class TransferReturn < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundACHTransfer::TransferReturn,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The reason for the transfer return.
         sig do

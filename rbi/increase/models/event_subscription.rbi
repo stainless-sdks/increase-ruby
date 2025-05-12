@@ -3,10 +3,7 @@
 module Increase
   module Models
     class EventSubscription < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::EventSubscription, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The event subscription identifier.
       sig { returns(String) }

@@ -3,10 +3,7 @@
 module Increase
   module Models
     class Transaction < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::Transaction, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Transaction identifier.
       sig { returns(String) }
@@ -200,9 +197,7 @@ module Increase
 
       class Source < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::Transaction::Source, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # An Account Transfer Intention object. This field will be present in the JSON
         # response if and only if `category` is equal to `account_transfer_intention`. Two
@@ -1147,12 +1142,7 @@ module Increase
 
         class AccountTransferIntention < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::AccountTransferIntention,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The pending amount in the minor unit of the transaction's currency. For dollars,
           # for example, this is cents.
@@ -1303,12 +1293,7 @@ module Increase
 
         class ACHTransferIntention < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::ACHTransferIntention,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The account number for the destination account.
           sig { returns(String) }
@@ -1378,12 +1363,7 @@ module Increase
 
         class ACHTransferRejection < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::ACHTransferRejection,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The identifier of the ACH Transfer that led to this Transaction.
           sig { returns(String) }
@@ -1407,12 +1387,7 @@ module Increase
 
         class ACHTransferReturn < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::ACHTransferReturn,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the transfer was created.
@@ -2019,12 +1994,7 @@ module Increase
 
         class CardDisputeAcceptance < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CardDisputeAcceptance,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the Card Dispute was accepted.
@@ -2077,12 +2047,7 @@ module Increase
 
         class CardDisputeLoss < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CardDisputeLoss,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The identifier of the Card Dispute that was lost.
           sig { returns(String) }
@@ -2143,12 +2108,7 @@ module Increase
 
         class CardRefund < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CardRefund,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Refund identifier.
           sig { returns(String) }
@@ -2427,12 +2387,7 @@ module Increase
 
           class Cashback < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardRefund::Cashback,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The cashback amount given as a string containing a decimal number. The amount is
             # a positive number if it will be credited to you (e.g., settlements) and a
@@ -2615,12 +2570,7 @@ module Increase
 
           class Interchange < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardRefund::Interchange,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The interchange amount given as a string containing a decimal number in major
             # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
@@ -2748,12 +2698,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardRefund::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A network assigned business ID that identifies the acquirer that processed this
             # transaction.
@@ -2804,12 +2749,7 @@ module Increase
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardRefund::PurchaseDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields specific to car rentals.
             sig do
@@ -2994,12 +2934,7 @@ module Increase
 
             class CarRental < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
@@ -3295,12 +3230,7 @@ module Increase
 
             class Lodging < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
@@ -3660,12 +3590,7 @@ module Increase
 
             class Travel < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Ancillary purchases in addition to the airfare.
               sig do
@@ -3860,10 +3785,7 @@ module Increase
               class Ancillary < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -4007,10 +3929,7 @@ module Increase
                 class Service < Increase::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(
-                        Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service,
-                        Increase::Internal::AnyHash
-                      )
+                      T.any(T.self_type, Increase::Internal::AnyHash)
                     end
 
                   # Category of the ancillary service.
@@ -4404,10 +4323,7 @@ module Increase
               class TripLeg < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -4566,12 +4482,7 @@ module Increase
 
         class CardRevenuePayment < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CardRevenuePayment,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The amount in the minor unit of the transaction's currency. For dollars, for
           # example, this is cents.
@@ -4713,12 +4624,7 @@ module Increase
 
         class CardSettlement < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CardSettlement,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Settlement identifier.
           sig { returns(String) }
@@ -5018,12 +4924,7 @@ module Increase
 
           class Cashback < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardSettlement::Cashback,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The cashback amount given as a string containing a decimal number. The amount is
             # a positive number if it will be credited to you (e.g., settlements) and a
@@ -5206,12 +5107,7 @@ module Increase
 
           class Interchange < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardSettlement::Interchange,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The interchange amount given as a string containing a decimal number in major
             # units (so e.g., "3.14" for $3.14). The amount is a positive number if it is
@@ -5339,12 +5235,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardSettlement::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A network assigned business ID that identifies the acquirer that processed this
             # transaction.
@@ -5395,12 +5286,7 @@ module Increase
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::CardSettlement::PurchaseDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields specific to car rentals.
             sig do
@@ -5585,12 +5471,7 @@ module Increase
 
             class CarRental < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
@@ -5886,12 +5767,7 @@ module Increase
 
             class Lodging < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
@@ -6251,12 +6127,7 @@ module Increase
 
             class Travel < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Ancillary purchases in addition to the airfare.
               sig do
@@ -6451,10 +6322,7 @@ module Increase
               class Ancillary < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # If this purchase has a connection or relationship to another purchase, such as a
@@ -6598,10 +6466,7 @@ module Increase
                 class Service < Increase::Internal::Type::BaseModel
                   OrHash =
                     T.type_alias do
-                      T.any(
-                        Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service,
-                        Increase::Internal::AnyHash
-                      )
+                      T.any(T.self_type, Increase::Internal::AnyHash)
                     end
 
                   # Category of the ancillary service.
@@ -6995,10 +6860,7 @@ module Increase
               class TripLeg < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -7160,12 +7022,7 @@ module Increase
 
         class CashbackPayment < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CashbackPayment,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The card on which the cashback was accrued.
           sig { returns(T.nilable(String)) }
@@ -7535,12 +7392,7 @@ module Increase
 
         class CheckDepositAcceptance < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CheckDepositAcceptance,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The account number printed on the check.
           sig { returns(String) }
@@ -7704,12 +7556,7 @@ module Increase
 
         class CheckDepositReturn < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CheckDepositReturn,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The returned amount in USD cents.
           sig { returns(Integer) }
@@ -8079,12 +7926,7 @@ module Increase
 
         class CheckTransferDeposit < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::CheckTransferDeposit,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The identifier of the API File object containing an image of the back of the
           # deposited check.
@@ -8223,12 +8065,7 @@ module Increase
 
         class FeePayment < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::FeePayment,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The amount in the minor unit of the transaction's currency. For dollars, for
           # example, this is cents.
@@ -8362,12 +8199,7 @@ module Increase
 
         class InboundACHTransfer < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundACHTransfer,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # Additional information sent from the originator.
           sig do
@@ -8514,12 +8346,7 @@ module Increase
 
           class Addenda < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::Transaction::Source::InboundACHTransfer::Addenda,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The type of addendum.
             sig do
@@ -8616,12 +8443,7 @@ module Increase
 
             class Freeform < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Each entry represents an addendum received from the originator.
               sig do
@@ -8664,10 +8486,7 @@ module Increase
               class Entry < Increase::Internal::Type::BaseModel
                 OrHash =
                   T.type_alias do
-                    T.any(
-                      Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry,
-                      Increase::Internal::AnyHash
-                    )
+                    T.any(T.self_type, Increase::Internal::AnyHash)
                   end
 
                 # The payment related information passed in the addendum.
@@ -8697,12 +8516,7 @@ module Increase
 
         class InboundACHTransferReturnIntention < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundACHTransferReturnIntention,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The ID of the Inbound ACH Transfer that is being returned.
           sig { returns(String) }
@@ -8729,12 +8543,7 @@ module Increase
 
         class InboundCheckAdjustment < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundCheckAdjustment,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The ID of the transaction that was adjusted.
           sig { returns(String) }
@@ -8842,12 +8651,7 @@ module Increase
 
         class InboundCheckDepositReturnIntention < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundCheckDepositReturnIntention,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The ID of the Inbound Check Deposit that is being returned.
           sig { returns(String) }
@@ -8890,12 +8694,7 @@ module Increase
 
         class InboundRealTimePaymentsTransferConfirmation < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The amount in the minor unit of the transfer's currency. For dollars, for
           # example, this is cents.
@@ -9071,12 +8870,7 @@ module Increase
 
         class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The declined amount in the minor unit of the destination account currency. For
           # dollars, for example, this is cents.
@@ -9333,12 +9127,7 @@ module Increase
 
         class InboundWireReversal < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundWireReversal,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The amount that was reversed in USD cents.
           sig { returns(Integer) }
@@ -9513,12 +9302,7 @@ module Increase
 
         class InboundWireTransfer < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundWireTransfer,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The amount in USD cents.
           sig { returns(Integer) }
@@ -9702,12 +9486,7 @@ module Increase
 
         class InboundWireTransferReversal < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InboundWireTransferReversal,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The ID of the Inbound Wire Transfer that is being reversed.
           sig { returns(String) }
@@ -9734,12 +9513,7 @@ module Increase
 
         class InterestPayment < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InterestPayment,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The account on which the interest was accrued.
           sig { returns(String) }
@@ -9882,12 +9656,7 @@ module Increase
 
         class InternalSource < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::InternalSource,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The amount in the minor unit of the transaction's currency. For dollars, for
           # example, this is cents.
@@ -10151,12 +9920,7 @@ module Increase
 
         class RealTimePaymentsTransferAcknowledgement < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The transfer amount in USD cents.
           sig { returns(Integer) }
@@ -10223,12 +9987,7 @@ module Increase
 
         class SampleFunds < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::SampleFunds,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # Where the sample funds came from.
           sig { returns(String) }
@@ -10251,12 +10010,7 @@ module Increase
 
         class SwiftTransferIntention < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::SwiftTransferIntention,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The identifier of the Swift Transfer that led to this Transaction.
           sig { returns(String) }
@@ -10279,12 +10033,7 @@ module Increase
 
         class WireTransferIntention < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Transaction::Source::WireTransferIntention,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The destination account number.
           sig { returns(String) }

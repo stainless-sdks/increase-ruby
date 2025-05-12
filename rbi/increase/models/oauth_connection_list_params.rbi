@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::OAuthConnectionListParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
@@ -84,12 +78,7 @@ module Increase
 
       class Status < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::OAuthConnectionListParams::Status,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # Filter to OAuth Connections by their status. By default, return only the
         # `active` ones. For GET requests, this should be encoded as a comma-delimited

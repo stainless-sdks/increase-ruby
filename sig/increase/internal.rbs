@@ -1,7 +1,5 @@
 module Increase
   module Internal
-    extend Increase::Internal::Util::SorbetRuntimeSupport
-
     OMIT: Object
   end
 end

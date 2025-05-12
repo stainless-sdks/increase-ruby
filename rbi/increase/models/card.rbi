@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Card < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Card, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The card identifier.
       sig { returns(String) }
@@ -157,9 +156,7 @@ module Increase
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::Card::BillingAddress, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The city of the billing address.
         sig { returns(T.nilable(String)) }
@@ -222,9 +219,7 @@ module Increase
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(Increase::Card::DigitalWallet, Increase::Internal::AnyHash)
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The digital card profile assigned to this digital card. Card profiles may also
         # be assigned at the program level.

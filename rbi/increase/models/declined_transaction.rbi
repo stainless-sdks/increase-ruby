@@ -3,10 +3,7 @@
 module Increase
   module Models
     class DeclinedTransaction < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::DeclinedTransaction, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Declined Transaction identifier.
       sig { returns(String) }
@@ -215,12 +212,7 @@ module Increase
 
       class Source < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DeclinedTransaction::Source,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # An ACH Decline object. This field will be present in the JSON response if and
         # only if `category` is equal to `ach_decline`.
@@ -441,12 +433,7 @@ module Increase
 
         class ACHDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::DeclinedTransaction::Source::ACHDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The ACH Decline's identifier.
           sig { returns(String) }
@@ -754,12 +741,7 @@ module Increase
 
         class CardDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::DeclinedTransaction::Source::CardDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The Card Decline identifier.
           sig { returns(String) }
@@ -1264,12 +1246,7 @@ module Increase
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # The payment network used to process this card authorization.
             sig do
@@ -1366,12 +1343,7 @@ module Increase
 
             class Visa < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -1714,12 +1686,7 @@ module Increase
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # A life-cycle identifier used across e.g., an authorization and a reversal.
             # Expected to be unique per acquirer within a window of time. For some card
@@ -2058,12 +2025,7 @@ module Increase
 
           class Verification < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::DeclinedTransaction::Source::CardDecline::Verification,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
@@ -2133,12 +2095,7 @@ module Increase
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # The result of verifying the Card Verification Code.
               sig do
@@ -2221,12 +2178,7 @@ module Increase
 
             class CardholderAddress < Increase::Internal::Type::BaseModel
               OrHash =
-                T.type_alias do
-                  T.any(
-                    Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress,
-                    Increase::Internal::AnyHash
-                  )
-                end
+                T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
               # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
@@ -2437,12 +2389,7 @@ module Increase
 
         class CheckDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::DeclinedTransaction::Source::CheckDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The declined amount in USD cents.
           sig { returns(Integer) }
@@ -2679,12 +2626,7 @@ module Increase
 
         class CheckDepositRejection < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::DeclinedTransaction::Source::CheckDepositRejection,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The rejected amount in the minor unit of check's currency. For dollars, for
           # example, this is cents.
@@ -2942,12 +2884,7 @@ module Increase
 
         class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The declined amount in the minor unit of the destination account currency. For
           # dollars, for example, this is cents.
@@ -3204,12 +3141,7 @@ module Increase
 
         class WireDecline < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::DeclinedTransaction::Source::WireDecline,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
           # The identifier of the Inbound Wire Transfer that was declined.
           sig { returns(String) }

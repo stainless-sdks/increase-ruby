@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Document < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Document, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The Document identifier.
       sig { returns(String) }

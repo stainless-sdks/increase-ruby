@@ -3,10 +3,7 @@
 module Increase
   module Models
     class InboundWireTransfer < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::InboundWireTransfer, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
       # The inbound wire transfer's identifier.
       sig { returns(String) }
@@ -256,12 +253,7 @@ module Increase
 
       class Reversal < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::InboundWireTransfer::Reversal,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(T.self_type, Increase::Internal::AnyHash) }
 
         # The reason for the reversal.
         sig do

@@ -29,7 +29,8 @@ module Increase
         sig do
           params(
             client: Increase::Internal::Transport::BaseClient,
-            req: Increase::Internal::Transport::BaseClient::RequestComponents,
+            req:
+              Increase::Internal::Transport::BaseClient::RequestComponentsShape,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void
