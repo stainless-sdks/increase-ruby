@@ -33,14 +33,14 @@ module Increase
     optional :idempotency_key, String
 
     # @!attribute extra_query
-    #   Extra query params to send with the request. These are `.merge`’d into any
+    #   Extra query params to send with the request. These are `.merge`'d into any
     #   `query` given at the client level.
     #
     #   @return [Hash{String=>Array<String>, String, nil}, nil]
     optional :extra_query, Increase::Internal::Type::HashOf[Increase::Internal::Type::ArrayOf[String]]
 
     # @!attribute extra_headers
-    #   Extra headers to send with the request. These are `.merged`’d into any
+    #   Extra headers to send with the request. These are `.merged`'d into any
     #   `extra_headers` given at the client level.
     #
     #   @return [Hash{String=>String, nil}, nil]
