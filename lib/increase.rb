@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Standard libraries.
-# rubocop:disable Lint/RedundantRequireStatement
 require "English"
 require "cgi"
 require "date"
@@ -16,7 +15,6 @@ require "set"
 require "stringio"
 require "time"
 require "uri"
-# rubocop:enable Lint/RedundantRequireStatement
 
 # We already ship the preferred sorbet manifests in the package itself.
 # `tapioca` currently does not offer us a way to opt out of unnecessary compilation.

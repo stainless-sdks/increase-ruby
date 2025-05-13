@@ -99,7 +99,7 @@ module Increase
       # @param response [nil]
       # @param message [String, nil]
       #
-      # @return [self]
+      # @return [Increase::Errors::APIStatusError]
       def self.for(url:, status:, body:, request:, response:, message: nil)
         key = Increase::Internal::Util.dig(body, :type)
         kwargs = {
