@@ -1,431 +1,646 @@
 module Increase
-  class Account = Increase::Models::Account
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Account: Increase::Models::Account
 
-  class AccountBalanceParams = Increase::Models::AccountBalanceParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountBalanceParams: Increase::Models::AccountBalanceParams
 
-  class AccountCloseParams = Increase::Models::AccountCloseParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountCloseParams: Increase::Models::AccountCloseParams
 
-  class AccountCreateParams = Increase::Models::AccountCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountCreateParams: Increase::Models::AccountCreateParams
 
-  class AccountListParams = Increase::Models::AccountListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountListParams: Increase::Models::AccountListParams
 
-  class AccountNumber = Increase::Models::AccountNumber
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountNumber: Increase::Models::AccountNumber
 
-  class AccountNumberCreateParams = Increase::Models::AccountNumberCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountNumberCreateParams: Increase::Models::AccountNumberCreateParams
 
-  class AccountNumberListParams = Increase::Models::AccountNumberListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountNumberListParams: Increase::Models::AccountNumberListParams
 
-  class AccountNumberRetrieveParams = Increase::Models::AccountNumberRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountNumberRetrieveParams: Increase::Models::AccountNumberRetrieveParams
 
-  class AccountNumberUpdateParams = Increase::Models::AccountNumberUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountNumberUpdateParams: Increase::Models::AccountNumberUpdateParams
 
-  class AccountRetrieveParams = Increase::Models::AccountRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountRetrieveParams: Increase::Models::AccountRetrieveParams
 
-  class AccountStatement = Increase::Models::AccountStatement
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountStatement: Increase::Models::AccountStatement
 
-  class AccountStatementListParams = Increase::Models::AccountStatementListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountStatementListParams: Increase::Models::AccountStatementListParams
 
-  class AccountStatementRetrieveParams = Increase::Models::AccountStatementRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountStatementRetrieveParams: Increase::Models::AccountStatementRetrieveParams
 
-  class AccountTransfer = Increase::Models::AccountTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountTransfer: Increase::Models::AccountTransfer
 
-  class AccountTransferApproveParams = Increase::Models::AccountTransferApproveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountTransferApproveParams: Increase::Models::AccountTransferApproveParams
 
-  class AccountTransferCancelParams = Increase::Models::AccountTransferCancelParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountTransferCancelParams: Increase::Models::AccountTransferCancelParams
 
-  class AccountTransferCreateParams = Increase::Models::AccountTransferCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountTransferCreateParams: Increase::Models::AccountTransferCreateParams
 
-  class AccountTransferListParams = Increase::Models::AccountTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountTransferListParams: Increase::Models::AccountTransferListParams
 
-  class AccountTransferRetrieveParams = Increase::Models::AccountTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountTransferRetrieveParams: Increase::Models::AccountTransferRetrieveParams
 
-  class AccountUpdateParams = Increase::Models::AccountUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  AccountUpdateParams: Increase::Models::AccountUpdateParams
 
-  class ACHPrenotification = Increase::Models::ACHPrenotification
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHPrenotification: Increase::Models::ACHPrenotification
 
-  class ACHPrenotificationCreateParams = Increase::Models::ACHPrenotificationCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHPrenotificationCreateParams: Increase::Models::ACHPrenotificationCreateParams
 
-  class ACHPrenotificationListParams = Increase::Models::ACHPrenotificationListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHPrenotificationListParams: Increase::Models::ACHPrenotificationListParams
 
-  class ACHPrenotificationRetrieveParams = Increase::Models::ACHPrenotificationRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHPrenotificationRetrieveParams: Increase::Models::ACHPrenotificationRetrieveParams
 
-  class ACHTransfer = Increase::Models::ACHTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHTransfer: Increase::Models::ACHTransfer
 
-  class ACHTransferApproveParams = Increase::Models::ACHTransferApproveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHTransferApproveParams: Increase::Models::ACHTransferApproveParams
 
-  class ACHTransferCancelParams = Increase::Models::ACHTransferCancelParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHTransferCancelParams: Increase::Models::ACHTransferCancelParams
 
-  class ACHTransferCreateParams = Increase::Models::ACHTransferCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHTransferCreateParams: Increase::Models::ACHTransferCreateParams
 
-  class ACHTransferListParams = Increase::Models::ACHTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHTransferListParams: Increase::Models::ACHTransferListParams
 
-  class ACHTransferRetrieveParams = Increase::Models::ACHTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ACHTransferRetrieveParams: Increase::Models::ACHTransferRetrieveParams
 
-  class BalanceLookup = Increase::Models::BalanceLookup
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BalanceLookup: Increase::Models::BalanceLookup
 
-  class BookkeepingAccount = Increase::Models::BookkeepingAccount
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingAccount: Increase::Models::BookkeepingAccount
 
-  class BookkeepingAccountBalanceParams = Increase::Models::BookkeepingAccountBalanceParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingAccountBalanceParams: Increase::Models::BookkeepingAccountBalanceParams
 
-  class BookkeepingAccountCreateParams = Increase::Models::BookkeepingAccountCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingAccountCreateParams: Increase::Models::BookkeepingAccountCreateParams
 
-  class BookkeepingAccountListParams = Increase::Models::BookkeepingAccountListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingAccountListParams: Increase::Models::BookkeepingAccountListParams
 
-  class BookkeepingAccountUpdateParams = Increase::Models::BookkeepingAccountUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingAccountUpdateParams: Increase::Models::BookkeepingAccountUpdateParams
 
-  class BookkeepingBalanceLookup = Increase::Models::BookkeepingBalanceLookup
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingBalanceLookup: Increase::Models::BookkeepingBalanceLookup
 
-  class BookkeepingEntry = Increase::Models::BookkeepingEntry
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntry: Increase::Models::BookkeepingEntry
 
-  class BookkeepingEntryListParams = Increase::Models::BookkeepingEntryListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntryListParams: Increase::Models::BookkeepingEntryListParams
 
-  class BookkeepingEntryRetrieveParams = Increase::Models::BookkeepingEntryRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntryRetrieveParams: Increase::Models::BookkeepingEntryRetrieveParams
 
-  class BookkeepingEntrySet = Increase::Models::BookkeepingEntrySet
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntrySet: Increase::Models::BookkeepingEntrySet
 
-  class BookkeepingEntrySetCreateParams = Increase::Models::BookkeepingEntrySetCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntrySetCreateParams: Increase::Models::BookkeepingEntrySetCreateParams
 
-  class BookkeepingEntrySetListParams = Increase::Models::BookkeepingEntrySetListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntrySetListParams: Increase::Models::BookkeepingEntrySetListParams
 
-  class BookkeepingEntrySetRetrieveParams = Increase::Models::BookkeepingEntrySetRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  BookkeepingEntrySetRetrieveParams: Increase::Models::BookkeepingEntrySetRetrieveParams
 
-  class Card = Increase::Models::Card
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Card: Increase::Models::Card
 
-  class CardCreateParams = Increase::Models::CardCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardCreateParams: Increase::Models::CardCreateParams
 
-  class CardDetails = Increase::Models::CardDetails
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardDetails: Increase::Models::CardDetails
 
-  class CardDetailsParams = Increase::Models::CardDetailsParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardDetailsParams: Increase::Models::CardDetailsParams
 
-  class CardDispute = Increase::Models::CardDispute
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardDispute: Increase::Models::CardDispute
 
-  class CardDisputeCreateParams = Increase::Models::CardDisputeCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardDisputeCreateParams: Increase::Models::CardDisputeCreateParams
 
-  class CardDisputeListParams = Increase::Models::CardDisputeListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardDisputeListParams: Increase::Models::CardDisputeListParams
 
-  class CardDisputeRetrieveParams = Increase::Models::CardDisputeRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardDisputeRetrieveParams: Increase::Models::CardDisputeRetrieveParams
 
-  class CardListParams = Increase::Models::CardListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardListParams: Increase::Models::CardListParams
 
-  class CardPayment = Increase::Models::CardPayment
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardPayment: Increase::Models::CardPayment
 
-  class CardPaymentListParams = Increase::Models::CardPaymentListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardPaymentListParams: Increase::Models::CardPaymentListParams
 
-  class CardPaymentRetrieveParams = Increase::Models::CardPaymentRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardPaymentRetrieveParams: Increase::Models::CardPaymentRetrieveParams
 
-  class CardPurchaseSupplement = Increase::Models::CardPurchaseSupplement
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardPurchaseSupplement: Increase::Models::CardPurchaseSupplement
 
-  class CardPurchaseSupplementListParams = Increase::Models::CardPurchaseSupplementListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardPurchaseSupplementListParams: Increase::Models::CardPurchaseSupplementListParams
 
-  class CardPurchaseSupplementRetrieveParams = Increase::Models::CardPurchaseSupplementRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardPurchaseSupplementRetrieveParams: Increase::Models::CardPurchaseSupplementRetrieveParams
 
-  class CardRetrieveParams = Increase::Models::CardRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardRetrieveParams: Increase::Models::CardRetrieveParams
 
-  class CardUpdateParams = Increase::Models::CardUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CardUpdateParams: Increase::Models::CardUpdateParams
 
-  class CheckDeposit = Increase::Models::CheckDeposit
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckDeposit: Increase::Models::CheckDeposit
 
-  class CheckDepositCreateParams = Increase::Models::CheckDepositCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckDepositCreateParams: Increase::Models::CheckDepositCreateParams
 
-  class CheckDepositListParams = Increase::Models::CheckDepositListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckDepositListParams: Increase::Models::CheckDepositListParams
 
-  class CheckDepositRetrieveParams = Increase::Models::CheckDepositRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckDepositRetrieveParams: Increase::Models::CheckDepositRetrieveParams
 
-  class CheckTransfer = Increase::Models::CheckTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransfer: Increase::Models::CheckTransfer
 
-  class CheckTransferApproveParams = Increase::Models::CheckTransferApproveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransferApproveParams: Increase::Models::CheckTransferApproveParams
 
-  class CheckTransferCancelParams = Increase::Models::CheckTransferCancelParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransferCancelParams: Increase::Models::CheckTransferCancelParams
 
-  class CheckTransferCreateParams = Increase::Models::CheckTransferCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransferCreateParams: Increase::Models::CheckTransferCreateParams
 
-  class CheckTransferListParams = Increase::Models::CheckTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransferListParams: Increase::Models::CheckTransferListParams
 
-  class CheckTransferRetrieveParams = Increase::Models::CheckTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransferRetrieveParams: Increase::Models::CheckTransferRetrieveParams
 
-  class CheckTransferStopPaymentParams = Increase::Models::CheckTransferStopPaymentParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  CheckTransferStopPaymentParams: Increase::Models::CheckTransferStopPaymentParams
 
-  class DeclinedTransaction = Increase::Models::DeclinedTransaction
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DeclinedTransaction: Increase::Models::DeclinedTransaction
 
-  class DeclinedTransactionListParams = Increase::Models::DeclinedTransactionListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DeclinedTransactionListParams: Increase::Models::DeclinedTransactionListParams
 
-  class DeclinedTransactionRetrieveParams = Increase::Models::DeclinedTransactionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DeclinedTransactionRetrieveParams: Increase::Models::DeclinedTransactionRetrieveParams
 
-  class DigitalCardProfile = Increase::Models::DigitalCardProfile
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalCardProfile: Increase::Models::DigitalCardProfile
 
-  class DigitalCardProfileArchiveParams = Increase::Models::DigitalCardProfileArchiveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalCardProfileArchiveParams: Increase::Models::DigitalCardProfileArchiveParams
 
-  class DigitalCardProfileCloneParams = Increase::Models::DigitalCardProfileCloneParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalCardProfileCloneParams: Increase::Models::DigitalCardProfileCloneParams
 
-  class DigitalCardProfileCreateParams = Increase::Models::DigitalCardProfileCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalCardProfileCreateParams: Increase::Models::DigitalCardProfileCreateParams
 
-  class DigitalCardProfileListParams = Increase::Models::DigitalCardProfileListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalCardProfileListParams: Increase::Models::DigitalCardProfileListParams
 
-  class DigitalCardProfileRetrieveParams = Increase::Models::DigitalCardProfileRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalCardProfileRetrieveParams: Increase::Models::DigitalCardProfileRetrieveParams
 
-  class DigitalWalletToken = Increase::Models::DigitalWalletToken
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalWalletToken: Increase::Models::DigitalWalletToken
 
-  class DigitalWalletTokenListParams = Increase::Models::DigitalWalletTokenListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalWalletTokenListParams: Increase::Models::DigitalWalletTokenListParams
 
-  class DigitalWalletTokenRetrieveParams = Increase::Models::DigitalWalletTokenRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DigitalWalletTokenRetrieveParams: Increase::Models::DigitalWalletTokenRetrieveParams
 
-  class Document = Increase::Models::Document
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Document: Increase::Models::Document
 
-  class DocumentListParams = Increase::Models::DocumentListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DocumentListParams: Increase::Models::DocumentListParams
 
-  class DocumentRetrieveParams = Increase::Models::DocumentRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  DocumentRetrieveParams: Increase::Models::DocumentRetrieveParams
 
-  class Entity = Increase::Models::Entity
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Entity: Increase::Models::Entity
 
-  class EntityArchiveBeneficialOwnerParams = Increase::Models::EntityArchiveBeneficialOwnerParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityArchiveBeneficialOwnerParams: Increase::Models::EntityArchiveBeneficialOwnerParams
 
-  class EntityArchiveParams = Increase::Models::EntityArchiveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityArchiveParams: Increase::Models::EntityArchiveParams
 
-  class EntityConfirmParams = Increase::Models::EntityConfirmParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityConfirmParams: Increase::Models::EntityConfirmParams
 
-  class EntityCreateBeneficialOwnerParams = Increase::Models::EntityCreateBeneficialOwnerParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityCreateBeneficialOwnerParams: Increase::Models::EntityCreateBeneficialOwnerParams
 
-  class EntityCreateParams = Increase::Models::EntityCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityCreateParams: Increase::Models::EntityCreateParams
 
-  class EntityListParams = Increase::Models::EntityListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityListParams: Increase::Models::EntityListParams
 
-  class EntityRetrieveParams = Increase::Models::EntityRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityRetrieveParams: Increase::Models::EntityRetrieveParams
 
-  class EntitySupplementalDocument = Increase::Models::EntitySupplementalDocument
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntitySupplementalDocument: Increase::Models::EntitySupplementalDocument
 
-  class EntityUpdateAddressParams = Increase::Models::EntityUpdateAddressParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityUpdateAddressParams: Increase::Models::EntityUpdateAddressParams
 
-  class EntityUpdateBeneficialOwnerAddressParams = Increase::Models::EntityUpdateBeneficialOwnerAddressParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityUpdateBeneficialOwnerAddressParams: Increase::Models::EntityUpdateBeneficialOwnerAddressParams
 
-  class EntityUpdateIndustryCodeParams = Increase::Models::EntityUpdateIndustryCodeParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EntityUpdateIndustryCodeParams: Increase::Models::EntityUpdateIndustryCodeParams
 
-  class Event = Increase::Models::Event
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Event: Increase::Models::Event
 
-  class EventListParams = Increase::Models::EventListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventListParams: Increase::Models::EventListParams
 
-  class EventRetrieveParams = Increase::Models::EventRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventRetrieveParams: Increase::Models::EventRetrieveParams
 
-  class EventSubscription = Increase::Models::EventSubscription
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventSubscription: Increase::Models::EventSubscription
 
-  class EventSubscriptionCreateParams = Increase::Models::EventSubscriptionCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventSubscriptionCreateParams: Increase::Models::EventSubscriptionCreateParams
 
-  class EventSubscriptionListParams = Increase::Models::EventSubscriptionListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventSubscriptionListParams: Increase::Models::EventSubscriptionListParams
 
-  class EventSubscriptionRetrieveParams = Increase::Models::EventSubscriptionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventSubscriptionRetrieveParams: Increase::Models::EventSubscriptionRetrieveParams
 
-  class EventSubscriptionUpdateParams = Increase::Models::EventSubscriptionUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  EventSubscriptionUpdateParams: Increase::Models::EventSubscriptionUpdateParams
 
-  class Export = Increase::Models::Export
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Export: Increase::Models::Export
 
-  class ExportCreateParams = Increase::Models::ExportCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExportCreateParams: Increase::Models::ExportCreateParams
 
-  class ExportListParams = Increase::Models::ExportListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExportListParams: Increase::Models::ExportListParams
 
-  class ExportRetrieveParams = Increase::Models::ExportRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExportRetrieveParams: Increase::Models::ExportRetrieveParams
 
-  class ExternalAccount = Increase::Models::ExternalAccount
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExternalAccount: Increase::Models::ExternalAccount
 
-  class ExternalAccountCreateParams = Increase::Models::ExternalAccountCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExternalAccountCreateParams: Increase::Models::ExternalAccountCreateParams
 
-  class ExternalAccountListParams = Increase::Models::ExternalAccountListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExternalAccountListParams: Increase::Models::ExternalAccountListParams
 
-  class ExternalAccountRetrieveParams = Increase::Models::ExternalAccountRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExternalAccountRetrieveParams: Increase::Models::ExternalAccountRetrieveParams
 
-  class ExternalAccountUpdateParams = Increase::Models::ExternalAccountUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ExternalAccountUpdateParams: Increase::Models::ExternalAccountUpdateParams
 
-  class File = Increase::Models::File
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  File: Increase::Models::File
 
-  class FileCreateParams = Increase::Models::FileCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  FileCreateParams: Increase::Models::FileCreateParams
 
-  class FileLink = Increase::Models::FileLink
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  FileLink: Increase::Models::FileLink
 
-  class FileLinkCreateParams = Increase::Models::FileLinkCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  FileLinkCreateParams: Increase::Models::FileLinkCreateParams
 
-  class FileListParams = Increase::Models::FileListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  FileListParams: Increase::Models::FileListParams
 
-  class FileRetrieveParams = Increase::Models::FileRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  FileRetrieveParams: Increase::Models::FileRetrieveParams
 
-  class Group = Increase::Models::Group
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Group: Increase::Models::Group
 
-  class GroupRetrieveParams = Increase::Models::GroupRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  GroupRetrieveParams: Increase::Models::GroupRetrieveParams
 
-  class InboundACHTransfer = Increase::Models::InboundACHTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundACHTransfer: Increase::Models::InboundACHTransfer
 
-  class InboundACHTransferCreateNotificationOfChangeParams = Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundACHTransferCreateNotificationOfChangeParams: Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
 
-  class InboundACHTransferDeclineParams = Increase::Models::InboundACHTransferDeclineParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundACHTransferDeclineParams: Increase::Models::InboundACHTransferDeclineParams
 
-  class InboundACHTransferListParams = Increase::Models::InboundACHTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundACHTransferListParams: Increase::Models::InboundACHTransferListParams
 
-  class InboundACHTransferRetrieveParams = Increase::Models::InboundACHTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundACHTransferRetrieveParams: Increase::Models::InboundACHTransferRetrieveParams
 
-  class InboundACHTransferTransferReturnParams = Increase::Models::InboundACHTransferTransferReturnParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundACHTransferTransferReturnParams: Increase::Models::InboundACHTransferTransferReturnParams
 
-  class InboundCheckDeposit = Increase::Models::InboundCheckDeposit
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundCheckDeposit: Increase::Models::InboundCheckDeposit
 
-  class InboundCheckDepositDeclineParams = Increase::Models::InboundCheckDepositDeclineParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundCheckDepositDeclineParams: Increase::Models::InboundCheckDepositDeclineParams
 
-  class InboundCheckDepositListParams = Increase::Models::InboundCheckDepositListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundCheckDepositListParams: Increase::Models::InboundCheckDepositListParams
 
-  class InboundCheckDepositRetrieveParams = Increase::Models::InboundCheckDepositRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundCheckDepositRetrieveParams: Increase::Models::InboundCheckDepositRetrieveParams
 
-  class InboundCheckDepositReturnParams = Increase::Models::InboundCheckDepositReturnParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundCheckDepositReturnParams: Increase::Models::InboundCheckDepositReturnParams
 
-  class InboundMailItem = Increase::Models::InboundMailItem
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundMailItem: Increase::Models::InboundMailItem
 
-  class InboundMailItemListParams = Increase::Models::InboundMailItemListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundMailItemListParams: Increase::Models::InboundMailItemListParams
 
-  class InboundMailItemRetrieveParams = Increase::Models::InboundMailItemRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundMailItemRetrieveParams: Increase::Models::InboundMailItemRetrieveParams
 
-  class InboundRealTimePaymentsTransfer = Increase::Models::InboundRealTimePaymentsTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundRealTimePaymentsTransfer: Increase::Models::InboundRealTimePaymentsTransfer
 
-  class InboundRealTimePaymentsTransferListParams = Increase::Models::InboundRealTimePaymentsTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundRealTimePaymentsTransferListParams: Increase::Models::InboundRealTimePaymentsTransferListParams
 
-  class InboundRealTimePaymentsTransferRetrieveParams = Increase::Models::InboundRealTimePaymentsTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundRealTimePaymentsTransferRetrieveParams: Increase::Models::InboundRealTimePaymentsTransferRetrieveParams
 
-  class InboundWireDrawdownRequest = Increase::Models::InboundWireDrawdownRequest
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireDrawdownRequest: Increase::Models::InboundWireDrawdownRequest
 
-  class InboundWireDrawdownRequestListParams = Increase::Models::InboundWireDrawdownRequestListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireDrawdownRequestListParams: Increase::Models::InboundWireDrawdownRequestListParams
 
-  class InboundWireDrawdownRequestRetrieveParams = Increase::Models::InboundWireDrawdownRequestRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireDrawdownRequestRetrieveParams: Increase::Models::InboundWireDrawdownRequestRetrieveParams
 
-  class InboundWireTransfer = Increase::Models::InboundWireTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireTransfer: Increase::Models::InboundWireTransfer
 
-  class InboundWireTransferListParams = Increase::Models::InboundWireTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireTransferListParams: Increase::Models::InboundWireTransferListParams
 
-  class InboundWireTransferRetrieveParams = Increase::Models::InboundWireTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireTransferRetrieveParams: Increase::Models::InboundWireTransferRetrieveParams
 
-  class InboundWireTransferReverseParams = Increase::Models::InboundWireTransferReverseParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  InboundWireTransferReverseParams: Increase::Models::InboundWireTransferReverseParams
 
-  class IntrafiAccountEnrollment = Increase::Models::IntrafiAccountEnrollment
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiAccountEnrollment: Increase::Models::IntrafiAccountEnrollment
 
-  class IntrafiAccountEnrollmentCreateParams = Increase::Models::IntrafiAccountEnrollmentCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiAccountEnrollmentCreateParams: Increase::Models::IntrafiAccountEnrollmentCreateParams
 
-  class IntrafiAccountEnrollmentListParams = Increase::Models::IntrafiAccountEnrollmentListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiAccountEnrollmentListParams: Increase::Models::IntrafiAccountEnrollmentListParams
 
-  class IntrafiAccountEnrollmentRetrieveParams = Increase::Models::IntrafiAccountEnrollmentRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiAccountEnrollmentRetrieveParams: Increase::Models::IntrafiAccountEnrollmentRetrieveParams
 
-  class IntrafiAccountEnrollmentUnenrollParams = Increase::Models::IntrafiAccountEnrollmentUnenrollParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiAccountEnrollmentUnenrollParams: Increase::Models::IntrafiAccountEnrollmentUnenrollParams
 
-  class IntrafiBalance = Increase::Models::IntrafiBalance
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiBalance: Increase::Models::IntrafiBalance
 
-  class IntrafiBalanceIntrafiBalanceParams = Increase::Models::IntrafiBalanceIntrafiBalanceParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiBalanceIntrafiBalanceParams: Increase::Models::IntrafiBalanceIntrafiBalanceParams
 
-  class IntrafiExclusion = Increase::Models::IntrafiExclusion
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiExclusion: Increase::Models::IntrafiExclusion
 
-  class IntrafiExclusionArchiveParams = Increase::Models::IntrafiExclusionArchiveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiExclusionArchiveParams: Increase::Models::IntrafiExclusionArchiveParams
 
-  class IntrafiExclusionCreateParams = Increase::Models::IntrafiExclusionCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiExclusionCreateParams: Increase::Models::IntrafiExclusionCreateParams
 
-  class IntrafiExclusionListParams = Increase::Models::IntrafiExclusionListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiExclusionListParams: Increase::Models::IntrafiExclusionListParams
 
-  class IntrafiExclusionRetrieveParams = Increase::Models::IntrafiExclusionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  IntrafiExclusionRetrieveParams: Increase::Models::IntrafiExclusionRetrieveParams
 
-  class Lockbox = Increase::Models::Lockbox
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Lockbox: Increase::Models::Lockbox
 
-  class LockboxCreateParams = Increase::Models::LockboxCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  LockboxCreateParams: Increase::Models::LockboxCreateParams
 
-  class LockboxListParams = Increase::Models::LockboxListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  LockboxListParams: Increase::Models::LockboxListParams
 
-  class LockboxRetrieveParams = Increase::Models::LockboxRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  LockboxRetrieveParams: Increase::Models::LockboxRetrieveParams
 
-  class LockboxUpdateParams = Increase::Models::LockboxUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  LockboxUpdateParams: Increase::Models::LockboxUpdateParams
 
-  class OAuthApplication = Increase::Models::OAuthApplication
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthApplication: Increase::Models::OAuthApplication
 
-  class OAuthApplicationListParams = Increase::Models::OAuthApplicationListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthApplicationListParams: Increase::Models::OAuthApplicationListParams
 
-  class OAuthApplicationRetrieveParams = Increase::Models::OAuthApplicationRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthApplicationRetrieveParams: Increase::Models::OAuthApplicationRetrieveParams
 
-  class OAuthConnection = Increase::Models::OAuthConnection
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthConnection: Increase::Models::OAuthConnection
 
-  class OAuthConnectionListParams = Increase::Models::OAuthConnectionListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthConnectionListParams: Increase::Models::OAuthConnectionListParams
 
-  class OAuthConnectionRetrieveParams = Increase::Models::OAuthConnectionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthConnectionRetrieveParams: Increase::Models::OAuthConnectionRetrieveParams
 
-  class OAuthToken = Increase::Models::OAuthToken
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthToken: Increase::Models::OAuthToken
 
-  class OAuthTokenCreateParams = Increase::Models::OAuthTokenCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  OAuthTokenCreateParams: Increase::Models::OAuthTokenCreateParams
 
-  class PendingTransaction = Increase::Models::PendingTransaction
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PendingTransaction: Increase::Models::PendingTransaction
 
-  class PendingTransactionListParams = Increase::Models::PendingTransactionListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PendingTransactionListParams: Increase::Models::PendingTransactionListParams
 
-  class PendingTransactionRetrieveParams = Increase::Models::PendingTransactionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PendingTransactionRetrieveParams: Increase::Models::PendingTransactionRetrieveParams
 
-  class PhysicalCard = Increase::Models::PhysicalCard
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCard: Increase::Models::PhysicalCard
 
-  class PhysicalCardCreateParams = Increase::Models::PhysicalCardCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardCreateParams: Increase::Models::PhysicalCardCreateParams
 
-  class PhysicalCardListParams = Increase::Models::PhysicalCardListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardListParams: Increase::Models::PhysicalCardListParams
 
-  class PhysicalCardProfile = Increase::Models::PhysicalCardProfile
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardProfile: Increase::Models::PhysicalCardProfile
 
-  class PhysicalCardProfileArchiveParams = Increase::Models::PhysicalCardProfileArchiveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardProfileArchiveParams: Increase::Models::PhysicalCardProfileArchiveParams
 
-  class PhysicalCardProfileCloneParams = Increase::Models::PhysicalCardProfileCloneParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardProfileCloneParams: Increase::Models::PhysicalCardProfileCloneParams
 
-  class PhysicalCardProfileCreateParams = Increase::Models::PhysicalCardProfileCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardProfileCreateParams: Increase::Models::PhysicalCardProfileCreateParams
 
-  class PhysicalCardProfileListParams = Increase::Models::PhysicalCardProfileListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardProfileListParams: Increase::Models::PhysicalCardProfileListParams
 
-  class PhysicalCardProfileRetrieveParams = Increase::Models::PhysicalCardProfileRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardProfileRetrieveParams: Increase::Models::PhysicalCardProfileRetrieveParams
 
-  class PhysicalCardRetrieveParams = Increase::Models::PhysicalCardRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardRetrieveParams: Increase::Models::PhysicalCardRetrieveParams
 
-  class PhysicalCardUpdateParams = Increase::Models::PhysicalCardUpdateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  PhysicalCardUpdateParams: Increase::Models::PhysicalCardUpdateParams
 
-  class Program = Increase::Models::Program
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Program: Increase::Models::Program
 
-  class ProgramListParams = Increase::Models::ProgramListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ProgramListParams: Increase::Models::ProgramListParams
 
-  class ProgramRetrieveParams = Increase::Models::ProgramRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  ProgramRetrieveParams: Increase::Models::ProgramRetrieveParams
 
-  class RealTimeDecision = Increase::Models::RealTimeDecision
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimeDecision: Increase::Models::RealTimeDecision
 
-  class RealTimeDecisionActionParams = Increase::Models::RealTimeDecisionActionParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimeDecisionActionParams: Increase::Models::RealTimeDecisionActionParams
 
-  class RealTimeDecisionRetrieveParams = Increase::Models::RealTimeDecisionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimeDecisionRetrieveParams: Increase::Models::RealTimeDecisionRetrieveParams
 
-  class RealTimePaymentsTransfer = Increase::Models::RealTimePaymentsTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimePaymentsTransfer: Increase::Models::RealTimePaymentsTransfer
 
-  class RealTimePaymentsTransferCreateParams = Increase::Models::RealTimePaymentsTransferCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimePaymentsTransferCreateParams: Increase::Models::RealTimePaymentsTransferCreateParams
 
-  class RealTimePaymentsTransferListParams = Increase::Models::RealTimePaymentsTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimePaymentsTransferListParams: Increase::Models::RealTimePaymentsTransferListParams
 
-  class RealTimePaymentsTransferRetrieveParams = Increase::Models::RealTimePaymentsTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RealTimePaymentsTransferRetrieveParams: Increase::Models::RealTimePaymentsTransferRetrieveParams
 
-  class RoutingNumberListParams = Increase::Models::RoutingNumberListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  RoutingNumberListParams: Increase::Models::RoutingNumberListParams
 
-  module Simulations = Increase::Models::Simulations
+  # module 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Simulations: Increase::Models::Simulations
 
-  class SupplementalDocumentCreateParams = Increase::Models::SupplementalDocumentCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  SupplementalDocumentCreateParams: Increase::Models::SupplementalDocumentCreateParams
 
-  class SupplementalDocumentListParams = Increase::Models::SupplementalDocumentListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  SupplementalDocumentListParams: Increase::Models::SupplementalDocumentListParams
 
-  class Transaction = Increase::Models::Transaction
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  Transaction: Increase::Models::Transaction
 
-  class TransactionListParams = Increase::Models::TransactionListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  TransactionListParams: Increase::Models::TransactionListParams
 
-  class TransactionRetrieveParams = Increase::Models::TransactionRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  TransactionRetrieveParams: Increase::Models::TransactionRetrieveParams
 
-  class WireDrawdownRequest = Increase::Models::WireDrawdownRequest
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireDrawdownRequest: Increase::Models::WireDrawdownRequest
 
-  class WireDrawdownRequestCreateParams = Increase::Models::WireDrawdownRequestCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireDrawdownRequestCreateParams: Increase::Models::WireDrawdownRequestCreateParams
 
-  class WireDrawdownRequestListParams = Increase::Models::WireDrawdownRequestListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireDrawdownRequestListParams: Increase::Models::WireDrawdownRequestListParams
 
-  class WireDrawdownRequestRetrieveParams = Increase::Models::WireDrawdownRequestRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireDrawdownRequestRetrieveParams: Increase::Models::WireDrawdownRequestRetrieveParams
 
-  class WireTransfer = Increase::Models::WireTransfer
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireTransfer: Increase::Models::WireTransfer
 
-  class WireTransferApproveParams = Increase::Models::WireTransferApproveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireTransferApproveParams: Increase::Models::WireTransferApproveParams
 
-  class WireTransferCancelParams = Increase::Models::WireTransferCancelParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireTransferCancelParams: Increase::Models::WireTransferCancelParams
 
-  class WireTransferCreateParams = Increase::Models::WireTransferCreateParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireTransferCreateParams: Increase::Models::WireTransferCreateParams
 
-  class WireTransferListParams = Increase::Models::WireTransferListParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireTransferListParams: Increase::Models::WireTransferListParams
 
-  class WireTransferRetrieveParams = Increase::Models::WireTransferRetrieveParams
+  # class 03c124f7-b4af-494a-87e1-5179d2cf300d
+  WireTransferRetrieveParams: Increase::Models::WireTransferRetrieveParams
 end
