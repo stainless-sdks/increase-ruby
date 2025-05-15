@@ -11,8 +11,6 @@ module Increase
         # https://github.com/golang/go/blob/c8eced8580028328fde7c03cbfcb720ce15b2358/src/net/http/transport.go#L49
         KEEP_ALIVE_TIMEOUT = 30
 
-        DEFAULT_MAX_CONNECTIONS = [Etc.nprocessors, 99].max
-
         class << self
           # @api private
           #
@@ -186,7 +184,7 @@ module Increase
         # @api private
         #
         # @param size [Integer]
-        def initialize(size: self.class::DEFAULT_MAX_CONNECTIONS)
+        def initialize(size: Etc.nprocessors)
           @mutex = Mutex.new
           @size = size
           @pools = {}
