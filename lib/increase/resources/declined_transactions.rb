@@ -11,7 +11,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::DeclinedTransaction]
+      # @return [Increase::DeclinedTransaction]
       #
       # @see Increase::Models::DeclinedTransactionRetrieveParams
       def retrieve(declined_transaction_id, params = {})
@@ -32,9 +32,9 @@ module Increase
       #
       # @param account_id [String] Filter Declined Transactions to ones belonging to the specified Account.
       #
-      # @param category [Increase::Models::DeclinedTransactionListParams::Category]
+      # @param category [Increase::DeclinedTransactionListParams::Category]
       #
-      # @param created_at [Increase::Models::DeclinedTransactionListParams::CreatedAt]
+      # @param created_at [Increase::DeclinedTransactionListParams::CreatedAt]
       #
       # @param cursor [String] Return the page of entries after this one.
       #
@@ -44,7 +44,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::DeclinedTransaction>]
+      # @return [Increase::Internal::Page<Increase::DeclinedTransaction>]
       #
       # @see Increase::Models::DeclinedTransactionListParams
       def list(params = {})

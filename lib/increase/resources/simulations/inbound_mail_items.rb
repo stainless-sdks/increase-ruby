@@ -20,7 +20,7 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::InboundMailItem]
+        # @return [Increase::InboundMailItem]
         #
         # @see Increase::Models::Simulations::InboundMailItemCreateParams
         def create(params)

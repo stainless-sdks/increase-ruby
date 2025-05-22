@@ -10,42 +10,42 @@ module Increase
       # @!attribute category
       #   The type of Export to create.
       #
-      #   @return [Symbol, Increase::Models::ExportCreateParams::Category]
+      #   @return [Symbol, Increase::ExportCreateParams::Category]
       required :category, enum: -> { Increase::ExportCreateParams::Category }
 
       # @!attribute account_statement_ofx
       #   Options for the created export. Required if `category` is equal to
       #   `account_statement_ofx`.
       #
-      #   @return [Increase::Models::ExportCreateParams::AccountStatementOfx, nil]
+      #   @return [Increase::ExportCreateParams::AccountStatementOfx, nil]
       optional :account_statement_ofx, -> { Increase::ExportCreateParams::AccountStatementOfx }
 
       # @!attribute balance_csv
       #   Options for the created export. Required if `category` is equal to
       #   `balance_csv`.
       #
-      #   @return [Increase::Models::ExportCreateParams::BalanceCsv, nil]
+      #   @return [Increase::ExportCreateParams::BalanceCsv, nil]
       optional :balance_csv, -> { Increase::ExportCreateParams::BalanceCsv }
 
       # @!attribute bookkeeping_account_balance_csv
       #   Options for the created export. Required if `category` is equal to
       #   `bookkeeping_account_balance_csv`.
       #
-      #   @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, nil]
+      #   @return [Increase::ExportCreateParams::BookkeepingAccountBalanceCsv, nil]
       optional :bookkeeping_account_balance_csv,
                -> { Increase::ExportCreateParams::BookkeepingAccountBalanceCsv }
 
       # @!attribute entity_csv
       #   Options for the created export. Required if `category` is equal to `entity_csv`.
       #
-      #   @return [Increase::Models::ExportCreateParams::EntityCsv, nil]
+      #   @return [Increase::ExportCreateParams::EntityCsv, nil]
       optional :entity_csv, -> { Increase::ExportCreateParams::EntityCsv }
 
       # @!attribute transaction_csv
       #   Options for the created export. Required if `category` is equal to
       #   `transaction_csv`.
       #
-      #   @return [Increase::Models::ExportCreateParams::TransactionCsv, nil]
+      #   @return [Increase::ExportCreateParams::TransactionCsv, nil]
       optional :transaction_csv, -> { Increase::ExportCreateParams::TransactionCsv }
 
       # @!attribute vendor_csv
@@ -58,18 +58,18 @@ module Increase
       #   Some parameter documentations has been truncated, see
       #   {Increase::Models::ExportCreateParams} for more details.
       #
-      #   @param category [Symbol, Increase::Models::ExportCreateParams::Category] The type of Export to create.
+      #   @param category [Symbol, Increase::ExportCreateParams::Category] The type of Export to create.
       #
-      #   @param account_statement_ofx [Increase::Models::ExportCreateParams::AccountStatementOfx] Options for the created export. Required if `category` is equal to `account_stat
+      #   @param account_statement_ofx [Increase::ExportCreateParams::AccountStatementOfx] Options for the created export. Required if `category` is equal to `account_stat
       #
-      #   @param balance_csv [Increase::Models::ExportCreateParams::BalanceCsv] Options for the created export. Required if `category` is equal to `balance_csv`
+      #   @param balance_csv [Increase::ExportCreateParams::BalanceCsv] Options for the created export. Required if `category` is equal to `balance_csv`
       #
-      #   @param bookkeeping_account_balance_csv [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv] Options for the created export. Required if `category` is equal to
+      #   @param bookkeeping_account_balance_csv [Increase::ExportCreateParams::BookkeepingAccountBalanceCsv] Options for the created export. Required if `category` is equal to
       #   `bookkeeping\_
       #
-      #   @param entity_csv [Increase::Models::ExportCreateParams::EntityCsv] Options for the created export. Required if `category` is equal to `entity_csv`.
+      #   @param entity_csv [Increase::ExportCreateParams::EntityCsv] Options for the created export. Required if `category` is equal to `entity_csv`.
       #
-      #   @param transaction_csv [Increase::Models::ExportCreateParams::TransactionCsv] Options for the created export. Required if `category` is equal to
+      #   @param transaction_csv [Increase::ExportCreateParams::TransactionCsv] Options for the created export. Required if `category` is equal to
       #   `transaction\_
       #
       #   @param vendor_csv [Object] Options for the created export. Required if `category` is equal to `vendor_csv`.
@@ -112,7 +112,7 @@ module Increase
         # @!attribute created_at
         #   Filter results by time range on the `created_at` attribute.
         #
-        #   @return [Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt, nil]
+        #   @return [Increase::ExportCreateParams::AccountStatementOfx::CreatedAt, nil]
         optional :created_at, -> { Increase::ExportCreateParams::AccountStatementOfx::CreatedAt }
 
         # @!method initialize(account_id:, created_at: nil)
@@ -121,9 +121,9 @@ module Increase
         #
         #   @param account_id [String] The Account to create a statement for.
         #
-        #   @param created_at [Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt] Filter results by time range on the `created_at` attribute.
+        #   @param created_at [Increase::ExportCreateParams::AccountStatementOfx::CreatedAt] Filter results by time range on the `created_at` attribute.
 
-        # @see Increase::Models::ExportCreateParams::AccountStatementOfx#created_at
+        # @see Increase::ExportCreateParams::AccountStatementOfx#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -155,8 +155,7 @@ module Increase
 
           # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt} for more
-          #   details.
+          #   {Increase::ExportCreateParams::AccountStatementOfx::CreatedAt} for more details.
           #
           #   Filter results by time range on the `created_at` attribute.
           #
@@ -180,7 +179,7 @@ module Increase
         # @!attribute created_at
         #   Filter results by time range on the `created_at` attribute.
         #
-        #   @return [Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt, nil]
+        #   @return [Increase::ExportCreateParams::BalanceCsv::CreatedAt, nil]
         optional :created_at, -> { Increase::ExportCreateParams::BalanceCsv::CreatedAt }
 
         # @!attribute program_id
@@ -195,11 +194,11 @@ module Increase
         #
         #   @param account_id [String] Filter exported Transactions to the specified Account.
         #
-        #   @param created_at [Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt] Filter results by time range on the `created_at` attribute.
+        #   @param created_at [Increase::ExportCreateParams::BalanceCsv::CreatedAt] Filter results by time range on the `created_at` attribute.
         #
         #   @param program_id [String] Filter exported Transactions to the specified Program.
 
-        # @see Increase::Models::ExportCreateParams::BalanceCsv#created_at
+        # @see Increase::ExportCreateParams::BalanceCsv#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -231,7 +230,7 @@ module Increase
 
           # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt} for more details.
+          #   {Increase::ExportCreateParams::BalanceCsv::CreatedAt} for more details.
           #
           #   Filter results by time range on the `created_at` attribute.
           #
@@ -255,7 +254,7 @@ module Increase
         # @!attribute created_at
         #   Filter results by time range on the `created_at` attribute.
         #
-        #   @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt, nil]
+        #   @return [Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt, nil]
         optional :created_at, -> { Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt }
 
         # @!method initialize(bookkeeping_account_id: nil, created_at: nil)
@@ -264,9 +263,9 @@ module Increase
         #
         #   @param bookkeeping_account_id [String] Filter exported Transactions to the specified Bookkeeping Account.
         #
-        #   @param created_at [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt] Filter results by time range on the `created_at` attribute.
+        #   @param created_at [Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt] Filter results by time range on the `created_at` attribute.
 
-        # @see Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv#created_at
+        # @see Increase::ExportCreateParams::BookkeepingAccountBalanceCsv#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -298,8 +297,8 @@ module Increase
 
           # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt}
-          #   for more details.
+          #   {Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt} for more
+          #   details.
           #
           #   Filter results by time range on the `created_at` attribute.
           #
@@ -317,21 +316,21 @@ module Increase
         # @!attribute status
         #   Entity statuses to filter by.
         #
-        #   @return [Increase::Models::ExportCreateParams::EntityCsv::Status, nil]
+        #   @return [Increase::ExportCreateParams::EntityCsv::Status, nil]
         optional :status, -> { Increase::ExportCreateParams::EntityCsv::Status }
 
         # @!method initialize(status: nil)
         #   Options for the created export. Required if `category` is equal to `entity_csv`.
         #
-        #   @param status [Increase::Models::ExportCreateParams::EntityCsv::Status] Entity statuses to filter by.
+        #   @param status [Increase::ExportCreateParams::EntityCsv::Status] Entity statuses to filter by.
 
-        # @see Increase::Models::ExportCreateParams::EntityCsv#status
+        # @see Increase::ExportCreateParams::EntityCsv#status
         class Status < Increase::Internal::Type::BaseModel
           # @!attribute in_
           #   Entity statuses to filter by. For GET requests, this should be encoded as a
           #   comma-delimited string, such as `?in=one,two,three`.
           #
-          #   @return [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>]
+          #   @return [Array<Symbol, Increase::ExportCreateParams::EntityCsv::Status::In>]
           required :in_,
                    -> {
                      Increase::Internal::Type::ArrayOf[enum: Increase::ExportCreateParams::EntityCsv::Status::In]
@@ -340,11 +339,11 @@ module Increase
 
           # @!method initialize(in_:)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::ExportCreateParams::EntityCsv::Status} for more details.
+          #   {Increase::ExportCreateParams::EntityCsv::Status} for more details.
           #
           #   Entity statuses to filter by.
           #
-          #   @param in_ [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>] Entity statuses to filter by. For GET requests, this should be encoded as a comm
+          #   @param in_ [Array<Symbol, Increase::ExportCreateParams::EntityCsv::Status::In>] Entity statuses to filter by. For GET requests, this should be encoded as a comm
 
           module In
             extend Increase::Internal::Type::Enum
@@ -374,7 +373,7 @@ module Increase
         # @!attribute created_at
         #   Filter results by time range on the `created_at` attribute.
         #
-        #   @return [Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt, nil]
+        #   @return [Increase::ExportCreateParams::TransactionCsv::CreatedAt, nil]
         optional :created_at, -> { Increase::ExportCreateParams::TransactionCsv::CreatedAt }
 
         # @!attribute program_id
@@ -389,11 +388,11 @@ module Increase
         #
         #   @param account_id [String] Filter exported Transactions to the specified Account.
         #
-        #   @param created_at [Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt] Filter results by time range on the `created_at` attribute.
+        #   @param created_at [Increase::ExportCreateParams::TransactionCsv::CreatedAt] Filter results by time range on the `created_at` attribute.
         #
         #   @param program_id [String] Filter exported Transactions to the specified Program.
 
-        # @see Increase::Models::ExportCreateParams::TransactionCsv#created_at
+        # @see Increase::ExportCreateParams::TransactionCsv#created_at
         class CreatedAt < Increase::Internal::Type::BaseModel
           # @!attribute after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -425,8 +424,7 @@ module Increase
 
           # @!method initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           #   Some parameter documentations has been truncated, see
-          #   {Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt} for more
-          #   details.
+          #   {Increase::ExportCreateParams::TransactionCsv::CreatedAt} for more details.
           #
           #   Filter results by time range on the `created_at` attribute.
           #

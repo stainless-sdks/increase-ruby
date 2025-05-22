@@ -11,7 +11,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::InboundWireDrawdownRequest]
+      # @return [Increase::InboundWireDrawdownRequest]
       #
       # @see Increase::Models::InboundWireDrawdownRequestRetrieveParams
       def retrieve(inbound_wire_drawdown_request_id, params = {})
@@ -36,7 +36,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::InboundWireDrawdownRequest>]
+      # @return [Increase::Internal::Page<Increase::InboundWireDrawdownRequest>]
       #
       # @see Increase::Models::InboundWireDrawdownRequestListParams
       def list(params = {})

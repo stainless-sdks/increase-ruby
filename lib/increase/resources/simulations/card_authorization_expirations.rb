@@ -12,7 +12,7 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::CardPayment]
+        # @return [Increase::CardPayment]
         #
         # @see Increase::Models::Simulations::CardAuthorizationExpirationCreateParams
         def create(params)

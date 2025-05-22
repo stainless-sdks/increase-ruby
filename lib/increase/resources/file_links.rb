@@ -16,7 +16,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::FileLink]
+      # @return [Increase::FileLink]
       #
       # @see Increase::Models::FileLinkCreateParams
       def create(params)

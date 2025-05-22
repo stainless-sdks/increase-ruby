@@ -9,7 +9,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Group]
+      # @return [Increase::Group]
       #
       # @see Increase::Models::GroupRetrieveParams
       def retrieve(params = {})

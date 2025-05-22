@@ -23,7 +23,7 @@ module Increase
         #
         # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
         #
-        # @return [Increase::Models::Transaction]
+        # @return [Increase::Transaction]
         #
         # @see Increase::Models::Simulations::CardSettlementCreateParams
         def create(params)

@@ -11,7 +11,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Models::Program]
+      # @return [Increase::Program]
       #
       # @see Increase::Models::ProgramRetrieveParams
       def retrieve(program_id, params = {})
@@ -36,7 +36,7 @@ module Increase
       #
       # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Increase::Internal::Page<Increase::Models::Program>]
+      # @return [Increase::Internal::Page<Increase::Program>]
       #
       # @see Increase::Models::ProgramListParams
       def list(params = {})
