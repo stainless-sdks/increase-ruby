@@ -252,6 +252,12 @@ module Increase
         # Occurs whenever an Outbound Card Push Transfer is updated.
         OUTBOUND_CARD_PUSH_TRANSFER_UPDATED = :"outbound_card_push_transfer.updated"
 
+        # Occurs whenever an Outbound Card Validation is created.
+        OUTBOUND_CARD_VALIDATION_CREATED = :"outbound_card_validation.created"
+
+        # Occurs whenever an Outbound Card Validation is updated.
+        OUTBOUND_CARD_VALIDATION_UPDATED = :"outbound_card_validation.updated"
+
         # Occurs whenever a Pending Transaction is created.
         PENDING_TRANSACTION_CREATED = :"pending_transaction.created"
 
