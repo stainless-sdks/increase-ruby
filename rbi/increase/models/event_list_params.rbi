@@ -606,6 +606,20 @@ module Increase
               Increase::EventListParams::Category::In::TaggedSymbol
             )
 
+          # Occurs whenever an Outbound Card Validation is created.
+          OUTBOUND_CARD_VALIDATION_CREATED =
+            T.let(
+              :"outbound_card_validation.created",
+              Increase::EventListParams::Category::In::TaggedSymbol
+            )
+
+          # Occurs whenever an Outbound Card Validation is updated.
+          OUTBOUND_CARD_VALIDATION_UPDATED =
+            T.let(
+              :"outbound_card_validation.updated",
+              Increase::EventListParams::Category::In::TaggedSymbol
+            )
+
           # Occurs whenever a Pending Transaction is created.
           PENDING_TRANSACTION_CREATED =
             T.let(
