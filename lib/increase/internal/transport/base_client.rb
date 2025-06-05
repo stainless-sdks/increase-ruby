@@ -222,7 +222,7 @@ module Increase
         # @api private
         #
         # @return [String]
-        private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
+        private def generate_idempotency_key = "increase-ruby-retry-#{SecureRandom.uuid}"
 
         # @api private
         #
