@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.wire_transfers.create(
+      @client.wire_transfers.create(
         account_id: "account_in71c4amph0vgo2qllky",
         amount: 100,
         beneficiary_name: "Ian Crease",
@@ -52,7 +52,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
   end
 
   def test_retrieve
-    response = @increase.wire_transfers.retrieve("wire_transfer_id")
+    response = @client.wire_transfers.retrieve("wire_transfer_id")
 
     assert_pattern do
       response => Increase::WireTransfer
@@ -94,7 +94,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
   end
 
   def test_list
-    response = @increase.wire_transfers.list
+    response = @client.wire_transfers.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -143,7 +143,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
   end
 
   def test_approve
-    response = @increase.wire_transfers.approve("wire_transfer_id")
+    response = @client.wire_transfers.approve("wire_transfer_id")
 
     assert_pattern do
       response => Increase::WireTransfer
@@ -185,7 +185,7 @@ class Increase::Test::Resources::WireTransfersTest < Increase::Test::ResourceTes
   end
 
   def test_cancel
-    response = @increase.wire_transfers.cancel("wire_transfer_id")
+    response = @client.wire_transfers.cancel("wire_transfer_id")
 
     assert_pattern do
       response => Increase::WireTransfer

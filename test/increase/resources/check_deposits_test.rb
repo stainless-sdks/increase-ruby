@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::CheckDepositsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.check_deposits.create(
+      @client.check_deposits.create(
         account_id: "account_in71c4amph0vgo2qllky",
         amount: 1000,
         back_image_file_id: "file_26khfk98mzfz90a11oqx",
@@ -41,7 +41,7 @@ class Increase::Test::Resources::CheckDepositsTest < Increase::Test::ResourceTes
   end
 
   def test_retrieve
-    response = @increase.check_deposits.retrieve("check_deposit_id")
+    response = @client.check_deposits.retrieve("check_deposit_id")
 
     assert_pattern do
       response => Increase::CheckDeposit
@@ -72,7 +72,7 @@ class Increase::Test::Resources::CheckDepositsTest < Increase::Test::ResourceTes
   end
 
   def test_list
-    response = @increase.check_deposits.list
+    response = @client.check_deposits.list
 
     assert_pattern do
       response => Increase::Internal::Page

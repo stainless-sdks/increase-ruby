@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::OAuthTokensTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.oauth_tokens.create(grant_type: :authorization_code)
+    response = @client.oauth_tokens.create(grant_type: :authorization_code)
 
     assert_pattern do
       response => Increase::OAuthToken

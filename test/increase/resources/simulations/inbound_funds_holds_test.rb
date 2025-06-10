@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::InboundFundsHoldsTest < Increase::Test::ResourceTest
   def test_release
-    response = @increase.simulations.inbound_funds_holds.release("inbound_funds_hold_id")
+    response = @client.simulations.inbound_funds_holds.release("inbound_funds_hold_id")
 
     assert_pattern do
       response => Increase::Models::Simulations::InboundFundsHoldReleaseResponse

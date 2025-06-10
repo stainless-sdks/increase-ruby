@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::FileLinksTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.file_links.create(file_id: "file_makxrc67oh9l6sg7w9yc")
+    response = @client.file_links.create(file_id: "file_makxrc67oh9l6sg7w9yc")
 
     assert_pattern do
       response => Increase::FileLink

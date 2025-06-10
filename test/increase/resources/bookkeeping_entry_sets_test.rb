@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.bookkeeping_entry_sets.create(
+      @client.bookkeeping_entry_sets.create(
         entries: [
           {account_id: "bookkeeping_account_9husfpw68pzmve9dvvc7", amount: 100},
           {account_id: "bookkeeping_account_t2obldz1rcu15zr54umg", amount: -100}
@@ -30,7 +30,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
   end
 
   def test_retrieve
-    response = @increase.bookkeeping_entry_sets.retrieve("bookkeeping_entry_set_id")
+    response = @client.bookkeeping_entry_sets.retrieve("bookkeeping_entry_set_id")
 
     assert_pattern do
       response => Increase::BookkeepingEntrySet
@@ -50,7 +50,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Increase::Test::Reso
   end
 
   def test_list
-    response = @increase.bookkeeping_entry_sets.list
+    response = @client.bookkeeping_entry_sets.list
 
     assert_pattern do
       response => Increase::Internal::Page
