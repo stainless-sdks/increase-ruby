@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.entities.create(structure: :corporation)
+    response = @client.entities.create(structure: :corporation)
 
     assert_pattern do
       response => Increase::Entity
@@ -32,7 +32,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.entities.retrieve("entity_id")
+    response = @client.entities.retrieve("entity_id")
 
     assert_pattern do
       response => Increase::Entity
@@ -60,7 +60,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.entities.list
+    response = @client.entities.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -95,7 +95,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_archive
-    response = @increase.entities.archive("entity_id")
+    response = @client.entities.archive("entity_id")
 
     assert_pattern do
       response => Increase::Entity
@@ -124,7 +124,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
 
   def test_archive_beneficial_owner_required_params
     response =
-      @increase.entities.archive_beneficial_owner(
+      @client.entities.archive_beneficial_owner(
         "entity_id",
         beneficial_owner_id: "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7"
       )
@@ -155,7 +155,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_confirm
-    response = @increase.entities.confirm("entity_id")
+    response = @client.entities.confirm("entity_id")
 
     assert_pattern do
       response => Increase::Entity
@@ -184,7 +184,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
 
   def test_create_beneficial_owner_required_params
     response =
-      @increase.entities.create_beneficial_owner(
+      @client.entities.create_beneficial_owner(
         "entity_id",
         beneficial_owner: {
           individual: {
@@ -224,7 +224,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
 
   def test_update_address_required_params
     response =
-      @increase.entities.update_address(
+      @client.entities.update_address(
         "entity_id",
         address: {city: "New York", line1: "33 Liberty Street", state: "NY", zip: "10045"}
       )
@@ -256,7 +256,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
 
   def test_update_beneficial_owner_address_required_params
     response =
-      @increase.entities.update_beneficial_owner_address(
+      @client.entities.update_beneficial_owner_address(
         "entity_id",
         address: {country: "US", line1: "33 Liberty Street"},
         beneficial_owner_id: "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7"
@@ -288,7 +288,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
   end
 
   def test_update_industry_code_required_params
-    response = @increase.entities.update_industry_code("entity_id", industry_code: "5132")
+    response = @client.entities.update_industry_code("entity_id", industry_code: "5132")
 
     assert_pattern do
       response => Increase::Entity

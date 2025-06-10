@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::DocumentsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.simulations.documents.create(account_id: "account_in71c4amph0vgo2qllky")
+    response = @client.simulations.documents.create(account_id: "account_in71c4amph0vgo2qllky")
 
     assert_pattern do
       response => Increase::Document

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::ExportsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.exports.create(category: :transaction_csv)
+    response = @client.exports.create(category: :transaction_csv)
 
     assert_pattern do
       response => Increase::Export
@@ -25,7 +25,7 @@ class Increase::Test::Resources::ExportsTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.exports.retrieve("export_id")
+    response = @client.exports.retrieve("export_id")
 
     assert_pattern do
       response => Increase::Export
@@ -46,7 +46,7 @@ class Increase::Test::Resources::ExportsTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.exports.list
+    response = @client.exports.list
 
     assert_pattern do
       response => Increase::Internal::Page

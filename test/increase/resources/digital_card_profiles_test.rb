@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.digital_card_profiles.create(
+      @client.digital_card_profiles.create(
         app_icon_file_id: "file_8zxqkwlh43wo144u8yec",
         background_image_file_id: "file_1ai913suu1zfn1pdetru",
         card_description: "MyBank Signature Card",
@@ -38,7 +38,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::Resou
   end
 
   def test_retrieve
-    response = @increase.digital_card_profiles.retrieve("digital_card_profile_id")
+    response = @client.digital_card_profiles.retrieve("digital_card_profile_id")
 
     assert_pattern do
       response => Increase::DigitalCardProfile
@@ -65,7 +65,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::Resou
   end
 
   def test_list
-    response = @increase.digital_card_profiles.list
+    response = @client.digital_card_profiles.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -99,7 +99,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::Resou
   end
 
   def test_archive
-    response = @increase.digital_card_profiles.archive("digital_card_profile_id")
+    response = @client.digital_card_profiles.archive("digital_card_profile_id")
 
     assert_pattern do
       response => Increase::DigitalCardProfile
@@ -126,7 +126,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::Resou
   end
 
   def test_clone_
-    response = @increase.digital_card_profiles.clone_("digital_card_profile_id")
+    response = @client.digital_card_profiles.clone_("digital_card_profile_id")
 
     assert_pattern do
       response => Increase::DigitalCardProfile

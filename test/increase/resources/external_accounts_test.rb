@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.external_accounts.create(
+      @client.external_accounts.create(
         account_number: "987654321",
         description: "Landlord",
         routing_number: "101050001"
@@ -32,7 +32,7 @@ class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::Resource
   end
 
   def test_retrieve
-    response = @increase.external_accounts.retrieve("external_account_id")
+    response = @client.external_accounts.retrieve("external_account_id")
 
     assert_pattern do
       response => Increase::ExternalAccount
@@ -55,7 +55,7 @@ class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::Resource
   end
 
   def test_update
-    response = @increase.external_accounts.update("external_account_id")
+    response = @client.external_accounts.update("external_account_id")
 
     assert_pattern do
       response => Increase::ExternalAccount
@@ -78,7 +78,7 @@ class Increase::Test::Resources::ExternalAccountsTest < Increase::Test::Resource
   end
 
   def test_list
-    response = @increase.external_accounts.list
+    response = @client.external_accounts.list
 
     assert_pattern do
       response => Increase::Internal::Page

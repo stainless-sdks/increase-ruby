@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.events.retrieve("event_id")
+    response = @client.events.retrieve("event_id")
 
     assert_pattern do
       response => Increase::Event
@@ -23,7 +23,7 @@ class Increase::Test::Resources::EventsTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.events.list
+    response = @client.events.list
 
     assert_pattern do
       response => Increase::Internal::Page

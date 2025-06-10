@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::EventSubscriptionsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.event_subscriptions.create(url: "https://website.com/webhooks")
+    response = @client.event_subscriptions.create(url: "https://website.com/webhooks")
 
     assert_pattern do
       response => Increase::EventSubscription
@@ -25,7 +25,7 @@ class Increase::Test::Resources::EventSubscriptionsTest < Increase::Test::Resour
   end
 
   def test_retrieve
-    response = @increase.event_subscriptions.retrieve("event_subscription_id")
+    response = @client.event_subscriptions.retrieve("event_subscription_id")
 
     assert_pattern do
       response => Increase::EventSubscription
@@ -46,7 +46,7 @@ class Increase::Test::Resources::EventSubscriptionsTest < Increase::Test::Resour
   end
 
   def test_update
-    response = @increase.event_subscriptions.update("event_subscription_id")
+    response = @client.event_subscriptions.update("event_subscription_id")
 
     assert_pattern do
       response => Increase::EventSubscription
@@ -67,7 +67,7 @@ class Increase::Test::Resources::EventSubscriptionsTest < Increase::Test::Resour
   end
 
   def test_list
-    response = @increase.event_subscriptions.list
+    response = @client.event_subscriptions.list
 
     assert_pattern do
       response => Increase::Internal::Page
