@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Program < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Program, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Increase::Program, Increase::Internal::AnyHash) }
 
       # The Program identifier.
       sig { returns(String) }
@@ -62,52 +61,52 @@ module Increase
           name: String,
           type: Increase::Program::Type::OrSymbol,
           updated_at: Time
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Program identifier.
-        id:,
+      id:,
         # The Bank the Program is with.
-        bank:,
+      bank:,
         # The Program billing account.
-        billing_account_id:,
+      billing_account_id:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-        # was created.
-        created_at:,
+      # was created.
+      created_at:,
         # The default configuration for digital cards attached to this Program.
-        default_digital_card_profile_id:,
+      default_digital_card_profile_id:,
         # The Interest Rate currently being earned on the accounts in this program, as a
-        # string containing a decimal number. For example, a 1% interest rate would be
-        # represented as "0.01".
-        interest_rate:,
+      # string containing a decimal number. For example, a 1% interest rate would be
+      # represented as "0.01".
+      interest_rate:,
         # The name of the Program.
-        name:,
+      name:,
         # A constant representing the object's type. For this resource it will always be
-        # `program`.
-        type:,
+      # `program`.
+      type:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-        # was last updated.
-        updated_at:
-      )
-      end
+      # was last updated.
+      updated_at:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank: Increase::Program::Bank::TaggedSymbol,
-            billing_account_id: T.nilable(String),
-            created_at: Time,
-            default_digital_card_profile_id: T.nilable(String),
-            interest_rate: String,
-            name: String,
-            type: Increase::Program::Type::TaggedSymbol,
-            updated_at: Time
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank: Increase::Program::Bank::TaggedSymbol,
+              billing_account_id: T.nilable(String),
+              created_at: Time,
+              default_digital_card_profile_id: T.nilable(String),
+              interest_rate: String,
+              name: String,
+              type: Increase::Program::Type::TaggedSymbol,
+              updated_at: Time
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The Bank the Program is with.
       module Bank
@@ -120,18 +119,13 @@ module Increase
         CORE_BANK = T.let(:core_bank, Increase::Program::Bank::TaggedSymbol)
 
         # First Internet Bank of Indiana
-        FIRST_INTERNET_BANK =
-          T.let(:first_internet_bank, Increase::Program::Bank::TaggedSymbol)
+        FIRST_INTERNET_BANK = T.let(:first_internet_bank, Increase::Program::Bank::TaggedSymbol)
 
         # Grasshopper Bank
-        GRASSHOPPER_BANK =
-          T.let(:grasshopper_bank, Increase::Program::Bank::TaggedSymbol)
+        GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Program::Bank::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Program::Bank::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Program::Bank::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -144,11 +138,8 @@ module Increase
 
         PROGRAM = T.let(:program, Increase::Program::Type::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Program::Type::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Program::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

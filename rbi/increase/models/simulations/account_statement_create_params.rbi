@@ -8,37 +8,21 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::AccountStatementCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::AccountStatementCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Account the statement is for.
         sig { returns(String) }
         attr_accessor :account_id
 
-        sig do
-          params(
-            account_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
-        end
+        sig { params(account_id: String, request_options: Increase::RequestOptions::OrHash).returns(T.attached_class) }
         def self.new(
           # The identifier of the Account the statement is for.
-          account_id:,
+        account_id:,
           request_options: {}
-        )
-        end
+        ); end
 
-        sig do
-          override.returns(
-            { account_id: String, request_options: Increase::RequestOptions }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({account_id: String, request_options: Increase::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

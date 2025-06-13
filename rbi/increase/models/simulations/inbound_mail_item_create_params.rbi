@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::InboundMailItemCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::InboundMailItemCreateParams, Increase::Internal::AnyHash) }
 
         # The amount of the check to be simulated, in cents.
         sig { returns(Integer) }
@@ -37,32 +32,27 @@ module Increase
             lockbox_id: String,
             contents_file_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The amount of the check to be simulated, in cents.
-          amount:,
+        amount:,
           # The identifier of the Lockbox to simulate inbound mail to.
-          lockbox_id:,
+        lockbox_id:,
           # The file containing the PDF contents. If not present, a default check image file
-          # will be used.
-          contents_file_id: nil,
+        # will be used.
+        contents_file_id: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              lockbox_id: String,
-              contents_file_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {amount: Integer, lockbox_id: String, contents_file_id: String, request_options: Increase::RequestOptions}
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

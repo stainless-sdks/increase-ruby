@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::InboundWireDrawdownRequestCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::InboundWireDrawdownRequestCreateParams, Increase::Internal::AnyHash) }
 
         # The amount being requested in cents.
         sig { returns(Integer) }
@@ -160,88 +155,88 @@ module Increase
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The amount being requested in cents.
-          amount:,
+        amount:,
           # The drawdown request's beneficiary's account number.
-          beneficiary_account_number:,
+        beneficiary_account_number:,
           # The drawdown request's beneficiary's routing number.
-          beneficiary_routing_number:,
+        beneficiary_routing_number:,
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-          # requested. Will always be "USD".
-          currency:,
+        # requested. Will always be "USD".
+        currency:,
           # A message from the drawdown request's originator.
-          message_to_recipient:,
+        message_to_recipient:,
           # The drawdown request's originator's account number.
-          originator_account_number:,
+        originator_account_number:,
           # The drawdown request's originator's routing number.
-          originator_routing_number:,
+        originator_routing_number:,
           # The Account Number to which the recipient of this request is being requested to
-          # send funds from.
-          recipient_account_number_id:,
+        # send funds from.
+        recipient_account_number_id:,
           # Line 1 of the drawdown request's beneficiary's address.
-          beneficiary_address_line1: nil,
+        beneficiary_address_line1: nil,
           # Line 2 of the drawdown request's beneficiary's address.
-          beneficiary_address_line2: nil,
+        beneficiary_address_line2: nil,
           # Line 3 of the drawdown request's beneficiary's address.
-          beneficiary_address_line3: nil,
+        beneficiary_address_line3: nil,
           # The drawdown request's beneficiary's name.
-          beneficiary_name: nil,
+        beneficiary_name: nil,
           # Line 1 of the drawdown request's originator's address.
-          originator_address_line1: nil,
+        originator_address_line1: nil,
           # Line 2 of the drawdown request's originator's address.
-          originator_address_line2: nil,
+        originator_address_line2: nil,
           # Line 3 of the drawdown request's originator's address.
-          originator_address_line3: nil,
+        originator_address_line3: nil,
           # The drawdown request's originator's name.
-          originator_name: nil,
+        originator_name: nil,
           # Line 1 of the information conveyed from the originator of the message to the
-          # beneficiary.
-          originator_to_beneficiary_information_line1: nil,
+        # beneficiary.
+        originator_to_beneficiary_information_line1: nil,
           # Line 2 of the information conveyed from the originator of the message to the
-          # beneficiary.
-          originator_to_beneficiary_information_line2: nil,
+        # beneficiary.
+        originator_to_beneficiary_information_line2: nil,
           # Line 3 of the information conveyed from the originator of the message to the
-          # beneficiary.
-          originator_to_beneficiary_information_line3: nil,
+        # beneficiary.
+        originator_to_beneficiary_information_line3: nil,
           # Line 4 of the information conveyed from the originator of the message to the
-          # beneficiary.
-          originator_to_beneficiary_information_line4: nil,
+        # beneficiary.
+        originator_to_beneficiary_information_line4: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              beneficiary_account_number: String,
-              beneficiary_routing_number: String,
-              currency: String,
-              message_to_recipient: String,
-              originator_account_number: String,
-              originator_routing_number: String,
-              recipient_account_number_id: String,
-              beneficiary_address_line1: String,
-              beneficiary_address_line2: String,
-              beneficiary_address_line3: String,
-              beneficiary_name: String,
-              originator_address_line1: String,
-              originator_address_line2: String,
-              originator_address_line3: String,
-              originator_name: String,
-              originator_to_beneficiary_information_line1: String,
-              originator_to_beneficiary_information_line2: String,
-              originator_to_beneficiary_information_line3: String,
-              originator_to_beneficiary_information_line4: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                beneficiary_account_number: String,
+                beneficiary_routing_number: String,
+                currency: String,
+                message_to_recipient: String,
+                originator_account_number: String,
+                originator_routing_number: String,
+                recipient_account_number_id: String,
+                beneficiary_address_line1: String,
+                beneficiary_address_line2: String,
+                beneficiary_address_line3: String,
+                beneficiary_name: String,
+                originator_address_line1: String,
+                originator_address_line2: String,
+                originator_address_line3: String,
+                originator_name: String,
+                originator_to_beneficiary_information_line1: String,
+                originator_to_beneficiary_information_line2: String,
+                originator_to_beneficiary_information_line3: String,
+                originator_to_beneficiary_information_line4: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

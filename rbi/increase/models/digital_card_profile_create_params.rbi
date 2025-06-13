@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::DigitalCardProfileCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::DigitalCardProfileCreateParams, Increase::Internal::AnyHash) }
 
       # The identifier of the File containing the card's icon image.
       sig { returns(String) }
@@ -56,17 +50,10 @@ module Increase
       attr_writer :contact_website
 
       # The Card's text color, specified as an RGB triple. The default is white.
-      sig do
-        returns(T.nilable(Increase::DigitalCardProfileCreateParams::TextColor))
-      end
+      sig { returns(T.nilable(Increase::DigitalCardProfileCreateParams::TextColor)) }
       attr_reader :text_color
 
-      sig do
-        params(
-          text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash
-        ).void
-      end
+      sig { params(text_color: Increase::DigitalCardProfileCreateParams::TextColor::OrHash).void }
       attr_writer :text_color
 
       sig do
@@ -79,61 +66,55 @@ module Increase
           contact_email: String,
           contact_phone: String,
           contact_website: String,
-          text_color:
-            Increase::DigitalCardProfileCreateParams::TextColor::OrHash,
+          text_color: Increase::DigitalCardProfileCreateParams::TextColor::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier of the File containing the card's icon image.
-        app_icon_file_id:,
+      app_icon_file_id:,
         # The identifier of the File containing the card's front image.
-        background_image_file_id:,
+      background_image_file_id:,
         # A user-facing description for the card itself.
-        card_description:,
+      card_description:,
         # A description you can use to identify the Card Profile.
-        description:,
+      description:,
         # A user-facing description for whoever is issuing the card.
-        issuer_name:,
+      issuer_name:,
         # An email address the user can contact to receive support for their card.
-        contact_email: nil,
+      contact_email: nil,
         # A phone number the user can contact to receive support for their card.
-        contact_phone: nil,
+      contact_phone: nil,
         # A website the user can visit to view and receive support for their card.
-        contact_website: nil,
+      contact_website: nil,
         # The Card's text color, specified as an RGB triple. The default is white.
-        text_color: nil,
+      text_color: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            app_icon_file_id: String,
-            background_image_file_id: String,
-            card_description: String,
-            description: String,
-            issuer_name: String,
-            contact_email: String,
-            contact_phone: String,
-            contact_website: String,
-            text_color: Increase::DigitalCardProfileCreateParams::TextColor,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              app_icon_file_id: String,
+              background_image_file_id: String,
+              card_description: String,
+              description: String,
+              issuer_name: String,
+              contact_email: String,
+              contact_phone: String,
+              contact_website: String,
+              text_color: Increase::DigitalCardProfileCreateParams::TextColor,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class TextColor < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DigitalCardProfileCreateParams::TextColor,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::DigitalCardProfileCreateParams::TextColor, Increase::Internal::AnyHash) }
 
         # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
@@ -148,26 +129,18 @@ module Increase
         attr_accessor :red
 
         # The Card's text color, specified as an RGB triple. The default is white.
-        sig do
-          params(blue: Integer, green: Integer, red: Integer).returns(
-            T.attached_class
-          )
-        end
+        sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
         def self.new(
           # The value of the blue channel in the RGB color.
-          blue:,
+        blue:,
           # The value of the green channel in the RGB color.
-          green:,
+        green:,
           # The value of the red channel in the RGB color.
-          red:
-        )
-        end
+        red:
+        ); end
 
-        sig do
-          override.returns({ blue: Integer, green: Integer, red: Integer })
-        end
-        def to_hash
-        end
+        sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
+        def to_hash; end
       end
     end
   end

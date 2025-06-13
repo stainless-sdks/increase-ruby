@@ -1,17 +1,15 @@
 module Increase
   module Models
     module Simulations
-      type inbound_real_time_payments_transfer_create_params =
-        {
-          account_number_id: String,
-          amount: Integer,
-          debtor_account_number: String,
-          debtor_name: String,
-          debtor_routing_number: String,
-          remittance_information: String,
-          request_for_payment_id: String
-        }
-        & Increase::Internal::Type::request_parameters
+      type inbound_real_time_payments_transfer_create_params = ({
+        account_number_id: String,
+        amount: Integer,
+        debtor_account_number: String,
+        debtor_name: String,
+        debtor_routing_number: String,
+        remittance_information: String,
+        request_for_payment_id: String
+      } & Increase::Internal::Type::request_parameters)
 
       class InboundRealTimePaymentsTransferCreateParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -41,18 +39,9 @@ module Increase
 
         def request_for_payment_id=: (String) -> String
 
-        def initialize: (
-          account_number_id: String,
-          amount: Integer,
-          ?debtor_account_number: String,
-          ?debtor_name: String,
-          ?debtor_routing_number: String,
-          ?remittance_information: String,
-          ?request_for_payment_id: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (account_number_id: String, amount: Integer, ?debtor_account_number: String, ?debtor_name: String, ?debtor_routing_number: String, ?remittance_information: String, ?request_for_payment_id: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           account_number_id: String,
           amount: Integer,
           debtor_account_number: String,

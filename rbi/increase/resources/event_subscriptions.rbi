@@ -8,41 +8,37 @@ module Increase
         params(
           url: String,
           oauth_connection_id: String,
-          selected_event_category:
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+          selected_event_category: Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EventSubscription)
+        )
+          .returns(Increase::EventSubscription)
       end
       def create(
         # The URL you'd like us to send webhooks to.
-        url:,
+      url:,
         # If specified, this subscription will only receive webhooks for Events associated
-        # with the specified OAuth Connection.
-        oauth_connection_id: nil,
+      # with the specified OAuth Connection.
+      oauth_connection_id: nil,
         # If specified, this subscription will only receive webhooks for Events with the
-        # specified `category`.
-        selected_event_category: nil,
+      # specified `category`.
+      selected_event_category: nil,
         # The key that will be used to sign webhooks. If no value is passed, a random
-        # string will be used as default.
-        shared_secret: nil,
+      # string will be used as default.
+      shared_secret: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # Retrieve an Event Subscription
       sig do
-        params(
-          event_subscription_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EventSubscription)
+        params(event_subscription_id: String, request_options: Increase::RequestOptions::OrHash)
+          .returns(Increase::EventSubscription)
       end
       def retrieve(
         # The identifier of the Event Subscription.
-        event_subscription_id,
+      event_subscription_id,
         request_options: {}
-      )
-      end
+      ); end
 
       # Update an Event Subscription
       sig do
@@ -50,16 +46,16 @@ module Increase
           event_subscription_id: String,
           status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::EventSubscription)
+        )
+          .returns(Increase::EventSubscription)
       end
       def update(
         # The identifier of the Event Subscription.
-        event_subscription_id,
+      event_subscription_id,
         # The status to update the Event Subscription with.
-        status: nil,
+      status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # List Event Subscriptions
       sig do
@@ -68,27 +64,26 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::EventSubscription])
+        )
+          .returns(Increase::Internal::Page[Increase::EventSubscription])
       end
       def list(
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key: nil,
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

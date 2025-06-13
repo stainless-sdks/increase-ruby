@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::LockboxCreateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::LockboxCreateParams, Increase::Internal::AnyHash) }
 
       # The Account checks sent to this Lockbox should be deposited into.
       sig { returns(String) }
@@ -35,31 +32,26 @@ module Increase
           description: String,
           recipient_name: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account checks sent to this Lockbox should be deposited into.
-        account_id:,
+      account_id:,
         # The description you choose for the Lockbox, for display purposes.
-        description: nil,
+      description: nil,
         # The name of the recipient that will receive mail at this location.
-        recipient_name: nil,
+      recipient_name: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            description: String,
-            recipient_name: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {account_id: String, description: String, recipient_name: String, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

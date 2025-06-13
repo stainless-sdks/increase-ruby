@@ -1,11 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type real_time_payments_transfer_complete_params =
-        {
-          rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
-        }
-        & Increase::Internal::Type::request_parameters
+      type real_time_payments_transfer_complete_params = ({rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection} & Increase::Internal::Type::request_parameters)
 
       class RealTimePaymentsTransferCompleteParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -13,58 +9,29 @@ module Increase
 
         attr_reader rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection?
 
-        def rejection=: (
-          Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
-        ) -> Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
+        def rejection=: (Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection) -> Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
 
-        def initialize: (
-          ?rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (?rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
           request_options: Increase::RequestOptions
         }
 
-        type rejection =
-          {
-            reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
-          }
+        type rejection = {
+          reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
+        }
 
         class Rejection < Increase::Internal::Type::BaseModel
           attr_accessor reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
 
-          def initialize: (
-            reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
-          ) -> void
+          def initialize: (reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code
           }
 
-          type reject_reason_code =
-            :account_closed
-            | :account_blocked
-            | :invalid_creditor_account_type
-            | :invalid_creditor_account_number
-            | :invalid_creditor_financial_institution_identifier
-            | :end_customer_deceased
-            | :narrative
-            | :transaction_forbidden
-            | :transaction_type_not_supported
-            | :unexpected_amount
-            | :amount_exceeds_bank_limits
-            | :invalid_creditor_address
-            | :unknown_end_customer
-            | :invalid_debtor_address
-            | :timeout
-            | :unsupported_message_for_recipient
-            | :recipient_connection_not_available
-            | :real_time_payments_suspended
-            | :instructed_agent_signed_off
-            | :processing_error
-            | :other
+          type reject_reason_code = (:account_closed | :account_blocked | :invalid_creditor_account_type | :invalid_creditor_account_number | :invalid_creditor_financial_institution_identifier | :end_customer_deceased | :narrative | :transaction_forbidden | :transaction_type_not_supported | :unexpected_amount | :amount_exceeds_bank_limits | :invalid_creditor_address | :unknown_end_customer | :invalid_debtor_address | :timeout | :unsupported_message_for_recipient | :recipient_connection_not_available | :real_time_payments_suspended | :instructed_agent_signed_off | :processing_error | :other)
 
           module RejectReasonCode
             extend Increase::Internal::Type::Enum
@@ -132,7 +99,7 @@ module Increase
             # Some other error or issue has occurred.
             OTHER: :other
 
-            def self?.values: -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
+            def self?.values: () -> ::Array[Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::reject_reason_code]
           end
         end
       end

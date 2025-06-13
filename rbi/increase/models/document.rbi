@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Document < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Document, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Increase::Document, Increase::Internal::AnyHash) }
 
       # The Document identifier.
       sig { returns(String) }
@@ -14,12 +13,7 @@ module Increase
       sig { returns(T.nilable(Increase::Document::AccountVerificationLetter)) }
       attr_reader :account_verification_letter
 
-      sig do
-        params(
-          account_verification_letter:
-            T.nilable(Increase::Document::AccountVerificationLetter::OrHash)
-        ).void
-      end
+      sig { params(account_verification_letter: T.nilable(Increase::Document::AccountVerificationLetter::OrHash)).void }
       attr_writer :account_verification_letter
 
       # The type of document.
@@ -55,66 +49,59 @@ module Increase
       sig do
         params(
           id: String,
-          account_verification_letter:
-            T.nilable(Increase::Document::AccountVerificationLetter::OrHash),
+          account_verification_letter: T.nilable(Increase::Document::AccountVerificationLetter::OrHash),
           category: Increase::Document::Category::OrSymbol,
           created_at: Time,
           entity_id: T.nilable(String),
           file_id: String,
           idempotency_key: T.nilable(String),
           type: Increase::Document::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Document identifier.
-        id:,
+      id:,
         # Properties of an account verification letter document.
-        account_verification_letter:,
+      account_verification_letter:,
         # The type of document.
-        category:,
+      category:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-        # Document was created.
-        created_at:,
+      # Document was created.
+      created_at:,
         # The identifier of the Entity the document was generated for.
-        entity_id:,
+      entity_id:,
         # The identifier of the File containing the Document's contents.
-        file_id:,
+      file_id:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # A constant representing the object's type. For this resource it will always be
-        # `document`.
-        type:
-      )
-      end
+      # `document`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_verification_letter:
-              T.nilable(Increase::Document::AccountVerificationLetter),
-            category: Increase::Document::Category::TaggedSymbol,
-            created_at: Time,
-            entity_id: T.nilable(String),
-            file_id: String,
-            idempotency_key: T.nilable(String),
-            type: Increase::Document::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_verification_letter: T.nilable(Increase::Document::AccountVerificationLetter),
+              category: Increase::Document::Category::TaggedSymbol,
+              created_at: Time,
+              entity_id: T.nilable(String),
+              file_id: String,
+              idempotency_key: T.nilable(String),
+              type: Increase::Document::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class AccountVerificationLetter < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Document::AccountVerificationLetter,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Document::AccountVerificationLetter, Increase::Internal::AnyHash) }
 
         # The identifier of the Account Number the document was generated for.
         sig { returns(String) }
@@ -124,57 +111,38 @@ module Increase
         sig { params(account_number_id: String).returns(T.attached_class) }
         def self.new(
           # The identifier of the Account Number the document was generated for.
-          account_number_id:
-        )
-        end
+        account_number_id:
+        ); end
 
-        sig { override.returns({ account_number_id: String }) }
-        def to_hash
-        end
+        sig { override.returns({account_number_id: String}) }
+        def to_hash; end
       end
 
       # The type of document.
       module Category
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Document::Category) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Document::Category) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Internal Revenue Service Form 1099-INT.
-        FORM_1099_INT =
-          T.let(:form_1099_int, Increase::Document::Category::TaggedSymbol)
+        FORM_1099_INT = T.let(:form_1099_int, Increase::Document::Category::TaggedSymbol)
 
         # Internal Revenue Service Form 1099-MISC.
-        FORM_1099_MISC =
-          T.let(:form_1099_misc, Increase::Document::Category::TaggedSymbol)
+        FORM_1099_MISC = T.let(:form_1099_misc, Increase::Document::Category::TaggedSymbol)
 
         # A document submitted in response to a proof of authorization request for an ACH transfer.
-        PROOF_OF_AUTHORIZATION =
-          T.let(
-            :proof_of_authorization,
-            Increase::Document::Category::TaggedSymbol
-          )
+        PROOF_OF_AUTHORIZATION = T.let(:proof_of_authorization, Increase::Document::Category::TaggedSymbol)
 
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
-        COMPANY_INFORMATION =
-          T.let(
-            :company_information,
-            Increase::Document::Category::TaggedSymbol
-          )
+        COMPANY_INFORMATION = T.let(:company_information, Increase::Document::Category::TaggedSymbol)
 
         # An account verification letter.
         ACCOUNT_VERIFICATION_LETTER =
-          T.let(
-            :account_verification_letter,
-            Increase::Document::Category::TaggedSymbol
-          )
+          T.let(:account_verification_letter, Increase::Document::Category::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Document::Category::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Document::Category::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -187,11 +155,8 @@ module Increase
 
         DOCUMENT = T.let(:document, Increase::Document::Type::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Document::Type::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Document::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

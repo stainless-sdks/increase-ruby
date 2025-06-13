@@ -1,19 +1,9 @@
 module Increase
   module Resources
     class Events
-      def retrieve: (
-        String event_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Event
+      def retrieve: (String event_id, ?request_options: Increase::request_opts) -> Increase::Event
 
-      def list: (
-        ?associated_object_id: String,
-        ?category: Increase::EventListParams::Category,
-        ?created_at: Increase::EventListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::Event]
+      def list: (?associated_object_id: String, ?category: Increase::EventListParams::Category, ?created_at: Increase::EventListParams::CreatedAt, ?cursor: String, ?limit: Integer, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::Event]
 
       def initialize: (client: Increase::Client) -> void
     end

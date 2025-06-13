@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::PendingTransactionCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::PendingTransactionCreateParams, Increase::Internal::AnyHash) }
 
       # The Account to place the hold on.
       sig { returns(String) }
@@ -37,33 +31,28 @@ module Increase
           amount: Integer,
           description: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account to place the hold on.
-        account_id:,
+      account_id:,
         # The amount to hold in the minor unit of the account's currency. For dollars, for
-        # example, this is cents. This should be a negative amount - to hold $1.00 from
-        # the account, you would pass -100.
-        amount:,
+      # example, this is cents. This should be a negative amount - to hold $1.00 from
+      # the account, you would pass -100.
+      amount:,
         # The description you choose to give the hold.
-        description: nil,
+      description: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            description: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {account_id: String, amount: Integer, description: String, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

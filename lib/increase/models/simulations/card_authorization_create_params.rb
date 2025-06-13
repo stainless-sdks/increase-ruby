@@ -32,10 +32,7 @@ module Increase
         #   sent.
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason, nil]
-        optional :decline_reason,
-                 enum: -> {
-                   Increase::Simulations::CardAuthorizationCreateParams::DeclineReason
-                 }
+        optional :decline_reason, enum: -> { Increase::Simulations::CardAuthorizationCreateParams::DeclineReason }
 
         # @!attribute digital_wallet_token_id
         #   The identifier of the Digital Wallet Token to be authorized.
@@ -260,9 +257,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason, nil]
             optional :stand_in_processing_reason,
-                     enum: -> {
-                       Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
-                     }
+                     enum: -> { Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason }
 
             # @!method initialize(stand_in_processing_reason: nil)
             #   Fields specific to the Visa network.

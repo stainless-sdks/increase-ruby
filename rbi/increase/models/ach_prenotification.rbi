@@ -3,10 +3,7 @@
 module Increase
   module Models
     class ACHPrenotification < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::ACHPrenotification, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::ACHPrenotification, Increase::Internal::AnyHash) }
 
       # The ACH Prenotification's identifier.
       sig { returns(String) }
@@ -42,13 +39,7 @@ module Increase
       attr_accessor :created_at
 
       # If the notification is for a future credit or debit.
-      sig do
-        returns(
-          T.nilable(
-            Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)) }
       attr_accessor :credit_debit_indicator
 
       # The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -63,24 +54,15 @@ module Increase
 
       # If the receiving bank notifies that future transfers should use different
       # details, this will contain those details.
-      sig do
-        returns(T::Array[Increase::ACHPrenotification::NotificationsOfChange])
-      end
+      sig { returns(T::Array[Increase::ACHPrenotification::NotificationsOfChange]) }
       attr_accessor :notifications_of_change
 
       # If your prenotification is returned, this will contain details of the return.
-      sig do
-        returns(T.nilable(Increase::ACHPrenotification::PrenotificationReturn))
-      end
+      sig { returns(T.nilable(Increase::ACHPrenotification::PrenotificationReturn)) }
       attr_reader :prenotification_return
 
       sig do
-        params(
-          prenotification_return:
-            T.nilable(
-              Increase::ACHPrenotification::PrenotificationReturn::OrHash
-            )
-        ).void
+        params(prenotification_return: T.nilable(Increase::ACHPrenotification::PrenotificationReturn::OrHash)).void
       end
       attr_writer :prenotification_return
 
@@ -109,147 +91,106 @@ module Increase
           company_entry_description: T.nilable(String),
           company_name: T.nilable(String),
           created_at: Time,
-          credit_debit_indicator:
-            T.nilable(
-              Increase::ACHPrenotification::CreditDebitIndicator::OrSymbol
-            ),
+          credit_debit_indicator: T.nilable(Increase::ACHPrenotification::CreditDebitIndicator::OrSymbol),
           effective_date: T.nilable(Time),
           idempotency_key: T.nilable(String),
-          notifications_of_change:
-            T::Array[
-              Increase::ACHPrenotification::NotificationsOfChange::OrHash
-            ],
-          prenotification_return:
-            T.nilable(
-              Increase::ACHPrenotification::PrenotificationReturn::OrHash
-            ),
+          notifications_of_change: T::Array[Increase::ACHPrenotification::NotificationsOfChange::OrHash],
+          prenotification_return: T.nilable(Increase::ACHPrenotification::PrenotificationReturn::OrHash),
           routing_number: String,
           status: Increase::ACHPrenotification::Status::OrSymbol,
           type: Increase::ACHPrenotification::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The ACH Prenotification's identifier.
-        id:,
+      id:,
         # The destination account number.
-        account_number:,
+      account_number:,
         # Additional information for the recipient.
-        addendum:,
+      addendum:,
         # The description of the date of the notification.
-        company_descriptive_date:,
+      company_descriptive_date:,
         # Optional data associated with the notification.
-        company_discretionary_data:,
+      company_discretionary_data:,
         # The description of the notification.
-        company_entry_description:,
+      company_entry_description:,
         # The name by which you know the company.
-        company_name:,
+      company_name:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the prenotification was created.
-        created_at:,
+      # the prenotification was created.
+      created_at:,
         # If the notification is for a future credit or debit.
-        credit_debit_indicator:,
+      credit_debit_indicator:,
         # The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-        effective_date:,
+      effective_date:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # If the receiving bank notifies that future transfers should use different
-        # details, this will contain those details.
-        notifications_of_change:,
+      # details, this will contain those details.
+      notifications_of_change:,
         # If your prenotification is returned, this will contain details of the return.
-        prenotification_return:,
+      prenotification_return:,
         # The American Bankers' Association (ABA) Routing Transit Number (RTN).
-        routing_number:,
+      routing_number:,
         # The lifecycle status of the ACH Prenotification.
-        status:,
+      status:,
         # A constant representing the object's type. For this resource it will always be
-        # `ach_prenotification`.
-        type:
-      )
-      end
+      # `ach_prenotification`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_number: String,
-            addendum: T.nilable(String),
-            company_descriptive_date: T.nilable(String),
-            company_discretionary_data: T.nilable(String),
-            company_entry_description: T.nilable(String),
-            company_name: T.nilable(String),
-            created_at: Time,
-            credit_debit_indicator:
-              T.nilable(
-                Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol
-              ),
-            effective_date: T.nilable(Time),
-            idempotency_key: T.nilable(String),
-            notifications_of_change:
-              T::Array[Increase::ACHPrenotification::NotificationsOfChange],
-            prenotification_return:
-              T.nilable(Increase::ACHPrenotification::PrenotificationReturn),
-            routing_number: String,
-            status: Increase::ACHPrenotification::Status::TaggedSymbol,
-            type: Increase::ACHPrenotification::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_number: String,
+              addendum: T.nilable(String),
+              company_descriptive_date: T.nilable(String),
+              company_discretionary_data: T.nilable(String),
+              company_entry_description: T.nilable(String),
+              company_name: T.nilable(String),
+              created_at: Time,
+              credit_debit_indicator: T.nilable(Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol),
+              effective_date: T.nilable(Time),
+              idempotency_key: T.nilable(String),
+              notifications_of_change: T::Array[Increase::ACHPrenotification::NotificationsOfChange],
+              prenotification_return: T.nilable(Increase::ACHPrenotification::PrenotificationReturn),
+              routing_number: String,
+              status: Increase::ACHPrenotification::Status::TaggedSymbol,
+              type: Increase::ACHPrenotification::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If the notification is for a future credit or debit.
       module CreditDebitIndicator
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::ACHPrenotification::CreditDebitIndicator)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::ACHPrenotification::CreditDebitIndicator) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Prenotification is for an anticipated credit.
-        CREDIT =
-          T.let(
-            :credit,
-            Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol
-          )
+        CREDIT = T.let(:credit, Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)
 
         # The Prenotification is for an anticipated debit.
-        DEBIT =
-          T.let(
-            :debit,
-            Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol
-          )
+        DEBIT = T.let(:debit, Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::ACHPrenotification::CreditDebitIndicator::TaggedSymbol]) }
+        def self.values; end
       end
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHPrenotification::NotificationsOfChange,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::ACHPrenotification::NotificationsOfChange, Increase::Internal::AnyHash) }
 
         # The required type of change that is being signaled by the receiving financial
         # institution.
-        sig do
-          returns(
-            Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol
-          )
-        end
+        sig { returns(Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol) }
         attr_accessor :change_code
 
         # The corrected data that should be used in future ACHs to this account. This may
@@ -267,40 +208,38 @@ module Increase
 
         sig do
           params(
-            change_code:
-              Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::OrSymbol,
+            change_code: Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::OrSymbol,
             corrected_data: String,
             created_at: Time
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The required type of change that is being signaled by the receiving financial
-          # institution.
-          change_code:,
+        # institution.
+        change_code:,
           # The corrected data that should be used in future ACHs to this account. This may
-          # contain the suggested new account number or routing number. When the
-          # `change_code` is `incorrect_transaction_code`, this field contains an integer.
-          # Numbers starting with a 2 encourage changing the `funding` parameter to
-          # checking; numbers starting with a 3 encourage changing to savings.
-          corrected_data:,
+        # contain the suggested new account number or routing number. When the
+        # `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        # Numbers starting with a 2 encourage changing the `funding` parameter to
+        # checking; numbers starting with a 3 encourage changing to savings.
+        corrected_data:,
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the notification occurred.
-          created_at:
-        )
-        end
+        # the notification occurred.
+        created_at:
+        ); end
 
         sig do
-          override.returns(
-            {
-              change_code:
-                Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol,
-              corrected_data: String,
-              created_at: Time
-            }
-          )
+          override
+            .returns(
+              {
+                change_code: Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol,
+                corrected_data: String,
+                created_at: Time
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The required type of change that is being signaled by the receiving financial
         # institution.
@@ -308,12 +247,7 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::ACHPrenotification::NotificationsOfChange::ChangeCode
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::ACHPrenotification::NotificationsOfChange::ChangeCode) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The account number was incorrect.
@@ -449,26 +383,14 @@ module Increase
               Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol
             )
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol]) }
+          def self.values; end
         end
       end
 
       class PrenotificationReturn < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::ACHPrenotification::PrenotificationReturn,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::ACHPrenotification::PrenotificationReturn, Increase::Internal::AnyHash) }
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
         # the Prenotification was returned.
@@ -476,53 +398,42 @@ module Increase
         attr_accessor :created_at
 
         # Why the Prenotification was returned.
-        sig do
-          returns(
-            Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
-          )
-        end
+        sig { returns(Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol) }
         attr_accessor :return_reason_code
 
         # If your prenotification is returned, this will contain details of the return.
         sig do
           params(
             created_at: Time,
-            return_reason_code:
-              Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::OrSymbol
-          ).returns(T.attached_class)
+            return_reason_code: Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::OrSymbol
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          # the Prenotification was returned.
-          created_at:,
+        # the Prenotification was returned.
+        created_at:,
           # Why the Prenotification was returned.
-          return_reason_code:
-        )
-        end
+        return_reason_code:
+        ); end
 
         sig do
-          override.returns(
-            {
-              created_at: Time,
-              return_reason_code:
-                Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
-            }
-          )
+          override
+            .returns(
+              {
+                created_at: Time,
+                return_reason_code: Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # Why the Prenotification was returned.
         module ReturnReasonCode
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
@@ -534,10 +445,7 @@ module Increase
 
           # Code R03. The account does not exist or the receiving bank was unable to locate it.
           NO_ACCOUNT =
-            T.let(
-              :no_account,
-              Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
-            )
+            T.let(:no_account, Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol)
 
           # Code R02. The account is closed at the receiving bank.
           ACCOUNT_CLOSED =
@@ -681,10 +589,7 @@ module Increase
 
           # Code R25. The addenda record is incorrect or missing.
           ADDENDA_ERROR =
-            T.let(
-              :addenda_error,
-              Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
-            )
+            T.let(:addenda_error, Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol)
 
           # Code R15. A rare return reason. The account holder is deceased.
           BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED =
@@ -779,10 +684,7 @@ module Increase
 
           # Code R69. A rare return reason. One or more of the fields in the ACH were malformed.
           FIELD_ERROR =
-            T.let(
-              :field_error,
-              Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
-            )
+            T.let(:field_error, Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol)
 
           # Code R83. A rare return reason. The Foreign receiving bank was unable to settle this ACH transfer.
           FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE =
@@ -1016,14 +918,10 @@ module Increase
             )
 
           sig do
-            override.returns(
-              T::Array[
-                Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol
-              ]
-            )
+            override
+              .returns(T::Array[Increase::ACHPrenotification::PrenotificationReturn::ReturnReasonCode::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -1031,39 +929,23 @@ module Increase
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::ACHPrenotification::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::ACHPrenotification::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Prenotification is pending submission.
-        PENDING_SUBMITTING =
-          T.let(
-            :pending_submitting,
-            Increase::ACHPrenotification::Status::TaggedSymbol
-          )
+        PENDING_SUBMITTING = T.let(:pending_submitting, Increase::ACHPrenotification::Status::TaggedSymbol)
 
         # The Prenotification requires attention.
-        REQUIRES_ATTENTION =
-          T.let(
-            :requires_attention,
-            Increase::ACHPrenotification::Status::TaggedSymbol
-          )
+        REQUIRES_ATTENTION = T.let(:requires_attention, Increase::ACHPrenotification::Status::TaggedSymbol)
 
         # The Prenotification has been returned.
-        RETURNED =
-          T.let(:returned, Increase::ACHPrenotification::Status::TaggedSymbol)
+        RETURNED = T.let(:returned, Increase::ACHPrenotification::Status::TaggedSymbol)
 
         # The Prenotification is complete.
-        SUBMITTED =
-          T.let(:submitted, Increase::ACHPrenotification::Status::TaggedSymbol)
+        SUBMITTED = T.let(:submitted, Increase::ACHPrenotification::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::ACHPrenotification::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::ACHPrenotification::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -1071,23 +953,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::ACHPrenotification::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::ACHPrenotification::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACH_PRENOTIFICATION =
-          T.let(
-            :ach_prenotification,
-            Increase::ACHPrenotification::Type::TaggedSymbol
-          )
+        ACH_PRENOTIFICATION = T.let(:ach_prenotification, Increase::ACHPrenotification::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::ACHPrenotification::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::ACHPrenotification::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

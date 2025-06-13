@@ -1,27 +1,25 @@
 module Increase
   module Models
     module Simulations
-      type inbound_wire_transfer_create_params =
-        {
-          account_number_id: String,
-          amount: Integer,
-          :beneficiary_address_line1 => String,
-          :beneficiary_address_line2 => String,
-          :beneficiary_address_line3 => String,
-          beneficiary_name: String,
-          beneficiary_reference: String,
-          :originator_address_line1 => String,
-          :originator_address_line2 => String,
-          :originator_address_line3 => String,
-          originator_name: String,
-          originator_routing_number: String,
-          :originator_to_beneficiary_information_line1 => String,
-          :originator_to_beneficiary_information_line2 => String,
-          :originator_to_beneficiary_information_line3 => String,
-          :originator_to_beneficiary_information_line4 => String,
-          sender_reference: String
-        }
-        & Increase::Internal::Type::request_parameters
+      type inbound_wire_transfer_create_params = ({
+        account_number_id: String,
+        amount: Integer,
+        beneficiary_address_line1: String,
+        beneficiary_address_line2: String,
+        beneficiary_address_line3: String,
+        beneficiary_name: String,
+        beneficiary_reference: String,
+        originator_address_line1: String,
+        originator_address_line2: String,
+        originator_address_line3: String,
+        originator_name: String,
+        originator_routing_number: String,
+        originator_to_beneficiary_information_line1: String,
+        originator_to_beneficiary_information_line2: String,
+        originator_to_beneficiary_information_line3: String,
+        originator_to_beneficiary_information_line4: String,
+        sender_reference: String
+      } & Increase::Internal::Type::request_parameters)
 
       class InboundWireTransferCreateParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -91,44 +89,25 @@ module Increase
 
         def sender_reference=: (String) -> String
 
-        def initialize: (
-          account_number_id: String,
-          amount: Integer,
-          ?beneficiary_address_line1: String,
-          ?beneficiary_address_line2: String,
-          ?beneficiary_address_line3: String,
-          ?beneficiary_name: String,
-          ?beneficiary_reference: String,
-          ?originator_address_line1: String,
-          ?originator_address_line2: String,
-          ?originator_address_line3: String,
-          ?originator_name: String,
-          ?originator_routing_number: String,
-          ?originator_to_beneficiary_information_line1: String,
-          ?originator_to_beneficiary_information_line2: String,
-          ?originator_to_beneficiary_information_line3: String,
-          ?originator_to_beneficiary_information_line4: String,
-          ?sender_reference: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (account_number_id: String, amount: Integer, ?beneficiary_address_line1: String, ?beneficiary_address_line2: String, ?beneficiary_address_line3: String, ?beneficiary_name: String, ?beneficiary_reference: String, ?originator_address_line1: String, ?originator_address_line2: String, ?originator_address_line3: String, ?originator_name: String, ?originator_routing_number: String, ?originator_to_beneficiary_information_line1: String, ?originator_to_beneficiary_information_line2: String, ?originator_to_beneficiary_information_line3: String, ?originator_to_beneficiary_information_line4: String, ?sender_reference: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           account_number_id: String,
           amount: Integer,
-          :beneficiary_address_line1 => String,
-          :beneficiary_address_line2 => String,
-          :beneficiary_address_line3 => String,
+          beneficiary_address_line1: String,
+          beneficiary_address_line2: String,
+          beneficiary_address_line3: String,
           beneficiary_name: String,
           beneficiary_reference: String,
-          :originator_address_line1 => String,
-          :originator_address_line2 => String,
-          :originator_address_line3 => String,
+          originator_address_line1: String,
+          originator_address_line2: String,
+          originator_address_line3: String,
           originator_name: String,
           originator_routing_number: String,
-          :originator_to_beneficiary_information_line1 => String,
-          :originator_to_beneficiary_information_line2 => String,
-          :originator_to_beneficiary_information_line3 => String,
-          :originator_to_beneficiary_information_line4 => String,
+          originator_to_beneficiary_information_line1: String,
+          originator_to_beneficiary_information_line2: String,
+          originator_to_beneficiary_information_line3: String,
+          originator_to_beneficiary_information_line4: String,
           sender_reference: String,
           request_options: Increase::RequestOptions
         }

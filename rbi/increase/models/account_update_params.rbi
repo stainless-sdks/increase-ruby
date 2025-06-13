@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::AccountUpdateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::AccountUpdateParams, Increase::Internal::AnyHash) }
 
       # The new name of the Account.
       sig { returns(T.nilable(String)) }
@@ -18,26 +15,15 @@ module Increase
       sig { params(name: String).void }
       attr_writer :name
 
-      sig do
-        params(
-          name: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
-      end
+      sig { params(name: String, request_options: Increase::RequestOptions::OrHash).returns(T.attached_class) }
       def self.new(
         # The new name of the Account.
-        name: nil,
+      name: nil,
         request_options: {}
-      )
-      end
+      ); end
 
-      sig do
-        override.returns(
-          { name: String, request_options: Increase::RequestOptions }
-        )
-      end
-      def to_hash
-      end
+      sig { override.returns({name: String, request_options: Increase::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

@@ -7,13 +7,7 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::ProgramCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::Simulations::ProgramCreateParams, Increase::Internal::AnyHash) }
 
         # The name of the program being added.
         sig { returns(String) }
@@ -27,32 +21,19 @@ module Increase
         attr_writer :reserve_account_id
 
         sig do
-          params(
-            name: String,
-            reserve_account_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          params(name: String, reserve_account_id: String, request_options: Increase::RequestOptions::OrHash)
+            .returns(T.attached_class)
         end
         def self.new(
           # The name of the program being added.
-          name:,
+        name:,
           # The identifier of the Account the Program should be added to is for.
-          reserve_account_id: nil,
+        reserve_account_id: nil,
           request_options: {}
-        )
-        end
+        ); end
 
-        sig do
-          override.returns(
-            {
-              name: String,
-              reserve_account_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({name: String, reserve_account_id: String, request_options: Increase::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

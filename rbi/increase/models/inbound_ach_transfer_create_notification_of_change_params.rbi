@@ -7,12 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias do
-          T.any(
-            Increase::InboundACHTransferCreateNotificationOfChangeParams,
-            Increase::Internal::AnyHash
-          )
-        end
+        T.type_alias { T.any(Increase::InboundACHTransferCreateNotificationOfChangeParams, Increase::Internal::AnyHash) }
 
       # The updated account number to send in the notification of change.
       sig { returns(T.nilable(String)) }
@@ -33,28 +28,24 @@ module Increase
           updated_account_number: String,
           updated_routing_number: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The updated account number to send in the notification of change.
-        updated_account_number: nil,
+      updated_account_number: nil,
         # The updated routing number to send in the notification of change.
-        updated_routing_number: nil,
+      updated_routing_number: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            updated_account_number: String,
-            updated_routing_number: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {updated_account_number: String, updated_routing_number: String, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

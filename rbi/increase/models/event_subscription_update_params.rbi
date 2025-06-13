@@ -6,93 +6,54 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::EventSubscriptionUpdateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::EventSubscriptionUpdateParams, Increase::Internal::AnyHash) }
 
       # The status to update the Event Subscription with.
-      sig do
-        returns(
-          T.nilable(Increase::EventSubscriptionUpdateParams::Status::OrSymbol)
-        )
-      end
+      sig { returns(T.nilable(Increase::EventSubscriptionUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
-      sig do
-        params(
-          status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol
-        ).void
-      end
+      sig { params(status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol).void }
       attr_writer :status
 
       sig do
         params(
           status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The status to update the Event Subscription with.
-        status: nil,
+      status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {status: Increase::EventSubscriptionUpdateParams::Status::OrSymbol, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status to update the Event Subscription with.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::EventSubscriptionUpdateParams::Status)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::EventSubscriptionUpdateParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The subscription is active and Events will be delivered normally.
-        ACTIVE =
-          T.let(
-            :active,
-            Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol
-          )
+        ACTIVE = T.let(:active, Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
         # The subscription is temporarily disabled and Events will not be delivered.
-        DISABLED =
-          T.let(
-            :disabled,
-            Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol
-          )
+        DISABLED = T.let(:disabled, Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
         # The subscription is permanently disabled and Events will not be delivered.
-        DELETED =
-          T.let(
-            :deleted,
-            Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol
-          )
+        DELETED = T.let(:deleted, Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::EventSubscriptionUpdateParams::Status::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

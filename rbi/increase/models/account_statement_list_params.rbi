@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::AccountStatementListParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::AccountStatementListParams, Increase::Internal::AnyHash) }
 
       # Filter Account Statements to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -36,19 +30,10 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig do
-        returns(
-          T.nilable(Increase::AccountStatementListParams::StatementPeriodStart)
-        )
-      end
+      sig { returns(T.nilable(Increase::AccountStatementListParams::StatementPeriodStart)) }
       attr_reader :statement_period_start
 
-      sig do
-        params(
-          statement_period_start:
-            Increase::AccountStatementListParams::StatementPeriodStart::OrHash
-        ).void
-      end
+      sig { params(statement_period_start: Increase::AccountStatementListParams::StatementPeriodStart::OrHash).void }
       attr_writer :statement_period_start
 
       sig do
@@ -56,47 +41,40 @@ module Increase
           account_id: String,
           cursor: String,
           limit: Integer,
-          statement_period_start:
-            Increase::AccountStatementListParams::StatementPeriodStart::OrHash,
+          statement_period_start: Increase::AccountStatementListParams::StatementPeriodStart::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # Filter Account Statements to those belonging to the specified Account.
-        account_id: nil,
+      account_id: nil,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         statement_period_start: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            cursor: String,
-            limit: Integer,
-            statement_period_start:
-              Increase::AccountStatementListParams::StatementPeriodStart,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              cursor: String,
+              limit: Integer,
+              statement_period_start: Increase::AccountStatementListParams::StatementPeriodStart,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class StatementPeriodStart < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::AccountStatementListParams::StatementPeriodStart,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::AccountStatementListParams::StatementPeriodStart, Increase::Internal::AnyHash) }
 
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
@@ -130,37 +108,24 @@ module Increase
         sig { params(on_or_before: Time).void }
         attr_writer :on_or_before
 
-        sig do
-          params(
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ).returns(T.attached_class)
-        end
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
+        # timestamp.
+        after: nil,
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
+        # timestamp.
+        before: nil,
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_after: nil,
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        )
-        end
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_before: nil
+        ); end
 
-        sig do
-          override.returns(
-            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
+        def to_hash; end
       end
     end
   end

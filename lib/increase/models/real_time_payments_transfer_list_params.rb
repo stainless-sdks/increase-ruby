@@ -122,9 +122,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::RealTimePaymentsTransferListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::RealTimePaymentsTransferListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::RealTimePaymentsTransferListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)

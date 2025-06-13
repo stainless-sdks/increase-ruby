@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::RoutingNumberListParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::RoutingNumberListParams, Increase::Internal::AnyHash) }
 
       # Filter financial institutions by routing number.
       sig { returns(String) }
@@ -36,32 +33,27 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # Filter financial institutions by routing number.
-        routing_number:,
+      routing_number:,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            routing_number: String,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {routing_number: String, cursor: String, limit: Integer, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

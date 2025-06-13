@@ -93,9 +93,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::OAuthApplicationListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::OAuthApplicationListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::OAuthApplicationListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)

@@ -30,14 +30,14 @@ module Increase
   end
 
   Increase::Internal::Util.walk_namespaces(Increase::Models)
-                          .lazy
-                          .grep(Increase::Internal::Type::Union)
-                          .each do |mod|
-    const = :Variants
-    next if mod.sorbet_constant_defined?(const)
+    .lazy
+    .grep(Increase::Internal::Type::Union)
+    .each do |mod|
+      const = :Variants
+      next if mod.sorbet_constant_defined?(const)
 
-    mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
-  end
+      mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
+    end
 
   Account = Increase::Models::Account
 

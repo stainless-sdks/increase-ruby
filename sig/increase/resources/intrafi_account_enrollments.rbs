@@ -1,30 +1,13 @@
 module Increase
   module Resources
     class IntrafiAccountEnrollments
-      def create: (
-        account_id: String,
-        email_address: String,
-        ?request_options: Increase::request_opts
-      ) -> Increase::IntrafiAccountEnrollment
+      def create: (account_id: String, email_address: String, ?request_options: Increase::request_opts) -> Increase::IntrafiAccountEnrollment
 
-      def retrieve: (
-        String intrafi_account_enrollment_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::IntrafiAccountEnrollment
+      def retrieve: (String intrafi_account_enrollment_id, ?request_options: Increase::request_opts) -> Increase::IntrafiAccountEnrollment
 
-      def list: (
-        ?account_id: String,
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::IntrafiAccountEnrollmentListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::IntrafiAccountEnrollment]
+      def list: (?account_id: String, ?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::IntrafiAccountEnrollmentListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::IntrafiAccountEnrollment]
 
-      def unenroll: (
-        String intrafi_account_enrollment_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::IntrafiAccountEnrollment
+      def unenroll: (String intrafi_account_enrollment_id, ?request_options: Increase::request_opts) -> Increase::IntrafiAccountEnrollment
 
       def initialize: (client: Increase::Client) -> void
     end

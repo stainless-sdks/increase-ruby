@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::CheckTransferListParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::CheckTransferListParams, Increase::Internal::AnyHash) }
 
       # Filter Check Transfers to those that originated from the specified Account.
       sig { returns(T.nilable(String)) }
@@ -21,11 +18,7 @@ module Increase
       sig { returns(T.nilable(Increase::CheckTransferListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig do
-        params(
-          created_at: Increase::CheckTransferListParams::CreatedAt::OrHash
-        ).void
-      end
+      sig { params(created_at: Increase::CheckTransferListParams::CreatedAt::OrHash).void }
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -56,9 +49,7 @@ module Increase
       sig { returns(T.nilable(Increase::CheckTransferListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(status: Increase::CheckTransferListParams::Status::OrHash).void
-      end
+      sig { params(status: Increase::CheckTransferListParams::Status::OrHash).void }
       attr_writer :status
 
       sig do
@@ -70,51 +61,46 @@ module Increase
           limit: Integer,
           status: Increase::CheckTransferListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # Filter Check Transfers to those that originated from the specified Account.
-        account_id: nil,
+      account_id: nil,
         created_at: nil,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key: nil,
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            created_at: Increase::CheckTransferListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::CheckTransferListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              created_at: Increase::CheckTransferListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::CheckTransferListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::CheckTransferListParams::CreatedAt, Increase::Internal::AnyHash) }
 
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
@@ -148,183 +134,89 @@ module Increase
         sig { params(on_or_before: Time).void }
         attr_writer :on_or_before
 
-        sig do
-          params(
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ).returns(T.attached_class)
-        end
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
+        # timestamp.
+        after: nil,
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
+        # timestamp.
+        before: nil,
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_after: nil,
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        )
-        end
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_before: nil
+        ); end
 
-        sig do
-          override.returns(
-            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
+        def to_hash; end
       end
 
       class Status < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::CheckTransferListParams::Status,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::CheckTransferListParams::Status, Increase::Internal::AnyHash) }
 
         # Filter Check Transfers to those that have the specified status. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 
-        sig do
-          params(
-            in_:
-              T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]
-          ).void
-        end
+        sig { params(in_: T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]).void }
         attr_writer :in_
 
-        sig do
-          params(
-            in_:
-              T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]
-          ).returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]).returns(T.attached_class) }
         def self.new(
           # Filter Check Transfers to those that have the specified status. For GET
-          # requests, this should be encoded as a comma-delimited string, such as
-          # `?in=one,two,three`.
-          in_: nil
-        )
-        end
+        # requests, this should be encoded as a comma-delimited string, such as
+        # `?in=one,two,three`.
+        in_: nil
+        ); end
 
-        sig do
-          override.returns(
-            {
-              in_:
-                T::Array[
-                  Increase::CheckTransferListParams::Status::In::OrSymbol
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({in_: T::Array[Increase::CheckTransferListParams::Status::In::OrSymbol]}) }
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Increase::CheckTransferListParams::Status::In)
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::CheckTransferListParams::Status::In) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The transfer is awaiting approval.
-          PENDING_APPROVAL =
-            T.let(
-              :pending_approval,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          PENDING_APPROVAL = T.let(:pending_approval, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been canceled.
-          CANCELED =
-            T.let(
-              :canceled,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          CANCELED = T.let(:canceled, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer is pending submission.
           PENDING_SUBMISSION =
-            T.let(
-              :pending_submission,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+            T.let(:pending_submission, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer requires attention from an Increase operator.
           REQUIRES_ATTENTION =
-            T.let(
-              :requires_attention,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+            T.let(:requires_attention, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been rejected.
-          REJECTED =
-            T.let(
-              :rejected,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          REJECTED = T.let(:rejected, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The check is queued for mailing.
-          PENDING_MAILING =
-            T.let(
-              :pending_mailing,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          PENDING_MAILING = T.let(:pending_mailing, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The check has been mailed.
-          MAILED =
-            T.let(
-              :mailed,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          MAILED = T.let(:mailed, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The check has been deposited.
-          DEPOSITED =
-            T.let(
-              :deposited,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          DEPOSITED = T.let(:deposited, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # A stop-payment was requested for this check.
-          STOPPED =
-            T.let(
-              :stopped,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          STOPPED = T.let(:stopped, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been returned.
-          RETURNED =
-            T.let(
-              :returned,
-              Increase::CheckTransferListParams::Status::In::TaggedSymbol
-            )
+          RETURNED = T.let(:returned, Increase::CheckTransferListParams::Status::In::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::CheckTransferListParams::Status::In::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::CheckTransferListParams::Status::In::TaggedSymbol]) }
+          def self.values; end
         end
       end
     end

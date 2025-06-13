@@ -1,16 +1,14 @@
 module Increase
   module Models
-    type real_time_payments_transfer_list_params =
-      {
-        account_id: String,
-        created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
-        cursor: String,
-        external_account_id: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::RealTimePaymentsTransferListParams::Status
-      }
-      & Increase::Internal::Type::request_parameters
+    type real_time_payments_transfer_list_params = ({
+      account_id: String,
+      created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
+      cursor: String,
+      external_account_id: String,
+      idempotency_key: String,
+      limit: Integer,
+      status: Increase::RealTimePaymentsTransferListParams::Status
+    } & Increase::Internal::Type::request_parameters)
 
     class RealTimePaymentsTransferListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -22,9 +20,7 @@ module Increase
 
       attr_reader created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::RealTimePaymentsTransferListParams::CreatedAt
-      ) -> Increase::RealTimePaymentsTransferListParams::CreatedAt
+      def created_at=: (Increase::RealTimePaymentsTransferListParams::CreatedAt) -> Increase::RealTimePaymentsTransferListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -44,22 +40,11 @@ module Increase
 
       attr_reader status: Increase::RealTimePaymentsTransferListParams::Status?
 
-      def status=: (
-        Increase::RealTimePaymentsTransferListParams::Status
-      ) -> Increase::RealTimePaymentsTransferListParams::Status
+      def status=: (Increase::RealTimePaymentsTransferListParams::Status) -> Increase::RealTimePaymentsTransferListParams::Status
 
-      def initialize: (
-        ?account_id: String,
-        ?created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
-        ?cursor: String,
-        ?external_account_id: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::RealTimePaymentsTransferListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?account_id: String, ?created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt, ?cursor: String, ?external_account_id: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::RealTimePaymentsTransferListParams::Status, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
         cursor: String,
@@ -70,8 +55,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         attr_reader after: Time?
@@ -90,50 +74,23 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-        def to_hash: -> {
-          after: Time,
-          before: Time,
-          on_or_after: Time,
-          on_or_before: Time
-        }
+        def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
       end
 
-      type status =
-        {
-          in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
-        }
+      type status = {in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]}
 
       class Status < Increase::Internal::Type::BaseModel
         attr_reader in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
-        ) -> ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]) -> ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
-        ) -> void
+        def initialize: (?in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]) -> void
 
-        def to_hash: -> {
-          in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
-        }
+        def to_hash: () -> {in_: ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]}
 
-        type in_ =
-          :pending_approval
-          | :canceled
-          | :pending_reviewing
-          | :requires_attention
-          | :rejected
-          | :pending_submission
-          | :submitted
-          | :complete
+        type in_ = (:pending_approval | :canceled | :pending_reviewing | :requires_attention | :rejected | :pending_submission | :submitted | :complete)
 
         module In
           extend Increase::Internal::Type::Enum
@@ -162,7 +119,7 @@ module Increase
           # The transfer has been sent successfully and is complete.
           COMPLETE: :complete
 
-          def self?.values: -> ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
+          def self?.values: () -> ::Array[Increase::Models::RealTimePaymentsTransferListParams::Status::in_]
         end
       end
     end

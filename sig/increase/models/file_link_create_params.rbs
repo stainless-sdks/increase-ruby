@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type file_link_create_params =
-      { file_id: String, expires_at: Time }
-      & Increase::Internal::Type::request_parameters
+    type file_link_create_params = ({file_id: String, expires_at: Time} & Increase::Internal::Type::request_parameters)
 
     class FileLinkCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -14,17 +12,9 @@ module Increase
 
       def expires_at=: (Time) -> Time
 
-      def initialize: (
-        file_id: String,
-        ?expires_at: Time,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (file_id: String, ?expires_at: Time, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
-        file_id: String,
-        expires_at: Time,
-        request_options: Increase::RequestOptions
-      }
+      def to_hash: () -> {file_id: String, expires_at: Time, request_options: Increase::RequestOptions}
     end
   end
 end

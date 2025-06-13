@@ -78,11 +78,7 @@ module Increase
         #   The shipping method to use.
         #
         #   @return [Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method]
-        required :method_,
-                 enum: -> {
-                   Increase::PhysicalCardCreateParams::Shipment::Method
-                 },
-                 api_name: :method
+        required :method_, enum: -> { Increase::PhysicalCardCreateParams::Shipment::Method }, api_name: :method
 
         # @!method initialize(address:, method_:)
         #   The details used to ship this physical card.

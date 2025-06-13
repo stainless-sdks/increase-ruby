@@ -1,12 +1,6 @@
 module Increase
   module Models
-    type lockbox_update_params =
-      {
-        description: String,
-        recipient_name: String,
-        status: Increase::Models::LockboxUpdateParams::status
-      }
-      & Increase::Internal::Type::request_parameters
+    type lockbox_update_params = ({description: String, recipient_name: String, status: Increase::Models::LockboxUpdateParams::status} & Increase::Internal::Type::request_parameters)
 
     class LockboxUpdateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -22,25 +16,18 @@ module Increase
 
       attr_reader status: Increase::Models::LockboxUpdateParams::status?
 
-      def status=: (
-        Increase::Models::LockboxUpdateParams::status
-      ) -> Increase::Models::LockboxUpdateParams::status
+      def status=: (Increase::Models::LockboxUpdateParams::status) -> Increase::Models::LockboxUpdateParams::status
 
-      def initialize: (
-        ?description: String,
-        ?recipient_name: String,
-        ?status: Increase::Models::LockboxUpdateParams::status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?description: String, ?recipient_name: String, ?status: Increase::Models::LockboxUpdateParams::status, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         description: String,
         recipient_name: String,
         status: Increase::Models::LockboxUpdateParams::status,
         request_options: Increase::RequestOptions
       }
 
-      type status = :active | :inactive
+      type status = (:active | :inactive)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -51,7 +38,7 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE: :inactive
 
-        def self?.values: -> ::Array[Increase::Models::LockboxUpdateParams::status]
+        def self?.values: () -> ::Array[Increase::Models::LockboxUpdateParams::status]
       end
     end
   end

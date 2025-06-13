@@ -1,9 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type inbound_check_deposit_create_params =
-        { account_number_id: String, amount: Integer, check_number: String }
-        & Increase::Internal::Type::request_parameters
+      type inbound_check_deposit_create_params = ({account_number_id: String, amount: Integer, check_number: String} & Increase::Internal::Type::request_parameters)
 
       class InboundCheckDepositCreateParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -15,19 +13,9 @@ module Increase
 
         attr_accessor check_number: String
 
-        def initialize: (
-          account_number_id: String,
-          amount: Integer,
-          check_number: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (account_number_id: String, amount: Integer, check_number: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
-          account_number_id: String,
-          amount: Integer,
-          check_number: String,
-          request_options: Increase::RequestOptions
-        }
+        def to_hash: () -> {account_number_id: String, amount: Integer, check_number: String, request_options: Increase::RequestOptions}
       end
     end
   end
