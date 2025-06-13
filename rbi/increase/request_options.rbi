@@ -7,15 +7,11 @@ module Increase
   # When making a request, you can pass an actual {RequestOptions} instance, or
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < Increase::Internal::Type::BaseModel
-    OrHash =
-      T.type_alias do
-        T.any(Increase::RequestOptions, Increase::Internal::AnyHash)
-      end
+    OrHash = T.type_alias { T.any(Increase::RequestOptions, Increase::Internal::AnyHash) }
 
     # @api private
     sig { params(opts: Increase::RequestOptions::OrHash).void }
-    def self.validate!(opts)
-    end
+    def self.validate!(opts); end
 
     # Idempotency key to send with request and all associated retries. Will only be
     # sent for write requests.
@@ -24,11 +20,7 @@ module Increase
 
     # Extra query params to send with the request. These are `.merge`’d into any
     # `query` given at the client level.
-    sig do
-      returns(
-        T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))])
-      )
-    end
+    sig { returns(T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))])) }
     attr_accessor :extra_query
 
     # Extra headers to send with the request. These are `.merged`’d into any
@@ -50,10 +42,7 @@ module Increase
     attr_accessor :timeout
 
     # Returns a new instance of RequestOptions.
-    sig do
-      params(values: Increase::Internal::AnyHash).returns(T.attached_class)
-    end
-    def self.new(values = {})
-    end
+    sig { params(values: Increase::Internal::AnyHash).returns(T.attached_class) }
+    def self.new(values = {}); end
   end
 end

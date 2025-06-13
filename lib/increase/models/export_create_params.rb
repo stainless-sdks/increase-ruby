@@ -333,9 +333,7 @@ module Increase
           #
           #   @return [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>]
           required :in_,
-                   -> {
-                     Increase::Internal::Type::ArrayOf[enum: Increase::ExportCreateParams::EntityCsv::Status::In]
-                   },
+                   -> { Increase::Internal::Type::ArrayOf[enum: Increase::ExportCreateParams::EntityCsv::Status::In] },
                    api_name: :in
 
           # @!method initialize(in_:)

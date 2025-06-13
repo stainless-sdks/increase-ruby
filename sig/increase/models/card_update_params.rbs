@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type card_update_params =
-      {
-        billing_address: Increase::CardUpdateParams::BillingAddress,
-        description: String,
-        digital_wallet: Increase::CardUpdateParams::DigitalWallet,
-        entity_id: String,
-        status: Increase::Models::CardUpdateParams::status
-      }
-      & Increase::Internal::Type::request_parameters
+    type card_update_params = ({
+      billing_address: Increase::CardUpdateParams::BillingAddress,
+      description: String,
+      digital_wallet: Increase::CardUpdateParams::DigitalWallet,
+      entity_id: String,
+      status: Increase::Models::CardUpdateParams::status
+    } & Increase::Internal::Type::request_parameters)
 
     class CardUpdateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -16,9 +14,7 @@ module Increase
 
       attr_reader billing_address: Increase::CardUpdateParams::BillingAddress?
 
-      def billing_address=: (
-        Increase::CardUpdateParams::BillingAddress
-      ) -> Increase::CardUpdateParams::BillingAddress
+      def billing_address=: (Increase::CardUpdateParams::BillingAddress) -> Increase::CardUpdateParams::BillingAddress
 
       attr_reader description: String?
 
@@ -26,9 +22,7 @@ module Increase
 
       attr_reader digital_wallet: Increase::CardUpdateParams::DigitalWallet?
 
-      def digital_wallet=: (
-        Increase::CardUpdateParams::DigitalWallet
-      ) -> Increase::CardUpdateParams::DigitalWallet
+      def digital_wallet=: (Increase::CardUpdateParams::DigitalWallet) -> Increase::CardUpdateParams::DigitalWallet
 
       attr_reader entity_id: String?
 
@@ -36,20 +30,11 @@ module Increase
 
       attr_reader status: Increase::Models::CardUpdateParams::status?
 
-      def status=: (
-        Increase::Models::CardUpdateParams::status
-      ) -> Increase::Models::CardUpdateParams::status
+      def status=: (Increase::Models::CardUpdateParams::status) -> Increase::Models::CardUpdateParams::status
 
-      def initialize: (
-        ?billing_address: Increase::CardUpdateParams::BillingAddress,
-        ?description: String,
-        ?digital_wallet: Increase::CardUpdateParams::DigitalWallet,
-        ?entity_id: String,
-        ?status: Increase::Models::CardUpdateParams::status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?billing_address: Increase::CardUpdateParams::BillingAddress, ?description: String, ?digital_wallet: Increase::CardUpdateParams::DigitalWallet, ?entity_id: String, ?status: Increase::Models::CardUpdateParams::status, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         billing_address: Increase::CardUpdateParams::BillingAddress,
         description: String,
         digital_wallet: Increase::CardUpdateParams::DigitalWallet,
@@ -58,14 +43,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type billing_address =
-        {
-          city: String,
-          :line1 => String,
-          postal_code: String,
-          state: String,
-          :line2 => String
-        }
+      type billing_address = {city: String, line1: String, postal_code: String, state: String, line2: String}
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         attr_accessor city: String
@@ -80,25 +58,12 @@ module Increase
 
         def line2=: (String) -> String
 
-        def initialize: (
-          city: String,
-          line1: String,
-          postal_code: String,
-          state: String,
-          ?line2: String
-        ) -> void
+        def initialize: (city: String, line1: String, postal_code: String, state: String, ?line2: String) -> void
 
-        def to_hash: -> {
-          city: String,
-          :line1 => String,
-          postal_code: String,
-          state: String,
-          :line2 => String
-        }
+        def to_hash: () -> {city: String, line1: String, postal_code: String, state: String, line2: String}
       end
 
-      type digital_wallet =
-        { digital_card_profile_id: String, email: String, phone: String }
+      type digital_wallet = {digital_card_profile_id: String, email: String, phone: String}
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
         attr_reader digital_card_profile_id: String?
@@ -113,20 +78,12 @@ module Increase
 
         def phone=: (String) -> String
 
-        def initialize: (
-          ?digital_card_profile_id: String,
-          ?email: String,
-          ?phone: String
-        ) -> void
+        def initialize: (?digital_card_profile_id: String, ?email: String, ?phone: String) -> void
 
-        def to_hash: -> {
-          digital_card_profile_id: String,
-          email: String,
-          phone: String
-        }
+        def to_hash: () -> {digital_card_profile_id: String, email: String, phone: String}
       end
 
-      type status = :active | :disabled | :canceled
+      type status = (:active | :disabled | :canceled)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -140,7 +97,7 @@ module Increase
         # The card is permanently canceled.
         CANCELED: :canceled
 
-        def self?.values: -> ::Array[Increase::Models::CardUpdateParams::status]
+        def self?.values: () -> ::Array[Increase::Models::CardUpdateParams::status]
       end
     end
   end

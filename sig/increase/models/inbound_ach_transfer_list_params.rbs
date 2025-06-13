@@ -1,15 +1,13 @@
 module Increase
   module Models
-    type inbound_ach_transfer_list_params =
-      {
-        account_id: String,
-        account_number_id: String,
-        created_at: Increase::InboundACHTransferListParams::CreatedAt,
-        cursor: String,
-        limit: Integer,
-        status: Increase::InboundACHTransferListParams::Status
-      }
-      & Increase::Internal::Type::request_parameters
+    type inbound_ach_transfer_list_params = ({
+      account_id: String,
+      account_number_id: String,
+      created_at: Increase::InboundACHTransferListParams::CreatedAt,
+      cursor: String,
+      limit: Integer,
+      status: Increase::InboundACHTransferListParams::Status
+    } & Increase::Internal::Type::request_parameters)
 
     class InboundACHTransferListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -25,9 +23,7 @@ module Increase
 
       attr_reader created_at: Increase::InboundACHTransferListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::InboundACHTransferListParams::CreatedAt
-      ) -> Increase::InboundACHTransferListParams::CreatedAt
+      def created_at=: (Increase::InboundACHTransferListParams::CreatedAt) -> Increase::InboundACHTransferListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -39,21 +35,11 @@ module Increase
 
       attr_reader status: Increase::InboundACHTransferListParams::Status?
 
-      def status=: (
-        Increase::InboundACHTransferListParams::Status
-      ) -> Increase::InboundACHTransferListParams::Status
+      def status=: (Increase::InboundACHTransferListParams::Status) -> Increase::InboundACHTransferListParams::Status
 
-      def initialize: (
-        ?account_id: String,
-        ?account_number_id: String,
-        ?created_at: Increase::InboundACHTransferListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?status: Increase::InboundACHTransferListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?account_id: String, ?account_number_id: String, ?created_at: Increase::InboundACHTransferListParams::CreatedAt, ?cursor: String, ?limit: Integer, ?status: Increase::InboundACHTransferListParams::Status, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         account_number_id: String,
         created_at: Increase::InboundACHTransferListParams::CreatedAt,
@@ -63,8 +49,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         attr_reader after: Time?
@@ -83,42 +68,23 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-        def to_hash: -> {
-          after: Time,
-          before: Time,
-          on_or_after: Time,
-          on_or_before: Time
-        }
+        def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
       end
 
-      type status =
-        {
-          in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
-        }
+      type status = {in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]}
 
       class Status < Increase::Internal::Type::BaseModel
         attr_reader in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
-        ) -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::InboundACHTransferListParams::Status::in_]) -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
-        ) -> void
+        def initialize: (?in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]) -> void
 
-        def to_hash: -> {
-          in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
-        }
+        def to_hash: () -> {in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]}
 
-        type in_ = :pending | :declined | :accepted | :returned
+        type in_ = (:pending | :declined | :accepted | :returned)
 
         module In
           extend Increase::Internal::Type::Enum
@@ -135,7 +101,7 @@ module Increase
           # The Inbound ACH Transfer has been returned.
           RETURNED: :returned
 
-          def self?.values: -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+          def self?.values: () -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
         end
       end
     end

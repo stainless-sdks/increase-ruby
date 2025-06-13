@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::WireTransferCreateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::WireTransferCreateParams, Increase::Internal::AnyHash) }
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
@@ -136,76 +133,76 @@ module Increase
           routing_number: String,
           source_account_number_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the account that will send the transfer.
-        account_id:,
+      account_id:,
         # The transfer amount in USD cents.
-        amount:,
+      amount:,
         # The beneficiary's name.
-        beneficiary_name:,
+      beneficiary_name:,
         # The message that will show on the recipient's bank statement.
-        message_to_recipient:,
+      message_to_recipient:,
         # The account number for the destination account.
-        account_number: nil,
+      account_number: nil,
         # The beneficiary's address line 1.
-        beneficiary_address_line1: nil,
+      beneficiary_address_line1: nil,
         # The beneficiary's address line 2.
-        beneficiary_address_line2: nil,
+      beneficiary_address_line2: nil,
         # The beneficiary's address line 3.
-        beneficiary_address_line3: nil,
+      beneficiary_address_line3: nil,
         # The ID of an External Account to initiate a transfer to. If this parameter is
-        # provided, `account_number` and `routing_number` must be absent.
-        external_account_id: nil,
+      # provided, `account_number` and `routing_number` must be absent.
+      external_account_id: nil,
         # The originator's address line 1. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
-        originator_address_line1: nil,
+      # from a commingled account. Otherwise, we'll use the associated entity's details.
+      originator_address_line1: nil,
         # The originator's address line 2. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
-        originator_address_line2: nil,
+      # from a commingled account. Otherwise, we'll use the associated entity's details.
+      originator_address_line2: nil,
         # The originator's address line 3. This is only necessary if you're transferring
-        # from a commingled account. Otherwise, we'll use the associated entity's details.
-        originator_address_line3: nil,
+      # from a commingled account. Otherwise, we'll use the associated entity's details.
+      originator_address_line3: nil,
         # The originator's name. This is only necessary if you're transferring from a
-        # commingled account. Otherwise, we'll use the associated entity's details.
-        originator_name: nil,
+      # commingled account. Otherwise, we'll use the associated entity's details.
+      originator_name: nil,
         # Whether the transfer requires explicit approval via the dashboard or API.
-        require_approval: nil,
+      require_approval: nil,
         # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-        # destination account.
-        routing_number: nil,
+      # destination account.
+      routing_number: nil,
         # The ID of an Account Number that will be passed to the wire's recipient
-        source_account_number_id: nil,
+      source_account_number_id: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            beneficiary_name: String,
-            message_to_recipient: String,
-            account_number: String,
-            beneficiary_address_line1: String,
-            beneficiary_address_line2: String,
-            beneficiary_address_line3: String,
-            external_account_id: String,
-            originator_address_line1: String,
-            originator_address_line2: String,
-            originator_address_line3: String,
-            originator_name: String,
-            require_approval: T::Boolean,
-            routing_number: String,
-            source_account_number_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              beneficiary_name: String,
+              message_to_recipient: String,
+              account_number: String,
+              beneficiary_address_line1: String,
+              beneficiary_address_line2: String,
+              beneficiary_address_line3: String,
+              external_account_id: String,
+              originator_address_line1: String,
+              originator_address_line2: String,
+              originator_address_line3: String,
+              originator_name: String,
+              require_approval: T::Boolean,
+              routing_number: String,
+              source_account_number_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

@@ -95,11 +95,7 @@ module Increase
                 URI.join(url, response_headers["location"])
               rescue ArgumentError
                 message = "Server responded with status #{status} but no valid location header."
-                raise Increase::Errors::APIConnectionError.new(
-                  url: url,
-                  response: response_headers,
-                  message: message
-                )
+                raise Increase::Errors::APIConnectionError.new(url: url, response: response_headers, message: message)
               end
 
             request = {**request, url: location}
@@ -107,11 +103,7 @@ module Increase
             case [url.scheme, location.scheme]
             in ["https", "http"]
               message = "Tried to redirect to a insecure URL"
-              raise Increase::Errors::APIConnectionError.new(
-                url: url,
-                response: response_headers,
-                message: message
-              )
+              raise Increase::Errors::APIConnectionError.new(url: url, response: response_headers, message: message)
             else
               nil
             end
@@ -197,14 +189,7 @@ module Increase
           idempotency_header: nil
         )
           @requester = Increase::Internal::Transport::PooledNetRequester.new
-          @headers = Increase::Internal::Util.normalized_headers(
-            self.class::PLATFORM_HEADERS,
-            {
-              "accept" => "application/json",
-              "content-type" => "application/json"
-            },
-            headers
-          )
+          @headers = Increase::Internal::Util.normalized_headers(self.class::PLATFORM_HEADERS, {"accept" => "application/json", "content-type" => "application/json"}, headers)
           @base_url_components = Increase::Internal::Util.parse_uri(base_url)
           @base_url = Increase::Internal::Util.unparse_uri(@base_url_components)
           @idempotency_header = idempotency_header&.to_s&.downcase
@@ -268,12 +253,7 @@ module Increase
 
           query = Increase::Internal::Util.deep_merge(req[:query].to_h, opts[:extra_query].to_h)
 
-          headers = Increase::Internal::Util.normalized_headers(
-            @headers,
-            auth_headers,
-            req[:headers].to_h,
-            opts[:extra_headers].to_h
-          )
+          headers = Increase::Internal::Util.normalized_headers(@headers, auth_headers, req[:headers].to_h, opts[:extra_headers].to_h)
 
           if @idempotency_header &&
              !headers.key?(@idempotency_header) &&
@@ -285,7 +265,7 @@ module Increase
             headers["x-stainless-retry-count"] = "0"
           end
 
-          timeout = opts.fetch(:timeout, @timeout).to_f.clamp(0..)
+          timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
           unless headers.key?("x-stainless-timeout") || timeout.zero?
             headers["x-stainless-timeout"] = timeout.to_s
           end
@@ -300,10 +280,7 @@ module Increase
               Increase::Internal::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
             end
 
-          url = Increase::Internal::Util.join_parsed_uri(
-            @base_url_components,
-            {**req, path: path, query: query}
-          )
+          url = Increase::Internal::Util.join_parsed_uri(@base_url_components, {**req, path: path, query: query})
           headers, encoded = Increase::Internal::Util.encode_content(headers, body)
           {
             method: method,
@@ -511,16 +488,7 @@ module Increase
               method: Symbol,
               path: T.any(String, T::Array[String]),
               query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-              headers: T.nilable(
-                T::Hash[String,
-                        T.nilable(
-                          T.any(
-                            String,
-                            Integer,
-                            T::Array[T.nilable(T.any(String, Integer))]
-                          )
-                        )]
-              ),
+              headers: T.nilable(T::Hash[String, T.nilable(T.any(String, Integer, T::Array[T.nilable(T.any(String, Integer))]))]),
               body: T.nilable(T.anything),
               unwrap: T.nilable(
                 T.any(

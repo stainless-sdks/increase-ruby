@@ -300,9 +300,7 @@ module Increase
           #
           #   @return [Array<Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry>]
           required :entries,
-                   -> {
-                     Increase::Internal::Type::ArrayOf[Increase::InboundACHTransfer::Addenda::Freeform::Entry]
-                   }
+                   -> { Increase::Internal::Type::ArrayOf[Increase::InboundACHTransfer::Addenda::Freeform::Entry] }
 
           # @!method initialize(entries:)
           #   Unstructured `payment_related_information` passed through by the originator.
@@ -483,9 +481,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator]
         required :foreign_exchange_reference_indicator,
-                 enum: -> {
-                   Increase::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator
-                 }
+                 enum: -> { Increase::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator }
 
         # @!attribute foreign_payment_amount
         #   The amount in the minor unit of the foreign payment currency. For dollars, for
@@ -505,9 +501,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode]
         required :international_transaction_type_code,
-                 enum: -> {
-                   Increase::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode
-                 }
+                 enum: -> { Increase::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode }
 
         # @!attribute originating_currency_code
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
@@ -537,9 +531,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier]
         required :originating_depository_financial_institution_id_qualifier,
-                 enum: -> {
-                   Increase::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier
-                 }
+                 enum: -> { Increase::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier }
 
         # @!attribute originating_depository_financial_institution_name
         #   The name of the originating bank. Sometimes this will refer to an American bank
@@ -670,9 +662,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier]
         required :receiving_depository_financial_institution_id_qualifier,
-                 enum: -> {
-                   Increase::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier
-                 }
+                 enum: -> { Increase::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier }
 
         # @!attribute receiving_depository_financial_institution_name
         #   The name of the receiving bank, as set by the sending financial institution.

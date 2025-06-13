@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Lockbox < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Lockbox, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Increase::Lockbox, Increase::Internal::AnyHash) }
 
       # The Lockbox identifier.
       sig { returns(String) }
@@ -63,58 +62,55 @@ module Increase
           recipient_name: T.nilable(String),
           status: Increase::Lockbox::Status::OrSymbol,
           type: Increase::Lockbox::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Lockbox identifier.
-        id:,
+      id:,
         # The identifier for the Account checks sent to this lockbox will be deposited
-        # into.
-        account_id:,
+      # into.
+      account_id:,
         # The mailing address for the Lockbox.
-        address:,
+      address:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
-        # was created.
-        created_at:,
+      # was created.
+      created_at:,
         # The description you choose for the Lockbox.
-        description:,
+      description:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # The recipient name you choose for the Lockbox.
-        recipient_name:,
+      recipient_name:,
         # This indicates if mail can be sent to this address.
-        status:,
+      status:,
         # A constant representing the object's type. For this resource it will always be
-        # `lockbox`.
-        type:
-      )
-      end
+      # `lockbox`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            address: Increase::Lockbox::Address,
-            created_at: Time,
-            description: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            recipient_name: T.nilable(String),
-            status: Increase::Lockbox::Status::TaggedSymbol,
-            type: Increase::Lockbox::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              address: Increase::Lockbox::Address,
+              created_at: Time,
+              description: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              recipient_name: T.nilable(String),
+              status: Increase::Lockbox::Status::TaggedSymbol,
+              type: Increase::Lockbox::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Increase::Lockbox::Address, Increase::Internal::AnyHash)
-          end
+        OrHash = T.type_alias { T.any(Increase::Lockbox::Address, Increase::Internal::AnyHash) }
 
         # The city of the address.
         sig { returns(String) }
@@ -153,42 +149,35 @@ module Increase
             postal_code: String,
             recipient: T.nilable(String),
             state: String
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The city of the address.
-          city:,
+        city:,
           # The first line of the address.
-          line1:,
+        line1:,
           # The second line of the address.
-          line2:,
+        line2:,
           # The postal code of the address.
-          postal_code:,
+        postal_code:,
           # The recipient line of the address. This will include the recipient name you
-          # provide when creating the address, as well as an ATTN suffix to help route the
-          # mail to your lockbox. Mail senders must include this ATTN line to receive mail
-          # at this Lockbox.
-          recipient:,
+        # provide when creating the address, as well as an ATTN suffix to help route the
+        # mail to your lockbox. Mail senders must include this ATTN line to receive mail
+        # at this Lockbox.
+        recipient:,
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          # the address.
-          state:
-        )
-        end
+        # the address.
+        state:
+        ); end
 
         sig do
-          override.returns(
-            {
-              city: String,
-              line1: String,
-              line2: String,
-              postal_code: String,
-              recipient: T.nilable(String),
-              state: String
-            }
-          )
+          override
+            .returns(
+              {city: String, line1: String, line2: String, postal_code: String, recipient: T.nilable(String), state: String}
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # This indicates if mail can be sent to this address.
@@ -204,11 +193,8 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE = T.let(:inactive, Increase::Lockbox::Status::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Lockbox::Status::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Lockbox::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -221,11 +207,8 @@ module Increase
 
         LOCKBOX = T.let(:lockbox, Increase::Lockbox::Type::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Lockbox::Type::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Lockbox::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

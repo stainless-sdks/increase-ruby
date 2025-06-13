@@ -25,66 +25,65 @@ module Increase
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::InboundWireTransfer)
+          )
+            .returns(Increase::InboundWireTransfer)
         end
         def create(
           # The identifier of the Account Number the inbound Wire Transfer is for.
-          account_number_id:,
+        account_number_id:,
           # The transfer amount in cents. Must be positive.
-          amount:,
+        amount:,
           # The sending bank will set beneficiary_address_line1 in production. You can
-          # simulate any value here.
-          beneficiary_address_line1: nil,
+        # simulate any value here.
+        beneficiary_address_line1: nil,
           # The sending bank will set beneficiary_address_line2 in production. You can
-          # simulate any value here.
-          beneficiary_address_line2: nil,
+        # simulate any value here.
+        beneficiary_address_line2: nil,
           # The sending bank will set beneficiary_address_line3 in production. You can
-          # simulate any value here.
-          beneficiary_address_line3: nil,
+        # simulate any value here.
+        beneficiary_address_line3: nil,
           # The sending bank will set beneficiary_name in production. You can simulate any
-          # value here.
-          beneficiary_name: nil,
+        # value here.
+        beneficiary_name: nil,
           # The sending bank will set beneficiary_reference in production. You can simulate
-          # any value here.
-          beneficiary_reference: nil,
+        # any value here.
+        beneficiary_reference: nil,
           # The sending bank will set originator_address_line1 in production. You can
-          # simulate any value here.
-          originator_address_line1: nil,
+        # simulate any value here.
+        originator_address_line1: nil,
           # The sending bank will set originator_address_line2 in production. You can
-          # simulate any value here.
-          originator_address_line2: nil,
+        # simulate any value here.
+        originator_address_line2: nil,
           # The sending bank will set originator_address_line3 in production. You can
-          # simulate any value here.
-          originator_address_line3: nil,
+        # simulate any value here.
+        originator_address_line3: nil,
           # The sending bank will set originator_name in production. You can simulate any
-          # value here.
-          originator_name: nil,
+        # value here.
+        originator_name: nil,
           # The sending bank will set originator_routing_number in production. You can
-          # simulate any value here.
-          originator_routing_number: nil,
+        # simulate any value here.
+        originator_routing_number: nil,
           # The sending bank will set originator_to_beneficiary_information_line1 in
-          # production. You can simulate any value here.
-          originator_to_beneficiary_information_line1: nil,
+        # production. You can simulate any value here.
+        originator_to_beneficiary_information_line1: nil,
           # The sending bank will set originator_to_beneficiary_information_line2 in
-          # production. You can simulate any value here.
-          originator_to_beneficiary_information_line2: nil,
+        # production. You can simulate any value here.
+        originator_to_beneficiary_information_line2: nil,
           # The sending bank will set originator_to_beneficiary_information_line3 in
-          # production. You can simulate any value here.
-          originator_to_beneficiary_information_line3: nil,
+        # production. You can simulate any value here.
+        originator_to_beneficiary_information_line3: nil,
           # The sending bank will set originator_to_beneficiary_information_line4 in
-          # production. You can simulate any value here.
-          originator_to_beneficiary_information_line4: nil,
+        # production. You can simulate any value here.
+        originator_to_beneficiary_information_line4: nil,
           # The sending bank will set sender_reference in production. You can simulate any
-          # value here.
-          sender_reference: nil,
+        # value here.
+        sender_reference: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

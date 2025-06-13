@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Account < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Account, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Increase::Account, Increase::Internal::AnyHash) }
 
       # The Account identifier.
       sig { returns(String) }
@@ -97,77 +96,77 @@ module Increase
           program_id: String,
           status: Increase::Account::Status::OrSymbol,
           type: Increase::Account::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account identifier.
-        id:,
+      id:,
         # The bank the Account is with.
-        bank:,
+      bank:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-        # was closed.
-        closed_at:,
+      # was closed.
+      closed_at:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-        # was created.
-        created_at:,
+      # was created.
+      created_at:,
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-        # currency.
-        currency:,
+      # currency.
+      currency:,
         # The identifier for the Entity the Account belongs to.
-        entity_id:,
+      entity_id:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # The identifier of an Entity that, while not owning the Account, is associated
-        # with its activity.
-        informational_entity_id:,
+      # with its activity.
+      informational_entity_id:,
         # The interest accrued but not yet paid, expressed as a string containing a
-        # floating-point value.
-        interest_accrued:,
+      # floating-point value.
+      interest_accrued:,
         # The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-        # interest was accrued.
-        interest_accrued_at:,
+      # interest was accrued.
+      interest_accrued_at:,
         # The Interest Rate currently being earned on the account, as a string containing
-        # a decimal number. For example, a 1% interest rate would be represented as
-        # "0.01".
-        interest_rate:,
+      # a decimal number. For example, a 1% interest rate would be represented as
+      # "0.01".
+      interest_rate:,
         # The name you choose for the Account.
-        name:,
+      name:,
         # The identifier of the Program determining the compliance and commercial terms of
-        # this Account.
-        program_id:,
+      # this Account.
+      program_id:,
         # The status of the Account.
-        status:,
+      status:,
         # A constant representing the object's type. For this resource it will always be
-        # `account`.
-        type:
-      )
-      end
+      # `account`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank: Increase::Account::Bank::TaggedSymbol,
-            closed_at: T.nilable(Time),
-            created_at: Time,
-            currency: Increase::Account::Currency::TaggedSymbol,
-            entity_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            informational_entity_id: T.nilable(String),
-            interest_accrued: String,
-            interest_accrued_at: T.nilable(Date),
-            interest_rate: String,
-            name: String,
-            program_id: String,
-            status: Increase::Account::Status::TaggedSymbol,
-            type: Increase::Account::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank: Increase::Account::Bank::TaggedSymbol,
+              closed_at: T.nilable(Time),
+              created_at: Time,
+              currency: Increase::Account::Currency::TaggedSymbol,
+              entity_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              informational_entity_id: T.nilable(String),
+              interest_accrued: String,
+              interest_accrued_at: T.nilable(Date),
+              interest_rate: String,
+              name: String,
+              program_id: String,
+              status: Increase::Account::Status::TaggedSymbol,
+              type: Increase::Account::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The bank the Account is with.
       module Bank
@@ -180,18 +179,13 @@ module Increase
         CORE_BANK = T.let(:core_bank, Increase::Account::Bank::TaggedSymbol)
 
         # First Internet Bank of Indiana
-        FIRST_INTERNET_BANK =
-          T.let(:first_internet_bank, Increase::Account::Bank::TaggedSymbol)
+        FIRST_INTERNET_BANK = T.let(:first_internet_bank, Increase::Account::Bank::TaggedSymbol)
 
         # Grasshopper Bank
-        GRASSHOPPER_BANK =
-          T.let(:grasshopper_bank, Increase::Account::Bank::TaggedSymbol)
+        GRASSHOPPER_BANK = T.let(:grasshopper_bank, Increase::Account::Bank::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Account::Bank::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Account::Bank::TaggedSymbol]) }
+        def self.values; end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
@@ -199,8 +193,7 @@ module Increase
       module Currency
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::Account::Currency) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Account::Currency) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Canadian Dollar (CAD)
@@ -221,11 +214,8 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::Account::Currency::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Account::Currency::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Account::Currency::TaggedSymbol]) }
+        def self.values; end
       end
 
       # The status of the Account.
@@ -241,11 +231,8 @@ module Increase
         # Open Accounts that are ready to use.
         OPEN = T.let(:open, Increase::Account::Status::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Account::Status::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Account::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -258,11 +245,8 @@ module Increase
 
         ACCOUNT = T.let(:account, Increase::Account::Type::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::Account::Type::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::Account::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

@@ -1,46 +1,15 @@
 module Increase
   module Resources
     class RealTimePaymentsTransfers
-      def create: (
-        amount: Integer,
-        creditor_name: String,
-        remittance_information: String,
-        source_account_number_id: String,
-        ?debtor_name: String,
-        ?destination_account_number: String,
-        ?destination_routing_number: String,
-        ?external_account_id: String,
-        ?require_approval: bool,
-        ?ultimate_creditor_name: String,
-        ?ultimate_debtor_name: String,
-        ?request_options: Increase::request_opts
-      ) -> Increase::RealTimePaymentsTransfer
+      def create: (amount: Integer, creditor_name: String, remittance_information: String, source_account_number_id: String, ?debtor_name: String, ?destination_account_number: String, ?destination_routing_number: String, ?external_account_id: String, ?require_approval: bool, ?ultimate_creditor_name: String, ?ultimate_debtor_name: String, ?request_options: Increase::request_opts) -> Increase::RealTimePaymentsTransfer
 
-      def retrieve: (
-        String real_time_payments_transfer_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::RealTimePaymentsTransfer
+      def retrieve: (String real_time_payments_transfer_id, ?request_options: Increase::request_opts) -> Increase::RealTimePaymentsTransfer
 
-      def list: (
-        ?account_id: String,
-        ?created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
-        ?cursor: String,
-        ?external_account_id: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::RealTimePaymentsTransferListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::RealTimePaymentsTransfer]
+      def list: (?account_id: String, ?created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt, ?cursor: String, ?external_account_id: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::RealTimePaymentsTransferListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::RealTimePaymentsTransfer]
 
-      def approve: (
-        String real_time_payments_transfer_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::RealTimePaymentsTransfer
+      def approve: (String real_time_payments_transfer_id, ?request_options: Increase::request_opts) -> Increase::RealTimePaymentsTransfer
 
-      def cancel: (
-        String real_time_payments_transfer_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::RealTimePaymentsTransfer
+      def cancel: (String real_time_payments_transfer_id, ?request_options: Increase::request_opts) -> Increase::RealTimePaymentsTransfer
 
       def initialize: (client: Increase::Client) -> void
     end

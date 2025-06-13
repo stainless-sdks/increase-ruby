@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::CheckDepositCreateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::CheckDepositCreateParams, Increase::Internal::AnyHash) }
 
       # The identifier for the Account to deposit the check in.
       sig { returns(String) }
@@ -42,37 +39,37 @@ module Increase
           front_image_file_id: String,
           description: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the Account to deposit the check in.
-        account_id:,
+      account_id:,
         # The deposit amount in USD cents.
-        amount:,
+      amount:,
         # The File containing the check's back image.
-        back_image_file_id:,
+      back_image_file_id:,
         # The File containing the check's front image.
-        front_image_file_id:,
+      front_image_file_id:,
         # The description you choose to give the Check Deposit, for display purposes only.
-        description: nil,
+      description: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            back_image_file_id: String,
-            front_image_file_id: String,
-            description: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              back_image_file_id: String,
+              front_image_file_id: String,
+              description: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

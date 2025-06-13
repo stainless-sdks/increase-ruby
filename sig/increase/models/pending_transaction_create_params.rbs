@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type pending_transaction_create_params =
-      { account_id: String, amount: Integer, description: String }
-      & Increase::Internal::Type::request_parameters
+    type pending_transaction_create_params = ({account_id: String, amount: Integer, description: String} & Increase::Internal::Type::request_parameters)
 
     class PendingTransactionCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -16,19 +14,9 @@ module Increase
 
       def description=: (String) -> String
 
-      def initialize: (
-        account_id: String,
-        amount: Integer,
-        ?description: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, amount: Integer, ?description: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
-        account_id: String,
-        amount: Integer,
-        description: String,
-        request_options: Increase::RequestOptions
-      }
+      def to_hash: () -> {account_id: String, amount: Integer, description: String, request_options: Increase::RequestOptions}
     end
   end
 end

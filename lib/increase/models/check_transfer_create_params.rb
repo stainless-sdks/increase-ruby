@@ -144,10 +144,7 @@ module Increase
         #   https://increase.com/documentation/originating-checks#printing-checks .
         #
         #   @return [Symbol, Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod, nil]
-        optional :shipping_method,
-                 enum: -> {
-                   Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod
-                 }
+        optional :shipping_method, enum: -> { Increase::CheckTransferCreateParams::PhysicalCheck::ShippingMethod }
 
         # @!attribute signature_text
         #   The text that will appear as the signature on the check in cursive font. If not

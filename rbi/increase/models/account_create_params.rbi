@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::AccountCreateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::AccountCreateParams, Increase::Internal::AnyHash) }
 
       # The name you choose for the Account.
       sig { returns(String) }
@@ -45,36 +42,36 @@ module Increase
           informational_entity_id: String,
           program_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The name you choose for the Account.
-        name:,
+      name:,
         # The identifier for the Entity that will own the Account.
-        entity_id: nil,
+      entity_id: nil,
         # The identifier of an Entity that, while not owning the Account, is associated
-        # with its activity. Its relationship to your group must be `informational`.
-        informational_entity_id: nil,
+      # with its activity. Its relationship to your group must be `informational`.
+      informational_entity_id: nil,
         # The identifier for the Program that this Account falls under. Required if you
-        # operate more than one Program.
-        program_id: nil,
+      # operate more than one Program.
+      program_id: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            entity_id: String,
-            informational_entity_id: String,
-            program_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              name: String,
+              entity_id: String,
+              informational_entity_id: String,
+              program_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
