@@ -1,16 +1,15 @@
 module Increase
   module Models
-    type document =
-      {
-        id: String,
-        account_verification_letter: Increase::Document::AccountVerificationLetter?,
-        category: Increase::Models::Document::category,
-        created_at: Time,
-        entity_id: String?,
-        file_id: String,
-        idempotency_key: String?,
-        type: Increase::Models::Document::type_
-      }
+    type document = {
+      id: String,
+      account_verification_letter: Increase::Document::AccountVerificationLetter?,
+      category: Increase::Models::Document::category,
+      created_at: Time,
+      entity_id: String?,
+      file_id: String,
+      idempotency_key: String?,
+      type: Increase::Models::Document::type_
+    }
 
     class Document < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -29,18 +28,9 @@ module Increase
 
       attr_accessor type: Increase::Models::Document::type_
 
-      def initialize: (
-        id: String,
-        account_verification_letter: Increase::Document::AccountVerificationLetter?,
-        category: Increase::Models::Document::category,
-        created_at: Time,
-        entity_id: String?,
-        file_id: String,
-        idempotency_key: String?,
-        type: Increase::Models::Document::type_
-      ) -> void
+      def initialize: (id: String, account_verification_letter: Increase::Document::AccountVerificationLetter?, category: Increase::Models::Document::category, created_at: Time, entity_id: String?, file_id: String, idempotency_key: String?, type: Increase::Models::Document::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         account_verification_letter: Increase::Document::AccountVerificationLetter?,
         category: Increase::Models::Document::category,
@@ -51,22 +41,17 @@ module Increase
         type: Increase::Models::Document::type_
       }
 
-      type account_verification_letter = { account_number_id: String }
+      type account_verification_letter = {account_number_id: String}
 
       class AccountVerificationLetter < Increase::Internal::Type::BaseModel
         attr_accessor account_number_id: String
 
         def initialize: (account_number_id: String) -> void
 
-        def to_hash: -> { account_number_id: String }
+        def to_hash: () -> {account_number_id: String}
       end
 
-      type category =
-        :form_1099_int
-        | :form_1099_misc
-        | :proof_of_authorization
-        | :company_information
-        | :account_verification_letter
+      type category = (:form_1099_int | :form_1099_misc | :proof_of_authorization | :company_information | :account_verification_letter)
 
       module Category
         extend Increase::Internal::Type::Enum
@@ -86,7 +71,7 @@ module Increase
         # An account verification letter.
         ACCOUNT_VERIFICATION_LETTER: :account_verification_letter
 
-        def self?.values: -> ::Array[Increase::Models::Document::category]
+        def self?.values: () -> ::Array[Increase::Models::Document::category]
       end
 
       type type_ = :document
@@ -96,7 +81,7 @@ module Increase
 
         DOCUMENT: :document
 
-        def self?.values: -> ::Array[Increase::Models::Document::type_]
+        def self?.values: () -> ::Array[Increase::Models::Document::type_]
       end
     end
   end

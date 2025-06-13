@@ -2,11 +2,7 @@ module Increase
   module Resources
     class Simulations
       class Programs
-        def create: (
-          name: String,
-          ?reserve_account_id: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Program
+        def create: (name: String, ?reserve_account_id: String, ?request_options: Increase::request_opts) -> Increase::Program
 
         def initialize: (client: Increase::Client) -> void
       end

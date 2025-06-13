@@ -3,13 +3,7 @@
 module Increase
   module Models
     class EntitySupplementalDocument < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::EntitySupplementalDocument,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::EntitySupplementalDocument, Increase::Internal::AnyHash) }
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
       # Supplemental Document was created.
@@ -44,64 +38,53 @@ module Increase
           file_id: String,
           idempotency_key: T.nilable(String),
           type: Increase::EntitySupplementalDocument::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-        # Supplemental Document was created.
-        created_at:,
+      # Supplemental Document was created.
+      created_at:,
         # The Entity the supplemental document is attached to.
-        entity_id:,
+      entity_id:,
         # The File containing the document.
-        file_id:,
+      file_id:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # A constant representing the object's type. For this resource it will always be
-        # `entity_supplemental_document`.
-        type:
-      )
-      end
+      # `entity_supplemental_document`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            created_at: Time,
-            entity_id: String,
-            file_id: String,
-            idempotency_key: T.nilable(String),
-            type: Increase::EntitySupplementalDocument::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Time,
+              entity_id: String,
+              file_id: String,
+              idempotency_key: T.nilable(String),
+              type: Increase::EntitySupplementalDocument::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       # `entity_supplemental_document`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::EntitySupplementalDocument::Type)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::EntitySupplementalDocument::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         ENTITY_SUPPLEMENTAL_DOCUMENT =
-          T.let(
-            :entity_supplemental_document,
-            Increase::EntitySupplementalDocument::Type::TaggedSymbol
-          )
+          T.let(:entity_supplemental_document, Increase::EntitySupplementalDocument::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::EntitySupplementalDocument::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::EntitySupplementalDocument::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

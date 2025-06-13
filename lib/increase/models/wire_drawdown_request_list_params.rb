@@ -56,9 +56,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::WireDrawdownRequestListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::WireDrawdownRequestListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)

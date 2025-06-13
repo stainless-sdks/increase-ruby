@@ -1,13 +1,12 @@
 module Increase
   module Models
-    type group =
-      {
-        id: String,
-        ach_debit_status: Increase::Models::Group::ach_debit_status,
-        activation_status: Increase::Models::Group::activation_status,
-        created_at: Time,
-        type: Increase::Models::Group::type_
-      }
+    type group = {
+      id: String,
+      ach_debit_status: Increase::Models::Group::ach_debit_status,
+      activation_status: Increase::Models::Group::activation_status,
+      created_at: Time,
+      type: Increase::Models::Group::type_
+    }
 
     class Group < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -20,15 +19,9 @@ module Increase
 
       attr_accessor type: Increase::Models::Group::type_
 
-      def initialize: (
-        id: String,
-        ach_debit_status: Increase::Models::Group::ach_debit_status,
-        activation_status: Increase::Models::Group::activation_status,
-        created_at: Time,
-        type: Increase::Models::Group::type_
-      ) -> void
+      def initialize: (id: String, ach_debit_status: Increase::Models::Group::ach_debit_status, activation_status: Increase::Models::Group::activation_status, created_at: Time, type: Increase::Models::Group::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         ach_debit_status: Increase::Models::Group::ach_debit_status,
         activation_status: Increase::Models::Group::activation_status,
@@ -36,7 +29,7 @@ module Increase
         type: Increase::Models::Group::type_
       }
 
-      type ach_debit_status = :disabled | :enabled
+      type ach_debit_status = (:disabled | :enabled)
 
       module ACHDebitStatus
         extend Increase::Internal::Type::Enum
@@ -47,10 +40,10 @@ module Increase
         # The Group can make ACH debits.
         ENABLED: :enabled
 
-        def self?.values: -> ::Array[Increase::Models::Group::ach_debit_status]
+        def self?.values: () -> ::Array[Increase::Models::Group::ach_debit_status]
       end
 
-      type activation_status = :unactivated | :activated
+      type activation_status = (:unactivated | :activated)
 
       module ActivationStatus
         extend Increase::Internal::Type::Enum
@@ -61,7 +54,7 @@ module Increase
         # The Group is activated.
         ACTIVATED: :activated
 
-        def self?.values: -> ::Array[Increase::Models::Group::activation_status]
+        def self?.values: () -> ::Array[Increase::Models::Group::activation_status]
       end
 
       type type_ = :group
@@ -71,7 +64,7 @@ module Increase
 
         GROUP: :group
 
-        def self?.values: -> ::Array[Increase::Models::Group::type_]
+        def self?.values: () -> ::Array[Increase::Models::Group::type_]
       end
     end
   end

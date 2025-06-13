@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::AccountTransferCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::AccountTransferCreateParams, Increase::Internal::AnyHash) }
 
       # The identifier for the account that will send the transfer.
       sig { returns(String) }
@@ -46,38 +40,38 @@ module Increase
           destination_account_id: String,
           require_approval: T::Boolean,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the account that will send the transfer.
-        account_id:,
+      account_id:,
         # The transfer amount in the minor unit of the account currency. For dollars, for
-        # example, this is cents.
-        amount:,
+      # example, this is cents.
+      amount:,
         # The description you choose to give the transfer.
-        description:,
+      description:,
         # The identifier for the account that will receive the transfer.
-        destination_account_id:,
+      destination_account_id:,
         # Whether the transfer requires explicit approval via the dashboard or API.
-        require_approval: nil,
+      require_approval: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            description: String,
-            destination_account_id: String,
-            require_approval: T::Boolean,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              description: String,
+              destination_account_id: String,
+              require_approval: T::Boolean,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

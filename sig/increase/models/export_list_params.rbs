@@ -1,15 +1,13 @@
 module Increase
   module Models
-    type export_list_params =
-      {
-        category: Increase::ExportListParams::Category,
-        created_at: Increase::ExportListParams::CreatedAt,
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::ExportListParams::Status
-      }
-      & Increase::Internal::Type::request_parameters
+    type export_list_params = ({
+      category: Increase::ExportListParams::Category,
+      created_at: Increase::ExportListParams::CreatedAt,
+      cursor: String,
+      idempotency_key: String,
+      limit: Integer,
+      status: Increase::ExportListParams::Status
+    } & Increase::Internal::Type::request_parameters)
 
     class ExportListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -17,15 +15,11 @@ module Increase
 
       attr_reader category: Increase::ExportListParams::Category?
 
-      def category=: (
-        Increase::ExportListParams::Category
-      ) -> Increase::ExportListParams::Category
+      def category=: (Increase::ExportListParams::Category) -> Increase::ExportListParams::Category
 
       attr_reader created_at: Increase::ExportListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::ExportListParams::CreatedAt
-      ) -> Increase::ExportListParams::CreatedAt
+      def created_at=: (Increase::ExportListParams::CreatedAt) -> Increase::ExportListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -41,21 +35,11 @@ module Increase
 
       attr_reader status: Increase::ExportListParams::Status?
 
-      def status=: (
-        Increase::ExportListParams::Status
-      ) -> Increase::ExportListParams::Status
+      def status=: (Increase::ExportListParams::Status) -> Increase::ExportListParams::Status
 
-      def initialize: (
-        ?category: Increase::ExportListParams::Category,
-        ?created_at: Increase::ExportListParams::CreatedAt,
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::ExportListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?category: Increase::ExportListParams::Category, ?created_at: Increase::ExportListParams::CreatedAt, ?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::ExportListParams::Status, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         category: Increase::ExportListParams::Category,
         created_at: Increase::ExportListParams::CreatedAt,
         cursor: String,
@@ -65,32 +49,18 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type category =
-        { in_: ::Array[Increase::Models::ExportListParams::Category::in_] }
+      type category = {in_: ::Array[Increase::Models::ExportListParams::Category::in_]}
 
       class Category < Increase::Internal::Type::BaseModel
         attr_reader in_: ::Array[Increase::Models::ExportListParams::Category::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::ExportListParams::Category::in_]
-        ) -> ::Array[Increase::Models::ExportListParams::Category::in_]
+        def in_=: (::Array[Increase::Models::ExportListParams::Category::in_]) -> ::Array[Increase::Models::ExportListParams::Category::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::ExportListParams::Category::in_]
-        ) -> void
+        def initialize: (?in_: ::Array[Increase::Models::ExportListParams::Category::in_]) -> void
 
-        def to_hash: -> {
-          in_: ::Array[Increase::Models::ExportListParams::Category::in_]
-        }
+        def to_hash: () -> {in_: ::Array[Increase::Models::ExportListParams::Category::in_]}
 
-        type in_ =
-          :account_statement_ofx
-          | :transaction_csv
-          | :balance_csv
-          | :bookkeeping_account_balance_csv
-          | :entity_csv
-          | :vendor_csv
-          | :dashboard_table_csv
+        type in_ = (:account_statement_ofx | :transaction_csv | :balance_csv | :bookkeeping_account_balance_csv | :entity_csv | :vendor_csv | :dashboard_table_csv)
 
         module In
           extend Increase::Internal::Type::Enum
@@ -116,12 +86,11 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV: :dashboard_table_csv
 
-          def self?.values: -> ::Array[Increase::Models::ExportListParams::Category::in_]
+          def self?.values: () -> ::Array[Increase::Models::ExportListParams::Category::in_]
         end
       end
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         attr_reader after: Time?
@@ -140,40 +109,23 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-        def to_hash: -> {
-          after: Time,
-          before: Time,
-          on_or_after: Time,
-          on_or_before: Time
-        }
+        def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
       end
 
-      type status =
-        { in_: ::Array[Increase::Models::ExportListParams::Status::in_] }
+      type status = {in_: ::Array[Increase::Models::ExportListParams::Status::in_]}
 
       class Status < Increase::Internal::Type::BaseModel
         attr_reader in_: ::Array[Increase::Models::ExportListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::ExportListParams::Status::in_]
-        ) -> ::Array[Increase::Models::ExportListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::ExportListParams::Status::in_]) -> ::Array[Increase::Models::ExportListParams::Status::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::ExportListParams::Status::in_]
-        ) -> void
+        def initialize: (?in_: ::Array[Increase::Models::ExportListParams::Status::in_]) -> void
 
-        def to_hash: -> {
-          in_: ::Array[Increase::Models::ExportListParams::Status::in_]
-        }
+        def to_hash: () -> {in_: ::Array[Increase::Models::ExportListParams::Status::in_]}
 
-        type in_ = :pending | :complete | :failed
+        type in_ = (:pending | :complete | :failed)
 
         module In
           extend Increase::Internal::Type::Enum
@@ -187,7 +139,7 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED: :failed
 
-          def self?.values: -> ::Array[Increase::Models::ExportListParams::Status::in_]
+          def self?.values: () -> ::Array[Increase::Models::ExportListParams::Status::in_]
         end
       end
     end

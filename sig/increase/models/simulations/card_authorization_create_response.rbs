@@ -1,12 +1,11 @@
 module Increase
   module Models
     module Simulations
-      type card_authorization_create_response =
-        {
-          declined_transaction: Increase::DeclinedTransaction?,
-          pending_transaction: Increase::PendingTransaction?,
-          type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
-        }
+      type card_authorization_create_response = {
+        declined_transaction: Increase::DeclinedTransaction?,
+        pending_transaction: Increase::PendingTransaction?,
+        type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
+      }
 
       class CardAuthorizationCreateResponse < Increase::Internal::Type::BaseModel
         attr_accessor declined_transaction: Increase::DeclinedTransaction?
@@ -15,13 +14,9 @@ module Increase
 
         attr_accessor type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
 
-        def initialize: (
-          declined_transaction: Increase::DeclinedTransaction?,
-          pending_transaction: Increase::PendingTransaction?,
-          type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
-        ) -> void
+        def initialize: (declined_transaction: Increase::DeclinedTransaction?, pending_transaction: Increase::PendingTransaction?, type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           declined_transaction: Increase::DeclinedTransaction?,
           pending_transaction: Increase::PendingTransaction?,
           type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
@@ -34,7 +29,7 @@ module Increase
 
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT: :inbound_card_authorization_simulation_result
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
+          def self?.values: () -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
         end
       end
     end

@@ -56,16 +56,7 @@ module Increase
       # @param request [nil]
       # @param response [nil]
       # @param message [String, nil]
-      def initialize(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: "Connection error."
-      )
-        super
-      end
+      def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.") = super
     end
 
     class APITimeoutError < Increase::Errors::APIConnectionError
@@ -77,16 +68,7 @@ module Increase
       # @param request [nil]
       # @param response [nil]
       # @param message [String, nil]
-      def initialize(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: "Request timed out."
-      )
-        super
-      end
+      def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.") = super
     end
 
     class APIStatusError < Increase::Errors::APIError
@@ -102,14 +84,7 @@ module Increase
       # @return [self]
       def self.for(url:, status:, body:, request:, response:, message: nil)
         key = Increase::Internal::Util.dig(body, :type)
-        kwargs = {
-          url: url,
-          status: status,
-          body: body,
-          request: request,
-          response: response,
-          message: message
-        }
+        kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
 
         case [status, key]
         in [400, Increase::Errors::InvalidParametersError::TYPE]

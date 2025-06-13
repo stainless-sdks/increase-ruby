@@ -1,50 +1,15 @@
 module Increase
   module Resources
     class DigitalCardProfiles
-      def create: (
-        app_icon_file_id: String,
-        background_image_file_id: String,
-        card_description: String,
-        description: String,
-        issuer_name: String,
-        ?contact_email: String,
-        ?contact_phone: String,
-        ?contact_website: String,
-        ?text_color: Increase::DigitalCardProfileCreateParams::TextColor,
-        ?request_options: Increase::request_opts
-      ) -> Increase::DigitalCardProfile
+      def create: (app_icon_file_id: String, background_image_file_id: String, card_description: String, description: String, issuer_name: String, ?contact_email: String, ?contact_phone: String, ?contact_website: String, ?text_color: Increase::DigitalCardProfileCreateParams::TextColor, ?request_options: Increase::request_opts) -> Increase::DigitalCardProfile
 
-      def retrieve: (
-        String digital_card_profile_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::DigitalCardProfile
+      def retrieve: (String digital_card_profile_id, ?request_options: Increase::request_opts) -> Increase::DigitalCardProfile
 
-      def list: (
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::DigitalCardProfileListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::DigitalCardProfile]
+      def list: (?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::DigitalCardProfileListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::DigitalCardProfile]
 
-      def archive: (
-        String digital_card_profile_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::DigitalCardProfile
+      def archive: (String digital_card_profile_id, ?request_options: Increase::request_opts) -> Increase::DigitalCardProfile
 
-      def clone_: (
-        String digital_card_profile_id,
-        ?app_icon_file_id: String,
-        ?background_image_file_id: String,
-        ?card_description: String,
-        ?contact_email: String,
-        ?contact_phone: String,
-        ?contact_website: String,
-        ?description: String,
-        ?issuer_name: String,
-        ?text_color: Increase::DigitalCardProfileCloneParams::TextColor,
-        ?request_options: Increase::request_opts
-      ) -> Increase::DigitalCardProfile
+      def clone_: (String digital_card_profile_id, ?app_icon_file_id: String, ?background_image_file_id: String, ?card_description: String, ?contact_email: String, ?contact_phone: String, ?contact_website: String, ?description: String, ?issuer_name: String, ?text_color: Increase::DigitalCardProfileCloneParams::TextColor, ?request_options: Increase::request_opts) -> Increase::DigitalCardProfile
 
       def initialize: (client: Increase::Client) -> void
     end

@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::WireDrawdownRequestCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::WireDrawdownRequestCreateParams, Increase::Internal::AnyHash) }
 
       # The Account Number to which the recipient should send funds.
       sig { returns(String) }
@@ -111,69 +105,69 @@ module Increase
           recipient_address_line2: String,
           recipient_address_line3: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account Number to which the recipient should send funds.
-        account_number_id:,
+      account_number_id:,
         # The amount requested from the recipient, in USD cents.
-        amount:,
+      amount:,
         # A message the recipient will see as part of the request.
-        message_to_recipient:,
+      message_to_recipient:,
         # The drawdown request's recipient's account number.
-        recipient_account_number:,
+      recipient_account_number:,
         # The drawdown request's recipient's name.
-        recipient_name:,
+      recipient_name:,
         # The drawdown request's recipient's routing number.
-        recipient_routing_number:,
+      recipient_routing_number:,
         # The drawdown request originator's address line 1. This is only necessary if
-        # you're requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
-        originator_address_line1: nil,
+      # you're requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
+      originator_address_line1: nil,
         # The drawdown request originator's address line 2. This is only necessary if
-        # you're requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
-        originator_address_line2: nil,
+      # you're requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
+      originator_address_line2: nil,
         # The drawdown request originator's address line 3. This is only necessary if
-        # you're requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
-        originator_address_line3: nil,
+      # you're requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
+      originator_address_line3: nil,
         # The drawdown request originator's name. This is only necessary if you're
-        # requesting a payment to a commingled account. Otherwise, we'll use the
-        # associated entity's details.
-        originator_name: nil,
+      # requesting a payment to a commingled account. Otherwise, we'll use the
+      # associated entity's details.
+      originator_name: nil,
         # Line 1 of the drawdown request's recipient's address.
-        recipient_address_line1: nil,
+      recipient_address_line1: nil,
         # Line 2 of the drawdown request's recipient's address.
-        recipient_address_line2: nil,
+      recipient_address_line2: nil,
         # Line 3 of the drawdown request's recipient's address.
-        recipient_address_line3: nil,
+      recipient_address_line3: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_number_id: String,
-            amount: Integer,
-            message_to_recipient: String,
-            recipient_account_number: String,
-            recipient_name: String,
-            recipient_routing_number: String,
-            originator_address_line1: String,
-            originator_address_line2: String,
-            originator_address_line3: String,
-            originator_name: String,
-            recipient_address_line1: String,
-            recipient_address_line2: String,
-            recipient_address_line3: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_number_id: String,
+              amount: Integer,
+              message_to_recipient: String,
+              recipient_account_number: String,
+              recipient_name: String,
+              recipient_routing_number: String,
+              originator_address_line1: String,
+              originator_address_line2: String,
+              originator_address_line3: String,
+              originator_name: String,
+              recipient_address_line1: String,
+              recipient_address_line2: String,
+              recipient_address_line3: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

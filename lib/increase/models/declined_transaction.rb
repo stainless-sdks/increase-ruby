@@ -779,9 +779,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
               required :electronic_commerce_indicator,
-                       enum: -> {
-                         Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
-                       },
+                       enum: -> { Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator },
                        nil?: true
 
               # @!attribute point_of_service_entry_mode
@@ -790,9 +788,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
               required :point_of_service_entry_mode,
-                       enum: -> {
-                         Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
-                       },
+                       enum: -> { Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode },
                        nil?: true
 
               # @!attribute stand_in_processing_reason
@@ -801,9 +797,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason, nil]
               required :stand_in_processing_reason,
-                       enum: -> {
-                         Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason
-                       },
+                       enum: -> { Increase::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason },
                        nil?: true
 
               # @!method initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
@@ -1104,9 +1098,7 @@ module Increase
             #
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode]
             required :card_verification_code,
-                     -> {
-                       Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
-                     }
+                     -> { Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode }
 
             # @!attribute cardholder_address
             #   Cardholder address provided in the authorization request and the address on file
@@ -1114,9 +1106,7 @@ module Increase
             #
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress]
             required :cardholder_address,
-                     -> {
-                       Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-                     }
+                     -> { Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress }
 
             # @!method initialize(card_verification_code:, cardholder_address:)
             #   Some parameter documentations has been truncated, see
@@ -1136,9 +1126,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: -> {
-                         Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result
-                       }
+                       enum: -> { Increase::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result }
 
               # @!method initialize(result:)
               #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1198,9 +1186,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result]
               required :result,
-                       enum: -> {
-                         Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result
-                       }
+                       enum: -> { Increase::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result }
 
               # @!method initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               #   Some parameter documentations has been truncated, see
@@ -1434,10 +1420,7 @@ module Increase
           #   currency.
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency]
-          required :currency,
-                   enum: -> {
-                     Increase::DeclinedTransaction::Source::CheckDepositRejection::Currency
-                   }
+          required :currency, enum: -> { Increase::DeclinedTransaction::Source::CheckDepositRejection::Currency }
 
           # @!attribute declined_transaction_id
           #   The identifier of the associated declined transaction.
@@ -1573,9 +1556,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
-                   enum: -> {
-                     Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency
-                   }
+                   enum: -> { Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
 
           # @!attribute debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -1600,9 +1581,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
-                   enum: -> {
-                     Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason
-                   }
+                   enum: -> { Increase::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
 
           # @!attribute remittance_information
           #   Additional information included with the transfer.

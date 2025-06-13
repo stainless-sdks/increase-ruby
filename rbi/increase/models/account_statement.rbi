@@ -3,10 +3,7 @@
 module Increase
   module Models
     class AccountStatement < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::AccountStatement, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::AccountStatement, Increase::Internal::AnyHash) }
 
       # The Account Statement identifier.
       sig { returns(String) }
@@ -62,74 +59,64 @@ module Increase
           statement_period_end: Time,
           statement_period_start: Time,
           type: Increase::AccountStatement::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account Statement identifier.
-        id:,
+      id:,
         # The identifier for the Account this Account Statement belongs to.
-        account_id:,
+      account_id:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-        # Statement was created.
-        created_at:,
+      # Statement was created.
+      created_at:,
         # The Account's balance at the start of its statement period.
-        ending_balance:,
+      ending_balance:,
         # The identifier of the File containing a PDF of the statement.
-        file_id:,
+      file_id:,
         # The Account's balance at the start of its statement period.
-        starting_balance:,
+      starting_balance:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-        # of the period the Account Statement covers.
-        statement_period_end:,
+      # of the period the Account Statement covers.
+      statement_period_end:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
-        # start of the period the Account Statement covers.
-        statement_period_start:,
+      # start of the period the Account Statement covers.
+      statement_period_start:,
         # A constant representing the object's type. For this resource it will always be
-        # `account_statement`.
-        type:
-      )
-      end
+      # `account_statement`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            created_at: Time,
-            ending_balance: Integer,
-            file_id: String,
-            starting_balance: Integer,
-            statement_period_end: Time,
-            statement_period_start: Time,
-            type: Increase::AccountStatement::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              created_at: Time,
+              ending_balance: Integer,
+              file_id: String,
+              starting_balance: Integer,
+              statement_period_end: Time,
+              statement_period_start: Time,
+              type: Increase::AccountStatement::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       # `account_statement`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::AccountStatement::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::AccountStatement::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        ACCOUNT_STATEMENT =
-          T.let(
-            :account_statement,
-            Increase::AccountStatement::Type::TaggedSymbol
-          )
+        ACCOUNT_STATEMENT = T.let(:account_statement, Increase::AccountStatement::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::AccountStatement::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::AccountStatement::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

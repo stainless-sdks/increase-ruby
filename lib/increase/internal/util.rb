@@ -409,15 +409,15 @@ module Increase
         # @return [String]
         private def read_enum(max_len)
           case max_len
-          in nil
-            @stream.to_a.join
-          in Integer
-            @buf << @stream.next while @buf.length < max_len
-            @buf.slice!(..max_len)
-          end
-        rescue StopIteration
-          @stream = nil
-          @buf.slice!(0..)
+            in nil
+              @stream.to_a.join
+            in Integer
+              @buf << @stream.next while @buf.length < max_len
+              @buf.slice!(..max_len)
+            end
+          rescue StopIteration
+            @stream = nil
+            @buf.slice!(0..)
         end
 
         # @api private
@@ -508,21 +508,21 @@ module Increase
               content_type: val.content_type
             )
           in Pathname
-            y << format(content_line, content_type || "application/octet-stream")
+            y << format(content_line, content_type || 'application/octet-stream')
             io = val.open(binmode: true)
             closing << io.method(:close)
             IO.copy_stream(io, y)
           in IO
-            y << format(content_line, content_type || "application/octet-stream")
+            y << format(content_line, content_type || 'application/octet-stream')
             IO.copy_stream(val, y)
           in StringIO
-            y << format(content_line, content_type || "application/octet-stream")
+            y << format(content_line, content_type || 'application/octet-stream')
             y << val.string
           in -> { primitive?(_1) }
-            y << format(content_line, content_type || "text/plain")
+            y << format(content_line, content_type || 'text/plain')
             y << val.to_s
           else
-            y << format(content_line, content_type || "application/json")
+            y << format(content_line, content_type || 'application/json')
             y << JSON.generate(val)
           end
           y << "\r\n"
@@ -900,14 +900,7 @@ module Increase
       end
 
       define_sorbet_constant!(:ServerSentEvent) do
-        T.type_alias do
-          {
-            event: T.nilable(String),
-            data: T.nilable(String),
-            id: T.nilable(String),
-            retry: T.nilable(Integer)
-          }
-        end
+        T.type_alias { {event: T.nilable(String), data: T.nilable(String), id: T.nilable(String), retry: T.nilable(Integer)} }
       end
     end
   end

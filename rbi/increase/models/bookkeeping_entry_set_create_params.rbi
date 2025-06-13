@@ -6,18 +6,10 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::BookkeepingEntrySetCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::BookkeepingEntrySetCreateParams, Increase::Internal::AnyHash) }
 
       # The bookkeeping entries.
-      sig do
-        returns(T::Array[Increase::BookkeepingEntrySetCreateParams::Entry])
-      end
+      sig { returns(T::Array[Increase::BookkeepingEntrySetCreateParams::Entry]) }
       attr_accessor :entries
 
       # The date of the transaction. Optional if `transaction_id` is provided, in which
@@ -37,46 +29,40 @@ module Increase
 
       sig do
         params(
-          entries:
-            T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
+          entries: T::Array[Increase::BookkeepingEntrySetCreateParams::Entry::OrHash],
           date: Time,
           transaction_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The bookkeeping entries.
-        entries:,
+      entries:,
         # The date of the transaction. Optional if `transaction_id` is provided, in which
-        # case we use the `date` of that transaction. Required otherwise.
-        date: nil,
+      # case we use the `date` of that transaction. Required otherwise.
+      date: nil,
         # The identifier of the Transaction related to this entry set, if any.
-        transaction_id: nil,
+      transaction_id: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            entries: T::Array[Increase::BookkeepingEntrySetCreateParams::Entry],
-            date: Time,
-            transaction_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              entries: T::Array[Increase::BookkeepingEntrySetCreateParams::Entry],
+              date: Time,
+              transaction_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Entry < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::BookkeepingEntrySetCreateParams::Entry,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::BookkeepingEntrySetCreateParams::Entry, Increase::Internal::AnyHash) }
 
         # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }
@@ -88,22 +74,18 @@ module Increase
         sig { returns(Integer) }
         attr_accessor :amount
 
-        sig do
-          params(account_id: String, amount: Integer).returns(T.attached_class)
-        end
+        sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
         def self.new(
           # The identifier for the Bookkeeping Account impacted by this entry.
-          account_id:,
+        account_id:,
           # The entry amount in the minor unit of the account currency. For dollars, for
-          # example, this is cents. Debit entries have positive amounts; credit entries have
-          # negative amounts.
-          amount:
-        )
-        end
+        # example, this is cents. Debit entries have positive amounts; credit entries have
+        # negative amounts.
+        amount:
+        ); end
 
-        sig { override.returns({ account_id: String, amount: Integer }) }
-        def to_hash
-        end
+        sig { override.returns({account_id: String, amount: Integer}) }
+        def to_hash; end
       end
     end
   end

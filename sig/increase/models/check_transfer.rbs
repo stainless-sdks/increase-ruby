@@ -1,31 +1,30 @@
 module Increase
   module Models
-    type check_transfer =
-      {
-        id: String,
-        account_id: String,
-        account_number: String,
-        amount: Integer,
-        approval: Increase::CheckTransfer::Approval?,
-        approved_inbound_check_deposit_id: String?,
-        cancellation: Increase::CheckTransfer::Cancellation?,
-        check_number: String,
-        created_at: Time,
-        created_by: Increase::CheckTransfer::CreatedBy?,
-        currency: Increase::Models::CheckTransfer::currency,
-        fulfillment_method: Increase::Models::CheckTransfer::fulfillment_method,
-        idempotency_key: String?,
-        mailing: Increase::CheckTransfer::Mailing?,
-        pending_transaction_id: String?,
-        physical_check: Increase::CheckTransfer::PhysicalCheck?,
-        routing_number: String,
-        source_account_number_id: String?,
-        status: Increase::Models::CheckTransfer::status,
-        stop_payment_request: Increase::CheckTransfer::StopPaymentRequest?,
-        submission: Increase::CheckTransfer::Submission?,
-        third_party: Increase::CheckTransfer::ThirdParty?,
-        type: Increase::Models::CheckTransfer::type_
-      }
+    type check_transfer = {
+      id: String,
+      account_id: String,
+      account_number: String,
+      amount: Integer,
+      approval: Increase::CheckTransfer::Approval?,
+      approved_inbound_check_deposit_id: String?,
+      cancellation: Increase::CheckTransfer::Cancellation?,
+      check_number: String,
+      created_at: Time,
+      created_by: Increase::CheckTransfer::CreatedBy?,
+      currency: Increase::Models::CheckTransfer::currency,
+      fulfillment_method: Increase::Models::CheckTransfer::fulfillment_method,
+      idempotency_key: String?,
+      mailing: Increase::CheckTransfer::Mailing?,
+      pending_transaction_id: String?,
+      physical_check: Increase::CheckTransfer::PhysicalCheck?,
+      routing_number: String,
+      source_account_number_id: String?,
+      status: Increase::Models::CheckTransfer::status,
+      stop_payment_request: Increase::CheckTransfer::StopPaymentRequest?,
+      submission: Increase::CheckTransfer::Submission?,
+      third_party: Increase::CheckTransfer::ThirdParty?,
+      type: Increase::Models::CheckTransfer::type_
+    }
 
     class CheckTransfer < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -74,33 +73,9 @@ module Increase
 
       attr_accessor type: Increase::Models::CheckTransfer::type_
 
-      def initialize: (
-        id: String,
-        account_id: String,
-        account_number: String,
-        amount: Integer,
-        approval: Increase::CheckTransfer::Approval?,
-        approved_inbound_check_deposit_id: String?,
-        cancellation: Increase::CheckTransfer::Cancellation?,
-        check_number: String,
-        created_at: Time,
-        created_by: Increase::CheckTransfer::CreatedBy?,
-        currency: Increase::Models::CheckTransfer::currency,
-        fulfillment_method: Increase::Models::CheckTransfer::fulfillment_method,
-        idempotency_key: String?,
-        mailing: Increase::CheckTransfer::Mailing?,
-        pending_transaction_id: String?,
-        physical_check: Increase::CheckTransfer::PhysicalCheck?,
-        routing_number: String,
-        source_account_number_id: String?,
-        status: Increase::Models::CheckTransfer::status,
-        stop_payment_request: Increase::CheckTransfer::StopPaymentRequest?,
-        submission: Increase::CheckTransfer::Submission?,
-        third_party: Increase::CheckTransfer::ThirdParty?,
-        type: Increase::Models::CheckTransfer::type_
-      ) -> void
+      def initialize: (id: String, account_id: String, account_number: String, amount: Integer, approval: Increase::CheckTransfer::Approval?, approved_inbound_check_deposit_id: String?, cancellation: Increase::CheckTransfer::Cancellation?, check_number: String, created_at: Time, created_by: Increase::CheckTransfer::CreatedBy?, currency: Increase::Models::CheckTransfer::currency, fulfillment_method: Increase::Models::CheckTransfer::fulfillment_method, idempotency_key: String?, mailing: Increase::CheckTransfer::Mailing?, pending_transaction_id: String?, physical_check: Increase::CheckTransfer::PhysicalCheck?, routing_number: String, source_account_number_id: String?, status: Increase::Models::CheckTransfer::status, stop_payment_request: Increase::CheckTransfer::StopPaymentRequest?, submission: Increase::CheckTransfer::Submission?, third_party: Increase::CheckTransfer::ThirdParty?, type: Increase::Models::CheckTransfer::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         account_id: String,
         account_number: String,
@@ -126,7 +101,7 @@ module Increase
         type: Increase::Models::CheckTransfer::type_
       }
 
-      type approval = { approved_at: Time, approved_by: String? }
+      type approval = {approved_at: Time, approved_by: String?}
 
       class Approval < Increase::Internal::Type::BaseModel
         attr_accessor approved_at: Time
@@ -135,10 +110,10 @@ module Increase
 
         def initialize: (approved_at: Time, approved_by: String?) -> void
 
-        def to_hash: -> { approved_at: Time, approved_by: String? }
+        def to_hash: () -> {approved_at: Time, approved_by: String?}
       end
 
-      type cancellation = { canceled_at: Time, canceled_by: String? }
+      type cancellation = {canceled_at: Time, canceled_by: String?}
 
       class Cancellation < Increase::Internal::Type::BaseModel
         attr_accessor canceled_at: Time
@@ -147,16 +122,15 @@ module Increase
 
         def initialize: (canceled_at: Time, canceled_by: String?) -> void
 
-        def to_hash: -> { canceled_at: Time, canceled_by: String? }
+        def to_hash: () -> {canceled_at: Time, canceled_by: String?}
       end
 
-      type created_by =
-        {
-          api_key: Increase::CheckTransfer::CreatedBy::APIKey?,
-          category: Increase::Models::CheckTransfer::CreatedBy::category,
-          oauth_application: Increase::CheckTransfer::CreatedBy::OAuthApplication?,
-          user: Increase::CheckTransfer::CreatedBy::User?
-        }
+      type created_by = {
+        api_key: Increase::CheckTransfer::CreatedBy::APIKey?,
+        category: Increase::Models::CheckTransfer::CreatedBy::category,
+        oauth_application: Increase::CheckTransfer::CreatedBy::OAuthApplication?,
+        user: Increase::CheckTransfer::CreatedBy::User?
+      }
 
       class CreatedBy < Increase::Internal::Type::BaseModel
         attr_accessor api_key: Increase::CheckTransfer::CreatedBy::APIKey?
@@ -167,31 +141,26 @@ module Increase
 
         attr_accessor user: Increase::CheckTransfer::CreatedBy::User?
 
-        def initialize: (
-          api_key: Increase::CheckTransfer::CreatedBy::APIKey?,
-          category: Increase::Models::CheckTransfer::CreatedBy::category,
-          oauth_application: Increase::CheckTransfer::CreatedBy::OAuthApplication?,
-          user: Increase::CheckTransfer::CreatedBy::User?
-        ) -> void
+        def initialize: (api_key: Increase::CheckTransfer::CreatedBy::APIKey?, category: Increase::Models::CheckTransfer::CreatedBy::category, oauth_application: Increase::CheckTransfer::CreatedBy::OAuthApplication?, user: Increase::CheckTransfer::CreatedBy::User?) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           api_key: Increase::CheckTransfer::CreatedBy::APIKey?,
           category: Increase::Models::CheckTransfer::CreatedBy::category,
           oauth_application: Increase::CheckTransfer::CreatedBy::OAuthApplication?,
           user: Increase::CheckTransfer::CreatedBy::User?
         }
 
-        type api_key = { description: String? }
+        type api_key = {description: String?}
 
         class APIKey < Increase::Internal::Type::BaseModel
           attr_accessor description: String?
 
           def initialize: (description: String?) -> void
 
-          def to_hash: -> { description: String? }
+          def to_hash: () -> {description: String?}
         end
 
-        type category = :api_key | :oauth_application | :user
+        type category = (:api_key | :oauth_application | :user)
 
         module Category
           extend Increase::Internal::Type::Enum
@@ -205,31 +174,31 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::CreatedBy::category]
+          def self?.values: () -> ::Array[Increase::Models::CheckTransfer::CreatedBy::category]
         end
 
-        type oauth_application = { name: String }
+        type oauth_application = {name: String}
 
         class OAuthApplication < Increase::Internal::Type::BaseModel
           attr_accessor name: String
 
           def initialize: (name: String) -> void
 
-          def to_hash: -> { name: String }
+          def to_hash: () -> {name: String}
         end
 
-        type user = { email: String }
+        type user = {email: String}
 
         class User < Increase::Internal::Type::BaseModel
           attr_accessor email: String
 
           def initialize: (email: String) -> void
 
-          def to_hash: -> { email: String }
+          def to_hash: () -> {email: String}
         end
       end
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       module Currency
         extend Increase::Internal::Type::Enum
@@ -252,10 +221,10 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::currency]
+        def self?.values: () -> ::Array[Increase::Models::CheckTransfer::currency]
       end
 
-      type fulfillment_method = :physical_check | :third_party
+      type fulfillment_method = (:physical_check | :third_party)
 
       module FulfillmentMethod
         extend Increase::Internal::Type::Enum
@@ -266,11 +235,10 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY: :third_party
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::fulfillment_method]
+        def self?.values: () -> ::Array[Increase::Models::CheckTransfer::fulfillment_method]
       end
 
-      type mailing =
-        { image_id: String?, mailed_at: Time, tracking_number: String? }
+      type mailing = {image_id: String?, mailed_at: Time, tracking_number: String?}
 
       class Mailing < Increase::Internal::Type::BaseModel
         attr_accessor image_id: String?
@@ -279,31 +247,22 @@ module Increase
 
         attr_accessor tracking_number: String?
 
-        def initialize: (
-          image_id: String?,
-          mailed_at: Time,
-          tracking_number: String?
-        ) -> void
+        def initialize: (image_id: String?, mailed_at: Time, tracking_number: String?) -> void
 
-        def to_hash: -> {
-          image_id: String?,
-          mailed_at: Time,
-          tracking_number: String?
-        }
+        def to_hash: () -> {image_id: String?, mailed_at: Time, tracking_number: String?}
       end
 
-      type physical_check =
-        {
-          attachment_file_id: String?,
-          mailing_address: Increase::CheckTransfer::PhysicalCheck::MailingAddress,
-          memo: String?,
-          note: String?,
-          recipient_name: String,
-          return_address: Increase::CheckTransfer::PhysicalCheck::ReturnAddress?,
-          shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
-          signature_text: String?,
-          tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]
-        }
+      type physical_check = {
+        attachment_file_id: String?,
+        mailing_address: Increase::CheckTransfer::PhysicalCheck::MailingAddress,
+        memo: String?,
+        note: String?,
+        recipient_name: String,
+        return_address: Increase::CheckTransfer::PhysicalCheck::ReturnAddress?,
+        shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
+        signature_text: String?,
+        tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]
+      }
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
         attr_accessor attachment_file_id: String?
@@ -324,19 +283,9 @@ module Increase
 
         attr_accessor tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]
 
-        def initialize: (
-          attachment_file_id: String?,
-          mailing_address: Increase::CheckTransfer::PhysicalCheck::MailingAddress,
-          memo: String?,
-          note: String?,
-          recipient_name: String,
-          return_address: Increase::CheckTransfer::PhysicalCheck::ReturnAddress?,
-          shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
-          signature_text: String?,
-          tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]
-        ) -> void
+        def initialize: (attachment_file_id: String?, mailing_address: Increase::CheckTransfer::PhysicalCheck::MailingAddress, memo: String?, note: String?, recipient_name: String, return_address: Increase::CheckTransfer::PhysicalCheck::ReturnAddress?, shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?, signature_text: String?, tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           attachment_file_id: String?,
           mailing_address: Increase::CheckTransfer::PhysicalCheck::MailingAddress,
           memo: String?,
@@ -348,15 +297,7 @@ module Increase
           tracking_updates: ::Array[Increase::CheckTransfer::PhysicalCheck::TrackingUpdate]
         }
 
-        type mailing_address =
-          {
-            city: String?,
-            :line1 => String?,
-            :line2 => String?,
-            name: String?,
-            postal_code: String?,
-            state: String?
-          }
+        type mailing_address = {city: String?, line1: String?, line2: String?, name: String?, postal_code: String?, state: String?}
 
         class MailingAddress < Increase::Internal::Type::BaseModel
           attr_accessor city: String?
@@ -371,34 +312,12 @@ module Increase
 
           attr_accessor state: String?
 
-          def initialize: (
-            city: String?,
-            line1: String?,
-            line2: String?,
-            name: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
+          def initialize: (city: String?, line1: String?, line2: String?, name: String?, postal_code: String?, state: String?) -> void
 
-          def to_hash: -> {
-            city: String?,
-            :line1 => String?,
-            :line2 => String?,
-            name: String?,
-            postal_code: String?,
-            state: String?
-          }
+          def to_hash: () -> {city: String?, line1: String?, line2: String?, name: String?, postal_code: String?, state: String?}
         end
 
-        type return_address =
-          {
-            city: String?,
-            :line1 => String?,
-            :line2 => String?,
-            name: String?,
-            postal_code: String?,
-            state: String?
-          }
+        type return_address = {city: String?, line1: String?, line2: String?, name: String?, postal_code: String?, state: String?}
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
           attr_accessor city: String?
@@ -413,26 +332,12 @@ module Increase
 
           attr_accessor state: String?
 
-          def initialize: (
-            city: String?,
-            line1: String?,
-            line2: String?,
-            name: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
+          def initialize: (city: String?, line1: String?, line2: String?, name: String?, postal_code: String?, state: String?) -> void
 
-          def to_hash: -> {
-            city: String?,
-            :line1 => String?,
-            :line2 => String?,
-            name: String?,
-            postal_code: String?,
-            state: String?
-          }
+          def to_hash: () -> {city: String?, line1: String?, line2: String?, name: String?, postal_code: String?, state: String?}
         end
 
-        type shipping_method = :usps_first_class | :fedex_overnight
+        type shipping_method = (:usps_first_class | :fedex_overnight)
 
         module ShippingMethod
           extend Increase::Internal::Type::Enum
@@ -443,15 +348,14 @@ module Increase
           # FedEx Overnight
           FEDEX_OVERNIGHT: :fedex_overnight
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::shipping_method]
+          def self?.values: () -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::shipping_method]
         end
 
-        type tracking_update =
-          {
-            category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category,
-            created_at: Time,
-            postal_code: String
-          }
+        type tracking_update = {
+          category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category,
+          created_at: Time,
+          postal_code: String
+        }
 
         class TrackingUpdate < Increase::Internal::Type::BaseModel
           attr_accessor category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category
@@ -460,23 +364,15 @@ module Increase
 
           attr_accessor postal_code: String
 
-          def initialize: (
-            category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category,
-            created_at: Time,
-            postal_code: String
-          ) -> void
+          def initialize: (category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category, created_at: Time, postal_code: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category,
             created_at: Time,
             postal_code: String
           }
 
-          type category =
-            :in_transit
-            | :processed_for_delivery
-            | :delivered
-            | :returned_to_sender
+          type category = (:in_transit | :processed_for_delivery | :delivered | :returned_to_sender)
 
           module Category
             extend Increase::Internal::Type::Enum
@@ -493,22 +389,12 @@ module Increase
             # Delivery failed and the check was returned to sender.
             RETURNED_TO_SENDER: :returned_to_sender
 
-            def self?.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category]
+            def self?.values: () -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category]
           end
         end
       end
 
-      type status =
-        :pending_approval
-        | :canceled
-        | :pending_submission
-        | :requires_attention
-        | :rejected
-        | :pending_mailing
-        | :mailed
-        | :deposited
-        | :stopped
-        | :returned
+      type status = (:pending_approval | :canceled | :pending_submission | :requires_attention | :rejected | :pending_mailing | :mailed | :deposited | :stopped | :returned)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -543,16 +429,15 @@ module Increase
         # The transfer has been returned.
         RETURNED: :returned
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::status]
+        def self?.values: () -> ::Array[Increase::Models::CheckTransfer::status]
       end
 
-      type stop_payment_request =
-        {
-          reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason,
-          requested_at: Time,
-          transfer_id: String,
-          type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
-        }
+      type stop_payment_request = {
+        reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason,
+        requested_at: Time,
+        transfer_id: String,
+        type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
+      }
 
       class StopPaymentRequest < Increase::Internal::Type::BaseModel
         attr_accessor reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason
@@ -563,25 +448,16 @@ module Increase
 
         attr_accessor type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
 
-        def initialize: (
-          reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason,
-          requested_at: Time,
-          transfer_id: String,
-          type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
-        ) -> void
+        def initialize: (reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason, requested_at: Time, transfer_id: String, type: Increase::Models::CheckTransfer::StopPaymentRequest::type_) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           reason: Increase::Models::CheckTransfer::StopPaymentRequest::reason,
           requested_at: Time,
           transfer_id: String,
           type: Increase::Models::CheckTransfer::StopPaymentRequest::type_
         }
 
-        type reason =
-          :mail_delivery_failed
-          | :rejected_by_increase
-          | :not_authorized
-          | :unknown
+        type reason = (:mail_delivery_failed | :rejected_by_increase | :not_authorized | :unknown)
 
         module Reason
           extend Increase::Internal::Type::Enum
@@ -598,7 +474,7 @@ module Increase
           # The check was stopped for another reason.
           UNKNOWN: :unknown
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::reason]
+          def self?.values: () -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::reason]
         end
 
         type type_ = :check_transfer_stop_payment_request
@@ -608,16 +484,15 @@ module Increase
 
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST: :check_transfer_stop_payment_request
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
+          def self?.values: () -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
         end
       end
 
-      type submission =
-        {
-          address_correction_action: Increase::Models::CheckTransfer::Submission::address_correction_action,
-          submitted_address: Increase::CheckTransfer::Submission::SubmittedAddress,
-          submitted_at: Time
-        }
+      type submission = {
+        address_correction_action: Increase::Models::CheckTransfer::Submission::address_correction_action,
+        submitted_address: Increase::CheckTransfer::Submission::SubmittedAddress,
+        submitted_at: Time
+      }
 
       class Submission < Increase::Internal::Type::BaseModel
         attr_accessor address_correction_action: Increase::Models::CheckTransfer::Submission::address_correction_action
@@ -626,23 +501,15 @@ module Increase
 
         attr_accessor submitted_at: Time
 
-        def initialize: (
-          address_correction_action: Increase::Models::CheckTransfer::Submission::address_correction_action,
-          submitted_address: Increase::CheckTransfer::Submission::SubmittedAddress,
-          submitted_at: Time
-        ) -> void
+        def initialize: (address_correction_action: Increase::Models::CheckTransfer::Submission::address_correction_action, submitted_address: Increase::CheckTransfer::Submission::SubmittedAddress, submitted_at: Time) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           address_correction_action: Increase::Models::CheckTransfer::Submission::address_correction_action,
           submitted_address: Increase::CheckTransfer::Submission::SubmittedAddress,
           submitted_at: Time
         }
 
-        type address_correction_action =
-          :none
-          | :standardization
-          | :standardization_with_address_change
-          | :error
+        type address_correction_action = (:none | :standardization | :standardization_with_address_change | :error)
 
         module AddressCorrectionAction
           extend Increase::Internal::Type::Enum
@@ -659,18 +526,10 @@ module Increase
           # An error occurred while correcting the address. This typically means the USPS could not find that address. The address was not changed.
           ERROR: :error
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransfer::Submission::address_correction_action]
+          def self?.values: () -> ::Array[Increase::Models::CheckTransfer::Submission::address_correction_action]
         end
 
-        type submitted_address =
-          {
-            city: String,
-            :line1 => String,
-            :line2 => String?,
-            recipient_name: String,
-            state: String,
-            zip: String
-          }
+        type submitted_address = {city: String, line1: String, line2: String?, recipient_name: String, state: String, zip: String}
 
         class SubmittedAddress < Increase::Internal::Type::BaseModel
           attr_accessor city: String
@@ -685,34 +544,20 @@ module Increase
 
           attr_accessor zip: String
 
-          def initialize: (
-            city: String,
-            line1: String,
-            line2: String?,
-            recipient_name: String,
-            state: String,
-            zip: String
-          ) -> void
+          def initialize: (city: String, line1: String, line2: String?, recipient_name: String, state: String, zip: String) -> void
 
-          def to_hash: -> {
-            city: String,
-            :line1 => String,
-            :line2 => String?,
-            recipient_name: String,
-            state: String,
-            zip: String
-          }
+          def to_hash: () -> {city: String, line1: String, line2: String?, recipient_name: String, state: String, zip: String}
         end
       end
 
-      type third_party = { recipient_name: String? }
+      type third_party = {recipient_name: String?}
 
       class ThirdParty < Increase::Internal::Type::BaseModel
         attr_accessor recipient_name: String?
 
         def initialize: (recipient_name: String?) -> void
 
-        def to_hash: -> { recipient_name: String? }
+        def to_hash: () -> {recipient_name: String?}
       end
 
       type type_ = :check_transfer
@@ -722,7 +567,7 @@ module Increase
 
         CHECK_TRANSFER: :check_transfer
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransfer::type_]
+        def self?.values: () -> ::Array[Increase::Models::CheckTransfer::type_]
       end
     end
   end

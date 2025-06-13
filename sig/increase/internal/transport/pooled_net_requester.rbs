@@ -4,14 +4,7 @@ module Increase
       class PooledNetRequester
         extend Increase::Internal::Util::SorbetRuntimeSupport
 
-        type request =
-          {
-            method: Symbol,
-            url: URI::Generic,
-            headers: ::Hash[String, String],
-            body: top,
-            deadline: Float
-          }
+        type request = {method: Symbol, url: URI::Generic, headers: ::Hash[String, String], body: top, deadline: Float}
 
         KEEP_ALIVE_TIMEOUT: 30
 
@@ -21,22 +14,11 @@ module Increase
 
         def self.calibrate_socket_timeout: (top conn, Float deadline) -> void
 
-        def self.build_request: (
-          Increase::Internal::Transport::PooledNetRequester::request request
-        ) {
-          (String arg0) -> void
-        } -> [top, (^-> void)]
+        def self.build_request: (Increase::Internal::Transport::PooledNetRequester::request request) { (String arg0) -> void } -> [top, ^() -> void]
 
-        private def with_pool: (
-          URI::Generic url,
-          deadline: Float
-        ) {
-          (top arg0) -> void
-        } -> void
+        private def with_pool: (URI::Generic url, deadline: Float) { (top arg0) -> void } -> void
 
-        def execute: (
-          Increase::Internal::Transport::PooledNetRequester::request request
-        ) -> [Integer, top, Enumerable[String]]
+        def execute: (Increase::Internal::Transport::PooledNetRequester::request request) -> [Integer, top, Enumerable[String]]
 
         def initialize: (?size: Integer) -> void
       end

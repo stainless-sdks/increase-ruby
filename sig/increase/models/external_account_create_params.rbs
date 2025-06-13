@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type external_account_create_params =
-      {
-        account_number: String,
-        description: String,
-        routing_number: String,
-        account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
-        funding: Increase::Models::ExternalAccountCreateParams::funding
-      }
-      & Increase::Internal::Type::request_parameters
+    type external_account_create_params = ({
+      account_number: String,
+      description: String,
+      routing_number: String,
+      account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
+      funding: Increase::Models::ExternalAccountCreateParams::funding
+    } & Increase::Internal::Type::request_parameters)
 
     class ExternalAccountCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -22,26 +20,15 @@ module Increase
 
       attr_reader account_holder: Increase::Models::ExternalAccountCreateParams::account_holder?
 
-      def account_holder=: (
-        Increase::Models::ExternalAccountCreateParams::account_holder
-      ) -> Increase::Models::ExternalAccountCreateParams::account_holder
+      def account_holder=: (Increase::Models::ExternalAccountCreateParams::account_holder) -> Increase::Models::ExternalAccountCreateParams::account_holder
 
       attr_reader funding: Increase::Models::ExternalAccountCreateParams::funding?
 
-      def funding=: (
-        Increase::Models::ExternalAccountCreateParams::funding
-      ) -> Increase::Models::ExternalAccountCreateParams::funding
+      def funding=: (Increase::Models::ExternalAccountCreateParams::funding) -> Increase::Models::ExternalAccountCreateParams::funding
 
-      def initialize: (
-        account_number: String,
-        description: String,
-        routing_number: String,
-        ?account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
-        ?funding: Increase::Models::ExternalAccountCreateParams::funding,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_number: String, description: String, routing_number: String, ?account_holder: Increase::Models::ExternalAccountCreateParams::account_holder, ?funding: Increase::Models::ExternalAccountCreateParams::funding, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_number: String,
         description: String,
         routing_number: String,
@@ -50,7 +37,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type account_holder = :business | :individual | :unknown
+      type account_holder = (:business | :individual | :unknown)
 
       module AccountHolder
         extend Increase::Internal::Type::Enum
@@ -64,10 +51,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::account_holder]
+        def self?.values: () -> ::Array[Increase::Models::ExternalAccountCreateParams::account_holder]
       end
 
-      type funding = :checking | :savings | :other
+      type funding = (:checking | :savings | :other)
 
       module Funding
         extend Increase::Internal::Type::Enum
@@ -81,7 +68,7 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccountCreateParams::funding]
+        def self?.values: () -> ::Array[Increase::Models::ExternalAccountCreateParams::funding]
       end
     end
   end

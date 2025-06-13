@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::EntityConfirmParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::EntityConfirmParams, Increase::Internal::AnyHash) }
 
       # When your user confirmed the Entity's details. If not provided, the current time
       # will be used.
@@ -19,27 +16,16 @@ module Increase
       sig { params(confirmed_at: Time).void }
       attr_writer :confirmed_at
 
-      sig do
-        params(
-          confirmed_at: Time,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
-      end
+      sig { params(confirmed_at: Time, request_options: Increase::RequestOptions::OrHash).returns(T.attached_class) }
       def self.new(
         # When your user confirmed the Entity's details. If not provided, the current time
-        # will be used.
-        confirmed_at: nil,
+      # will be used.
+      confirmed_at: nil,
         request_options: {}
-      )
-      end
+      ); end
 
-      sig do
-        override.returns(
-          { confirmed_at: Time, request_options: Increase::RequestOptions }
-        )
-      end
-      def to_hash
-      end
+      sig { override.returns({confirmed_at: Time, request_options: Increase::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

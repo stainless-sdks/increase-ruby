@@ -3,10 +3,7 @@
 module Increase
   module Models
     class PendingTransaction < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::PendingTransaction, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::PendingTransaction, Increase::Internal::AnyHash) }
 
       # The Pending Transaction identifier.
       sig { returns(String) }
@@ -54,11 +51,7 @@ module Increase
       attr_accessor :route_id
 
       # The type of the route this Pending Transaction came through.
-      sig do
-        returns(
-          T.nilable(Increase::PendingTransaction::RouteType::TaggedSymbol)
-        )
-      end
+      sig { returns(T.nilable(Increase::PendingTransaction::RouteType::TaggedSymbol)) }
       attr_accessor :route_type
 
       # This is an object giving more details on the network-level event that caused the
@@ -93,112 +86,94 @@ module Increase
           currency: Increase::PendingTransaction::Currency::OrSymbol,
           description: String,
           route_id: T.nilable(String),
-          route_type:
-            T.nilable(Increase::PendingTransaction::RouteType::OrSymbol),
+          route_type: T.nilable(Increase::PendingTransaction::RouteType::OrSymbol),
           source: Increase::PendingTransaction::Source::OrHash,
           status: Increase::PendingTransaction::Status::OrSymbol,
           type: Increase::PendingTransaction::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Pending Transaction identifier.
-        id:,
+      id:,
         # The identifier for the account this Pending Transaction belongs to.
-        account_id:,
+      account_id:,
         # The Pending Transaction amount in the minor unit of its currency. For dollars,
-        # for example, this is cents.
-        amount:,
+      # for example, this is cents.
+      amount:,
         # How the Pending Transaction affects the balance of its Account while its status
-        # is `pending`.
-        balance_impact:,
+      # is `pending`.
+      balance_impact:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
-        # Transaction was completed.
-        completed_at:,
+      # Transaction was completed.
+      completed_at:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
-        # Transaction occurred.
-        created_at:,
+      # Transaction occurred.
+      created_at:,
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
-        # Transaction's currency. This will match the currency on the Pending
-        # Transaction's Account.
-        currency:,
+      # Transaction's currency. This will match the currency on the Pending
+      # Transaction's Account.
+      currency:,
         # For a Pending Transaction related to a transfer, this is the description you
-        # provide. For a Pending Transaction related to a payment, this is the description
-        # the vendor provides.
-        description:,
+      # provide. For a Pending Transaction related to a payment, this is the description
+      # the vendor provides.
+      description:,
         # The identifier for the route this Pending Transaction came through. Routes are
-        # things like cards and ACH details.
-        route_id:,
+      # things like cards and ACH details.
+      route_id:,
         # The type of the route this Pending Transaction came through.
-        route_type:,
+      route_type:,
         # This is an object giving more details on the network-level event that caused the
-        # Pending Transaction. For example, for a card transaction this lists the
-        # merchant's industry and location.
-        source:,
+      # Pending Transaction. For example, for a card transaction this lists the
+      # merchant's industry and location.
+      source:,
         # Whether the Pending Transaction has been confirmed and has an associated
-        # Transaction.
-        status:,
+      # Transaction.
+      status:,
         # A constant representing the object's type. For this resource it will always be
-        # `pending_transaction`.
-        type:
-      )
-      end
+      # `pending_transaction`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            amount: Integer,
-            balance_impact:
-              Increase::PendingTransaction::BalanceImpact::TaggedSymbol,
-            completed_at: T.nilable(Time),
-            created_at: Time,
-            currency: Increase::PendingTransaction::Currency::TaggedSymbol,
-            description: String,
-            route_id: T.nilable(String),
-            route_type:
-              T.nilable(Increase::PendingTransaction::RouteType::TaggedSymbol),
-            source: Increase::PendingTransaction::Source,
-            status: Increase::PendingTransaction::Status::TaggedSymbol,
-            type: Increase::PendingTransaction::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              amount: Integer,
+              balance_impact: Increase::PendingTransaction::BalanceImpact::TaggedSymbol,
+              completed_at: T.nilable(Time),
+              created_at: Time,
+              currency: Increase::PendingTransaction::Currency::TaggedSymbol,
+              description: String,
+              route_id: T.nilable(String),
+              route_type: T.nilable(Increase::PendingTransaction::RouteType::TaggedSymbol),
+              source: Increase::PendingTransaction::Source,
+              status: Increase::PendingTransaction::Status::TaggedSymbol,
+              type: Increase::PendingTransaction::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # How the Pending Transaction affects the balance of its Account while its status
       # is `pending`.
       module BalanceImpact
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::PendingTransaction::BalanceImpact)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PendingTransaction::BalanceImpact) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # This Pending Transaction will decrement the available balance on the Account while its status is `pending`.
         AFFECTS_AVAILABLE_BALANCE =
-          T.let(
-            :affects_available_balance,
-            Increase::PendingTransaction::BalanceImpact::TaggedSymbol
-          )
+          T.let(:affects_available_balance, Increase::PendingTransaction::BalanceImpact::TaggedSymbol)
 
         # This Pending Transaction does not affect the available balance on the Account.
-        NONE =
-          T.let(
-            :none,
-            Increase::PendingTransaction::BalanceImpact::TaggedSymbol
-          )
+        NONE = T.let(:none, Increase::PendingTransaction::BalanceImpact::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::PendingTransaction::BalanceImpact::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::PendingTransaction::BalanceImpact::TaggedSymbol]) }
+        def self.values; end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
@@ -207,8 +182,7 @@ module Increase
       module Currency
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::PendingTransaction::Currency) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PendingTransaction::Currency) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Canadian Dollar (CAD)
@@ -229,97 +203,56 @@ module Increase
         # US Dollar (USD)
         USD = T.let(:USD, Increase::PendingTransaction::Currency::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::PendingTransaction::Currency::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::PendingTransaction::Currency::TaggedSymbol]) }
+        def self.values; end
       end
 
       # The type of the route this Pending Transaction came through.
       module RouteType
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::PendingTransaction::RouteType)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PendingTransaction::RouteType) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # An Account Number.
-        ACCOUNT_NUMBER =
-          T.let(
-            :account_number,
-            Increase::PendingTransaction::RouteType::TaggedSymbol
-          )
+        ACCOUNT_NUMBER = T.let(:account_number, Increase::PendingTransaction::RouteType::TaggedSymbol)
 
         # A Card.
-        CARD =
-          T.let(:card, Increase::PendingTransaction::RouteType::TaggedSymbol)
+        CARD = T.let(:card, Increase::PendingTransaction::RouteType::TaggedSymbol)
 
         # A Lockbox.
-        LOCKBOX =
-          T.let(:lockbox, Increase::PendingTransaction::RouteType::TaggedSymbol)
+        LOCKBOX = T.let(:lockbox, Increase::PendingTransaction::RouteType::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::PendingTransaction::RouteType::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::PendingTransaction::RouteType::TaggedSymbol]) }
+        def self.values; end
       end
 
       class Source < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::PendingTransaction::Source,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::PendingTransaction::Source, Increase::Internal::AnyHash) }
 
         # An Account Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `account_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::AccountTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::AccountTransferInstruction)) }
         attr_reader :account_transfer_instruction
 
         sig do
           params(
-            account_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::AccountTransferInstruction::OrHash
-              )
-          ).void
+            account_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::AccountTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :account_transfer_instruction
 
         # An ACH Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `ach_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::ACHTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::ACHTransferInstruction)) }
         attr_reader :ach_transfer_instruction
 
         sig do
           params(
-            ach_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::ACHTransferInstruction::OrHash
-              )
-          ).void
+            ach_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::ACHTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :ach_transfer_instruction
 
@@ -327,69 +260,42 @@ module Increase
         # and only if `category` is equal to `card_authorization`. Card Authorizations are
         # temporary holds placed on a customers funds with the intent to later clear a
         # transaction.
-        sig do
-          returns(
-            T.nilable(Increase::PendingTransaction::Source::CardAuthorization)
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::CardAuthorization)) }
         attr_reader :card_authorization
 
         sig do
-          params(
-            card_authorization:
-              T.nilable(
-                Increase::PendingTransaction::Source::CardAuthorization::OrHash
-              )
-          ).void
+          params(card_authorization: T.nilable(Increase::PendingTransaction::Source::CardAuthorization::OrHash)).void
         end
         attr_writer :card_authorization
 
         # The type of the resource. We may add additional possible values for this enum
         # over time; your application should be able to handle such additions gracefully.
-        sig do
-          returns(Increase::PendingTransaction::Source::Category::TaggedSymbol)
-        end
+        sig { returns(Increase::PendingTransaction::Source::Category::TaggedSymbol) }
         attr_accessor :category
 
         # A Check Deposit Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `check_deposit_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::CheckDepositInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::CheckDepositInstruction)) }
         attr_reader :check_deposit_instruction
 
         sig do
           params(
-            check_deposit_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::CheckDepositInstruction::OrHash
-              )
-          ).void
+            check_deposit_instruction: T.nilable(Increase::PendingTransaction::Source::CheckDepositInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :check_deposit_instruction
 
         # A Check Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `check_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::CheckTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::CheckTransferInstruction)) }
         attr_reader :check_transfer_instruction
 
         sig do
           params(
-            check_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::CheckTransferInstruction::OrHash
-              )
-          ).void
+            check_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::CheckTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :check_transfer_instruction
 
@@ -397,43 +303,24 @@ module Increase
         # and only if `category` is equal to `inbound_funds_hold`. We hold funds for
         # certain transaction types to account for return windows where funds might still
         # be clawed back by the sending institution.
-        sig do
-          returns(
-            T.nilable(Increase::PendingTransaction::Source::InboundFundsHold)
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::InboundFundsHold)) }
         attr_reader :inbound_funds_hold
 
-        sig do
-          params(
-            inbound_funds_hold:
-              T.nilable(
-                Increase::PendingTransaction::Source::InboundFundsHold::OrHash
-              )
-          ).void
-        end
+        sig { params(inbound_funds_hold: T.nilable(Increase::PendingTransaction::Source::InboundFundsHold::OrHash)).void }
         attr_writer :inbound_funds_hold
 
         # An Inbound Wire Transfer Reversal object. This field will be present in the JSON
         # response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
         # An Inbound Wire Transfer Reversal is created when Increase has received a wire
         # and the User requests that it be reversed.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::InboundWireTransferReversal
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::InboundWireTransferReversal)) }
         attr_reader :inbound_wire_transfer_reversal
 
         sig do
           params(
-            inbound_wire_transfer_reversal:
-              T.nilable(
-                Increase::PendingTransaction::Source::InboundWireTransferReversal::OrHash
-              )
-          ).void
+            inbound_wire_transfer_reversal: T.nilable(Increase::PendingTransaction::Source::InboundWireTransferReversal::OrHash)
+          )
+            .void
         end
         attr_writer :inbound_wire_transfer_reversal
 
@@ -445,65 +332,41 @@ module Increase
         # An Outbound Card Push Transfer Instruction object. This field will be present in
         # the JSON response if and only if `category` is equal to
         # `outbound_card_push_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction)) }
         attr_reader :outbound_card_push_transfer_instruction
 
         sig do
           params(
-            outbound_card_push_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction::OrHash
-              )
-          ).void
+            outbound_card_push_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :outbound_card_push_transfer_instruction
 
         # A Real-Time Payments Transfer Instruction object. This field will be present in
         # the JSON response if and only if `category` is equal to
         # `real_time_payments_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction)) }
         attr_reader :real_time_payments_transfer_instruction
 
         sig do
           params(
-            real_time_payments_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction::OrHash
-              )
-          ).void
+            real_time_payments_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :real_time_payments_transfer_instruction
 
         # A Swift Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `swift_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::SwiftTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::SwiftTransferInstruction)) }
         attr_reader :swift_transfer_instruction
 
         sig do
           params(
-            swift_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::SwiftTransferInstruction::OrHash
-              )
-          ).void
+            swift_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::SwiftTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :swift_transfer_instruction
 
@@ -515,22 +378,14 @@ module Increase
 
         # A Wire Transfer Instruction object. This field will be present in the JSON
         # response if and only if `category` is equal to `wire_transfer_instruction`.
-        sig do
-          returns(
-            T.nilable(
-              Increase::PendingTransaction::Source::WireTransferInstruction
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::PendingTransaction::Source::WireTransferInstruction)) }
         attr_reader :wire_transfer_instruction
 
         sig do
           params(
-            wire_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::WireTransferInstruction::OrHash
-              )
-          ).void
+            wire_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::WireTransferInstruction::OrHash)
+          )
+            .void
         end
         attr_writer :wire_transfer_instruction
 
@@ -539,175 +394,103 @@ module Increase
         # merchant's industry and location.
         sig do
           params(
-            account_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::AccountTransferInstruction::OrHash
-              ),
-            ach_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::ACHTransferInstruction::OrHash
-              ),
-            card_authorization:
-              T.nilable(
-                Increase::PendingTransaction::Source::CardAuthorization::OrHash
-              ),
+            account_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::AccountTransferInstruction::OrHash),
+            ach_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::ACHTransferInstruction::OrHash),
+            card_authorization: T.nilable(Increase::PendingTransaction::Source::CardAuthorization::OrHash),
             category: Increase::PendingTransaction::Source::Category::OrSymbol,
-            check_deposit_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::CheckDepositInstruction::OrHash
-              ),
-            check_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::CheckTransferInstruction::OrHash
-              ),
-            inbound_funds_hold:
-              T.nilable(
-                Increase::PendingTransaction::Source::InboundFundsHold::OrHash
-              ),
-            inbound_wire_transfer_reversal:
-              T.nilable(
-                Increase::PendingTransaction::Source::InboundWireTransferReversal::OrHash
-              ),
+            check_deposit_instruction: T.nilable(Increase::PendingTransaction::Source::CheckDepositInstruction::OrHash),
+            check_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::CheckTransferInstruction::OrHash),
+            inbound_funds_hold: T.nilable(Increase::PendingTransaction::Source::InboundFundsHold::OrHash),
+            inbound_wire_transfer_reversal: T.nilable(Increase::PendingTransaction::Source::InboundWireTransferReversal::OrHash),
             other: T.nilable(T.anything),
-            outbound_card_push_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction::OrHash
-              ),
-            real_time_payments_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction::OrHash
-              ),
-            swift_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::SwiftTransferInstruction::OrHash
-              ),
+            outbound_card_push_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction::OrHash),
+            real_time_payments_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction::OrHash),
+            swift_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::SwiftTransferInstruction::OrHash),
             user_initiated_hold: T.nilable(T.anything),
-            wire_transfer_instruction:
-              T.nilable(
-                Increase::PendingTransaction::Source::WireTransferInstruction::OrHash
-              )
-          ).returns(T.attached_class)
+            wire_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::WireTransferInstruction::OrHash)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # An Account Transfer Instruction object. This field will be present in the JSON
-          # response if and only if `category` is equal to `account_transfer_instruction`.
-          account_transfer_instruction:,
+        # response if and only if `category` is equal to `account_transfer_instruction`.
+        account_transfer_instruction:,
           # An ACH Transfer Instruction object. This field will be present in the JSON
-          # response if and only if `category` is equal to `ach_transfer_instruction`.
-          ach_transfer_instruction:,
+        # response if and only if `category` is equal to `ach_transfer_instruction`.
+        ach_transfer_instruction:,
           # A Card Authorization object. This field will be present in the JSON response if
-          # and only if `category` is equal to `card_authorization`. Card Authorizations are
-          # temporary holds placed on a customers funds with the intent to later clear a
-          # transaction.
-          card_authorization:,
+        # and only if `category` is equal to `card_authorization`. Card Authorizations are
+        # temporary holds placed on a customers funds with the intent to later clear a
+        # transaction.
+        card_authorization:,
           # The type of the resource. We may add additional possible values for this enum
-          # over time; your application should be able to handle such additions gracefully.
-          category:,
+        # over time; your application should be able to handle such additions gracefully.
+        category:,
           # A Check Deposit Instruction object. This field will be present in the JSON
-          # response if and only if `category` is equal to `check_deposit_instruction`.
-          check_deposit_instruction:,
+        # response if and only if `category` is equal to `check_deposit_instruction`.
+        check_deposit_instruction:,
           # A Check Transfer Instruction object. This field will be present in the JSON
-          # response if and only if `category` is equal to `check_transfer_instruction`.
-          check_transfer_instruction:,
+        # response if and only if `category` is equal to `check_transfer_instruction`.
+        check_transfer_instruction:,
           # An Inbound Funds Hold object. This field will be present in the JSON response if
-          # and only if `category` is equal to `inbound_funds_hold`. We hold funds for
-          # certain transaction types to account for return windows where funds might still
-          # be clawed back by the sending institution.
-          inbound_funds_hold:,
+        # and only if `category` is equal to `inbound_funds_hold`. We hold funds for
+        # certain transaction types to account for return windows where funds might still
+        # be clawed back by the sending institution.
+        inbound_funds_hold:,
           # An Inbound Wire Transfer Reversal object. This field will be present in the JSON
-          # response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
-          # An Inbound Wire Transfer Reversal is created when Increase has received a wire
-          # and the User requests that it be reversed.
-          inbound_wire_transfer_reversal:,
+        # response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+        # An Inbound Wire Transfer Reversal is created when Increase has received a wire
+        # and the User requests that it be reversed.
+        inbound_wire_transfer_reversal:,
           # If the category of this Transaction source is equal to `other`, this field will
-          # contain an empty object, otherwise it will contain null.
-          other:,
+        # contain an empty object, otherwise it will contain null.
+        other:,
           # An Outbound Card Push Transfer Instruction object. This field will be present in
-          # the JSON response if and only if `category` is equal to
-          # `outbound_card_push_transfer_instruction`.
-          outbound_card_push_transfer_instruction:,
+        # the JSON response if and only if `category` is equal to
+        # `outbound_card_push_transfer_instruction`.
+        outbound_card_push_transfer_instruction:,
           # A Real-Time Payments Transfer Instruction object. This field will be present in
-          # the JSON response if and only if `category` is equal to
-          # `real_time_payments_transfer_instruction`.
-          real_time_payments_transfer_instruction:,
+        # the JSON response if and only if `category` is equal to
+        # `real_time_payments_transfer_instruction`.
+        real_time_payments_transfer_instruction:,
           # A Swift Transfer Instruction object. This field will be present in the JSON
-          # response if and only if `category` is equal to `swift_transfer_instruction`.
-          swift_transfer_instruction:,
+        # response if and only if `category` is equal to `swift_transfer_instruction`.
+        swift_transfer_instruction:,
           # An User Initiated Hold object. This field will be present in the JSON response
-          # if and only if `category` is equal to `user_initiated_hold`. Created when a user
-          # initiates a hold on funds in their account.
-          user_initiated_hold:,
+        # if and only if `category` is equal to `user_initiated_hold`. Created when a user
+        # initiates a hold on funds in their account.
+        user_initiated_hold:,
           # A Wire Transfer Instruction object. This field will be present in the JSON
-          # response if and only if `category` is equal to `wire_transfer_instruction`.
-          wire_transfer_instruction:
-        )
-        end
+        # response if and only if `category` is equal to `wire_transfer_instruction`.
+        wire_transfer_instruction:
+        ); end
 
         sig do
-          override.returns(
-            {
-              account_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::AccountTransferInstruction
-                ),
-              ach_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::ACHTransferInstruction
-                ),
-              card_authorization:
-                T.nilable(
-                  Increase::PendingTransaction::Source::CardAuthorization
-                ),
-              category:
-                Increase::PendingTransaction::Source::Category::TaggedSymbol,
-              check_deposit_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::CheckDepositInstruction
-                ),
-              check_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::CheckTransferInstruction
-                ),
-              inbound_funds_hold:
-                T.nilable(
-                  Increase::PendingTransaction::Source::InboundFundsHold
-                ),
-              inbound_wire_transfer_reversal:
-                T.nilable(
-                  Increase::PendingTransaction::Source::InboundWireTransferReversal
-                ),
-              other: T.nilable(T.anything),
-              outbound_card_push_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction
-                ),
-              real_time_payments_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction
-                ),
-              swift_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::SwiftTransferInstruction
-                ),
-              user_initiated_hold: T.nilable(T.anything),
-              wire_transfer_instruction:
-                T.nilable(
-                  Increase::PendingTransaction::Source::WireTransferInstruction
-                )
-            }
-          )
+          override
+            .returns(
+              {
+                account_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::AccountTransferInstruction),
+                ach_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::ACHTransferInstruction),
+                card_authorization: T.nilable(Increase::PendingTransaction::Source::CardAuthorization),
+                category: Increase::PendingTransaction::Source::Category::TaggedSymbol,
+                check_deposit_instruction: T.nilable(Increase::PendingTransaction::Source::CheckDepositInstruction),
+                check_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::CheckTransferInstruction),
+                inbound_funds_hold: T.nilable(Increase::PendingTransaction::Source::InboundFundsHold),
+                inbound_wire_transfer_reversal: T.nilable(Increase::PendingTransaction::Source::InboundWireTransferReversal),
+                other: T.nilable(T.anything),
+                outbound_card_push_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::OutboundCardPushTransferInstruction),
+                real_time_payments_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::RealTimePaymentsTransferInstruction),
+                swift_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::SwiftTransferInstruction),
+                user_initiated_hold: T.nilable(T.anything),
+                wire_transfer_instruction: T.nilable(Increase::PendingTransaction::Source::WireTransferInstruction)
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AccountTransferInstruction < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::AccountTransferInstruction,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::AccountTransferInstruction, Increase::Internal::AnyHash) }
 
           # The pending amount in the minor unit of the transaction's currency. For dollars,
           # for example, this is cents.
@@ -716,11 +499,7 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           # account currency.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol) }
           attr_accessor :currency
 
           # The identifier of the Account Transfer that led to this Pending Transaction.
@@ -732,35 +511,33 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency:
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::OrSymbol,
+              currency: Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::OrSymbol,
               transfer_id: String
-            ).returns(T.attached_class)
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The pending amount in the minor unit of the transaction's currency. For dollars,
-            # for example, this is cents.
-            amount:,
+          # for example, this is cents.
+          amount:,
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-            # account currency.
-            currency:,
+          # account currency.
+          currency:,
             # The identifier of the Account Transfer that led to this Pending Transaction.
-            transfer_id:
-          )
-          end
+          transfer_id:
+          ); end
 
           sig do
-            override.returns(
-              {
-                amount: Integer,
-                currency:
-                  Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol,
-                transfer_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Integer,
+                  currency: Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol,
+                  transfer_id: String
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           # account currency.
@@ -768,76 +545,46 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::AccountTransferInstruction::Currency
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Canadian Dollar (CAD)
             CAD =
-              T.let(
-                :CAD,
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+              T.let(:CAD, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
 
             # Swiss Franc (CHF)
             CHF =
-              T.let(
-                :CHF,
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+              T.let(:CHF, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
 
             # Euro (EUR)
             EUR =
-              T.let(
-                :EUR,
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+              T.let(:EUR, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
 
             # British Pound (GBP)
             GBP =
-              T.let(
-                :GBP,
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+              T.let(:GBP, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
 
             # Japanese Yen (JPY)
             JPY =
-              T.let(
-                :JPY,
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+              T.let(:JPY, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
 
             # US Dollar (USD)
             USD =
-              T.let(
-                :USD,
-                Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-              )
+              T.let(:USD, Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
-                ]
-              )
+              override
+                .returns(
+                  T::Array[Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol]
+                )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
         class ACHTransferInstruction < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::ACHTransferInstruction,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::ACHTransferInstruction, Increase::Internal::AnyHash) }
 
           # The pending amount in USD cents.
           sig { returns(Integer) }
@@ -849,32 +596,21 @@ module Increase
 
           # An ACH Transfer Instruction object. This field will be present in the JSON
           # response if and only if `category` is equal to `ach_transfer_instruction`.
-          sig do
-            params(amount: Integer, transfer_id: String).returns(
-              T.attached_class
-            )
-          end
+          sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
           def self.new(
             # The pending amount in USD cents.
-            amount:,
+          amount:,
             # The identifier of the ACH Transfer that led to this Pending Transaction.
-            transfer_id:
-          )
-          end
+          transfer_id:
+          ); end
 
-          sig { override.returns({ amount: Integer, transfer_id: String }) }
-          def to_hash
-          end
+          sig { override.returns({amount: Integer, transfer_id: String}) }
+          def to_hash; end
         end
 
         class CardAuthorization < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::CardAuthorization,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::CardAuthorization, Increase::Internal::AnyHash) }
 
           # The Card Authorization identifier.
           sig { returns(String) }
@@ -882,11 +618,7 @@ module Increase
 
           # Whether this authorization was approved by Increase, the card network through
           # stand-in processing, or the user through a real-time decision.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol) }
           attr_accessor :actioner
 
           # The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -900,11 +632,7 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol) }
           attr_accessor :currency
 
           # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -914,11 +642,7 @@ module Increase
 
           # The direction describes the direction the funds will move, either from the
           # cardholder to the merchant or from the merchant to the cardholder.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol) }
           attr_accessor :direction
 
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
@@ -958,34 +682,24 @@ module Increase
           attr_accessor :merchant_state
 
           # Fields specific to the `network`.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails) }
           attr_reader :network_details
 
           sig do
-            params(
-              network_details:
-                Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::OrHash
-            ).void
+            params(network_details: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::OrHash)
+              .void
           end
           attr_writer :network_details
 
           # Network-specific identifiers for a specific request or transaction.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers) }
           attr_reader :network_identifiers
 
           sig do
             params(
-              network_identifiers:
-                Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers::OrHash
-            ).void
+              network_identifiers: Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers::OrHash
+            )
+              .void
           end
           attr_writer :network_identifiers
 
@@ -1014,11 +728,7 @@ module Increase
 
           # The processing category describes the intent behind the authorization, such as
           # whether it was used for bill payments or an automatic fuel dispenser.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol) }
           attr_accessor :processing_category
 
           # The identifier of the Real-Time Decision sent to approve or decline this
@@ -1033,27 +743,14 @@ module Increase
 
           # A constant representing the object's type. For this resource it will always be
           # `card_authorization`.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol) }
           attr_accessor :type
 
           # Fields related to verification of cardholder-provided values.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CardAuthorization::Verification
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Verification) }
           attr_reader :verification
 
-          sig do
-            params(
-              verification:
-                Increase::PendingTransaction::Source::CardAuthorization::Verification::OrHash
-            ).void
-          end
+          sig { params(verification: Increase::PendingTransaction::Source::CardAuthorization::Verification::OrHash).void }
           attr_writer :verification
 
           # A Card Authorization object. This field will be present in the JSON response if
@@ -1063,15 +760,12 @@ module Increase
           sig do
             params(
               id: String,
-              actioner:
-                Increase::PendingTransaction::Source::CardAuthorization::Actioner::OrSymbol,
+              actioner: Increase::PendingTransaction::Source::CardAuthorization::Actioner::OrSymbol,
               amount: Integer,
               card_payment_id: String,
-              currency:
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::OrSymbol,
+              currency: Increase::PendingTransaction::Source::CardAuthorization::Currency::OrSymbol,
               digital_wallet_token_id: T.nilable(String),
-              direction:
-                Increase::PendingTransaction::Source::CardAuthorization::Direction::OrSymbol,
+              direction: Increase::PendingTransaction::Source::CardAuthorization::Direction::OrSymbol,
               expires_at: Time,
               merchant_acceptor_id: String,
               merchant_category_code: String,
@@ -1080,142 +774,129 @@ module Increase
               merchant_descriptor: String,
               merchant_postal_code: T.nilable(String),
               merchant_state: T.nilable(String),
-              network_details:
-                Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::OrHash,
-              network_identifiers:
-                Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers::OrHash,
+              network_details: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::OrHash,
+              network_identifiers: Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers::OrHash,
               network_risk_score: T.nilable(Integer),
               pending_transaction_id: T.nilable(String),
               physical_card_id: T.nilable(String),
               presentment_amount: Integer,
               presentment_currency: String,
-              processing_category:
-                Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::OrSymbol,
+              processing_category: Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::OrSymbol,
               real_time_decision_id: T.nilable(String),
               terminal_id: T.nilable(String),
-              type:
-                Increase::PendingTransaction::Source::CardAuthorization::Type::OrSymbol,
-              verification:
-                Increase::PendingTransaction::Source::CardAuthorization::Verification::OrHash
-            ).returns(T.attached_class)
+              type: Increase::PendingTransaction::Source::CardAuthorization::Type::OrSymbol,
+              verification: Increase::PendingTransaction::Source::CardAuthorization::Verification::OrHash
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The Card Authorization identifier.
-            id:,
+          id:,
             # Whether this authorization was approved by Increase, the card network through
-            # stand-in processing, or the user through a real-time decision.
-            actioner:,
+          # stand-in processing, or the user through a real-time decision.
+          actioner:,
             # The pending amount in the minor unit of the transaction's currency. For dollars,
-            # for example, this is cents.
-            amount:,
+          # for example, this is cents.
+          amount:,
             # The ID of the Card Payment this transaction belongs to.
-            card_payment_id:,
+          card_payment_id:,
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
-            currency:,
+          # transaction's currency.
+          currency:,
             # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-            # purchase), the identifier of the token that was used.
-            digital_wallet_token_id:,
+          # purchase), the identifier of the token that was used.
+          digital_wallet_token_id:,
             # The direction describes the direction the funds will move, either from the
-            # cardholder to the merchant or from the merchant to the cardholder.
-            direction:,
+          # cardholder to the merchant or from the merchant to the cardholder.
+          direction:,
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-            # will expire and the pending transaction will be released.
-            expires_at:,
+          # will expire and the pending transaction will be released.
+          expires_at:,
             # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-            # is transacting with.
-            merchant_acceptor_id:,
+          # is transacting with.
+          merchant_acceptor_id:,
             # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-            # card is transacting with.
-            merchant_category_code:,
+          # card is transacting with.
+          merchant_category_code:,
             # The city the merchant resides in.
-            merchant_city:,
+          merchant_city:,
             # The country the merchant resides in.
-            merchant_country:,
+          merchant_country:,
             # The merchant descriptor of the merchant the card is transacting with.
-            merchant_descriptor:,
+          merchant_descriptor:,
             # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-            # ZIP code, where the first 5 and last 4 are separated by a dash.
-            merchant_postal_code:,
+          # ZIP code, where the first 5 and last 4 are separated by a dash.
+          merchant_postal_code:,
             # The state the merchant resides in.
-            merchant_state:,
+          merchant_state:,
             # Fields specific to the `network`.
-            network_details:,
+          network_details:,
             # Network-specific identifiers for a specific request or transaction.
-            network_identifiers:,
+          network_identifiers:,
             # The risk score generated by the card network. For Visa this is the Visa Advanced
-            # Authorization risk score, from 0 to 99, where 99 is the riskiest.
-            network_risk_score:,
+          # Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          network_risk_score:,
             # The identifier of the Pending Transaction associated with this Transaction.
-            pending_transaction_id:,
+          pending_transaction_id:,
             # If the authorization was made in-person with a physical card, the Physical Card
-            # that was used.
-            physical_card_id:,
+          # that was used.
+          physical_card_id:,
             # The pending amount in the minor unit of the transaction's presentment currency.
-            presentment_amount:,
+          presentment_amount:,
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's presentment currency.
-            presentment_currency:,
+          # transaction's presentment currency.
+          presentment_currency:,
             # The processing category describes the intent behind the authorization, such as
-            # whether it was used for bill payments or an automatic fuel dispenser.
-            processing_category:,
+          # whether it was used for bill payments or an automatic fuel dispenser.
+          processing_category:,
             # The identifier of the Real-Time Decision sent to approve or decline this
-            # transaction.
-            real_time_decision_id:,
+          # transaction.
+          real_time_decision_id:,
             # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-            # is transacting with.
-            terminal_id:,
+          # is transacting with.
+          terminal_id:,
             # A constant representing the object's type. For this resource it will always be
-            # `card_authorization`.
-            type:,
+          # `card_authorization`.
+          type:,
             # Fields related to verification of cardholder-provided values.
-            verification:
-          )
-          end
+          verification:
+          ); end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                actioner:
-                  Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol,
-                amount: Integer,
-                card_payment_id: String,
-                currency:
-                  Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol,
-                digital_wallet_token_id: T.nilable(String),
-                direction:
-                  Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol,
-                expires_at: Time,
-                merchant_acceptor_id: String,
-                merchant_category_code: String,
-                merchant_city: T.nilable(String),
-                merchant_country: String,
-                merchant_descriptor: String,
-                merchant_postal_code: T.nilable(String),
-                merchant_state: T.nilable(String),
-                network_details:
-                  Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-                network_identifiers:
-                  Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-                network_risk_score: T.nilable(Integer),
-                pending_transaction_id: T.nilable(String),
-                physical_card_id: T.nilable(String),
-                presentment_amount: Integer,
-                presentment_currency: String,
-                processing_category:
-                  Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol,
-                real_time_decision_id: T.nilable(String),
-                terminal_id: T.nilable(String),
-                type:
-                  Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol,
-                verification:
-                  Increase::PendingTransaction::Source::CardAuthorization::Verification
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  actioner: Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol,
+                  amount: Integer,
+                  card_payment_id: String,
+                  currency: Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol,
+                  digital_wallet_token_id: T.nilable(String),
+                  direction: Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol,
+                  expires_at: Time,
+                  merchant_acceptor_id: String,
+                  merchant_category_code: String,
+                  merchant_city: T.nilable(String),
+                  merchant_country: String,
+                  merchant_descriptor: String,
+                  merchant_postal_code: T.nilable(String),
+                  merchant_state: T.nilable(String),
+                  network_details: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails,
+                  network_identifiers: Increase::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
+                  network_risk_score: T.nilable(Integer),
+                  pending_transaction_id: T.nilable(String),
+                  physical_card_id: T.nilable(String),
+                  presentment_amount: Integer,
+                  presentment_currency: String,
+                  processing_category: Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol,
+                  real_time_decision_id: T.nilable(String),
+                  terminal_id: T.nilable(String),
+                  type: Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol,
+                  verification: Increase::PendingTransaction::Source::CardAuthorization::Verification
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # Whether this authorization was approved by Increase, the card network through
           # stand-in processing, or the user through a real-time decision.
@@ -1223,44 +904,24 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CardAuthorization::Actioner
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::Actioner) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # This object was actioned by the user through a real-time decision.
-            USER =
-              T.let(
-                :user,
-                Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol
-              )
+            USER = T.let(:user, Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
 
             # This object was actioned by Increase without user intervention.
             INCREASE =
-              T.let(
-                :increase,
-                Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol
-              )
+              T.let(:increase, Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
 
             # This object was actioned by the network, through stand-in processing.
             NETWORK =
-              T.let(
-                :network,
-                Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol
-              )
+              T.let(:network, Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol
-                ]
-              )
+              override.returns(T::Array[Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -1269,65 +930,31 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CardAuthorization::Currency
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::Currency) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-              )
+            CAD = T.let(:CAD, Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-              )
+            CHF = T.let(:CHF, Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-              )
+            EUR = T.let(:EUR, Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-              )
+            GBP = T.let(:GBP, Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-              )
+            JPY = T.let(:JPY, Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-              )
+            USD = T.let(:USD, Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
-                ]
-              )
+              override.returns(T::Array[Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # The direction describes the direction the funds will move, either from the
@@ -1336,37 +963,21 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CardAuthorization::Direction
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::Direction) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT =
-              T.let(
-                :settlement,
-                Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol
-              )
+              T.let(:settlement, Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol)
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
-            REFUND =
-              T.let(
-                :refund,
-                Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol
-              )
+            REFUND = T.let(:refund, Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol
-                ]
-              )
+              override
+                .returns(T::Array[Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class NetworkDetails < Increase::Internal::Type::BaseModel
@@ -1379,78 +990,53 @@ module Increase
               end
 
             # The payment network used to process this card authorization.
-            sig do
-              returns(
-                Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-              )
-            end
+            sig { returns(Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol) }
             attr_accessor :category
 
             # Fields specific to the `visa` network.
-            sig do
-              returns(
-                T.nilable(
-                  Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
-                )
-              )
-            end
+            sig { returns(T.nilable(Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)) }
             attr_reader :visa
 
             sig do
               params(
-                visa:
-                  T.nilable(
-                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::OrHash
-                  )
-              ).void
+                visa: T.nilable(Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::OrHash)
+              )
+                .void
             end
             attr_writer :visa
 
             # Fields specific to the `network`.
             sig do
               params(
-                category:
-                  Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::OrSymbol,
-                visa:
-                  T.nilable(
-                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::OrHash
-                  )
-              ).returns(T.attached_class)
+                category: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::OrSymbol,
+                visa: T.nilable(Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::OrHash)
+              )
+                .returns(T.attached_class)
             end
             def self.new(
               # The payment network used to process this card authorization.
-              category:,
+            category:,
               # Fields specific to the `visa` network.
-              visa:
-            )
-            end
+            visa:
+            ); end
 
             sig do
-              override.returns(
-                {
-                  category:
-                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
-                  visa:
-                    T.nilable(
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
-                    )
-                }
-              )
+              override
+                .returns(
+                  {
+                    category: Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol,
+                    visa: T.nilable(Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)
+                  }
+                )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             # The payment network used to process this card authorization.
             module Category
               extend Increase::Internal::Type::Enum
 
               TaggedSymbol =
-                T.type_alias do
-                  T.all(
-                    Symbol,
-                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category
-                  )
-                end
+                T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category) }
               OrSymbol = T.type_alias { T.any(Symbol, String) }
 
               # Visa
@@ -1461,14 +1047,12 @@ module Increase
                 )
 
               sig do
-                override.returns(
-                  T::Array[
-                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol
-                  ]
-                )
+                override
+                  .returns(
+                    T::Array[Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category::TaggedSymbol]
+                  )
               end
-              def self.values
-              end
+              def self.values; end
             end
 
             class Visa < Increase::Internal::Type::BaseModel
@@ -1517,54 +1101,48 @@ module Increase
               # Fields specific to the `visa` network.
               sig do
                 params(
-                  electronic_commerce_indicator:
-                    T.nilable(
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
-                    ),
-                  point_of_service_entry_mode:
-                    T.nilable(
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
-                    ),
-                  stand_in_processing_reason:
-                    T.nilable(
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
-                    )
-                ).returns(T.attached_class)
+                  electronic_commerce_indicator: T.nilable(
+                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::OrSymbol
+                  ),
+                  point_of_service_entry_mode: T.nilable(
+                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::OrSymbol
+                  ),
+                  stand_in_processing_reason: T.nilable(
+                    Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::OrSymbol
+                  )
+                )
+                  .returns(T.attached_class)
               end
               def self.new(
                 # For electronic commerce transactions, this identifies the level of security used
-                # in obtaining the customer's payment credential. For mail or telephone order
-                # transactions, identifies the type of mail or telephone order.
-                electronic_commerce_indicator:,
+              # in obtaining the customer's payment credential. For mail or telephone order
+              # transactions, identifies the type of mail or telephone order.
+              electronic_commerce_indicator:,
                 # The method used to enter the cardholder's primary account number and card
-                # expiration date.
-                point_of_service_entry_mode:,
+              # expiration date.
+              point_of_service_entry_mode:,
                 # Only present when `actioner: network`. Describes why a card authorization was
-                # approved or declined by Visa through stand-in processing.
-                stand_in_processing_reason:
-              )
-              end
+              # approved or declined by Visa through stand-in processing.
+              stand_in_processing_reason:
+              ); end
 
               sig do
-                override.returns(
-                  {
-                    electronic_commerce_indicator:
-                      T.nilable(
+                override
+                  .returns(
+                    {
+                      electronic_commerce_indicator: T.nilable(
                         Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
                       ),
-                    point_of_service_entry_mode:
-                      T.nilable(
+                      point_of_service_entry_mode: T.nilable(
                         Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
                       ),
-                    stand_in_processing_reason:
-                      T.nilable(
+                      stand_in_processing_reason: T.nilable(
                         Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
                       )
-                  }
-                )
+                    }
+                  )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # For electronic commerce transactions, this identifies the level of security used
               # in obtaining the customer's payment credential. For mail or telephone order
@@ -1574,10 +1152,7 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(
-                      Symbol,
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
-                    )
+                    T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1638,14 +1213,14 @@ module Increase
                   )
 
                 sig do
-                  override.returns(
-                    T::Array[
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
-                    ]
-                  )
+                  override
+                    .returns(
+                      T::Array[
+                        Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator::TaggedSymbol
+                      ]
+                    )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # The method used to enter the cardholder's primary account number and card
@@ -1655,10 +1230,7 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(
-                      Symbol,
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
-                    )
+                    T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1733,14 +1305,14 @@ module Increase
                   )
 
                 sig do
-                  override.returns(
-                    T::Array[
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
-                    ]
-                  )
+                  override
+                    .returns(
+                      T::Array[
+                        Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode::TaggedSymbol
+                      ]
+                    )
                 end
-                def self.values
-                end
+                def self.values; end
               end
 
               # Only present when `actioner: network`. Describes why a card authorization was
@@ -1750,10 +1322,7 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(
-                      Symbol,
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
-                    )
+                    T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -1807,14 +1376,14 @@ module Increase
                   )
 
                 sig do
-                  override.returns(
-                    T::Array[
-                      Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
-                    ]
-                  )
+                  override
+                    .returns(
+                      T::Array[
+                        Increase::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason::TaggedSymbol
+                      ]
+                    )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -1850,33 +1419,33 @@ module Increase
                 retrieval_reference_number: T.nilable(String),
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
-              ).returns(T.attached_class)
+              )
+                .returns(T.attached_class)
             end
             def self.new(
               # A life-cycle identifier used across e.g., an authorization and a reversal.
-              # Expected to be unique per acquirer within a window of time. For some card
-              # networks the retrieval reference number includes the trace counter.
-              retrieval_reference_number:,
+            # Expected to be unique per acquirer within a window of time. For some card
+            # networks the retrieval reference number includes the trace counter.
+            retrieval_reference_number:,
               # A counter used to verify an individual authorization. Expected to be unique per
-              # acquirer within a window of time.
-              trace_number:,
+            # acquirer within a window of time.
+            trace_number:,
               # A globally unique transaction identifier provided by the card network, used
-              # across multiple life-cycle requests.
-              transaction_id:
-            )
-            end
+            # across multiple life-cycle requests.
+            transaction_id:
+            ); end
 
             sig do
-              override.returns(
-                {
-                  retrieval_reference_number: T.nilable(String),
-                  trace_number: T.nilable(String),
-                  transaction_id: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    retrieval_reference_number: T.nilable(String),
+                    trace_number: T.nilable(String),
+                    transaction_id: T.nilable(String)
+                  }
+                )
             end
-            def to_hash
-            end
+            def to_hash; end
           end
 
           # The processing category describes the intent behind the authorization, such as
@@ -1885,12 +1454,7 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
@@ -1937,20 +1501,15 @@ module Increase
 
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND =
-              T.let(
-                :refund,
-                Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-              )
+              T.let(:refund, Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
-                ]
-              )
+              override
+                .returns(
+                  T::Array[Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol]
+                )
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -1959,105 +1518,73 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CardAuthorization::Type
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::Type) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             CARD_AUTHORIZATION =
-              T.let(
-                :card_authorization,
-                Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol
-              )
+              T.let(:card_authorization, Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol)
 
-            sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
+            sig { override.returns(T::Array[Increase::PendingTransaction::Source::CardAuthorization::Type::TaggedSymbol]) }
+            def self.values; end
           end
 
           class Verification < Increase::Internal::Type::BaseModel
             OrHash =
-              T.type_alias do
-                T.any(
-                  Increase::PendingTransaction::Source::CardAuthorization::Verification,
-                  Increase::Internal::AnyHash
-                )
-              end
+              T.type_alias { T.any(Increase::PendingTransaction::Source::CardAuthorization::Verification, Increase::Internal::AnyHash) }
 
             # Fields related to verification of the Card Verification Code, a 3-digit code on
             # the back of the card.
-            sig do
-              returns(
-                Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
-              )
-            end
+            sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode) }
             attr_reader :card_verification_code
 
             sig do
               params(
-                card_verification_code:
-                  Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::OrHash
-              ).void
+                card_verification_code: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::OrHash
+              )
+                .void
             end
             attr_writer :card_verification_code
 
             # Cardholder address provided in the authorization request and the address on file
             # we verified it against.
-            sig do
-              returns(
-                Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
-              )
-            end
+            sig { returns(Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress) }
             attr_reader :cardholder_address
 
             sig do
               params(
-                cardholder_address:
-                  Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::OrHash
-              ).void
+                cardholder_address: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::OrHash
+              )
+                .void
             end
             attr_writer :cardholder_address
 
             # Fields related to verification of cardholder-provided values.
             sig do
               params(
-                card_verification_code:
-                  Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::OrHash,
-                cardholder_address:
-                  Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::OrHash
-              ).returns(T.attached_class)
+                card_verification_code: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::OrHash,
+                cardholder_address: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::OrHash
+              )
+                .returns(T.attached_class)
             end
             def self.new(
               # Fields related to verification of the Card Verification Code, a 3-digit code on
-              # the back of the card.
-              card_verification_code:,
+            # the back of the card.
+            card_verification_code:,
               # Cardholder address provided in the authorization request and the address on file
-              # we verified it against.
-              cardholder_address:
-            )
-            end
+            # we verified it against.
+            cardholder_address:
+            ); end
 
             sig do
-              override.returns(
-                {
-                  card_verification_code:
-                    Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                  cardholder_address:
-                    Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
-                }
-              )
+              override
+                .returns(
+                  {
+                    card_verification_code: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
+                    cardholder_address: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
+                  }
+                )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class CardVerificationCode < Increase::Internal::Type::BaseModel
               OrHash =
@@ -2080,26 +1607,24 @@ module Increase
               # the back of the card.
               sig do
                 params(
-                  result:
-                    Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
-                ).returns(T.attached_class)
+                  result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::OrSymbol
+                )
+                  .returns(T.attached_class)
               end
               def self.new(
                 # The result of verifying the Card Verification Code.
-                result:
-              )
-              end
+              result:
+              ); end
 
               sig do
-                override.returns(
-                  {
-                    result:
-                      Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                    }
+                  )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The result of verifying the Card Verification Code.
               module Result
@@ -2107,10 +1632,7 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(
-                      Symbol,
-                      Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result
-                    )
+                    T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -2136,14 +1658,14 @@ module Increase
                   )
 
                 sig do
-                  override.returns(
-                    T::Array[
-                      Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
-                    ]
-                  )
+                  override
+                    .returns(
+                      T::Array[
+                        Increase::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result::TaggedSymbol
+                      ]
+                    )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
 
@@ -2189,39 +1711,37 @@ module Increase
                   actual_postal_code: T.nilable(String),
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
-                  result:
-                    Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
-                ).returns(T.attached_class)
+                  result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::OrSymbol
+                )
+                  .returns(T.attached_class)
               end
               def self.new(
                 # Line 1 of the address on file for the cardholder.
-                actual_line1:,
+              actual_line1:,
                 # The postal code of the address on file for the cardholder.
-                actual_postal_code:,
+              actual_postal_code:,
                 # The cardholder address line 1 provided for verification in the authorization
-                # request.
-                provided_line1:,
+              # request.
+              provided_line1:,
                 # The postal code provided for verification in the authorization request.
-                provided_postal_code:,
+              provided_postal_code:,
                 # The address verification result returned to the card network.
-                result:
-              )
-              end
+              result:
+              ); end
 
               sig do
-                override.returns(
-                  {
-                    actual_line1: T.nilable(String),
-                    actual_postal_code: T.nilable(String),
-                    provided_line1: T.nilable(String),
-                    provided_postal_code: T.nilable(String),
-                    result:
-                      Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      actual_line1: T.nilable(String),
+                      actual_postal_code: T.nilable(String),
+                      provided_line1: T.nilable(String),
+                      provided_postal_code: T.nilable(String),
+                      result: Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                    }
+                  )
               end
-              def to_hash
-              end
+              def to_hash; end
 
               # The address verification result returned to the card network.
               module Result
@@ -2229,10 +1749,7 @@ module Increase
 
                 TaggedSymbol =
                   T.type_alias do
-                    T.all(
-                      Symbol,
-                      Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result
-                    )
+                    T.all(Symbol, Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result)
                   end
                 OrSymbol = T.type_alias { T.any(Symbol, String) }
 
@@ -2279,14 +1796,14 @@ module Increase
                   )
 
                 sig do
-                  override.returns(
-                    T::Array[
-                      Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
-                    ]
-                  )
+                  override
+                    .returns(
+                      T::Array[
+                        Increase::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result::TaggedSymbol
+                      ]
+                    )
                 end
-                def self.values
-                end
+                def self.values; end
               end
             end
           end
@@ -2297,60 +1814,36 @@ module Increase
         module Category
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Increase::PendingTransaction::Source::Category)
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::Category) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION =
-            T.let(
-              :account_transfer_instruction,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:account_transfer_instruction, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # ACH Transfer Instruction: details will be under the `ach_transfer_instruction` object.
           ACH_TRANSFER_INSTRUCTION =
-            T.let(
-              :ach_transfer_instruction,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:ach_transfer_instruction, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION =
-            T.let(
-              :card_authorization,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:card_authorization, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Check Deposit Instruction: details will be under the `check_deposit_instruction` object.
           CHECK_DEPOSIT_INSTRUCTION =
-            T.let(
-              :check_deposit_instruction,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:check_deposit_instruction, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Check Transfer Instruction: details will be under the `check_transfer_instruction` object.
           CHECK_TRANSFER_INSTRUCTION =
-            T.let(
-              :check_transfer_instruction,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:check_transfer_instruction, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Inbound Funds Hold: details will be under the `inbound_funds_hold` object.
           INBOUND_FUNDS_HOLD =
-            T.let(
-              :inbound_funds_hold,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:inbound_funds_hold, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # User Initiated Hold: details will be under the `user_initiated_hold` object.
           USER_INITIATED_HOLD =
-            T.let(
-              :user_initiated_hold,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:user_initiated_hold, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Real-Time Payments Transfer Instruction: details will be under the `real_time_payments_transfer_instruction` object.
           REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION =
@@ -2361,24 +1854,15 @@ module Increase
 
           # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
           WIRE_TRANSFER_INSTRUCTION =
-            T.let(
-              :wire_transfer_instruction,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:wire_transfer_instruction, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
           INBOUND_WIRE_TRANSFER_REVERSAL =
-            T.let(
-              :inbound_wire_transfer_reversal,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:inbound_wire_transfer_reversal, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Swift Transfer Instruction: details will be under the `swift_transfer_instruction` object.
           SWIFT_TRANSFER_INSTRUCTION =
-            T.let(
-              :swift_transfer_instruction,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+            T.let(:swift_transfer_instruction, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
           # Outbound Card Push Transfer Instruction: details will be under the `outbound_card_push_transfer_instruction` object.
           OUTBOUND_CARD_PUSH_TRANSFER_INSTRUCTION =
@@ -2388,31 +1872,15 @@ module Increase
             )
 
           # The Pending Transaction was made for an undocumented or deprecated reason.
-          OTHER =
-            T.let(
-              :other,
-              Increase::PendingTransaction::Source::Category::TaggedSymbol
-            )
+          OTHER = T.let(:other, Increase::PendingTransaction::Source::Category::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::PendingTransaction::Source::Category::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::PendingTransaction::Source::Category::TaggedSymbol]) }
+          def self.values; end
         end
 
         class CheckDepositInstruction < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::CheckDepositInstruction,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::CheckDepositInstruction, Increase::Internal::AnyHash) }
 
           # The pending amount in USD cents.
           sig { returns(Integer) }
@@ -2429,11 +1897,7 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol) }
           attr_accessor :currency
 
           # The identifier of the File containing the image of the front of the check that
@@ -2448,42 +1912,40 @@ module Increase
               amount: Integer,
               back_image_file_id: T.nilable(String),
               check_deposit_id: T.nilable(String),
-              currency:
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::OrSymbol,
+              currency: Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::OrSymbol,
               front_image_file_id: String
-            ).returns(T.attached_class)
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The pending amount in USD cents.
-            amount:,
+          amount:,
             # The identifier of the File containing the image of the back of the check that
-            # was deposited.
-            back_image_file_id:,
+          # was deposited.
+          back_image_file_id:,
             # The identifier of the Check Deposit.
-            check_deposit_id:,
+          check_deposit_id:,
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
-            currency:,
+          # transaction's currency.
+          currency:,
             # The identifier of the File containing the image of the front of the check that
-            # was deposited.
-            front_image_file_id:
-          )
-          end
+          # was deposited.
+          front_image_file_id:
+          ); end
 
           sig do
-            override.returns(
-              {
-                amount: Integer,
-                back_image_file_id: T.nilable(String),
-                check_deposit_id: T.nilable(String),
-                currency:
-                  Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol,
-                front_image_file_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Integer,
+                  back_image_file_id: T.nilable(String),
+                  check_deposit_id: T.nilable(String),
+                  currency: Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol,
+                  front_image_file_id: String
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           # transaction's currency.
@@ -2491,76 +1953,38 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CheckDepositInstruction::Currency
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-              )
+            CAD = T.let(:CAD, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-              )
+            CHF = T.let(:CHF, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-              )
+            EUR = T.let(:EUR, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-              )
+            GBP = T.let(:GBP, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-              )
+            JPY = T.let(:JPY, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-              )
+            USD = T.let(:USD, Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
-                ]
-              )
+              override
+                .returns(T::Array[Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
         class CheckTransferInstruction < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::CheckTransferInstruction,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::CheckTransferInstruction, Increase::Internal::AnyHash) }
 
           # The transfer amount in USD cents.
           sig { returns(Integer) }
@@ -2568,11 +1992,7 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           # currency.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol) }
           attr_accessor :currency
 
           # The identifier of the Check Transfer that led to this Pending Transaction.
@@ -2584,34 +2004,32 @@ module Increase
           sig do
             params(
               amount: Integer,
-              currency:
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::OrSymbol,
+              currency: Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::OrSymbol,
               transfer_id: String
-            ).returns(T.attached_class)
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The transfer amount in USD cents.
-            amount:,
+          amount:,
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-            # currency.
-            currency:,
+          # currency.
+          currency:,
             # The identifier of the Check Transfer that led to this Pending Transaction.
-            transfer_id:
-          )
-          end
+          transfer_id:
+          ); end
 
           sig do
-            override.returns(
-              {
-                amount: Integer,
-                currency:
-                  Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol,
-                transfer_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Integer,
+                  currency: Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol,
+                  transfer_id: String
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           # currency.
@@ -2619,76 +2037,38 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::CheckTransferInstruction::Currency
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            CAD = T.let(:CAD, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            CHF = T.let(:CHF, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            EUR = T.let(:EUR, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            GBP = T.let(:GBP, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            JPY = T.let(:JPY, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-              )
+            USD = T.let(:USD, Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
-                ]
-              )
+              override
+                .returns(T::Array[Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
 
         class InboundFundsHold < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::InboundFundsHold,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::InboundFundsHold, Increase::Internal::AnyHash) }
 
           # The Inbound Funds Hold identifier.
           sig { returns(String) }
@@ -2711,11 +2091,7 @@ module Increase
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           # currency.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol) }
           attr_accessor :currency
 
           # The ID of the Transaction for which funds were held.
@@ -2731,20 +2107,12 @@ module Increase
           attr_accessor :released_at
 
           # The status of the hold.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol) }
           attr_accessor :status
 
           # A constant representing the object's type. For this resource it will always be
           # `inbound_funds_hold`.
-          sig do
-            returns(
-              Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
-            )
-          end
+          sig { returns(Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol) }
           attr_accessor :type
 
           # An Inbound Funds Hold object. This field will be present in the JSON response if
@@ -2757,67 +2125,61 @@ module Increase
               amount: Integer,
               automatically_releases_at: Time,
               created_at: Time,
-              currency:
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::OrSymbol,
+              currency: Increase::PendingTransaction::Source::InboundFundsHold::Currency::OrSymbol,
               held_transaction_id: T.nilable(String),
               pending_transaction_id: T.nilable(String),
               released_at: T.nilable(Time),
-              status:
-                Increase::PendingTransaction::Source::InboundFundsHold::Status::OrSymbol,
-              type:
-                Increase::PendingTransaction::Source::InboundFundsHold::Type::OrSymbol
-            ).returns(T.attached_class)
+              status: Increase::PendingTransaction::Source::InboundFundsHold::Status::OrSymbol,
+              type: Increase::PendingTransaction::Source::InboundFundsHold::Type::OrSymbol
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The Inbound Funds Hold identifier.
-            id:,
+          id:,
             # The held amount in the minor unit of the account's currency. For dollars, for
-            # example, this is cents.
-            amount:,
+          # example, this is cents.
+          amount:,
             # When the hold will be released automatically. Certain conditions may cause it to
-            # be released before this time.
-            automatically_releases_at:,
+          # be released before this time.
+          automatically_releases_at:,
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-            # was created.
-            created_at:,
+          # was created.
+          created_at:,
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-            # currency.
-            currency:,
+          # currency.
+          currency:,
             # The ID of the Transaction for which funds were held.
-            held_transaction_id:,
+          held_transaction_id:,
             # The ID of the Pending Transaction representing the held funds.
-            pending_transaction_id:,
+          pending_transaction_id:,
             # When the hold was released (if it has been released).
-            released_at:,
+          released_at:,
             # The status of the hold.
-            status:,
+          status:,
             # A constant representing the object's type. For this resource it will always be
-            # `inbound_funds_hold`.
-            type:
-          )
-          end
+          # `inbound_funds_hold`.
+          type:
+          ); end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                amount: Integer,
-                automatically_releases_at: Time,
-                created_at: Time,
-                currency:
-                  Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol,
-                held_transaction_id: T.nilable(String),
-                pending_transaction_id: T.nilable(String),
-                released_at: T.nilable(Time),
-                status:
-                  Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol,
-                type:
-                  Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  amount: Integer,
+                  automatically_releases_at: Time,
+                  created_at: Time,
+                  currency: Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol,
+                  held_transaction_id: T.nilable(String),
+                  pending_transaction_id: T.nilable(String),
+                  released_at: T.nilable(Time),
+                  status: Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol,
+                  type: Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
           # currency.
@@ -2825,65 +2187,29 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::InboundFundsHold::Currency
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::InboundFundsHold::Currency) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Canadian Dollar (CAD)
-            CAD =
-              T.let(
-                :CAD,
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-              )
+            CAD = T.let(:CAD, Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
 
             # Swiss Franc (CHF)
-            CHF =
-              T.let(
-                :CHF,
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-              )
+            CHF = T.let(:CHF, Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
 
             # Euro (EUR)
-            EUR =
-              T.let(
-                :EUR,
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-              )
+            EUR = T.let(:EUR, Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
 
             # British Pound (GBP)
-            GBP =
-              T.let(
-                :GBP,
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-              )
+            GBP = T.let(:GBP, Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
 
             # Japanese Yen (JPY)
-            JPY =
-              T.let(
-                :JPY,
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-              )
+            JPY = T.let(:JPY, Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
 
             # US Dollar (USD)
-            USD =
-              T.let(
-                :USD,
-                Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-              )
+            USD = T.let(:USD, Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol)
 
-            sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
+            sig { override.returns(T::Array[Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol]) }
+            def self.values; end
           end
 
           # The status of the hold.
@@ -2891,37 +2217,17 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::InboundFundsHold::Status
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::InboundFundsHold::Status) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Funds are still being held.
-            HELD =
-              T.let(
-                :held,
-                Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol
-              )
+            HELD = T.let(:held, Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
 
             # Funds have been released.
-            COMPLETE =
-              T.let(
-                :complete,
-                Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol
-              )
+            COMPLETE = T.let(:complete, Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol)
 
-            sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
+            sig { override.returns(T::Array[Increase::PendingTransaction::Source::InboundFundsHold::Status::TaggedSymbol]) }
+            def self.values; end
           end
 
           # A constant representing the object's type. For this resource it will always be
@@ -2930,40 +2236,20 @@ module Increase
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::PendingTransaction::Source::InboundFundsHold::Type
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::PendingTransaction::Source::InboundFundsHold::Type) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             INBOUND_FUNDS_HOLD =
-              T.let(
-                :inbound_funds_hold,
-                Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
-              )
+              T.let(:inbound_funds_hold, Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol)
 
-            sig do
-              override.returns(
-                T::Array[
-                  Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
+            sig { override.returns(T::Array[Increase::PendingTransaction::Source::InboundFundsHold::Type::TaggedSymbol]) }
+            def self.values; end
           end
         end
 
         class InboundWireTransferReversal < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::InboundWireTransferReversal,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::InboundWireTransferReversal, Increase::Internal::AnyHash) }
 
           # The ID of the Inbound Wire Transfer that is being reversed.
           sig { returns(String) }
@@ -2973,18 +2259,14 @@ module Increase
           # response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
           # An Inbound Wire Transfer Reversal is created when Increase has received a wire
           # and the User requests that it be reversed.
-          sig do
-            params(inbound_wire_transfer_id: String).returns(T.attached_class)
-          end
+          sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
           def self.new(
             # The ID of the Inbound Wire Transfer that is being reversed.
-            inbound_wire_transfer_id:
-          )
-          end
+          inbound_wire_transfer_id:
+          ); end
 
-          sig { override.returns({ inbound_wire_transfer_id: String }) }
-          def to_hash
-          end
+          sig { override.returns({inbound_wire_transfer_id: String}) }
+          def to_hash; end
         end
 
         class OutboundCardPushTransferInstruction < Increase::Internal::Type::BaseModel
@@ -3008,23 +2290,17 @@ module Increase
           # An Outbound Card Push Transfer Instruction object. This field will be present in
           # the JSON response if and only if `category` is equal to
           # `outbound_card_push_transfer_instruction`.
-          sig do
-            params(amount: Integer, transfer_id: String).returns(
-              T.attached_class
-            )
-          end
+          sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
           def self.new(
             # The transfer amount in USD cents.
-            amount:,
+          amount:,
             # The identifier of the Outbound Card Push Transfer that led to this Pending
-            # Transaction.
-            transfer_id:
-          )
-          end
+          # Transaction.
+          transfer_id:
+          ); end
 
-          sig { override.returns({ amount: Integer, transfer_id: String }) }
-          def to_hash
-          end
+          sig { override.returns({amount: Integer, transfer_id: String}) }
+          def to_hash; end
         end
 
         class RealTimePaymentsTransferInstruction < Increase::Internal::Type::BaseModel
@@ -3048,33 +2324,22 @@ module Increase
           # A Real-Time Payments Transfer Instruction object. This field will be present in
           # the JSON response if and only if `category` is equal to
           # `real_time_payments_transfer_instruction`.
-          sig do
-            params(amount: Integer, transfer_id: String).returns(
-              T.attached_class
-            )
-          end
+          sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
           def self.new(
             # The transfer amount in USD cents.
-            amount:,
+          amount:,
             # The identifier of the Real-Time Payments Transfer that led to this Pending
-            # Transaction.
-            transfer_id:
-          )
-          end
+          # Transaction.
+          transfer_id:
+          ); end
 
-          sig { override.returns({ amount: Integer, transfer_id: String }) }
-          def to_hash
-          end
+          sig { override.returns({amount: Integer, transfer_id: String}) }
+          def to_hash; end
         end
 
         class SwiftTransferInstruction < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::SwiftTransferInstruction,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::SwiftTransferInstruction, Increase::Internal::AnyHash) }
 
           # The identifier of the Swift Transfer that led to this Pending Transaction.
           sig { returns(String) }
@@ -3085,23 +2350,16 @@ module Increase
           sig { params(transfer_id: String).returns(T.attached_class) }
           def self.new(
             # The identifier of the Swift Transfer that led to this Pending Transaction.
-            transfer_id:
-          )
-          end
+          transfer_id:
+          ); end
 
-          sig { override.returns({ transfer_id: String }) }
-          def to_hash
-          end
+          sig { override.returns({transfer_id: String}) }
+          def to_hash; end
         end
 
         class WireTransferInstruction < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::PendingTransaction::Source::WireTransferInstruction,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::PendingTransaction::Source::WireTransferInstruction, Increase::Internal::AnyHash) }
 
           # The account number for the destination account.
           sig { returns(String) }
@@ -3133,36 +2391,30 @@ module Increase
               message_to_recipient: String,
               routing_number: String,
               transfer_id: String
-            ).returns(T.attached_class)
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The account number for the destination account.
-            account_number:,
+          account_number:,
             # The transfer amount in USD cents.
-            amount:,
+          amount:,
             # The message that will show on the recipient's bank statement.
-            message_to_recipient:,
+          message_to_recipient:,
             # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-            # destination account.
-            routing_number:,
+          # destination account.
+          routing_number:,
             # The identifier of the Wire Transfer that led to this Pending Transaction.
-            transfer_id:
-          )
-          end
+          transfer_id:
+          ); end
 
           sig do
-            override.returns(
-              {
-                account_number: String,
-                amount: Integer,
-                message_to_recipient: String,
-                routing_number: String,
-                transfer_id: String
-              }
-            )
+            override
+              .returns(
+                {account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String}
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
         end
       end
 
@@ -3171,25 +2423,17 @@ module Increase
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::PendingTransaction::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PendingTransaction::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The Pending Transaction is still awaiting confirmation.
-        PENDING =
-          T.let(:pending, Increase::PendingTransaction::Status::TaggedSymbol)
+        PENDING = T.let(:pending, Increase::PendingTransaction::Status::TaggedSymbol)
 
         # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
-        COMPLETE =
-          T.let(:complete, Increase::PendingTransaction::Status::TaggedSymbol)
+        COMPLETE = T.let(:complete, Increase::PendingTransaction::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::PendingTransaction::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::PendingTransaction::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -3197,23 +2441,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::PendingTransaction::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PendingTransaction::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PENDING_TRANSACTION =
-          T.let(
-            :pending_transaction,
-            Increase::PendingTransaction::Type::TaggedSymbol
-          )
+        PENDING_TRANSACTION = T.let(:pending_transaction, Increase::PendingTransaction::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::PendingTransaction::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::PendingTransaction::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

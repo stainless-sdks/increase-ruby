@@ -74,9 +74,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::PendingTransactionListParams::Category::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::PendingTransactionListParams::Category::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::PendingTransactionListParams::Category::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)
@@ -183,9 +181,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::PendingTransactionListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::PendingTransactionListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::PendingTransactionListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)

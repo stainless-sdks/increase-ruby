@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::CardDisputeCreateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::CardDisputeCreateParams, Increase::Internal::AnyHash) }
 
       # The Transaction you wish to dispute. This Transaction must have a `source_type`
       # of `card_settlement`.
@@ -36,35 +33,30 @@ module Increase
           explanation: String,
           amount: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Transaction you wish to dispute. This Transaction must have a `source_type`
-        # of `card_settlement`.
-        disputed_transaction_id:,
+      # of `card_settlement`.
+      disputed_transaction_id:,
         # Why you are disputing this Transaction.
-        explanation:,
+      explanation:,
         # The monetary amount of the part of the transaction that is being disputed. This
-        # is optional and will default to the full amount of the transaction if not
-        # provided. If provided, the amount must be less than or equal to the amount of
-        # the transaction.
-        amount: nil,
+      # is optional and will default to the full amount of the transaction if not
+      # provided. If provided, the amount must be less than or equal to the amount of
+      # the transaction.
+      amount: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            disputed_transaction_id: String,
-            explanation: String,
-            amount: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {disputed_transaction_id: String, explanation: String, amount: Integer, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end
