@@ -2,11 +2,7 @@ module Increase
   module Resources
     class Simulations
       class CardFuelConfirmations
-        def create: (
-          amount: Integer,
-          card_payment_id: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::CardPayment
+        def create: (amount: Integer, card_payment_id: String, ?request_options: Increase::request_opts) -> Increase::CardPayment
 
         def initialize: (client: Increase::Client) -> void
       end

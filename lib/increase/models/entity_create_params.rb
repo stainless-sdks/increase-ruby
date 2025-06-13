@@ -132,9 +132,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         required :beneficial_owners,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[Increase::EntityCreateParams::Corporation::BeneficialOwner]
-                 }
+                 -> { Increase::Internal::Type::ArrayOf[Increase::EntityCreateParams::Corporation::BeneficialOwner] }
 
         # @!attribute name
         #   The legal name of the corporation.
@@ -267,9 +265,7 @@ module Increase
           #
           #   @return [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           required :prongs,
-                   -> {
-                     Increase::Internal::Type::ArrayOf[enum: Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong]
-                   }
+                   -> { Increase::Internal::Type::ArrayOf[enum: Increase::EntityCreateParams::Corporation::BeneficialOwner::Prong] }
 
           # @!attribute company_title
           #   This person's role or title within the entity.
@@ -295,10 +291,7 @@ module Increase
             #   PMB's are disallowed.
             #
             #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
-            required :address,
-                     -> {
-                       Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address
-                     }
+            required :address, -> { Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address }
 
             # @!attribute date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -311,9 +304,7 @@ module Increase
             #
             #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification]
             required :identification,
-                     -> {
-                       Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification
-                     }
+                     -> { Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification }
 
             # @!attribute name
             #   The person's legal name.
@@ -415,9 +406,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number
@@ -433,9 +422,7 @@ module Increase
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
-                       -> {
-                         Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
-                       }
+                       -> { Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense }
 
               # @!attribute other
               #   Information about the identification document provided. Required if `method` is
@@ -443,9 +430,7 @@ module Increase
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other, nil]
               optional :other,
-                       -> {
-                         Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
-                       }
+                       -> { Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other }
 
               # @!attribute passport
               #   Information about the passport used for identification. Required if `method` is
@@ -453,9 +438,7 @@ module Increase
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport, nil]
               optional :passport,
-                       -> {
-                         Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
-                       }
+                       -> { Increase::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport }
 
               # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
               #   Some parameter documentations has been truncated, see
@@ -673,9 +656,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
         required :authorized_persons,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[Increase::EntityCreateParams::GovernmentAuthority::AuthorizedPerson]
-                 }
+                 -> { Increase::Internal::Type::ArrayOf[Increase::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] }
 
         # @!attribute category
         #   The category of the government authority.
@@ -957,10 +938,7 @@ module Increase
             #   equal to `passport`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport, nil]
-            optional :passport,
-                     -> {
-                       Increase::EntityCreateParams::Joint::Individual::Identification::Passport
-                     }
+            optional :passport, -> { Increase::EntityCreateParams::Joint::Individual::Identification::Passport }
 
             # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             #   Some parameter documentations has been truncated, see
@@ -1519,10 +1497,7 @@ module Increase
         #   The trustees of the trust.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Trust::Trustee>]
-        required :trustees,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[Increase::EntityCreateParams::Trust::Trustee]
-                 }
+        required :trustees, -> { Increase::Internal::Type::ArrayOf[Increase::EntityCreateParams::Trust::Trustee] }
 
         # @!attribute formation_document_file_id
         #   The identifier of the File containing the formation document of the trust.
@@ -1696,10 +1671,7 @@ module Increase
             #   A means of verifying the person's identity.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification]
-            required :identification,
-                     -> {
-                       Increase::EntityCreateParams::Trust::Trustee::Individual::Identification
-                     }
+            required :identification, -> { Increase::EntityCreateParams::Trust::Trustee::Individual::Identification }
 
             # @!attribute name
             #   The person's legal name.
@@ -1793,9 +1765,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number
@@ -1811,19 +1781,14 @@ module Increase
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
-                       -> {
-                         Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
-                       }
+                       -> { Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense }
 
               # @!attribute other
               #   Information about the identification document provided. Required if `method` is
               #   equal to `other`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other, nil]
-              optional :other,
-                       -> {
-                         Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other
-                       }
+              optional :other, -> { Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Other }
 
               # @!attribute passport
               #   Information about the passport used for identification. Required if `method` is
@@ -1831,9 +1796,7 @@ module Increase
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport, nil]
               optional :passport,
-                       -> {
-                         Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
-                       }
+                       -> { Increase::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport }
 
               # @!method initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
               #   Some parameter documentations has been truncated, see

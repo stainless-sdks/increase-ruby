@@ -5,17 +5,14 @@ module Increase
     class OAuthConnections
       # Retrieve an OAuth Connection
       sig do
-        params(
-          oauth_connection_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::OAuthConnection)
+        params(oauth_connection_id: String, request_options: Increase::RequestOptions::OrHash)
+          .returns(Increase::OAuthConnection)
       end
       def retrieve(
         # The identifier of the OAuth Connection.
-        oauth_connection_id,
+      oauth_connection_id,
         request_options: {}
-      )
-      end
+      ); end
 
       # List OAuth Connections
       sig do
@@ -25,26 +22,25 @@ module Increase
           oauth_application_id: String,
           status: Increase::OAuthConnectionListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::OAuthConnection])
+        )
+          .returns(Increase::Internal::Page[Increase::OAuthConnection])
       end
       def list(
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         # Filter results to only include OAuth Connections for a specific OAuth
-        # Application.
-        oauth_application_id: nil,
+      # Application.
+      oauth_application_id: nil,
         status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

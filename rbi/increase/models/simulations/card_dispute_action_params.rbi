@@ -8,19 +8,10 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardDisputeActionParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::CardDisputeActionParams, Increase::Internal::AnyHash) }
 
         # The status to move the dispute to.
-        sig do
-          returns(
-            Increase::Simulations::CardDisputeActionParams::Status::OrSymbol
-          )
-        end
+        sig { returns(Increase::Simulations::CardDisputeActionParams::Status::OrSymbol) }
         attr_accessor :status
 
         # Why the dispute was rejected. Not required for accepting disputes.
@@ -32,91 +23,57 @@ module Increase
 
         sig do
           params(
-            status:
-              Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
+            status: Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The status to move the dispute to.
-          status:,
+        status:,
           # Why the dispute was rejected. Not required for accepting disputes.
-          explanation: nil,
+        explanation: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              status:
-                Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
-              explanation: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                status: Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
+                explanation: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The status to move the dispute to.
         module Status
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Simulations::CardDisputeActionParams::Status
-              )
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Simulations::CardDisputeActionParams::Status) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION =
-            T.let(
-              :pending_user_information,
-              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
-            )
+            T.let(:pending_user_information, Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
-          ACCEPTED =
-            T.let(
-              :accepted,
-              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
-            )
+          ACCEPTED = T.let(:accepted, Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been rejected.
-          REJECTED =
-            T.let(
-              :rejected,
-              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
-            )
+          REJECTED = T.let(:rejected, Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
-          LOST =
-            T.let(
-              :lost,
-              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
-            )
+          LOST = T.let(:lost, Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
           # The Card Dispute has been won and no further action can be taken.
-          WON =
-            T.let(
-              :won,
-              Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
-            )
+          WON = T.let(:won, Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::Simulations::CardDisputeActionParams::Status::TaggedSymbol]) }
+          def self.values; end
         end
       end
     end

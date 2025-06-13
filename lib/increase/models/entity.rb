@@ -400,9 +400,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::Entity::Corporation::BeneficialOwner::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::Entity::Corporation::BeneficialOwner::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number_last4
@@ -481,9 +479,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
         required :authorized_persons,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[Increase::Entity::GovernmentAuthority::AuthorizedPerson]
-                 }
+                 -> { Increase::Internal::Type::ArrayOf[Increase::Entity::GovernmentAuthority::AuthorizedPerson] }
 
         # @!attribute category
         #   The category of the government authority.
@@ -862,11 +858,7 @@ module Increase
           #   A method that can be used to verify the individual's identity.
           #
           #   @return [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method]
-          required :method_,
-                   enum: -> {
-                     Increase::Entity::NaturalPerson::Identification::Method
-                   },
-                   api_name: :method
+          required :method_, enum: -> { Increase::Entity::NaturalPerson::Identification::Method }, api_name: :method
 
           # @!attribute number_last4
           #   The last 4 digits of the identification number that can be used to verify the

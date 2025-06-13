@@ -3,8 +3,7 @@
 module Increase
   module Models
     class Card < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::Card, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Increase::Card, Increase::Internal::AnyHash) }
 
       # The card identifier.
       sig { returns(String) }
@@ -18,9 +17,7 @@ module Increase
       sig { returns(Increase::Card::BillingAddress) }
       attr_reader :billing_address
 
-      sig do
-        params(billing_address: Increase::Card::BillingAddress::OrHash).void
-      end
+      sig { params(billing_address: Increase::Card::BillingAddress::OrHash).void }
       attr_writer :billing_address
 
       # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -38,11 +35,7 @@ module Increase
       sig { returns(T.nilable(Increase::Card::DigitalWallet)) }
       attr_reader :digital_wallet
 
-      sig do
-        params(
-          digital_wallet: T.nilable(Increase::Card::DigitalWallet::OrHash)
-        ).void
-      end
+      sig { params(digital_wallet: T.nilable(Increase::Card::DigitalWallet::OrHash)).void }
       attr_writer :digital_wallet
 
       # The identifier for the entity associated with this card.
@@ -95,71 +88,68 @@ module Increase
           last4: String,
           status: Increase::Card::Status::OrSymbol,
           type: Increase::Card::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The card identifier.
-        id:,
+      id:,
         # The identifier for the account this card belongs to.
-        account_id:,
+      account_id:,
         # The Card's billing address.
-        billing_address:,
+      billing_address:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the Card was created.
-        created_at:,
+      # the Card was created.
+      created_at:,
         # The card's description for display purposes.
-        description:,
+      description:,
         # The contact information used in the two-factor steps for digital wallet card
-        # creation. At least one field must be present to complete the digital wallet
-        # steps.
-        digital_wallet:,
+      # creation. At least one field must be present to complete the digital wallet
+      # steps.
+      digital_wallet:,
         # The identifier for the entity associated with this card.
-        entity_id:,
+      entity_id:,
         # The month the card expires in M format (e.g., August is 8).
-        expiration_month:,
+      expiration_month:,
         # The year the card expires in YYYY format (e.g., 2025).
-        expiration_year:,
+      expiration_year:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # The last 4 digits of the Card's Primary Account Number.
-        last4:,
+      last4:,
         # This indicates if payments can be made with the card.
-        status:,
+      status:,
         # A constant representing the object's type. For this resource it will always be
-        # `card`.
-        type:
-      )
-      end
+      # `card`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            billing_address: Increase::Card::BillingAddress,
-            created_at: Time,
-            description: T.nilable(String),
-            digital_wallet: T.nilable(Increase::Card::DigitalWallet),
-            entity_id: T.nilable(String),
-            expiration_month: Integer,
-            expiration_year: Integer,
-            idempotency_key: T.nilable(String),
-            last4: String,
-            status: Increase::Card::Status::TaggedSymbol,
-            type: Increase::Card::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              billing_address: Increase::Card::BillingAddress,
+              created_at: Time,
+              description: T.nilable(String),
+              digital_wallet: T.nilable(Increase::Card::DigitalWallet),
+              entity_id: T.nilable(String),
+              expiration_month: Integer,
+              expiration_year: Integer,
+              idempotency_key: T.nilable(String),
+              last4: String,
+              status: Increase::Card::Status::TaggedSymbol,
+              type: Increase::Card::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class BillingAddress < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Increase::Card::BillingAddress, Increase::Internal::AnyHash)
-          end
+        OrHash = T.type_alias { T.any(Increase::Card::BillingAddress, Increase::Internal::AnyHash) }
 
         # The city of the billing address.
         sig { returns(T.nilable(String)) }
@@ -189,42 +179,39 @@ module Increase
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The city of the billing address.
-          city:,
+        city:,
           # The first line of the billing address.
-          line1:,
+        line1:,
           # The second line of the billing address.
-          line2:,
+        line2:,
           # The postal code of the billing address.
-          postal_code:,
+        postal_code:,
           # The US state of the billing address.
-          state:
-        )
-        end
+        state:
+        ); end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Increase::Card::DigitalWallet, Increase::Internal::AnyHash)
-          end
+        OrHash = T.type_alias { T.any(Increase::Card::DigitalWallet, Increase::Internal::AnyHash) }
 
         # The digital card profile assigned to this digital card. Card profiles may also
         # be assigned at the program level.
@@ -245,36 +232,26 @@ module Increase
         # creation. At least one field must be present to complete the digital wallet
         # steps.
         sig do
-          params(
-            digital_card_profile_id: T.nilable(String),
-            email: T.nilable(String),
-            phone: T.nilable(String)
-          ).returns(T.attached_class)
+          params(digital_card_profile_id: T.nilable(String), email: T.nilable(String), phone: T.nilable(String))
+            .returns(T.attached_class)
         end
         def self.new(
           # The digital card profile assigned to this digital card. Card profiles may also
-          # be assigned at the program level.
-          digital_card_profile_id:,
+        # be assigned at the program level.
+        digital_card_profile_id:,
           # An email address that can be used to verify the cardholder via one-time passcode
-          # over email.
-          email:,
+        # over email.
+        email:,
           # A phone number that can be used to verify the cardholder via one-time passcode
-          # over SMS.
-          phone:
-        )
-        end
+        # over SMS.
+        phone:
+        ); end
 
         sig do
-          override.returns(
-            {
-              digital_card_profile_id: T.nilable(String),
-              email: T.nilable(String),
-              phone: T.nilable(String)
-            }
-          )
+          override
+            .returns({digital_card_profile_id: T.nilable(String), email: T.nilable(String), phone: T.nilable(String)})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # This indicates if payments can be made with the card.
@@ -294,8 +271,7 @@ module Increase
         CANCELED = T.let(:canceled, Increase::Card::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Card::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -309,8 +285,7 @@ module Increase
         CARD = T.let(:card, Increase::Card::Type::TaggedSymbol)
 
         sig { override.returns(T::Array[Increase::Card::Type::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
     end
   end

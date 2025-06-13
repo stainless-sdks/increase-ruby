@@ -1,9 +1,7 @@
 module Increase
   module Resources
     class Groups
-      def retrieve: (
-        ?request_options: Increase::request_opts
-      ) -> Increase::Group
+      def retrieve: (?request_options: Increase::request_opts) -> Increase::Group
 
       def initialize: (client: Increase::Client) -> void
     end

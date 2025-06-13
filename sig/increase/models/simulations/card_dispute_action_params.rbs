@@ -1,12 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type card_dispute_action_params =
-        {
-          status: Increase::Models::Simulations::CardDisputeActionParams::status,
-          explanation: String
-        }
-        & Increase::Internal::Type::request_parameters
+      type card_dispute_action_params = ({status: Increase::Models::Simulations::CardDisputeActionParams::status, explanation: String} & Increase::Internal::Type::request_parameters)
 
       class CardDisputeActionParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -18,20 +13,15 @@ module Increase
 
         def explanation=: (String) -> String
 
-        def initialize: (
-          status: Increase::Models::Simulations::CardDisputeActionParams::status,
-          ?explanation: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (status: Increase::Models::Simulations::CardDisputeActionParams::status, ?explanation: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           status: Increase::Models::Simulations::CardDisputeActionParams::status,
           explanation: String,
           request_options: Increase::RequestOptions
         }
 
-        type status =
-          :pending_user_information | :accepted | :rejected | :lost | :won
+        type status = (:pending_user_information | :accepted | :rejected | :lost | :won)
 
         module Status
           extend Increase::Internal::Type::Enum
@@ -51,7 +41,7 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON: :won
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
+          def self?.values: () -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
         end
       end
     end

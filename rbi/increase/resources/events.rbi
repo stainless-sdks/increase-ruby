@@ -4,18 +4,12 @@ module Increase
   module Resources
     class Events
       # Retrieve an Event
-      sig do
-        params(
-          event_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Event)
-      end
+      sig { params(event_id: String, request_options: Increase::RequestOptions::OrHash).returns(Increase::Event) }
       def retrieve(
         # The identifier of the Event.
-        event_id,
+      event_id,
         request_options: {}
-      )
-      end
+      ); end
 
       # List Events
       sig do
@@ -26,26 +20,25 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::Event])
+        )
+          .returns(Increase::Internal::Page[Increase::Event])
       end
       def list(
         # Filter Events to those belonging to the object with the provided identifier.
-        associated_object_id: nil,
+      associated_object_id: nil,
         category: nil,
         created_at: nil,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

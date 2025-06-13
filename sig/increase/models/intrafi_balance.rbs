@@ -1,14 +1,13 @@
 module Increase
   module Models
-    type intrafi_balance =
-      {
-        id: String,
-        balances: ::Array[Increase::IntrafiBalance::Balance],
-        currency: Increase::Models::IntrafiBalance::currency,
-        effective_date: Date,
-        total_balance: Integer,
-        type: Increase::Models::IntrafiBalance::type_
-      }
+    type intrafi_balance = {
+      id: String,
+      balances: ::Array[Increase::IntrafiBalance::Balance],
+      currency: Increase::Models::IntrafiBalance::currency,
+      effective_date: Date,
+      total_balance: Integer,
+      type: Increase::Models::IntrafiBalance::type_
+    }
 
     class IntrafiBalance < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -23,16 +22,9 @@ module Increase
 
       attr_accessor type: Increase::Models::IntrafiBalance::type_
 
-      def initialize: (
-        id: String,
-        balances: ::Array[Increase::IntrafiBalance::Balance],
-        currency: Increase::Models::IntrafiBalance::currency,
-        effective_date: Date,
-        total_balance: Integer,
-        type: Increase::Models::IntrafiBalance::type_
-      ) -> void
+      def initialize: (id: String, balances: ::Array[Increase::IntrafiBalance::Balance], currency: Increase::Models::IntrafiBalance::currency, effective_date: Date, total_balance: Integer, type: Increase::Models::IntrafiBalance::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         balances: ::Array[Increase::IntrafiBalance::Balance],
         currency: Increase::Models::IntrafiBalance::currency,
@@ -41,14 +33,13 @@ module Increase
         type: Increase::Models::IntrafiBalance::type_
       }
 
-      type balance =
-        {
-          id: String,
-          balance: Integer,
-          bank: String,
-          bank_location: Increase::IntrafiBalance::Balance::BankLocation?,
-          fdic_certificate_number: String
-        }
+      type balance = {
+        id: String,
+        balance: Integer,
+        bank: String,
+        bank_location: Increase::IntrafiBalance::Balance::BankLocation?,
+        fdic_certificate_number: String
+      }
 
       class Balance < Increase::Internal::Type::BaseModel
         attr_accessor id: String
@@ -61,15 +52,9 @@ module Increase
 
         attr_accessor fdic_certificate_number: String
 
-        def initialize: (
-          id: String,
-          balance: Integer,
-          bank: String,
-          bank_location: Increase::IntrafiBalance::Balance::BankLocation?,
-          fdic_certificate_number: String
-        ) -> void
+        def initialize: (id: String, balance: Integer, bank: String, bank_location: Increase::IntrafiBalance::Balance::BankLocation?, fdic_certificate_number: String) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           id: String,
           balance: Integer,
           bank: String,
@@ -77,7 +62,7 @@ module Increase
           fdic_certificate_number: String
         }
 
-        type bank_location = { city: String, state: String }
+        type bank_location = {city: String, state: String}
 
         class BankLocation < Increase::Internal::Type::BaseModel
           attr_accessor city: String
@@ -86,11 +71,11 @@ module Increase
 
           def initialize: (city: String, state: String) -> void
 
-          def to_hash: -> { city: String, state: String }
+          def to_hash: () -> {city: String, state: String}
         end
       end
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       module Currency
         extend Increase::Internal::Type::Enum
@@ -113,7 +98,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::IntrafiBalance::currency]
+        def self?.values: () -> ::Array[Increase::Models::IntrafiBalance::currency]
       end
 
       type type_ = :intrafi_balance
@@ -123,7 +108,7 @@ module Increase
 
         INTRAFI_BALANCE: :intrafi_balance
 
-        def self?.values: -> ::Array[Increase::Models::IntrafiBalance::type_]
+        def self?.values: () -> ::Array[Increase::Models::IntrafiBalance::type_]
       end
     end
   end

@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::InterestPaymentCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::InterestPaymentCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Account the Interest Payment should be paid to is for.
         sig { returns(String) }
@@ -52,37 +47,37 @@ module Increase
             period_end: Time,
             period_start: Time,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Account the Interest Payment should be paid to is for.
-          account_id:,
+        account_id:,
           # The interest amount in cents. Must be positive.
-          amount:,
+        amount:,
           # The identifier of the Account the Interest accrued on. Defaults to `account_id`.
-          accrued_on_account_id: nil,
+        accrued_on_account_id: nil,
           # The end of the interest period. If not provided, defaults to the current time.
-          period_end: nil,
+        period_end: nil,
           # The start of the interest period. If not provided, defaults to the current time.
-          period_start: nil,
+        period_start: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              amount: Integer,
-              accrued_on_account_id: String,
-              period_end: Time,
-              period_start: Time,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                amount: Integer,
+                accrued_on_account_id: String,
+                period_end: Time,
+                period_start: Time,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

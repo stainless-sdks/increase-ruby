@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardIncrementCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::CardIncrementCreateParams, Increase::Internal::AnyHash) }
 
         # The amount of the increment in minor units in the card authorization's currency.
         sig { returns(Integer) }
@@ -39,34 +34,34 @@ module Increase
             card_payment_id: String,
             event_subscription_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The amount of the increment in minor units in the card authorization's currency.
-          amount:,
+        amount:,
           # The identifier of the Card Payment to create a increment on.
-          card_payment_id:,
+        card_payment_id:,
           # The identifier of the Event Subscription to use. If provided, will override the
-          # default real time event subscription. Because you can only create one real time
-          # decision event subscription, you can use this field to route events to any
-          # specified event subscription for testing purposes.
-          event_subscription_id: nil,
+        # default real time event subscription. Because you can only create one real time
+        # decision event subscription, you can use this field to route events to any
+        # specified event subscription for testing purposes.
+        event_subscription_id: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              card_payment_id: String,
-              event_subscription_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                card_payment_id: String,
+                event_subscription_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

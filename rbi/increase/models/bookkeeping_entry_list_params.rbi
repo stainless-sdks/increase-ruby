@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::BookkeepingEntryListParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::BookkeepingEntryListParams, Increase::Internal::AnyHash) }
 
       # The identifier for the Bookkeeping Account to filter by.
       sig { returns(T.nilable(String)) }
@@ -42,32 +36,25 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the Bookkeeping Account to filter by.
-        account_id: nil,
+      account_id: nil,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns({account_id: String, cursor: String, limit: Integer, request_options: Increase::RequestOptions})
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

@@ -1,11 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type physical_card_advance_shipment_params =
-        {
-          shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
-        }
-        & Increase::Internal::Type::request_parameters
+      type physical_card_advance_shipment_params = ({shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status} & Increase::Internal::Type::request_parameters)
 
       class PhysicalCardAdvanceShipmentParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -13,25 +9,14 @@ module Increase
 
         attr_accessor shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status
 
-        def initialize: (
-          shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
           request_options: Increase::RequestOptions
         }
 
-        type shipment_status =
-          :pending
-          | :canceled
-          | :submitted
-          | :acknowledged
-          | :rejected
-          | :shipped
-          | :returned
-          | :requires_attention
+        type shipment_status = (:pending | :canceled | :submitted | :acknowledged | :rejected | :shipped | :returned | :requires_attention)
 
         module ShipmentStatus
           extend Increase::Internal::Type::Enum
@@ -60,7 +45,7 @@ module Increase
           # The physical card shipment requires attention from Increase before progressing.
           REQUIRES_ATTENTION: :requires_attention
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status]
+          def self?.values: () -> ::Array[Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status]
         end
       end
     end

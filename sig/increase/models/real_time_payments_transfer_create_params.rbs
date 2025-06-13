@@ -1,20 +1,18 @@
 module Increase
   module Models
-    type real_time_payments_transfer_create_params =
-      {
-        amount: Integer,
-        creditor_name: String,
-        remittance_information: String,
-        source_account_number_id: String,
-        debtor_name: String,
-        destination_account_number: String,
-        destination_routing_number: String,
-        external_account_id: String,
-        require_approval: bool,
-        ultimate_creditor_name: String,
-        ultimate_debtor_name: String
-      }
-      & Increase::Internal::Type::request_parameters
+    type real_time_payments_transfer_create_params = ({
+      amount: Integer,
+      creditor_name: String,
+      remittance_information: String,
+      source_account_number_id: String,
+      debtor_name: String,
+      destination_account_number: String,
+      destination_routing_number: String,
+      external_account_id: String,
+      require_approval: bool,
+      ultimate_creditor_name: String,
+      ultimate_debtor_name: String
+    } & Increase::Internal::Type::request_parameters)
 
     class RealTimePaymentsTransferCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -56,22 +54,9 @@ module Increase
 
       def ultimate_debtor_name=: (String) -> String
 
-      def initialize: (
-        amount: Integer,
-        creditor_name: String,
-        remittance_information: String,
-        source_account_number_id: String,
-        ?debtor_name: String,
-        ?destination_account_number: String,
-        ?destination_routing_number: String,
-        ?external_account_id: String,
-        ?require_approval: bool,
-        ?ultimate_creditor_name: String,
-        ?ultimate_debtor_name: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (amount: Integer, creditor_name: String, remittance_information: String, source_account_number_id: String, ?debtor_name: String, ?destination_account_number: String, ?destination_routing_number: String, ?external_account_id: String, ?require_approval: bool, ?ultimate_creditor_name: String, ?ultimate_debtor_name: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         amount: Integer,
         creditor_name: String,
         remittance_information: String,

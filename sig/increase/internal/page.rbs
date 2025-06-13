@@ -7,7 +7,7 @@ module Increase
 
       attr_accessor next_cursor: String?
 
-      def inspect: -> String
+      def inspect: () -> String
     end
   end
 end

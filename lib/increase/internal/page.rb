@@ -24,7 +24,7 @@ module Increase
 
       # @return [Boolean]
       def next_page?
-        !data.to_a.empty? && !next_cursor.to_s.empty?
+        !data.to_a.empty? && (!next_cursor.to_s.empty?)
       end
 
       # @raise [Increase::HTTP::Error]
@@ -77,9 +77,11 @@ module Increase
       #
       # @return [String]
       def inspect
+        # rubocop:disable Layout/LineLength
         model = Increase::Internal::Type::Converter.inspect(@model, depth: 1)
 
         "#<#{self.class}[#{model}]:0x#{object_id.to_s(16)} next_cursor=#{next_cursor.inspect}>"
+        # rubocop:enable Layout/LineLength
       end
     end
   end

@@ -7,12 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias do
-          T.any(
-            Increase::RealTimePaymentsTransferCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+        T.type_alias { T.any(Increase::RealTimePaymentsTransferCreateParams, Increase::Internal::AnyHash) }
 
       # The transfer amount in USD cents. For Real-Time Payments transfers, must be
       # positive.
@@ -100,62 +95,62 @@ module Increase
           ultimate_creditor_name: String,
           ultimate_debtor_name: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The transfer amount in USD cents. For Real-Time Payments transfers, must be
-        # positive.
-        amount:,
+      # positive.
+      amount:,
         # The name of the transfer's recipient.
-        creditor_name:,
+      creditor_name:,
         # Unstructured information that will show on the recipient's bank statement.
-        remittance_information:,
+      remittance_information:,
         # The identifier of the Account Number from which to send the transfer.
-        source_account_number_id:,
+      source_account_number_id:,
         # The name of the transfer's sender. If not provided, defaults to the name of the
-        # account's entity.
-        debtor_name: nil,
+      # account's entity.
+      debtor_name: nil,
         # The destination account number.
-        destination_account_number: nil,
+      destination_account_number: nil,
         # The destination American Bankers' Association (ABA) Routing Transit Number
-        # (RTN).
-        destination_routing_number: nil,
+      # (RTN).
+      destination_routing_number: nil,
         # The ID of an External Account to initiate a transfer to. If this parameter is
-        # provided, `destination_account_number` and `destination_routing_number` must be
-        # absent.
-        external_account_id: nil,
+      # provided, `destination_account_number` and `destination_routing_number` must be
+      # absent.
+      external_account_id: nil,
         # Whether the transfer requires explicit approval via the dashboard or API.
-        require_approval: nil,
+      require_approval: nil,
         # The name of the ultimate recipient of the transfer. Set this if the creditor is
-        # an intermediary receiving the payment for someone else.
-        ultimate_creditor_name: nil,
+      # an intermediary receiving the payment for someone else.
+      ultimate_creditor_name: nil,
         # The name of the ultimate sender of the transfer. Set this if the funds are being
-        # sent on behalf of someone who is not the account holder at Increase.
-        ultimate_debtor_name: nil,
+      # sent on behalf of someone who is not the account holder at Increase.
+      ultimate_debtor_name: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            amount: Integer,
-            creditor_name: String,
-            remittance_information: String,
-            source_account_number_id: String,
-            debtor_name: String,
-            destination_account_number: String,
-            destination_routing_number: String,
-            external_account_id: String,
-            require_approval: T::Boolean,
-            ultimate_creditor_name: String,
-            ultimate_debtor_name: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              amount: Integer,
+              creditor_name: String,
+              remittance_information: String,
+              source_account_number_id: String,
+              debtor_name: String,
+              destination_account_number: String,
+              destination_routing_number: String,
+              external_account_id: String,
+              require_approval: T::Boolean,
+              ultimate_creditor_name: String,
+              ultimate_debtor_name: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

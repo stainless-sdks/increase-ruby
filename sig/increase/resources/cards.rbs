@@ -1,44 +1,15 @@
 module Increase
   module Resources
     class Cards
-      def create: (
-        account_id: String,
-        ?billing_address: Increase::CardCreateParams::BillingAddress,
-        ?description: String,
-        ?digital_wallet: Increase::CardCreateParams::DigitalWallet,
-        ?entity_id: String,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Card
+      def create: (account_id: String, ?billing_address: Increase::CardCreateParams::BillingAddress, ?description: String, ?digital_wallet: Increase::CardCreateParams::DigitalWallet, ?entity_id: String, ?request_options: Increase::request_opts) -> Increase::Card
 
-      def retrieve: (
-        String card_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Card
+      def retrieve: (String card_id, ?request_options: Increase::request_opts) -> Increase::Card
 
-      def update: (
-        String card_id,
-        ?billing_address: Increase::CardUpdateParams::BillingAddress,
-        ?description: String,
-        ?digital_wallet: Increase::CardUpdateParams::DigitalWallet,
-        ?entity_id: String,
-        ?status: Increase::Models::CardUpdateParams::status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Card
+      def update: (String card_id, ?billing_address: Increase::CardUpdateParams::BillingAddress, ?description: String, ?digital_wallet: Increase::CardUpdateParams::DigitalWallet, ?entity_id: String, ?status: Increase::Models::CardUpdateParams::status, ?request_options: Increase::request_opts) -> Increase::Card
 
-      def list: (
-        ?account_id: String,
-        ?created_at: Increase::CardListParams::CreatedAt,
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::CardListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::Card]
+      def list: (?account_id: String, ?created_at: Increase::CardListParams::CreatedAt, ?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::CardListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::Card]
 
-      def details: (
-        String card_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::CardDetails
+      def details: (String card_id, ?request_options: Increase::request_opts) -> Increase::CardDetails
 
       def initialize: (client: Increase::Client) -> void
     end

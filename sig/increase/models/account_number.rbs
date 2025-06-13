@@ -1,19 +1,18 @@
 module Increase
   module Models
-    type account_number =
-      {
-        id: String,
-        account_id: String,
-        account_number: String,
-        created_at: Time,
-        idempotency_key: String?,
-        inbound_ach: Increase::AccountNumber::InboundACH,
-        inbound_checks: Increase::AccountNumber::InboundChecks,
-        name: String,
-        routing_number: String,
-        status: Increase::Models::AccountNumber::status,
-        type: Increase::Models::AccountNumber::type_
-      }
+    type account_number = {
+      id: String,
+      account_id: String,
+      account_number: String,
+      created_at: Time,
+      idempotency_key: String?,
+      inbound_ach: Increase::AccountNumber::InboundACH,
+      inbound_checks: Increase::AccountNumber::InboundChecks,
+      name: String,
+      routing_number: String,
+      status: Increase::Models::AccountNumber::status,
+      type: Increase::Models::AccountNumber::type_
+    }
 
     class AccountNumber < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -38,21 +37,9 @@ module Increase
 
       attr_accessor type: Increase::Models::AccountNumber::type_
 
-      def initialize: (
-        id: String,
-        account_id: String,
-        account_number: String,
-        created_at: Time,
-        idempotency_key: String?,
-        inbound_ach: Increase::AccountNumber::InboundACH,
-        inbound_checks: Increase::AccountNumber::InboundChecks,
-        name: String,
-        routing_number: String,
-        status: Increase::Models::AccountNumber::status,
-        type: Increase::Models::AccountNumber::type_
-      ) -> void
+      def initialize: (id: String, account_id: String, account_number: String, created_at: Time, idempotency_key: String?, inbound_ach: Increase::AccountNumber::InboundACH, inbound_checks: Increase::AccountNumber::InboundChecks, name: String, routing_number: String, status: Increase::Models::AccountNumber::status, type: Increase::Models::AccountNumber::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         account_id: String,
         account_number: String,
@@ -66,23 +53,16 @@ module Increase
         type: Increase::Models::AccountNumber::type_
       }
 
-      type inbound_ach =
-        {
-          debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
-        }
+      type inbound_ach = {debit_status: Increase::Models::AccountNumber::InboundACH::debit_status}
 
       class InboundACH < Increase::Internal::Type::BaseModel
         attr_accessor debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
 
-        def initialize: (
-          debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
-        ) -> void
+        def initialize: (debit_status: Increase::Models::AccountNumber::InboundACH::debit_status) -> void
 
-        def to_hash: -> {
-          debit_status: Increase::Models::AccountNumber::InboundACH::debit_status
-        }
+        def to_hash: () -> {debit_status: Increase::Models::AccountNumber::InboundACH::debit_status}
 
-        type debit_status = :allowed | :blocked
+        type debit_status = (:allowed | :blocked)
 
         module DebitStatus
           extend Increase::Internal::Type::Enum
@@ -93,25 +73,20 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumber::InboundACH::debit_status]
+          def self?.values: () -> ::Array[Increase::Models::AccountNumber::InboundACH::debit_status]
         end
       end
 
-      type inbound_checks =
-        { status: Increase::Models::AccountNumber::InboundChecks::status }
+      type inbound_checks = {status: Increase::Models::AccountNumber::InboundChecks::status}
 
       class InboundChecks < Increase::Internal::Type::BaseModel
         attr_accessor status: Increase::Models::AccountNumber::InboundChecks::status
 
-        def initialize: (
-          status: Increase::Models::AccountNumber::InboundChecks::status
-        ) -> void
+        def initialize: (status: Increase::Models::AccountNumber::InboundChecks::status) -> void
 
-        def to_hash: -> {
-          status: Increase::Models::AccountNumber::InboundChecks::status
-        }
+        def to_hash: () -> {status: Increase::Models::AccountNumber::InboundChecks::status}
 
-        type status = :allowed | :check_transfers_only
+        type status = (:allowed | :check_transfers_only)
 
         module Status
           extend Increase::Internal::Type::Enum
@@ -122,11 +97,11 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY: :check_transfers_only
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumber::InboundChecks::status]
+          def self?.values: () -> ::Array[Increase::Models::AccountNumber::InboundChecks::status]
         end
       end
 
-      type status = :active | :disabled | :canceled
+      type status = (:active | :disabled | :canceled)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -140,7 +115,7 @@ module Increase
         # The account number is permanently disabled.
         CANCELED: :canceled
 
-        def self?.values: -> ::Array[Increase::Models::AccountNumber::status]
+        def self?.values: () -> ::Array[Increase::Models::AccountNumber::status]
       end
 
       type type_ = :account_number
@@ -150,7 +125,7 @@ module Increase
 
         ACCOUNT_NUMBER: :account_number
 
-        def self?.values: -> ::Array[Increase::Models::AccountNumber::type_]
+        def self?.values: () -> ::Array[Increase::Models::AccountNumber::type_]
       end
     end
   end

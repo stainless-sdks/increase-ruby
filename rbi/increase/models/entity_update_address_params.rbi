@@ -6,59 +6,41 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::EntityUpdateAddressParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::EntityUpdateAddressParams, Increase::Internal::AnyHash) }
 
       # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       # are disallowed.
       sig { returns(Increase::EntityUpdateAddressParams::Address) }
       attr_reader :address
 
-      sig do
-        params(
-          address: Increase::EntityUpdateAddressParams::Address::OrHash
-        ).void
-      end
+      sig { params(address: Increase::EntityUpdateAddressParams::Address::OrHash).void }
       attr_writer :address
 
       sig do
         params(
           address: Increase::EntityUpdateAddressParams::Address::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        # are disallowed.
-        address:,
+      # are disallowed.
+      address:,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            address: Increase::EntityUpdateAddressParams::Address,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {address: Increase::EntityUpdateAddressParams::Address, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::EntityUpdateAddressParams::Address,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::EntityUpdateAddressParams::Address, Increase::Internal::AnyHash) }
 
         # The city of the address.
         sig { returns(String) }
@@ -86,43 +68,23 @@ module Increase
 
         # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
         # are disallowed.
-        sig do
-          params(
-            city: String,
-            line1: String,
-            state: String,
-            zip: String,
-            line2: String
-          ).returns(T.attached_class)
-        end
+        sig { params(city: String, line1: String, state: String, zip: String, line2: String).returns(T.attached_class) }
         def self.new(
           # The city of the address.
-          city:,
+        city:,
           # The first line of the address. This is usually the street number and street.
-          line1:,
+        line1:,
           # The two-letter United States Postal Service (USPS) abbreviation for the state of
-          # the address.
-          state:,
+        # the address.
+        state:,
           # The ZIP code of the address.
-          zip:,
+        zip:,
           # The second line of the address. This might be the floor or room number.
-          line2: nil
-        )
-        end
+        line2: nil
+        ); end
 
-        sig do
-          override.returns(
-            {
-              city: String,
-              line1: String,
-              state: String,
-              zip: String,
-              line2: String
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
+        def to_hash; end
       end
     end
   end

@@ -1,15 +1,14 @@
 module Increase
   module Models
-    type oauth_connection =
-      {
-        id: String,
-        created_at: Time,
-        deleted_at: Time?,
-        group_id: String,
-        oauth_application_id: String,
-        status: Increase::Models::OAuthConnection::status,
-        type: Increase::Models::OAuthConnection::type_
-      }
+    type oauth_connection = {
+      id: String,
+      created_at: Time,
+      deleted_at: Time?,
+      group_id: String,
+      oauth_application_id: String,
+      status: Increase::Models::OAuthConnection::status,
+      type: Increase::Models::OAuthConnection::type_
+    }
 
     class OAuthConnection < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -26,17 +25,9 @@ module Increase
 
       attr_accessor type: Increase::Models::OAuthConnection::type_
 
-      def initialize: (
-        id: String,
-        created_at: Time,
-        deleted_at: Time?,
-        group_id: String,
-        oauth_application_id: String,
-        status: Increase::Models::OAuthConnection::status,
-        type: Increase::Models::OAuthConnection::type_
-      ) -> void
+      def initialize: (id: String, created_at: Time, deleted_at: Time?, group_id: String, oauth_application_id: String, status: Increase::Models::OAuthConnection::status, type: Increase::Models::OAuthConnection::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         created_at: Time,
         deleted_at: Time?,
@@ -46,7 +37,7 @@ module Increase
         type: Increase::Models::OAuthConnection::type_
       }
 
-      type status = :active | :inactive
+      type status = (:active | :inactive)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -57,7 +48,7 @@ module Increase
         # The OAuth connection is permanently deactivated.
         INACTIVE: :inactive
 
-        def self?.values: -> ::Array[Increase::Models::OAuthConnection::status]
+        def self?.values: () -> ::Array[Increase::Models::OAuthConnection::status]
       end
 
       type type_ = :oauth_connection
@@ -67,7 +58,7 @@ module Increase
 
         OAUTH_CONNECTION: :oauth_connection
 
-        def self?.values: -> ::Array[Increase::Models::OAuthConnection::type_]
+        def self?.values: () -> ::Array[Increase::Models::OAuthConnection::type_]
       end
     end
   end

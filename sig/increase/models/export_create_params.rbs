@@ -1,16 +1,14 @@
 module Increase
   module Models
-    type export_create_params =
-      {
-        category: Increase::Models::ExportCreateParams::category,
-        account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx,
-        balance_csv: Increase::ExportCreateParams::BalanceCsv,
-        bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv,
-        entity_csv: Increase::ExportCreateParams::EntityCsv,
-        transaction_csv: Increase::ExportCreateParams::TransactionCsv,
-        vendor_csv: top
-      }
-      & Increase::Internal::Type::request_parameters
+    type export_create_params = ({
+      category: Increase::Models::ExportCreateParams::category,
+      account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx,
+      balance_csv: Increase::ExportCreateParams::BalanceCsv,
+      bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv,
+      entity_csv: Increase::ExportCreateParams::EntityCsv,
+      transaction_csv: Increase::ExportCreateParams::TransactionCsv,
+      vendor_csv: top
+    } & Increase::Internal::Type::request_parameters)
 
     class ExportCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -20,50 +18,31 @@ module Increase
 
       attr_reader account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx?
 
-      def account_statement_ofx=: (
-        Increase::ExportCreateParams::AccountStatementOfx
-      ) -> Increase::ExportCreateParams::AccountStatementOfx
+      def account_statement_ofx=: (Increase::ExportCreateParams::AccountStatementOfx) -> Increase::ExportCreateParams::AccountStatementOfx
 
       attr_reader balance_csv: Increase::ExportCreateParams::BalanceCsv?
 
-      def balance_csv=: (
-        Increase::ExportCreateParams::BalanceCsv
-      ) -> Increase::ExportCreateParams::BalanceCsv
+      def balance_csv=: (Increase::ExportCreateParams::BalanceCsv) -> Increase::ExportCreateParams::BalanceCsv
 
       attr_reader bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv?
 
-      def bookkeeping_account_balance_csv=: (
-        Increase::ExportCreateParams::BookkeepingAccountBalanceCsv
-      ) -> Increase::ExportCreateParams::BookkeepingAccountBalanceCsv
+      def bookkeeping_account_balance_csv=: (Increase::ExportCreateParams::BookkeepingAccountBalanceCsv) -> Increase::ExportCreateParams::BookkeepingAccountBalanceCsv
 
       attr_reader entity_csv: Increase::ExportCreateParams::EntityCsv?
 
-      def entity_csv=: (
-        Increase::ExportCreateParams::EntityCsv
-      ) -> Increase::ExportCreateParams::EntityCsv
+      def entity_csv=: (Increase::ExportCreateParams::EntityCsv) -> Increase::ExportCreateParams::EntityCsv
 
       attr_reader transaction_csv: Increase::ExportCreateParams::TransactionCsv?
 
-      def transaction_csv=: (
-        Increase::ExportCreateParams::TransactionCsv
-      ) -> Increase::ExportCreateParams::TransactionCsv
+      def transaction_csv=: (Increase::ExportCreateParams::TransactionCsv) -> Increase::ExportCreateParams::TransactionCsv
 
       attr_reader vendor_csv: top?
 
       def vendor_csv=: (top) -> top
 
-      def initialize: (
-        category: Increase::Models::ExportCreateParams::category,
-        ?account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx,
-        ?balance_csv: Increase::ExportCreateParams::BalanceCsv,
-        ?bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv,
-        ?entity_csv: Increase::ExportCreateParams::EntityCsv,
-        ?transaction_csv: Increase::ExportCreateParams::TransactionCsv,
-        ?vendor_csv: top,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (category: Increase::Models::ExportCreateParams::category, ?account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx, ?balance_csv: Increase::ExportCreateParams::BalanceCsv, ?bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv, ?entity_csv: Increase::ExportCreateParams::EntityCsv, ?transaction_csv: Increase::ExportCreateParams::TransactionCsv, ?vendor_csv: top, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         category: Increase::Models::ExportCreateParams::category,
         account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx,
         balance_csv: Increase::ExportCreateParams::BalanceCsv,
@@ -74,13 +53,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type category =
-        :account_statement_ofx
-        | :transaction_csv
-        | :balance_csv
-        | :bookkeeping_account_balance_csv
-        | :entity_csv
-        | :vendor_csv
+      type category = (:account_statement_ofx | :transaction_csv | :balance_csv | :bookkeeping_account_balance_csv | :entity_csv | :vendor_csv)
 
       module Category
         extend Increase::Internal::Type::Enum
@@ -103,36 +76,23 @@ module Increase
         # Export a CSV of vendors added to the third-party risk management dashboard.
         VENDOR_CSV: :vendor_csv
 
-        def self?.values: -> ::Array[Increase::Models::ExportCreateParams::category]
+        def self?.values: () -> ::Array[Increase::Models::ExportCreateParams::category]
       end
 
-      type account_statement_ofx =
-        {
-          account_id: String,
-          created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt
-        }
+      type account_statement_ofx = {account_id: String, created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt}
 
       class AccountStatementOfx < Increase::Internal::Type::BaseModel
         attr_accessor account_id: String
 
         attr_reader created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt?
 
-        def created_at=: (
-          Increase::ExportCreateParams::AccountStatementOfx::CreatedAt
-        ) -> Increase::ExportCreateParams::AccountStatementOfx::CreatedAt
+        def created_at=: (Increase::ExportCreateParams::AccountStatementOfx::CreatedAt) -> Increase::ExportCreateParams::AccountStatementOfx::CreatedAt
 
-        def initialize: (
-          account_id: String,
-          ?created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt
-        ) -> void
+        def initialize: (account_id: String, ?created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt) -> void
 
-        def to_hash: -> {
-          account_id: String,
-          created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt
-        }
+        def to_hash: () -> {account_id: String, created_at: Increase::ExportCreateParams::AccountStatementOfx::CreatedAt}
 
-        type created_at =
-          { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+        type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           attr_reader after: Time?
@@ -151,28 +111,13 @@ module Increase
 
           def on_or_before=: (Time) -> Time
 
-          def initialize: (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
+          def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-          def to_hash: -> {
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          }
+          def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
         end
       end
 
-      type balance_csv =
-        {
-          account_id: String,
-          created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt,
-          program_id: String
-        }
+      type balance_csv = {account_id: String, created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt, program_id: String}
 
       class BalanceCsv < Increase::Internal::Type::BaseModel
         attr_reader account_id: String?
@@ -181,28 +126,17 @@ module Increase
 
         attr_reader created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt?
 
-        def created_at=: (
-          Increase::ExportCreateParams::BalanceCsv::CreatedAt
-        ) -> Increase::ExportCreateParams::BalanceCsv::CreatedAt
+        def created_at=: (Increase::ExportCreateParams::BalanceCsv::CreatedAt) -> Increase::ExportCreateParams::BalanceCsv::CreatedAt
 
         attr_reader program_id: String?
 
         def program_id=: (String) -> String
 
-        def initialize: (
-          ?account_id: String,
-          ?created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt,
-          ?program_id: String
-        ) -> void
+        def initialize: (?account_id: String, ?created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt, ?program_id: String) -> void
 
-        def to_hash: -> {
-          account_id: String,
-          created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt,
-          program_id: String
-        }
+        def to_hash: () -> {account_id: String, created_at: Increase::ExportCreateParams::BalanceCsv::CreatedAt, program_id: String}
 
-        type created_at =
-          { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+        type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           attr_reader after: Time?
@@ -221,27 +155,16 @@ module Increase
 
           def on_or_before=: (Time) -> Time
 
-          def initialize: (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
+          def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-          def to_hash: -> {
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          }
+          def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
         end
       end
 
-      type bookkeeping_account_balance_csv =
-        {
-          bookkeeping_account_id: String,
-          created_at: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-        }
+      type bookkeeping_account_balance_csv = {
+        bookkeeping_account_id: String,
+        created_at: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+      }
 
       class BookkeepingAccountBalanceCsv < Increase::Internal::Type::BaseModel
         attr_reader bookkeeping_account_id: String?
@@ -250,22 +173,16 @@ module Increase
 
         attr_reader created_at: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt?
 
-        def created_at=: (
-          Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-        ) -> Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+        def created_at=: (Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt) -> Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
 
-        def initialize: (
-          ?bookkeeping_account_id: String,
-          ?created_at: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-        ) -> void
+        def initialize: (?bookkeeping_account_id: String, ?created_at: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           bookkeeping_account_id: String,
           created_at: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
         }
 
-        type created_at =
-          { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+        type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           attr_reader after: Time?
@@ -284,57 +201,33 @@ module Increase
 
           def on_or_before=: (Time) -> Time
 
-          def initialize: (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
+          def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-          def to_hash: -> {
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          }
+          def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
         end
       end
 
-      type entity_csv =
-        { status: Increase::ExportCreateParams::EntityCsv::Status }
+      type entity_csv = {status: Increase::ExportCreateParams::EntityCsv::Status}
 
       class EntityCsv < Increase::Internal::Type::BaseModel
         attr_reader status: Increase::ExportCreateParams::EntityCsv::Status?
 
-        def status=: (
-          Increase::ExportCreateParams::EntityCsv::Status
-        ) -> Increase::ExportCreateParams::EntityCsv::Status
+        def status=: (Increase::ExportCreateParams::EntityCsv::Status) -> Increase::ExportCreateParams::EntityCsv::Status
 
-        def initialize: (
-          ?status: Increase::ExportCreateParams::EntityCsv::Status
-        ) -> void
+        def initialize: (?status: Increase::ExportCreateParams::EntityCsv::Status) -> void
 
-        def to_hash: -> {
-          status: Increase::ExportCreateParams::EntityCsv::Status
-        }
+        def to_hash: () -> {status: Increase::ExportCreateParams::EntityCsv::Status}
 
-        type status =
-          {
-            in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
-          }
+        type status = {in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]}
 
         class Status < Increase::Internal::Type::BaseModel
           attr_accessor in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
 
-          def initialize: (
-            in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
-          ) -> void
+          def initialize: (in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]) -> void
 
-          def to_hash: -> {
-            in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
-          }
+          def to_hash: () -> {in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]}
 
-          type in_ = :active | :archived | :disabled
+          type in_ = (:active | :archived | :disabled)
 
           module In
             extend Increase::Internal::Type::Enum
@@ -348,17 +241,12 @@ module Increase
             # The entity is temporarily disabled and cannot be used for financial activity.
             DISABLED: :disabled
 
-            def self?.values: -> ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
+            def self?.values: () -> ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
           end
         end
       end
 
-      type transaction_csv =
-        {
-          account_id: String,
-          created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt,
-          program_id: String
-        }
+      type transaction_csv = {account_id: String, created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt, program_id: String}
 
       class TransactionCsv < Increase::Internal::Type::BaseModel
         attr_reader account_id: String?
@@ -367,28 +255,17 @@ module Increase
 
         attr_reader created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt?
 
-        def created_at=: (
-          Increase::ExportCreateParams::TransactionCsv::CreatedAt
-        ) -> Increase::ExportCreateParams::TransactionCsv::CreatedAt
+        def created_at=: (Increase::ExportCreateParams::TransactionCsv::CreatedAt) -> Increase::ExportCreateParams::TransactionCsv::CreatedAt
 
         attr_reader program_id: String?
 
         def program_id=: (String) -> String
 
-        def initialize: (
-          ?account_id: String,
-          ?created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt,
-          ?program_id: String
-        ) -> void
+        def initialize: (?account_id: String, ?created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt, ?program_id: String) -> void
 
-        def to_hash: -> {
-          account_id: String,
-          created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt,
-          program_id: String
-        }
+        def to_hash: () -> {account_id: String, created_at: Increase::ExportCreateParams::TransactionCsv::CreatedAt, program_id: String}
 
-        type created_at =
-          { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+        type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
         class CreatedAt < Increase::Internal::Type::BaseModel
           attr_reader after: Time?
@@ -407,19 +284,9 @@ module Increase
 
           def on_or_before=: (Time) -> Time
 
-          def initialize: (
-            ?after: Time,
-            ?before: Time,
-            ?on_or_after: Time,
-            ?on_or_before: Time
-          ) -> void
+          def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-          def to_hash: -> {
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          }
+          def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
         end
       end
     end

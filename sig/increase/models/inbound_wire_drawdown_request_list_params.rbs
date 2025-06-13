@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type inbound_wire_drawdown_request_list_params =
-      { cursor: String, limit: Integer }
-      & Increase::Internal::Type::request_parameters
+    type inbound_wire_drawdown_request_list_params = ({cursor: String, limit: Integer} & Increase::Internal::Type::request_parameters)
 
     class InboundWireDrawdownRequestListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -16,17 +14,9 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize: (
-        ?cursor: String,
-        ?limit: Integer,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?cursor: String, ?limit: Integer, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
-        cursor: String,
-        limit: Integer,
-        request_options: Increase::RequestOptions
-      }
+      def to_hash: () -> {cursor: String, limit: Integer, request_options: Increase::RequestOptions}
     end
   end
 end

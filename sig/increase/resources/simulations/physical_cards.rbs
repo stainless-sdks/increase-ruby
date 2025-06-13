@@ -2,21 +2,9 @@ module Increase
   module Resources
     class Simulations
       class PhysicalCards
-        def advance_shipment: (
-          String physical_card_id,
-          shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status,
-          ?request_options: Increase::request_opts
-        ) -> Increase::PhysicalCard
+        def advance_shipment: (String physical_card_id, shipment_status: Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::shipment_status, ?request_options: Increase::request_opts) -> Increase::PhysicalCard
 
-        def tracking_updates: (
-          String physical_card_id,
-          category: Increase::Models::Simulations::PhysicalCardTrackingUpdatesParams::category,
-          ?carrier_estimated_delivery_at: Time,
-          ?city: String,
-          ?postal_code: String,
-          ?state: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::PhysicalCard
+        def tracking_updates: (String physical_card_id, category: Increase::Models::Simulations::PhysicalCardTrackingUpdatesParams::category, ?carrier_estimated_delivery_at: Time, ?city: String, ?postal_code: String, ?state: String, ?request_options: Increase::request_opts) -> Increase::PhysicalCard
 
         def initialize: (client: Increase::Client) -> void
       end

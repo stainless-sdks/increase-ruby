@@ -11,42 +11,38 @@ module Increase
           description: String,
           front_image_file_id: String,
           program_id: String,
-          front_text:
-            Increase::PhysicalCardProfileCreateParams::FrontText::OrHash,
+          front_text: Increase::PhysicalCardProfileCreateParams::FrontText::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCardProfile)
+        )
+          .returns(Increase::PhysicalCardProfile)
       end
       def create(
         # The identifier of the File containing the physical card's carrier image.
-        carrier_image_file_id:,
+      carrier_image_file_id:,
         # A phone number the user can contact to receive support for their card.
-        contact_phone:,
+      contact_phone:,
         # A description you can use to identify the Card Profile.
-        description:,
+      description:,
         # The identifier of the File containing the physical card's front image.
-        front_image_file_id:,
+      front_image_file_id:,
         # The identifier for the Program that this Physical Card Profile falls under.
-        program_id:,
+      program_id:,
         # Text printed on the front of the card. Reach out to
-        # [support@increase.com](mailto:support@increase.com) for more information.
-        front_text: nil,
+      # [support@increase.com](mailto:support@increase.com) for more information.
+      front_text: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # Retrieve a Card Profile
       sig do
-        params(
-          physical_card_profile_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCardProfile)
+        params(physical_card_profile_id: String, request_options: Increase::RequestOptions::OrHash)
+          .returns(Increase::PhysicalCardProfile)
       end
       def retrieve(
         # The identifier of the Card Profile.
-        physical_card_profile_id,
+      physical_card_profile_id,
         request_options: {}
-      )
-      end
+      ); end
 
       # List Physical Card Profiles
       sig do
@@ -56,37 +52,34 @@ module Increase
           limit: Integer,
           status: Increase::PhysicalCardProfileListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Internal::Page[Increase::PhysicalCardProfile])
+        )
+          .returns(Increase::Internal::Page[Increase::PhysicalCardProfile])
       end
       def list(
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key: nil,
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # Archive a Physical Card Profile
       sig do
-        params(
-          physical_card_profile_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCardProfile)
+        params(physical_card_profile_id: String, request_options: Increase::RequestOptions::OrHash)
+          .returns(Increase::PhysicalCardProfile)
       end
       def archive(
         # The identifier of the Physical Card Profile to archive.
-        physical_card_profile_id,
+      physical_card_profile_id,
         request_options: {}
-      )
-      end
+      ); end
 
       # Clone a Physical Card Profile
       sig do
@@ -96,33 +89,31 @@ module Increase
           contact_phone: String,
           description: String,
           front_image_file_id: String,
-          front_text:
-            Increase::PhysicalCardProfileCloneParams::FrontText::OrHash,
+          front_text: Increase::PhysicalCardProfileCloneParams::FrontText::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::PhysicalCardProfile)
+        )
+          .returns(Increase::PhysicalCardProfile)
       end
       def clone_(
         # The identifier of the Physical Card Profile to clone.
-        physical_card_profile_id,
+      physical_card_profile_id,
         # The identifier of the File containing the physical card's carrier image.
-        carrier_image_file_id: nil,
+      carrier_image_file_id: nil,
         # A phone number the user can contact to receive support for their card.
-        contact_phone: nil,
+      contact_phone: nil,
         # A description you can use to identify the Card Profile.
-        description: nil,
+      description: nil,
         # The identifier of the File containing the physical card's front image.
-        front_image_file_id: nil,
+      front_image_file_id: nil,
         # Text printed on the front of the card. Reach out to
-        # [support@increase.com](mailto:support@increase.com) for more information.
-        front_text: nil,
+      # [support@increase.com](mailto:support@increase.com) for more information.
+      front_text: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       # @api private
       sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

@@ -3,10 +3,7 @@
 module Increase
   module Models
     class BalanceLookup < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::BalanceLookup, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::BalanceLookup, Increase::Internal::AnyHash) }
 
       # The identifier for the account for which the balance was queried.
       sig { returns(String) }
@@ -35,55 +32,48 @@ module Increase
           available_balance: Integer,
           current_balance: Integer,
           type: Increase::BalanceLookup::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifier for the account for which the balance was queried.
-        account_id:,
+      account_id:,
         # The Account's available balance, representing the current balance less any open
-        # Pending Transactions on the Account.
-        available_balance:,
+      # Pending Transactions on the Account.
+      available_balance:,
         # The Account's current balance, representing the sum of all posted Transactions
-        # on the Account.
-        current_balance:,
+      # on the Account.
+      current_balance:,
         # A constant representing the object's type. For this resource it will always be
-        # `balance_lookup`.
-        type:
-      )
-      end
+      # `balance_lookup`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            available_balance: Integer,
-            current_balance: Integer,
-            type: Increase::BalanceLookup::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              available_balance: Integer,
+              current_balance: Integer,
+              type: Increase::BalanceLookup::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       # `balance_lookup`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::BalanceLookup::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::BalanceLookup::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BALANCE_LOOKUP =
-          T.let(:balance_lookup, Increase::BalanceLookup::Type::TaggedSymbol)
+        BALANCE_LOOKUP = T.let(:balance_lookup, Increase::BalanceLookup::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::BalanceLookup::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::BalanceLookup::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

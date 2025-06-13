@@ -356,8 +356,8 @@ class IncreaseTest < Minitest::Test
     end
 
     assert_requested(
-      :any,
-      /./,
+      :any, 
+      /./, 
       headers: {"idempotency-key" => "user-supplied-key"},
       times: 2
     )

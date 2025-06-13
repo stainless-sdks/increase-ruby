@@ -1,43 +1,15 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
-      def create: (
-        carrier_image_file_id: String,
-        contact_phone: String,
-        description: String,
-        front_image_file_id: String,
-        program_id: String,
-        ?front_text: Increase::PhysicalCardProfileCreateParams::FrontText,
-        ?request_options: Increase::request_opts
-      ) -> Increase::PhysicalCardProfile
+      def create: (carrier_image_file_id: String, contact_phone: String, description: String, front_image_file_id: String, program_id: String, ?front_text: Increase::PhysicalCardProfileCreateParams::FrontText, ?request_options: Increase::request_opts) -> Increase::PhysicalCardProfile
 
-      def retrieve: (
-        String physical_card_profile_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::PhysicalCardProfile
+      def retrieve: (String physical_card_profile_id, ?request_options: Increase::request_opts) -> Increase::PhysicalCardProfile
 
-      def list: (
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::PhysicalCardProfileListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::PhysicalCardProfile]
+      def list: (?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::PhysicalCardProfileListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::PhysicalCardProfile]
 
-      def archive: (
-        String physical_card_profile_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::PhysicalCardProfile
+      def archive: (String physical_card_profile_id, ?request_options: Increase::request_opts) -> Increase::PhysicalCardProfile
 
-      def clone_: (
-        String physical_card_profile_id,
-        ?carrier_image_file_id: String,
-        ?contact_phone: String,
-        ?description: String,
-        ?front_image_file_id: String,
-        ?front_text: Increase::PhysicalCardProfileCloneParams::FrontText,
-        ?request_options: Increase::request_opts
-      ) -> Increase::PhysicalCardProfile
+      def clone_: (String physical_card_profile_id, ?carrier_image_file_id: String, ?contact_phone: String, ?description: String, ?front_image_file_id: String, ?front_text: Increase::PhysicalCardProfileCloneParams::FrontText, ?request_options: Increase::request_opts) -> Increase::PhysicalCardProfile
 
       def initialize: (client: Increase::Client) -> void
     end

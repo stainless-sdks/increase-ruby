@@ -64,9 +64,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::ExternalAccountListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::ExternalAccountListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::ExternalAccountListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)

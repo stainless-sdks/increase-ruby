@@ -8,56 +8,38 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::RealTimePaymentsTransferCompleteParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::RealTimePaymentsTransferCompleteParams, Increase::Internal::AnyHash) }
 
         # If set, the simulation will reject the transfer.
-        sig do
-          returns(
-            T.nilable(
-              Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
         attr_reader :rejection
 
-        sig do
-          params(
-            rejection:
-              Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash
-          ).void
-        end
+        sig { params(rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash).void }
         attr_writer :rejection
 
         sig do
           params(
-            rejection:
-              Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash,
+            rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::OrHash,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # If set, the simulation will reject the transfer.
-          rejection: nil,
+        rejection: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              rejection:
-                Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                rejection: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Rejection < Increase::Internal::Type::BaseModel
           OrHash =
@@ -79,38 +61,31 @@ module Increase
           # If set, the simulation will reject the transfer.
           sig do
             params(
-              reject_reason_code:
-                Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-            ).returns(T.attached_class)
+              reject_reason_code: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The reason code that the simulated rejection will have.
-            reject_reason_code:
-          )
-          end
+          reject_reason_code:
+          ); end
 
           sig do
-            override.returns(
-              {
-                reject_reason_code:
-                  Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
-              }
-            )
+            override
+              .returns(
+                {
+                  reject_reason_code: Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::OrSymbol
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The reason code that the simulated rejection will have.
           module RejectReasonCode
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
@@ -261,14 +236,12 @@ module Increase
               )
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol
-                ]
-              )
+              override
+                .returns(
+                  T::Array[Increase::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode::TaggedSymbol]
+                )
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end

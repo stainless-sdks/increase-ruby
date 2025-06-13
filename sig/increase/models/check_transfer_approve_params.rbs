@@ -1,7 +1,6 @@
 module Increase
   module Models
-    type check_transfer_approve_params =
-      {  } & Increase::Internal::Type::request_parameters
+    type check_transfer_approve_params = ({} & Increase::Internal::Type::request_parameters)
 
     class CheckTransferApproveParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -9,7 +8,7 @@ module Increase
 
       def initialize: (?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> { request_options: Increase::RequestOptions }
+      def to_hash: () -> {request_options: Increase::RequestOptions}
     end
   end
 end

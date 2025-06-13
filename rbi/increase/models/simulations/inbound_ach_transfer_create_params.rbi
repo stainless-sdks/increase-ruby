@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::InboundACHTransferCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::InboundACHTransferCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Account Number the inbound ACH Transfer is for.
         sig { returns(String) }
@@ -26,21 +21,10 @@ module Increase
         attr_accessor :amount
 
         # Additional information to include in the transfer.
-        sig do
-          returns(
-            T.nilable(
-              Increase::Simulations::InboundACHTransferCreateParams::Addenda
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::Simulations::InboundACHTransferCreateParams::Addenda)) }
         attr_reader :addenda
 
-        sig do
-          params(
-            addenda:
-              Increase::Simulations::InboundACHTransferCreateParams::Addenda::OrHash
-          ).void
-        end
+        sig { params(addenda: Increase::Simulations::InboundACHTransferCreateParams::Addenda::OrHash).void }
         attr_writer :addenda
 
         # The description of the date of the transfer.
@@ -103,18 +87,16 @@ module Increase
         # The standard entry class code for the transfer.
         sig do
           returns(
-            T.nilable(
-              Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
-            )
+            T.nilable(Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol)
           )
         end
         attr_reader :standard_entry_class_code
 
         sig do
           params(
-            standard_entry_class_code:
-              Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
-          ).void
+            standard_entry_class_code: Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol
+          )
+            .void
         end
         attr_writer :standard_entry_class_code
 
@@ -122,8 +104,7 @@ module Increase
           params(
             account_number_id: String,
             amount: Integer,
-            addenda:
-              Increase::Simulations::InboundACHTransferCreateParams::Addenda::OrHash,
+            addenda: Increase::Simulations::InboundACHTransferCreateParams::Addenda::OrHash,
             company_descriptive_date: String,
             company_discretionary_data: String,
             company_entry_description: String,
@@ -132,161 +113,122 @@ module Increase
             receiver_id_number: String,
             receiver_name: String,
             resolve_at: Time,
-            standard_entry_class_code:
-              Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
+            standard_entry_class_code: Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Account Number the inbound ACH Transfer is for.
-          account_number_id:,
+        account_number_id:,
           # The transfer amount in cents. A positive amount originates a credit transfer
-          # pushing funds to the receiving account. A negative amount originates a debit
-          # transfer pulling funds from the receiving account.
-          amount:,
+        # pushing funds to the receiving account. A negative amount originates a debit
+        # transfer pulling funds from the receiving account.
+        amount:,
           # Additional information to include in the transfer.
-          addenda: nil,
+        addenda: nil,
           # The description of the date of the transfer.
-          company_descriptive_date: nil,
+        company_descriptive_date: nil,
           # Data associated with the transfer set by the sender.
-          company_discretionary_data: nil,
+        company_discretionary_data: nil,
           # The description of the transfer set by the sender.
-          company_entry_description: nil,
+        company_entry_description: nil,
           # The sender's company ID.
-          company_id: nil,
+        company_id: nil,
           # The name of the sender.
-          company_name: nil,
+        company_name: nil,
           # The ID of the receiver of the transfer.
-          receiver_id_number: nil,
+        receiver_id_number: nil,
           # The name of the receiver of the transfer.
-          receiver_name: nil,
+        receiver_name: nil,
           # The time at which the transfer should be resolved. If not provided will resolve
-          # immediately.
-          resolve_at: nil,
+        # immediately.
+        resolve_at: nil,
           # The standard entry class code for the transfer.
-          standard_entry_class_code: nil,
+        standard_entry_class_code: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              addenda:
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda,
-              company_descriptive_date: String,
-              company_discretionary_data: String,
-              company_entry_description: String,
-              company_id: String,
-              company_name: String,
-              receiver_id_number: String,
-              receiver_name: String,
-              resolve_at: Time,
-              standard_entry_class_code:
-                Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_number_id: String,
+                amount: Integer,
+                addenda: Increase::Simulations::InboundACHTransferCreateParams::Addenda,
+                company_descriptive_date: String,
+                company_discretionary_data: String,
+                company_entry_description: String,
+                company_id: String,
+                company_name: String,
+                receiver_id_number: String,
+                receiver_name: String,
+                resolve_at: Time,
+                standard_entry_class_code: Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::OrSymbol,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class Addenda < Increase::Internal::Type::BaseModel
           OrHash =
-            T.type_alias do
-              T.any(
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda,
-                Increase::Internal::AnyHash
-              )
-            end
+            T.type_alias { T.any(Increase::Simulations::InboundACHTransferCreateParams::Addenda, Increase::Internal::AnyHash) }
 
           # The type of addenda to simulate being sent with the transfer.
-          sig do
-            returns(
-              Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::OrSymbol
-            )
-          end
+          sig { returns(Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::OrSymbol) }
           attr_accessor :category
 
           # Unstructured `payment_related_information` passed through with the transfer.
-          sig do
-            returns(
-              T.nilable(
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform
-              )
-            )
-          end
+          sig { returns(T.nilable(Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform)) }
           attr_reader :freeform
 
-          sig do
-            params(
-              freeform:
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::OrHash
-            ).void
-          end
+          sig { params(freeform: Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::OrHash).void }
           attr_writer :freeform
 
           # Additional information to include in the transfer.
           sig do
             params(
-              category:
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::OrSymbol,
-              freeform:
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::OrHash
-            ).returns(T.attached_class)
+              category: Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::OrSymbol,
+              freeform: Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::OrHash
+            )
+              .returns(T.attached_class)
           end
           def self.new(
             # The type of addenda to simulate being sent with the transfer.
-            category:,
+          category:,
             # Unstructured `payment_related_information` passed through with the transfer.
-            freeform: nil
-          )
-          end
+          freeform: nil
+          ); end
 
           sig do
-            override.returns(
-              {
-                category:
-                  Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::OrSymbol,
-                freeform:
-                  Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform
-              }
-            )
+            override
+              .returns(
+                {
+                  category: Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::OrSymbol,
+                  freeform: Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform
+                }
+              )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The type of addenda to simulate being sent with the transfer.
           module Category
             extend Increase::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category
-                )
-              end
+              T.type_alias { T.all(Symbol, Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category) }
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             # Unstructured `payment_related_information` passed through with the transfer.
             FREEFORM =
-              T.let(
-                :freeform,
-                Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::TaggedSymbol
-              )
+              T.let(:freeform, Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::TaggedSymbol)
 
             sig do
-              override.returns(
-                T::Array[
-                  Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::TaggedSymbol
-                ]
-              )
+              override
+                .returns(T::Array[Increase::Simulations::InboundACHTransferCreateParams::Addenda::Category::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
 
           class Freeform < Increase::Internal::Type::BaseModel
@@ -299,42 +241,28 @@ module Increase
               end
 
             # Each entry represents an addendum sent with the transfer.
-            sig do
-              returns(
-                T::Array[
-                  Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::Entry
-                ]
-              )
-            end
+            sig { returns(T::Array[Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::Entry]) }
             attr_accessor :entries
 
             # Unstructured `payment_related_information` passed through with the transfer.
             sig do
               params(
-                entries:
-                  T::Array[
-                    Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::Entry::OrHash
-                  ]
-              ).returns(T.attached_class)
+                entries: T::Array[Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::Entry::OrHash]
+              )
+                .returns(T.attached_class)
             end
             def self.new(
               # Each entry represents an addendum sent with the transfer.
-              entries:
-            )
-            end
+            entries:
+            ); end
 
             sig do
-              override.returns(
-                {
-                  entries:
-                    T::Array[
-                      Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::Entry
-                    ]
-                }
-              )
+              override
+                .returns(
+                  {entries: T::Array[Increase::Simulations::InboundACHTransferCreateParams::Addenda::Freeform::Entry]}
+                )
             end
-            def to_hash
-            end
+            def to_hash; end
 
             class Entry < Increase::Internal::Type::BaseModel
               OrHash =
@@ -349,20 +277,14 @@ module Increase
               sig { returns(String) }
               attr_accessor :payment_related_information
 
-              sig do
-                params(payment_related_information: String).returns(
-                  T.attached_class
-                )
-              end
+              sig { params(payment_related_information: String).returns(T.attached_class) }
               def self.new(
                 # The payment related information passed in the addendum.
-                payment_related_information:
-              )
-              end
+              payment_related_information:
+              ); end
 
-              sig { override.returns({ payment_related_information: String }) }
-              def to_hash
-              end
+              sig { override.returns({payment_related_information: String}) }
+              def to_hash; end
             end
           end
         end
@@ -372,12 +294,7 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Corporate Credit and Debit (CCD).
@@ -493,14 +410,12 @@ module Increase
             )
 
           sig do
-            override.returns(
-              T::Array[
-                Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol
-              ]
-            )
+            override
+              .returns(
+                T::Array[Increase::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode::TaggedSymbol]
+              )
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

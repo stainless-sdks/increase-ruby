@@ -2,12 +2,7 @@ module Increase
   module Resources
     class Simulations
       class CardDisputes
-        def action: (
-          String card_dispute_id,
-          status: Increase::Models::Simulations::CardDisputeActionParams::status,
-          ?explanation: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::CardDispute
+        def action: (String card_dispute_id, status: Increase::Models::Simulations::CardDisputeActionParams::status, ?explanation: String, ?request_options: Increase::request_opts) -> Increase::CardDispute
 
         def initialize: (client: Increase::Client) -> void
       end

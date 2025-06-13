@@ -1,13 +1,6 @@
 module Increase
   module Models
-    type account_create_params =
-      {
-        name: String,
-        entity_id: String,
-        informational_entity_id: String,
-        program_id: String
-      }
-      & Increase::Internal::Type::request_parameters
+    type account_create_params = ({name: String, entity_id: String, informational_entity_id: String, program_id: String} & Increase::Internal::Type::request_parameters)
 
     class AccountCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -27,15 +20,9 @@ module Increase
 
       def program_id=: (String) -> String
 
-      def initialize: (
-        name: String,
-        ?entity_id: String,
-        ?informational_entity_id: String,
-        ?program_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (name: String, ?entity_id: String, ?informational_entity_id: String, ?program_id: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         name: String,
         entity_id: String,
         informational_entity_id: String,

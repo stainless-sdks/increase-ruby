@@ -1,13 +1,6 @@
 module Increase
   module Models
-    type digital_wallet_token_list_params =
-      {
-        card_id: String,
-        created_at: Increase::DigitalWalletTokenListParams::CreatedAt,
-        cursor: String,
-        limit: Integer
-      }
-      & Increase::Internal::Type::request_parameters
+    type digital_wallet_token_list_params = ({card_id: String, created_at: Increase::DigitalWalletTokenListParams::CreatedAt, cursor: String, limit: Integer} & Increase::Internal::Type::request_parameters)
 
     class DigitalWalletTokenListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -19,9 +12,7 @@ module Increase
 
       attr_reader created_at: Increase::DigitalWalletTokenListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::DigitalWalletTokenListParams::CreatedAt
-      ) -> Increase::DigitalWalletTokenListParams::CreatedAt
+      def created_at=: (Increase::DigitalWalletTokenListParams::CreatedAt) -> Increase::DigitalWalletTokenListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -31,15 +22,9 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize: (
-        ?card_id: String,
-        ?created_at: Increase::DigitalWalletTokenListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?card_id: String, ?created_at: Increase::DigitalWalletTokenListParams::CreatedAt, ?cursor: String, ?limit: Integer, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         card_id: String,
         created_at: Increase::DigitalWalletTokenListParams::CreatedAt,
         cursor: String,
@@ -47,8 +32,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         attr_reader after: Time?
@@ -67,19 +51,9 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-        def to_hash: -> {
-          after: Time,
-          before: Time,
-          on_or_after: Time,
-          on_or_before: Time
-        }
+        def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
       end
     end
   end

@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::PhysicalCardUpdateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::PhysicalCardUpdateParams, Increase::Internal::AnyHash) }
 
       # The status to update the Physical Card to.
       sig { returns(Increase::PhysicalCardUpdateParams::Status::OrSymbol) }
@@ -19,64 +16,41 @@ module Increase
         params(
           status: Increase::PhysicalCardUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The status to update the Physical Card to.
-        status:,
+      status:,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            status: Increase::PhysicalCardUpdateParams::Status::OrSymbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {status: Increase::PhysicalCardUpdateParams::Status::OrSymbol, request_options: Increase::RequestOptions}
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status to update the Physical Card to.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::PhysicalCardUpdateParams::Status)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::PhysicalCardUpdateParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The physical card is active.
-        ACTIVE =
-          T.let(
-            :active,
-            Increase::PhysicalCardUpdateParams::Status::TaggedSymbol
-          )
+        ACTIVE = T.let(:active, Increase::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
         # The physical card is temporarily disabled.
-        DISABLED =
-          T.let(
-            :disabled,
-            Increase::PhysicalCardUpdateParams::Status::TaggedSymbol
-          )
+        DISABLED = T.let(:disabled, Increase::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
         # The physical card is permanently canceled.
-        CANCELED =
-          T.let(
-            :canceled,
-            Increase::PhysicalCardUpdateParams::Status::TaggedSymbol
-          )
+        CANCELED = T.let(:canceled, Increase::PhysicalCardUpdateParams::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::PhysicalCardUpdateParams::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::PhysicalCardUpdateParams::Status::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

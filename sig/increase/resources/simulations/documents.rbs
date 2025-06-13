@@ -2,10 +2,7 @@ module Increase
   module Resources
     class Simulations
       class Documents
-        def create: (
-          account_id: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Document
+        def create: (account_id: String, ?request_options: Increase::request_opts) -> Increase::Document
 
         def initialize: (client: Increase::Client) -> void
       end

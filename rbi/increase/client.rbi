@@ -12,10 +12,7 @@ module Increase
 
     ENVIRONMENTS =
       T.let(
-        {
-          production: "https://api.increase.com",
-          sandbox: "https://sandbox.increase.com"
-        },
+        {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"},
         T::Hash[Symbol, String]
       )
 
@@ -180,8 +177,7 @@ module Increase
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers
-    end
+    private def auth_headers; end
 
     # Creates and returns a new client for interacting with the API.
     sig do
@@ -194,28 +190,28 @@ module Increase
         initial_retry_delay: Float,
         max_retry_delay: Float,
         idempotency_header: String
-      ).returns(T.attached_class)
+      )
+        .returns(T.attached_class)
     end
     def self.new(
       # Defaults to `ENV["INCREASE_API_KEY"]`
-      api_key: ENV["INCREASE_API_KEY"],
+    api_key: ENV["INCREASE_API_KEY"],
       # Specifies the environment to use for the API.
-      #
-      # Each environment maps to a different base URL:
-      #
-      # - `production` corresponds to `https://api.increase.com`
-      # - `sandbox` corresponds to `https://sandbox.increase.com`
-      environment: nil,
+    #
+    # Each environment maps to a different base URL:
+    #
+    # - `production` corresponds to `https://api.increase.com`
+    # - `sandbox` corresponds to `https://sandbox.increase.com`
+    environment: nil,
       # Override the default base URL for the API, e.g.,
-      # `"https://api.example.com/v2/"`. Defaults to `ENV["INCREASE_BASE_URL"]`
-      base_url: ENV["INCREASE_BASE_URL"],
+    # `"https://api.example.com/v2/"`. Defaults to `ENV["INCREASE_BASE_URL"]`
+    base_url: ENV["INCREASE_BASE_URL"],
       # Max number of retries to attempt after a failed retryable request.
-      max_retries: Increase::Client::DEFAULT_MAX_RETRIES,
+    max_retries: Increase::Client::DEFAULT_MAX_RETRIES,
       timeout: Increase::Client::DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: Increase::Client::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: Increase::Client::DEFAULT_MAX_RETRY_DELAY,
       idempotency_header: "Idempotency-Key"
-    )
-    end
+    ); end
   end
 end

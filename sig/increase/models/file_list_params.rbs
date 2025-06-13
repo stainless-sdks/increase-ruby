@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type file_list_params =
-      {
-        created_at: Increase::FileListParams::CreatedAt,
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        purpose: Increase::FileListParams::Purpose
-      }
-      & Increase::Internal::Type::request_parameters
+    type file_list_params = ({
+      created_at: Increase::FileListParams::CreatedAt,
+      cursor: String,
+      idempotency_key: String,
+      limit: Integer,
+      purpose: Increase::FileListParams::Purpose
+    } & Increase::Internal::Type::request_parameters)
 
     class FileListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -16,9 +14,7 @@ module Increase
 
       attr_reader created_at: Increase::FileListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::FileListParams::CreatedAt
-      ) -> Increase::FileListParams::CreatedAt
+      def created_at=: (Increase::FileListParams::CreatedAt) -> Increase::FileListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -34,20 +30,11 @@ module Increase
 
       attr_reader purpose: Increase::FileListParams::Purpose?
 
-      def purpose=: (
-        Increase::FileListParams::Purpose
-      ) -> Increase::FileListParams::Purpose
+      def purpose=: (Increase::FileListParams::Purpose) -> Increase::FileListParams::Purpose
 
-      def initialize: (
-        ?created_at: Increase::FileListParams::CreatedAt,
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?purpose: Increase::FileListParams::Purpose,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?created_at: Increase::FileListParams::CreatedAt, ?cursor: String, ?idempotency_key: String, ?limit: Integer, ?purpose: Increase::FileListParams::Purpose, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         created_at: Increase::FileListParams::CreatedAt,
         cursor: String,
         idempotency_key: String,
@@ -56,8 +43,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         attr_reader after: Time?
@@ -76,66 +62,23 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-        def to_hash: -> {
-          after: Time,
-          before: Time,
-          on_or_after: Time,
-          on_or_before: Time
-        }
+        def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
       end
 
-      type purpose =
-        { in_: ::Array[Increase::Models::FileListParams::Purpose::in_] }
+      type purpose = {in_: ::Array[Increase::Models::FileListParams::Purpose::in_]}
 
       class Purpose < Increase::Internal::Type::BaseModel
         attr_reader in_: ::Array[Increase::Models::FileListParams::Purpose::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::FileListParams::Purpose::in_]
-        ) -> ::Array[Increase::Models::FileListParams::Purpose::in_]
+        def in_=: (::Array[Increase::Models::FileListParams::Purpose::in_]) -> ::Array[Increase::Models::FileListParams::Purpose::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::FileListParams::Purpose::in_]
-        ) -> void
+        def initialize: (?in_: ::Array[Increase::Models::FileListParams::Purpose::in_]) -> void
 
-        def to_hash: -> {
-          in_: ::Array[Increase::Models::FileListParams::Purpose::in_]
-        }
+        def to_hash: () -> {in_: ::Array[Increase::Models::FileListParams::Purpose::in_]}
 
-        type in_ =
-          :check_image_front
-          | :check_image_back
-          | :processed_check_image_front
-          | :processed_check_image_back
-          | :mailed_check_image
-          | :check_attachment
-          | :inbound_mail_item
-          | :form_1099_int
-          | :form_1099_misc
-          | :form_ss_4
-          | :identity_document
-          | :increase_statement
-          | :other
-          | :trust_formation_document
-          | :digital_wallet_artwork
-          | :digital_wallet_app_icon
-          | :physical_card_front
-          | :physical_card_back
-          | :physical_card_carrier
-          | :document_request
-          | :entity_supplemental_document
-          | :export
-          | :unusual_activity_report_attachment
-          | :deposit_account_control_agreement
-          | :proof_of_authorization_request_submission
-          | :account_verification_letter
+        type in_ = (:check_image_front | :check_image_back | :processed_check_image_front | :processed_check_image_back | :mailed_check_image | :check_attachment | :inbound_mail_item | :form_1099_int | :form_1099_misc | :form_ss_4 | :identity_document | :increase_statement | :other | :trust_formation_document | :digital_wallet_artwork | :digital_wallet_app_icon | :physical_card_front | :physical_card_back | :physical_card_carrier | :document_request | :entity_supplemental_document | :export | :unusual_activity_report_attachment | :deposit_account_control_agreement | :proof_of_authorization_request_submission | :account_verification_letter)
 
         module In
           extend Increase::Internal::Type::Enum
@@ -218,7 +161,7 @@ module Increase
           # An account verification letter.
           ACCOUNT_VERIFICATION_LETTER: :account_verification_letter
 
-          def self?.values: -> ::Array[Increase::Models::FileListParams::Purpose::in_]
+          def self?.values: () -> ::Array[Increase::Models::FileListParams::Purpose::in_]
         end
       end
     end

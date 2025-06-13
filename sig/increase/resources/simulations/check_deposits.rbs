@@ -2,20 +2,11 @@ module Increase
   module Resources
     class Simulations
       class CheckDeposits
-        def reject: (
-          String check_deposit_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::CheckDeposit
+        def reject: (String check_deposit_id, ?request_options: Increase::request_opts) -> Increase::CheckDeposit
 
-        def return_: (
-          String check_deposit_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::CheckDeposit
+        def return_: (String check_deposit_id, ?request_options: Increase::request_opts) -> Increase::CheckDeposit
 
-        def submit: (
-          String check_deposit_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::CheckDeposit
+        def submit: (String check_deposit_id, ?request_options: Increase::request_opts) -> Increase::CheckDeposit
 
         def initialize: (client: Increase::Client) -> void
       end

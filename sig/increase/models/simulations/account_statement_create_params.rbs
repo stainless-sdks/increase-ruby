@@ -1,8 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type account_statement_create_params =
-        { account_id: String } & Increase::Internal::Type::request_parameters
+      type account_statement_create_params = ({account_id: String} & Increase::Internal::Type::request_parameters)
 
       class AccountStatementCreateParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -10,15 +9,9 @@ module Increase
 
         attr_accessor account_id: String
 
-        def initialize: (
-          account_id: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (account_id: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
-          account_id: String,
-          request_options: Increase::RequestOptions
-        }
+        def to_hash: () -> {account_id: String, request_options: Increase::RequestOptions}
       end
     end
   end
