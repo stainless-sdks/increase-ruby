@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.digital_wallet_tokens.retrieve("digital_wallet_token_id")
+    response = @client.digital_wallet_tokens.retrieve("digital_wallet_token_id")
 
     assert_pattern do
       response => Increase::DigitalWalletToken
@@ -26,7 +26,7 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::Resou
   end
 
   def test_list
-    response = @increase.digital_wallet_tokens.list
+    response = @client.digital_wallet_tokens.list
 
     assert_pattern do
       response => Increase::Internal::Page

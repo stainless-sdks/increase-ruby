@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::CardDisputesTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.card_disputes.create(
+      @client.card_disputes.create(
         disputed_transaction_id: "transaction_uyrp7fld2ium70oa7oi",
         explanation: "Unauthorized recurring transaction."
       )
@@ -33,7 +33,7 @@ class Increase::Test::Resources::CardDisputesTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.card_disputes.retrieve("card_dispute_id")
+    response = @client.card_disputes.retrieve("card_dispute_id")
 
     assert_pattern do
       response => Increase::CardDispute
@@ -58,7 +58,7 @@ class Increase::Test::Resources::CardDisputesTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.card_disputes.list
+    response = @client.card_disputes.list
 
     assert_pattern do
       response => Increase::Internal::Page

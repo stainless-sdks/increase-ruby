@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::OAuthApplicationsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.oauth_applications.retrieve("oauth_application_id")
+    response = @client.oauth_applications.retrieve("oauth_application_id")
 
     assert_pattern do
       response => Increase::OAuthApplication
@@ -24,7 +24,7 @@ class Increase::Test::Resources::OAuthApplicationsTest < Increase::Test::Resourc
   end
 
   def test_list
-    response = @increase.oauth_applications.list
+    response = @client.oauth_applications.list
 
     assert_pattern do
       response => Increase::Internal::Page

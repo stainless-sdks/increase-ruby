@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::CardPaymentsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.card_payments.retrieve("card_payment_id")
+    response = @client.card_payments.retrieve("card_payment_id")
 
     assert_pattern do
       response => Increase::CardPayment
@@ -26,7 +26,7 @@ class Increase::Test::Resources::CardPaymentsTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.card_payments.list
+    response = @client.card_payments.list
 
     assert_pattern do
       response => Increase::Internal::Page

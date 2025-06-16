@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::DeclinedTransactionsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.declined_transactions.retrieve("declined_transaction_id")
+    response = @client.declined_transactions.retrieve("declined_transaction_id")
 
     assert_pattern do
       response => Increase::DeclinedTransaction
@@ -27,7 +27,7 @@ class Increase::Test::Resources::DeclinedTransactionsTest < Increase::Test::Reso
   end
 
   def test_list
-    response = @increase.declined_transactions.list
+    response = @client.declined_transactions.list
 
     assert_pattern do
       response => Increase::Internal::Page

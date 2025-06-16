@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.intrafi_account_enrollments.create(
+      @client.intrafi_account_enrollments.create(
         account_id: "account_in71c4amph0vgo2qllky",
         email_address: "user@example.com"
       )
@@ -28,7 +28,7 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Increase::Test:
   end
 
   def test_retrieve
-    response = @increase.intrafi_account_enrollments.retrieve("intrafi_account_enrollment_id")
+    response = @client.intrafi_account_enrollments.retrieve("intrafi_account_enrollment_id")
 
     assert_pattern do
       response => Increase::IntrafiAccountEnrollment
@@ -48,7 +48,7 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Increase::Test:
   end
 
   def test_list
-    response = @increase.intrafi_account_enrollments.list
+    response = @client.intrafi_account_enrollments.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -75,7 +75,7 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Increase::Test:
   end
 
   def test_unenroll
-    response = @increase.intrafi_account_enrollments.unenroll("intrafi_account_enrollment_id")
+    response = @client.intrafi_account_enrollments.unenroll("intrafi_account_enrollment_id")
 
     assert_pattern do
       response => Increase::IntrafiAccountEnrollment

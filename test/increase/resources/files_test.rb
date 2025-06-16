@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::FilesTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.files.create(file: Pathname(__FILE__), purpose: :check_image_front)
+    response = @client.files.create(file: Pathname(__FILE__), purpose: :check_image_front)
 
     assert_pattern do
       response => Increase::File
@@ -26,7 +26,7 @@ class Increase::Test::Resources::FilesTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.files.retrieve("file_id")
+    response = @client.files.retrieve("file_id")
 
     assert_pattern do
       response => Increase::File
@@ -48,7 +48,7 @@ class Increase::Test::Resources::FilesTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.files.list
+    response = @client.files.list
 
     assert_pattern do
       response => Increase::Internal::Page

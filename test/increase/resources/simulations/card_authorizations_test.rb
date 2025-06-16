@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::CardAuthorizationsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.simulations.card_authorizations.create(amount: 1000)
+    response = @client.simulations.card_authorizations.create(amount: 1000)
 
     assert_pattern do
       response => Increase::Models::Simulations::CardAuthorizationCreateResponse

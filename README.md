@@ -22,12 +22,12 @@ gem "increase", "~> 0.0.1.pre.alpha.0"
 require "bundler/setup"
 require "increase"
 
-increase = Increase::Client.new(
+client = Increase::Client.new(
   api_key: ENV["INCREASE_API_KEY"], # This is the default and can be omitted
   environment: "sandbox" # defaults to "production"
 )
 
-account = increase.accounts.create(
+account = client.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"
@@ -43,7 +43,7 @@ List methods in the Increase API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```ruby
-page = increase.accounts.list
+page = client.accounts.list
 
 # Fetch single item from page.
 account = page.data[0]
@@ -72,14 +72,14 @@ Request parameters that correspond to file uploads can be passed as raw contents
 require "pathname"
 
 # Use `Pathname` to send the filename and/or avoid paging a large file into memory:
-file = increase.files.create(file: Pathname("my/file.txt"), purpose: "check_image_front")
+file = client.files.create(file: Pathname("my/file.txt"), purpose: "check_image_front")
 
 # Alternatively, pass file contents or a `StringIO` directly:
-file = increase.files.create(file: File.read("my/file.txt"), purpose: "check_image_front")
+file = client.files.create(file: File.read("my/file.txt"), purpose: "check_image_front")
 
 # Or, to control the filename and/or content type:
 file = Increase::FilePart.new(File.read("my/file.txt"), filename: "my/file.txt", content_type: "…")
-file = increase.files.create(file: file, purpose: "check_image_front")
+file = client.files.create(file: file, purpose: "check_image_front")
 
 puts(file.id)
 ```
@@ -92,7 +92,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  account = increase.accounts.create(name: "New Account!")
+  account = client.accounts.create(name: "New Account!")
 rescue Increase::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -129,12 +129,12 @@ You can use the `max_retries` option to configure or disable this:
 
 ```ruby
 # Configure the default for all requests:
-increase = Increase::Client.new(
+client = Increase::Client.new(
   max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-increase.accounts.create(
+client.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i",
@@ -148,12 +148,12 @@ By default, requests will time out after 60 seconds. You can use the timeout opt
 
 ```ruby
 # Configure the default for all requests:
-increase = Increase::Client.new(
+client = Increase::Client.new(
   timeout: nil # default is 60
 )
 
 # Or, configure per-request:
-increase.accounts.create(
+client.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i",
@@ -189,7 +189,7 @@ Note: the `extra_` parameters of the same name overrides the documented paramete
 
 ```ruby
 account =
-  increase.accounts.create(
+  client.accounts.create(
     name: "New Account!",
     entity_id: "entity_n8y8tnk2p9339ti393yi",
     program_id: "program_i2v2os4mwza1oetokh9i",
@@ -238,7 +238,7 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-increase.accounts.create(
+client.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"
@@ -249,7 +249,7 @@ Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-increase.accounts.create(
+client.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"
@@ -261,7 +261,7 @@ params = Increase::AccountCreateParams.new(
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i"
 )
-increase.accounts.create(**params)
+client.accounts.create(**params)
 ```
 
 ### Enums
@@ -280,13 +280,13 @@ Enum parameters have a "relaxed" type, so you can either pass in enum constants 
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-increase.account_numbers.update(
+client.account_numbers.update(
   status: Increase::AccountNumberUpdateParams::Status::ACTIVE,
   # …
 )
 
 # Literal values are also permissible:
-increase.account_numbers.update(
+client.account_numbers.update(
   status: :active,
   # …
 )

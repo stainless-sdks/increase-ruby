@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.cards.create(account_id: "account_in71c4amph0vgo2qllky")
+    response = @client.cards.create(account_id: "account_in71c4amph0vgo2qllky")
 
     assert_pattern do
       response => Increase::Card
@@ -30,7 +30,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.cards.retrieve("card_id")
+    response = @client.cards.retrieve("card_id")
 
     assert_pattern do
       response => Increase::Card
@@ -56,7 +56,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
   end
 
   def test_update
-    response = @increase.cards.update("card_id")
+    response = @client.cards.update("card_id")
 
     assert_pattern do
       response => Increase::Card
@@ -82,7 +82,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.cards.list
+    response = @client.cards.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -115,7 +115,7 @@ class Increase::Test::Resources::CardsTest < Increase::Test::ResourceTest
   end
 
   def test_details
-    response = @increase.cards.details("card_id")
+    response = @client.cards.details("card_id")
 
     assert_pattern do
       response => Increase::CardDetails

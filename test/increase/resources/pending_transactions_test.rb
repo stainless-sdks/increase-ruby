@@ -4,8 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::PendingTransactionsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response =
-      @increase.pending_transactions.create(account_id: "account_in71c4amph0vgo2qllky", amount: -1000)
+    response = @client.pending_transactions.create(account_id: "account_in71c4amph0vgo2qllky", amount: -1000)
 
     assert_pattern do
       response => Increase::PendingTransaction
@@ -31,7 +30,7 @@ class Increase::Test::Resources::PendingTransactionsTest < Increase::Test::Resou
   end
 
   def test_retrieve
-    response = @increase.pending_transactions.retrieve("pending_transaction_id")
+    response = @client.pending_transactions.retrieve("pending_transaction_id")
 
     assert_pattern do
       response => Increase::PendingTransaction
@@ -57,7 +56,7 @@ class Increase::Test::Resources::PendingTransactionsTest < Increase::Test::Resou
   end
 
   def test_list
-    response = @increase.pending_transactions.list
+    response = @client.pending_transactions.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -90,7 +89,7 @@ class Increase::Test::Resources::PendingTransactionsTest < Increase::Test::Resou
   end
 
   def test_release
-    response = @increase.pending_transactions.release("pending_transaction_id")
+    response = @client.pending_transactions.release("pending_transaction_id")
 
     assert_pattern do
       response => Increase::PendingTransaction
