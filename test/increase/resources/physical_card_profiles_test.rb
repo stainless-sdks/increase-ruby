@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.physical_card_profiles.create(
+      @client.physical_card_profiles.create(
         carrier_image_file_id: "file_h6v7mtipe119os47ehlu",
         contact_phone: "+16505046304",
         description: "My Card Profile",
@@ -37,7 +37,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
   end
 
   def test_retrieve
-    response = @increase.physical_card_profiles.retrieve("physical_card_profile_id")
+    response = @client.physical_card_profiles.retrieve("physical_card_profile_id")
 
     assert_pattern do
       response => Increase::PhysicalCardProfile
@@ -63,7 +63,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
   end
 
   def test_list
-    response = @increase.physical_card_profiles.list
+    response = @client.physical_card_profiles.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -96,7 +96,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
   end
 
   def test_archive
-    response = @increase.physical_card_profiles.archive("physical_card_profile_id")
+    response = @client.physical_card_profiles.archive("physical_card_profile_id")
 
     assert_pattern do
       response => Increase::PhysicalCardProfile
@@ -122,7 +122,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::Reso
   end
 
   def test_clone_
-    response = @increase.physical_card_profiles.clone_("physical_card_profile_id")
+    response = @client.physical_card_profiles.clone_("physical_card_profile_id")
 
     assert_pattern do
       response => Increase::PhysicalCardProfile

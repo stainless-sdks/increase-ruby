@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::GroupsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.groups.retrieve
+    response = @client.groups.retrieve
 
     assert_pattern do
       response => Increase::Group

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::DocumentsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.documents.create(category: :account_verification_letter)
+    response = @client.documents.create(category: :account_verification_letter)
 
     assert_pattern do
       response => Increase::Document
@@ -25,7 +25,7 @@ class Increase::Test::Resources::DocumentsTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.documents.retrieve("document_id")
+    response = @client.documents.retrieve("document_id")
 
     assert_pattern do
       response => Increase::Document
@@ -46,7 +46,7 @@ class Increase::Test::Resources::DocumentsTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.documents.list
+    response = @client.documents.list
 
     assert_pattern do
       response => Increase::Internal::Page

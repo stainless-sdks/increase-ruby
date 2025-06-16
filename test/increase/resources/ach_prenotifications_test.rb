@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::ACHPrenotificationsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.ach_prenotifications.create(
+      @client.ach_prenotifications.create(
         account_id: "account_in71c4amph0vgo2qllky",
         account_number: "987654321",
         routing_number: "101050001"
@@ -38,7 +38,7 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Increase::Test::Resou
   end
 
   def test_retrieve
-    response = @increase.ach_prenotifications.retrieve("ach_prenotification_id")
+    response = @client.ach_prenotifications.retrieve("ach_prenotification_id")
 
     assert_pattern do
       response => Increase::ACHPrenotification
@@ -67,7 +67,7 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Increase::Test::Resou
   end
 
   def test_list
-    response = @increase.ach_prenotifications.list
+    response = @client.ach_prenotifications.list
 
     assert_pattern do
       response => Increase::Internal::Page

@@ -5,10 +5,7 @@ require_relative "../../test_helper"
 class Increase::Test::Resources::Simulations::InboundMailItemsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.simulations.inbound_mail_items.create(
-        amount: 1000,
-        lockbox_id: "lockbox_3xt21ok13q19advds4t5"
-      )
+      @client.simulations.inbound_mail_items.create(amount: 1000, lockbox_id: "lockbox_3xt21ok13q19advds4t5")
 
     assert_pattern do
       response => Increase::InboundMailItem

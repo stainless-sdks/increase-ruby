@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::InboundRealTimePaymentsTransfersTest < Increase::Test::ResourceTest
   def test_retrieve
     response =
-      @increase.inbound_real_time_payments_transfers.retrieve("inbound_real_time_payments_transfer_id")
+      @client.inbound_real_time_payments_transfers.retrieve("inbound_real_time_payments_transfer_id")
 
     assert_pattern do
       response => Increase::InboundRealTimePaymentsTransfer
@@ -34,7 +34,7 @@ class Increase::Test::Resources::InboundRealTimePaymentsTransfersTest < Increase
   end
 
   def test_list
-    response = @increase.inbound_real_time_payments_transfers.list
+    response = @client.inbound_real_time_payments_transfers.list
 
     assert_pattern do
       response => Increase::Internal::Page

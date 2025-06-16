@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::ProgramsTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.simulations.programs.create(name: "For Benefit Of")
+    response = @client.simulations.programs.create(name: "For Benefit Of")
 
     assert_pattern do
       response => Increase::Program

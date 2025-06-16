@@ -5,7 +5,7 @@ require_relative "../../test_helper"
 class Increase::Test::Resources::Simulations::CardReversalsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.simulations.card_reversals.create(card_payment_id: "card_payment_nd3k2kacrqjli8482ave")
+      @client.simulations.card_reversals.create(card_payment_id: "card_payment_nd3k2kacrqjli8482ave")
 
     assert_pattern do
       response => Increase::CardPayment

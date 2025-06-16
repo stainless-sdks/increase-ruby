@@ -74,7 +74,7 @@ class Increase::Test::ResourceTest < Minitest::Test
 
   def before_all
     super
-    @increase = Increase::Test::SingletonClient.instance
+    @client = Increase::Test::SingletonClient.instance
   end
 
   def around_all = async? ? Sync { super } : super

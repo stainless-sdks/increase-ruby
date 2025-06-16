@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::RoutingNumbersTest < Increase::Test::ResourceTest
   def test_list_required_params
-    response = @increase.routing_numbers.list(routing_number: "xxxxxxxxx")
+    response = @client.routing_numbers.list(routing_number: "xxxxxxxxx")
 
     assert_pattern do
       response => Increase::Internal::Page

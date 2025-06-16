@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::RealTimeDecisionsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.real_time_decisions.retrieve("real_time_decision_id")
+    response = @client.real_time_decisions.retrieve("real_time_decision_id")
 
     assert_pattern do
       response => Increase::RealTimeDecision
@@ -28,7 +28,7 @@ class Increase::Test::Resources::RealTimeDecisionsTest < Increase::Test::Resourc
   end
 
   def test_action
-    response = @increase.real_time_decisions.action("real_time_decision_id")
+    response = @client.real_time_decisions.action("real_time_decision_id")
 
     assert_pattern do
       response => Increase::RealTimeDecision

@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::LockboxesTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.lockboxes.create(account_id: "account_in71c4amph0vgo2qllky")
+    response = @client.lockboxes.create(account_id: "account_in71c4amph0vgo2qllky")
 
     assert_pattern do
       response => Increase::Lockbox
@@ -26,7 +26,7 @@ class Increase::Test::Resources::LockboxesTest < Increase::Test::ResourceTest
   end
 
   def test_retrieve
-    response = @increase.lockboxes.retrieve("lockbox_id")
+    response = @client.lockboxes.retrieve("lockbox_id")
 
     assert_pattern do
       response => Increase::Lockbox
@@ -48,7 +48,7 @@ class Increase::Test::Resources::LockboxesTest < Increase::Test::ResourceTest
   end
 
   def test_update
-    response = @increase.lockboxes.update("lockbox_id")
+    response = @client.lockboxes.update("lockbox_id")
 
     assert_pattern do
       response => Increase::Lockbox
@@ -70,7 +70,7 @@ class Increase::Test::Resources::LockboxesTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.lockboxes.list
+    response = @client.lockboxes.list
 
     assert_pattern do
       response => Increase::Internal::Page

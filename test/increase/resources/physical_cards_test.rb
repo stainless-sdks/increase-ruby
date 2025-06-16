@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.physical_cards.create(
+      @client.physical_cards.create(
         card_id: "card_oubs0hwk5rn6knuecxg2",
         cardholder: {first_name: "Ian", last_name: "Crease"},
         shipment: {
@@ -40,7 +40,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
   end
 
   def test_retrieve
-    response = @increase.physical_cards.retrieve("physical_card_id")
+    response = @client.physical_cards.retrieve("physical_card_id")
 
     assert_pattern do
       response => Increase::PhysicalCard
@@ -62,7 +62,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
   end
 
   def test_update_required_params
-    response = @increase.physical_cards.update("physical_card_id", status: :disabled)
+    response = @client.physical_cards.update("physical_card_id", status: :disabled)
 
     assert_pattern do
       response => Increase::PhysicalCard
@@ -84,7 +84,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
   end
 
   def test_list
-    response = @increase.physical_cards.list
+    response = @client.physical_cards.list
 
     assert_pattern do
       response => Increase::Internal::Page

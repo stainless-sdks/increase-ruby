@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.real_time_payments_transfers.create(
+      @client.real_time_payments_transfers.create(
         amount: 100,
         creditor_name: "Ian Crease",
         remittance_information: "Invoice 29582",
@@ -48,7 +48,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test:
   end
 
   def test_retrieve
-    response = @increase.real_time_payments_transfers.retrieve("real_time_payments_transfer_id")
+    response = @client.real_time_payments_transfers.retrieve("real_time_payments_transfer_id")
 
     assert_pattern do
       response => Increase::RealTimePaymentsTransfer
@@ -86,7 +86,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test:
   end
 
   def test_list
-    response = @increase.real_time_payments_transfers.list
+    response = @client.real_time_payments_transfers.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -131,7 +131,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test:
   end
 
   def test_approve
-    response = @increase.real_time_payments_transfers.approve("real_time_payments_transfer_id")
+    response = @client.real_time_payments_transfers.approve("real_time_payments_transfer_id")
 
     assert_pattern do
       response => Increase::RealTimePaymentsTransfer
@@ -169,7 +169,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Increase::Test:
   end
 
   def test_cancel
-    response = @increase.real_time_payments_transfers.cancel("real_time_payments_transfer_id")
+    response = @client.real_time_payments_transfers.cancel("real_time_payments_transfer_id")
 
     assert_pattern do
       response => Increase::RealTimePaymentsTransfer

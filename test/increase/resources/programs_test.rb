@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::ProgramsTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.programs.retrieve("program_id")
+    response = @client.programs.retrieve("program_id")
 
     assert_pattern do
       response => Increase::Program
@@ -26,7 +26,7 @@ class Increase::Test::Resources::ProgramsTest < Increase::Test::ResourceTest
   end
 
   def test_list
-    response = @increase.programs.list
+    response = @client.programs.list
 
     assert_pattern do
       response => Increase::Internal::Page

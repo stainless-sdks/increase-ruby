@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.wire_drawdown_requests.create(
+      @client.wire_drawdown_requests.create(
         account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
         amount: 10_000,
         message_to_recipient: "Invoice 29582",
@@ -46,7 +46,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
   end
 
   def test_retrieve
-    response = @increase.wire_drawdown_requests.retrieve("wire_drawdown_request_id")
+    response = @client.wire_drawdown_requests.retrieve("wire_drawdown_request_id")
 
     assert_pattern do
       response => Increase::WireDrawdownRequest
@@ -80,7 +80,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
   end
 
   def test_list
-    response = @increase.wire_drawdown_requests.list
+    response = @client.wire_drawdown_requests.list
 
     assert_pattern do
       response => Increase::Internal::Page

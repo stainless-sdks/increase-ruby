@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::AccountTransfersTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.account_transfers.create(
+      @client.account_transfers.create(
         account_id: "account_in71c4amph0vgo2qllky",
         amount: 100,
         description: "Creating liquidity",
@@ -40,7 +40,7 @@ class Increase::Test::Resources::AccountTransfersTest < Increase::Test::Resource
   end
 
   def test_retrieve
-    response = @increase.account_transfers.retrieve("account_transfer_id")
+    response = @client.account_transfers.retrieve("account_transfer_id")
 
     assert_pattern do
       response => Increase::AccountTransfer
@@ -70,7 +70,7 @@ class Increase::Test::Resources::AccountTransfersTest < Increase::Test::Resource
   end
 
   def test_list
-    response = @increase.account_transfers.list
+    response = @client.account_transfers.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -107,7 +107,7 @@ class Increase::Test::Resources::AccountTransfersTest < Increase::Test::Resource
   end
 
   def test_approve
-    response = @increase.account_transfers.approve("account_transfer_id")
+    response = @client.account_transfers.approve("account_transfer_id")
 
     assert_pattern do
       response => Increase::AccountTransfer
@@ -137,7 +137,7 @@ class Increase::Test::Resources::AccountTransfersTest < Increase::Test::Resource
   end
 
   def test_cancel
-    response = @increase.account_transfers.cancel("account_transfer_id")
+    response = @client.account_transfers.cancel("account_transfer_id")
 
     assert_pattern do
       response => Increase::AccountTransfer

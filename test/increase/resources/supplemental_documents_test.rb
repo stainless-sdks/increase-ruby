@@ -5,7 +5,7 @@ require_relative "../test_helper"
 class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.supplemental_documents.create(
+      @client.supplemental_documents.create(
         entity_id: "entity_n8y8tnk2p9339ti393yi",
         file_id: "file_makxrc67oh9l6sg7w9yc"
       )
@@ -26,7 +26,7 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
   end
 
   def test_list_required_params
-    response = @increase.supplemental_documents.list(entity_id: "entity_id")
+    response = @client.supplemental_documents.list(entity_id: "entity_id")
 
     assert_pattern do
       response => Increase::Internal::Page

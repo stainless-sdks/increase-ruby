@@ -5,7 +5,7 @@ require_relative "../../test_helper"
 class Increase::Test::Resources::Simulations::CardIncrementsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response =
-      @increase.simulations.card_increments.create(
+      @client.simulations.card_increments.create(
         amount: 500,
         card_payment_id: "card_payment_nd3k2kacrqjli8482ave"
       )

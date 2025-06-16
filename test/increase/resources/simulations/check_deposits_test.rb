@@ -4,7 +4,7 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::CheckDepositsTest < Increase::Test::ResourceTest
   def test_reject
-    response = @increase.simulations.check_deposits.reject("check_deposit_id")
+    response = @client.simulations.check_deposits.reject("check_deposit_id")
 
     assert_pattern do
       response => Increase::CheckDeposit
@@ -35,7 +35,7 @@ class Increase::Test::Resources::Simulations::CheckDepositsTest < Increase::Test
   end
 
   def test_return_
-    response = @increase.simulations.check_deposits.return_("check_deposit_id")
+    response = @client.simulations.check_deposits.return_("check_deposit_id")
 
     assert_pattern do
       response => Increase::CheckDeposit
@@ -66,7 +66,7 @@ class Increase::Test::Resources::Simulations::CheckDepositsTest < Increase::Test
   end
 
   def test_submit
-    response = @increase.simulations.check_deposits.submit("check_deposit_id")
+    response = @client.simulations.check_deposits.submit("check_deposit_id")
 
     assert_pattern do
       response => Increase::CheckDeposit

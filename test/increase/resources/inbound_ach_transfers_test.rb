@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::ResourceTest
   def test_retrieve
-    response = @increase.inbound_ach_transfers.retrieve("inbound_ach_transfer_id")
+    response = @client.inbound_ach_transfers.retrieve("inbound_ach_transfer_id")
 
     assert_pattern do
       response => Increase::InboundACHTransfer
@@ -44,7 +44,7 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
   end
 
   def test_list
-    response = @increase.inbound_ach_transfers.list
+    response = @client.inbound_ach_transfers.list
 
     assert_pattern do
       response => Increase::Internal::Page
@@ -91,7 +91,7 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
   end
 
   def test_create_notification_of_change
-    response = @increase.inbound_ach_transfers.create_notification_of_change("inbound_ach_transfer_id")
+    response = @client.inbound_ach_transfers.create_notification_of_change("inbound_ach_transfer_id")
 
     assert_pattern do
       response => Increase::InboundACHTransfer
@@ -131,7 +131,7 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
   end
 
   def test_decline
-    response = @increase.inbound_ach_transfers.decline("inbound_ach_transfer_id")
+    response = @client.inbound_ach_transfers.decline("inbound_ach_transfer_id")
 
     assert_pattern do
       response => Increase::InboundACHTransfer
@@ -172,7 +172,7 @@ class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::Resou
 
   def test_transfer_return_required_params
     response =
-      @increase.inbound_ach_transfers.transfer_return("inbound_ach_transfer_id", reason: :payment_stopped)
+      @client.inbound_ach_transfers.transfer_return("inbound_ach_transfer_id", reason: :payment_stopped)
 
     assert_pattern do
       response => Increase::InboundACHTransfer
