@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0 (2025-06-16)
+
+Full Changelog: [v0.1.0-alpha.34...v1.0.0](https://github.com/Increase/increase-ruby/compare/v0.1.0-alpha.34...v1.0.0)
+
 ## 0.1.0-alpha.34 (2025-06-13)
 
 Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/Increase/increase-ruby/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
