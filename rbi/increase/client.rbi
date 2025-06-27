@@ -187,7 +187,7 @@ module Increase
     sig do
       params(
         api_key: T.nilable(String),
-        environment: T.nilable(T.any(Symbol, String)),
+        environment: NilClass,
         base_url: T.nilable(String),
         max_retries: Integer,
         timeout: Float,
