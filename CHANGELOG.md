@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.3 (2025-06-30)
+
+Full Changelog: [v1.5.2...v1.5.3](https://github.com/Increase/increase-ruby/compare/v1.5.2...v1.5.3)
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([3260c91](https://github.com/Increase/increase-ruby/commit/3260c917c1e4f2d3686f3487256c358699998f74))
+* **internal:** allow streams to also be unwrapped on a per-row basis ([dacddf0](https://github.com/Increase/increase-ruby/commit/dacddf00f49e317641f0b4a855d32f00cf4b6aed))
+
 ## 1.5.2 (2025-06-27)
 
 Full Changelog: [v1.5.1...v1.5.2](https://github.com/Increase/increase-ruby/compare/v1.5.1...v1.5.2)
