@@ -471,7 +471,6 @@ module Increase
           self.class.validate!(req)
           model = req.fetch(:model) { Increase::Internal::Type::Unknown }
           opts = req[:options].to_h
-          unwrap = req[:unwrap]
           Increase::RequestOptions.validate!(opts)
           request = build_request(req.except(:options), opts)
           url = request.fetch(:url)
@@ -488,18 +487,11 @@ module Increase
           decoded = Increase::Internal::Util.decode_content(response, stream: stream)
           case req
           in {stream: Class => st}
-            st.new(
-              model: model,
-              url: url,
-              status: status,
-              response: response,
-              unwrap: unwrap,
-              stream: decoded
-            )
+            st.new(model: model, url: url, status: status, response: response, stream: decoded)
           in {page: Class => page}
             page.new(client: self, req: req, headers: response, page_data: decoded)
           else
-            unwrapped = Increase::Internal::Util.dig(decoded, unwrap)
+            unwrapped = Increase::Internal::Util.dig(decoded, req[:unwrap])
             Increase::Internal::Type::Converter.coerce(model, unwrapped)
           end
         end
