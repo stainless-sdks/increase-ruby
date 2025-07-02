@@ -190,7 +190,7 @@ class Increase::Test::Resources::EntitiesTest < Increase::Test::ResourceTest
           individual: {
             address: {country: "US", line1: "33 Liberty Street"},
             date_of_birth: "1970-01-31",
-            identification: {method: :social_security_number, number: "078051120"},
+            identification: {method_: :social_security_number, number: "078051120"},
             name: "Ian Crease"
           },
           prongs: [:control]
