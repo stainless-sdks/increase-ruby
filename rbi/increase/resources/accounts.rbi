@@ -3,31 +3,6 @@
 module Increase
   module Resources
     class Accounts
-      # Create an Account
-      sig do
-        params(
-          name: String,
-          entity_id: String,
-          informational_entity_id: String,
-          program_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(Increase::Account)
-      end
-      def create(
-        # The name you choose for the Account.
-        name:,
-        # The identifier for the Entity that will own the Account.
-        entity_id: nil,
-        # The identifier of an Entity that, while not owning the Account, is associated
-        # with its activity. Its relationship to your group must be `informational`.
-        informational_entity_id: nil,
-        # The identifier for the Program that this Account falls under. Required if you
-        # operate more than one Program.
-        program_id: nil,
-        request_options: {}
-      )
-      end
-
       # Retrieve an Account
       sig do
         params(

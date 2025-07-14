@@ -42,7 +42,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_default_request_default_retry_attempts
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -50,14 +50,14 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!")
+      increase.accounts.retrieve("account_id")
     end
 
     assert_requested(:any, /./, times: 3)
   end
 
   def test_client_given_request_default_retry_attempts
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -65,14 +65,14 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 3)
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!")
+      increase.accounts.retrieve("account_id")
     end
 
     assert_requested(:any, /./, times: 4)
   end
 
   def test_client_default_request_given_retry_attempts
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -80,14 +80,14 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!", request_options: {max_retries: 3})
+      increase.accounts.retrieve("account_id", request_options: {max_retries: 3})
     end
 
     assert_requested(:any, /./, times: 4)
   end
 
   def test_client_given_request_given_retry_attempts
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -95,14 +95,14 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 3)
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!", request_options: {max_retries: 4})
+      increase.accounts.retrieve("account_id", request_options: {max_retries: 4})
     end
 
     assert_requested(:any, /./, times: 5)
   end
 
   def test_client_retry_after_seconds
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       headers: {"retry-after" => "1.3"},
       body: {"type" => "internal_server_error"}
@@ -111,7 +111,7 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!")
+      increase.accounts.retrieve("account_id")
     end
 
     assert_requested(:any, /./, times: 2)
@@ -119,7 +119,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_retry_after_date
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       headers: {"retry-after" => (Time.now + 10).httpdate},
       body: {"type" => "internal_server_error"}
@@ -129,7 +129,7 @@ class IncreaseTest < Minitest::Test
 
     assert_raises(Increase::Errors::InternalServerError) do
       Thread.current.thread_variable_set(:time_now, Time.now)
-      increase.accounts.create(name: "New Account!")
+      increase.accounts.retrieve("account_id")
       Thread.current.thread_variable_set(:time_now, nil)
     end
 
@@ -138,7 +138,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_retry_after_ms
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       headers: {"retry-after-ms" => "1300"},
       body: {"type" => "internal_server_error"}
@@ -147,7 +147,7 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key", max_retries: 1)
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!")
+      increase.accounts.retrieve("account_id")
     end
 
     assert_requested(:any, /./, times: 2)
@@ -155,7 +155,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_retry_count_header
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -163,7 +163,7 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!")
+      increase.accounts.retrieve("account_id")
     end
 
     3.times do
@@ -172,7 +172,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_omit_retry_count_header
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -180,8 +180,8 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(
-        name: "New Account!",
+      increase.accounts.retrieve(
+        "account_id",
         request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
       )
     end
@@ -192,7 +192,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_overwrite_retry_count_header
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -200,8 +200,8 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(
-        name: "New Account!",
+      increase.accounts.retrieve(
+        "account_id",
         request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
       )
     end
@@ -210,7 +210,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_redirect_307
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 307,
       headers: {"location" => "/redirected"},
       body: {}
@@ -223,7 +223,7 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::APIConnectionError) do
-      increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
+      increase.accounts.retrieve("account_id", request_options: {extra_headers: {}})
     end
 
     recorded, = WebMock::RequestRegistry.instance.requested_signatures.hash.first
@@ -239,7 +239,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_redirect_303
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 303,
       headers: {"location" => "/redirected"},
       body: {}
@@ -252,7 +252,7 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::APIConnectionError) do
-      increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
+      increase.accounts.retrieve("account_id", request_options: {extra_headers: {}})
     end
 
     assert_requested(:get, "http://localhost/redirected", times: Increase::Client::MAX_REDIRECTS) do
@@ -263,7 +263,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_redirect_auth_keep_same_origin
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 307,
       headers: {"location" => "/redirected"},
       body: {}
@@ -276,8 +276,8 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::APIConnectionError) do
-      increase.accounts.create(
-        name: "New Account!",
+      increase.accounts.retrieve(
+        "account_id",
         request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
       )
     end
@@ -293,7 +293,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_redirect_auth_strip_cross_origin
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 307,
       headers: {"location" => "https://example.com/redirected"},
       body: {}
@@ -306,8 +306,8 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::APIConnectionError) do
-      increase.accounts.create(
-        name: "New Account!",
+      increase.accounts.retrieve(
+        "account_id",
         request_options: {extra_headers: {"authorization" => "Bearer xyz"}}
       )
     end
@@ -319,7 +319,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_client_default_idempotency_key_on_writes
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:patch, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -327,7 +327,7 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(name: "New Account!", request_options: {max_retries: 1})
+      increase.accounts.update("account_id", request_options: {max_retries: 1})
     end
 
     headers = []
@@ -341,7 +341,7 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_request_option_idempotency_key_on_writes
-    stub_request(:post, "http://localhost/accounts").to_return_json(
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(
       status: 500,
       body: {"type" => "internal_server_error"}
     )
@@ -349,8 +349,8 @@ class IncreaseTest < Minitest::Test
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
     assert_raises(Increase::Errors::InternalServerError) do
-      increase.accounts.create(
-        name: "New Account!",
+      increase.accounts.retrieve(
+        "account_id",
         request_options: {max_retries: 1, idempotency_key: "user-supplied-key"}
       )
     end
@@ -364,11 +364,11 @@ class IncreaseTest < Minitest::Test
   end
 
   def test_default_headers
-    stub_request(:post, "http://localhost/accounts").to_return_json(status: 200, body: {})
+    stub_request(:get, "http://localhost/accounts/account_id").to_return_json(status: 200, body: {})
 
     increase = Increase::Client.new(base_url: "http://localhost", api_key: "My API Key")
 
-    increase.accounts.create(name: "New Account!")
+    increase.accounts.retrieve("account_id")
 
     assert_requested(:any, /./) do |req|
       headers = req.headers.transform_keys(&:downcase).fetch_values("accept", "content-type")

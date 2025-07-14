@@ -3,37 +3,6 @@
 module Increase
   module Resources
     class Accounts
-      # Some parameter documentations has been truncated, see
-      # {Increase::Models::AccountCreateParams} for more details.
-      #
-      # Create an Account
-      #
-      # @overload create(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
-      #
-      # @param name [String] The name you choose for the Account.
-      #
-      # @param entity_id [String] The identifier for the Entity that will own the Account.
-      #
-      # @param informational_entity_id [String] The identifier of an Entity that, while not owning the Account, is associated wi
-      #
-      # @param program_id [String] The identifier for the Program that this Account falls under. Required if you op
-      #
-      # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [Increase::Models::Account]
-      #
-      # @see Increase::Models::AccountCreateParams
-      def create(params)
-        parsed, options = Increase::AccountCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "accounts",
-          body: parsed,
-          model: Increase::Account,
-          options: options
-        )
-      end
-
       # Retrieve an Account
       #
       # @overload retrieve(account_id, request_options: {})
