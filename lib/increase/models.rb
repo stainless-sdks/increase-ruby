@@ -45,8 +45,6 @@ module Increase
 
   AccountCloseParams = Increase::Models::AccountCloseParams
 
-  AccountCreateParams = Increase::Models::AccountCreateParams
-
   AccountListParams = Increase::Models::AccountListParams
 
   AccountNumber = Increase::Models::AccountNumber

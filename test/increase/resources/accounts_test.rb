@@ -3,34 +3,6 @@
 require_relative "../test_helper"
 
 class Increase::Test::Resources::AccountsTest < Increase::Test::ResourceTest
-  def test_create_required_params
-    response = @increase.accounts.create(name: "New Account!")
-
-    assert_pattern do
-      response => Increase::Account
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        bank: Increase::Account::Bank,
-        closed_at: Time | nil,
-        created_at: Time,
-        currency: Increase::Account::Currency,
-        entity_id: String | nil,
-        idempotency_key: String | nil,
-        informational_entity_id: String | nil,
-        interest_accrued: String,
-        interest_accrued_at: Date | nil,
-        interest_rate: String,
-        name: String,
-        program_id: String,
-        status: Increase::Account::Status,
-        type: Increase::Account::Type
-      }
-    end
-  end
-
   def test_retrieve
     response = @increase.accounts.retrieve("account_id")
 
