@@ -5,8 +5,6 @@ module Increase
 
   class AccountCloseParams = Increase::Models::AccountCloseParams
 
-  class AccountCreateParams = Increase::Models::AccountCreateParams
-
   class AccountListParams = Increase::Models::AccountListParams
 
   class AccountNumber = Increase::Models::AccountNumber

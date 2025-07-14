@@ -31,11 +31,7 @@ increase = Increase::Client.new(
   environment: "sandbox" # defaults to "production"
 )
 
-account = increase.accounts.create(
-  name: "New Account!",
-  entity_id: "entity_n8y8tnk2p9339ti393yi",
-  program_id: "program_i2v2os4mwza1oetokh9i"
-)
+account = increase.accounts.retrieve
 
 puts(account.id)
 ```
@@ -96,7 +92,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  account = increase.accounts.create(name: "New Account!")
+  account = increase.accounts.retrieve
 rescue Increase::Errors::APIConnectionError => e
   puts("The server could not be reached")
   puts(e.cause)  # an underlying Exception, likely raised within `net/http`
@@ -138,12 +134,7 @@ increase = Increase::Client.new(
 )
 
 # Or, configure per-request:
-increase.accounts.create(
-  name: "New Account!",
-  entity_id: "entity_n8y8tnk2p9339ti393yi",
-  program_id: "program_i2v2os4mwza1oetokh9i",
-  request_options: {max_retries: 5}
-)
+increase.accounts.retrieve(request_options: {max_retries: 5})
 ```
 
 ### Timeouts
@@ -157,12 +148,7 @@ increase = Increase::Client.new(
 )
 
 # Or, configure per-request:
-increase.accounts.create(
-  name: "New Account!",
-  entity_id: "entity_n8y8tnk2p9339ti393yi",
-  program_id: "program_i2v2os4mwza1oetokh9i",
-  request_options: {timeout: 5}
-)
+increase.accounts.retrieve(request_options: {timeout: 5})
 ```
 
 On timeout, `Increase::Errors::APITimeoutError` is raised.
@@ -193,10 +179,7 @@ Note: the `extra_` parameters of the same name overrides the documented paramete
 
 ```ruby
 account =
-  increase.accounts.create(
-    name: "New Account!",
-    entity_id: "entity_n8y8tnk2p9339ti393yi",
-    program_id: "program_i2v2os4mwza1oetokh9i",
+  increase.accounts.retrieve(
     request_options: {
       extra_query: {my_query_parameter: value},
       extra_body: {my_body_parameter: value},
@@ -242,30 +225,18 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-increase.accounts.create(
-  name: "New Account!",
-  entity_id: "entity_n8y8tnk2p9339ti393yi",
-  program_id: "program_i2v2os4mwza1oetokh9i"
-)
+increase.accounts.retrieve
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-increase.accounts.create(
-  name: "New Account!",
-  entity_id: "entity_n8y8tnk2p9339ti393yi",
-  program_id: "program_i2v2os4mwza1oetokh9i"
-)
+increase.accounts.retrieve
 
 # You can also splat a full Params class:
-params = Increase::AccountCreateParams.new(
-  name: "New Account!",
-  entity_id: "entity_n8y8tnk2p9339ti393yi",
-  program_id: "program_i2v2os4mwza1oetokh9i"
-)
-increase.accounts.create(**params)
+params = Increase::AccountRetrieveParams.new
+increase.accounts.retrieve("account_id", **params)
 ```
 
 ### Enums
