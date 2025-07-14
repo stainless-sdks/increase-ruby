@@ -16,7 +16,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Increase::Test::ResourceTes
             postal_code: "10045",
             state: "NY"
           },
-          method: :usps
+          method_: :usps
         }
       )
 
