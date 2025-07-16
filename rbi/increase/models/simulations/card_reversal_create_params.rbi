@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardReversalCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::CardReversalCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Card Payment to create a reversal on.
         sig { returns(String) }
@@ -28,33 +23,20 @@ module Increase
         attr_writer :amount
 
         sig do
-          params(
-            card_payment_id: String,
-            amount: Integer,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          params(card_payment_id: String, amount: Integer, request_options: Increase::RequestOptions::OrHash)
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Card Payment to create a reversal on.
-          card_payment_id:,
+        card_payment_id:,
           # The amount of the reversal in minor units in the card authorization's currency.
-          # This defaults to the authorization amount.
-          amount: nil,
+        # This defaults to the authorization amount.
+        amount: nil,
           request_options: {}
-        )
-        end
+        ); end
 
-        sig do
-          override.returns(
-            {
-              card_payment_id: String,
-              amount: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({card_payment_id: String, amount: Integer, request_options: Increase::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

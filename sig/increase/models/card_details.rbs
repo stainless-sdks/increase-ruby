@@ -1,15 +1,14 @@
 module Increase
   module Models
-    type card_details =
-      {
-        card_id: String,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        pin: String,
-        primary_account_number: String,
-        type: Increase::Models::CardDetails::type_,
-        verification_code: String
-      }
+    type card_details = {
+      card_id: String,
+      expiration_month: Integer,
+      expiration_year: Integer,
+      pin: String,
+      primary_account_number: String,
+      type: Increase::Models::CardDetails::type_,
+      verification_code: String
+    }
 
     class CardDetails < Increase::Internal::Type::BaseModel
       attr_accessor card_id: String
@@ -26,17 +25,9 @@ module Increase
 
       attr_accessor verification_code: String
 
-      def initialize: (
-        card_id: String,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        pin: String,
-        primary_account_number: String,
-        type: Increase::Models::CardDetails::type_,
-        verification_code: String
-      ) -> void
+      def initialize: (card_id: String, expiration_month: Integer, expiration_year: Integer, pin: String, primary_account_number: String, type: Increase::Models::CardDetails::type_, verification_code: String) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         card_id: String,
         expiration_month: Integer,
         expiration_year: Integer,
@@ -53,7 +44,7 @@ module Increase
 
         CARD_DETAILS: :card_details
 
-        def self?.values: -> ::Array[Increase::Models::CardDetails::type_]
+        def self?.values: () -> ::Array[Increase::Models::CardDetails::type_]
       end
     end
   end

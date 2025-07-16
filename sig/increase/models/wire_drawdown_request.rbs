@@ -1,25 +1,24 @@
 module Increase
   module Models
-    type wire_drawdown_request =
-      {
-        id: String,
-        account_number_id: String,
-        amount: Integer,
-        created_at: Time,
-        creditor_address: Increase::WireDrawdownRequest::CreditorAddress,
-        creditor_name: String,
-        currency: String,
-        debtor_account_number: String,
-        debtor_address: Increase::WireDrawdownRequest::DebtorAddress,
-        debtor_name: String,
-        debtor_routing_number: String,
-        fulfillment_inbound_wire_transfer_id: String?,
-        idempotency_key: String?,
-        status: Increase::Models::WireDrawdownRequest::status,
-        submission: Increase::WireDrawdownRequest::Submission?,
-        type: Increase::Models::WireDrawdownRequest::type_,
-        unstructured_remittance_information: String
-      }
+    type wire_drawdown_request = {
+      id: String,
+      account_number_id: String,
+      amount: Integer,
+      created_at: Time,
+      creditor_address: Increase::WireDrawdownRequest::CreditorAddress,
+      creditor_name: String,
+      currency: String,
+      debtor_account_number: String,
+      debtor_address: Increase::WireDrawdownRequest::DebtorAddress,
+      debtor_name: String,
+      debtor_routing_number: String,
+      fulfillment_inbound_wire_transfer_id: String?,
+      idempotency_key: String?,
+      status: Increase::Models::WireDrawdownRequest::status,
+      submission: Increase::WireDrawdownRequest::Submission?,
+      type: Increase::Models::WireDrawdownRequest::type_,
+      unstructured_remittance_information: String
+    }
 
     class WireDrawdownRequest < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -56,27 +55,9 @@ module Increase
 
       attr_accessor unstructured_remittance_information: String
 
-      def initialize: (
-        id: String,
-        account_number_id: String,
-        amount: Integer,
-        created_at: Time,
-        creditor_address: Increase::WireDrawdownRequest::CreditorAddress,
-        creditor_name: String,
-        currency: String,
-        debtor_account_number: String,
-        debtor_address: Increase::WireDrawdownRequest::DebtorAddress,
-        debtor_name: String,
-        debtor_routing_number: String,
-        fulfillment_inbound_wire_transfer_id: String?,
-        idempotency_key: String?,
-        status: Increase::Models::WireDrawdownRequest::status,
-        submission: Increase::WireDrawdownRequest::Submission?,
-        type: Increase::Models::WireDrawdownRequest::type_,
-        unstructured_remittance_information: String
-      ) -> void
+      def initialize: (id: String, account_number_id: String, amount: Integer, created_at: Time, creditor_address: Increase::WireDrawdownRequest::CreditorAddress, creditor_name: String, currency: String, debtor_account_number: String, debtor_address: Increase::WireDrawdownRequest::DebtorAddress, debtor_name: String, debtor_routing_number: String, fulfillment_inbound_wire_transfer_id: String?, idempotency_key: String?, status: Increase::Models::WireDrawdownRequest::status, submission: Increase::WireDrawdownRequest::Submission?, type: Increase::Models::WireDrawdownRequest::type_, unstructured_remittance_information: String) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         account_number_id: String,
         amount: Integer,
@@ -96,15 +77,7 @@ module Increase
         unstructured_remittance_information: String
       }
 
-      type creditor_address =
-        {
-          city: String,
-          country: String,
-          :line1 => String,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
+      type creditor_address = {city: String, country: String, line1: String, line2: String?, postal_code: String?, state: String?}
 
       class CreditorAddress < Increase::Internal::Type::BaseModel
         attr_accessor city: String
@@ -119,34 +92,12 @@ module Increase
 
         attr_accessor state: String?
 
-        def initialize: (
-          city: String,
-          country: String,
-          line1: String,
-          line2: String?,
-          postal_code: String?,
-          state: String?
-        ) -> void
+        def initialize: (city: String, country: String, line1: String, line2: String?, postal_code: String?, state: String?) -> void
 
-        def to_hash: -> {
-          city: String,
-          country: String,
-          :line1 => String,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
+        def to_hash: () -> {city: String, country: String, line1: String, line2: String?, postal_code: String?, state: String?}
       end
 
-      type debtor_address =
-        {
-          city: String,
-          country: String,
-          :line1 => String,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
+      type debtor_address = {city: String, country: String, line1: String, line2: String?, postal_code: String?, state: String?}
 
       class DebtorAddress < Increase::Internal::Type::BaseModel
         attr_accessor city: String
@@ -161,27 +112,12 @@ module Increase
 
         attr_accessor state: String?
 
-        def initialize: (
-          city: String,
-          country: String,
-          line1: String,
-          line2: String?,
-          postal_code: String?,
-          state: String?
-        ) -> void
+        def initialize: (city: String, country: String, line1: String, line2: String?, postal_code: String?, state: String?) -> void
 
-        def to_hash: -> {
-          city: String,
-          country: String,
-          :line1 => String,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
+        def to_hash: () -> {city: String, country: String, line1: String, line2: String?, postal_code: String?, state: String?}
       end
 
-      type status =
-        :pending_submission | :pending_response | :fulfilled | :refused
+      type status = (:pending_submission | :pending_response | :fulfilled | :refused)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -198,17 +134,17 @@ module Increase
         # The drawdown request has been refused by the recipient.
         REFUSED: :refused
 
-        def self?.values: -> ::Array[Increase::Models::WireDrawdownRequest::status]
+        def self?.values: () -> ::Array[Increase::Models::WireDrawdownRequest::status]
       end
 
-      type submission = { input_message_accountability_data: String }
+      type submission = {input_message_accountability_data: String}
 
       class Submission < Increase::Internal::Type::BaseModel
         attr_accessor input_message_accountability_data: String
 
         def initialize: (input_message_accountability_data: String) -> void
 
-        def to_hash: -> { input_message_accountability_data: String }
+        def to_hash: () -> {input_message_accountability_data: String}
       end
 
       type type_ = :wire_drawdown_request
@@ -218,7 +154,7 @@ module Increase
 
         WIRE_DRAWDOWN_REQUEST: :wire_drawdown_request
 
-        def self?.values: -> ::Array[Increase::Models::WireDrawdownRequest::type_]
+        def self?.values: () -> ::Array[Increase::Models::WireDrawdownRequest::type_]
       end
     end
   end

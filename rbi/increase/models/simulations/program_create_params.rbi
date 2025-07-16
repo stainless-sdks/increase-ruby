@@ -7,33 +7,17 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::ProgramCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::Simulations::ProgramCreateParams, Increase::Internal::AnyHash) }
 
         # The name of the program being added.
         sig { returns(String) }
         attr_accessor :name
 
         # The bank for the program's accounts, defaults to First Internet Bank.
-        sig do
-          returns(
-            T.nilable(
-              Increase::Simulations::ProgramCreateParams::Bank::OrSymbol
-            )
-          )
-        end
+        sig { returns(T.nilable(Increase::Simulations::ProgramCreateParams::Bank::OrSymbol)) }
         attr_reader :bank
 
-        sig do
-          params(
-            bank: Increase::Simulations::ProgramCreateParams::Bank::OrSymbol
-          ).void
-        end
+        sig { params(bank: Increase::Simulations::ProgramCreateParams::Bank::OrSymbol).void }
         attr_writer :bank
 
         # The identifier of the Account the Program should be added to is for.
@@ -49,86 +33,59 @@ module Increase
             bank: Increase::Simulations::ProgramCreateParams::Bank::OrSymbol,
             reserve_account_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The name of the program being added.
-          name:,
+        name:,
           # The bank for the program's accounts, defaults to First Internet Bank.
-          bank: nil,
+        bank: nil,
           # The identifier of the Account the Program should be added to is for.
-          reserve_account_id: nil,
+        reserve_account_id: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              name: String,
-              bank: Increase::Simulations::ProgramCreateParams::Bank::OrSymbol,
-              reserve_account_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                name: String,
+                bank: Increase::Simulations::ProgramCreateParams::Bank::OrSymbol,
+                reserve_account_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The bank for the program's accounts, defaults to First Internet Bank.
         module Bank
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Increase::Simulations::ProgramCreateParams::Bank)
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::Simulations::ProgramCreateParams::Bank) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Blue Ridge Bank, N.A.
-          BLUE_RIDGE_BANK =
-            T.let(
-              :blue_ridge_bank,
-              Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol
-            )
+          BLUE_RIDGE_BANK = T.let(:blue_ridge_bank, Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol)
 
           # Core Bank
-          CORE_BANK =
-            T.let(
-              :core_bank,
-              Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol
-            )
+          CORE_BANK = T.let(:core_bank, Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol)
 
           # First Internet Bank of Indiana
           FIRST_INTERNET_BANK =
-            T.let(
-              :first_internet_bank,
-              Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol
-            )
+            T.let(:first_internet_bank, Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol)
 
           # Global Innovations Bank
           GLOBAL_INNOVATIONS_BANK =
-            T.let(
-              :global_innovations_bank,
-              Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol
-            )
+            T.let(:global_innovations_bank, Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol)
 
           # Grasshopper Bank
           GRASSHOPPER_BANK =
-            T.let(
-              :grasshopper_bank,
-              Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol
-            )
+            T.let(:grasshopper_bank, Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::Simulations::ProgramCreateParams::Bank::TaggedSymbol]) }
+          def self.values; end
         end
       end
     end

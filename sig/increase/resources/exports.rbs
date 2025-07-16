@@ -1,31 +1,11 @@
 module Increase
   module Resources
     class Exports
-      def create: (
-        category: Increase::Models::ExportCreateParams::category,
-        ?account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx,
-        ?balance_csv: Increase::ExportCreateParams::BalanceCsv,
-        ?bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv,
-        ?entity_csv: Increase::ExportCreateParams::EntityCsv,
-        ?transaction_csv: Increase::ExportCreateParams::TransactionCsv,
-        ?vendor_csv: top,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Export
+      def create: (category: Increase::Models::ExportCreateParams::category, ?account_statement_ofx: Increase::ExportCreateParams::AccountStatementOfx, ?balance_csv: Increase::ExportCreateParams::BalanceCsv, ?bookkeeping_account_balance_csv: Increase::ExportCreateParams::BookkeepingAccountBalanceCsv, ?entity_csv: Increase::ExportCreateParams::EntityCsv, ?transaction_csv: Increase::ExportCreateParams::TransactionCsv, ?vendor_csv: top, ?request_options: Increase::request_opts) -> Increase::Export
 
-      def retrieve: (
-        String export_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Export
+      def retrieve: (String export_id, ?request_options: Increase::request_opts) -> Increase::Export
 
-      def list: (
-        ?category: Increase::ExportListParams::Category,
-        ?created_at: Increase::ExportListParams::CreatedAt,
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::ExportListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::Export]
+      def list: (?category: Increase::ExportListParams::Category, ?created_at: Increase::ExportListParams::CreatedAt, ?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::ExportListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::Export]
 
       def initialize: (client: Increase::Client) -> void
     end

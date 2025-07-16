@@ -1,23 +1,22 @@
 module Increase
   module Models
-    type account =
-      {
-        id: String,
-        bank: Increase::Models::Account::bank,
-        closed_at: Time?,
-        created_at: Time,
-        currency: Increase::Models::Account::currency,
-        entity_id: String?,
-        idempotency_key: String?,
-        informational_entity_id: String?,
-        interest_accrued: String,
-        interest_accrued_at: Date?,
-        interest_rate: String,
-        name: String,
-        program_id: String,
-        status: Increase::Models::Account::status,
-        type: Increase::Models::Account::type_
-      }
+    type account = {
+      id: String,
+      bank: Increase::Models::Account::bank,
+      closed_at: Time?,
+      created_at: Time,
+      currency: Increase::Models::Account::currency,
+      entity_id: String?,
+      idempotency_key: String?,
+      informational_entity_id: String?,
+      interest_accrued: String,
+      interest_accrued_at: Date?,
+      interest_rate: String,
+      name: String,
+      program_id: String,
+      status: Increase::Models::Account::status,
+      type: Increase::Models::Account::type_
+    }
 
     class Account < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -50,25 +49,9 @@ module Increase
 
       attr_accessor type: Increase::Models::Account::type_
 
-      def initialize: (
-        id: String,
-        bank: Increase::Models::Account::bank,
-        closed_at: Time?,
-        created_at: Time,
-        currency: Increase::Models::Account::currency,
-        entity_id: String?,
-        idempotency_key: String?,
-        informational_entity_id: String?,
-        interest_accrued: String,
-        interest_accrued_at: Date?,
-        interest_rate: String,
-        name: String,
-        program_id: String,
-        status: Increase::Models::Account::status,
-        type: Increase::Models::Account::type_
-      ) -> void
+      def initialize: (id: String, bank: Increase::Models::Account::bank, closed_at: Time?, created_at: Time, currency: Increase::Models::Account::currency, entity_id: String?, idempotency_key: String?, informational_entity_id: String?, interest_accrued: String, interest_accrued_at: Date?, interest_rate: String, name: String, program_id: String, status: Increase::Models::Account::status, type: Increase::Models::Account::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         bank: Increase::Models::Account::bank,
         closed_at: Time?,
@@ -86,7 +69,7 @@ module Increase
         type: Increase::Models::Account::type_
       }
 
-      type bank = :core_bank | :first_internet_bank | :grasshopper_bank
+      type bank = (:core_bank | :first_internet_bank | :grasshopper_bank)
 
       module Bank
         extend Increase::Internal::Type::Enum
@@ -100,10 +83,10 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK: :grasshopper_bank
 
-        def self?.values: -> ::Array[Increase::Models::Account::bank]
+        def self?.values: () -> ::Array[Increase::Models::Account::bank]
       end
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       module Currency
         extend Increase::Internal::Type::Enum
@@ -126,10 +109,10 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::Account::currency]
+        def self?.values: () -> ::Array[Increase::Models::Account::currency]
       end
 
-      type status = :closed | :open
+      type status = (:closed | :open)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -140,7 +123,7 @@ module Increase
         # Open Accounts that are ready to use.
         OPEN: :open
 
-        def self?.values: -> ::Array[Increase::Models::Account::status]
+        def self?.values: () -> ::Array[Increase::Models::Account::status]
       end
 
       type type_ = :account
@@ -150,7 +133,7 @@ module Increase
 
         ACCOUNT: :account
 
-        def self?.values: -> ::Array[Increase::Models::Account::type_]
+        def self?.values: () -> ::Array[Increase::Models::Account::type_]
       end
     end
   end

@@ -6,10 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::LockboxUpdateParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::LockboxUpdateParams, Increase::Internal::AnyHash) }
 
       # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
@@ -26,14 +23,10 @@ module Increase
       attr_writer :recipient_name
 
       # This indicates if checks can be sent to the Lockbox.
-      sig do
-        returns(T.nilable(Increase::LockboxUpdateParams::Status::OrSymbol))
-      end
+      sig { returns(T.nilable(Increase::LockboxUpdateParams::Status::OrSymbol)) }
       attr_reader :status
 
-      sig do
-        params(status: Increase::LockboxUpdateParams::Status::OrSymbol).void
-      end
+      sig { params(status: Increase::LockboxUpdateParams::Status::OrSymbol).void }
       attr_writer :status
 
       sig do
@@ -42,55 +35,47 @@ module Increase
           recipient_name: String,
           status: Increase::LockboxUpdateParams::Status::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The description you choose for the Lockbox.
-        description: nil,
+      description: nil,
         # The recipient name you choose for the Lockbox.
-        recipient_name: nil,
+      recipient_name: nil,
         # This indicates if checks can be sent to the Lockbox.
-        status: nil,
+      status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            description: String,
-            recipient_name: String,
-            status: Increase::LockboxUpdateParams::Status::OrSymbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              description: String,
+              recipient_name: String,
+              status: Increase::LockboxUpdateParams::Status::OrSymbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # This indicates if checks can be sent to the Lockbox.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::LockboxUpdateParams::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::LockboxUpdateParams::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
-        ACTIVE =
-          T.let(:active, Increase::LockboxUpdateParams::Status::TaggedSymbol)
+        ACTIVE = T.let(:active, Increase::LockboxUpdateParams::Status::TaggedSymbol)
 
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
-        INACTIVE =
-          T.let(:inactive, Increase::LockboxUpdateParams::Status::TaggedSymbol)
+        INACTIVE = T.let(:inactive, Increase::LockboxUpdateParams::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::LockboxUpdateParams::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::LockboxUpdateParams::Status::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

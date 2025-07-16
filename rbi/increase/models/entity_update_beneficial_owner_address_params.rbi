@@ -7,26 +7,14 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias do
-          T.any(
-            Increase::EntityUpdateBeneficialOwnerAddressParams,
-            Increase::Internal::AnyHash
-          )
-        end
+        T.type_alias { T.any(Increase::EntityUpdateBeneficialOwnerAddressParams, Increase::Internal::AnyHash) }
 
       # The individual's physical address. Mail receiving locations like PO Boxes and
       # PMB's are disallowed.
-      sig do
-        returns(Increase::EntityUpdateBeneficialOwnerAddressParams::Address)
-      end
+      sig { returns(Increase::EntityUpdateBeneficialOwnerAddressParams::Address) }
       attr_reader :address
 
-      sig do
-        params(
-          address:
-            Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash
-        ).void
-      end
+      sig { params(address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash).void }
       attr_writer :address
 
       # The identifying details of anyone controlling or owning 25% or more of the
@@ -36,44 +24,37 @@ module Increase
 
       sig do
         params(
-          address:
-            Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
+          address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address::OrHash,
           beneficial_owner_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The individual's physical address. Mail receiving locations like PO Boxes and
-        # PMB's are disallowed.
-        address:,
+      # PMB's are disallowed.
+      address:,
         # The identifying details of anyone controlling or owning 25% or more of the
-        # corporation.
-        beneficial_owner_id:,
+      # corporation.
+      beneficial_owner_id:,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            address:
-              Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
-            beneficial_owner_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
+              beneficial_owner_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Address < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::EntityUpdateBeneficialOwnerAddressParams::Address, Increase::Internal::AnyHash) }
 
         # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
         sig { returns(String) }
@@ -116,47 +97,30 @@ module Increase
         # The individual's physical address. Mail receiving locations like PO Boxes and
         # PMB's are disallowed.
         sig do
-          params(
-            country: String,
-            line1: String,
-            city: String,
-            line2: String,
-            state: String,
-            zip: String
-          ).returns(T.attached_class)
+          params(country: String, line1: String, city: String, line2: String, state: String, zip: String)
+            .returns(T.attached_class)
         end
         def self.new(
           # The two-letter ISO 3166-1 alpha-2 code for the country of the address.
-          country:,
+        country:,
           # The first line of the address. This is usually the street number and street.
-          line1:,
+        line1:,
           # The city, district, town, or village of the address. Required in certain
-          # countries.
-          city: nil,
+        # countries.
+        city: nil,
           # The second line of the address. This might be the floor or room number.
-          line2: nil,
+        line2: nil,
           # The two-letter United States Postal Service (USPS) abbreviation for the US
-          # state, province, or region of the address. Required in certain countries.
-          state: nil,
+        # state, province, or region of the address. Required in certain countries.
+        state: nil,
           # The ZIP or postal code of the address. Required in certain countries.
-          zip: nil
-        )
-        end
+        zip: nil
+        ); end
 
         sig do
-          override.returns(
-            {
-              country: String,
-              line1: String,
-              city: String,
-              line2: String,
-              state: String,
-              zip: String
-            }
-          )
+          override.returns({country: String, line1: String, city: String, line2: String, state: String, zip: String})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

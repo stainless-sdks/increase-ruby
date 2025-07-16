@@ -8,19 +8,10 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::PhysicalCardTrackingUpdatesParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::PhysicalCardTrackingUpdatesParams, Increase::Internal::AnyHash) }
 
         # The type of tracking event.
-        sig do
-          returns(
-            Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::OrSymbol
-          )
-        end
+        sig { returns(Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::OrSymbol) }
         attr_accessor :category
 
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
@@ -54,66 +45,56 @@ module Increase
 
         sig do
           params(
-            category:
-              Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::OrSymbol,
+            category: Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::OrSymbol,
             carrier_estimated_delivery_at: Time,
             city: String,
             postal_code: String,
             state: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The type of tracking event.
-          category:,
+        category:,
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
-          # carrier expects the card to be delivered.
-          carrier_estimated_delivery_at: nil,
+        # carrier expects the card to be delivered.
+        carrier_estimated_delivery_at: nil,
           # The city where the event took place.
-          city: nil,
+        city: nil,
           # The postal code where the event took place.
-          postal_code: nil,
+        postal_code: nil,
           # The state where the event took place.
-          state: nil,
+        state: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              category:
-                Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::OrSymbol,
-              carrier_estimated_delivery_at: Time,
-              city: String,
-              postal_code: String,
-              state: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                category: Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::OrSymbol,
+                carrier_estimated_delivery_at: Time,
+                city: String,
+                postal_code: String,
+                state: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of tracking event.
         module Category
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The physical card is in transit.
           IN_TRANSIT =
-            T.let(
-              :in_transit,
-              Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::TaggedSymbol
-            )
+            T.let(:in_transit, Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::TaggedSymbol)
 
           # The physical card has been processed for delivery.
           PROCESSED_FOR_DELIVERY =
@@ -124,10 +105,7 @@ module Increase
 
           # The physical card has been delivered.
           DELIVERED =
-            T.let(
-              :delivered,
-              Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::TaggedSymbol
-            )
+            T.let(:delivered, Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::TaggedSymbol)
 
           # Delivery failed and the physical card was returned to sender.
           RETURNED_TO_SENDER =
@@ -137,14 +115,10 @@ module Increase
             )
 
           sig do
-            override.returns(
-              T::Array[
-                Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::TaggedSymbol
-              ]
-            )
+            override
+              .returns(T::Array[Increase::Simulations::PhysicalCardTrackingUpdatesParams::Category::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

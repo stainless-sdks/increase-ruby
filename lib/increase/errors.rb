@@ -25,7 +25,7 @@ module Increase
         message = [
           "Failed to parse #{cls}.#{method} from #{value.class} to #{target.inspect}.",
           "To get the unparsed API response, use #{cls}[#{method.inspect}].",
-          cause && "Cause: #{cause.message}"
+          cause && "Cause: #{cause.message}",
         ].filter(&:itself).join(" ")
 
         @cause = cause
@@ -78,16 +78,7 @@ module Increase
       # @param request [nil]
       # @param response [nil]
       # @param message [String, nil]
-      def initialize(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: "Connection error."
-      )
-        super
-      end
+      def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.") = super
     end
 
     class APITimeoutError < Increase::Errors::APIConnectionError
@@ -99,16 +90,7 @@ module Increase
       # @param request [nil]
       # @param response [nil]
       # @param message [String, nil]
-      def initialize(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: "Request timed out."
-      )
-        super
-      end
+      def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.") = super
     end
 
     class APIStatusError < Increase::Errors::APIError
@@ -124,14 +106,7 @@ module Increase
       # @return [self]
       def self.for(url:, status:, body:, request:, response:, message: nil)
         key = Increase::Internal::Util.dig(body, :type)
-        kwargs = {
-          url: url,
-          status: status,
-          body: body,
-          request: request,
-          response: response,
-          message: message
-        }
+        kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
 
         case [status, key]
         in [400, Increase::Errors::InvalidParametersError::TYPE]

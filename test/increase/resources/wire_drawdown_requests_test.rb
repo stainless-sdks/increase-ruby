@@ -7,7 +7,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::Reso
     response =
       @increase.wire_drawdown_requests.create(
         account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
-        amount: 10_000,
+        amount: 10000,
         creditor_address: {city: "New York", country: "US", line1: "33 Liberty Street"},
         creditor_name: "National Phonograph Company",
         debtor_account_number: "987654321",

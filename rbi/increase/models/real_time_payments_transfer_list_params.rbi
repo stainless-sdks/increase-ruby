@@ -7,12 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias do
-          T.any(
-            Increase::RealTimePaymentsTransferListParams,
-            Increase::Internal::AnyHash
-          )
-        end
+        T.type_alias { T.any(Increase::RealTimePaymentsTransferListParams, Increase::Internal::AnyHash) }
 
       # Filter Real-Time Payments Transfers to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
@@ -21,19 +16,10 @@ module Increase
       sig { params(account_id: String).void }
       attr_writer :account_id
 
-      sig do
-        returns(
-          T.nilable(Increase::RealTimePaymentsTransferListParams::CreatedAt)
-        )
-      end
+      sig { returns(T.nilable(Increase::RealTimePaymentsTransferListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig do
-        params(
-          created_at:
-            Increase::RealTimePaymentsTransferListParams::CreatedAt::OrHash
-        ).void
-      end
+      sig { params(created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt::OrHash).void }
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -69,78 +55,66 @@ module Increase
       sig { params(limit: Integer).void }
       attr_writer :limit
 
-      sig do
-        returns(T.nilable(Increase::RealTimePaymentsTransferListParams::Status))
-      end
+      sig { returns(T.nilable(Increase::RealTimePaymentsTransferListParams::Status)) }
       attr_reader :status
 
-      sig do
-        params(
-          status: Increase::RealTimePaymentsTransferListParams::Status::OrHash
-        ).void
-      end
+      sig { params(status: Increase::RealTimePaymentsTransferListParams::Status::OrHash).void }
       attr_writer :status
 
       sig do
         params(
           account_id: String,
-          created_at:
-            Increase::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
+          created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt::OrHash,
           cursor: String,
           external_account_id: String,
           idempotency_key: String,
           limit: Integer,
           status: Increase::RealTimePaymentsTransferListParams::Status::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # Filter Real-Time Payments Transfers to those belonging to the specified Account.
-        account_id: nil,
+      account_id: nil,
         created_at: nil,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Filter Real-Time Payments Transfers to those made to the specified External
-        # Account.
-        external_account_id: nil,
+      # Account.
+      external_account_id: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key: nil,
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         status: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
-            cursor: String,
-            external_account_id: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::RealTimePaymentsTransferListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              created_at: Increase::RealTimePaymentsTransferListParams::CreatedAt,
+              cursor: String,
+              external_account_id: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::RealTimePaymentsTransferListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::RealTimePaymentsTransferListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::RealTimePaymentsTransferListParams::CreatedAt, Increase::Internal::AnyHash) }
 
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
@@ -174,176 +148,87 @@ module Increase
         sig { params(on_or_before: Time).void }
         attr_writer :on_or_before
 
-        sig do
-          params(
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ).returns(T.attached_class)
-        end
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
+        # timestamp.
+        after: nil,
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
+        # timestamp.
+        before: nil,
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_after: nil,
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        )
-        end
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_before: nil
+        ); end
 
-        sig do
-          override.returns(
-            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
+        def to_hash; end
       end
 
       class Status < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::RealTimePaymentsTransferListParams::Status,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::RealTimePaymentsTransferListParams::Status, Increase::Internal::AnyHash) }
 
         # Return results whose value is in the provided list. For GET requests, this
         # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[
-                Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol
-              ]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol])) }
         attr_reader :in_
 
-        sig do
-          params(
-            in_:
-              T::Array[
-                Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol
-              ]
-          ).void
-        end
+        sig { params(in_: T::Array[Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol]).void }
         attr_writer :in_
 
         sig do
-          params(
-            in_:
-              T::Array[
-                Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol
-              ]
-          ).returns(T.attached_class)
+          params(in_: T::Array[Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol])
+            .returns(T.attached_class)
         end
         def self.new(
           # Return results whose value is in the provided list. For GET requests, this
-          # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-          in_: nil
-        )
-        end
+        # should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        in_: nil
+        ); end
 
-        sig do
-          override.returns(
-            {
-              in_:
-                T::Array[
-                  Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol
-                ]
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({in_: T::Array[Increase::RealTimePaymentsTransferListParams::Status::In::OrSymbol]}) }
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::RealTimePaymentsTransferListParams::Status::In
-              )
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::RealTimePaymentsTransferListParams::Status::In) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # The transfer is pending approval.
           PENDING_APPROVAL =
-            T.let(
-              :pending_approval,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+            T.let(:pending_approval, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been canceled.
-          CANCELED =
-            T.let(
-              :canceled,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+          CANCELED = T.let(:canceled, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer is pending review by Increase.
           PENDING_REVIEWING =
-            T.let(
-              :pending_reviewing,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+            T.let(:pending_reviewing, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer requires attention from an Increase operator.
           REQUIRES_ATTENTION =
-            T.let(
-              :requires_attention,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+            T.let(:requires_attention, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer was rejected by the network or the recipient's bank.
-          REJECTED =
-            T.let(
-              :rejected,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+          REJECTED = T.let(:rejected, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer is queued to be submitted to Real-Time Payments.
           PENDING_SUBMISSION =
-            T.let(
-              :pending_submission,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+            T.let(:pending_submission, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been submitted and is pending a response from Real-Time Payments.
-          SUBMITTED =
-            T.let(
-              :submitted,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+          SUBMITTED = T.let(:submitted, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
           # The transfer has been sent successfully and is complete.
-          COMPLETE =
-            T.let(
-              :complete,
-              Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-            )
+          COMPLETE = T.let(:complete, Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::RealTimePaymentsTransferListParams::Status::In::TaggedSymbol]) }
+          def self.values; end
         end
       end
     end

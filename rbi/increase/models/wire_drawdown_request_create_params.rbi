@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::WireDrawdownRequestCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::WireDrawdownRequestCreateParams, Increase::Internal::AnyHash) }
 
       # The Account Number to which the debtor should send funds.
       sig { returns(String) }
@@ -23,17 +17,10 @@ module Increase
       attr_accessor :amount
 
       # The creditor's address.
-      sig do
-        returns(Increase::WireDrawdownRequestCreateParams::CreditorAddress)
-      end
+      sig { returns(Increase::WireDrawdownRequestCreateParams::CreditorAddress) }
       attr_reader :creditor_address
 
-      sig do
-        params(
-          creditor_address:
-            Increase::WireDrawdownRequestCreateParams::CreditorAddress::OrHash
-        ).void
-      end
+      sig { params(creditor_address: Increase::WireDrawdownRequestCreateParams::CreditorAddress::OrHash).void }
       attr_writer :creditor_address
 
       # The creditor's name.
@@ -48,12 +35,7 @@ module Increase
       sig { returns(Increase::WireDrawdownRequestCreateParams::DebtorAddress) }
       attr_reader :debtor_address
 
-      sig do
-        params(
-          debtor_address:
-            Increase::WireDrawdownRequestCreateParams::DebtorAddress::OrHash
-        ).void
-      end
+      sig { params(debtor_address: Increase::WireDrawdownRequestCreateParams::DebtorAddress::OrHash).void }
       attr_writer :debtor_address
 
       # The debtor's name.
@@ -72,70 +54,61 @@ module Increase
         params(
           account_number_id: String,
           amount: Integer,
-          creditor_address:
-            Increase::WireDrawdownRequestCreateParams::CreditorAddress::OrHash,
+          creditor_address: Increase::WireDrawdownRequestCreateParams::CreditorAddress::OrHash,
           creditor_name: String,
           debtor_account_number: String,
-          debtor_address:
-            Increase::WireDrawdownRequestCreateParams::DebtorAddress::OrHash,
+          debtor_address: Increase::WireDrawdownRequestCreateParams::DebtorAddress::OrHash,
           debtor_name: String,
           debtor_routing_number: String,
           unstructured_remittance_information: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account Number to which the debtor should send funds.
-        account_number_id:,
+      account_number_id:,
         # The amount requested from the debtor, in USD cents.
-        amount:,
+      amount:,
         # The creditor's address.
-        creditor_address:,
+      creditor_address:,
         # The creditor's name.
-        creditor_name:,
+      creditor_name:,
         # The debtor's account number.
-        debtor_account_number:,
+      debtor_account_number:,
         # The debtor's address.
-        debtor_address:,
+      debtor_address:,
         # The debtor's name.
-        debtor_name:,
+      debtor_name:,
         # The debtor's routing number.
-        debtor_routing_number:,
+      debtor_routing_number:,
         # Remittance information the debtor will see as part of the request.
-        unstructured_remittance_information:,
+      unstructured_remittance_information:,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_number_id: String,
-            amount: Integer,
-            creditor_address:
-              Increase::WireDrawdownRequestCreateParams::CreditorAddress,
-            creditor_name: String,
-            debtor_account_number: String,
-            debtor_address:
-              Increase::WireDrawdownRequestCreateParams::DebtorAddress,
-            debtor_name: String,
-            debtor_routing_number: String,
-            unstructured_remittance_information: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_number_id: String,
+              amount: Integer,
+              creditor_address: Increase::WireDrawdownRequestCreateParams::CreditorAddress,
+              creditor_name: String,
+              debtor_account_number: String,
+              debtor_address: Increase::WireDrawdownRequestCreateParams::DebtorAddress,
+              debtor_name: String,
+              debtor_routing_number: String,
+              unstructured_remittance_information: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreditorAddress < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::WireDrawdownRequestCreateParams::CreditorAddress,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::WireDrawdownRequestCreateParams::CreditorAddress, Increase::Internal::AnyHash) }
 
         # The city, district, town, or village of the address.
         sig { returns(String) }
@@ -174,57 +147,36 @@ module Increase
 
         # The creditor's address.
         sig do
-          params(
-            city: String,
-            country: String,
-            line1: String,
-            line2: String,
-            postal_code: String,
-            state: String
-          ).returns(T.attached_class)
+          params(city: String, country: String, line1: String, line2: String, postal_code: String, state: String)
+            .returns(T.attached_class)
         end
         def self.new(
           # The city, district, town, or village of the address.
-          city:,
+        city:,
           # The two-letter
-          # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
-          # the country of the address.
-          country:,
+        # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+        # the country of the address.
+        country:,
           # The first line of the address. This is usually the street number and street.
-          line1:,
+        line1:,
           # The second line of the address. This might be the floor or room number.
-          line2: nil,
+        line2: nil,
           # The ZIP code of the address.
-          postal_code: nil,
+        postal_code: nil,
           # The address state.
-          state: nil
-        )
-        end
+        state: nil
+        ); end
 
         sig do
-          override.returns(
-            {
-              city: String,
-              country: String,
-              line1: String,
-              line2: String,
-              postal_code: String,
-              state: String
-            }
-          )
+          override
+            .returns({city: String, country: String, line1: String, line2: String, postal_code: String, state: String})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class DebtorAddress < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::WireDrawdownRequestCreateParams::DebtorAddress,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::WireDrawdownRequestCreateParams::DebtorAddress, Increase::Internal::AnyHash) }
 
         # The city, district, town, or village of the address.
         sig { returns(String) }
@@ -263,47 +215,31 @@ module Increase
 
         # The debtor's address.
         sig do
-          params(
-            city: String,
-            country: String,
-            line1: String,
-            line2: String,
-            postal_code: String,
-            state: String
-          ).returns(T.attached_class)
+          params(city: String, country: String, line1: String, line2: String, postal_code: String, state: String)
+            .returns(T.attached_class)
         end
         def self.new(
           # The city, district, town, or village of the address.
-          city:,
+        city:,
           # The two-letter
-          # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
-          # the country of the address.
-          country:,
+        # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+        # the country of the address.
+        country:,
           # The first line of the address. This is usually the street number and street.
-          line1:,
+        line1:,
           # The second line of the address. This might be the floor or room number.
-          line2: nil,
+        line2: nil,
           # The ZIP code of the address.
-          postal_code: nil,
+        postal_code: nil,
           # The address state.
-          state: nil
-        )
-        end
+        state: nil
+        ); end
 
         sig do
-          override.returns(
-            {
-              city: String,
-              country: String,
-              line1: String,
-              line2: String,
-              postal_code: String,
-              state: String
-            }
-          )
+          override
+            .returns({city: String, country: String, line1: String, line2: String, postal_code: String, state: String})
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

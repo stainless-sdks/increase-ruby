@@ -7,38 +7,21 @@ module Increase
         extend Increase::Internal::Type::RequestParameters::Converter
         include Increase::Internal::Type::RequestParameters
 
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::DocumentCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::Simulations::DocumentCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Account the tax document is for.
         sig { returns(String) }
         attr_accessor :account_id
 
-        sig do
-          params(
-            account_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
-        end
+        sig { params(account_id: String, request_options: Increase::RequestOptions::OrHash).returns(T.attached_class) }
         def self.new(
           # The identifier of the Account the tax document is for.
-          account_id:,
+        account_id:,
           request_options: {}
-        )
-        end
+        ); end
 
-        sig do
-          override.returns(
-            { account_id: String, request_options: Increase::RequestOptions }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({account_id: String, request_options: Increase::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

@@ -1,26 +1,24 @@
 module Increase
   module Models
-    type wire_transfer_create_params =
-      {
-        account_id: String,
-        amount: Integer,
-        beneficiary_name: String,
-        message_to_recipient: String,
-        account_number: String,
-        :beneficiary_address_line1 => String,
-        :beneficiary_address_line2 => String,
-        :beneficiary_address_line3 => String,
-        external_account_id: String,
-        inbound_wire_drawdown_request_id: String,
-        :originator_address_line1 => String,
-        :originator_address_line2 => String,
-        :originator_address_line3 => String,
-        originator_name: String,
-        require_approval: bool,
-        routing_number: String,
-        source_account_number_id: String
-      }
-      & Increase::Internal::Type::request_parameters
+    type wire_transfer_create_params = ({
+      account_id: String,
+      amount: Integer,
+      beneficiary_name: String,
+      message_to_recipient: String,
+      account_number: String,
+      beneficiary_address_line1: String,
+      beneficiary_address_line2: String,
+      beneficiary_address_line3: String,
+      external_account_id: String,
+      inbound_wire_drawdown_request_id: String,
+      originator_address_line1: String,
+      originator_address_line2: String,
+      originator_address_line3: String,
+      originator_name: String,
+      require_approval: bool,
+      routing_number: String,
+      source_account_number_id: String
+    } & Increase::Internal::Type::request_parameters)
 
     class WireTransferCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -86,41 +84,22 @@ module Increase
 
       def source_account_number_id=: (String) -> String
 
-      def initialize: (
-        account_id: String,
-        amount: Integer,
-        beneficiary_name: String,
-        message_to_recipient: String,
-        ?account_number: String,
-        ?beneficiary_address_line1: String,
-        ?beneficiary_address_line2: String,
-        ?beneficiary_address_line3: String,
-        ?external_account_id: String,
-        ?inbound_wire_drawdown_request_id: String,
-        ?originator_address_line1: String,
-        ?originator_address_line2: String,
-        ?originator_address_line3: String,
-        ?originator_name: String,
-        ?require_approval: bool,
-        ?routing_number: String,
-        ?source_account_number_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, amount: Integer, beneficiary_name: String, message_to_recipient: String, ?account_number: String, ?beneficiary_address_line1: String, ?beneficiary_address_line2: String, ?beneficiary_address_line3: String, ?external_account_id: String, ?inbound_wire_drawdown_request_id: String, ?originator_address_line1: String, ?originator_address_line2: String, ?originator_address_line3: String, ?originator_name: String, ?require_approval: bool, ?routing_number: String, ?source_account_number_id: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         amount: Integer,
         beneficiary_name: String,
         message_to_recipient: String,
         account_number: String,
-        :beneficiary_address_line1 => String,
-        :beneficiary_address_line2 => String,
-        :beneficiary_address_line3 => String,
+        beneficiary_address_line1: String,
+        beneficiary_address_line2: String,
+        beneficiary_address_line3: String,
         external_account_id: String,
         inbound_wire_drawdown_request_id: String,
-        :originator_address_line1 => String,
-        :originator_address_line2 => String,
-        :originator_address_line3 => String,
+        originator_address_line1: String,
+        originator_address_line2: String,
+        originator_address_line3: String,
         originator_name: String,
         require_approval: bool,
         routing_number: String,

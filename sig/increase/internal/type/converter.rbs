@@ -4,56 +4,37 @@ module Increase
       module Converter
         extend Increase::Internal::Util::SorbetRuntimeSupport
 
-        type input = Increase::Internal::Type::Converter | Class
+        type input = (Increase::Internal::Type::Converter | Class)
 
-        type coerce_state =
-          {
-            translate_names: bool,
-            strictness: bool,
-            exactness: { yes: Integer, no: Integer, maybe: Integer },
-            error: Class,
-            branched: Integer
-          }
+        type coerce_state = {
+          translate_names: bool,
+          strictness: bool,
+          exactness: {yes: Integer, no: Integer, maybe: Integer},
+          error: Class,
+          branched: Integer
+        }
 
-        type dump_state = { can_retry: bool }
+        type dump_state = {can_retry: bool}
 
-        def coerce: (
-          top value,
-          state: Increase::Internal::Type::Converter::coerce_state
-        ) -> top
+        def coerce: (top value, state: Increase::Internal::Type::Converter::coerce_state) -> top
 
-        def dump: (
-          top value,
-          state: Increase::Internal::Type::Converter::dump_state
-        ) -> top
+        def dump: (top value, state: Increase::Internal::Type::Converter::dump_state) -> top
 
         def inspect: (?depth: Integer) -> String
 
         def self.type_info: (
-          {
-            const: (nil | bool | Integer | Float | Symbol)?,
-            enum: ^-> Increase::Internal::Type::Converter::input?,
-            union: ^-> Increase::Internal::Type::Converter::input?
-          }
-          | ^-> Increase::Internal::Type::Converter::input
-          | Increase::Internal::Type::Converter::input spec
-        ) -> (^-> top)
+        ({
+          const: (nil | bool | Integer | Float | Symbol)?,
+          enum: ^() -> Increase::Internal::Type::Converter::input?,
+          union: ^() -> Increase::Internal::Type::Converter::input?
+        } | ^() -> Increase::Internal::Type::Converter::input | Increase::Internal::Type::Converter::input) spec
+        ) -> ^() -> top
 
-        def self.new_coerce_state: (
-          ?translate_names: bool
-        ) -> Increase::Internal::Type::Converter::coerce_state
+        def self.new_coerce_state: (?translate_names: bool) -> Increase::Internal::Type::Converter::coerce_state
 
-        def self.coerce: (
-          Increase::Internal::Type::Converter::input target,
-          top value,
-          ?state: Increase::Internal::Type::Converter::coerce_state
-        ) -> top
+        def self.coerce: (Increase::Internal::Type::Converter::input target, top value, ?state: Increase::Internal::Type::Converter::coerce_state) -> top
 
-        def self.dump: (
-          Increase::Internal::Type::Converter::input target,
-          top value,
-          ?state: Increase::Internal::Type::Converter::dump_state
-        ) -> top
+        def self.dump: (Increase::Internal::Type::Converter::input target, top value, ?state: Increase::Internal::Type::Converter::dump_state) -> top
 
         def self.inspect: (top target, depth: Integer) -> String
       end

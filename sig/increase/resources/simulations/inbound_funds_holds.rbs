@@ -2,10 +2,7 @@ module Increase
   module Resources
     class Simulations
       class InboundFundsHolds
-        def release: (
-          String inbound_funds_hold_id,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Simulations::InboundFundsHoldReleaseResponse
+        def release: (String inbound_funds_hold_id, ?request_options: Increase::request_opts) -> Increase::Models::Simulations::InboundFundsHoldReleaseResponse
 
         def initialize: (client: Increase::Client) -> void
       end

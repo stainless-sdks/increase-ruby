@@ -3,10 +3,7 @@
 module Increase
   module Models
     class BookkeepingAccount < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::BookkeepingAccount, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::BookkeepingAccount, Increase::Internal::AnyHash) }
 
       # The account identifier.
       sig { returns(String) }
@@ -17,13 +14,7 @@ module Increase
       attr_accessor :account_id
 
       # The compliance category of the account.
-      sig do
-        returns(
-          T.nilable(
-            Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol)) }
       attr_accessor :compliance_category
 
       # The Entity associated with this bookkeeping account.
@@ -52,89 +43,66 @@ module Increase
         params(
           id: String,
           account_id: T.nilable(String),
-          compliance_category:
-            T.nilable(
-              Increase::BookkeepingAccount::ComplianceCategory::OrSymbol
-            ),
+          compliance_category: T.nilable(Increase::BookkeepingAccount::ComplianceCategory::OrSymbol),
           entity_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           name: String,
           type: Increase::BookkeepingAccount::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The account identifier.
-        id:,
+      id:,
         # The API Account associated with this bookkeeping account.
-        account_id:,
+      account_id:,
         # The compliance category of the account.
-        compliance_category:,
+      compliance_category:,
         # The Entity associated with this bookkeeping account.
-        entity_id:,
+      entity_id:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # The name you choose for the account.
-        name:,
+      name:,
         # A constant representing the object's type. For this resource it will always be
-        # `bookkeeping_account`.
-        type:
-      )
-      end
+      # `bookkeeping_account`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: T.nilable(String),
-            compliance_category:
-              T.nilable(
-                Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
-              ),
-            entity_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            name: String,
-            type: Increase::BookkeepingAccount::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: T.nilable(String),
+              compliance_category: T.nilable(Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol),
+              entity_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              name: String,
+              type: Increase::BookkeepingAccount::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The compliance category of the account.
       module ComplianceCategory
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::BookkeepingAccount::ComplianceCategory)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::BookkeepingAccount::ComplianceCategory) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # A cash in an commingled Increase Account.
-        COMMINGLED_CASH =
-          T.let(
-            :commingled_cash,
-            Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
-          )
+        COMMINGLED_CASH = T.let(:commingled_cash, Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
 
         # A customer balance.
         CUSTOMER_BALANCE =
-          T.let(
-            :customer_balance,
-            Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
-          )
+          T.let(:customer_balance, Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::BookkeepingAccount::ComplianceCategory::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -142,23 +110,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::BookkeepingAccount::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::BookkeepingAccount::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BOOKKEEPING_ACCOUNT =
-          T.let(
-            :bookkeeping_account,
-            Increase::BookkeepingAccount::Type::TaggedSymbol
-          )
+        BOOKKEEPING_ACCOUNT = T.let(:bookkeeping_account, Increase::BookkeepingAccount::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::BookkeepingAccount::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::BookkeepingAccount::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

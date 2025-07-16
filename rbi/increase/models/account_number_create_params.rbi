@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::AccountNumberCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::AccountNumberCreateParams, Increase::Internal::AnyHash) }
 
       # The Account the Account Number should belong to.
       sig { returns(String) }
@@ -23,31 +17,18 @@ module Increase
       attr_accessor :name
 
       # Options related to how this Account Number should handle inbound ACH transfers.
-      sig do
-        returns(T.nilable(Increase::AccountNumberCreateParams::InboundACH))
-      end
+      sig { returns(T.nilable(Increase::AccountNumberCreateParams::InboundACH)) }
       attr_reader :inbound_ach
 
-      sig do
-        params(
-          inbound_ach: Increase::AccountNumberCreateParams::InboundACH::OrHash
-        ).void
-      end
+      sig { params(inbound_ach: Increase::AccountNumberCreateParams::InboundACH::OrHash).void }
       attr_writer :inbound_ach
 
       # Options related to how this Account Number should handle inbound check
       # withdrawals.
-      sig do
-        returns(T.nilable(Increase::AccountNumberCreateParams::InboundChecks))
-      end
+      sig { returns(T.nilable(Increase::AccountNumberCreateParams::InboundChecks)) }
       attr_reader :inbound_checks
 
-      sig do
-        params(
-          inbound_checks:
-            Increase::AccountNumberCreateParams::InboundChecks::OrHash
-        ).void
-      end
+      sig { params(inbound_checks: Increase::AccountNumberCreateParams::InboundChecks::OrHash).void }
       attr_writer :inbound_checks
 
       sig do
@@ -55,83 +36,62 @@ module Increase
           account_id: String,
           name: String,
           inbound_ach: Increase::AccountNumberCreateParams::InboundACH::OrHash,
-          inbound_checks:
-            Increase::AccountNumberCreateParams::InboundChecks::OrHash,
+          inbound_checks: Increase::AccountNumberCreateParams::InboundChecks::OrHash,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Account the Account Number should belong to.
-        account_id:,
+      account_id:,
         # The name you choose for the Account Number.
-        name:,
+      name:,
         # Options related to how this Account Number should handle inbound ACH transfers.
-        inbound_ach: nil,
+      inbound_ach: nil,
         # Options related to how this Account Number should handle inbound check
-        # withdrawals.
-        inbound_checks: nil,
+      # withdrawals.
+      inbound_checks: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            name: String,
-            inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
-            inbound_checks: Increase::AccountNumberCreateParams::InboundChecks,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              name: String,
+              inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
+              inbound_checks: Increase::AccountNumberCreateParams::InboundChecks,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class InboundACH < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::AccountNumberCreateParams::InboundACH,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::AccountNumberCreateParams::InboundACH, Increase::Internal::AnyHash) }
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active. If
         # you do not specify this field, the default is `allowed`.
-        sig do
-          returns(
-            Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
-          )
-        end
+        sig { returns(Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol) }
         attr_accessor :debit_status
 
         # Options related to how this Account Number should handle inbound ACH transfers.
         sig do
-          params(
-            debit_status:
-              Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
-          ).returns(T.attached_class)
+          params(debit_status: Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol)
+            .returns(T.attached_class)
         end
         def self.new(
           # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-          # will be declined if this is `allowed` but the Account Number is not active. If
-          # you do not specify this field, the default is `allowed`.
-          debit_status:
-        )
-        end
+        # will be declined if this is `allowed` but the Account Number is not active. If
+        # you do not specify this field, the default is `allowed`.
+        debit_status:
+        ); end
 
-        sig do
-          override.returns(
-            {
-              debit_status:
-                Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({debit_status: Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol}) }
+        def to_hash; end
 
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         # will be declined if this is `allowed` but the Account Number is not active. If
@@ -140,121 +100,61 @@ module Increase
           extend Increase::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::AccountNumberCreateParams::InboundACH::DebitStatus
-              )
-            end
+            T.type_alias { T.all(Symbol, Increase::AccountNumberCreateParams::InboundACH::DebitStatus) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # ACH Debits are allowed.
-          ALLOWED =
-            T.let(
-              :allowed,
-              Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
-            )
+          ALLOWED = T.let(:allowed, Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
 
           # ACH Debits are blocked.
-          BLOCKED =
-            T.let(
-              :blocked,
-              Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
-            )
+          BLOCKED = T.let(:blocked, Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::AccountNumberCreateParams::InboundACH::DebitStatus::TaggedSymbol]) }
+          def self.values; end
         end
       end
 
       class InboundChecks < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::AccountNumberCreateParams::InboundChecks,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::AccountNumberCreateParams::InboundChecks, Increase::Internal::AnyHash) }
 
         # How Increase should process checks with this account number printed on them. If
         # you do not specify this field, the default is `check_transfers_only`.
-        sig do
-          returns(
-            Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
-          )
-        end
+        sig { returns(Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol) }
         attr_accessor :status
 
         # Options related to how this Account Number should handle inbound check
         # withdrawals.
         sig do
-          params(
-            status:
-              Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
-          ).returns(T.attached_class)
+          params(status: Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol)
+            .returns(T.attached_class)
         end
         def self.new(
           # How Increase should process checks with this account number printed on them. If
-          # you do not specify this field, the default is `check_transfers_only`.
-          status:
-        )
-        end
+        # you do not specify this field, the default is `check_transfers_only`.
+        status:
+        ); end
 
-        sig do
-          override.returns(
-            {
-              status:
-                Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({status: Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol}) }
+        def to_hash; end
 
         # How Increase should process checks with this account number printed on them. If
         # you do not specify this field, the default is `check_transfers_only`.
         module Status
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                Increase::AccountNumberCreateParams::InboundChecks::Status
-              )
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::AccountNumberCreateParams::InboundChecks::Status) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
-          ALLOWED =
-            T.let(
-              :allowed,
-              Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
-            )
+          ALLOWED = T.let(:allowed, Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol)
 
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY =
-            T.let(
-              :check_transfers_only,
-              Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
-            )
+            T.let(:check_transfers_only, Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[
-                Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::AccountNumberCreateParams::InboundChecks::Status::TaggedSymbol]) }
+          def self.values; end
         end
       end
     end

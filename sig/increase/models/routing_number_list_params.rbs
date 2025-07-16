@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type routing_number_list_params =
-      { routing_number: String, cursor: String, limit: Integer }
-      & Increase::Internal::Type::request_parameters
+    type routing_number_list_params = ({routing_number: String, cursor: String, limit: Integer} & Increase::Internal::Type::request_parameters)
 
     class RoutingNumberListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -18,19 +16,9 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize: (
-        routing_number: String,
-        ?cursor: String,
-        ?limit: Integer,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (routing_number: String, ?cursor: String, ?limit: Integer, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
-        routing_number: String,
-        cursor: String,
-        limit: Integer,
-        request_options: Increase::RequestOptions
-      }
+      def to_hash: () -> {routing_number: String, cursor: String, limit: Integer, request_options: Increase::RequestOptions}
     end
   end
 end

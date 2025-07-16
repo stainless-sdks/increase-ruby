@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardRefundCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::CardRefundCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier for the Transaction to refund. The Transaction's source must have
         # a category of card_settlement.
@@ -21,29 +16,17 @@ module Increase
         attr_accessor :transaction_id
 
         sig do
-          params(
-            transaction_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          params(transaction_id: String, request_options: Increase::RequestOptions::OrHash).returns(T.attached_class)
         end
         def self.new(
           # The identifier for the Transaction to refund. The Transaction's source must have
-          # a category of card_settlement.
-          transaction_id:,
+        # a category of card_settlement.
+        transaction_id:,
           request_options: {}
-        )
-        end
+        ); end
 
-        sig do
-          override.returns(
-            {
-              transaction_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({transaction_id: String, request_options: Increase::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

@@ -64,7 +64,9 @@ module Increase
         #
         # @return [String]
         def inspect(depth: 0)
+          # rubocop:disable Layout/LineLength
           super()
+          # rubocop:enable Layout/LineLength
         end
 
         # rubocop:enable Lint/UnusedMethodArgument
@@ -106,7 +108,7 @@ module Increase
           def new_coerce_state(translate_names: true)
             {
               translate_names: translate_names,
-              strictness: true,
+              strictness: true, 
               exactness: {yes: 0, no: 0, maybe: 0},
               error: nil,
               branched: 0
@@ -158,6 +160,7 @@ module Increase
           #
           # @return [Object]
           def coerce(target, value, state: Increase::Internal::Type::Converter.new_coerce_state)
+            # rubocop:disable Lint/SuppressedException
             # rubocop:disable Metrics/BlockNesting
             exactness = state.fetch(:exactness)
 
@@ -239,6 +242,7 @@ module Increase
             exactness[:no] += 1
             value
             # rubocop:enable Metrics/BlockNesting
+            # rubocop:enable Lint/SuppressedException
           end
 
           # @api private

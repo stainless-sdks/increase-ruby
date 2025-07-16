@@ -188,8 +188,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  async
   increase!
+  async
   minitest
   minitest-focus
   minitest-hooks

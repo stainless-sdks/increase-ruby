@@ -13,12 +13,10 @@ module Increase
         abstract!
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def self.===(other)
-        end
+        def self.===(other); end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def self.==(other)
-        end
+        def self.==(other); end
 
         class << self
           # @api private
@@ -26,31 +24,22 @@ module Increase
           # No coercion needed for Unknown type.
           sig do
             override
-              .params(
-                value: T.anything,
-                state: Increase::Internal::Type::Converter::CoerceState
-              )
+              .params(value: T.anything, state: Increase::Internal::Type::Converter::CoerceState)
               .returns(T.anything)
           end
-          def coerce(value, state:)
-          end
+          def coerce(value, state:); end
 
           # @api private
           sig do
             override
-              .params(
-                value: T.anything,
-                state: Increase::Internal::Type::Converter::DumpState
-              )
+              .params(value: T.anything, state: Increase::Internal::Type::Converter::DumpState)
               .returns(T.anything)
           end
-          def dump(value, state:)
-          end
+          def dump(value, state:); end
 
           # @api private
           sig { returns(T.anything) }
-          def to_sorbet_type
-          end
+          def to_sorbet_type; end
         end
       end
     end

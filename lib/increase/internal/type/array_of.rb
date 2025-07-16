@@ -107,13 +107,7 @@ module Increase
         # @return [Array<Object>, Object]
         def dump(value, state:)
           target = item_type
-          if value.is_a?(Array)
-            value.map do
-              Increase::Internal::Type::Converter.dump(target, _1, state: state)
-            end
-          else
-            super
-          end
+          value.is_a?(Array) ? value.map { Increase::Internal::Type::Converter.dump(target, _1, state: state) } : super(value, state: state)
         end
 
         # @api private
@@ -157,9 +151,11 @@ module Increase
         #
         # @return [String]
         def inspect(depth: 0)
+          # rubocop:disable Layout/LineLength
           items = Increase::Internal::Type::Converter.inspect(item_type, depth: depth.succ)
 
-          "#{self.class}[#{[items, nilable? ? 'nil' : nil].compact.join(' | ')}]"
+          "#{self.class}[#{[items, nilable? ? "nil" : nil].compact.join(' | ')}]"
+          # rubocop:enable Layout/LineLength
         end
       end
     end

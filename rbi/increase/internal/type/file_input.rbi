@@ -16,12 +16,10 @@ module Increase
         abstract!
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def self.===(other)
-        end
+        def self.===(other); end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def self.==(other)
-        end
+        def self.==(other); end
 
         class << self
           # @api private
@@ -33,8 +31,7 @@ module Increase
               )
               .returns(T.any(StringIO, T.anything))
           end
-          def coerce(value, state:)
-          end
+          def coerce(value, state:); end
 
           # @api private
           sig do
@@ -45,13 +42,11 @@ module Increase
               )
               .returns(T.any(Pathname, StringIO, IO, String, T.anything))
           end
-          def dump(value, state:)
-          end
+          def dump(value, state:); end
 
           # @api private
           sig { returns(T.anything) }
-          def to_sorbet_type
-          end
+          def to_sorbet_type; end
         end
       end
     end

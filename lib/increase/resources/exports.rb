@@ -33,13 +33,7 @@ module Increase
       # @see Increase::Models::ExportCreateParams
       def create(params)
         parsed, options = Increase::ExportCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "exports",
-          body: parsed,
-          model: Increase::Export,
-          options: options
-        )
+        @client.request(method: :post, path: "exports", body: parsed, model: Increase::Export, options: options)
       end
 
       # Retrieve an Export

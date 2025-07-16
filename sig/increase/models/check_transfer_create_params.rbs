@@ -1,17 +1,15 @@
 module Increase
   module Models
-    type check_transfer_create_params =
-      {
-        account_id: String,
-        amount: Integer,
-        fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
-        source_account_number_id: String,
-        check_number: String,
-        physical_check: Increase::CheckTransferCreateParams::PhysicalCheck,
-        require_approval: bool,
-        third_party: Increase::CheckTransferCreateParams::ThirdParty
-      }
-      & Increase::Internal::Type::request_parameters
+    type check_transfer_create_params = ({
+      account_id: String,
+      amount: Integer,
+      fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
+      source_account_number_id: String,
+      check_number: String,
+      physical_check: Increase::CheckTransferCreateParams::PhysicalCheck,
+      require_approval: bool,
+      third_party: Increase::CheckTransferCreateParams::ThirdParty
+    } & Increase::Internal::Type::request_parameters)
 
     class CheckTransferCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -31,9 +29,7 @@ module Increase
 
       attr_reader physical_check: Increase::CheckTransferCreateParams::PhysicalCheck?
 
-      def physical_check=: (
-        Increase::CheckTransferCreateParams::PhysicalCheck
-      ) -> Increase::CheckTransferCreateParams::PhysicalCheck
+      def physical_check=: (Increase::CheckTransferCreateParams::PhysicalCheck) -> Increase::CheckTransferCreateParams::PhysicalCheck
 
       attr_reader require_approval: bool?
 
@@ -41,23 +37,11 @@ module Increase
 
       attr_reader third_party: Increase::CheckTransferCreateParams::ThirdParty?
 
-      def third_party=: (
-        Increase::CheckTransferCreateParams::ThirdParty
-      ) -> Increase::CheckTransferCreateParams::ThirdParty
+      def third_party=: (Increase::CheckTransferCreateParams::ThirdParty) -> Increase::CheckTransferCreateParams::ThirdParty
 
-      def initialize: (
-        account_id: String,
-        amount: Integer,
-        fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
-        source_account_number_id: String,
-        ?check_number: String,
-        ?physical_check: Increase::CheckTransferCreateParams::PhysicalCheck,
-        ?require_approval: bool,
-        ?third_party: Increase::CheckTransferCreateParams::ThirdParty,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, amount: Integer, fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method, source_account_number_id: String, ?check_number: String, ?physical_check: Increase::CheckTransferCreateParams::PhysicalCheck, ?require_approval: bool, ?third_party: Increase::CheckTransferCreateParams::ThirdParty, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         amount: Integer,
         fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
@@ -69,7 +53,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type fulfillment_method = :physical_check | :third_party
+      type fulfillment_method = (:physical_check | :third_party)
 
       module FulfillmentMethod
         extend Increase::Internal::Type::Enum
@@ -80,21 +64,20 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY: :third_party
 
-        def self?.values: -> ::Array[Increase::Models::CheckTransferCreateParams::fulfillment_method]
+        def self?.values: () -> ::Array[Increase::Models::CheckTransferCreateParams::fulfillment_method]
       end
 
-      type physical_check =
-        {
-          mailing_address: Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-          memo: String,
-          recipient_name: String,
-          attachment_file_id: String,
-          note: String,
-          payer: ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer],
-          return_address: Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-          shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method,
-          signature_text: String
-        }
+      type physical_check = {
+        mailing_address: Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+        memo: String,
+        recipient_name: String,
+        attachment_file_id: String,
+        note: String,
+        payer: ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer],
+        return_address: Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+        shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method,
+        signature_text: String
+      }
 
       class PhysicalCheck < Increase::Internal::Type::BaseModel
         attr_accessor mailing_address: Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress
@@ -113,39 +96,23 @@ module Increase
 
         attr_reader payer: ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer]?
 
-        def payer=: (
-          ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer]
-        ) -> ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer]
+        def payer=: (::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer]) -> ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer]
 
         attr_reader return_address: Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress?
 
-        def return_address=: (
-          Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
-        ) -> Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
+        def return_address=: (Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress) -> Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
 
         attr_reader shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method?
 
-        def shipping_method=: (
-          Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method
-        ) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method
+        def shipping_method=: (Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method
 
         attr_reader signature_text: String?
 
         def signature_text=: (String) -> String
 
-        def initialize: (
-          mailing_address: Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-          memo: String,
-          recipient_name: String,
-          ?attachment_file_id: String,
-          ?note: String,
-          ?payer: ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer],
-          ?return_address: Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-          ?shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method,
-          ?signature_text: String
-        ) -> void
+        def initialize: (mailing_address: Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress, memo: String, recipient_name: String, ?attachment_file_id: String, ?note: String, ?payer: ::Array[Increase::CheckTransferCreateParams::PhysicalCheck::Payer], ?return_address: Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, ?shipping_method: Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method, ?signature_text: String) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           mailing_address: Increase::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
           memo: String,
           recipient_name: String,
@@ -157,14 +124,7 @@ module Increase
           signature_text: String
         }
 
-        type mailing_address =
-          {
-            city: String,
-            :line1 => String,
-            postal_code: String,
-            state: String,
-            :line2 => String
-          }
+        type mailing_address = {city: String, line1: String, postal_code: String, state: String, line2: String}
 
         class MailingAddress < Increase::Internal::Type::BaseModel
           attr_accessor city: String
@@ -179,42 +139,22 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize: (
-            city: String,
-            line1: String,
-            postal_code: String,
-            state: String,
-            ?line2: String
-          ) -> void
+          def initialize: (city: String, line1: String, postal_code: String, state: String, ?line2: String) -> void
 
-          def to_hash: -> {
-            city: String,
-            :line1 => String,
-            postal_code: String,
-            state: String,
-            :line2 => String
-          }
+          def to_hash: () -> {city: String, line1: String, postal_code: String, state: String, line2: String}
         end
 
-        type payer = { contents: String }
+        type payer = {contents: String}
 
         class Payer < Increase::Internal::Type::BaseModel
           attr_accessor contents: String
 
           def initialize: (contents: String) -> void
 
-          def to_hash: -> { contents: String }
+          def to_hash: () -> {contents: String}
         end
 
-        type return_address =
-          {
-            city: String,
-            :line1 => String,
-            name: String,
-            postal_code: String,
-            state: String,
-            :line2 => String
-          }
+        type return_address = {city: String, line1: String, name: String, postal_code: String, state: String, line2: String}
 
         class ReturnAddress < Increase::Internal::Type::BaseModel
           attr_accessor city: String
@@ -231,26 +171,12 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize: (
-            city: String,
-            line1: String,
-            name: String,
-            postal_code: String,
-            state: String,
-            ?line2: String
-          ) -> void
+          def initialize: (city: String, line1: String, name: String, postal_code: String, state: String, ?line2: String) -> void
 
-          def to_hash: -> {
-            city: String,
-            :line1 => String,
-            name: String,
-            postal_code: String,
-            state: String,
-            :line2 => String
-          }
+          def to_hash: () -> {city: String, line1: String, name: String, postal_code: String, state: String, line2: String}
         end
 
-        type shipping_method = :usps_first_class | :fedex_overnight
+        type shipping_method = (:usps_first_class | :fedex_overnight)
 
         module ShippingMethod
           extend Increase::Internal::Type::Enum
@@ -261,11 +187,11 @@ module Increase
           # FedEx Overnight
           FEDEX_OVERNIGHT: :fedex_overnight
 
-          def self?.values: -> ::Array[Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method]
+          def self?.values: () -> ::Array[Increase::Models::CheckTransferCreateParams::PhysicalCheck::shipping_method]
         end
       end
 
-      type third_party = { recipient_name: String }
+      type third_party = {recipient_name: String}
 
       class ThirdParty < Increase::Internal::Type::BaseModel
         attr_reader recipient_name: String?
@@ -274,7 +200,7 @@ module Increase
 
         def initialize: (?recipient_name: String) -> void
 
-        def to_hash: -> { recipient_name: String }
+        def to_hash: () -> {recipient_name: String}
       end
     end
   end

@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type card_create_params =
-      {
-        account_id: String,
-        billing_address: Increase::CardCreateParams::BillingAddress,
-        description: String,
-        digital_wallet: Increase::CardCreateParams::DigitalWallet,
-        entity_id: String
-      }
-      & Increase::Internal::Type::request_parameters
+    type card_create_params = ({
+      account_id: String,
+      billing_address: Increase::CardCreateParams::BillingAddress,
+      description: String,
+      digital_wallet: Increase::CardCreateParams::DigitalWallet,
+      entity_id: String
+    } & Increase::Internal::Type::request_parameters)
 
     class CardCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -18,9 +16,7 @@ module Increase
 
       attr_reader billing_address: Increase::CardCreateParams::BillingAddress?
 
-      def billing_address=: (
-        Increase::CardCreateParams::BillingAddress
-      ) -> Increase::CardCreateParams::BillingAddress
+      def billing_address=: (Increase::CardCreateParams::BillingAddress) -> Increase::CardCreateParams::BillingAddress
 
       attr_reader description: String?
 
@@ -28,24 +24,15 @@ module Increase
 
       attr_reader digital_wallet: Increase::CardCreateParams::DigitalWallet?
 
-      def digital_wallet=: (
-        Increase::CardCreateParams::DigitalWallet
-      ) -> Increase::CardCreateParams::DigitalWallet
+      def digital_wallet=: (Increase::CardCreateParams::DigitalWallet) -> Increase::CardCreateParams::DigitalWallet
 
       attr_reader entity_id: String?
 
       def entity_id=: (String) -> String
 
-      def initialize: (
-        account_id: String,
-        ?billing_address: Increase::CardCreateParams::BillingAddress,
-        ?description: String,
-        ?digital_wallet: Increase::CardCreateParams::DigitalWallet,
-        ?entity_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, ?billing_address: Increase::CardCreateParams::BillingAddress, ?description: String, ?digital_wallet: Increase::CardCreateParams::DigitalWallet, ?entity_id: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         billing_address: Increase::CardCreateParams::BillingAddress,
         description: String,
@@ -54,14 +41,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type billing_address =
-        {
-          city: String,
-          :line1 => String,
-          postal_code: String,
-          state: String,
-          :line2 => String
-        }
+      type billing_address = {city: String, line1: String, postal_code: String, state: String, line2: String}
 
       class BillingAddress < Increase::Internal::Type::BaseModel
         attr_accessor city: String
@@ -76,25 +56,12 @@ module Increase
 
         def line2=: (String) -> String
 
-        def initialize: (
-          city: String,
-          line1: String,
-          postal_code: String,
-          state: String,
-          ?line2: String
-        ) -> void
+        def initialize: (city: String, line1: String, postal_code: String, state: String, ?line2: String) -> void
 
-        def to_hash: -> {
-          city: String,
-          :line1 => String,
-          postal_code: String,
-          state: String,
-          :line2 => String
-        }
+        def to_hash: () -> {city: String, line1: String, postal_code: String, state: String, line2: String}
       end
 
-      type digital_wallet =
-        { digital_card_profile_id: String, email: String, phone: String }
+      type digital_wallet = {digital_card_profile_id: String, email: String, phone: String}
 
       class DigitalWallet < Increase::Internal::Type::BaseModel
         attr_reader digital_card_profile_id: String?
@@ -109,17 +76,9 @@ module Increase
 
         def phone=: (String) -> String
 
-        def initialize: (
-          ?digital_card_profile_id: String,
-          ?email: String,
-          ?phone: String
-        ) -> void
+        def initialize: (?digital_card_profile_id: String, ?email: String, ?phone: String) -> void
 
-        def to_hash: -> {
-          digital_card_profile_id: String,
-          email: String,
-          phone: String
-        }
+        def to_hash: () -> {digital_card_profile_id: String, email: String, phone: String}
       end
     end
   end

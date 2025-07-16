@@ -3,8 +3,7 @@
 module Increase
   module Models
     class FileLink < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias { T.any(Increase::FileLink, Increase::Internal::AnyHash) }
+      OrHash = T.type_alias { T.any(Increase::FileLink, Increase::Internal::AnyHash) }
 
       # The File Link identifier.
       sig { returns(String) }
@@ -51,48 +50,48 @@ module Increase
           idempotency_key: T.nilable(String),
           type: Increase::FileLink::Type::OrSymbol,
           unauthenticated_url: String
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The File Link identifier.
-        id:,
+      id:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-        # Link was created.
-        created_at:,
+      # Link was created.
+      created_at:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the File
-        # Link will expire.
-        expires_at:,
+      # Link will expire.
+      expires_at:,
         # The identifier of the File the File Link points to.
-        file_id:,
+      file_id:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # A constant representing the object's type. For this resource it will always be
-        # `file_link`.
-        type:,
+      # `file_link`.
+      type:,
         # A URL where the File can be downloaded. The URL will expire after the
-        # `expires_at` time. This URL is unauthenticated and can be used to download the
-        # File without an Increase API key.
-        unauthenticated_url:
-      )
-      end
+      # `expires_at` time. This URL is unauthenticated and can be used to download the
+      # File without an Increase API key.
+      unauthenticated_url:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            expires_at: Time,
-            file_id: String,
-            idempotency_key: T.nilable(String),
-            type: Increase::FileLink::Type::TaggedSymbol,
-            unauthenticated_url: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              expires_at: Time,
+              file_id: String,
+              idempotency_key: T.nilable(String),
+              type: Increase::FileLink::Type::TaggedSymbol,
+              unauthenticated_url: String
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       # `file_link`.
@@ -104,11 +103,8 @@ module Increase
 
         FILE_LINK = T.let(:file_link, Increase::FileLink::Type::TaggedSymbol)
 
-        sig do
-          override.returns(T::Array[Increase::FileLink::Type::TaggedSymbol])
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::FileLink::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

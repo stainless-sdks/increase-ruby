@@ -1,27 +1,25 @@
 module Increase
   module Models
     module Simulations
-      type card_authorization_create_params =
-        {
-          amount: Integer,
-          authenticated_card_payment_id: String,
-          card_id: String,
-          decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
-          digital_wallet_token_id: String,
-          direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
-          event_subscription_id: String,
-          merchant_acceptor_id: String,
-          merchant_category_code: String,
-          merchant_city: String,
-          merchant_country: String,
-          merchant_descriptor: String,
-          merchant_state: String,
-          network_details: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-          network_risk_score: Integer,
-          physical_card_id: String,
-          terminal_id: String
-        }
-        & Increase::Internal::Type::request_parameters
+      type card_authorization_create_params = ({
+        amount: Integer,
+        authenticated_card_payment_id: String,
+        card_id: String,
+        decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
+        digital_wallet_token_id: String,
+        direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
+        event_subscription_id: String,
+        merchant_acceptor_id: String,
+        merchant_category_code: String,
+        merchant_city: String,
+        merchant_country: String,
+        merchant_descriptor: String,
+        merchant_state: String,
+        network_details: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+        network_risk_score: Integer,
+        physical_card_id: String,
+        terminal_id: String
+      } & Increase::Internal::Type::request_parameters)
 
       class CardAuthorizationCreateParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -39,9 +37,7 @@ module Increase
 
         attr_reader decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason?
 
-        def decline_reason=: (
-          Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason
-        ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason
+        def decline_reason=: (Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason) -> Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason
 
         attr_reader digital_wallet_token_id: String?
 
@@ -49,9 +45,7 @@ module Increase
 
         attr_reader direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction?
 
-        def direction=: (
-          Increase::Models::Simulations::CardAuthorizationCreateParams::direction
-        ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::direction
+        def direction=: (Increase::Models::Simulations::CardAuthorizationCreateParams::direction) -> Increase::Models::Simulations::CardAuthorizationCreateParams::direction
 
         attr_reader event_subscription_id: String?
 
@@ -83,9 +77,7 @@ module Increase
 
         attr_reader network_details: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails?
 
-        def network_details=: (
-          Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails
-        ) -> Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails
+        def network_details=: (Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails) -> Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails
 
         attr_reader network_risk_score: Integer?
 
@@ -99,28 +91,9 @@ module Increase
 
         def terminal_id=: (String) -> String
 
-        def initialize: (
-          amount: Integer,
-          ?authenticated_card_payment_id: String,
-          ?card_id: String,
-          ?decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason,
-          ?digital_wallet_token_id: String,
-          ?direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction,
-          ?event_subscription_id: String,
-          ?merchant_acceptor_id: String,
-          ?merchant_category_code: String,
-          ?merchant_city: String,
-          ?merchant_country: String,
-          ?merchant_descriptor: String,
-          ?merchant_state: String,
-          ?network_details: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-          ?network_risk_score: Integer,
-          ?physical_card_id: String,
-          ?terminal_id: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (amount: Integer, ?authenticated_card_payment_id: String, ?card_id: String, ?decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason, ?digital_wallet_token_id: String, ?direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction, ?event_subscription_id: String, ?merchant_acceptor_id: String, ?merchant_category_code: String, ?merchant_city: String, ?merchant_country: String, ?merchant_descriptor: String, ?merchant_state: String, ?network_details: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails, ?network_risk_score: Integer, ?physical_card_id: String, ?terminal_id: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           amount: Integer,
           authenticated_card_payment_id: String,
           card_id: String,
@@ -141,27 +114,7 @@ module Increase
           request_options: Increase::RequestOptions
         }
 
-        type decline_reason =
-          :account_closed
-          | :card_not_active
-          | :card_canceled
-          | :physical_card_not_active
-          | :entity_not_active
-          | :group_locked
-          | :insufficient_funds
-          | :cvv2_mismatch
-          | :pin_mismatch
-          | :card_expiration_mismatch
-          | :transaction_not_allowed
-          | :breaches_limit
-          | :webhook_declined
-          | :webhook_timed_out
-          | :declined_by_stand_in_processing
-          | :invalid_physical_card
-          | :missing_original_authorization
-          | :failed_3ds_authentication
-          | :suspected_card_testing
-          | :suspected_fraud
+        type decline_reason = (:account_closed | :card_not_active | :card_canceled | :physical_card_not_active | :entity_not_active | :group_locked | :insufficient_funds | :cvv2_mismatch | :pin_mismatch | :card_expiration_mismatch | :transaction_not_allowed | :breaches_limit | :webhook_declined | :webhook_timed_out | :declined_by_stand_in_processing | :invalid_physical_card | :missing_original_authorization | :failed_3ds_authentication | :suspected_card_testing | :suspected_fraud)
 
         module DeclineReason
           extend Increase::Internal::Type::Enum
@@ -226,10 +179,10 @@ module Increase
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD: :suspected_fraud
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason]
+          def self?.values: () -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason]
         end
 
-        type direction = :settlement | :refund
+        type direction = (:settlement | :refund)
 
         module Direction
           extend Increase::Internal::Type::Enum
@@ -240,53 +193,34 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND: :refund
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::direction]
+          def self?.values: () -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::direction]
         end
 
-        type network_details =
-          {
-            visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
-          }
+        type network_details = {visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa}
 
         class NetworkDetails < Increase::Internal::Type::BaseModel
           attr_accessor visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
 
-          def initialize: (
-            visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
-          ) -> void
+          def initialize: (visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa) -> void
 
-          def to_hash: -> {
-            visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+          def to_hash: () -> {visa: Increase::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa}
+
+          type visa = {
+            stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
           }
-
-          type visa =
-            {
-              stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
-            }
 
           class Visa < Increase::Internal::Type::BaseModel
             attr_reader stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason?
 
-            def stand_in_processing_reason=: (
-              Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
-            ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
+            def stand_in_processing_reason=: (Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason) -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
 
-            def initialize: (
-              ?stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
-            ) -> void
+            def initialize: (?stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason) -> void
 
-            def to_hash: -> {
+            def to_hash: () -> {
               stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
             }
 
-            type stand_in_processing_reason =
-              :issuer_error
-              | :invalid_physical_card
-              | :invalid_cardholder_authentication_verification_value
-              | :internal_visa_error
-              | :merchant_transaction_advisory_service_authentication_required
-              | :payment_fraud_disruption_acquirer_block
-              | :other
+            type stand_in_processing_reason = (:issuer_error | :invalid_physical_card | :invalid_cardholder_authentication_verification_value | :internal_visa_error | :merchant_transaction_advisory_service_authentication_required | :payment_fraud_disruption_acquirer_block | :other)
 
             module StandInProcessingReason
               extend Increase::Internal::Type::Enum
@@ -312,7 +246,9 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER: :other
 
-              def self?.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason]
+              def self?.values: () -> ::Array[
+                Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
+              ]
             end
           end
         end

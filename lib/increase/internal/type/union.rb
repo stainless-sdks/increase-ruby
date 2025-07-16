@@ -105,7 +105,9 @@ module Increase
         #
         # @return [Boolean]
         def ==(other)
+          # rubocop:disable Layout/LineLength
           Increase::Internal::Type::Union === other && other.derefed_variants == derefed_variants
+          # rubocop:enable Layout/LineLength
         end
 
         # @api public
@@ -137,41 +139,41 @@ module Increase
         # @return [Object]
         def coerce(value, state:)
           if (target = resolve_variant(value))
-            return Increase::Internal::Type::Converter.coerce(target, value, state: state)
-          end
-
-          strictness = state.fetch(:strictness)
-          exactness = state.fetch(:exactness)
-
-          alternatives = []
-          known_variants.each do |_, variant_fn|
-            target = variant_fn.call
-            exact = state[:exactness] = {yes: 0, no: 0, maybe: 0}
-            state[:branched] += 1
-
-            coerced = Increase::Internal::Type::Converter.coerce(target, value, state: state)
-            yes, no, maybe = exact.values
-            if (no + maybe).zero? || (!strictness && yes.positive?)
-              exact.each { exactness[_1] += _2 }
-              state[:exactness] = exactness
-              return coerced
-            elsif maybe.positive?
-              alternatives << [[-yes, -maybe, no], exact, coerced]
+              return Increase::Internal::Type::Converter.coerce(target, value, state: state)
             end
-          end
 
-          case alternatives.sort_by!(&:first)
-          in []
-            exactness[:no] += 1
-            state[:error] = ArgumentError.new("no matching variant for #{value.inspect}")
-            value
-          in [[_, exact, coerced], *]
-            exact.each { exactness[_1] += _2 }
-            coerced
-          end
-            .tap { state[:exactness] = exactness }
-        ensure
-          state[:strictness] = strictness
+            strictness = state.fetch(:strictness)
+            exactness = state.fetch(:exactness)
+
+            alternatives = []
+            known_variants.each do |_, variant_fn|
+              target = variant_fn.call
+              exact = state[:exactness] = {yes: 0, no: 0, maybe: 0}
+              state[:branched] += 1
+
+              coerced = Increase::Internal::Type::Converter.coerce(target, value, state: state)
+              yes, no, maybe = exact.values
+              if (no + maybe).zero? || (!strictness && yes.positive?)
+                exact.each { exactness[_1] += _2 }
+                state[:exactness] = exactness
+                return coerced
+              elsif maybe.positive?
+                alternatives << [[-yes, -maybe, no], exact, coerced]
+              end
+            end
+
+            case alternatives.sort_by!(&:first)
+            in []
+              exactness[:no] += 1
+              state[:error] = ArgumentError.new("no matching variant for #{value.inspect}")
+              value
+            in [[_, exact, coerced], *]
+              exact.each { exactness[_1] += _2 }
+              coerced
+            end
+              .tap { state[:exactness] = exactness }
+          ensure
+            state[:strictness] = strictness
         end
 
         # @api private
@@ -193,7 +195,7 @@ module Increase
             return Increase::Internal::Type::Converter.dump(target, value, state: state) if target === value
           end
 
-          super
+          super(value, state: state)
         end
 
         # @api private
@@ -220,14 +222,16 @@ module Increase
         #
         # @return [String]
         def inspect(depth: 0)
+          # rubocop:disable Layout/LineLength
           if depth.positive?
             return is_a?(Module) ? super() : self.class.name
           end
 
-          members = variants.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
+          members = variants.map { Increase::Internal::Type::Converter.inspect(_1, depth: depth.succ)  }
           prefix = is_a?(Module) ? name : self.class.name
 
           "#{prefix}[#{members.join(' | ')}]"
+          # rubocop:enable Layout/LineLength
         end
       end
     end

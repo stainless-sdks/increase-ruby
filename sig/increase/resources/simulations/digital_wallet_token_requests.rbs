@@ -2,10 +2,7 @@ module Increase
   module Resources
     class Simulations
       class DigitalWalletTokenRequests
-        def create: (
-          card_id: String,
-          ?request_options: Increase::request_opts
-        ) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
+        def create: (card_id: String, ?request_options: Increase::request_opts) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
 
         def initialize: (client: Increase::Client) -> void
       end

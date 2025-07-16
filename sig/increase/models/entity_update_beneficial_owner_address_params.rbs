@@ -1,11 +1,6 @@
 module Increase
   module Models
-    type entity_update_beneficial_owner_address_params =
-      {
-        address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
-        beneficial_owner_id: String
-      }
-      & Increase::Internal::Type::request_parameters
+    type entity_update_beneficial_owner_address_params = ({address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address, beneficial_owner_id: String} & Increase::Internal::Type::request_parameters)
 
     class EntityUpdateBeneficialOwnerAddressParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -15,27 +10,15 @@ module Increase
 
       attr_accessor beneficial_owner_id: String
 
-      def initialize: (
-        address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
-        beneficial_owner_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address, beneficial_owner_id: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         address: Increase::EntityUpdateBeneficialOwnerAddressParams::Address,
         beneficial_owner_id: String,
         request_options: Increase::RequestOptions
       }
 
-      type address =
-        {
-          country: String,
-          :line1 => String,
-          city: String,
-          :line2 => String,
-          state: String,
-          zip: String
-        }
+      type address = {country: String, line1: String, city: String, line2: String, state: String, zip: String}
 
       class Address < Increase::Internal::Type::BaseModel
         attr_accessor country: String
@@ -58,23 +41,9 @@ module Increase
 
         def zip=: (String) -> String
 
-        def initialize: (
-          country: String,
-          line1: String,
-          ?city: String,
-          ?line2: String,
-          ?state: String,
-          ?zip: String
-        ) -> void
+        def initialize: (country: String, line1: String, ?city: String, ?line2: String, ?state: String, ?zip: String) -> void
 
-        def to_hash: -> {
-          country: String,
-          :line1 => String,
-          city: String,
-          :line2 => String,
-          state: String,
-          zip: String
-        }
+        def to_hash: () -> {country: String, line1: String, city: String, line2: String, state: String, zip: String}
       end
     end
   end

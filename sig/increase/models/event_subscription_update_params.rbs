@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type event_subscription_update_params =
-      { status: Increase::Models::EventSubscriptionUpdateParams::status }
-      & Increase::Internal::Type::request_parameters
+    type event_subscription_update_params = ({status: Increase::Models::EventSubscriptionUpdateParams::status} & Increase::Internal::Type::request_parameters)
 
     class EventSubscriptionUpdateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -10,21 +8,13 @@ module Increase
 
       attr_reader status: Increase::Models::EventSubscriptionUpdateParams::status?
 
-      def status=: (
-        Increase::Models::EventSubscriptionUpdateParams::status
-      ) -> Increase::Models::EventSubscriptionUpdateParams::status
+      def status=: (Increase::Models::EventSubscriptionUpdateParams::status) -> Increase::Models::EventSubscriptionUpdateParams::status
 
-      def initialize: (
-        ?status: Increase::Models::EventSubscriptionUpdateParams::status,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?status: Increase::Models::EventSubscriptionUpdateParams::status, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
-        status: Increase::Models::EventSubscriptionUpdateParams::status,
-        request_options: Increase::RequestOptions
-      }
+      def to_hash: () -> {status: Increase::Models::EventSubscriptionUpdateParams::status, request_options: Increase::RequestOptions}
 
-      type status = :active | :disabled | :deleted
+      type status = (:active | :disabled | :deleted)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -38,7 +28,7 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED: :deleted
 
-        def self?.values: -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
+        def self?.values: () -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
       end
     end
   end

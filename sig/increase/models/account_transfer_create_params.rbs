@@ -1,14 +1,6 @@
 module Increase
   module Models
-    type account_transfer_create_params =
-      {
-        account_id: String,
-        amount: Integer,
-        description: String,
-        destination_account_id: String,
-        require_approval: bool
-      }
-      & Increase::Internal::Type::request_parameters
+    type account_transfer_create_params = ({account_id: String, amount: Integer, description: String, destination_account_id: String, require_approval: bool} & Increase::Internal::Type::request_parameters)
 
     class AccountTransferCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -26,16 +18,9 @@ module Increase
 
       def require_approval=: (bool) -> bool
 
-      def initialize: (
-        account_id: String,
-        amount: Integer,
-        description: String,
-        destination_account_id: String,
-        ?require_approval: bool,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, amount: Integer, description: String, destination_account_id: String, ?require_approval: bool, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         amount: Integer,
         description: String,
