@@ -102,15 +102,13 @@ module Increase
       required :created_by, -> { Increase::ACHTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   currency. For ACH transfers this is always equal to `usd`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
       #
       #   @return [Symbol, Increase::Models::ACHTransfer::Currency]
       required :currency, enum: -> { Increase::ACHTransfer::Currency }
 
       # @!attribute destination_account_holder
-      #   The type of entity that owns the account to which the ACH Transfer is being
-      #   sent.
+      #   The type of entity that owns the account to which the ACH Transfer is being sent.
       #
       #   @return [Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder]
       required :destination_account_holder, enum: -> { Increase::ACHTransfer::DestinationAccountHolder }
@@ -349,8 +347,7 @@ module Increase
       # @see Increase::Models::ACHTransfer#addenda
       class Addenda < Increase::Internal::Type::BaseModel
         # @!attribute category
-        #   The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
+        #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::Addenda::Category]
         required :category, enum: -> { Increase::ACHTransfer::Addenda::Category }
@@ -382,8 +379,7 @@ module Increase
         #
         #   @param payment_order_remittance_advice [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil] Structured ASC X12 820 remittance advice records. Please reach out to [support@i
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         # @see Increase::Models::ACHTransfer::Addenda#category
         module Category
@@ -626,8 +622,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For ACH transfers this is always equal to `usd`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
       #
       # @see Increase::Models::ACHTransfer#currency
       module Currency
@@ -655,8 +650,7 @@ module Increase
         #   @return [Array<Symbol>]
       end
 
-      # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      # The type of entity that owns the account to which the ACH Transfer is being sent.
       #
       # @see Increase::Models::ACHTransfer#destination_account_holder
       module DestinationAccountHolder
@@ -721,8 +715,7 @@ module Increase
         required :created_at, Time
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::ACHTransfer::InboundFundsHold::Currency }
@@ -785,8 +778,7 @@ module Increase
         #
         #   @param type [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type] A constant representing the object's type. For this resource it will always be `
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         # @see Increase::Models::ACHTransfer::InboundFundsHold#currency
         module Currency
@@ -858,8 +850,7 @@ module Increase
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         # @!attribute change_code
-        #   The required type of change that is being signaled by the receiving financial
-        #   institution.
+        #   The required type of change that is being signaled by the receiving financial institution.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode]
         required :change_code, enum: -> { Increase::ACHTransfer::NotificationsOfChange::ChangeCode }
@@ -891,8 +882,7 @@ module Increase
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # The required type of change that is being signaled by the receiving financial institution.
         #
         # @see Increase::Models::ACHTransfer::NotificationsOfChange#change_code
         module ChangeCode
@@ -1032,8 +1022,7 @@ module Increase
         required :raw_return_reason_code, String
 
         # @!attribute return_reason_code
-        #   Why the ACH Transfer was returned. This reason code is sent by the receiving
-        #   bank back to Increase.
+        #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode]
         required :return_reason_code, enum: -> { Increase::ACHTransfer::Return::ReturnReasonCode }
@@ -1077,8 +1066,7 @@ module Increase
         #
         #   @param transfer_id [String] The identifier of the ACH Transfer associated with this return.
 
-        # Why the ACH Transfer was returned. This reason code is sent by the receiving
-        # bank back to Increase.
+        # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
         #
         # @see Increase::Models::ACHTransfer::Return#return_reason_code
         module ReturnReasonCode
@@ -1401,9 +1389,7 @@ module Increase
         required :expected_funds_settlement_at, Time
 
         # @!attribute expected_settlement_schedule
-        #   The settlement schedule the transfer is expected to follow. This expectation
-        #   takes into account the `effective_date`, `submitted_at`, and the amount of the
-        #   transfer.
+        #   The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule]
         required :expected_settlement_schedule,
@@ -1445,9 +1431,7 @@ module Increase
         #
         #   @param trace_number [String] A 15 digit number recorded in the Nacha file and transmitted to the receiving ba
 
-        # The settlement schedule the transfer is expected to follow. This expectation
-        # takes into account the `effective_date`, `submitted_at`, and the amount of the
-        # transfer.
+        # The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
         #
         # @see Increase::Models::ACHTransfer::Submission#expected_settlement_schedule
         module ExpectedSettlementSchedule

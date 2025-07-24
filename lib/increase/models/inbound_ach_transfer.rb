@@ -462,8 +462,7 @@ module Increase
         required :foreign_exchange_reference, String, nil?: true
 
         # @!attribute foreign_exchange_reference_indicator
-        #   An instruction of how to interpret the `foreign_exchange_reference` field for
-        #   this Transaction.
+        #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator]
         required :foreign_exchange_reference_indicator,
@@ -516,8 +515,7 @@ module Increase
         required :originating_depository_financial_institution_id, String
 
         # @!attribute originating_depository_financial_institution_id_qualifier
-        #   An instruction of how to interpret the
-        #   `originating_depository_financial_institution_id` field for this Transaction.
+        #   An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier]
         required :originating_depository_financial_institution_id_qualifier,
@@ -649,8 +647,7 @@ module Increase
         required :receiving_depository_financial_institution_id, String
 
         # @!attribute receiving_depository_financial_institution_id_qualifier
-        #   An instruction of how to interpret the
-        #   `receiving_depository_financial_institution_id` field for this Transaction.
+        #   An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
         #
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier]
         required :receiving_depository_financial_institution_id_qualifier,
@@ -756,8 +753,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # An instruction of how to interpret the `foreign_exchange_reference` field for
-        # this Transaction.
+        # An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
         #
         # @see Increase::Models::InboundACHTransfer::InternationalAddenda#foreign_exchange_reference_indicator
         module ForeignExchangeReferenceIndicator
@@ -846,8 +842,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # An instruction of how to interpret the
-        # `originating_depository_financial_institution_id` field for this Transaction.
+        # An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
         #
         # @see Increase::Models::InboundACHTransfer::InternationalAddenda#originating_depository_financial_institution_id_qualifier
         module OriginatingDepositoryFinancialInstitutionIDQualifier
@@ -866,8 +861,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # An instruction of how to interpret the
-        # `receiving_depository_financial_institution_id` field for this Transaction.
+        # An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
         #
         # @see Increase::Models::InboundACHTransfer::InternationalAddenda#receiving_depository_financial_institution_id_qualifier
         module ReceivingDepositoryFinancialInstitutionIDQualifier

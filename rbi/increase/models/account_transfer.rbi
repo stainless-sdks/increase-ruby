@@ -62,8 +62,7 @@ module Increase
       end
       attr_writer :created_by
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      # account currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
       sig { returns(Increase::AccountTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -151,8 +150,7 @@ module Increase
         created_at:,
         # What object created the transfer, either via the API or the dashboard.
         created_by:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-        # account currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
         currency:,
         # The description that will show on the transactions.
         description:,
@@ -518,8 +516,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      # account currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
       module Currency
         extend Increase::Internal::Type::Enum
 

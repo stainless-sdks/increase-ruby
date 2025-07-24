@@ -27,8 +27,7 @@ module Increase
       sig { returns(T.nilable(String)) }
       attr_accessor :oauth_connection_id
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # If specified, this subscription will only receive webhooks for Events with the specified `category`.
       sig do
         returns(
           T.nilable(
@@ -84,8 +83,7 @@ module Increase
         # If specified, this subscription will only receive webhooks for Events associated
         # with this OAuth Connection.
         oauth_connection_id:,
-        # If specified, this subscription will only receive webhooks for Events with the
-        # specified `category`.
+        # If specified, this subscription will only receive webhooks for Events with the specified `category`.
         selected_event_category:,
         # This indicates if we'll send notifications to this subscription.
         status:,
@@ -117,8 +115,7 @@ module Increase
       def to_hash
       end
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # If specified, this subscription will only receive webhooks for Events with the specified `category`.
       module SelectedEventCategory
         extend Increase::Internal::Type::Enum
 

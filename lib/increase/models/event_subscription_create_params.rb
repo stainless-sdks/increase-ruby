@@ -21,8 +21,7 @@ module Increase
       optional :oauth_connection_id, String
 
       # @!attribute selected_event_category
-      #   If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
       #   @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory, nil]
       optional :selected_event_category,
@@ -49,8 +48,7 @@ module Increase
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # If specified, this subscription will only receive webhooks for Events with the specified `category`.
       module SelectedEventCategory
         extend Increase::Internal::Type::Enum
 

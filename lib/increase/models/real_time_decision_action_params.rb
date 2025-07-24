@@ -95,8 +95,7 @@ module Increase
 
       class CardAuthenticationChallenge < Increase::Internal::Type::BaseModel
         # @!attribute result
-        #   Whether the card authentication challenge was successfully delivered to the
-        #   cardholder.
+        #   Whether the card authentication challenge was successfully delivered to the cardholder.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result]
         required :result,
@@ -114,8 +113,7 @@ module Increase
         #
         #   @param result [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result] Whether the card authentication challenge was successfully delivered to the card
 
-        # Whether the card authentication challenge was successfully delivered to the
-        # cardholder.
+        # Whether the card authentication challenge was successfully delivered to the cardholder.
         #
         # @see Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge#result
         module Result
@@ -140,8 +138,7 @@ module Increase
         required :decision, enum: -> { Increase::RealTimeDecisionActionParams::CardAuthorization::Decision }
 
         # @!attribute decline_reason
-        #   The reason the card authorization was declined. This translates to a specific
-        #   decline code that is sent to the card network.
+        #   The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason, nil]
         optional :decline_reason,
@@ -175,8 +172,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # The reason the card authorization was declined. This translates to a specific
-        # decline code that is sent to the card network.
+        # The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
         #
         # @see Increase::Models::RealTimeDecisionActionParams::CardAuthorization#decline_reason
         module DeclineReason

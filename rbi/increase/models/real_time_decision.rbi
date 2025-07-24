@@ -464,8 +464,7 @@ module Increase
         sig { returns(T.nilable(String)) }
         attr_accessor :digital_wallet_token_id
 
-        # The direction describes the direction the funds will move, either from the
-        # cardholder to the merchant or from the merchant to the cardholder.
+        # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         sig do
           returns(
             Increase::RealTimeDecision::CardAuthorization::Direction::TaggedSymbol
@@ -555,8 +554,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :presentment_currency
 
-        # The processing category describes the intent behind the authorization, such as
-        # whether it was used for bill payments or an automatic fuel dispenser.
+        # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
         sig do
           returns(
             Increase::RealTimeDecision::CardAuthorization::ProcessingCategory::TaggedSymbol
@@ -661,8 +659,7 @@ module Increase
           # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
           # purchase), the identifier of the token that was used.
           digital_wallet_token_id:,
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           direction:,
           # The merchant identifier (commonly abbreviated as MID) of the merchant the card
           # is transacting with.
@@ -698,8 +695,7 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
           # user sees at the time of purchase.
           presentment_currency:,
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           processing_category:,
           # Fields specific to the type of request, such as an incremental authorization.
           request_details:,
@@ -801,8 +797,7 @@ module Increase
           end
         end
 
-        # The direction describes the direction the funds will move, either from the
-        # cardholder to the merchant or from the merchant to the cardholder.
+        # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         module Direction
           extend Increase::Internal::Type::Enum
 
@@ -951,9 +946,7 @@ module Increase
                 )
               end
 
-            # For electronic commerce transactions, this identifies the level of security used
-            # in obtaining the customer's payment credential. For mail or telephone order
-            # transactions, identifies the type of mail or telephone order.
+            # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             sig do
               returns(
                 T.nilable(
@@ -963,8 +956,7 @@ module Increase
             end
             attr_accessor :electronic_commerce_indicator
 
-            # The method used to enter the cardholder's primary account number and card
-            # expiration date.
+            # The method used to enter the cardholder's primary account number and card expiration date.
             sig do
               returns(
                 T.nilable(
@@ -974,8 +966,7 @@ module Increase
             end
             attr_accessor :point_of_service_entry_mode
 
-            # Only present when `actioner: network`. Describes why a card authorization was
-            # approved or declined by Visa through stand-in processing.
+            # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
             sig do
               returns(
                 T.nilable(
@@ -1003,15 +994,11 @@ module Increase
               ).returns(T.attached_class)
             end
             def self.new(
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               electronic_commerce_indicator:,
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               point_of_service_entry_mode:,
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               stand_in_processing_reason:
             )
             end
@@ -1037,9 +1024,7 @@ module Increase
             def to_hash
             end
 
-            # For electronic commerce transactions, this identifies the level of security used
-            # in obtaining the customer's payment credential. For mail or telephone order
-            # transactions, identifies the type of mail or telephone order.
+            # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             module ElectronicCommerceIndicator
               extend Increase::Internal::Type::Enum
 
@@ -1119,8 +1104,7 @@ module Increase
               end
             end
 
-            # The method used to enter the cardholder's primary account number and card
-            # expiration date.
+            # The method used to enter the cardholder's primary account number and card expiration date.
             module PointOfServiceEntryMode
               extend Increase::Internal::Type::Enum
 
@@ -1214,8 +1198,7 @@ module Increase
               end
             end
 
-            # Only present when `actioner: network`. Describes why a card authorization was
-            # approved or declined by Visa through stand-in processing.
+            # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
             module StandInProcessingReason
               extend Increase::Internal::Type::Enum
 
@@ -1350,8 +1333,7 @@ module Increase
           end
         end
 
-        # The processing category describes the intent behind the authorization, such as
-        # whether it was used for bill payments or an automatic fuel dispenser.
+        # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
         module ProcessingCategory
           extend Increase::Internal::Type::Enum
 
@@ -1447,8 +1429,7 @@ module Increase
               )
             end
 
-          # The type of this request (e.g., an initial authorization or an incremental
-          # authorization).
+          # The type of this request (e.g., an initial authorization or an incremental authorization).
           sig do
             returns(
               Increase::RealTimeDecision::CardAuthorization::RequestDetails::Category::TaggedSymbol
@@ -1493,8 +1474,7 @@ module Increase
             ).returns(T.attached_class)
           end
           def self.new(
-            # The type of this request (e.g., an initial authorization or an incremental
-            # authorization).
+            # The type of this request (e.g., an initial authorization or an incremental authorization).
             category:,
             # Fields specific to the category `incremental_authorization`.
             incremental_authorization:,
@@ -1519,8 +1499,7 @@ module Increase
           def to_hash
           end
 
-          # The type of this request (e.g., an initial authorization or an incremental
-          # authorization).
+          # The type of this request (e.g., an initial authorization or an incremental authorization).
           module Category
             extend Increase::Internal::Type::Enum
 
@@ -2222,8 +2201,7 @@ module Increase
         sig { returns(T.nilable(String)) }
         attr_accessor :card_profile_id
 
-        # Whether or not the provisioning request was approved. This will be null until
-        # the real time decision is responded to.
+        # Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
         sig do
           returns(
             T.nilable(
@@ -2275,8 +2253,7 @@ module Increase
           # will be null until the real time decision is responded to or if the real time
           # decision did not set a card profile.
           card_profile_id:,
-          # Whether or not the provisioning request was approved. This will be null until
-          # the real time decision is responded to.
+          # Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
           decision:,
           # Device that is being used to provision the digital wallet token.
           device:,
@@ -2303,8 +2280,7 @@ module Increase
         def to_hash
         end
 
-        # Whether or not the provisioning request was approved. This will be null until
-        # the real time decision is responded to.
+        # Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
         module Decision
           extend Increase::Internal::Type::Enum
 

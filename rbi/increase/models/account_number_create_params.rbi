@@ -97,9 +97,7 @@ module Increase
             )
           end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active. If
-        # you do not specify this field, the default is `allowed`.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active. If you do not specify this field, the default is `allowed`.
         sig do
           returns(
             Increase::AccountNumberCreateParams::InboundACH::DebitStatus::OrSymbol
@@ -115,9 +113,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-          # will be declined if this is `allowed` but the Account Number is not active. If
-          # you do not specify this field, the default is `allowed`.
+          # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active. If you do not specify this field, the default is `allowed`.
           debit_status:
         )
         end
@@ -133,9 +129,7 @@ module Increase
         def to_hash
         end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active. If
-        # you do not specify this field, the default is `allowed`.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active. If you do not specify this field, the default is `allowed`.
         module DebitStatus
           extend Increase::Internal::Type::Enum
 
@@ -183,8 +177,7 @@ module Increase
             )
           end
 
-        # How Increase should process checks with this account number printed on them. If
-        # you do not specify this field, the default is `check_transfers_only`.
+        # How Increase should process checks with this account number printed on them. If you do not specify this field, the default is `check_transfers_only`.
         sig do
           returns(
             Increase::AccountNumberCreateParams::InboundChecks::Status::OrSymbol
@@ -201,8 +194,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # How Increase should process checks with this account number printed on them. If
-          # you do not specify this field, the default is `check_transfers_only`.
+          # How Increase should process checks with this account number printed on them. If you do not specify this field, the default is `check_transfers_only`.
           status:
         )
         end
@@ -218,8 +210,7 @@ module Increase
         def to_hash
         end
 
-        # How Increase should process checks with this account number printed on them. If
-        # you do not specify this field, the default is `check_transfers_only`.
+        # How Increase should process checks with this account number printed on them. If you do not specify this field, the default is `check_transfers_only`.
         module Status
           extend Increase::Internal::Type::Enum
 

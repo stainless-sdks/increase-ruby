@@ -111,8 +111,7 @@ module Increase
             )
           end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
         sig do
           returns(
             T.nilable(
@@ -138,8 +137,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-          # will be declined if this is `allowed` but the Account Number is not active.
+          # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
           debit_status: nil
         )
         end
@@ -155,8 +153,7 @@ module Increase
         def to_hash
         end
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
         module DebitStatus
           extend Increase::Internal::Type::Enum
 

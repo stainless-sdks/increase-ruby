@@ -31,8 +31,7 @@ module Increase
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
       #
       #   @return [Symbol, Increase::Models::Account::Currency]
       required :currency, enum: -> { Increase::Account::Currency }
@@ -162,8 +161,7 @@ module Increase
         #   @return [Array<Symbol>]
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
       #
       # @see Increase::Models::Account#currency
       module Currency

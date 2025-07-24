@@ -48,8 +48,7 @@ module Increase
 
       class InboundACH < Increase::Internal::Type::BaseModel
         # @!attribute debit_status
-        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   will be declined if this is `allowed` but the Account Number is not active.
+        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus, nil]
         optional :debit_status, enum: -> { Increase::AccountNumberUpdateParams::InboundACH::DebitStatus }
@@ -62,8 +61,7 @@ module Increase
         #
         #   @param debit_status [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus] Whether ACH debits are allowed against this Account Number. Note that ACH debits
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        # will be declined if this is `allowed` but the Account Number is not active.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
         #
         # @see Increase::Models::AccountNumberUpdateParams::InboundACH#debit_status
         module DebitStatus

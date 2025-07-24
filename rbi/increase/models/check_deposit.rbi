@@ -268,8 +268,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :check_deposit_id
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # transaction's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         sig do
           returns(
             Increase::CheckDeposit::DepositAcceptance::Currency::TaggedSymbol
@@ -311,8 +310,7 @@ module Increase
           auxiliary_on_us:,
           # The ID of the Check Deposit that was accepted.
           check_deposit_id:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           currency:,
           # The routing number printed on the check.
           routing_number:,
@@ -339,8 +337,7 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # transaction's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -422,8 +419,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :check_deposit_id
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         sig do
           returns(
             Increase::CheckDeposit::DepositRejection::Currency::TaggedSymbol
@@ -467,8 +463,7 @@ module Increase
           amount:,
           # The identifier of the Check Deposit that was rejected.
           check_deposit_id:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           currency:,
           # The identifier of the associated declined transaction.
           declined_transaction_id:,
@@ -497,8 +492,7 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -677,15 +671,13 @@ module Increase
         sig { returns(String) }
         attr_accessor :check_deposit_id
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # transaction's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         sig do
           returns(Increase::CheckDeposit::DepositReturn::Currency::TaggedSymbol)
         end
         attr_accessor :currency
 
-        # Why this check was returned by the bank holding the account it was drawn
-        # against.
+        # Why this check was returned by the bank holding the account it was drawn against.
         sig do
           returns(
             Increase::CheckDeposit::DepositReturn::ReturnReason::TaggedSymbol
@@ -721,11 +713,9 @@ module Increase
           amount:,
           # The identifier of the Check Deposit that was returned.
           check_deposit_id:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           currency:,
-          # Why this check was returned by the bank holding the account it was drawn
-          # against.
+          # Why this check was returned by the bank holding the account it was drawn against.
           return_reason:,
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the check deposit was returned.
@@ -753,8 +743,7 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # transaction's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -817,8 +806,7 @@ module Increase
           end
         end
 
-        # Why this check was returned by the bank holding the account it was drawn
-        # against.
+        # Why this check was returned by the bank holding the account it was drawn against.
         module ReturnReason
           extend Increase::Internal::Type::Enum
 
@@ -1107,8 +1095,7 @@ module Increase
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         sig do
           returns(
             Increase::CheckDeposit::InboundFundsHold::Currency::TaggedSymbol
@@ -1172,8 +1159,7 @@ module Increase
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
           # was created.
           created_at:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           currency:,
           # The ID of the Transaction for which funds were held.
           held_transaction_id:,
@@ -1210,8 +1196,7 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 

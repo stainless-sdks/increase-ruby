@@ -46,8 +46,7 @@ module Increase
           authenticated_card_payment_id: nil,
           # The identifier of the Card to be authorized.
           card_id: nil,
-          # Forces a card decline with a specific reason. No real time decision will be
-          # sent.
+          # Forces a card decline with a specific reason. No real time decision will be sent.
           decline_reason: nil,
           # The identifier of the Digital Wallet Token to be authorized.
           digital_wallet_token_id: nil,

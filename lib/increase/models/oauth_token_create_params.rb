@@ -8,8 +8,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute grant_type
-      #   The credential you request in exchange for the code. In Production, this is
-      #   always `authorization_code`. In Sandbox, you can pass either enum value.
+      #   The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
       #
       #   @return [Symbol, Increase::Models::OAuthTokenCreateParams::GrantType]
       required :grant_type, enum: -> { Increase::OAuthTokenCreateParams::GrantType }
@@ -59,8 +58,7 @@ module Increase
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
-      # The credential you request in exchange for the code. In Production, this is
-      # always `authorization_code`. In Sandbox, you can pass either enum value.
+      # The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
       module GrantType
         extend Increase::Internal::Type::Enum
 

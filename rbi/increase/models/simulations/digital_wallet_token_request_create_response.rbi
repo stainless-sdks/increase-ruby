@@ -12,8 +12,7 @@ module Increase
             )
           end
 
-        # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        # If the simulated tokenization attempt was declined, this field contains details as to why.
         sig do
           returns(
             T.nilable(
@@ -50,8 +49,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # If the simulated tokenization attempt was declined, this field contains details
-          # as to why.
+          # If the simulated tokenization attempt was declined, this field contains details as to why.
           decline_reason:,
           # If the simulated tokenization attempt was accepted, this field contains the id
           # of the Digital Wallet Token that was created.
@@ -78,8 +76,7 @@ module Increase
         def to_hash
         end
 
-        # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        # If the simulated tokenization attempt was declined, this field contains details as to why.
         module DeclineReason
           extend Increase::Internal::Type::Enum
 

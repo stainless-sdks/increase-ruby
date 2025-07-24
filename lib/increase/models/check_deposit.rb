@@ -194,8 +194,7 @@ module Increase
         required :check_deposit_id, String
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   transaction's currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency]
         required :currency, enum: -> { Increase::CheckDeposit::DepositAcceptance::Currency }
@@ -234,8 +233,7 @@ module Increase
         #
         #   @param serial_number [String, nil] The check serial number, if present, for consumer checks. For business checks, t
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # transaction's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         #
         # @see Increase::Models::CheckDeposit::DepositAcceptance#currency
         module Currency
@@ -280,8 +278,7 @@ module Increase
         required :check_deposit_id, String
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        #   currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency]
         required :currency, enum: -> { Increase::CheckDeposit::DepositRejection::Currency }
@@ -324,8 +321,7 @@ module Increase
         #
         #   @param rejected_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         #
         # @see Increase::Models::CheckDeposit::DepositRejection#currency
         module Currency
@@ -412,15 +408,13 @@ module Increase
         required :check_deposit_id, String
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   transaction's currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency]
         required :currency, enum: -> { Increase::CheckDeposit::DepositReturn::Currency }
 
         # @!attribute return_reason
-        #   Why this check was returned by the bank holding the account it was drawn
-        #   against.
+        #   Why this check was returned by the bank holding the account it was drawn against.
         #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason]
         required :return_reason, enum: -> { Increase::CheckDeposit::DepositReturn::ReturnReason }
@@ -458,8 +452,7 @@ module Increase
         #
         #   @param transaction_id [String] The identifier of the transaction that reversed the original check deposit trans
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # transaction's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         #
         # @see Increase::Models::CheckDeposit::DepositReturn#currency
         module Currency
@@ -487,8 +480,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # Why this check was returned by the bank holding the account it was drawn
-        # against.
+        # Why this check was returned by the bank holding the account it was drawn against.
         #
         # @see Increase::Models::CheckDeposit::DepositReturn#return_reason
         module ReturnReason
@@ -645,8 +637,7 @@ module Increase
         required :created_at, Time
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::CheckDeposit::InboundFundsHold::Currency }
@@ -709,8 +700,7 @@ module Increase
         #
         #   @param type [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type] A constant representing the object's type. For this resource it will always be `
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         # @see Increase::Models::CheckDeposit::InboundFundsHold#currency
         module Currency

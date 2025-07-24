@@ -21,8 +21,7 @@ module Increase
       sig { returns(Integer) }
       attr_accessor :amount
 
-      # How the Pending Transaction affects the balance of its Account while its status
-      # is `pending`.
+      # How the Pending Transaction affects the balance of its Account while its status is `pending`.
       sig { returns(Increase::PendingTransaction::BalanceImpact::TaggedSymbol) }
       attr_accessor :balance_impact
 
@@ -36,9 +35,7 @@ module Increase
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
-      # Transaction's currency. This will match the currency on the Pending
-      # Transaction's Account.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
       sig { returns(Increase::PendingTransaction::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -70,8 +67,7 @@ module Increase
       sig { params(source: Increase::PendingTransaction::Source::OrHash).void }
       attr_writer :source
 
-      # Whether the Pending Transaction has been confirmed and has an associated
-      # Transaction.
+      # Whether the Pending Transaction has been confirmed and has an associated Transaction.
       sig { returns(Increase::PendingTransaction::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -110,8 +106,7 @@ module Increase
         # The Pending Transaction amount in the minor unit of its currency. For dollars,
         # for example, this is cents.
         amount:,
-        # How the Pending Transaction affects the balance of its Account while its status
-        # is `pending`.
+        # How the Pending Transaction affects the balance of its Account while its status is `pending`.
         balance_impact:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
         # Transaction was completed.
@@ -119,9 +114,7 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
         # Transaction occurred.
         created_at:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
-        # Transaction's currency. This will match the currency on the Pending
-        # Transaction's Account.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
         currency:,
         # For a Pending Transaction related to a transfer, this is the description you
         # provide. For a Pending Transaction related to a payment, this is the description
@@ -136,8 +129,7 @@ module Increase
         # Pending Transaction. For example, for a card transaction this lists the
         # merchant's industry and location.
         source:,
-        # Whether the Pending Transaction has been confirmed and has an associated
-        # Transaction.
+        # Whether the Pending Transaction has been confirmed and has an associated Transaction.
         status:,
         # A constant representing the object's type. For this resource it will always be
         # `pending_transaction`.
@@ -169,8 +161,7 @@ module Increase
       def to_hash
       end
 
-      # How the Pending Transaction affects the balance of its Account while its status
-      # is `pending`.
+      # How the Pending Transaction affects the balance of its Account while its status is `pending`.
       module BalanceImpact
         extend Increase::Internal::Type::Enum
 
@@ -203,9 +194,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
-      # Transaction's currency. This will match the currency on the Pending
-      # Transaction's Account.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -367,8 +356,7 @@ module Increase
         end
         attr_writer :card_push_transfer_instruction
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         sig do
           returns(Increase::PendingTransaction::Source::Category::TaggedSymbol)
         end
@@ -604,8 +592,7 @@ module Increase
           # A Card Push Transfer Instruction object. This field will be present in the JSON
           # response if and only if `category` is equal to `card_push_transfer_instruction`.
           card_push_transfer_instruction:,
-          # The type of the resource. We may add additional possible values for this enum
-          # over time; your application should be able to handle such additions gracefully.
+          # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
           category:,
           # A Check Deposit Instruction object. This field will be present in the JSON
           # response if and only if `category` is equal to `check_deposit_instruction`.
@@ -714,8 +701,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           sig do
             returns(
               Increase::PendingTransaction::Source::AccountTransferInstruction::Currency::TaggedSymbol
@@ -741,8 +727,7 @@ module Increase
             # The pending amount in the minor unit of the transaction's currency. For dollars,
             # for example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-            # account currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
             currency:,
             # The identifier of the Account Transfer that led to this Pending Transaction.
             transfer_id:
@@ -762,8 +747,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -880,8 +864,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           sig do
             returns(
               Increase::PendingTransaction::Source::CardAuthorization::Actioner::TaggedSymbol
@@ -898,8 +881,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           sig do
             returns(
               Increase::PendingTransaction::Source::CardAuthorization::Currency::TaggedSymbol
@@ -912,8 +894,7 @@ module Increase
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           sig do
             returns(
               Increase::PendingTransaction::Source::CardAuthorization::Direction::TaggedSymbol
@@ -1012,8 +993,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           sig do
             returns(
               Increase::PendingTransaction::Source::CardAuthorization::ProcessingCategory::TaggedSymbol
@@ -1102,22 +1082,19 @@ module Increase
           def self.new(
             # The Card Authorization identifier.
             id:,
-            # Whether this authorization was approved by Increase, the card network through
-            # stand-in processing, or the user through a real-time decision.
+            # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
             actioner:,
             # The pending amount in the minor unit of the transaction's currency. For dollars,
             # for example, this is cents.
             amount:,
             # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
             currency:,
             # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
             # purchase), the identifier of the token that was used.
             digital_wallet_token_id:,
-            # The direction describes the direction the funds will move, either from the
-            # cardholder to the merchant or from the merchant to the cardholder.
+            # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
             direction:,
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
             # will expire and the pending transaction will be released.
@@ -1156,8 +1133,7 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
             # transaction's presentment currency.
             presentment_currency:,
-            # The processing category describes the intent behind the authorization, such as
-            # whether it was used for bill payments or an automatic fuel dispenser.
+            # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
             processing_category:,
             # The identifier of the Real-Time Decision sent to approve or decline this
             # transaction.
@@ -1217,8 +1193,7 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -1263,8 +1238,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -1330,8 +1304,7 @@ module Increase
             end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           module Direction
             extend Increase::Internal::Type::Enum
 
@@ -1480,9 +1453,7 @@ module Increase
                   )
                 end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
@@ -1492,8 +1463,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               sig do
                 returns(
                   T.nilable(
@@ -1503,8 +1473,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               sig do
                 returns(
                   T.nilable(
@@ -1532,15 +1501,11 @@ module Increase
                 ).returns(T.attached_class)
               end
               def self.new(
-                # For electronic commerce transactions, this identifies the level of security used
-                # in obtaining the customer's payment credential. For mail or telephone order
-                # transactions, identifies the type of mail or telephone order.
+                # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
                 electronic_commerce_indicator:,
-                # The method used to enter the cardholder's primary account number and card
-                # expiration date.
+                # The method used to enter the cardholder's primary account number and card expiration date.
                 point_of_service_entry_mode:,
-                # Only present when `actioner: network`. Describes why a card authorization was
-                # approved or declined by Visa through stand-in processing.
+                # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
                 stand_in_processing_reason:
               )
               end
@@ -1566,9 +1531,7 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -1648,8 +1611,7 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -1743,8 +1705,7 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -1879,8 +1840,7 @@ module Increase
             end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           module ProcessingCategory
             extend Increase::Internal::Type::Enum
 
@@ -2343,8 +2303,7 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -2478,8 +2437,7 @@ module Increase
           sig { returns(T.nilable(String)) }
           attr_accessor :check_deposit_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           sig do
             returns(
               Increase::PendingTransaction::Source::CheckDepositInstruction::Currency::TaggedSymbol
@@ -2512,8 +2470,7 @@ module Increase
             back_image_file_id:,
             # The identifier of the Check Deposit.
             check_deposit_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
             currency:,
             # The identifier of the File containing the image of the front of the check that
             # was deposited.
@@ -2536,8 +2493,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2617,8 +2573,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           sig do
             returns(
               Increase::PendingTransaction::Source::CheckTransferInstruction::Currency::TaggedSymbol
@@ -2643,8 +2598,7 @@ module Increase
           def self.new(
             # The transfer amount in USD cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
             currency:,
             # The identifier of the Check Transfer that led to this Pending Transaction.
             transfer_id:
@@ -2664,8 +2618,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2760,8 +2713,7 @@ module Increase
           sig { returns(Time) }
           attr_accessor :created_at
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           sig do
             returns(
               Increase::PendingTransaction::Source::InboundFundsHold::Currency::TaggedSymbol
@@ -2831,8 +2783,7 @@ module Increase
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
             # was created.
             created_at:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
             currency:,
             # The ID of the Transaction for which funds were held.
             held_transaction_id:,
@@ -2870,8 +2821,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -3177,8 +3127,7 @@ module Increase
         end
       end
 
-      # Whether the Pending Transaction has been confirmed and has an associated
-      # Transaction.
+      # Whether the Pending Transaction has been confirmed and has an associated Transaction.
       module Status
         extend Increase::Internal::Type::Enum
 

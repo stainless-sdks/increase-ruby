@@ -69,8 +69,7 @@ module Increase
       required :created_by, -> { Increase::CheckTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      #   currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
       #
       #   @return [Symbol, Increase::Models::CheckTransfer::Currency]
       required :currency, enum: -> { Increase::CheckTransfer::Currency }
@@ -366,8 +365,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
       #
       # @see Increase::Models::CheckTransfer#currency
       module Currency
@@ -859,10 +857,7 @@ module Increase
       # @see Increase::Models::CheckTransfer#submission
       class Submission < Increase::Internal::Type::BaseModel
         # @!attribute address_correction_action
-        #   Per USPS requirements, Increase will standardize the address to USPS standards
-        #   and check it against the USPS National Change of Address (NCOA) database before
-        #   mailing it. This indicates what modifications, if any, were made to the address
-        #   before printing and mailing the check.
+        #   Per USPS requirements, Increase will standardize the address to USPS standards and check it against the USPS National Change of Address (NCOA) database before mailing it. This indicates what modifications, if any, were made to the address before printing and mailing the check.
         #
         #   @return [Symbol, Increase::Models::CheckTransfer::Submission::AddressCorrectionAction]
         required :address_correction_action,
@@ -893,10 +888,7 @@ module Increase
         #
         #   @param submitted_at [Time] When this check transfer was submitted to our check printer.
 
-        # Per USPS requirements, Increase will standardize the address to USPS standards
-        # and check it against the USPS National Change of Address (NCOA) database before
-        # mailing it. This indicates what modifications, if any, were made to the address
-        # before printing and mailing the check.
+        # Per USPS requirements, Increase will standardize the address to USPS standards and check it against the USPS National Change of Address (NCOA) database before mailing it. This indicates what modifications, if any, were made to the address before printing and mailing the check.
         #
         # @see Increase::Models::CheckTransfer::Submission#address_correction_action
         module AddressCorrectionAction

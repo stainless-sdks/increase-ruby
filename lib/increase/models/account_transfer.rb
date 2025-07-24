@@ -51,8 +51,7 @@ module Increase
       required :created_by, -> { Increase::AccountTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      #   account currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Currency]
       required :currency, enum: -> { Increase::AccountTransfer::Currency }
@@ -312,8 +311,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      # account currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
       #
       # @see Increase::Models::AccountTransfer#currency
       module Currency

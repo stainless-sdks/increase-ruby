@@ -18,8 +18,7 @@ module Increase
       sig { returns(String) }
       attr_accessor :associated_object_type
 
-      # The category of the Event. We may add additional possible values for this enum
-      # over time; your application should be able to handle such additions gracefully.
+      # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       sig { returns(Increase::Event::Category::TaggedSymbol) }
       attr_accessor :category
 
@@ -53,8 +52,7 @@ module Increase
         associated_object_id:,
         # The type of the object that generated this Event.
         associated_object_type:,
-        # The category of the Event. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         category:,
         # The time the Event was created.
         created_at:,
@@ -79,8 +77,7 @@ module Increase
       def to_hash
       end
 
-      # The category of the Event. We may add additional possible values for this enum
-      # over time; your application should be able to handle such additions gracefully.
+      # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       module Category
         extend Increase::Internal::Type::Enum
 

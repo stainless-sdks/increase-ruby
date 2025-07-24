@@ -87,8 +87,7 @@ module Increase
       sig { returns(String) }
       attr_accessor :creditor_name
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For real-time payments transfers this is always equal to `USD`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
       sig do
         returns(Increase::RealTimePaymentsTransfer::Currency::TaggedSymbol)
       end
@@ -245,8 +244,7 @@ module Increase
         # The name of the transfer's recipient. This is set by the sender when creating
         # the transfer.
         creditor_name:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-        # currency. For real-time payments transfers this is always equal to `USD`.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
         currency:,
         # The name of the transfer's sender. If not provided, defaults to the name of the
         # account's entity.
@@ -700,8 +698,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For real-time payments transfers this is always equal to `USD`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -776,8 +773,7 @@ module Increase
         sig { returns(T.nilable(String)) }
         attr_accessor :reject_reason_additional_information
 
-        # The reason the transfer was rejected as provided by the recipient bank or the
-        # Real-Time Payments network.
+        # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
         sig do
           returns(
             Increase::RealTimePaymentsTransfer::Rejection::RejectReasonCode::TaggedSymbol
@@ -804,8 +800,7 @@ module Increase
           # Additional information about the rejection provided by the recipient bank when
           # the `reject_reason_code` is `NARRATIVE`.
           reject_reason_additional_information:,
-          # The reason the transfer was rejected as provided by the recipient bank or the
-          # Real-Time Payments network.
+          # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
           reject_reason_code:,
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the transfer was rejected.
@@ -826,8 +821,7 @@ module Increase
         def to_hash
         end
 
-        # The reason the transfer was rejected as provided by the recipient bank or the
-        # Real-Time Payments network.
+        # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
         module RejectReasonCode
           extend Increase::Internal::Type::Enum
 

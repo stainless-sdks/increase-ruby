@@ -243,8 +243,7 @@ module Increase
             )
           end
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # The required type of change that is being signaled by the receiving financial institution.
         sig do
           returns(
             Increase::ACHPrenotification::NotificationsOfChange::ChangeCode::TaggedSymbol
@@ -274,8 +273,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # The required type of change that is being signaled by the receiving financial
-          # institution.
+          # The required type of change that is being signaled by the receiving financial institution.
           change_code:,
           # The corrected data that should be used in future ACHs to this account. This may
           # contain the suggested new account number or routing number. When the
@@ -302,8 +300,7 @@ module Increase
         def to_hash
         end
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # The required type of change that is being signaled by the receiving financial institution.
         module ChangeCode
           extend Increase::Internal::Type::Enum
 

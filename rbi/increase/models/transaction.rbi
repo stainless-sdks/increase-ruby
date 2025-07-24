@@ -26,9 +26,7 @@ module Increase
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-      # Transaction's currency. This will match the currency on the Transaction's
-      # Account.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
       sig { returns(Increase::Transaction::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -90,9 +88,7 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
         # Transaction occurred.
         created_at:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        # Transaction's currency. This will match the currency on the Transaction's
-        # Account.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
         currency:,
         # An informational message describing this transaction. Use the fields in `source`
         # to get more detailed information. This field appears as the line-item on the
@@ -134,9 +130,7 @@ module Increase
       def to_hash
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-      # Transaction's currency. This will match the currency on the Transaction's
-      # Account.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -415,8 +409,7 @@ module Increase
         end
         attr_writer :cashback_payment
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         sig { returns(Increase::Transaction::Source::Category::TaggedSymbol) }
         attr_accessor :category
 
@@ -982,8 +975,7 @@ module Increase
           # represents the cashback paid to a cardholder for a given period. Cashback is
           # usually paid monthly for the prior month's transactions.
           cashback_payment:,
-          # The type of the resource. We may add additional possible values for this enum
-          # over time; your application should be able to handle such additions gracefully.
+          # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
           category:,
           # A Check Deposit Acceptance object. This field will be present in the JSON
           # response if and only if `category` is equal to `check_deposit_acceptance`. A
@@ -1194,8 +1186,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           sig do
             returns(
               Increase::Transaction::Source::AccountTransferIntention::Currency::TaggedSymbol
@@ -1238,8 +1229,7 @@ module Increase
             # The pending amount in the minor unit of the transaction's currency. For dollars,
             # for example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-            # account currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
             currency:,
             # The description you chose to give the transfer.
             description:,
@@ -1268,8 +1258,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -1458,8 +1447,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :raw_return_reason_code
 
-          # Why the ACH Transfer was returned. This reason code is sent by the receiving
-          # bank back to Increase.
+          # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
           sig do
             returns(
               Increase::Transaction::Source::ACHTransferReturn::ReturnReasonCode::TaggedSymbol
@@ -1505,8 +1493,7 @@ module Increase
             created_at:,
             # The three character ACH return code, in the range R01 to R85.
             raw_return_reason_code:,
-            # Why the ACH Transfer was returned. This reason code is sent by the receiving
-            # bank back to Increase.
+            # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
             return_reason_code:,
             # A 15 digit number that was generated by the bank that initiated the return. The
             # trace number of the return is different than that of the original transfer. ACH
@@ -1536,8 +1523,7 @@ module Increase
           def to_hash
           end
 
-          # Why the ACH Transfer was returned. This reason code is sent by the receiving
-          # bank back to Increase.
+          # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
           module ReturnReasonCode
             extend Increase::Internal::Type::Enum
 
@@ -2256,8 +2242,7 @@ module Increase
           end
           attr_writer :cashback
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           sig do
             returns(
               Increase::Transaction::Source::CardRefund::Currency::TaggedSymbol
@@ -2421,8 +2406,7 @@ module Increase
             # Cashback debited for this transaction, if eligible. Cashback is paid out in
             # aggregate, monthly.
             cashback:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's settlement currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
             currency:,
             # Interchange assessed as a part of this transaciton.
             interchange:,
@@ -2620,8 +2604,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2707,8 +2690,7 @@ module Increase
             sig { returns(T.nilable(String)) }
             attr_accessor :code
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             sig do
               returns(
                 Increase::Transaction::Source::CardRefund::Interchange::Currency::TaggedSymbol
@@ -2733,8 +2715,7 @@ module Increase
               amount:,
               # The card network specific interchange code.
               code:,
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-              # reimbursement.
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
               currency:
             )
             end
@@ -2752,8 +2733,7 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -3125,8 +3105,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :insurance_charges_currency
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               sig do
                 returns(
                   T.nilable(
@@ -3211,8 +3190,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
                 # charges assessed.
                 insurance_charges_currency:,
-                # An indicator that the cardholder is being billed for a reserved vehicle that was
-                # not actually rented (that is, a "no-show" charge).
+                # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
                 no_show_indicator:,
                 # Charges for returning the vehicle at a different location than where it was
                 # picked up.
@@ -3327,8 +3305,7 @@ module Increase
                 end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3417,8 +3394,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :food_beverage_charges_currency
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               sig do
                 returns(
                   T.nilable(
@@ -3506,8 +3482,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
                 # beverage charges.
                 food_beverage_charges_currency:,
-                # Indicator that the cardholder is being billed for a reserved room that was not
-                # actually used.
+                # Indicator that the cardholder is being billed for a reserved room that was not actually used.
                 no_show_indicator:,
                 # Prepaid expenses being charged for the room.
                 prepaid_expenses_amount:,
@@ -3633,8 +3608,7 @@ module Increase
                 end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -4652,8 +4626,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           sig do
             returns(
               Increase::Transaction::Source::CardRevenuePayment::Currency::TaggedSymbol
@@ -4690,8 +4663,7 @@ module Increase
             # The amount in the minor unit of the transaction's currency. For dollars, for
             # example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
             currency:,
             # The end of the period for which this transaction paid interest.
             period_end:,
@@ -4717,8 +4689,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4831,8 +4802,7 @@ module Increase
           end
           attr_writer :cashback
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           sig do
             returns(
               Increase::Transaction::Source::CardSettlement::Currency::TaggedSymbol
@@ -5008,8 +4978,7 @@ module Increase
             # Cashback earned on this transaction, if eligible. Cashback is paid out in
             # aggregate, monthly.
             cashback:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's settlement currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
             currency:,
             # Interchange assessed as a part of this transaction.
             interchange:,
@@ -5211,8 +5180,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -5298,8 +5266,7 @@ module Increase
             sig { returns(T.nilable(String)) }
             attr_accessor :code
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             sig do
               returns(
                 Increase::Transaction::Source::CardSettlement::Interchange::Currency::TaggedSymbol
@@ -5324,8 +5291,7 @@ module Increase
               amount:,
               # The card network specific interchange code.
               code:,
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-              # reimbursement.
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
               currency:
             )
             end
@@ -5343,8 +5309,7 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -5716,8 +5681,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :insurance_charges_currency
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               sig do
                 returns(
                   T.nilable(
@@ -5802,8 +5766,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
                 # charges assessed.
                 insurance_charges_currency:,
-                # An indicator that the cardholder is being billed for a reserved vehicle that was
-                # not actually rented (that is, a "no-show" charge).
+                # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
                 no_show_indicator:,
                 # Charges for returning the vehicle at a different location than where it was
                 # picked up.
@@ -5918,8 +5881,7 @@ module Increase
                 end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -6008,8 +5970,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :food_beverage_charges_currency
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               sig do
                 returns(
                   T.nilable(
@@ -6097,8 +6058,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
                 # beverage charges.
                 food_beverage_charges_currency:,
-                # Indicator that the cardholder is being billed for a reserved room that was not
-                # actually used.
+                # Indicator that the cardholder is being billed for a reserved room that was not actually used.
                 no_show_indicator:,
                 # Prepaid expenses being charged for the room.
                 prepaid_expenses_amount:,
@@ -6224,8 +6184,7 @@ module Increase
                 end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -7250,8 +7209,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           sig do
             returns(
               Increase::Transaction::Source::CashbackPayment::Currency::TaggedSymbol
@@ -7287,8 +7245,7 @@ module Increase
             # The amount in the minor unit of the transaction's currency. For dollars, for
             # example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
             currency:,
             # The end of the period for which this transaction paid cashback.
             period_end:,
@@ -7312,8 +7269,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -7380,8 +7336,7 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -7641,8 +7596,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :check_deposit_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           sig do
             returns(
               Increase::Transaction::Source::CheckDepositAcceptance::Currency::TaggedSymbol
@@ -7687,8 +7641,7 @@ module Increase
             auxiliary_on_us:,
             # The ID of the Check Deposit that was accepted.
             check_deposit_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
             currency:,
             # The routing number printed on the check.
             routing_number:,
@@ -7715,8 +7668,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -7800,8 +7752,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :check_deposit_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           sig do
             returns(
               Increase::Transaction::Source::CheckDepositReturn::Currency::TaggedSymbol
@@ -7809,8 +7760,7 @@ module Increase
           end
           attr_accessor :currency
 
-          # Why this check was returned by the bank holding the account it was drawn
-          # against.
+          # Why this check was returned by the bank holding the account it was drawn against.
           sig do
             returns(
               Increase::Transaction::Source::CheckDepositReturn::ReturnReason::TaggedSymbol
@@ -7851,11 +7801,9 @@ module Increase
             amount:,
             # The identifier of the Check Deposit that was returned.
             check_deposit_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
             currency:,
-            # Why this check was returned by the bank holding the account it was drawn
-            # against.
+            # Why this check was returned by the bank holding the account it was drawn against.
             return_reason:,
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
             # the check deposit was returned.
@@ -7883,8 +7831,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -7950,8 +7897,7 @@ module Increase
             end
           end
 
-          # Why this check was returned by the bank holding the account it was drawn
-          # against.
+          # Why this check was returned by the bank holding the account it was drawn against.
           module ReturnReason
             extend Increase::Internal::Type::Enum
 
@@ -8316,8 +8262,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           sig do
             returns(
               Increase::Transaction::Source::FeePayment::Currency::TaggedSymbol
@@ -8349,8 +8294,7 @@ module Increase
             # The amount in the minor unit of the transaction's currency. For dollars, for
             # example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
             currency:,
             # The start of this payment's fee period, usually the first day of a month.
             fee_period_start:,
@@ -8373,8 +8317,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -8987,8 +8930,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :creditor_name
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-          # currency. This will always be "USD" for a Real-Time Payments transfer.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           sig do
             returns(
               Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency::TaggedSymbol
@@ -9045,8 +8987,7 @@ module Increase
             amount:,
             # The name the sender of the transfer specified as the recipient of the transfer.
             creditor_name:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-            # currency. This will always be "USD" for a Real-Time Payments transfer.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
             currency:,
             # The account number of the account that sent the transfer.
             debtor_account_number:,
@@ -9082,8 +9023,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-          # currency. This will always be "USD" for a Real-Time Payments transfer.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -9168,9 +9108,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :creditor_name
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          # transfer's currency. This will always be "USD" for a Real-Time Payments
-          # transfer.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           sig do
             returns(
               Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency::TaggedSymbol
@@ -9235,9 +9173,7 @@ module Increase
             amount:,
             # The name the sender of the transfer specified as the recipient of the transfer.
             creditor_name:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-            # transfer's currency. This will always be "USD" for a Real-Time Payments
-            # transfer.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
             currency:,
             # The account number of the account that sent the transfer.
             debtor_account_number:,
@@ -9277,9 +9213,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          # transfer's currency. This will always be "USD" for a Real-Time Payments
-          # transfer.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -9831,8 +9765,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           sig do
             returns(
               Increase::Transaction::Source::InterestPayment::Currency::TaggedSymbol
@@ -9868,8 +9801,7 @@ module Increase
             # The amount in the minor unit of the transaction's currency. For dollars, for
             # example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
             currency:,
             # The end of the period for which this transaction paid interest.
             period_end:,
@@ -9893,8 +9825,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -9975,8 +9906,7 @@ module Increase
           sig { returns(Integer) }
           attr_accessor :amount
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           sig do
             returns(
               Increase::Transaction::Source::InternalSource::Currency::TaggedSymbol
@@ -9984,8 +9914,7 @@ module Increase
           end
           attr_accessor :currency
 
-          # An Internal Source is a transaction between you and Increase. This describes the
-          # reason for the transaction.
+          # An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
           sig do
             returns(
               Increase::Transaction::Source::InternalSource::Reason::TaggedSymbol
@@ -10009,11 +9938,9 @@ module Increase
             # The amount in the minor unit of the transaction's currency. For dollars, for
             # example, this is cents.
             amount:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
             currency:,
-            # An Internal Source is a transaction between you and Increase. This describes the
-            # reason for the transaction.
+            # An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
             reason:
           )
           end
@@ -10032,8 +9959,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -10099,8 +10025,7 @@ module Increase
             end
           end
 
-          # An Internal Source is a transaction between you and Increase. This describes the
-          # reason for the transaction.
+          # An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
           module Reason
             extend Increase::Internal::Type::Enum
 

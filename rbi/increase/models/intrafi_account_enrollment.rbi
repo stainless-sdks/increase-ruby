@@ -32,8 +32,7 @@ module Increase
       sig { returns(String) }
       attr_accessor :intrafi_id
 
-      # The status of the account in the network. An account takes about one business
-      # day to go from `pending_enrolling` to `enrolled`.
+      # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
       sig { returns(Increase::IntrafiAccountEnrollment::Status::TaggedSymbol) }
       attr_accessor :status
 
@@ -75,8 +74,7 @@ module Increase
         # The identifier of the account in IntraFi's system. This identifier will be
         # printed on any IntraFi statements or documents.
         intrafi_id:,
-        # The status of the account in the network. An account takes about one business
-        # day to go from `pending_enrolling` to `enrolled`.
+        # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
         status:,
         # A constant representing the object's type. For this resource it will always be
         # `intrafi_account_enrollment`.
@@ -100,8 +98,7 @@ module Increase
       def to_hash
       end
 
-      # The status of the account in the network. An account takes about one business
-      # day to go from `pending_enrolling` to `enrolled`.
+      # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
       module Status
         extend Increase::Internal::Type::Enum
 

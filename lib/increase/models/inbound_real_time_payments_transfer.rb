@@ -48,8 +48,7 @@ module Increase
       required :creditor_name, String
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::InboundRealTimePaymentsTransfer::Currency }
@@ -164,8 +163,7 @@ module Increase
         #   @param transaction_id [String] The id of the transaction for the confirmed transfer.
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      # currency. This will always be "USD" for a Real-Time Payments transfer.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       # @see Increase::Models::InboundRealTimePaymentsTransfer#currency
       module Currency

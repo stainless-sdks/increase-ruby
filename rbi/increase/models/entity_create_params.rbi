@@ -271,9 +271,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :tax_identifier
 
-        # If the entity is exempt from the requirement to submit beneficial owners,
-        # provide the justification. If a reason is provided, you do not need to submit a
-        # list of beneficial owners.
+        # If the entity is exempt from the requirement to submit beneficial owners, provide the justification. If a reason is provided, you do not need to submit a list of beneficial owners.
         sig do
           returns(
             T.nilable(
@@ -346,9 +344,7 @@ module Increase
           name:,
           # The Employer Identification Number (EIN) for the corporation.
           tax_identifier:,
-          # If the entity is exempt from the requirement to submit beneficial owners,
-          # provide the justification. If a reason is provided, you do not need to submit a
-          # list of beneficial owners.
+          # If the entity is exempt from the requirement to submit beneficial owners, provide the justification. If a reason is provided, you do not need to submit a list of beneficial owners.
           beneficial_ownership_exemption_reason: nil,
           # The two-letter United States Postal Service (USPS) abbreviation for the
           # corporation's state of incorporation.
@@ -1162,9 +1158,7 @@ module Increase
           end
         end
 
-        # If the entity is exempt from the requirement to submit beneficial owners,
-        # provide the justification. If a reason is provided, you do not need to submit a
-        # list of beneficial owners.
+        # If the entity is exempt from the requirement to submit beneficial owners, provide the justification. If a reason is provided, you do not need to submit a list of beneficial owners.
         module BeneficialOwnershipExemptionReason
           extend Increase::Internal::Type::Enum
 
@@ -2756,9 +2750,7 @@ module Increase
         end
         attr_writer :address
 
-        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        # their own Employer Identification Number. Revocable trusts require information
-        # about the individual `grantor` who created the trust.
+        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
         sig { returns(Increase::EntityCreateParams::Trust::Category::OrSymbol) }
         attr_accessor :category
 
@@ -2823,9 +2815,7 @@ module Increase
           # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
           # are disallowed.
           address:,
-          # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-          # their own Employer Identification Number. Revocable trusts require information
-          # about the individual `grantor` who created the trust.
+          # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
           category:,
           # The legal name of the trust.
           name:,
@@ -2935,9 +2925,7 @@ module Increase
           end
         end
 
-        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        # their own Employer Identification Number. Revocable trusts require information
-        # about the individual `grantor` who created the trust.
+        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
         module Category
           extend Increase::Internal::Type::Enum
 

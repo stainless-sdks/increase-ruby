@@ -54,8 +54,7 @@ module Increase
       sig { returns(String) }
       attr_accessor :creditor_name
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      # currency. This will always be "USD" for a Real-Time Payments transfer.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
       sig do
         returns(
           Increase::InboundRealTimePaymentsTransfer::Currency::TaggedSymbol
@@ -157,8 +156,7 @@ module Increase
         created_at:,
         # The name the sender of the transfer specified as the recipient of the transfer.
         creditor_name:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-        # currency. This will always be "USD" for a Real-Time Payments transfer.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
         currency:,
         # The account number of the account that sent the transfer.
         debtor_account_number:,
@@ -247,8 +245,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-      # currency. This will always be "USD" for a Real-Time Payments transfer.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
       module Currency
         extend Increase::Internal::Type::Enum
 

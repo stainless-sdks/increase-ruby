@@ -165,8 +165,7 @@ module Increase
 
       class NotificationsOfChange < Increase::Internal::Type::BaseModel
         # @!attribute change_code
-        #   The required type of change that is being signaled by the receiving financial
-        #   institution.
+        #   The required type of change that is being signaled by the receiving financial institution.
         #
         #   @return [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
         required :change_code, enum: -> { Increase::ACHPrenotification::NotificationsOfChange::ChangeCode }
@@ -198,8 +197,7 @@ module Increase
         #
         #   @param created_at [Time] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # The required type of change that is being signaled by the receiving financial institution.
         #
         # @see Increase::Models::ACHPrenotification::NotificationsOfChange#change_code
         module ChangeCode

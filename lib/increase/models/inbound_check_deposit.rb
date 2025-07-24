@@ -115,8 +115,7 @@ module Increase
       required :front_image_file_id, String, nil?: true
 
       # @!attribute payee_name_analysis
-      #   Whether the details on the check match the recipient name of the check transfer.
-      #   This is an optional feature, contact sales to enable.
+      #   Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
       #
       #   @return [Symbol, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis]
       required :payee_name_analysis, enum: -> { Increase::InboundCheckDeposit::PayeeNameAnalysis }
@@ -329,8 +328,7 @@ module Increase
         end
       end
 
-      # Whether the details on the check match the recipient name of the check transfer.
-      # This is an optional feature, contact sales to enable.
+      # Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
       #
       # @see Increase::Models::InboundCheckDeposit#payee_name_analysis
       module PayeeNameAnalysis

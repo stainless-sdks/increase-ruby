@@ -31,8 +31,7 @@ module Increase
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         sig do
           returns(
             Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency::TaggedSymbol
@@ -100,8 +99,7 @@ module Increase
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
           # was created.
           created_at:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           currency:,
           # The ID of the Transaction for which funds were held.
           held_transaction_id:,
@@ -139,8 +137,7 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 

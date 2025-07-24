@@ -8,8 +8,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       # @!attribute reason
-      #   The reason why this transfer will be returned. The most usual return codes are
-      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      #   The reason why this transfer will be returned. The most usual return codes are `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       #
       #   @return [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason]
       required :reason, enum: -> { Increase::InboundACHTransferTransferReturnParams::Reason }
@@ -22,8 +21,7 @@ module Increase
       #
       #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
-      # The reason why this transfer will be returned. The most usual return codes are
-      # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      # The reason why this transfer will be returned. The most usual return codes are `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       module Reason
         extend Increase::Internal::Type::Enum
 

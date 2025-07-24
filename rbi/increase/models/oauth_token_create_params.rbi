@@ -11,8 +11,7 @@ module Increase
           T.any(Increase::OAuthTokenCreateParams, Increase::Internal::AnyHash)
         end
 
-      # The credential you request in exchange for the code. In Production, this is
-      # always `authorization_code`. In Sandbox, you can pass either enum value.
+      # The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
       sig { returns(Increase::OAuthTokenCreateParams::GrantType::OrSymbol) }
       attr_accessor :grant_type
 
@@ -60,8 +59,7 @@ module Increase
         ).returns(T.attached_class)
       end
       def self.new(
-        # The credential you request in exchange for the code. In Production, this is
-        # always `authorization_code`. In Sandbox, you can pass either enum value.
+        # The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
         grant_type:,
         # The public identifier for your application.
         client_id: nil,
@@ -95,8 +93,7 @@ module Increase
       def to_hash
       end
 
-      # The credential you request in exchange for the code. In Production, this is
-      # always `authorization_code`. In Sandbox, you can pass either enum value.
+      # The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
       module GrantType
         extend Increase::Internal::Type::Enum
 

@@ -255,8 +255,7 @@ module Increase
             )
           end
 
-        # Whether the card authentication challenge was successfully delivered to the
-        # cardholder.
+        # Whether the card authentication challenge was successfully delivered to the cardholder.
         sig do
           returns(
             Increase::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result::OrSymbol
@@ -273,8 +272,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # Whether the card authentication challenge was successfully delivered to the
-          # cardholder.
+          # Whether the card authentication challenge was successfully delivered to the cardholder.
           result:
         )
         end
@@ -290,8 +288,7 @@ module Increase
         def to_hash
         end
 
-        # Whether the card authentication challenge was successfully delivered to the
-        # cardholder.
+        # Whether the card authentication challenge was successfully delivered to the cardholder.
         module Result
           extend Increase::Internal::Type::Enum
 
@@ -347,8 +344,7 @@ module Increase
         end
         attr_accessor :decision
 
-        # The reason the card authorization was declined. This translates to a specific
-        # decline code that is sent to the card network.
+        # The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
         sig do
           returns(
             T.nilable(
@@ -379,8 +375,7 @@ module Increase
         def self.new(
           # Whether the card authorization should be approved or declined.
           decision:,
-          # The reason the card authorization was declined. This translates to a specific
-          # decline code that is sent to the card network.
+          # The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
           decline_reason: nil
         )
         end
@@ -436,8 +431,7 @@ module Increase
           end
         end
 
-        # The reason the card authorization was declined. This translates to a specific
-        # decline code that is sent to the card network.
+        # The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
         module DeclineReason
           extend Increase::Internal::Type::Enum
 

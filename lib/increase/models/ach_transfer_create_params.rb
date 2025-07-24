@@ -74,8 +74,7 @@ module Increase
       optional :company_name, String
 
       # @!attribute destination_account_holder
-      #   The type of entity that owns the account to which the ACH Transfer is being
-      #   sent.
+      #   The type of entity that owns the account to which the ACH Transfer is being sent.
       #
       #   @return [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder, nil]
       optional :destination_account_holder,
@@ -314,8 +313,7 @@ module Increase
         end
       end
 
-      # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      # The type of entity that owns the account to which the ACH Transfer is being sent.
       module DestinationAccountHolder
         extend Increase::Internal::Type::Enum
 

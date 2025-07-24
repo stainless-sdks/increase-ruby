@@ -64,8 +64,7 @@ module Increase
       required :creditor_name, String
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   currency. For real-time payments transfers this is always equal to `USD`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
       #
       #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::RealTimePaymentsTransfer::Currency }
@@ -401,8 +400,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For real-time payments transfers this is always equal to `USD`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
       #
       # @see Increase::Models::RealTimePaymentsTransfer#currency
       module Currency
@@ -440,8 +438,7 @@ module Increase
         required :reject_reason_additional_information, String, nil?: true
 
         # @!attribute reject_reason_code
-        #   The reason the transfer was rejected as provided by the recipient bank or the
-        #   Real-Time Payments network.
+        #   The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
         #
         #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode]
         required :reject_reason_code,
@@ -469,8 +466,7 @@ module Increase
         #
         #   @param rejected_at [Time, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which th
 
-        # The reason the transfer was rejected as provided by the recipient bank or the
-        # Real-Time Payments network.
+        # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
         #
         # @see Increase::Models::RealTimePaymentsTransfer::Rejection#reject_reason_code
         module RejectReasonCode

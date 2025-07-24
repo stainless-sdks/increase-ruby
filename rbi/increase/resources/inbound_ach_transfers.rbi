@@ -77,9 +77,7 @@ module Increase
       def decline(
         # The identifier of the Inbound ACH Transfer to decline.
         inbound_ach_transfer_id,
-        # The reason why this transfer will be returned. If this parameter is unset, the
-        # return codes will be `payment_stopped` for debits and
-        # `credit_entry_refused_by_receiver` for credits.
+        # The reason why this transfer will be returned. If this parameter is unset, the return codes will be `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
         reason: nil,
         request_options: {}
       )
@@ -98,8 +96,7 @@ module Increase
         # The identifier of the Inbound ACH Transfer to return to the originating
         # financial institution.
         inbound_ach_transfer_id,
-        # The reason why this transfer will be returned. The most usual return codes are
-        # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+        # The reason why this transfer will be returned. The most usual return codes are `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
         reason:,
         request_options: {}
       )

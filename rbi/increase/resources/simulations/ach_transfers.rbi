@@ -60,8 +60,7 @@ module Increase
         def return_(
           # The identifier of the ACH Transfer you wish to return.
           ach_transfer_id,
-          # The reason why the Federal Reserve or destination bank returned this transfer.
-          # Defaults to `no_account`.
+          # The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
           reason: nil,
           request_options: {}
         )
