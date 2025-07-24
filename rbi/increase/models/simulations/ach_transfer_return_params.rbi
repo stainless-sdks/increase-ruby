@@ -15,8 +15,7 @@ module Increase
             )
           end
 
-        # The reason why the Federal Reserve or destination bank returned this transfer.
-        # Defaults to `no_account`.
+        # The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
         sig do
           returns(
             T.nilable(
@@ -42,8 +41,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # The reason why the Federal Reserve or destination bank returned this transfer.
-          # Defaults to `no_account`.
+          # The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
           reason: nil,
           request_options: {}
         )
@@ -61,8 +59,7 @@ module Increase
         def to_hash
         end
 
-        # The reason why the Federal Reserve or destination bank returned this transfer.
-        # Defaults to `no_account`.
+        # The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
         module Reason
           extend Increase::Internal::Type::Enum
 

@@ -80,8 +80,7 @@ module Increase
       end
       attr_writer :created_by
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For wire transfers this is always equal to `usd`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
       sig { returns(Increase::WireTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -239,8 +238,7 @@ module Increase
         created_at:,
         # What object created the transfer, either via the API or the dashboard.
         created_by:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-        # currency. For wire transfers this is always equal to `usd`.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
         currency:,
         # The identifier of the External Account the transfer was made to, if any.
         external_account_id:,
@@ -632,8 +630,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For wire transfers this is always equal to `usd`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
       module Currency
         extend Increase::Internal::Type::Enum
 

@@ -14,9 +14,7 @@ module Increase
           )
         end
 
-      # The reason why this transfer will be returned. If this parameter is unset, the
-      # return codes will be `payment_stopped` for debits and
-      # `credit_entry_refused_by_receiver` for credits.
+      # The reason why this transfer will be returned. If this parameter is unset, the return codes will be `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       sig do
         returns(
           T.nilable(Increase::InboundACHTransferDeclineParams::Reason::OrSymbol)
@@ -38,9 +36,7 @@ module Increase
         ).returns(T.attached_class)
       end
       def self.new(
-        # The reason why this transfer will be returned. If this parameter is unset, the
-        # return codes will be `payment_stopped` for debits and
-        # `credit_entry_refused_by_receiver` for credits.
+        # The reason why this transfer will be returned. If this parameter is unset, the return codes will be `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
         reason: nil,
         request_options: {}
       )
@@ -57,9 +53,7 @@ module Increase
       def to_hash
       end
 
-      # The reason why this transfer will be returned. If this parameter is unset, the
-      # return codes will be `payment_stopped` for debits and
-      # `credit_entry_refused_by_receiver` for credits.
+      # The reason why this transfer will be returned. If this parameter is unset, the return codes will be `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       module Reason
         extend Increase::Internal::Type::Enum
 

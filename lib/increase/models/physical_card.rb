@@ -127,11 +127,7 @@ module Increase
         required :method_, enum: -> { Increase::PhysicalCard::Shipment::Method }, api_name: :method
 
         # @!attribute schedule
-        #   When this physical card should be produced by the card printer. The default
-        #   timeline is the day after the card printer receives the order, except for
-        #   `FEDEX_PRIORITY_OVERNIGHT` cards, which default to `SAME_DAY`. To use faster
-        #   production methods, please reach out to
-        #   [support@increase.com](mailto:support@increase.com).
+        #   When this physical card should be produced by the card printer. The default timeline is the day after the card printer receives the order, except for `FEDEX_PRIORITY_OVERNIGHT` cards, which default to `SAME_DAY`. To use faster production methods, please reach out to [support@increase.com](mailto:support@increase.com).
         #
         #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Schedule]
         required :schedule, enum: -> { Increase::PhysicalCard::Shipment::Schedule }
@@ -256,11 +252,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # When this physical card should be produced by the card printer. The default
-        # timeline is the day after the card printer receives the order, except for
-        # `FEDEX_PRIORITY_OVERNIGHT` cards, which default to `SAME_DAY`. To use faster
-        # production methods, please reach out to
-        # [support@increase.com](mailto:support@increase.com).
+        # When this physical card should be produced by the card printer. The default timeline is the day after the card printer receives the order, except for `FEDEX_PRIORITY_OVERNIGHT` cards, which default to `SAME_DAY`. To use faster production methods, please reach out to [support@increase.com](mailto:support@increase.com).
         #
         # @see Increase::Models::PhysicalCard::Shipment#schedule
         module Schedule

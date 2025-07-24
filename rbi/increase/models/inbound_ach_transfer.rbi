@@ -793,8 +793,7 @@ module Increase
         sig { returns(T.nilable(String)) }
         attr_accessor :foreign_exchange_reference
 
-        # An instruction of how to interpret the `foreign_exchange_reference` field for
-        # this Transaction.
+        # An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
         sig do
           returns(
             Increase::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator::TaggedSymbol
@@ -835,8 +834,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :originating_depository_financial_institution_id
 
-        # An instruction of how to interpret the
-        # `originating_depository_financial_institution_id` field for this Transaction.
+        # An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
         sig do
           returns(
             Increase::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
@@ -929,8 +927,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :receiving_depository_financial_institution_id
 
-        # An instruction of how to interpret the
-        # `receiving_depository_financial_institution_id` field for this Transaction.
+        # An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
         sig do
           returns(
             Increase::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier::TaggedSymbol
@@ -998,8 +995,7 @@ module Increase
           # Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
           # reference to a well-known rate.
           foreign_exchange_reference:,
-          # An instruction of how to interpret the `foreign_exchange_reference` field for
-          # this Transaction.
+          # An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
           foreign_exchange_reference_indicator:,
           # The amount in the minor unit of the foreign payment currency. For dollars, for
           # example, this is cents.
@@ -1018,8 +1014,7 @@ module Increase
           # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
           # domestic identifier like a US Routing Number.
           originating_depository_financial_institution_id:,
-          # An instruction of how to interpret the
-          # `originating_depository_financial_institution_id` field for this Transaction.
+          # An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
           originating_depository_financial_institution_id_qualifier:,
           # The name of the originating bank. Sometimes this will refer to an American bank
           # and obscure the correspondent foreign bank.
@@ -1068,8 +1063,7 @@ module Increase
           # Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
           # domestic identifier like a US Routing Number.
           receiving_depository_financial_institution_id:,
-          # An instruction of how to interpret the
-          # `receiving_depository_financial_institution_id` field for this Transaction.
+          # An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
           receiving_depository_financial_institution_id_qualifier:,
           # The name of the receiving bank, as set by the sending financial institution.
           receiving_depository_financial_institution_name:
@@ -1169,8 +1163,7 @@ module Increase
           end
         end
 
-        # An instruction of how to interpret the `foreign_exchange_reference` field for
-        # this Transaction.
+        # An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
         module ForeignExchangeReferenceIndicator
           extend Increase::Internal::Type::Enum
 
@@ -1379,8 +1372,7 @@ module Increase
           end
         end
 
-        # An instruction of how to interpret the
-        # `originating_depository_financial_institution_id` field for this Transaction.
+        # An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
         module OriginatingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Internal::Type::Enum
 
@@ -1425,8 +1417,7 @@ module Increase
           end
         end
 
-        # An instruction of how to interpret the
-        # `receiving_depository_financial_institution_id` field for this Transaction.
+        # An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
         module ReceivingDepositoryFinancialInstitutionIDQualifier
           extend Increase::Internal::Type::Enum
 

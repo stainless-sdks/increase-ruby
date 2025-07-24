@@ -63,8 +63,7 @@ module Increase
         # The name by which the recipient knows you. This is included in the transfer data
         # sent to the receiving bank.
         company_name: nil,
-        # The type of entity that owns the account to which the ACH Transfer is being
-        # sent.
+        # The type of entity that owns the account to which the ACH Transfer is being sent.
         destination_account_holder: nil,
         # The ID of an External Account to initiate a transfer to. If this parameter is
         # provided, `account_number`, `routing_number`, and `funding` must be absent.

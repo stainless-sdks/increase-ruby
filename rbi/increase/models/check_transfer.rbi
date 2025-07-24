@@ -73,8 +73,7 @@ module Increase
       end
       attr_writer :created_by
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
       sig { returns(Increase::CheckTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -232,8 +231,7 @@ module Increase
         created_at:,
         # What object created the transfer, either via the API or the dashboard.
         created_by:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         currency:,
         # Whether Increase will print and mail the check or if you will do it yourself.
         fulfillment_method:,
@@ -616,8 +614,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -1453,10 +1450,7 @@ module Increase
             )
           end
 
-        # Per USPS requirements, Increase will standardize the address to USPS standards
-        # and check it against the USPS National Change of Address (NCOA) database before
-        # mailing it. This indicates what modifications, if any, were made to the address
-        # before printing and mailing the check.
+        # Per USPS requirements, Increase will standardize the address to USPS standards and check it against the USPS National Change of Address (NCOA) database before mailing it. This indicates what modifications, if any, were made to the address before printing and mailing the check.
         sig do
           returns(
             Increase::CheckTransfer::Submission::AddressCorrectionAction::TaggedSymbol
@@ -1492,10 +1486,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # Per USPS requirements, Increase will standardize the address to USPS standards
-          # and check it against the USPS National Change of Address (NCOA) database before
-          # mailing it. This indicates what modifications, if any, were made to the address
-          # before printing and mailing the check.
+          # Per USPS requirements, Increase will standardize the address to USPS standards and check it against the USPS National Change of Address (NCOA) database before mailing it. This indicates what modifications, if any, were made to the address before printing and mailing the check.
           address_correction_action:,
           # The address we submitted to the printer. This is what is physically printed on
           # the check.
@@ -1519,10 +1510,7 @@ module Increase
         def to_hash
         end
 
-        # Per USPS requirements, Increase will standardize the address to USPS standards
-        # and check it against the USPS National Change of Address (NCOA) database before
-        # mailing it. This indicates what modifications, if any, were made to the address
-        # before printing and mailing the check.
+        # Per USPS requirements, Increase will standardize the address to USPS standards and check it against the USPS National Change of Address (NCOA) database before mailing it. This indicates what modifications, if any, were made to the address before printing and mailing the check.
         module AddressCorrectionAction
           extend Increase::Internal::Type::Enum
 

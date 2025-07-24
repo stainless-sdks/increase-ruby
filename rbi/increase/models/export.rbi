@@ -10,8 +10,7 @@ module Increase
       sig { returns(String) }
       attr_accessor :id
 
-      # The category of the Export. We may add additional possible values for this enum
-      # over time; your application should be able to handle that gracefully.
+      # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
       sig { returns(Increase::Export::Category::TaggedSymbol) }
       attr_accessor :category
 
@@ -64,8 +63,7 @@ module Increase
       def self.new(
         # The Export identifier.
         id:,
-        # The category of the Export. We may add additional possible values for this enum
-        # over time; your application should be able to handle that gracefully.
+        # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
         category:,
         # The time the Export was created.
         created_at:,
@@ -104,8 +102,7 @@ module Increase
       def to_hash
       end
 
-      # The category of the Export. We may add additional possible values for this enum
-      # over time; your application should be able to handle that gracefully.
+      # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
       module Category
         extend Increase::Internal::Type::Enum
 

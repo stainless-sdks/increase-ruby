@@ -28,8 +28,7 @@ module Increase
         optional :card_id, String
 
         # @!attribute decline_reason
-        #   Forces a card decline with a specific reason. No real time decision will be
-        #   sent.
+        #   Forces a card decline with a specific reason. No real time decision will be sent.
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason, nil]
         optional :decline_reason,
@@ -164,8 +163,7 @@ module Increase
         #
         #   @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
 
-        # Forces a card decline with a specific reason. No real time decision will be
-        # sent.
+        # Forces a card decline with a specific reason. No real time decision will be sent.
         module DeclineReason
           extend Increase::Internal::Type::Enum
 
@@ -298,8 +296,7 @@ module Increase
 
         class ProcessingCategory < Increase::Internal::Type::BaseModel
           # @!attribute category
-          #   The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
+          #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #
           #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::ProcessingCategory::Category]
           required :category,
@@ -317,8 +314,7 @@ module Increase
           #
           #   @param category [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::ProcessingCategory::Category] The processing category describes the intent behind the authorization, such as w
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #
           # @see Increase::Models::Simulations::CardAuthorizationCreateParams::ProcessingCategory#category
           module Category

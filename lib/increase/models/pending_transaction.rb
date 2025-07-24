@@ -24,8 +24,7 @@ module Increase
       required :amount, Integer
 
       # @!attribute balance_impact
-      #   How the Pending Transaction affects the balance of its Account while its status
-      #   is `pending`.
+      #   How the Pending Transaction affects the balance of its Account while its status is `pending`.
       #
       #   @return [Symbol, Increase::Models::PendingTransaction::BalanceImpact]
       required :balance_impact, enum: -> { Increase::PendingTransaction::BalanceImpact }
@@ -45,9 +44,7 @@ module Increase
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
-      #   Transaction's currency. This will match the currency on the Pending
-      #   Transaction's Account.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
       #
       #   @return [Symbol, Increase::Models::PendingTransaction::Currency]
       required :currency, enum: -> { Increase::PendingTransaction::Currency }
@@ -82,8 +79,7 @@ module Increase
       required :source, -> { Increase::PendingTransaction::Source }
 
       # @!attribute status
-      #   Whether the Pending Transaction has been confirmed and has an associated
-      #   Transaction.
+      #   Whether the Pending Transaction has been confirmed and has an associated Transaction.
       #
       #   @return [Symbol, Increase::Models::PendingTransaction::Status]
       required :status, enum: -> { Increase::PendingTransaction::Status }
@@ -130,8 +126,7 @@ module Increase
       #
       #   @param type [Symbol, Increase::Models::PendingTransaction::Type] A constant representing the object's type. For this resource it will always be `
 
-      # How the Pending Transaction affects the balance of its Account while its status
-      # is `pending`.
+      # How the Pending Transaction affects the balance of its Account while its status is `pending`.
       #
       # @see Increase::Models::PendingTransaction#balance_impact
       module BalanceImpact
@@ -147,9 +142,7 @@ module Increase
         #   @return [Array<Symbol>]
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
-      # Transaction's currency. This will match the currency on the Pending
-      # Transaction's Account.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
       #
       # @see Increase::Models::PendingTransaction#currency
       module Currency
@@ -239,8 +232,7 @@ module Increase
                  nil?: true
 
         # @!attribute category
-        #   The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
+        #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         #   @return [Symbol, Increase::Models::PendingTransaction::Source::Category]
         required :category, enum: -> { Increase::PendingTransaction::Source::Category }
@@ -376,8 +368,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency]
           required :currency,
@@ -403,8 +394,7 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the Account Transfer that led to this Pending Transaction.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #
           # @see Increase::Models::PendingTransaction::Source::AccountTransferInstruction#currency
           module Currency
@@ -465,8 +455,7 @@ module Increase
           required :id, String
 
           # @!attribute actioner
-          #   Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
+          #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner]
           required :actioner, enum: -> { Increase::PendingTransaction::Source::CardAuthorization::Actioner }
@@ -485,8 +474,7 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency]
           required :currency, enum: -> { Increase::PendingTransaction::Source::CardAuthorization::Currency }
@@ -499,8 +487,7 @@ module Increase
           required :digital_wallet_token_id, String, nil?: true
 
           # @!attribute direction
-          #   The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
+          #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction]
           required :direction, enum: -> { Increase::PendingTransaction::Source::CardAuthorization::Direction }
@@ -607,8 +594,7 @@ module Increase
           required :presentment_currency, String
 
           # @!attribute processing_category
-          #   The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
+          #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory]
           required :processing_category,
@@ -705,8 +691,7 @@ module Increase
           #
           #   @param verification [Increase::Models::PendingTransaction::Source::CardAuthorization::Verification] Fields related to verification of cardholder-provided values.
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #
           # @see Increase::Models::PendingTransaction::Source::CardAuthorization#actioner
           module Actioner
@@ -725,8 +710,7 @@ module Increase
             #   @return [Array<Symbol>]
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @see Increase::Models::PendingTransaction::Source::CardAuthorization#currency
           module Currency
@@ -754,8 +738,7 @@ module Increase
             #   @return [Array<Symbol>]
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #
           # @see Increase::Models::PendingTransaction::Source::CardAuthorization#direction
           module Direction
@@ -813,9 +796,7 @@ module Increase
             # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails#visa
             class Visa < Increase::Internal::Type::BaseModel
               # @!attribute electronic_commerce_indicator
-              #   For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
+              #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
               required :electronic_commerce_indicator,
@@ -825,8 +806,7 @@ module Increase
                        nil?: true
 
               # @!attribute point_of_service_entry_mode
-              #   The method used to enter the cardholder's primary account number and card
-              #   expiration date.
+              #   The method used to enter the cardholder's primary account number and card expiration date.
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
               required :point_of_service_entry_mode,
@@ -836,8 +816,7 @@ module Increase
                        nil?: true
 
               # @!attribute stand_in_processing_reason
-              #   Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
+              #   Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
               required :stand_in_processing_reason,
@@ -859,9 +838,7 @@ module Increase
               #
               #   @param stand_in_processing_reason [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil] Only present when `actioner: network`. Describes why a card authorization was ap
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #
               # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa#electronic_commerce_indicator
               module ElectronicCommerceIndicator
@@ -896,8 +873,7 @@ module Increase
                 #   @return [Array<Symbol>]
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               #
               # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa#point_of_service_entry_mode
               module PointOfServiceEntryMode
@@ -937,8 +913,7 @@ module Increase
                 #   @return [Array<Symbol>]
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               #
               # @see Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa#stand_in_processing_reason
               module StandInProcessingReason
@@ -1011,8 +986,7 @@ module Increase
             #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #
           # @see Increase::Models::PendingTransaction::Source::CardAuthorization#processing_category
           module ProcessingCategory
@@ -1240,8 +1214,7 @@ module Increase
           #   @param transfer_id [String] The identifier of the Card Push Transfer that led to this Pending Transaction.
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         # @see Increase::Models::PendingTransaction::Source#category
         module Category
@@ -1312,8 +1285,7 @@ module Increase
           required :check_deposit_id, String, nil?: true
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency]
           required :currency,
@@ -1346,8 +1318,7 @@ module Increase
           #
           #   @param front_image_file_id [String] The identifier of the File containing the image of the front of the check that w
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @see Increase::Models::PendingTransaction::Source::CheckDepositInstruction#currency
           module Currency
@@ -1385,8 +1356,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency]
           required :currency,
@@ -1414,8 +1384,7 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the Check Transfer that led to this Pending Transaction.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           #
           # @see Increase::Models::PendingTransaction::Source::CheckTransferInstruction#currency
           module Currency
@@ -1474,8 +1443,7 @@ module Increase
           required :created_at, Time
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency]
           required :currency, enum: -> { Increase::PendingTransaction::Source::InboundFundsHold::Currency }
@@ -1541,8 +1509,7 @@ module Increase
           #
           #   @param type [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Type] A constant representing the object's type. For this resource it will always be `
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           #
           # @see Increase::Models::PendingTransaction::Source::InboundFundsHold#currency
           module Currency
@@ -1714,8 +1681,7 @@ module Increase
         end
       end
 
-      # Whether the Pending Transaction has been confirmed and has an associated
-      # Transaction.
+      # Whether the Pending Transaction has been confirmed and has an associated Transaction.
       #
       # @see Increase::Models::PendingTransaction#status
       module Status

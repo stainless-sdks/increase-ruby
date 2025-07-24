@@ -36,9 +36,7 @@ module Increase
       sig { returns(String) }
       attr_accessor :mime_type
 
-      # What the File will be used for. We may add additional possible values for this
-      # enum over time; your application should be able to handle such additions
-      # gracefully.
+      # What the File will be used for. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       sig { returns(Increase::File::Purpose::TaggedSymbol) }
       attr_accessor :purpose
 
@@ -81,9 +79,7 @@ module Increase
         idempotency_key:,
         # The MIME type of the file.
         mime_type:,
-        # What the File will be used for. We may add additional possible values for this
-        # enum over time; your application should be able to handle such additions
-        # gracefully.
+        # What the File will be used for. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         purpose:,
         # A constant representing the object's type. For this resource it will always be
         # `file`.
@@ -131,9 +127,7 @@ module Increase
         end
       end
 
-      # What the File will be used for. We may add additional possible values for this
-      # enum over time; your application should be able to handle such additions
-      # gracefully.
+      # What the File will be used for. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       module Purpose
         extend Increase::Internal::Type::Enum
 

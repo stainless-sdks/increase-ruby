@@ -33,8 +33,7 @@ module Increase
         required :created_at, Time
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency]
         required :currency, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency }
@@ -98,8 +97,7 @@ module Increase
         #
         #   @param type [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type] A constant representing the object's type. For this resource it will always be `
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         # @see Increase::Models::Simulations::InboundFundsHoldReleaseResponse#currency
         module Currency

@@ -49,9 +49,7 @@ module Increase
       required :mime_type, String
 
       # @!attribute purpose
-      #   What the File will be used for. We may add additional possible values for this
-      #   enum over time; your application should be able to handle such additions
-      #   gracefully.
+      #   What the File will be used for. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       #
       #   @return [Symbol, Increase::Models::File::Purpose]
       required :purpose, enum: -> { Increase::File::Purpose }
@@ -106,9 +104,7 @@ module Increase
         #   @return [Array<Symbol>]
       end
 
-      # What the File will be used for. We may add additional possible values for this
-      # enum over time; your application should be able to handle such additions
-      # gracefully.
+      # What the File will be used for. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       #
       # @see Increase::Models::File#purpose
       module Purpose

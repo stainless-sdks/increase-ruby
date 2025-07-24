@@ -23,8 +23,7 @@ module Increase
       required :associated_object_type, String
 
       # @!attribute category
-      #   The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
+      #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       #
       #   @return [Symbol, Increase::Models::Event::Category]
       required :category, enum: -> { Increase::Event::Category }
@@ -63,8 +62,7 @@ module Increase
       #
       #   @param type [Symbol, Increase::Models::Event::Type] A constant representing the object's type. For this resource it will always be `
 
-      # The category of the Event. We may add additional possible values for this enum
-      # over time; your application should be able to handle such additions gracefully.
+      # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       #
       # @see Increase::Models::Event#category
       module Category

@@ -109,13 +109,11 @@ module Increase
       end
       attr_writer :created_by
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For ACH transfers this is always equal to `usd`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
       sig { returns(Increase::ACHTransfer::Currency::TaggedSymbol) }
       attr_accessor :currency
 
-      # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      # The type of entity that owns the account to which the ACH Transfer is being sent.
       sig do
         returns(Increase::ACHTransfer::DestinationAccountHolder::TaggedSymbol)
       end
@@ -337,11 +335,9 @@ module Increase
         created_at:,
         # What object created the transfer, either via the API or the dashboard.
         created_by:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-        # currency. For ACH transfers this is always equal to `usd`.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
         currency:,
-        # The type of entity that owns the account to which the ACH Transfer is being
-        # sent.
+        # The type of entity that owns the account to which the ACH Transfer is being sent.
         destination_account_holder:,
         # The identifier of the External Account the transfer was made to, if any.
         external_account_id:,
@@ -487,8 +483,7 @@ module Increase
             T.any(Increase::ACHTransfer::Addenda, Increase::Internal::AnyHash)
           end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         sig { returns(Increase::ACHTransfer::Addenda::Category::TaggedSymbol) }
         attr_accessor :category
 
@@ -538,8 +533,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # The type of the resource. We may add additional possible values for this enum
-          # over time; your application should be able to handle such additions gracefully.
+          # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
           category:,
           # Unstructured `payment_related_information` passed through with the transfer.
           freeform:,
@@ -564,8 +558,7 @@ module Increase
         def to_hash
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         module Category
           extend Increase::Internal::Type::Enum
 
@@ -1063,8 +1056,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      # currency. For ACH transfers this is always equal to `usd`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
       module Currency
         extend Increase::Internal::Type::Enum
 
@@ -1099,8 +1091,7 @@ module Increase
         end
       end
 
-      # The type of entity that owns the account to which the ACH Transfer is being
-      # sent.
+      # The type of entity that owns the account to which the ACH Transfer is being sent.
       module DestinationAccountHolder
         extend Increase::Internal::Type::Enum
 
@@ -1194,8 +1185,7 @@ module Increase
         sig { returns(Time) }
         attr_accessor :created_at
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         sig do
           returns(
             Increase::ACHTransfer::InboundFundsHold::Currency::TaggedSymbol
@@ -1257,8 +1247,7 @@ module Increase
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
           # was created.
           created_at:,
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           currency:,
           # The ID of the Transaction for which funds were held.
           held_transaction_id:,
@@ -1295,8 +1284,7 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         module Currency
           extend Increase::Internal::Type::Enum
 
@@ -1451,8 +1439,7 @@ module Increase
             )
           end
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # The required type of change that is being signaled by the receiving financial institution.
         sig do
           returns(
             Increase::ACHTransfer::NotificationsOfChange::ChangeCode::TaggedSymbol
@@ -1482,8 +1469,7 @@ module Increase
           ).returns(T.attached_class)
         end
         def self.new(
-          # The required type of change that is being signaled by the receiving financial
-          # institution.
+          # The required type of change that is being signaled by the receiving financial institution.
           change_code:,
           # The corrected data that should be used in future ACHs to this account. This may
           # contain the suggested new account number or routing number. When the
@@ -1510,8 +1496,7 @@ module Increase
         def to_hash
         end
 
-        # The required type of change that is being signaled by the receiving financial
-        # institution.
+        # The required type of change that is being signaled by the receiving financial institution.
         module ChangeCode
           extend Increase::Internal::Type::Enum
 
@@ -1786,8 +1771,7 @@ module Increase
         sig { returns(String) }
         attr_accessor :raw_return_reason_code
 
-        # Why the ACH Transfer was returned. This reason code is sent by the receiving
-        # bank back to Increase.
+        # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
         sig do
           returns(Increase::ACHTransfer::Return::ReturnReasonCode::TaggedSymbol)
         end
@@ -1826,8 +1810,7 @@ module Increase
           created_at:,
           # The three character ACH return code, in the range R01 to R85.
           raw_return_reason_code:,
-          # Why the ACH Transfer was returned. This reason code is sent by the receiving
-          # bank back to Increase.
+          # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
           return_reason_code:,
           # A 15 digit number that was generated by the bank that initiated the return. The
           # trace number of the return is different than that of the original transfer. ACH
@@ -1857,8 +1840,7 @@ module Increase
         def to_hash
         end
 
-        # Why the ACH Transfer was returned. This reason code is sent by the receiving
-        # bank back to Increase.
+        # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
         module ReturnReasonCode
           extend Increase::Internal::Type::Enum
 
@@ -2530,9 +2512,7 @@ module Increase
         sig { returns(Time) }
         attr_accessor :expected_funds_settlement_at
 
-        # The settlement schedule the transfer is expected to follow. This expectation
-        # takes into account the `effective_date`, `submitted_at`, and the amount of the
-        # transfer.
+        # The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
         sig do
           returns(
             Increase::ACHTransfer::Submission::ExpectedSettlementSchedule::TaggedSymbol
@@ -2578,9 +2558,7 @@ module Increase
           # published
           # [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
           expected_funds_settlement_at:,
-          # The settlement schedule the transfer is expected to follow. This expectation
-          # takes into account the `effective_date`, `submitted_at`, and the amount of the
-          # transfer.
+          # The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
           expected_settlement_schedule:,
           # When the ACH transfer was sent to FedACH.
           submitted_at:,
@@ -2608,9 +2586,7 @@ module Increase
         def to_hash
         end
 
-        # The settlement schedule the transfer is expected to follow. This expectation
-        # takes into account the `effective_date`, `submitted_at`, and the amount of the
-        # transfer.
+        # The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
         module ExpectedSettlementSchedule
           extend Increase::Internal::Type::Enum
 

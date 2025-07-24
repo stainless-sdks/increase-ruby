@@ -31,9 +31,7 @@ module Increase
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-      #   Transaction's currency. This will match the currency on the Transaction's
-      #   Account.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
       #
       #   @return [Symbol, Increase::Models::Transaction::Currency]
       required :currency, enum: -> { Increase::Transaction::Currency }
@@ -103,9 +101,7 @@ module Increase
       #
       #   @param type [Symbol, Increase::Models::Transaction::Type] A constant representing the object's type. For this resource it will always be `
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-      # Transaction's currency. This will match the currency on the Transaction's
-      # Account.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
       #
       # @see Increase::Models::Transaction#currency
       module Currency
@@ -271,8 +267,7 @@ module Increase
         required :cashback_payment, -> { Increase::Transaction::Source::CashbackPayment }, nil?: true
 
         # @!attribute category
-        #   The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
+        #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         #   @return [Symbol, Increase::Models::Transaction::Source::Category]
         required :category, enum: -> { Increase::Transaction::Source::Category }
@@ -567,8 +562,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::AccountTransferIntention::Currency }
@@ -619,8 +613,7 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the Account Transfer that led to this Pending Transaction.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #
           # @see Increase::Models::Transaction::Source::AccountTransferIntention#currency
           module Currency
@@ -736,8 +729,7 @@ module Increase
           required :raw_return_reason_code, String
 
           # @!attribute return_reason_code
-          #   Why the ACH Transfer was returned. This reason code is sent by the receiving
-          #   bank back to Increase.
+          #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode]
           required :return_reason_code,
@@ -787,8 +779,7 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the ACH Transfer associated with this return.
 
-          # Why the ACH Transfer was returned. This reason code is sent by the receiving
-          # bank back to Increase.
+          # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
           #
           # @see Increase::Models::Transaction::Source::ACHTransferReturn#return_reason_code
           module ReturnReasonCode
@@ -1148,8 +1139,7 @@ module Increase
           required :cashback, -> { Increase::Transaction::Source::CardRefund::Cashback }, nil?: true
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::CardRefund::Currency }
@@ -1350,8 +1340,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           # @see Increase::Models::Transaction::Source::CardRefund#currency
           module Currency
@@ -1397,8 +1386,7 @@ module Increase
             required :code, String, nil?: true
 
             # @!attribute currency
-            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency]
             required :currency, enum: -> { Increase::Transaction::Source::CardRefund::Interchange::Currency }
@@ -1416,8 +1404,7 @@ module Increase
             #
             #   @param currency [Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             # @see Increase::Models::Transaction::Source::CardRefund::Interchange#currency
             module Currency
@@ -1659,8 +1646,7 @@ module Increase
               required :insurance_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
-              #   An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
+              #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil]
               required :no_show_indicator,
@@ -1769,8 +1755,7 @@ module Increase
                 #   @return [Array<Symbol>]
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental#no_show_indicator
               module NoShowIndicator
@@ -1845,8 +1830,7 @@ module Increase
               required :food_beverage_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
-              #   Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
+              #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil]
               required :no_show_indicator,
@@ -1970,8 +1954,7 @@ module Increase
                 #   @return [Array<Symbol>]
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               # @see Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging#no_show_indicator
               module NoShowIndicator
@@ -2485,8 +2468,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::CardRevenuePayment::Currency }
@@ -2527,8 +2509,7 @@ module Increase
           #
           #   @param transacted_on_account_id [String, nil] The account the card belonged to.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @see Increase::Models::Transaction::Source::CardRevenuePayment#currency
           module Currency
@@ -2593,8 +2574,7 @@ module Increase
           required :cashback, -> { Increase::Transaction::Source::CardSettlement::Cashback }, nil?: true
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::CardSettlement::Currency }
@@ -2807,8 +2787,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           # @see Increase::Models::Transaction::Source::CardSettlement#currency
           module Currency
@@ -2854,8 +2833,7 @@ module Increase
             required :code, String, nil?: true
 
             # @!attribute currency
-            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency]
             required :currency,
@@ -2876,8 +2854,7 @@ module Increase
             #
             #   @param currency [Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             # @see Increase::Models::Transaction::Source::CardSettlement::Interchange#currency
             module Currency
@@ -3115,8 +3092,7 @@ module Increase
               required :insurance_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
-              #   An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
+              #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil]
               required :no_show_indicator,
@@ -3225,8 +3201,7 @@ module Increase
                 #   @return [Array<Symbol>]
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental#no_show_indicator
               module NoShowIndicator
@@ -3301,8 +3276,7 @@ module Increase
               required :food_beverage_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
-              #   Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
+              #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil]
               required :no_show_indicator,
@@ -3426,8 +3400,7 @@ module Increase
                 #   @return [Array<Symbol>]
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               # @see Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging#no_show_indicator
               module NoShowIndicator
@@ -3949,8 +3922,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::CashbackPayment::Currency }
@@ -3986,8 +3958,7 @@ module Increase
           #
           #   @param period_start [Time] The start of the period for which this transaction paid cashback.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @see Increase::Models::Transaction::Source::CashbackPayment#currency
           module Currency
@@ -4016,8 +3987,7 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         # @see Increase::Models::Transaction::Source#category
         module Category
@@ -4149,8 +4119,7 @@ module Increase
           required :check_deposit_id, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::CheckDepositAcceptance::Currency }
@@ -4193,8 +4162,7 @@ module Increase
           #
           #   @param serial_number [String, nil] The check serial number, if present, for consumer checks. For business checks, t
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @see Increase::Models::Transaction::Source::CheckDepositAcceptance#currency
           module Currency
@@ -4238,15 +4206,13 @@ module Increase
           required :check_deposit_id, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::CheckDepositReturn::Currency }
 
           # @!attribute return_reason
-          #   Why this check was returned by the bank holding the account it was drawn
-          #   against.
+          #   Why this check was returned by the bank holding the account it was drawn against.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason]
           required :return_reason,
@@ -4291,8 +4257,7 @@ module Increase
           #
           #   @param transaction_id [String] The identifier of the transaction that reversed the original check deposit trans
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @see Increase::Models::Transaction::Source::CheckDepositReturn#currency
           module Currency
@@ -4320,8 +4285,7 @@ module Increase
             #   @return [Array<Symbol>]
           end
 
-          # Why this check was returned by the bank holding the account it was drawn
-          # against.
+          # Why this check was returned by the bank holding the account it was drawn against.
           #
           # @see Increase::Models::Transaction::Source::CheckDepositReturn#return_reason
           module ReturnReason
@@ -4515,8 +4479,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::FeePayment::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::FeePayment::Currency }
@@ -4549,8 +4512,7 @@ module Increase
           #
           #   @param program_id [String, nil] The Program for which this fee was incurred.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @see Increase::Models::Transaction::Source::FeePayment#currency
           module Currency
@@ -4868,8 +4830,7 @@ module Increase
           required :creditor_name, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-          #   currency. This will always be "USD" for a Real-Time Payments transfer.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency]
           required :currency,
@@ -4942,8 +4903,7 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the Real-Time Payments Transfer that led to this Transaction.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-          # currency. This will always be "USD" for a Real-Time Payments transfer.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #
           # @see Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation#currency
           module Currency
@@ -4988,9 +4948,7 @@ module Increase
           required :creditor_name, String
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          #   transfer's currency. This will always be "USD" for a Real-Time Payments
-          #   transfer.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
@@ -5070,9 +5028,7 @@ module Increase
           #
           #   @param transfer_id [String] The identifier of the Real-Time Payments Transfer that led to this Transaction.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-          # transfer's currency. This will always be "USD" for a Real-Time Payments
-          # transfer.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #
           # @see Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline#currency
           module Currency
@@ -5484,8 +5440,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::InterestPayment::Currency }
@@ -5521,8 +5476,7 @@ module Increase
           #
           #   @param period_start [Time] The start of the period for which this transaction paid interest.
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @see Increase::Models::Transaction::Source::InterestPayment#currency
           module Currency
@@ -5561,15 +5515,13 @@ module Increase
           required :amount, Integer
 
           # @!attribute currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          #   currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InternalSource::Currency]
           required :currency, enum: -> { Increase::Transaction::Source::InternalSource::Currency }
 
           # @!attribute reason
-          #   An Internal Source is a transaction between you and Increase. This describes the
-          #   reason for the transaction.
+          #   An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InternalSource::Reason]
           required :reason, enum: -> { Increase::Transaction::Source::InternalSource::Reason }
@@ -5588,8 +5540,7 @@ module Increase
           #
           #   @param reason [Symbol, Increase::Models::Transaction::Source::InternalSource::Reason] An Internal Source is a transaction between you and Increase. This describes the
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @see Increase::Models::Transaction::Source::InternalSource#currency
           module Currency
@@ -5617,8 +5568,7 @@ module Increase
             #   @return [Array<Symbol>]
           end
 
-          # An Internal Source is a transaction between you and Increase. This describes the
-          # reason for the transaction.
+          # An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
           #
           # @see Increase::Models::Transaction::Source::InternalSource#reason
           module Reason

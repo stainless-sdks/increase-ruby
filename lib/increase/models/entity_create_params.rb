@@ -149,9 +149,7 @@ module Increase
         required :tax_identifier, String
 
         # @!attribute beneficial_ownership_exemption_reason
-        #   If the entity is exempt from the requirement to submit beneficial owners,
-        #   provide the justification. If a reason is provided, you do not need to submit a
-        #   list of beneficial owners.
+        #   If the entity is exempt from the requirement to submit beneficial owners, provide the justification. If a reason is provided, you do not need to submit a list of beneficial owners.
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwnershipExemptionReason, nil]
         optional :beneficial_ownership_exemption_reason,
@@ -643,9 +641,7 @@ module Increase
           end
         end
 
-        # If the entity is exempt from the requirement to submit beneficial owners,
-        # provide the justification. If a reason is provided, you do not need to submit a
-        # list of beneficial owners.
+        # If the entity is exempt from the requirement to submit beneficial owners, provide the justification. If a reason is provided, you do not need to submit a list of beneficial owners.
         #
         # @see Increase::Models::EntityCreateParams::Corporation#beneficial_ownership_exemption_reason
         module BeneficialOwnershipExemptionReason
@@ -1509,9 +1505,7 @@ module Increase
         required :address, -> { Increase::EntityCreateParams::Trust::Address }
 
         # @!attribute category
-        #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #   their own Employer Identification Number. Revocable trusts require information
-        #   about the individual `grantor` who created the trust.
+        #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
         required :category, enum: -> { Increase::EntityCreateParams::Trust::Category }
@@ -1631,9 +1625,7 @@ module Increase
           #   @param line2 [String] The second line of the address. This might be the floor or room number.
         end
 
-        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        # their own Employer Identification Number. Revocable trusts require information
-        # about the individual `grantor` who created the trust.
+        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
         #
         # @see Increase::Models::EntityCreateParams::Trust#category
         module Category

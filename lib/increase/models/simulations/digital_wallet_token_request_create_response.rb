@@ -6,8 +6,7 @@ module Increase
       # @see Increase::Resources::Simulations::DigitalWalletTokenRequests#create
       class DigitalWalletTokenRequestCreateResponse < Increase::Internal::Type::BaseModel
         # @!attribute decline_reason
-        #   If the simulated tokenization attempt was declined, this field contains details
-        #   as to why.
+        #   If the simulated tokenization attempt was declined, this field contains details as to why.
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         required :decline_reason,
@@ -41,8 +40,7 @@ module Increase
         #
         #   @param type [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type] A constant representing the object's type. For this resource it will always be `
 
-        # If the simulated tokenization attempt was declined, this field contains details
-        # as to why.
+        # If the simulated tokenization attempt was declined, this field contains details as to why.
         #
         # @see Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse#decline_reason
         module DeclineReason

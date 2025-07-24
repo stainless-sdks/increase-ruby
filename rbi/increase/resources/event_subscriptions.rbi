@@ -20,8 +20,7 @@ module Increase
         # If specified, this subscription will only receive webhooks for Events associated
         # with the specified OAuth Connection.
         oauth_connection_id: nil,
-        # If specified, this subscription will only receive webhooks for Events with the
-        # specified `category`.
+        # If specified, this subscription will only receive webhooks for Events with the specified `category`.
         selected_event_category: nil,
         # The key that will be used to sign webhooks. If no value is passed, a random
         # string will be used as default.

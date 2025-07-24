@@ -24,8 +24,7 @@ module Increase
       sig { returns(Time) }
       attr_accessor :created_at
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
       sig { returns(Increase::Account::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -110,8 +109,7 @@ module Increase
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
         # was created.
         created_at:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
         currency:,
         # The identifier for the Entity the Account belongs to.
         entity_id:,
@@ -194,8 +192,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
       module Currency
         extend Increase::Internal::Type::Enum
 

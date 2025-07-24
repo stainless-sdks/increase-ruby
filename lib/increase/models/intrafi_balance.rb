@@ -18,8 +18,7 @@ module Increase
       required :balances, -> { Increase::Internal::Type::ArrayOf[Increase::IntrafiBalance::Balance] }
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #   currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
       #
       #   @return [Symbol, Increase::Models::IntrafiBalance::Currency]
       required :currency, enum: -> { Increase::IntrafiBalance::Currency }
@@ -134,8 +133,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
       #
       # @see Increase::Models::IntrafiBalance#currency
       module Currency

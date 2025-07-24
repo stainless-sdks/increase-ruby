@@ -287,8 +287,7 @@ module Increase
         end
         attr_writer :card_validation
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         sig { returns(Increase::CardPayment::Element::Category::TaggedSymbol) }
         attr_accessor :category
 
@@ -385,8 +384,7 @@ module Increase
           # Validations are requests from a merchant to verify that a card number and
           # optionally its address and/or Card Verification Value are valid.
           card_validation:,
-          # The type of the resource. We may add additional possible values for this enum
-          # over time; your application should be able to handle such additions gracefully.
+          # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
           category:,
           # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           # the card payment element was created.
@@ -1183,8 +1181,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           sig do
             returns(
               Increase::CardPayment::Element::CardAuthorization::Actioner::TaggedSymbol
@@ -1201,8 +1198,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardAuthorization::Currency::TaggedSymbol
@@ -1215,8 +1211,7 @@ module Increase
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           sig do
             returns(
               Increase::CardPayment::Element::CardAuthorization::Direction::TaggedSymbol
@@ -1315,8 +1310,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           sig do
             returns(
               Increase::CardPayment::Element::CardAuthorization::ProcessingCategory::TaggedSymbol
@@ -1405,22 +1399,19 @@ module Increase
           def self.new(
             # The Card Authorization identifier.
             id:,
-            # Whether this authorization was approved by Increase, the card network through
-            # stand-in processing, or the user through a real-time decision.
+            # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
             actioner:,
             # The pending amount in the minor unit of the transaction's currency. For dollars,
             # for example, this is cents.
             amount:,
             # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
             currency:,
             # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
             # purchase), the identifier of the token that was used.
             digital_wallet_token_id:,
-            # The direction describes the direction the funds will move, either from the
-            # cardholder to the merchant or from the merchant to the cardholder.
+            # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
             direction:,
             # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
             # will expire and the pending transaction will be released.
@@ -1459,8 +1450,7 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
             # transaction's presentment currency.
             presentment_currency:,
-            # The processing category describes the intent behind the authorization, such as
-            # whether it was used for bill payments or an automatic fuel dispenser.
+            # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
             processing_category:,
             # The identifier of the Real-Time Decision sent to approve or decline this
             # transaction.
@@ -1520,8 +1510,7 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -1566,8 +1555,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -1633,8 +1621,7 @@ module Increase
             end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           module Direction
             extend Increase::Internal::Type::Enum
 
@@ -1783,9 +1770,7 @@ module Increase
                   )
                 end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
@@ -1795,8 +1780,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               sig do
                 returns(
                   T.nilable(
@@ -1806,8 +1790,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               sig do
                 returns(
                   T.nilable(
@@ -1835,15 +1818,11 @@ module Increase
                 ).returns(T.attached_class)
               end
               def self.new(
-                # For electronic commerce transactions, this identifies the level of security used
-                # in obtaining the customer's payment credential. For mail or telephone order
-                # transactions, identifies the type of mail or telephone order.
+                # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
                 electronic_commerce_indicator:,
-                # The method used to enter the cardholder's primary account number and card
-                # expiration date.
+                # The method used to enter the cardholder's primary account number and card expiration date.
                 point_of_service_entry_mode:,
-                # Only present when `actioner: network`. Describes why a card authorization was
-                # approved or declined by Visa through stand-in processing.
+                # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
                 stand_in_processing_reason:
               )
               end
@@ -1869,9 +1848,7 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -1951,8 +1928,7 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -2046,8 +2022,7 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -2182,8 +2157,7 @@ module Increase
             end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           module ProcessingCategory
             extend Increase::Internal::Type::Enum
 
@@ -2626,8 +2600,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardAuthorizationExpiration::Currency::TaggedSymbol
@@ -2679,8 +2652,7 @@ module Increase
             id:,
             # The identifier for the Card Authorization this reverses.
             card_authorization_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
             currency:,
             # The amount of this authorization expiration in the minor unit of the
             # transaction's currency. For dollars, for example, this is cents.
@@ -2711,8 +2683,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -2854,8 +2825,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           sig do
             returns(
               Increase::CardPayment::Element::CardDecline::Actioner::TaggedSymbol
@@ -2872,8 +2842,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardDecline::Currency::TaggedSymbol
@@ -2890,8 +2859,7 @@ module Increase
           sig { returns(T.nilable(String)) }
           attr_accessor :digital_wallet_token_id
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           sig do
             returns(
               Increase::CardPayment::Element::CardDecline::Direction::TaggedSymbol
@@ -2979,8 +2947,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :presentment_currency
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           sig do
             returns(
               Increase::CardPayment::Element::CardDecline::ProcessingCategory::TaggedSymbol
@@ -2993,8 +2960,7 @@ module Increase
           sig { returns(T.nilable(String)) }
           attr_accessor :real_time_decision_id
 
-          # This is present if a specific decline reason was given in the real-time
-          # decision.
+          # This is present if a specific decline reason was given in the real-time decision.
           sig do
             returns(
               T.nilable(
@@ -3078,24 +3044,21 @@ module Increase
           def self.new(
             # The Card Decline identifier.
             id:,
-            # Whether this authorization was approved by Increase, the card network through
-            # stand-in processing, or the user through a real-time decision.
+            # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
             actioner:,
             # The declined amount in the minor unit of the destination account currency. For
             # dollars, for example, this is cents.
             amount:,
             # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-            # account currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
             currency:,
             # The identifier of the declined transaction created for this Card Decline.
             declined_transaction_id:,
             # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
             # purchase), the identifier of the token that was used.
             digital_wallet_token_id:,
-            # The direction describes the direction the funds will move, either from the
-            # cardholder to the merchant or from the merchant to the cardholder.
+            # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
             direction:,
             # The merchant identifier (commonly abbreviated as MID) of the merchant the card
             # is transacting with.
@@ -3129,14 +3092,12 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
             # transaction's presentment currency.
             presentment_currency:,
-            # The processing category describes the intent behind the authorization, such as
-            # whether it was used for bill payments or an automatic fuel dispenser.
+            # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
             processing_category:,
             # The identifier of the Real-Time Decision sent to approve or decline this
             # transaction.
             real_time_decision_id:,
-            # This is present if a specific decline reason was given in the real-time
-            # decision.
+            # This is present if a specific decline reason was given in the real-time decision.
             real_time_decision_reason:,
             # Why the transaction was declined.
             reason:,
@@ -3195,8 +3156,7 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -3241,8 +3201,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          # account currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -3308,8 +3267,7 @@ module Increase
             end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          # cardholder to the merchant or from the merchant to the cardholder.
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           module Direction
             extend Increase::Internal::Type::Enum
 
@@ -3458,9 +3416,7 @@ module Increase
                   )
                 end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
@@ -3470,8 +3426,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               sig do
                 returns(
                   T.nilable(
@@ -3481,8 +3436,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               sig do
                 returns(
                   T.nilable(
@@ -3510,15 +3464,11 @@ module Increase
                 ).returns(T.attached_class)
               end
               def self.new(
-                # For electronic commerce transactions, this identifies the level of security used
-                # in obtaining the customer's payment credential. For mail or telephone order
-                # transactions, identifies the type of mail or telephone order.
+                # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
                 electronic_commerce_indicator:,
-                # The method used to enter the cardholder's primary account number and card
-                # expiration date.
+                # The method used to enter the cardholder's primary account number and card expiration date.
                 point_of_service_entry_mode:,
-                # Only present when `actioner: network`. Describes why a card authorization was
-                # approved or declined by Visa through stand-in processing.
+                # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
                 stand_in_processing_reason:
               )
               end
@@ -3544,9 +3494,7 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -3626,8 +3574,7 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -3721,8 +3668,7 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -3857,8 +3803,7 @@ module Increase
             end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           module ProcessingCategory
             extend Increase::Internal::Type::Enum
 
@@ -3945,8 +3890,7 @@ module Increase
             end
           end
 
-          # This is present if a specific decline reason was given in the real-time
-          # decision.
+          # This is present if a specific decline reason was given in the real-time decision.
           module RealTimeDecisionReason
             extend Increase::Internal::Type::Enum
 
@@ -4501,8 +4445,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardFuelConfirmation::Currency::TaggedSymbol
@@ -4578,8 +4521,7 @@ module Increase
             id:,
             # The identifier for the Card Authorization this updates.
             card_authorization_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
             currency:,
             # The card network used to process this card authorization.
             network:,
@@ -4618,8 +4560,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -4821,8 +4762,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           sig do
             returns(
               Increase::CardPayment::Element::CardIncrement::Actioner::TaggedSymbol
@@ -4839,8 +4779,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardIncrement::Currency::TaggedSymbol
@@ -4927,16 +4866,14 @@ module Increase
           def self.new(
             # The Card Increment identifier.
             id:,
-            # Whether this authorization was approved by Increase, the card network through
-            # stand-in processing, or the user through a real-time decision.
+            # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
             actioner:,
             # The amount of this increment in the minor unit of the transaction's currency.
             # For dollars, for example, this is cents.
             amount:,
             # The identifier for the Card Authorization this increments.
             card_authorization_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
             currency:,
             # The card network used to process this card authorization.
             network:,
@@ -4985,8 +4922,7 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -5031,8 +4967,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -5262,8 +5197,7 @@ module Increase
           end
           attr_writer :cashback
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardRefund::Currency::TaggedSymbol
@@ -5427,8 +5361,7 @@ module Increase
             # Cashback debited for this transaction, if eligible. Cashback is paid out in
             # aggregate, monthly.
             cashback:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's settlement currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
             currency:,
             # Interchange assessed as a part of this transaciton.
             interchange:,
@@ -5626,8 +5559,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -5713,8 +5645,7 @@ module Increase
             sig { returns(T.nilable(String)) }
             attr_accessor :code
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             sig do
               returns(
                 Increase::CardPayment::Element::CardRefund::Interchange::Currency::TaggedSymbol
@@ -5739,8 +5670,7 @@ module Increase
               amount:,
               # The card network specific interchange code.
               code:,
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-              # reimbursement.
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
               currency:
             )
             end
@@ -5758,8 +5688,7 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -6131,8 +6060,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :insurance_charges_currency
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               sig do
                 returns(
                   T.nilable(
@@ -6217,8 +6145,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
                 # charges assessed.
                 insurance_charges_currency:,
-                # An indicator that the cardholder is being billed for a reserved vehicle that was
-                # not actually rented (that is, a "no-show" charge).
+                # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
                 no_show_indicator:,
                 # Charges for returning the vehicle at a different location than where it was
                 # picked up.
@@ -6333,8 +6260,7 @@ module Increase
                 end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -6423,8 +6349,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :food_beverage_charges_currency
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               sig do
                 returns(
                   T.nilable(
@@ -6512,8 +6437,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
                 # beverage charges.
                 food_beverage_charges_currency:,
-                # Indicator that the cardholder is being billed for a reserved room that was not
-                # actually used.
+                # Indicator that the cardholder is being billed for a reserved room that was not actually used.
                 no_show_indicator:,
                 # Prepaid expenses being charged for the room.
                 prepaid_expenses_amount:,
@@ -6639,8 +6563,7 @@ module Increase
                 end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -7661,8 +7584,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_authorization_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardReversal::Currency::TaggedSymbol
@@ -7800,8 +7722,7 @@ module Increase
             id:,
             # The identifier for the Card Authorization this reverses.
             card_authorization_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-            # currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
             currency:,
             # The merchant identifier (commonly abbreviated as MID) of the merchant the card
             # is transacting with.
@@ -7877,8 +7798,7 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          # currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -8167,8 +8087,7 @@ module Increase
           end
           attr_writer :cashback
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardSettlement::Currency::TaggedSymbol
@@ -8344,8 +8263,7 @@ module Increase
             # Cashback earned on this transaction, if eligible. Cashback is paid out in
             # aggregate, monthly.
             cashback:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's settlement currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
             currency:,
             # Interchange assessed as a part of this transaction.
             interchange:,
@@ -8547,8 +8465,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's settlement currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -8634,8 +8551,7 @@ module Increase
             sig { returns(T.nilable(String)) }
             attr_accessor :code
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             sig do
               returns(
                 Increase::CardPayment::Element::CardSettlement::Interchange::Currency::TaggedSymbol
@@ -8660,8 +8576,7 @@ module Increase
               amount:,
               # The card network specific interchange code.
               code:,
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-              # reimbursement.
+              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
               currency:
             )
             end
@@ -8679,8 +8594,7 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            # reimbursement.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             module Currency
               extend Increase::Internal::Type::Enum
 
@@ -9052,8 +8966,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :insurance_charges_currency
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               sig do
                 returns(
                   T.nilable(
@@ -9138,8 +9051,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
                 # charges assessed.
                 insurance_charges_currency:,
-                # An indicator that the cardholder is being billed for a reserved vehicle that was
-                # not actually rented (that is, a "no-show" charge).
+                # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
                 no_show_indicator:,
                 # Charges for returning the vehicle at a different location than where it was
                 # picked up.
@@ -9254,8 +9166,7 @@ module Increase
                 end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              # not actually rented (that is, a "no-show" charge).
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -9344,8 +9255,7 @@ module Increase
               sig { returns(T.nilable(String)) }
               attr_accessor :food_beverage_charges_currency
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               sig do
                 returns(
                   T.nilable(
@@ -9433,8 +9343,7 @@ module Increase
                 # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
                 # beverage charges.
                 food_beverage_charges_currency:,
-                # Indicator that the cardholder is being billed for a reserved room that was not
-                # actually used.
+                # Indicator that the cardholder is being billed for a reserved room that was not actually used.
                 no_show_indicator:,
                 # Prepaid expenses being charged for the room.
                 prepaid_expenses_amount:,
@@ -9560,8 +9469,7 @@ module Increase
                 end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              # actually used.
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -10581,8 +10489,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :id
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           sig do
             returns(
               Increase::CardPayment::Element::CardValidation::Actioner::TaggedSymbol
@@ -10594,8 +10501,7 @@ module Increase
           sig { returns(String) }
           attr_accessor :card_payment_id
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           sig do
             returns(
               Increase::CardPayment::Element::CardValidation::Currency::TaggedSymbol
@@ -10753,13 +10659,11 @@ module Increase
           def self.new(
             # The Card Validation identifier.
             id:,
-            # Whether this authorization was approved by Increase, the card network through
-            # stand-in processing, or the user through a real-time decision.
+            # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
             actioner:,
             # The ID of the Card Payment this transaction belongs to.
             card_payment_id:,
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-            # transaction's currency.
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
             currency:,
             # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
             # purchase), the identifier of the token that was used.
@@ -10840,8 +10744,7 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          # stand-in processing, or the user through a real-time decision.
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           module Actioner
             extend Increase::Internal::Type::Enum
 
@@ -10886,8 +10789,7 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          # transaction's currency.
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           module Currency
             extend Increase::Internal::Type::Enum
 
@@ -11064,9 +10966,7 @@ module Increase
                   )
                 end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               sig do
                 returns(
                   T.nilable(
@@ -11076,8 +10976,7 @@ module Increase
               end
               attr_accessor :electronic_commerce_indicator
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               sig do
                 returns(
                   T.nilable(
@@ -11087,8 +10986,7 @@ module Increase
               end
               attr_accessor :point_of_service_entry_mode
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               sig do
                 returns(
                   T.nilable(
@@ -11116,15 +11014,11 @@ module Increase
                 ).returns(T.attached_class)
               end
               def self.new(
-                # For electronic commerce transactions, this identifies the level of security used
-                # in obtaining the customer's payment credential. For mail or telephone order
-                # transactions, identifies the type of mail or telephone order.
+                # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
                 electronic_commerce_indicator:,
-                # The method used to enter the cardholder's primary account number and card
-                # expiration date.
+                # The method used to enter the cardholder's primary account number and card expiration date.
                 point_of_service_entry_mode:,
-                # Only present when `actioner: network`. Describes why a card authorization was
-                # approved or declined by Visa through stand-in processing.
+                # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
                 stand_in_processing_reason:
               )
               end
@@ -11150,9 +11044,7 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              # in obtaining the customer's payment credential. For mail or telephone order
-              # transactions, identifies the type of mail or telephone order.
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               module ElectronicCommerceIndicator
                 extend Increase::Internal::Type::Enum
 
@@ -11232,8 +11124,7 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              # expiration date.
+              # The method used to enter the cardholder's primary account number and card expiration date.
               module PointOfServiceEntryMode
                 extend Increase::Internal::Type::Enum
 
@@ -11327,8 +11218,7 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              # approved or declined by Visa through stand-in processing.
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               module StandInProcessingReason
                 extend Increase::Internal::Type::Enum
 
@@ -11802,8 +11692,7 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        # over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         module Category
           extend Increase::Internal::Type::Enum
 

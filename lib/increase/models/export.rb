@@ -11,8 +11,7 @@ module Increase
       required :id, String
 
       # @!attribute category
-      #   The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
+      #   The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
       #
       #   @return [Symbol, Increase::Models::Export::Category]
       required :category, enum: -> { Increase::Export::Category }
@@ -84,8 +83,7 @@ module Increase
       #
       #   @param type [Symbol, Increase::Models::Export::Type] A constant representing the object's type. For this resource it will always be `
 
-      # The category of the Export. We may add additional possible values for this enum
-      # over time; your application should be able to handle that gracefully.
+      # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
       #
       # @see Increase::Models::Export#category
       module Category

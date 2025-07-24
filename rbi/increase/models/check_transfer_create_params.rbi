@@ -275,8 +275,7 @@ module Increase
         end
         attr_writer :return_address
 
-        # How to ship the check. For details on pricing, timing, and restrictions, see
-        # https://increase.com/documentation/originating-checks#printing-checks .
+        # How to ship the check. For details on pricing, timing, and restrictions, see https://increase.com/documentation/originating-checks#printing-checks .
         sig do
           returns(
             T.nilable(
@@ -345,8 +344,7 @@ module Increase
           # an Increase-owned address that will mark checks as delivery failed and shred
           # them.
           return_address: nil,
-          # How to ship the check. For details on pricing, timing, and restrictions, see
-          # https://increase.com/documentation/originating-checks#printing-checks .
+          # How to ship the check. For details on pricing, timing, and restrictions, see https://increase.com/documentation/originating-checks#printing-checks .
           shipping_method: nil,
           # The text that will appear as the signature on the check in cursive font. If not
           # provided, the check will be printed with 'No signature required'.
@@ -555,8 +553,7 @@ module Increase
           end
         end
 
-        # How to ship the check. For details on pricing, timing, and restrictions, see
-        # https://increase.com/documentation/originating-checks#printing-checks .
+        # How to ship the check. For details on pricing, timing, and restrictions, see https://increase.com/documentation/originating-checks#printing-checks .
         module ShippingMethod
           extend Increase::Internal::Type::Enum
 

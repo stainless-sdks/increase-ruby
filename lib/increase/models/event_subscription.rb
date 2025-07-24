@@ -32,8 +32,7 @@ module Increase
       required :oauth_connection_id, String, nil?: true
 
       # @!attribute selected_event_category
-      #   If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
+      #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
       #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory, nil]
       required :selected_event_category,
@@ -86,8 +85,7 @@ module Increase
       #
       #   @param url [String] The webhook url where we'll send notifications.
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      # specified `category`.
+      # If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
       # @see Increase::Models::EventSubscription#selected_event_category
       module SelectedEventCategory

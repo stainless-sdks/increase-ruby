@@ -15,8 +15,7 @@ module Increase
         ).returns(Increase::OAuthToken)
       end
       def create(
-        # The credential you request in exchange for the code. In Production, this is
-        # always `authorization_code`. In Sandbox, you can pass either enum value.
+        # The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
         grant_type:,
         # The public identifier for your application.
         client_id: nil,

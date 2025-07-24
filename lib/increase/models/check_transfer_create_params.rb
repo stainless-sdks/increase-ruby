@@ -151,8 +151,7 @@ module Increase
         optional :return_address, -> { Increase::CheckTransferCreateParams::PhysicalCheck::ReturnAddress }
 
         # @!attribute shipping_method
-        #   How to ship the check. For details on pricing, timing, and restrictions, see
-        #   https://increase.com/documentation/originating-checks#printing-checks .
+        #   How to ship the check. For details on pricing, timing, and restrictions, see https://increase.com/documentation/originating-checks#printing-checks .
         #
         #   @return [Symbol, Increase::Models::CheckTransferCreateParams::PhysicalCheck::ShippingMethod, nil]
         optional :shipping_method,
@@ -306,8 +305,7 @@ module Increase
           #   @param line2 [String] The second line of the return address.
         end
 
-        # How to ship the check. For details on pricing, timing, and restrictions, see
-        # https://increase.com/documentation/originating-checks#printing-checks .
+        # How to ship the check. For details on pricing, timing, and restrictions, see https://increase.com/documentation/originating-checks#printing-checks .
         #
         # @see Increase::Models::CheckTransferCreateParams::PhysicalCheck#shipping_method
         module ShippingMethod

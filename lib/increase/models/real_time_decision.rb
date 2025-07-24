@@ -268,8 +268,7 @@ module Increase
         required :digital_wallet_token_id, String, nil?: true
 
         # @!attribute direction
-        #   The direction describes the direction the funds will move, either from the
-        #   cardholder to the merchant or from the merchant to the cardholder.
+        #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
         required :direction, enum: -> { Increase::RealTimeDecision::CardAuthorization::Direction }
@@ -364,8 +363,7 @@ module Increase
         required :presentment_currency, String
 
         # @!attribute processing_category
-        #   The processing category describes the intent behind the authorization, such as
-        #   whether it was used for bill payments or an automatic fuel dispenser.
+        #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory]
         required :processing_category,
@@ -483,8 +481,7 @@ module Increase
           #   @return [Array<Symbol>]
         end
 
-        # The direction describes the direction the funds will move, either from the
-        # cardholder to the merchant or from the merchant to the cardholder.
+        # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         #
         # @see Increase::Models::RealTimeDecision::CardAuthorization#direction
         module Direction
@@ -544,9 +541,7 @@ module Increase
           # @see Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails#visa
           class Visa < Increase::Internal::Type::BaseModel
             # @!attribute electronic_commerce_indicator
-            #   For electronic commerce transactions, this identifies the level of security used
-            #   in obtaining the customer's payment credential. For mail or telephone order
-            #   transactions, identifies the type of mail or telephone order.
+            #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
             required :electronic_commerce_indicator,
@@ -556,8 +551,7 @@ module Increase
                      nil?: true
 
             # @!attribute point_of_service_entry_mode
-            #   The method used to enter the cardholder's primary account number and card
-            #   expiration date.
+            #   The method used to enter the cardholder's primary account number and card expiration date.
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
             required :point_of_service_entry_mode,
@@ -567,8 +561,7 @@ module Increase
                      nil?: true
 
             # @!attribute stand_in_processing_reason
-            #   Only present when `actioner: network`. Describes why a card authorization was
-            #   approved or declined by Visa through stand-in processing.
+            #   Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
             required :stand_in_processing_reason,
@@ -590,9 +583,7 @@ module Increase
             #
             #   @param stand_in_processing_reason [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil] Only present when `actioner: network`. Describes why a card authorization was ap
 
-            # For electronic commerce transactions, this identifies the level of security used
-            # in obtaining the customer's payment credential. For mail or telephone order
-            # transactions, identifies the type of mail or telephone order.
+            # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             #
             # @see Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa#electronic_commerce_indicator
             module ElectronicCommerceIndicator
@@ -627,8 +618,7 @@ module Increase
               #   @return [Array<Symbol>]
             end
 
-            # The method used to enter the cardholder's primary account number and card
-            # expiration date.
+            # The method used to enter the cardholder's primary account number and card expiration date.
             #
             # @see Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa#point_of_service_entry_mode
             module PointOfServiceEntryMode
@@ -668,8 +658,7 @@ module Increase
               #   @return [Array<Symbol>]
             end
 
-            # Only present when `actioner: network`. Describes why a card authorization was
-            # approved or declined by Visa through stand-in processing.
+            # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
             #
             # @see Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa#stand_in_processing_reason
             module StandInProcessingReason
@@ -742,8 +731,7 @@ module Increase
           #   @param transaction_id [String, nil] A globally unique transaction identifier provided by the card network, used acro
         end
 
-        # The processing category describes the intent behind the authorization, such as
-        # whether it was used for bill payments or an automatic fuel dispenser.
+        # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
         #
         # @see Increase::Models::RealTimeDecision::CardAuthorization#processing_category
         module ProcessingCategory
@@ -783,8 +771,7 @@ module Increase
         # @see Increase::Models::RealTimeDecision::CardAuthorization#request_details
         class RequestDetails < Increase::Internal::Type::BaseModel
           # @!attribute category
-          #   The type of this request (e.g., an initial authorization or an incremental
-          #   authorization).
+          #   The type of this request (e.g., an initial authorization or an incremental authorization).
           #
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
           required :category,
@@ -821,8 +808,7 @@ module Increase
           #
           #   @param initial_authorization [Object, nil] Fields specific to the category `initial_authorization`.
 
-          # The type of this request (e.g., an initial authorization or an incremental
-          # authorization).
+          # The type of this request (e.g., an initial authorization or an incremental authorization).
           #
           # @see Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails#category
           module Category
@@ -1185,8 +1171,7 @@ module Increase
         required :card_profile_id, String, nil?: true
 
         # @!attribute decision
-        #   Whether or not the provisioning request was approved. This will be null until
-        #   the real time decision is responded to.
+        #   Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision, nil]
         required :decision, enum: -> { Increase::RealTimeDecision::DigitalWalletToken::Decision }, nil?: true
@@ -1219,8 +1204,7 @@ module Increase
         #
         #   @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet] The digital wallet app being used.
 
-        # Whether or not the provisioning request was approved. This will be null until
-        # the real time decision is responded to.
+        # Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
         #
         # @see Increase::Models::RealTimeDecision::DigitalWalletToken#decision
         module Decision

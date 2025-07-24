@@ -17,8 +17,7 @@ module Increase
       sig { returns(T::Array[Increase::IntrafiBalance::Balance]) }
       attr_accessor :balances
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
       sig { returns(Increase::IntrafiBalance::Currency::TaggedSymbol) }
       attr_accessor :currency
 
@@ -55,8 +54,7 @@ module Increase
         # Each entry represents a balance held at a different bank. IntraFi separates the
         # total balance across many participating banks in the network.
         balances:,
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-        # currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
         currency:,
         # The date this balance reflects.
         effective_date:,
@@ -201,8 +199,7 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      # currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
       module Currency
         extend Increase::Internal::Type::Enum
 

@@ -39,8 +39,7 @@ module Increase
       required :intrafi_id, String
 
       # @!attribute status
-      #   The status of the account in the network. An account takes about one business
-      #   day to go from `pending_enrolling` to `enrolled`.
+      #   The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
       #
       #   @return [Symbol, Increase::Models::IntrafiAccountEnrollment::Status]
       required :status, enum: -> { Increase::IntrafiAccountEnrollment::Status }
@@ -78,8 +77,7 @@ module Increase
       #
       #   @param type [Symbol, Increase::Models::IntrafiAccountEnrollment::Type] A constant representing the object's type. For this resource it will always be `
 
-      # The status of the account in the network. An account takes about one business
-      # day to go from `pending_enrolling` to `enrolled`.
+      # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
       #
       # @see Increase::Models::IntrafiAccountEnrollment#status
       module Status

@@ -34,8 +34,7 @@ module Increase
         sig { params(card_id: String).void }
         attr_writer :card_id
 
-        # Forces a card decline with a specific reason. No real time decision will be
-        # sent.
+        # Forces a card decline with a specific reason. No real time decision will be sent.
         sig do
           returns(
             T.nilable(
@@ -207,8 +206,7 @@ module Increase
           authenticated_card_payment_id: nil,
           # The identifier of the Card to be authorized.
           card_id: nil,
-          # Forces a card decline with a specific reason. No real time decision will be
-          # sent.
+          # Forces a card decline with a specific reason. No real time decision will be sent.
           decline_reason: nil,
           # The identifier of the Digital Wallet Token to be authorized.
           digital_wallet_token_id: nil,
@@ -278,8 +276,7 @@ module Increase
         def to_hash
         end
 
-        # Forces a card decline with a specific reason. No real time decision will be
-        # sent.
+        # Forces a card decline with a specific reason. No real time decision will be sent.
         module DeclineReason
           extend Increase::Internal::Type::Enum
 
@@ -627,8 +624,7 @@ module Increase
               )
             end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           sig do
             returns(
               Increase::Simulations::CardAuthorizationCreateParams::ProcessingCategory::Category::OrSymbol
@@ -645,8 +641,7 @@ module Increase
             ).returns(T.attached_class)
           end
           def self.new(
-            # The processing category describes the intent behind the authorization, such as
-            # whether it was used for bill payments or an automatic fuel dispenser.
+            # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
             category:
           )
           end
@@ -662,8 +657,7 @@ module Increase
           def to_hash
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          # whether it was used for bill payments or an automatic fuel dispenser.
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           module Category
             extend Increase::Internal::Type::Enum
 
