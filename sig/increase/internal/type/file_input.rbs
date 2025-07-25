@@ -19,6 +19,11 @@ module Increase
         ) -> (Pathname | StringIO | IO | String | top)
 
         def self.to_sorbet_type: -> top
+
+        def self.dump_request: (
+          Pathname | StringIO | IO | String | top value,
+          ?Increase::request_opts request_options
+        ) -> [top, ::Hash[Symbol, top]]
       end
     end
   end

@@ -102,6 +102,28 @@ module Increase
             T.any(Pathname, StringIO, IO, String, Increase::FilePart)
           end
         end
+
+        class << self
+          # @api private
+          #
+          # @param value [Pathname, StringIO, IO, String, Object]
+          # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+          #
+          # @return [Array(Object, Hash{Symbol=>Object})]
+          def dump_request(value, request_options = nil)
+            state = {can_retry: true}
+            dumped = dump(value, state: state)
+            opts = Increase::Internal::Type::Converter.dump(request_options, state)
+
+            options = Increase::Internal::Util.coerce_hash!(opts).to_h
+            request_options = if state.fetch(:can_retry)
+              options
+            else
+              {**options, max_retries: 0}
+            end
+            [dumped, request_options]
+          end
+        end
       end
     end
   end

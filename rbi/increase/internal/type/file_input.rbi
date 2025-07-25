@@ -53,6 +53,18 @@ module Increase
           def to_sorbet_type
           end
         end
+
+        class << self
+          # @api private
+          sig do
+            params(
+              value: T.any(Pathname, StringIO, IO, String, T.anything),
+              request_options: Increase::RequestOptions
+            ).returns([T.anything, Increase::Internal::AnyHash])
+          end
+          def dump_request(value, request_options = nil)
+          end
+        end
       end
     end
   end
