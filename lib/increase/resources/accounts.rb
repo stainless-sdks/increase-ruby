@@ -25,13 +25,7 @@ module Increase
       # @see Increase::Models::AccountCreateParams
       def create(params)
         parsed, options = Increase::AccountCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "accounts",
-          body: parsed,
-          model: Increase::Account,
-          options: options
-        )
+        @client.request(method: :post, path: "accounts", body: parsed, model: Increase::Account, options: options)
       end
 
       # Retrieve an Account

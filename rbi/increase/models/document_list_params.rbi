@@ -6,25 +6,18 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(Increase::DocumentListParams, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::DocumentListParams, Increase::Internal::AnyHash) }
 
       sig { returns(T.nilable(Increase::DocumentListParams::Category)) }
       attr_reader :category
 
-      sig do
-        params(category: Increase::DocumentListParams::Category::OrHash).void
-      end
+      sig { params(category: Increase::DocumentListParams::Category::OrHash).void }
       attr_writer :category
 
       sig { returns(T.nilable(Increase::DocumentListParams::CreatedAt)) }
       attr_reader :created_at
 
-      sig do
-        params(created_at: Increase::DocumentListParams::CreatedAt::OrHash).void
-      end
+      sig { params(created_at: Increase::DocumentListParams::CreatedAt::OrHash).void }
       attr_writer :created_at
 
       # Return the page of entries after this one.
@@ -68,164 +61,101 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         category: nil,
         created_at: nil,
         # Return the page of entries after this one.
-        cursor: nil,
+      cursor: nil,
         # Filter Documents to ones belonging to the specified Entity.
-        entity_id: nil,
+      entity_id: nil,
         # Filter records to the one with the specified `idempotency_key` you chose for
-        # that object. This value is unique across Increase and is used to ensure that a
-        # request is only processed once. Learn more about
-        # [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key: nil,
+      # that object. This value is unique across Increase and is used to ensure that a
+      # request is only processed once. Learn more about
+      # [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key: nil,
         # Limit the size of the list that is returned. The default (and maximum) is 100
-        # objects.
-        limit: nil,
+      # objects.
+      limit: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            category: Increase::DocumentListParams::Category,
-            created_at: Increase::DocumentListParams::CreatedAt,
-            cursor: String,
-            entity_id: String,
-            idempotency_key: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              category: Increase::DocumentListParams::Category,
+              created_at: Increase::DocumentListParams::CreatedAt,
+              cursor: String,
+              entity_id: String,
+              idempotency_key: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Category < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DocumentListParams::Category,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::DocumentListParams::Category, Increase::Internal::AnyHash) }
 
         # Filter Documents for those with the specified category or categories. For GET
         # requests, this should be encoded as a comma-delimited string, such as
         # `?in=one,two,three`.
-        sig do
-          returns(
-            T.nilable(
-              T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
-            )
-          )
-        end
+        sig { returns(T.nilable(T::Array[Increase::DocumentListParams::Category::In::OrSymbol])) }
         attr_reader :in_
 
-        sig do
-          params(
-            in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
-          ).void
-        end
+        sig { params(in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]).void }
         attr_writer :in_
 
-        sig do
-          params(
-            in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
-          ).returns(T.attached_class)
-        end
+        sig { params(in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]).returns(T.attached_class) }
         def self.new(
           # Filter Documents for those with the specified category or categories. For GET
-          # requests, this should be encoded as a comma-delimited string, such as
-          # `?in=one,two,three`.
-          in_: nil
-        )
-        end
+        # requests, this should be encoded as a comma-delimited string, such as
+        # `?in=one,two,three`.
+        in_: nil
+        ); end
 
-        sig do
-          override.returns(
-            {
-              in_:
-                T::Array[Increase::DocumentListParams::Category::In::OrSymbol]
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({in_: T::Array[Increase::DocumentListParams::Category::In::OrSymbol]}) }
+        def to_hash; end
 
         module In
           extend Increase::Internal::Type::Enum
 
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, Increase::DocumentListParams::Category::In)
-            end
+          TaggedSymbol = T.type_alias { T.all(Symbol, Increase::DocumentListParams::Category::In) }
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           # Internal Revenue Service Form 1099-INT.
-          FORM_1099_INT =
-            T.let(
-              :form_1099_int,
-              Increase::DocumentListParams::Category::In::TaggedSymbol
-            )
+          FORM_1099_INT = T.let(:form_1099_int, Increase::DocumentListParams::Category::In::TaggedSymbol)
 
           # Internal Revenue Service Form 1099-MISC.
-          FORM_1099_MISC =
-            T.let(
-              :form_1099_misc,
-              Increase::DocumentListParams::Category::In::TaggedSymbol
-            )
+          FORM_1099_MISC = T.let(:form_1099_misc, Increase::DocumentListParams::Category::In::TaggedSymbol)
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
           PROOF_OF_AUTHORIZATION =
-            T.let(
-              :proof_of_authorization,
-              Increase::DocumentListParams::Category::In::TaggedSymbol
-            )
+            T.let(:proof_of_authorization, Increase::DocumentListParams::Category::In::TaggedSymbol)
 
           # Company information, such a policies or procedures, typically submitted during our due diligence process.
           COMPANY_INFORMATION =
-            T.let(
-              :company_information,
-              Increase::DocumentListParams::Category::In::TaggedSymbol
-            )
+            T.let(:company_information, Increase::DocumentListParams::Category::In::TaggedSymbol)
 
           # An account verification letter.
           ACCOUNT_VERIFICATION_LETTER =
-            T.let(
-              :account_verification_letter,
-              Increase::DocumentListParams::Category::In::TaggedSymbol
-            )
+            T.let(:account_verification_letter, Increase::DocumentListParams::Category::In::TaggedSymbol)
 
           # Funding instructions.
           FUNDING_INSTRUCTIONS =
-            T.let(
-              :funding_instructions,
-              Increase::DocumentListParams::Category::In::TaggedSymbol
-            )
+            T.let(:funding_instructions, Increase::DocumentListParams::Category::In::TaggedSymbol)
 
-          sig do
-            override.returns(
-              T::Array[Increase::DocumentListParams::Category::In::TaggedSymbol]
-            )
-          end
-          def self.values
-          end
+          sig { override.returns(T::Array[Increase::DocumentListParams::Category::In::TaggedSymbol]) }
+          def self.values; end
         end
       end
 
       class CreatedAt < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::DocumentListParams::CreatedAt,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::DocumentListParams::CreatedAt, Increase::Internal::AnyHash) }
 
         # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
         # timestamp.
@@ -259,37 +189,24 @@ module Increase
         sig { params(on_or_before: Time).void }
         attr_writer :on_or_before
 
-        sig do
-          params(
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ).returns(T.attached_class)
-        end
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
         def self.new(
           # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          after: nil,
+        # timestamp.
+        after: nil,
           # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-          # timestamp.
-          before: nil,
+        # timestamp.
+        before: nil,
           # Return results on or after this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_after: nil,
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_after: nil,
           # Return results on or before this
-          # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-          on_or_before: nil
-        )
-        end
+        # [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        on_or_before: nil
+        ); end
 
-        sig do
-          override.returns(
-            { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
+        def to_hash; end
       end
     end
   end

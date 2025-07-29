@@ -1,17 +1,16 @@
 module Increase
   module Models
-    type inbound_mail_item =
-      {
-        id: String,
-        checks: ::Array[Increase::InboundMailItem::Check],
-        created_at: Time,
-        file_id: String,
-        lockbox_id: String?,
-        recipient_name: String?,
-        rejection_reason: Increase::Models::InboundMailItem::rejection_reason?,
-        status: Increase::Models::InboundMailItem::status,
-        type: Increase::Models::InboundMailItem::type_
-      }
+    type inbound_mail_item = {
+      id: String,
+      checks: ::Array[Increase::InboundMailItem::Check],
+      created_at: Time,
+      file_id: String,
+      lockbox_id: String?,
+      recipient_name: String?,
+      rejection_reason: Increase::Models::InboundMailItem::rejection_reason?,
+      status: Increase::Models::InboundMailItem::status,
+      type: Increase::Models::InboundMailItem::type_
+    }
 
     class InboundMailItem < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -32,19 +31,9 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundMailItem::type_
 
-      def initialize: (
-        id: String,
-        checks: ::Array[Increase::InboundMailItem::Check],
-        created_at: Time,
-        file_id: String,
-        lockbox_id: String?,
-        recipient_name: String?,
-        rejection_reason: Increase::Models::InboundMailItem::rejection_reason?,
-        status: Increase::Models::InboundMailItem::status,
-        type: Increase::Models::InboundMailItem::type_
-      ) -> void
+      def initialize: (id: String, checks: ::Array[Increase::InboundMailItem::Check], created_at: Time, file_id: String, lockbox_id: String?, recipient_name: String?, rejection_reason: Increase::Models::InboundMailItem::rejection_reason?, status: Increase::Models::InboundMailItem::status, type: Increase::Models::InboundMailItem::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         checks: ::Array[Increase::InboundMailItem::Check],
         created_at: Time,
@@ -56,8 +45,7 @@ module Increase
         type: Increase::Models::InboundMailItem::type_
       }
 
-      type check =
-        { amount: Integer, back_file_id: String?, front_file_id: String? }
+      type check = {amount: Integer, back_file_id: String?, front_file_id: String?}
 
       class Check < Increase::Internal::Type::BaseModel
         attr_accessor amount: Integer
@@ -66,21 +54,12 @@ module Increase
 
         attr_accessor front_file_id: String?
 
-        def initialize: (
-          amount: Integer,
-          back_file_id: String?,
-          front_file_id: String?
-        ) -> void
+        def initialize: (amount: Integer, back_file_id: String?, front_file_id: String?) -> void
 
-        def to_hash: -> {
-          amount: Integer,
-          back_file_id: String?,
-          front_file_id: String?
-        }
+        def to_hash: () -> {amount: Integer, back_file_id: String?, front_file_id: String?}
       end
 
-      type rejection_reason =
-        :no_matching_lockbox | :no_check | :lockbox_not_active
+      type rejection_reason = (:no_matching_lockbox | :no_check | :lockbox_not_active)
 
       module RejectionReason
         extend Increase::Internal::Type::Enum
@@ -94,10 +73,10 @@ module Increase
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE: :lockbox_not_active
 
-        def self?.values: -> ::Array[Increase::Models::InboundMailItem::rejection_reason]
+        def self?.values: () -> ::Array[Increase::Models::InboundMailItem::rejection_reason]
       end
 
-      type status = :pending | :processed | :rejected
+      type status = (:pending | :processed | :rejected)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -111,7 +90,7 @@ module Increase
         # The mail item has been rejected.
         REJECTED: :rejected
 
-        def self?.values: -> ::Array[Increase::Models::InboundMailItem::status]
+        def self?.values: () -> ::Array[Increase::Models::InboundMailItem::status]
       end
 
       type type_ = :inbound_mail_item
@@ -121,7 +100,7 @@ module Increase
 
         INBOUND_MAIL_ITEM: :inbound_mail_item
 
-        def self?.values: -> ::Array[Increase::Models::InboundMailItem::type_]
+        def self?.values: () -> ::Array[Increase::Models::InboundMailItem::type_]
       end
     end
   end

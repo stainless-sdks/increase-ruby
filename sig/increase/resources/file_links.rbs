@@ -1,11 +1,7 @@
 module Increase
   module Resources
     class FileLinks
-      def create: (
-        file_id: String,
-        ?expires_at: Time,
-        ?request_options: Increase::request_opts
-      ) -> Increase::FileLink
+      def create: (file_id: String, ?expires_at: Time, ?request_options: Increase::request_opts) -> Increase::FileLink
 
       def initialize: (client: Increase::Client) -> void
     end

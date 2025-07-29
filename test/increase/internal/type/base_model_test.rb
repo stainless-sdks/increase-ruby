@@ -60,7 +60,7 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
       [Date, "one"] => [{no: 1}, "one"],
       [Time, "1990-09-19"] => [{yes: 1}, Time.new(1990, 9, 19)],
       [Time, Time.new(1990, 9, 19)] => [{yes: 1}, Time.new(1990, 9, 19)],
-      [Time, "one"] => [{no: 1}, "one"]
+      [Time, "one"] => [{no: 1}, "one"],
     }
 
     cases.each do |lhs, rhs|
@@ -112,7 +112,7 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
       [Float, "one"] => ArgumentError,
       [String, Time] => TypeError,
       [Date, "one"] => ArgumentError,
-      [Time, "one"] => ArgumentError
+      [Time, "one"] => ArgumentError,
     }
 
     cases.each do |testcase, expect|
@@ -140,7 +140,7 @@ class Increase::Test::PrimitiveModelTest < Minitest::Test
         fd,
         [fd],
         {a: fd},
-        {a: {b: fd}}
+        {a: {b: fd}},
       ]
       types.product(cases).each do |target, input|
         state = {can_retry: true}
@@ -212,7 +212,7 @@ class Increase::Test::EnumModelTest < Minitest::Test
       [E4, "one"] => [{yes: 1}, :one],
       [E4, "1"] => [{maybe: 1}, "1"],
       [E4, :"1"] => [{maybe: 1}, :"1"],
-      [E4, 1] => [{no: 1}, 1]
+      [E4, 1] => [{no: 1}, 1],
     }
 
     cases.each do |lhs, rhs|
@@ -241,7 +241,7 @@ class Increase::Test::EnumModelTest < Minitest::Test
 
       [E4, :one] => :one,
       [E4, "one"] => "one",
-      [E4, "1.0"] => "1.0"
+      [E4, "1.0"] => "1.0",
     }
 
     cases.each do
@@ -286,7 +286,7 @@ class Increase::Test::CollectionModelTest < Minitest::Test
       [A3, [nil, 1]] => [{yes: 3}, [nil, 1]],
       [A3, [nil, "1"]] => [{yes: 2, maybe: 1}, [nil, 1]],
       [H3, {a: nil, b: "1"}] => [{yes: 2, maybe: 1}, {a: nil, b: 1}],
-      [H3, {a: nil}] => [{yes: 2}, {a: nil}]
+      [H3, {a: nil}] => [{yes: 2}, {a: nil}],
     }
 
     cases.each do |lhs, rhs|
@@ -399,7 +399,7 @@ class Increase::Test::BaseModelTest < Minitest::Test
 
       [M5, M5.new] => {c: :c},
       [M5, {}] => {c: :c},
-      [M5, {c: 1}] => {c: 1}
+      [M5, {c: 1}] => {c: 1},
     }
 
     cases.each do
@@ -576,7 +576,7 @@ class Increase::Test::UnionTest < Minitest::Test
       [U6, {b: []}] => [{yes: 3}, 2, {b: []}],
 
       [U5, {a: [{a: []}]}] => [{yes: 6}, 4, {a: [M4.new(a: [])]}],
-      [U5, {a: [{a: [{a: []}]}]}] => [{yes: 9}, 6, {a: [M4.new(a: [M4.new(a: [])])]}]
+      [U5, {a: [{a: [{a: []}]}]}] => [{yes: 9}, 6, {a: [M4.new(a: [M4.new(a: [])])]}],
     }
 
     cases.each do |lhs, rhs|

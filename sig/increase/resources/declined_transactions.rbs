@@ -1,20 +1,9 @@
 module Increase
   module Resources
     class DeclinedTransactions
-      def retrieve: (
-        String declined_transaction_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::DeclinedTransaction
+      def retrieve: (String declined_transaction_id, ?request_options: Increase::request_opts) -> Increase::DeclinedTransaction
 
-      def list: (
-        ?account_id: String,
-        ?category: Increase::DeclinedTransactionListParams::Category,
-        ?created_at: Increase::DeclinedTransactionListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?route_id: String,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::DeclinedTransaction]
+      def list: (?account_id: String, ?category: Increase::DeclinedTransactionListParams::Category, ?created_at: Increase::DeclinedTransactionListParams::CreatedAt, ?cursor: String, ?limit: Integer, ?route_id: String, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::DeclinedTransaction]
 
       def initialize: (client: Increase::Client) -> void
     end

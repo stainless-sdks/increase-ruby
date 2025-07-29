@@ -11,27 +11,25 @@ module Increase
         sig do
           params(
             card_dispute_id: String,
-            status:
-              Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
+            status: Increase::Simulations::CardDisputeActionParams::Status::OrSymbol,
             explanation: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(Increase::CardDispute)
+          )
+            .returns(Increase::CardDispute)
         end
         def action(
           # The dispute you would like to action.
-          card_dispute_id,
+        card_dispute_id,
           # The status to move the dispute to.
-          status:,
+        status:,
           # Why the dispute was rejected. Not required for accepting disputes.
-          explanation: nil,
+        explanation: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         # @api private
         sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
-        end
+        def self.new(client:); end
       end
     end
   end

@@ -1,15 +1,13 @@
 module Increase
   module Models
-    type transaction_list_params =
-      {
-        account_id: String,
-        category: Increase::TransactionListParams::Category,
-        created_at: Increase::TransactionListParams::CreatedAt,
-        cursor: String,
-        limit: Integer,
-        route_id: String
-      }
-      & Increase::Internal::Type::request_parameters
+    type transaction_list_params = ({
+      account_id: String,
+      category: Increase::TransactionListParams::Category,
+      created_at: Increase::TransactionListParams::CreatedAt,
+      cursor: String,
+      limit: Integer,
+      route_id: String
+    } & Increase::Internal::Type::request_parameters)
 
     class TransactionListParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -21,15 +19,11 @@ module Increase
 
       attr_reader category: Increase::TransactionListParams::Category?
 
-      def category=: (
-        Increase::TransactionListParams::Category
-      ) -> Increase::TransactionListParams::Category
+      def category=: (Increase::TransactionListParams::Category) -> Increase::TransactionListParams::Category
 
       attr_reader created_at: Increase::TransactionListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::TransactionListParams::CreatedAt
-      ) -> Increase::TransactionListParams::CreatedAt
+      def created_at=: (Increase::TransactionListParams::CreatedAt) -> Increase::TransactionListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -43,17 +37,9 @@ module Increase
 
       def route_id=: (String) -> String
 
-      def initialize: (
-        ?account_id: String,
-        ?category: Increase::TransactionListParams::Category,
-        ?created_at: Increase::TransactionListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?route_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (?account_id: String, ?category: Increase::TransactionListParams::Category, ?created_at: Increase::TransactionListParams::CreatedAt, ?cursor: String, ?limit: Integer, ?route_id: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         category: Increase::TransactionListParams::Category,
         created_at: Increase::TransactionListParams::CreatedAt,
@@ -63,56 +49,18 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type category =
-        { in_: ::Array[Increase::Models::TransactionListParams::Category::in_] }
+      type category = {in_: ::Array[Increase::Models::TransactionListParams::Category::in_]}
 
       class Category < Increase::Internal::Type::BaseModel
         attr_reader in_: ::Array[Increase::Models::TransactionListParams::Category::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::TransactionListParams::Category::in_]
-        ) -> ::Array[Increase::Models::TransactionListParams::Category::in_]
+        def in_=: (::Array[Increase::Models::TransactionListParams::Category::in_]) -> ::Array[Increase::Models::TransactionListParams::Category::in_]
 
-        def initialize: (
-          ?in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
-        ) -> void
+        def initialize: (?in_: ::Array[Increase::Models::TransactionListParams::Category::in_]) -> void
 
-        def to_hash: -> {
-          in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
-        }
+        def to_hash: () -> {in_: ::Array[Increase::Models::TransactionListParams::Category::in_]}
 
-        type in_ =
-          :account_transfer_intention
-          | :ach_transfer_intention
-          | :ach_transfer_rejection
-          | :ach_transfer_return
-          | :cashback_payment
-          | :card_dispute_acceptance
-          | :card_dispute_loss
-          | :card_refund
-          | :card_settlement
-          | :card_revenue_payment
-          | :check_deposit_acceptance
-          | :check_deposit_return
-          | :check_transfer_deposit
-          | :fee_payment
-          | :inbound_ach_transfer
-          | :inbound_ach_transfer_return_intention
-          | :inbound_check_deposit_return_intention
-          | :inbound_check_adjustment
-          | :inbound_real_time_payments_transfer_confirmation
-          | :inbound_real_time_payments_transfer_decline
-          | :inbound_wire_reversal
-          | :inbound_wire_transfer
-          | :inbound_wire_transfer_reversal
-          | :interest_payment
-          | :internal_source
-          | :real_time_payments_transfer_acknowledgement
-          | :sample_funds
-          | :wire_transfer_intention
-          | :swift_transfer_intention
-          | :card_push_transfer_acceptance
-          | :other
+        type in_ = (:account_transfer_intention | :ach_transfer_intention | :ach_transfer_rejection | :ach_transfer_return | :cashback_payment | :card_dispute_acceptance | :card_dispute_loss | :card_refund | :card_settlement | :card_revenue_payment | :check_deposit_acceptance | :check_deposit_return | :check_transfer_deposit | :fee_payment | :inbound_ach_transfer | :inbound_ach_transfer_return_intention | :inbound_check_deposit_return_intention | :inbound_check_adjustment | :inbound_real_time_payments_transfer_confirmation | :inbound_real_time_payments_transfer_decline | :inbound_wire_reversal | :inbound_wire_transfer | :inbound_wire_transfer_reversal | :interest_payment | :internal_source | :real_time_payments_transfer_acknowledgement | :sample_funds | :wire_transfer_intention | :swift_transfer_intention | :card_push_transfer_acceptance | :other)
 
         module In
           extend Increase::Internal::Type::Enum
@@ -210,12 +158,11 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::TransactionListParams::Category::in_]
+          def self?.values: () -> ::Array[Increase::Models::TransactionListParams::Category::in_]
         end
       end
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::Internal::Type::BaseModel
         attr_reader after: Time?
@@ -234,19 +181,9 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize: (
-          ?after: Time,
-          ?before: Time,
-          ?on_or_after: Time,
-          ?on_or_before: Time
-        ) -> void
+        def initialize: (?after: Time, ?before: Time, ?on_or_after: Time, ?on_or_before: Time) -> void
 
-        def to_hash: -> {
-          after: Time,
-          before: Time,
-          on_or_after: Time,
-          on_or_before: Time
-        }
+        def to_hash: () -> {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
       end
     end
   end

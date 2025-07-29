@@ -1,31 +1,11 @@
 module Increase
   module Resources
     class WireDrawdownRequests
-      def create: (
-        account_number_id: String,
-        amount: Integer,
-        creditor_address: Increase::WireDrawdownRequestCreateParams::CreditorAddress,
-        creditor_name: String,
-        debtor_account_number: String,
-        debtor_address: Increase::WireDrawdownRequestCreateParams::DebtorAddress,
-        debtor_name: String,
-        debtor_routing_number: String,
-        unstructured_remittance_information: String,
-        ?request_options: Increase::request_opts
-      ) -> Increase::WireDrawdownRequest
+      def create: (account_number_id: String, amount: Integer, creditor_address: Increase::WireDrawdownRequestCreateParams::CreditorAddress, creditor_name: String, debtor_account_number: String, debtor_address: Increase::WireDrawdownRequestCreateParams::DebtorAddress, debtor_name: String, debtor_routing_number: String, unstructured_remittance_information: String, ?request_options: Increase::request_opts) -> Increase::WireDrawdownRequest
 
-      def retrieve: (
-        String wire_drawdown_request_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::WireDrawdownRequest
+      def retrieve: (String wire_drawdown_request_id, ?request_options: Increase::request_opts) -> Increase::WireDrawdownRequest
 
-      def list: (
-        ?cursor: String,
-        ?idempotency_key: String,
-        ?limit: Integer,
-        ?status: Increase::WireDrawdownRequestListParams::Status,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::WireDrawdownRequest]
+      def list: (?cursor: String, ?idempotency_key: String, ?limit: Integer, ?status: Increase::WireDrawdownRequestListParams::Status, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::WireDrawdownRequest]
 
       def initialize: (client: Increase::Client) -> void
     end

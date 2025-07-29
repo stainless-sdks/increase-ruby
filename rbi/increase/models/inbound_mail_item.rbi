@@ -3,10 +3,7 @@
 module Increase
   module Models
     class InboundMailItem < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::InboundMailItem, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::InboundMailItem, Increase::Internal::AnyHash) }
 
       # The Inbound Mail Item identifier.
       sig { returns(String) }
@@ -35,11 +32,7 @@ module Increase
       attr_accessor :recipient_name
 
       # If the mail item has been rejected, why it was rejected.
-      sig do
-        returns(
-          T.nilable(Increase::InboundMailItem::RejectionReason::TaggedSymbol)
-        )
-      end
+      sig { returns(T.nilable(Increase::InboundMailItem::RejectionReason::TaggedSymbol)) }
       attr_accessor :rejection_reason
 
       # If the mail item has been processed.
@@ -60,63 +53,56 @@ module Increase
           file_id: String,
           lockbox_id: T.nilable(String),
           recipient_name: T.nilable(String),
-          rejection_reason:
-            T.nilable(Increase::InboundMailItem::RejectionReason::OrSymbol),
+          rejection_reason: T.nilable(Increase::InboundMailItem::RejectionReason::OrSymbol),
           status: Increase::InboundMailItem::Status::OrSymbol,
           type: Increase::InboundMailItem::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Inbound Mail Item identifier.
-        id:,
+      id:,
         # The checks in the mail item.
-        checks:,
+      checks:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-        # Mail Item was created.
-        created_at:,
+      # Mail Item was created.
+      created_at:,
         # The identifier for the File containing the scanned contents of the mail item.
-        file_id:,
+      file_id:,
         # The identifier for the Lockbox that received this mail item. For mail items that
-        # could not be processed due to an invalid address, this will be null.
-        lockbox_id:,
+      # could not be processed due to an invalid address, this will be null.
+      lockbox_id:,
         # The recipient name as written on the mail item.
-        recipient_name:,
+      recipient_name:,
         # If the mail item has been rejected, why it was rejected.
-        rejection_reason:,
+      rejection_reason:,
         # If the mail item has been processed.
-        status:,
+      status:,
         # A constant representing the object's type. For this resource it will always be
-        # `inbound_mail_item`.
-        type:
-      )
-      end
+      # `inbound_mail_item`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            checks: T::Array[Increase::InboundMailItem::Check],
-            created_at: Time,
-            file_id: String,
-            lockbox_id: T.nilable(String),
-            recipient_name: T.nilable(String),
-            rejection_reason:
-              T.nilable(
-                Increase::InboundMailItem::RejectionReason::TaggedSymbol
-              ),
-            status: Increase::InboundMailItem::Status::TaggedSymbol,
-            type: Increase::InboundMailItem::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              checks: T::Array[Increase::InboundMailItem::Check],
+              created_at: Time,
+              file_id: String,
+              lockbox_id: T.nilable(String),
+              recipient_name: T.nilable(String),
+              rejection_reason: T.nilable(Increase::InboundMailItem::RejectionReason::TaggedSymbol),
+              status: Increase::InboundMailItem::Status::TaggedSymbol,
+              type: Increase::InboundMailItem::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Check < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(Increase::InboundMailItem::Check, Increase::Internal::AnyHash)
-          end
+        OrHash = T.type_alias { T.any(Increase::InboundMailItem::Check, Increase::Internal::AnyHash) }
 
         # The amount of the check.
         sig { returns(Integer) }
@@ -132,102 +118,61 @@ module Increase
 
         # Inbound Mail Item Checks represent the checks in an Inbound Mail Item.
         sig do
-          params(
-            amount: Integer,
-            back_file_id: T.nilable(String),
-            front_file_id: T.nilable(String)
-          ).returns(T.attached_class)
+          params(amount: Integer, back_file_id: T.nilable(String), front_file_id: T.nilable(String))
+            .returns(T.attached_class)
         end
         def self.new(
           # The amount of the check.
-          amount:,
+        amount:,
           # The identifier for the File containing the back of the check.
-          back_file_id:,
+        back_file_id:,
           # The identifier for the File containing the front of the check.
-          front_file_id:
-        )
-        end
+        front_file_id:
+        ); end
 
-        sig do
-          override.returns(
-            {
-              amount: Integer,
-              back_file_id: T.nilable(String),
-              front_file_id: T.nilable(String)
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({amount: Integer, back_file_id: T.nilable(String), front_file_id: T.nilable(String)}) }
+        def to_hash; end
       end
 
       # If the mail item has been rejected, why it was rejected.
       module RejectionReason
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, Increase::InboundMailItem::RejectionReason)
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::InboundMailItem::RejectionReason) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The mail item does not match any lockbox.
         NO_MATCHING_LOCKBOX =
-          T.let(
-            :no_matching_lockbox,
-            Increase::InboundMailItem::RejectionReason::TaggedSymbol
-          )
+          T.let(:no_matching_lockbox, Increase::InboundMailItem::RejectionReason::TaggedSymbol)
 
         # The mail item does not contain a check.
-        NO_CHECK =
-          T.let(
-            :no_check,
-            Increase::InboundMailItem::RejectionReason::TaggedSymbol
-          )
+        NO_CHECK = T.let(:no_check, Increase::InboundMailItem::RejectionReason::TaggedSymbol)
 
         # The Lockbox or its associated Account is not active.
-        LOCKBOX_NOT_ACTIVE =
-          T.let(
-            :lockbox_not_active,
-            Increase::InboundMailItem::RejectionReason::TaggedSymbol
-          )
+        LOCKBOX_NOT_ACTIVE = T.let(:lockbox_not_active, Increase::InboundMailItem::RejectionReason::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::InboundMailItem::RejectionReason::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::InboundMailItem::RejectionReason::TaggedSymbol]) }
+        def self.values; end
       end
 
       # If the mail item has been processed.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::InboundMailItem::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::InboundMailItem::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The mail item is pending processing.
-        PENDING =
-          T.let(:pending, Increase::InboundMailItem::Status::TaggedSymbol)
+        PENDING = T.let(:pending, Increase::InboundMailItem::Status::TaggedSymbol)
 
         # The mail item has been processed.
-        PROCESSED =
-          T.let(:processed, Increase::InboundMailItem::Status::TaggedSymbol)
+        PROCESSED = T.let(:processed, Increase::InboundMailItem::Status::TaggedSymbol)
 
         # The mail item has been rejected.
-        REJECTED =
-          T.let(:rejected, Increase::InboundMailItem::Status::TaggedSymbol)
+        REJECTED = T.let(:rejected, Increase::InboundMailItem::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::InboundMailItem::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::InboundMailItem::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -235,23 +180,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::InboundMailItem::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::InboundMailItem::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        INBOUND_MAIL_ITEM =
-          T.let(
-            :inbound_mail_item,
-            Increase::InboundMailItem::Type::TaggedSymbol
-          )
+        INBOUND_MAIL_ITEM = T.let(:inbound_mail_item, Increase::InboundMailItem::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::InboundMailItem::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::InboundMailItem::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

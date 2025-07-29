@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type supplemental_document_create_params =
-      { entity_id: String, file_id: String }
-      & Increase::Internal::Type::request_parameters
+    type supplemental_document_create_params = ({entity_id: String, file_id: String} & Increase::Internal::Type::request_parameters)
 
     class SupplementalDocumentCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -12,17 +10,9 @@ module Increase
 
       attr_accessor file_id: String
 
-      def initialize: (
-        entity_id: String,
-        file_id: String,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (entity_id: String, file_id: String, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
-        entity_id: String,
-        file_id: String,
-        request_options: Increase::RequestOptions
-      }
+      def to_hash: () -> {entity_id: String, file_id: String, request_options: Increase::RequestOptions}
     end
   end
 end

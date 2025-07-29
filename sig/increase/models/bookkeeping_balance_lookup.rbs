@@ -1,11 +1,6 @@
 module Increase
   module Models
-    type bookkeeping_balance_lookup =
-      {
-        balance: Integer,
-        bookkeeping_account_id: String,
-        type: Increase::Models::BookkeepingBalanceLookup::type_
-      }
+    type bookkeeping_balance_lookup = {balance: Integer, bookkeeping_account_id: String, type: Increase::Models::BookkeepingBalanceLookup::type_}
 
     class BookkeepingBalanceLookup < Increase::Internal::Type::BaseModel
       attr_accessor balance: Integer
@@ -14,17 +9,9 @@ module Increase
 
       attr_accessor type: Increase::Models::BookkeepingBalanceLookup::type_
 
-      def initialize: (
-        balance: Integer,
-        bookkeeping_account_id: String,
-        type: Increase::Models::BookkeepingBalanceLookup::type_
-      ) -> void
+      def initialize: (balance: Integer, bookkeeping_account_id: String, type: Increase::Models::BookkeepingBalanceLookup::type_) -> void
 
-      def to_hash: -> {
-        balance: Integer,
-        bookkeeping_account_id: String,
-        type: Increase::Models::BookkeepingBalanceLookup::type_
-      }
+      def to_hash: () -> {balance: Integer, bookkeeping_account_id: String, type: Increase::Models::BookkeepingBalanceLookup::type_}
 
       type type_ = :bookkeeping_balance_lookup
 
@@ -33,7 +20,7 @@ module Increase
 
         BOOKKEEPING_BALANCE_LOOKUP: :bookkeeping_balance_lookup
 
-        def self?.values: -> ::Array[Increase::Models::BookkeepingBalanceLookup::type_]
+        def self?.values: () -> ::Array[Increase::Models::BookkeepingBalanceLookup::type_]
       end
     end
   end

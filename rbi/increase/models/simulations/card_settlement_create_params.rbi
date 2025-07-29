@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardSettlementCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::CardSettlementCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Card to create a settlement on.
         sig { returns(String) }
@@ -38,33 +33,28 @@ module Increase
             pending_transaction_id: String,
             amount: Integer,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Card to create a settlement on.
-          card_id:,
+        card_id:,
           # The identifier of the Pending Transaction for the Card Authorization you wish to
-          # settle.
-          pending_transaction_id:,
+        # settle.
+        pending_transaction_id:,
           # The amount to be settled. This defaults to the amount of the Pending Transaction
-          # being settled.
-          amount: nil,
+        # being settled.
+        amount: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              card_id: String,
-              pending_transaction_id: String,
-              amount: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {card_id: String, pending_transaction_id: String, amount: Integer, request_options: Increase::RequestOptions}
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -37,9 +37,11 @@ module Increase
         #
         # @return [Boolean]
         def ==(other)
+          # rubocop:disable Layout/LineLength
           # rubocop:disable Style/CaseEquality
           Increase::Internal::Type::Enum === other && other.values.to_set == values.to_set
           # rubocop:enable Style/CaseEquality
+          # rubocop:enable Layout/LineLength
         end
 
         # @api public
@@ -116,6 +118,7 @@ module Increase
         #
         # @return [String]
         def inspect(depth: 0)
+          # rubocop:disable Layout/LineLength
           if depth.positive?
             return is_a?(Module) ? super() : self.class.name
           end
@@ -124,6 +127,7 @@ module Increase
           prefix = is_a?(Module) ? name : self.class.name
 
           "#{prefix}[#{members.join(' | ')}]"
+          # rubocop:enable Layout/LineLength
         end
       end
     end

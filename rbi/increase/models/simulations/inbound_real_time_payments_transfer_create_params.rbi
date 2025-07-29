@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::InboundRealTimePaymentsTransferCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::InboundRealTimePaymentsTransferCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Account Number the inbound Real-Time Payments Transfer is
         # for.
@@ -69,44 +64,44 @@ module Increase
             remittance_information: String,
             request_for_payment_id: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Account Number the inbound Real-Time Payments Transfer is
-          # for.
-          account_number_id:,
+        # for.
+        account_number_id:,
           # The transfer amount in USD cents. Must be positive.
-          amount:,
+        amount:,
           # The account number of the account that sent the transfer.
-          debtor_account_number: nil,
+        debtor_account_number: nil,
           # The name provided by the sender of the transfer.
-          debtor_name: nil,
+        debtor_name: nil,
           # The routing number of the account that sent the transfer.
-          debtor_routing_number: nil,
+        debtor_routing_number: nil,
           # Additional information included with the transfer.
-          remittance_information: nil,
+        remittance_information: nil,
           # The identifier of a pending Request for Payment that this transfer will fulfill.
-          request_for_payment_id: nil,
+        request_for_payment_id: nil,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              remittance_information: String,
-              request_for_payment_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_number_id: String,
+                amount: Integer,
+                debtor_account_number: String,
+                debtor_name: String,
+                debtor_routing_number: String,
+                remittance_information: String,
+                request_for_payment_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

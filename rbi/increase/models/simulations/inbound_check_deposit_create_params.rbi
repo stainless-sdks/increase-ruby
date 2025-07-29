@@ -8,12 +8,7 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::InboundCheckDepositCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::InboundCheckDepositCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Account Number the Inbound Check Deposit will be against.
         sig { returns(String) }
@@ -33,31 +28,26 @@ module Increase
             amount: Integer,
             check_number: String,
             request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Account Number the Inbound Check Deposit will be against.
-          account_number_id:,
+        account_number_id:,
           # The check amount in cents.
-          amount:,
+        amount:,
           # The check number on the check to be deposited.
-          check_number:,
+        check_number:,
           request_options: {}
-        )
-        end
+        ); end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              check_number: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {account_number_id: String, amount: Integer, check_number: String, request_options: Increase::RequestOptions}
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

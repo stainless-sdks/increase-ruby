@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::BookkeepingAccountBalanceParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::BookkeepingAccountBalanceParams, Increase::Internal::AnyHash) }
 
       # The moment to query the balance at. If not set, returns the current balances.
       sig { returns(T.nilable(Time)) }
@@ -21,26 +15,15 @@ module Increase
       sig { params(at_time: Time).void }
       attr_writer :at_time
 
-      sig do
-        params(
-          at_time: Time,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
-      end
+      sig { params(at_time: Time, request_options: Increase::RequestOptions::OrHash).returns(T.attached_class) }
       def self.new(
         # The moment to query the balance at. If not set, returns the current balances.
-        at_time: nil,
+      at_time: nil,
         request_options: {}
-      )
-      end
+      ); end
 
-      sig do
-        override.returns(
-          { at_time: Time, request_options: Increase::RequestOptions }
-        )
-      end
-      def to_hash
-      end
+      sig { override.returns({at_time: Time, request_options: Increase::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

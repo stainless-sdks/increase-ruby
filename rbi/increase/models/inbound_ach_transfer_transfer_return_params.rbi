@@ -7,69 +7,49 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias do
-          T.any(
-            Increase::InboundACHTransferTransferReturnParams,
-            Increase::Internal::AnyHash
-          )
-        end
+        T.type_alias { T.any(Increase::InboundACHTransferTransferReturnParams, Increase::Internal::AnyHash) }
 
       # The reason why this transfer will be returned. The most usual return codes are
       # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-      sig do
-        returns(
-          Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol
-        )
-      end
+      sig { returns(Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol) }
       attr_accessor :reason
 
       sig do
         params(
-          reason:
-            Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
+          reason: Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The reason why this transfer will be returned. The most usual return codes are
-        # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
-        reason:,
+      # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      reason:,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            reason:
-              Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              reason: Increase::InboundACHTransferTransferReturnParams::Reason::OrSymbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The reason why this transfer will be returned. The most usual return codes are
       # `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       module Reason
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Increase::InboundACHTransferTransferReturnParams::Reason
-            )
-          end
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::InboundACHTransferTransferReturnParams::Reason) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS =
-          T.let(
-            :insufficient_funds,
-            Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+          T.let(:insufficient_funds, Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
 
         # The customer no longer authorizes this transaction. The Nacha return code is R07.
         AUTHORIZATION_REVOKED_BY_CUSTOMER =
@@ -80,10 +60,7 @@ module Increase
 
         # The customer asked for the payment to be stopped. This reason is only allowed for debits. The Nacha return code is R08.
         PAYMENT_STOPPED =
-          T.let(
-            :payment_stopped,
-            Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+          T.let(:payment_stopped, Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
 
         # The customer advises that the debit was unauthorized. The Nacha return code is R10.
         CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE =
@@ -115,10 +92,7 @@ module Increase
 
         # The account holder identified this transaction as a duplicate. The Nacha return code is R24.
         DUPLICATE_ENTRY =
-          T.let(
-            :duplicate_entry,
-            Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-          )
+          T.let(:duplicate_entry, Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol)
 
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED =
@@ -127,15 +101,8 @@ module Increase
             Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
           )
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::InboundACHTransferTransferReturnParams::Reason::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

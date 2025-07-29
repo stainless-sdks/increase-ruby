@@ -1,15 +1,13 @@
 module Increase
   module Models
-    type physical_card_profile_create_params =
-      {
-        carrier_image_file_id: String,
-        contact_phone: String,
-        description: String,
-        front_image_file_id: String,
-        program_id: String,
-        front_text: Increase::PhysicalCardProfileCreateParams::FrontText
-      }
-      & Increase::Internal::Type::request_parameters
+    type physical_card_profile_create_params = ({
+      carrier_image_file_id: String,
+      contact_phone: String,
+      description: String,
+      front_image_file_id: String,
+      program_id: String,
+      front_text: Increase::PhysicalCardProfileCreateParams::FrontText
+    } & Increase::Internal::Type::request_parameters)
 
     class PhysicalCardProfileCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -27,21 +25,11 @@ module Increase
 
       attr_reader front_text: Increase::PhysicalCardProfileCreateParams::FrontText?
 
-      def front_text=: (
-        Increase::PhysicalCardProfileCreateParams::FrontText
-      ) -> Increase::PhysicalCardProfileCreateParams::FrontText
+      def front_text=: (Increase::PhysicalCardProfileCreateParams::FrontText) -> Increase::PhysicalCardProfileCreateParams::FrontText
 
-      def initialize: (
-        carrier_image_file_id: String,
-        contact_phone: String,
-        description: String,
-        front_image_file_id: String,
-        program_id: String,
-        ?front_text: Increase::PhysicalCardProfileCreateParams::FrontText,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (carrier_image_file_id: String, contact_phone: String, description: String, front_image_file_id: String, program_id: String, ?front_text: Increase::PhysicalCardProfileCreateParams::FrontText, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         carrier_image_file_id: String,
         contact_phone: String,
         description: String,
@@ -51,7 +39,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type front_text = { :line1 => String, :line2 => String }
+      type front_text = {line1: String, line2: String}
 
       class FrontText < Increase::Internal::Type::BaseModel
         attr_accessor line1: String
@@ -62,7 +50,7 @@ module Increase
 
         def initialize: (line1: String, ?line2: String) -> void
 
-        def to_hash: -> { :line1 => String, :line2 => String }
+        def to_hash: () -> {line1: String, line2: String}
       end
     end
   end

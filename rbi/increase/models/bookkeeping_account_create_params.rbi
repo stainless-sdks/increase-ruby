@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::BookkeepingAccountCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::BookkeepingAccountCreateParams, Increase::Internal::AnyHash) }
 
       # The name you choose for the account.
       sig { returns(String) }
@@ -26,21 +20,10 @@ module Increase
       attr_writer :account_id
 
       # The account compliance category.
-      sig do
-        returns(
-          T.nilable(
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol)) }
       attr_reader :compliance_category
 
-      sig do
-        params(
-          compliance_category:
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol
-        ).void
-      end
+      sig { params(compliance_category: Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol).void }
       attr_writer :compliance_category
 
       # The entity, if `compliance_category` is `customer_balance`.
@@ -54,76 +37,56 @@ module Increase
         params(
           name: String,
           account_id: String,
-          compliance_category:
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+          compliance_category: Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
           entity_id: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The name you choose for the account.
-        name:,
+      name:,
         # The entity, if `compliance_category` is `commingled_cash`.
-        account_id: nil,
+      account_id: nil,
         # The account compliance category.
-        compliance_category: nil,
+      compliance_category: nil,
         # The entity, if `compliance_category` is `customer_balance`.
-        entity_id: nil,
+      entity_id: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            account_id: String,
-            compliance_category:
-              Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
-            entity_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              name: String,
+              account_id: String,
+              compliance_category: Increase::BookkeepingAccountCreateParams::ComplianceCategory::OrSymbol,
+              entity_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The account compliance category.
       module ComplianceCategory
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Increase::BookkeepingAccountCreateParams::ComplianceCategory
-            )
-          end
+          T.type_alias { T.all(Symbol, Increase::BookkeepingAccountCreateParams::ComplianceCategory) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH =
-          T.let(
-            :commingled_cash,
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-          )
+          T.let(:commingled_cash, Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol)
 
         # A customer balance.
         CUSTOMER_BALANCE =
-          T.let(
-            :customer_balance,
-            Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-          )
+          T.let(:customer_balance, Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::BookkeepingAccountCreateParams::ComplianceCategory::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

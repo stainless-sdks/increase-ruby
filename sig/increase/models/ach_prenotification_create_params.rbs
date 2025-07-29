@@ -1,22 +1,20 @@
 module Increase
   module Models
-    type ach_prenotification_create_params =
-      {
-        account_id: String,
-        account_number: String,
-        routing_number: String,
-        addendum: String,
-        company_descriptive_date: String,
-        company_discretionary_data: String,
-        company_entry_description: String,
-        company_name: String,
-        credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator,
-        effective_date: Date,
-        individual_id: String,
-        individual_name: String,
-        standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
-      }
-      & Increase::Internal::Type::request_parameters
+    type ach_prenotification_create_params = ({
+      account_id: String,
+      account_number: String,
+      routing_number: String,
+      addendum: String,
+      company_descriptive_date: String,
+      company_discretionary_data: String,
+      company_entry_description: String,
+      company_name: String,
+      credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator,
+      effective_date: Date,
+      individual_id: String,
+      individual_name: String,
+      standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
+    } & Increase::Internal::Type::request_parameters)
 
     class ACHPrenotificationCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -50,9 +48,7 @@ module Increase
 
       attr_reader credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator?
 
-      def credit_debit_indicator=: (
-        Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator
-      ) -> Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator
+      def credit_debit_indicator=: (Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator) -> Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator
 
       attr_reader effective_date: Date?
 
@@ -68,28 +64,11 @@ module Increase
 
       attr_reader standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code?
 
-      def standard_entry_class_code=: (
-        Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
-      ) -> Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
+      def standard_entry_class_code=: (Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code) -> Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
 
-      def initialize: (
-        account_id: String,
-        account_number: String,
-        routing_number: String,
-        ?addendum: String,
-        ?company_descriptive_date: String,
-        ?company_discretionary_data: String,
-        ?company_entry_description: String,
-        ?company_name: String,
-        ?credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator,
-        ?effective_date: Date,
-        ?individual_id: String,
-        ?individual_name: String,
-        ?standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, account_number: String, routing_number: String, ?addendum: String, ?company_descriptive_date: String, ?company_discretionary_data: String, ?company_entry_description: String, ?company_name: String, ?credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator, ?effective_date: Date, ?individual_id: String, ?individual_name: String, ?standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         account_number: String,
         routing_number: String,
@@ -106,7 +85,7 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type credit_debit_indicator = :credit | :debit
+      type credit_debit_indicator = (:credit | :debit)
 
       module CreditDebitIndicator
         extend Increase::Internal::Type::Enum
@@ -117,14 +96,10 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT: :debit
 
-        def self?.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator]
+        def self?.values: () -> ::Array[Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator]
       end
 
-      type standard_entry_class_code =
-        :corporate_credit_or_debit
-        | :corporate_trade_exchange
-        | :prearranged_payments_and_deposit
-        | :internet_initiated
+      type standard_entry_class_code = (:corporate_credit_or_debit | :corporate_trade_exchange | :prearranged_payments_and_deposit | :internet_initiated)
 
       module StandardEntryClassCode
         extend Increase::Internal::Type::Enum
@@ -141,7 +116,7 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED: :internet_initiated
 
-        def self?.values: -> ::Array[Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code]
+        def self?.values: () -> ::Array[Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code]
       end
     end
   end

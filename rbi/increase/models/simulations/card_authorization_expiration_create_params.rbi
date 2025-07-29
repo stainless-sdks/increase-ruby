@@ -8,40 +8,24 @@ module Increase
         include Increase::Internal::Type::RequestParameters
 
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::Simulations::CardAuthorizationExpirationCreateParams,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::Simulations::CardAuthorizationExpirationCreateParams, Increase::Internal::AnyHash) }
 
         # The identifier of the Card Payment to expire.
         sig { returns(String) }
         attr_accessor :card_payment_id
 
         sig do
-          params(
-            card_payment_id: String,
-            request_options: Increase::RequestOptions::OrHash
-          ).returns(T.attached_class)
+          params(card_payment_id: String, request_options: Increase::RequestOptions::OrHash)
+            .returns(T.attached_class)
         end
         def self.new(
           # The identifier of the Card Payment to expire.
-          card_payment_id:,
+        card_payment_id:,
           request_options: {}
-        )
-        end
+        ); end
 
-        sig do
-          override.returns(
-            {
-              card_payment_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
-        end
-        def to_hash
-        end
+        sig { override.returns({card_payment_id: String, request_options: Increase::RequestOptions}) }
+        def to_hash; end
       end
     end
   end

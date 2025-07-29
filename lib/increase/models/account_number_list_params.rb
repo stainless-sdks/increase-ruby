@@ -77,9 +77,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::AccountNumberListParams::ACHDebitStatus::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::AccountNumberListParams::ACHDebitStatus::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)
@@ -151,9 +149,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::AccountNumberListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::AccountNumberListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::AccountNumberListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)

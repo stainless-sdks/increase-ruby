@@ -1,18 +1,17 @@
 module Increase
   module Models
-    type transaction =
-      {
-        id: String,
-        account_id: String,
-        amount: Integer,
-        created_at: Time,
-        currency: Increase::Models::Transaction::currency,
-        description: String,
-        route_id: String?,
-        route_type: Increase::Models::Transaction::route_type?,
-        source: Increase::Transaction::Source,
-        type: Increase::Models::Transaction::type_
-      }
+    type transaction = {
+      id: String,
+      account_id: String,
+      amount: Integer,
+      created_at: Time,
+      currency: Increase::Models::Transaction::currency,
+      description: String,
+      route_id: String?,
+      route_type: Increase::Models::Transaction::route_type?,
+      source: Increase::Transaction::Source,
+      type: Increase::Models::Transaction::type_
+    }
 
     class Transaction < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -35,20 +34,9 @@ module Increase
 
       attr_accessor type: Increase::Models::Transaction::type_
 
-      def initialize: (
-        id: String,
-        account_id: String,
-        amount: Integer,
-        created_at: Time,
-        currency: Increase::Models::Transaction::currency,
-        description: String,
-        route_id: String?,
-        route_type: Increase::Models::Transaction::route_type?,
-        source: Increase::Transaction::Source,
-        type: Increase::Models::Transaction::type_
-      ) -> void
+      def initialize: (id: String, account_id: String, amount: Integer, created_at: Time, currency: Increase::Models::Transaction::currency, description: String, route_id: String?, route_type: Increase::Models::Transaction::route_type?, source: Increase::Transaction::Source, type: Increase::Models::Transaction::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         account_id: String,
         amount: Integer,
@@ -61,7 +49,7 @@ module Increase
         type: Increase::Models::Transaction::type_
       }
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       module Currency
         extend Increase::Internal::Type::Enum
@@ -84,10 +72,10 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self?.values: -> ::Array[Increase::Models::Transaction::currency]
+        def self?.values: () -> ::Array[Increase::Models::Transaction::currency]
       end
 
-      type route_type = :account_number | :card | :lockbox
+      type route_type = (:account_number | :card | :lockbox)
 
       module RouteType
         extend Increase::Internal::Type::Enum
@@ -101,44 +89,43 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self?.values: -> ::Array[Increase::Models::Transaction::route_type]
+        def self?.values: () -> ::Array[Increase::Models::Transaction::route_type]
       end
 
-      type source =
-        {
-          account_transfer_intention: Increase::Transaction::Source::AccountTransferIntention?,
-          ach_transfer_intention: Increase::Transaction::Source::ACHTransferIntention?,
-          ach_transfer_rejection: Increase::Transaction::Source::ACHTransferRejection?,
-          ach_transfer_return: Increase::Transaction::Source::ACHTransferReturn?,
-          card_dispute_acceptance: Increase::Transaction::Source::CardDisputeAcceptance?,
-          card_dispute_loss: Increase::Transaction::Source::CardDisputeLoss?,
-          card_push_transfer_acceptance: Increase::Transaction::Source::CardPushTransferAcceptance?,
-          card_refund: Increase::Transaction::Source::CardRefund?,
-          card_revenue_payment: Increase::Transaction::Source::CardRevenuePayment?,
-          card_settlement: Increase::Transaction::Source::CardSettlement?,
-          cashback_payment: Increase::Transaction::Source::CashbackPayment?,
-          category: Increase::Models::Transaction::Source::category,
-          check_deposit_acceptance: Increase::Transaction::Source::CheckDepositAcceptance?,
-          check_deposit_return: Increase::Transaction::Source::CheckDepositReturn?,
-          check_transfer_deposit: Increase::Transaction::Source::CheckTransferDeposit?,
-          fee_payment: Increase::Transaction::Source::FeePayment?,
-          inbound_ach_transfer: Increase::Transaction::Source::InboundACHTransfer?,
-          inbound_ach_transfer_return_intention: Increase::Transaction::Source::InboundACHTransferReturnIntention?,
-          inbound_check_adjustment: Increase::Transaction::Source::InboundCheckAdjustment?,
-          inbound_check_deposit_return_intention: Increase::Transaction::Source::InboundCheckDepositReturnIntention?,
-          inbound_real_time_payments_transfer_confirmation: Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation?,
-          inbound_real_time_payments_transfer_decline: Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline?,
-          inbound_wire_reversal: Increase::Transaction::Source::InboundWireReversal?,
-          inbound_wire_transfer: Increase::Transaction::Source::InboundWireTransfer?,
-          inbound_wire_transfer_reversal: Increase::Transaction::Source::InboundWireTransferReversal?,
-          interest_payment: Increase::Transaction::Source::InterestPayment?,
-          internal_source: Increase::Transaction::Source::InternalSource?,
-          other: top?,
-          real_time_payments_transfer_acknowledgement: Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement?,
-          sample_funds: Increase::Transaction::Source::SampleFunds?,
-          swift_transfer_intention: Increase::Transaction::Source::SwiftTransferIntention?,
-          wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?
-        }
+      type source = {
+        account_transfer_intention: Increase::Transaction::Source::AccountTransferIntention?,
+        ach_transfer_intention: Increase::Transaction::Source::ACHTransferIntention?,
+        ach_transfer_rejection: Increase::Transaction::Source::ACHTransferRejection?,
+        ach_transfer_return: Increase::Transaction::Source::ACHTransferReturn?,
+        card_dispute_acceptance: Increase::Transaction::Source::CardDisputeAcceptance?,
+        card_dispute_loss: Increase::Transaction::Source::CardDisputeLoss?,
+        card_push_transfer_acceptance: Increase::Transaction::Source::CardPushTransferAcceptance?,
+        card_refund: Increase::Transaction::Source::CardRefund?,
+        card_revenue_payment: Increase::Transaction::Source::CardRevenuePayment?,
+        card_settlement: Increase::Transaction::Source::CardSettlement?,
+        cashback_payment: Increase::Transaction::Source::CashbackPayment?,
+        category: Increase::Models::Transaction::Source::category,
+        check_deposit_acceptance: Increase::Transaction::Source::CheckDepositAcceptance?,
+        check_deposit_return: Increase::Transaction::Source::CheckDepositReturn?,
+        check_transfer_deposit: Increase::Transaction::Source::CheckTransferDeposit?,
+        fee_payment: Increase::Transaction::Source::FeePayment?,
+        inbound_ach_transfer: Increase::Transaction::Source::InboundACHTransfer?,
+        inbound_ach_transfer_return_intention: Increase::Transaction::Source::InboundACHTransferReturnIntention?,
+        inbound_check_adjustment: Increase::Transaction::Source::InboundCheckAdjustment?,
+        inbound_check_deposit_return_intention: Increase::Transaction::Source::InboundCheckDepositReturnIntention?,
+        inbound_real_time_payments_transfer_confirmation: Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation?,
+        inbound_real_time_payments_transfer_decline: Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline?,
+        inbound_wire_reversal: Increase::Transaction::Source::InboundWireReversal?,
+        inbound_wire_transfer: Increase::Transaction::Source::InboundWireTransfer?,
+        inbound_wire_transfer_reversal: Increase::Transaction::Source::InboundWireTransferReversal?,
+        interest_payment: Increase::Transaction::Source::InterestPayment?,
+        internal_source: Increase::Transaction::Source::InternalSource?,
+        other: top?,
+        real_time_payments_transfer_acknowledgement: Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement?,
+        sample_funds: Increase::Transaction::Source::SampleFunds?,
+        swift_transfer_intention: Increase::Transaction::Source::SwiftTransferIntention?,
+        wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?
+      }
 
       class Source < Increase::Internal::Type::BaseModel
         attr_accessor account_transfer_intention: Increase::Transaction::Source::AccountTransferIntention?
@@ -205,42 +192,9 @@ module Increase
 
         attr_accessor wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?
 
-        def initialize: (
-          account_transfer_intention: Increase::Transaction::Source::AccountTransferIntention?,
-          ach_transfer_intention: Increase::Transaction::Source::ACHTransferIntention?,
-          ach_transfer_rejection: Increase::Transaction::Source::ACHTransferRejection?,
-          ach_transfer_return: Increase::Transaction::Source::ACHTransferReturn?,
-          card_dispute_acceptance: Increase::Transaction::Source::CardDisputeAcceptance?,
-          card_dispute_loss: Increase::Transaction::Source::CardDisputeLoss?,
-          card_push_transfer_acceptance: Increase::Transaction::Source::CardPushTransferAcceptance?,
-          card_refund: Increase::Transaction::Source::CardRefund?,
-          card_revenue_payment: Increase::Transaction::Source::CardRevenuePayment?,
-          card_settlement: Increase::Transaction::Source::CardSettlement?,
-          cashback_payment: Increase::Transaction::Source::CashbackPayment?,
-          category: Increase::Models::Transaction::Source::category,
-          check_deposit_acceptance: Increase::Transaction::Source::CheckDepositAcceptance?,
-          check_deposit_return: Increase::Transaction::Source::CheckDepositReturn?,
-          check_transfer_deposit: Increase::Transaction::Source::CheckTransferDeposit?,
-          fee_payment: Increase::Transaction::Source::FeePayment?,
-          inbound_ach_transfer: Increase::Transaction::Source::InboundACHTransfer?,
-          inbound_ach_transfer_return_intention: Increase::Transaction::Source::InboundACHTransferReturnIntention?,
-          inbound_check_adjustment: Increase::Transaction::Source::InboundCheckAdjustment?,
-          inbound_check_deposit_return_intention: Increase::Transaction::Source::InboundCheckDepositReturnIntention?,
-          inbound_real_time_payments_transfer_confirmation: Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation?,
-          inbound_real_time_payments_transfer_decline: Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline?,
-          inbound_wire_reversal: Increase::Transaction::Source::InboundWireReversal?,
-          inbound_wire_transfer: Increase::Transaction::Source::InboundWireTransfer?,
-          inbound_wire_transfer_reversal: Increase::Transaction::Source::InboundWireTransferReversal?,
-          interest_payment: Increase::Transaction::Source::InterestPayment?,
-          internal_source: Increase::Transaction::Source::InternalSource?,
-          other: top?,
-          real_time_payments_transfer_acknowledgement: Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement?,
-          sample_funds: Increase::Transaction::Source::SampleFunds?,
-          swift_transfer_intention: Increase::Transaction::Source::SwiftTransferIntention?,
-          wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?
-        ) -> void
+        def initialize: (account_transfer_intention: Increase::Transaction::Source::AccountTransferIntention?, ach_transfer_intention: Increase::Transaction::Source::ACHTransferIntention?, ach_transfer_rejection: Increase::Transaction::Source::ACHTransferRejection?, ach_transfer_return: Increase::Transaction::Source::ACHTransferReturn?, card_dispute_acceptance: Increase::Transaction::Source::CardDisputeAcceptance?, card_dispute_loss: Increase::Transaction::Source::CardDisputeLoss?, card_push_transfer_acceptance: Increase::Transaction::Source::CardPushTransferAcceptance?, card_refund: Increase::Transaction::Source::CardRefund?, card_revenue_payment: Increase::Transaction::Source::CardRevenuePayment?, card_settlement: Increase::Transaction::Source::CardSettlement?, cashback_payment: Increase::Transaction::Source::CashbackPayment?, category: Increase::Models::Transaction::Source::category, check_deposit_acceptance: Increase::Transaction::Source::CheckDepositAcceptance?, check_deposit_return: Increase::Transaction::Source::CheckDepositReturn?, check_transfer_deposit: Increase::Transaction::Source::CheckTransferDeposit?, fee_payment: Increase::Transaction::Source::FeePayment?, inbound_ach_transfer: Increase::Transaction::Source::InboundACHTransfer?, inbound_ach_transfer_return_intention: Increase::Transaction::Source::InboundACHTransferReturnIntention?, inbound_check_adjustment: Increase::Transaction::Source::InboundCheckAdjustment?, inbound_check_deposit_return_intention: Increase::Transaction::Source::InboundCheckDepositReturnIntention?, inbound_real_time_payments_transfer_confirmation: Increase::Transaction::Source::InboundRealTimePaymentsTransferConfirmation?, inbound_real_time_payments_transfer_decline: Increase::Transaction::Source::InboundRealTimePaymentsTransferDecline?, inbound_wire_reversal: Increase::Transaction::Source::InboundWireReversal?, inbound_wire_transfer: Increase::Transaction::Source::InboundWireTransfer?, inbound_wire_transfer_reversal: Increase::Transaction::Source::InboundWireTransferReversal?, interest_payment: Increase::Transaction::Source::InterestPayment?, internal_source: Increase::Transaction::Source::InternalSource?, other: top?, real_time_payments_transfer_acknowledgement: Increase::Transaction::Source::RealTimePaymentsTransferAcknowledgement?, sample_funds: Increase::Transaction::Source::SampleFunds?, swift_transfer_intention: Increase::Transaction::Source::SwiftTransferIntention?, wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           account_transfer_intention: Increase::Transaction::Source::AccountTransferIntention?,
           ach_transfer_intention: Increase::Transaction::Source::ACHTransferIntention?,
           ach_transfer_rejection: Increase::Transaction::Source::ACHTransferRejection?,
@@ -275,15 +229,14 @@ module Increase
           wire_transfer_intention: Increase::Transaction::Source::WireTransferIntention?
         }
 
-        type account_transfer_intention =
-          {
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::AccountTransferIntention::currency,
-            description: String,
-            destination_account_id: String,
-            source_account_id: String,
-            transfer_id: String
-          }
+        type account_transfer_intention = {
+          amount: Integer,
+          currency: Increase::Models::Transaction::Source::AccountTransferIntention::currency,
+          description: String,
+          destination_account_id: String,
+          source_account_id: String,
+          transfer_id: String
+        }
 
         class AccountTransferIntention < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -298,16 +251,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::AccountTransferIntention::currency,
-            description: String,
-            destination_account_id: String,
-            source_account_id: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (amount: Integer, currency: Increase::Models::Transaction::Source::AccountTransferIntention::currency, description: String, destination_account_id: String, source_account_id: String, transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             currency: Increase::Models::Transaction::Source::AccountTransferIntention::currency,
             description: String,
@@ -316,7 +262,7 @@ module Increase
             transfer_id: String
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -339,18 +285,11 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::AccountTransferIntention::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::AccountTransferIntention::currency]
           end
         end
 
-        type ach_transfer_intention =
-          {
-            account_number: String,
-            amount: Integer,
-            routing_number: String,
-            statement_descriptor: String,
-            transfer_id: String
-          }
+        type ach_transfer_intention = {account_number: String, amount: Integer, routing_number: String, statement_descriptor: String, transfer_id: String}
 
         class ACHTransferIntention < Increase::Internal::Type::BaseModel
           attr_accessor account_number: String
@@ -363,42 +302,29 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            account_number: String,
-            amount: Integer,
-            routing_number: String,
-            statement_descriptor: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (account_number: String, amount: Integer, routing_number: String, statement_descriptor: String, transfer_id: String) -> void
 
-          def to_hash: -> {
-            account_number: String,
-            amount: Integer,
-            routing_number: String,
-            statement_descriptor: String,
-            transfer_id: String
-          }
+          def to_hash: () -> {account_number: String, amount: Integer, routing_number: String, statement_descriptor: String, transfer_id: String}
         end
 
-        type ach_transfer_rejection = { transfer_id: String }
+        type ach_transfer_rejection = {transfer_id: String}
 
         class ACHTransferRejection < Increase::Internal::Type::BaseModel
           attr_accessor transfer_id: String
 
           def initialize: (transfer_id: String) -> void
 
-          def to_hash: -> { transfer_id: String }
+          def to_hash: () -> {transfer_id: String}
         end
 
-        type ach_transfer_return =
-          {
-            created_at: Time,
-            raw_return_reason_code: String,
-            return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code,
-            trace_number: String,
-            transaction_id: String,
-            transfer_id: String
-          }
+        type ach_transfer_return = {
+          created_at: Time,
+          raw_return_reason_code: String,
+          return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code,
+          trace_number: String,
+          transaction_id: String,
+          transfer_id: String
+        }
 
         class ACHTransferReturn < Increase::Internal::Type::BaseModel
           attr_accessor created_at: Time
@@ -413,16 +339,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            created_at: Time,
-            raw_return_reason_code: String,
-            return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code,
-            trace_number: String,
-            transaction_id: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (created_at: Time, raw_return_reason_code: String, return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code, trace_number: String, transaction_id: String, transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             created_at: Time,
             raw_return_reason_code: String,
             return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code,
@@ -431,77 +350,7 @@ module Increase
             transfer_id: String
           }
 
-          type return_reason_code =
-            :insufficient_fund
-            | :no_account
-            | :account_closed
-            | :invalid_account_number_structure
-            | :account_frozen_entry_returned_per_ofac_instruction
-            | :credit_entry_refused_by_receiver
-            | :unauthorized_debit_to_consumer_account_using_corporate_sec_code
-            | :corporate_customer_advised_not_authorized
-            | :payment_stopped
-            | :non_transaction_account
-            | :uncollected_funds
-            | :routing_number_check_digit_error
-            | :customer_advised_unauthorized_improper_ineligible_or_incomplete
-            | :amount_field_error
-            | :authorization_revoked_by_customer
-            | :invalid_ach_routing_number
-            | :file_record_edit_criteria
-            | :enr_invalid_individual_name
-            | :returned_per_odfi_request
-            | :limited_participation_dfi
-            | :incorrectly_coded_outbound_international_payment
-            | :account_sold_to_another_dfi
-            | :addenda_error
-            | :beneficiary_or_account_holder_deceased
-            | :customer_advised_not_within_authorization_terms
-            | :corrected_return
-            | :duplicate_entry
-            | :duplicate_return
-            | :enr_duplicate_enrollment
-            | :enr_invalid_dfi_account_number
-            | :enr_invalid_individual_id_number
-            | :enr_invalid_representative_payee_indicator
-            | :enr_invalid_transaction_code
-            | :enr_return_of_enr_entry
-            | :enr_routing_number_check_digit_error
-            | :entry_not_processed_by_gateway
-            | :field_error
-            | :foreign_receiving_dfi_unable_to_settle
-            | :iat_entry_coding_error
-            | :improper_effective_entry_date
-            | :improper_source_document_source_document_presented
-            | :invalid_company_id
-            | :invalid_foreign_receiving_dfi_identification
-            | :invalid_individual_id_number
-            | :item_and_rck_entry_presented_for_payment
-            | :item_related_to_rck_entry_is_ineligible
-            | :mandatory_field_error
-            | :misrouted_dishonored_return
-            | :misrouted_return
-            | :no_errors_found
-            | :non_acceptance_of_r62_dishonored_return
-            | :non_participant_in_iat_program
-            | :permissible_return_entry
-            | :permissible_return_entry_not_accepted
-            | :rdfi_non_settlement
-            | :rdfi_participant_in_check_truncation_program
-            | :representative_payee_deceased_or_unable_to_continue_in_that_capacity
-            | :return_not_a_duplicate
-            | :return_of_erroneous_or_reversing_debit
-            | :return_of_improper_credit_entry
-            | :return_of_improper_debit_entry
-            | :return_of_xck_entry
-            | :source_document_presented_for_payment
-            | :state_law_affecting_rck_acceptance
-            | :stop_payment_on_item_related_to_rck_entry
-            | :stop_payment_on_source_document
-            | :timely_original_return
-            | :trace_number_error
-            | :untimely_dishonored_return
-            | :untimely_return
+          type return_reason_code = (:insufficient_fund | :no_account | :account_closed | :invalid_account_number_structure | :account_frozen_entry_returned_per_ofac_instruction | :credit_entry_refused_by_receiver | :unauthorized_debit_to_consumer_account_using_corporate_sec_code | :corporate_customer_advised_not_authorized | :payment_stopped | :non_transaction_account | :uncollected_funds | :routing_number_check_digit_error | :customer_advised_unauthorized_improper_ineligible_or_incomplete | :amount_field_error | :authorization_revoked_by_customer | :invalid_ach_routing_number | :file_record_edit_criteria | :enr_invalid_individual_name | :returned_per_odfi_request | :limited_participation_dfi | :incorrectly_coded_outbound_international_payment | :account_sold_to_another_dfi | :addenda_error | :beneficiary_or_account_holder_deceased | :customer_advised_not_within_authorization_terms | :corrected_return | :duplicate_entry | :duplicate_return | :enr_duplicate_enrollment | :enr_invalid_dfi_account_number | :enr_invalid_individual_id_number | :enr_invalid_representative_payee_indicator | :enr_invalid_transaction_code | :enr_return_of_enr_entry | :enr_routing_number_check_digit_error | :entry_not_processed_by_gateway | :field_error | :foreign_receiving_dfi_unable_to_settle | :iat_entry_coding_error | :improper_effective_entry_date | :improper_source_document_source_document_presented | :invalid_company_id | :invalid_foreign_receiving_dfi_identification | :invalid_individual_id_number | :item_and_rck_entry_presented_for_payment | :item_related_to_rck_entry_is_ineligible | :mandatory_field_error | :misrouted_dishonored_return | :misrouted_return | :no_errors_found | :non_acceptance_of_r62_dishonored_return | :non_participant_in_iat_program | :permissible_return_entry | :permissible_return_entry_not_accepted | :rdfi_non_settlement | :rdfi_participant_in_check_truncation_program | :representative_payee_deceased_or_unable_to_continue_in_that_capacity | :return_not_a_duplicate | :return_of_erroneous_or_reversing_debit | :return_of_improper_credit_entry | :return_of_improper_debit_entry | :return_of_xck_entry | :source_document_presented_for_payment | :state_law_affecting_rck_acceptance | :stop_payment_on_item_related_to_rck_entry | :stop_payment_on_source_document | :timely_original_return | :trace_number_error | :untimely_dishonored_return | :untimely_return)
 
           module ReturnReasonCode
             extend Increase::Internal::Type::Enum
@@ -716,12 +565,11 @@ module Increase
             # Code R68. A rare return reason. The return was sent too late.
             UNTIMELY_RETURN: :untimely_return
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code]
           end
         end
 
-        type card_dispute_acceptance =
-          { accepted_at: Time, card_dispute_id: String, transaction_id: String }
+        type card_dispute_acceptance = {accepted_at: Time, card_dispute_id: String, transaction_id: String}
 
         class CardDisputeAcceptance < Increase::Internal::Type::BaseModel
           attr_accessor accepted_at: Time
@@ -730,26 +578,12 @@ module Increase
 
           attr_accessor transaction_id: String
 
-          def initialize: (
-            accepted_at: Time,
-            card_dispute_id: String,
-            transaction_id: String
-          ) -> void
+          def initialize: (accepted_at: Time, card_dispute_id: String, transaction_id: String) -> void
 
-          def to_hash: -> {
-            accepted_at: Time,
-            card_dispute_id: String,
-            transaction_id: String
-          }
+          def to_hash: () -> {accepted_at: Time, card_dispute_id: String, transaction_id: String}
         end
 
-        type card_dispute_loss =
-          {
-            card_dispute_id: String,
-            explanation: String,
-            lost_at: Time,
-            transaction_id: String
-          }
+        type card_dispute_loss = {card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String}
 
         class CardDisputeLoss < Increase::Internal::Type::BaseModel
           attr_accessor card_dispute_id: String
@@ -760,23 +594,12 @@ module Increase
 
           attr_accessor transaction_id: String
 
-          def initialize: (
-            card_dispute_id: String,
-            explanation: String,
-            lost_at: Time,
-            transaction_id: String
-          ) -> void
+          def initialize: (card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String) -> void
 
-          def to_hash: -> {
-            card_dispute_id: String,
-            explanation: String,
-            lost_at: Time,
-            transaction_id: String
-          }
+          def to_hash: () -> {card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String}
         end
 
-        type card_push_transfer_acceptance =
-          { amount: Integer, transfer_id: String }
+        type card_push_transfer_acceptance = {amount: Integer, transfer_id: String}
 
         class CardPushTransferAcceptance < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -785,31 +608,30 @@ module Increase
 
           def initialize: (amount: Integer, transfer_id: String) -> void
 
-          def to_hash: -> { amount: Integer, transfer_id: String }
+          def to_hash: () -> {amount: Integer, transfer_id: String}
         end
 
-        type card_refund =
-          {
-            id: String,
-            amount: Integer,
-            card_payment_id: String,
-            cashback: Increase::Transaction::Source::CardRefund::Cashback?,
-            currency: Increase::Models::Transaction::Source::CardRefund::currency,
-            interchange: Increase::Transaction::Source::CardRefund::Interchange?,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String,
-            merchant_country: String,
-            merchant_name: String,
-            merchant_postal_code: String?,
-            merchant_state: String?,
-            network_identifiers: Increase::Transaction::Source::CardRefund::NetworkIdentifiers,
-            presentment_amount: Integer,
-            presentment_currency: String,
-            purchase_details: Increase::Transaction::Source::CardRefund::PurchaseDetails?,
-            transaction_id: String,
-            type: Increase::Models::Transaction::Source::CardRefund::type_
-          }
+        type card_refund = {
+          id: String,
+          amount: Integer,
+          card_payment_id: String,
+          cashback: Increase::Transaction::Source::CardRefund::Cashback?,
+          currency: Increase::Models::Transaction::Source::CardRefund::currency,
+          interchange: Increase::Transaction::Source::CardRefund::Interchange?,
+          merchant_acceptor_id: String,
+          merchant_category_code: String,
+          merchant_city: String,
+          merchant_country: String,
+          merchant_name: String,
+          merchant_postal_code: String?,
+          merchant_state: String?,
+          network_identifiers: Increase::Transaction::Source::CardRefund::NetworkIdentifiers,
+          presentment_amount: Integer,
+          presentment_currency: String,
+          purchase_details: Increase::Transaction::Source::CardRefund::PurchaseDetails?,
+          transaction_id: String,
+          type: Increase::Models::Transaction::Source::CardRefund::type_
+        }
 
         class CardRefund < Increase::Internal::Type::BaseModel
           attr_accessor id: String
@@ -850,29 +672,9 @@ module Increase
 
           attr_accessor type: Increase::Models::Transaction::Source::CardRefund::type_
 
-          def initialize: (
-            id: String,
-            amount: Integer,
-            card_payment_id: String,
-            cashback: Increase::Transaction::Source::CardRefund::Cashback?,
-            currency: Increase::Models::Transaction::Source::CardRefund::currency,
-            interchange: Increase::Transaction::Source::CardRefund::Interchange?,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String,
-            merchant_country: String,
-            merchant_name: String,
-            merchant_postal_code: String?,
-            merchant_state: String?,
-            network_identifiers: Increase::Transaction::Source::CardRefund::NetworkIdentifiers,
-            presentment_amount: Integer,
-            presentment_currency: String,
-            purchase_details: Increase::Transaction::Source::CardRefund::PurchaseDetails?,
-            transaction_id: String,
-            type: Increase::Models::Transaction::Source::CardRefund::type_
-          ) -> void
+          def initialize: (id: String, amount: Integer, card_payment_id: String, cashback: Increase::Transaction::Source::CardRefund::Cashback?, currency: Increase::Models::Transaction::Source::CardRefund::currency, interchange: Increase::Transaction::Source::CardRefund::Interchange?, merchant_acceptor_id: String, merchant_category_code: String, merchant_city: String, merchant_country: String, merchant_name: String, merchant_postal_code: String?, merchant_state: String?, network_identifiers: Increase::Transaction::Source::CardRefund::NetworkIdentifiers, presentment_amount: Integer, presentment_currency: String, purchase_details: Increase::Transaction::Source::CardRefund::PurchaseDetails?, transaction_id: String, type: Increase::Models::Transaction::Source::CardRefund::type_) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             id: String,
             amount: Integer,
             card_payment_id: String,
@@ -894,28 +696,18 @@ module Increase
             type: Increase::Models::Transaction::Source::CardRefund::type_
           }
 
-          type cashback =
-            {
-              amount: String,
-              currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency
-            }
+          type cashback = {amount: String, currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency}
 
           class Cashback < Increase::Internal::Type::BaseModel
             attr_accessor amount: String
 
             attr_accessor currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency
 
-            def initialize: (
-              amount: String,
-              currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency
-            ) -> void
+            def initialize: (amount: String, currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency) -> void
 
-            def to_hash: -> {
-              amount: String,
-              currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency
-            }
+            def to_hash: () -> {amount: String, currency: Increase::Models::Transaction::Source::CardRefund::Cashback::currency}
 
-            type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+            type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
             module Currency
               extend Increase::Internal::Type::Enum
@@ -938,11 +730,11 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::Cashback::currency]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::Cashback::currency]
             end
           end
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -965,15 +757,14 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::currency]
           end
 
-          type interchange =
-            {
-              amount: String,
-              code: String?,
-              currency: Increase::Models::Transaction::Source::CardRefund::Interchange::currency
-            }
+          type interchange = {
+            amount: String,
+            code: String?,
+            currency: Increase::Models::Transaction::Source::CardRefund::Interchange::currency
+          }
 
           class Interchange < Increase::Internal::Type::BaseModel
             attr_accessor amount: String
@@ -982,19 +773,15 @@ module Increase
 
             attr_accessor currency: Increase::Models::Transaction::Source::CardRefund::Interchange::currency
 
-            def initialize: (
-              amount: String,
-              code: String?,
-              currency: Increase::Models::Transaction::Source::CardRefund::Interchange::currency
-            ) -> void
+            def initialize: (amount: String, code: String?, currency: Increase::Models::Transaction::Source::CardRefund::Interchange::currency) -> void
 
-            def to_hash: -> {
+            def to_hash: () -> {
               amount: String,
               code: String?,
               currency: Increase::Models::Transaction::Source::CardRefund::Interchange::currency
             }
 
-            type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+            type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
             module Currency
               extend Increase::Internal::Type::Enum
@@ -1017,16 +804,11 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::Interchange::currency]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::Interchange::currency]
             end
           end
 
-          type network_identifiers =
-            {
-              acquirer_business_id: String,
-              acquirer_reference_number: String,
-              transaction_id: String?
-            }
+          type network_identifiers = {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: String?}
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             attr_accessor acquirer_business_id: String
@@ -1035,32 +817,23 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize: (
-              acquirer_business_id: String,
-              acquirer_reference_number: String,
-              transaction_id: String?
-            ) -> void
+            def initialize: (acquirer_business_id: String, acquirer_reference_number: String, transaction_id: String?) -> void
 
-            def to_hash: -> {
-              acquirer_business_id: String,
-              acquirer_reference_number: String,
-              transaction_id: String?
-            }
+            def to_hash: () -> {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: String?}
           end
 
-          type purchase_details =
-            {
-              car_rental: Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental?,
-              customer_reference_identifier: String?,
-              local_tax_amount: Integer?,
-              local_tax_currency: String?,
-              lodging: Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging?,
-              national_tax_amount: Integer?,
-              national_tax_currency: String?,
-              purchase_identifier: String?,
-              purchase_identifier_format: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format?,
-              travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?
-            }
+          type purchase_details = {
+            car_rental: Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental?,
+            customer_reference_identifier: String?,
+            local_tax_amount: Integer?,
+            local_tax_currency: String?,
+            lodging: Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging?,
+            national_tax_amount: Integer?,
+            national_tax_currency: String?,
+            purchase_identifier: String?,
+            purchase_identifier_format: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format?,
+            travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?
+          }
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             attr_accessor car_rental: Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental?
@@ -1083,20 +856,9 @@ module Increase
 
             attr_accessor travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?
 
-            def initialize: (
-              car_rental: Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental?,
-              customer_reference_identifier: String?,
-              local_tax_amount: Integer?,
-              local_tax_currency: String?,
-              lodging: Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging?,
-              national_tax_amount: Integer?,
-              national_tax_currency: String?,
-              purchase_identifier: String?,
-              purchase_identifier_format: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format?,
-              travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?
-            ) -> void
+            def initialize: (car_rental: Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental?, customer_reference_identifier: String?, local_tax_amount: Integer?, local_tax_currency: String?, lodging: Increase::Transaction::Source::CardRefund::PurchaseDetails::Lodging?, national_tax_amount: Integer?, national_tax_currency: String?, purchase_identifier: String?, purchase_identifier_format: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format?, travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?) -> void
 
-            def to_hash: -> {
+            def to_hash: () -> {
               car_rental: Increase::Transaction::Source::CardRefund::PurchaseDetails::CarRental?,
               customer_reference_identifier: String?,
               local_tax_amount: Integer?,
@@ -1109,25 +871,24 @@ module Increase
               travel: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel?
             }
 
-            type car_rental =
-              {
-                car_class_code: String?,
-                checkout_date: Date?,
-                daily_rental_rate_amount: Integer?,
-                daily_rental_rate_currency: String?,
-                days_rented: Integer?,
-                extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges?,
-                fuel_charges_amount: Integer?,
-                fuel_charges_currency: String?,
-                insurance_charges_amount: Integer?,
-                insurance_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator?,
-                one_way_drop_off_charges_amount: Integer?,
-                one_way_drop_off_charges_currency: String?,
-                renter_name: String?,
-                weekly_rental_rate_amount: Integer?,
-                weekly_rental_rate_currency: String?
-              }
+            type car_rental = {
+              car_class_code: String?,
+              checkout_date: Date?,
+              daily_rental_rate_amount: Integer?,
+              daily_rental_rate_currency: String?,
+              days_rented: Integer?,
+              extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges?,
+              fuel_charges_amount: Integer?,
+              fuel_charges_currency: String?,
+              insurance_charges_amount: Integer?,
+              insurance_charges_currency: String?,
+              no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator?,
+              one_way_drop_off_charges_amount: Integer?,
+              one_way_drop_off_charges_currency: String?,
+              renter_name: String?,
+              weekly_rental_rate_amount: Integer?,
+              weekly_rental_rate_currency: String?
+            }
 
             class CarRental < Increase::Internal::Type::BaseModel
               attr_accessor car_class_code: String?
@@ -1162,26 +923,9 @@ module Increase
 
               attr_accessor weekly_rental_rate_currency: String?
 
-              def initialize: (
-                car_class_code: String?,
-                checkout_date: Date?,
-                daily_rental_rate_amount: Integer?,
-                daily_rental_rate_currency: String?,
-                days_rented: Integer?,
-                extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges?,
-                fuel_charges_amount: Integer?,
-                fuel_charges_currency: String?,
-                insurance_charges_amount: Integer?,
-                insurance_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator?,
-                one_way_drop_off_charges_amount: Integer?,
-                one_way_drop_off_charges_currency: String?,
-                renter_name: String?,
-                weekly_rental_rate_amount: Integer?,
-                weekly_rental_rate_currency: String?
-              ) -> void
+              def initialize: (car_class_code: String?, checkout_date: Date?, daily_rental_rate_amount: Integer?, daily_rental_rate_currency: String?, days_rented: Integer?, extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges?, fuel_charges_amount: Integer?, fuel_charges_currency: String?, insurance_charges_amount: Integer?, insurance_charges_currency: String?, no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator?, one_way_drop_off_charges_amount: Integer?, one_way_drop_off_charges_currency: String?, renter_name: String?, weekly_rental_rate_amount: Integer?, weekly_rental_rate_currency: String?) -> void
 
-              def to_hash: -> {
+              def to_hash: () -> {
                 car_class_code: String?,
                 checkout_date: Date?,
                 daily_rental_rate_amount: Integer?,
@@ -1200,13 +944,7 @@ module Increase
                 weekly_rental_rate_currency: String?
               }
 
-              type extra_charges =
-                :no_extra_charge
-                | :gas
-                | :extra_mileage
-                | :late_return
-                | :one_way_service_fee
-                | :parking_violation
+              type extra_charges = (:no_extra_charge | :gas | :extra_mileage | :late_return | :one_way_service_fee | :parking_violation)
 
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
@@ -1229,11 +967,10 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges]
               end
 
-              type no_show_indicator =
-                :not_applicable | :no_show_for_specialized_vehicle
+              type no_show_indicator = (:not_applicable | :no_show_for_specialized_vehicle)
 
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
@@ -1244,29 +981,28 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
-            type lodging =
-              {
-                check_in_date: Date?,
-                daily_room_rate_amount: Integer?,
-                daily_room_rate_currency: String?,
-                extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges?,
-                folio_cash_advances_amount: Integer?,
-                folio_cash_advances_currency: String?,
-                food_beverage_charges_amount: Integer?,
-                food_beverage_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator?,
-                prepaid_expenses_amount: Integer?,
-                prepaid_expenses_currency: String?,
-                room_nights: Integer?,
-                total_room_tax_amount: Integer?,
-                total_room_tax_currency: String?,
-                total_tax_amount: Integer?,
-                total_tax_currency: String?
-              }
+            type lodging = {
+              check_in_date: Date?,
+              daily_room_rate_amount: Integer?,
+              daily_room_rate_currency: String?,
+              extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges?,
+              folio_cash_advances_amount: Integer?,
+              folio_cash_advances_currency: String?,
+              food_beverage_charges_amount: Integer?,
+              food_beverage_charges_currency: String?,
+              no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator?,
+              prepaid_expenses_amount: Integer?,
+              prepaid_expenses_currency: String?,
+              room_nights: Integer?,
+              total_room_tax_amount: Integer?,
+              total_room_tax_currency: String?,
+              total_tax_amount: Integer?,
+              total_tax_currency: String?
+            }
 
             class Lodging < Increase::Internal::Type::BaseModel
               attr_accessor check_in_date: Date?
@@ -1301,26 +1037,9 @@ module Increase
 
               attr_accessor total_tax_currency: String?
 
-              def initialize: (
-                check_in_date: Date?,
-                daily_room_rate_amount: Integer?,
-                daily_room_rate_currency: String?,
-                extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges?,
-                folio_cash_advances_amount: Integer?,
-                folio_cash_advances_currency: String?,
-                food_beverage_charges_amount: Integer?,
-                food_beverage_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator?,
-                prepaid_expenses_amount: Integer?,
-                prepaid_expenses_currency: String?,
-                room_nights: Integer?,
-                total_room_tax_amount: Integer?,
-                total_room_tax_currency: String?,
-                total_tax_amount: Integer?,
-                total_tax_currency: String?
-              ) -> void
+              def initialize: (check_in_date: Date?, daily_room_rate_amount: Integer?, daily_room_rate_currency: String?, extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges?, folio_cash_advances_amount: Integer?, folio_cash_advances_currency: String?, food_beverage_charges_amount: Integer?, food_beverage_charges_currency: String?, no_show_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator?, prepaid_expenses_amount: Integer?, prepaid_expenses_currency: String?, room_nights: Integer?, total_room_tax_amount: Integer?, total_room_tax_currency: String?, total_tax_amount: Integer?, total_tax_currency: String?) -> void
 
-              def to_hash: -> {
+              def to_hash: () -> {
                 check_in_date: Date?,
                 daily_room_rate_amount: Integer?,
                 daily_room_rate_currency: String?,
@@ -1339,14 +1058,7 @@ module Increase
                 total_tax_currency: String?
               }
 
-              type extra_charges =
-                :no_extra_charge
-                | :restaurant
-                | :gift_shop
-                | :mini_bar
-                | :telephone
-                | :other
-                | :laundry
+              type extra_charges = (:no_extra_charge | :restaurant | :gift_shop | :mini_bar | :telephone | :other | :laundry)
 
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
@@ -1372,10 +1084,10 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges]
               end
 
-              type no_show_indicator = :not_applicable | :no_show
+              type no_show_indicator = (:not_applicable | :no_show)
 
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
@@ -1386,16 +1098,11 @@ module Increase
                 # No show
                 NO_SHOW: :no_show
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
-            type purchase_identifier_format =
-              :free_text
-              | :order_number
-              | :rental_agreement_number
-              | :hotel_folio_number
-              | :invoice_number
+            type purchase_identifier_format = (:free_text | :order_number | :rental_agreement_number | :hotel_folio_number | :invoice_number)
 
             module PurchaseIdentifierFormat
               extend Increase::Internal::Type::Enum
@@ -1415,24 +1122,23 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format]
             end
 
-            type travel =
-              {
-                ancillary: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary?,
-                computerized_reservation_system: String?,
-                credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?,
-                departure_date: Date?,
-                origination_city_airport_code: String?,
-                passenger_name: String?,
-                restricted_ticket_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator?,
-                ticket_change_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator?,
-                ticket_number: String?,
-                travel_agency_code: String?,
-                travel_agency_name: String?,
-                trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
-              }
+            type travel = {
+              ancillary: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary?,
+              computerized_reservation_system: String?,
+              credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?,
+              departure_date: Date?,
+              origination_city_airport_code: String?,
+              passenger_name: String?,
+              restricted_ticket_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator?,
+              ticket_change_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator?,
+              ticket_number: String?,
+              travel_agency_code: String?,
+              travel_agency_name: String?,
+              trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
+            }
 
             class Travel < Increase::Internal::Type::BaseModel
               attr_accessor ancillary: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary?
@@ -1459,22 +1165,9 @@ module Increase
 
               attr_accessor trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
 
-              def initialize: (
-                ancillary: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary?,
-                computerized_reservation_system: String?,
-                credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?,
-                departure_date: Date?,
-                origination_city_airport_code: String?,
-                passenger_name: String?,
-                restricted_ticket_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator?,
-                ticket_change_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator?,
-                ticket_number: String?,
-                travel_agency_code: String?,
-                travel_agency_name: String?,
-                trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
-              ) -> void
+              def initialize: (ancillary: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary?, computerized_reservation_system: String?, credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?, departure_date: Date?, origination_city_airport_code: String?, passenger_name: String?, restricted_ticket_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator?, ticket_change_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator?, ticket_number: String?, travel_agency_code: String?, travel_agency_name: String?, trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?) -> void
 
-              def to_hash: -> {
+              def to_hash: () -> {
                 ancillary: Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary?,
                 computerized_reservation_system: String?,
                 credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator?,
@@ -1489,14 +1182,13 @@ module Increase
                 trip_legs: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
               }
 
-              type ancillary =
-                {
-                  connected_ticket_document_number: String?,
-                  credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
-                  passenger_name_or_description: String?,
-                  services: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
-                  ticket_document_number: String?
-                }
+              type ancillary = {
+                connected_ticket_document_number: String?,
+                credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
+                passenger_name_or_description: String?,
+                services: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                ticket_document_number: String?
+              }
 
               class Ancillary < Increase::Internal::Type::BaseModel
                 attr_accessor connected_ticket_document_number: String?
@@ -1509,15 +1201,9 @@ module Increase
 
                 attr_accessor ticket_document_number: String?
 
-                def initialize: (
-                  connected_ticket_document_number: String?,
-                  credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
-                  passenger_name_or_description: String?,
-                  services: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
-                  ticket_document_number: String?
-                ) -> void
+                def initialize: (connected_ticket_document_number: String?, credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?, passenger_name_or_description: String?, services: ::Array[Increase::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service], ticket_document_number: String?) -> void
 
-                def to_hash: -> {
+                def to_hash: () -> {
                   connected_ticket_document_number: String?,
                   credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                   passenger_name_or_description: String?,
@@ -1525,11 +1211,7 @@ module Increase
                   ticket_document_number: String?
                 }
 
-                type credit_reason_indicator =
-                  :no_credit
-                  | :passenger_transport_ancillary_purchase_cancellation
-                  | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
-                  | :other
+                type credit_reason_indicator = (:no_credit | :passenger_transport_ancillary_purchase_cancellation | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation | :other)
 
                 module CreditReasonIndicator
                   extend Increase::Internal::Type::Enum
@@ -1546,55 +1228,29 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self?.values: () -> ::Array[
+                    Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator
+                  ]
                 end
 
-                type service =
-                  {
-                    category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
-                    sub_category: String?
-                  }
+                type service = {
+                  category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
+                  sub_category: String?
+                }
 
                 class Service < Increase::Internal::Type::BaseModel
                   attr_accessor category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?
 
                   attr_accessor sub_category: String?
 
-                  def initialize: (
-                    category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
-                    sub_category: String?
-                  ) -> void
+                  def initialize: (category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?, sub_category: String?) -> void
 
-                  def to_hash: -> {
+                  def to_hash: () -> {
                     category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category?,
                     sub_category: String?
                   }
 
-                  type category =
-                    :none
-                    | :bundled_service
-                    | :baggage_fee
-                    | :change_fee
-                    | :cargo
-                    | :carbon_offset
-                    | :frequent_flyer
-                    | :gift_card
-                    | :ground_transport
-                    | :in_flight_entertainment
-                    | :lounge
-                    | :medical
-                    | :meal_beverage
-                    | :other
-                    | :passenger_assist_fee
-                    | :pets
-                    | :seat_fees
-                    | :standby
-                    | :service_fee
-                    | :store
-                    | :travel_service
-                    | :unaccompanied_travel
-                    | :upgrades
-                    | :wifi
+                  type category = (:none | :bundled_service | :baggage_fee | :change_fee | :cargo | :carbon_offset | :frequent_flyer | :gift_card | :ground_transport | :in_flight_entertainment | :lounge | :medical | :meal_beverage | :other | :passenger_assist_fee | :pets | :seat_fees | :standby | :service_fee | :store | :travel_service | :unaccompanied_travel | :upgrades | :wifi)
 
                   module Category
                     extend Increase::Internal::Type::Enum
@@ -1671,18 +1327,12 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
 
-              type credit_reason_indicator =
-                :no_credit
-                | :passenger_transport_ancillary_purchase_cancellation
-                | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
-                | :airline_ticket_cancellation
-                | :other
-                | :partial_refund_of_airline_ticket
+              type credit_reason_indicator = (:no_credit | :passenger_transport_ancillary_purchase_cancellation | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation | :airline_ticket_cancellation | :other | :partial_refund_of_airline_ticket)
 
               module CreditReasonIndicator
                 extend Increase::Internal::Type::Enum
@@ -1705,11 +1355,10 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
-              type restricted_ticket_indicator =
-                :no_restrictions | :restricted_non_refundable_ticket
+              type restricted_ticket_indicator = (:no_restrictions | :restricted_non_refundable_ticket)
 
               module RestrictedTicketIndicator
                 extend Increase::Internal::Type::Enum
@@ -1720,11 +1369,10 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
-              type ticket_change_indicator =
-                :none | :change_to_existing_ticket | :new_ticket
+              type ticket_change_indicator = (:none | :change_to_existing_ticket | :new_ticket)
 
               module TicketChangeIndicator
                 extend Increase::Internal::Type::Enum
@@ -1738,18 +1386,17 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
-              type trip_leg =
-                {
-                  carrier_code: String?,
-                  destination_city_airport_code: String?,
-                  fare_basis_code: String?,
-                  flight_number: String?,
-                  service_class: String?,
-                  stop_over_code: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
-                }
+              type trip_leg = {
+                carrier_code: String?,
+                destination_city_airport_code: String?,
+                fare_basis_code: String?,
+                flight_number: String?,
+                service_class: String?,
+                stop_over_code: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
+              }
 
               class TripLeg < Increase::Internal::Type::BaseModel
                 attr_accessor carrier_code: String?
@@ -1764,16 +1411,9 @@ module Increase
 
                 attr_accessor stop_over_code: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
 
-                def initialize: (
-                  carrier_code: String?,
-                  destination_city_airport_code: String?,
-                  fare_basis_code: String?,
-                  flight_number: String?,
-                  service_class: String?,
-                  stop_over_code: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
-                ) -> void
+                def initialize: (carrier_code: String?, destination_city_airport_code: String?, fare_basis_code: String?, flight_number: String?, service_class: String?, stop_over_code: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?) -> void
 
-                def to_hash: -> {
+                def to_hash: () -> {
                   carrier_code: String?,
                   destination_city_airport_code: String?,
                   fare_basis_code: String?,
@@ -1782,8 +1422,7 @@ module Increase
                   stop_over_code: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code?
                 }
 
-                type stop_over_code =
-                  :none | :stop_over_allowed | :stop_over_not_allowed
+                type stop_over_code = (:none | :stop_over_allowed | :stop_over_not_allowed)
 
                 module StopOverCode
                   extend Increase::Internal::Type::Enum
@@ -1797,7 +1436,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -1810,18 +1449,17 @@ module Increase
 
             CARD_REFUND: :card_refund
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::type_]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRefund::type_]
           end
         end
 
-        type card_revenue_payment =
-          {
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::CardRevenuePayment::currency,
-            period_end: Time,
-            period_start: Time,
-            transacted_on_account_id: String?
-          }
+        type card_revenue_payment = {
+          amount: Integer,
+          currency: Increase::Models::Transaction::Source::CardRevenuePayment::currency,
+          period_end: Time,
+          period_start: Time,
+          transacted_on_account_id: String?
+        }
 
         class CardRevenuePayment < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -1834,15 +1472,9 @@ module Increase
 
           attr_accessor transacted_on_account_id: String?
 
-          def initialize: (
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::CardRevenuePayment::currency,
-            period_end: Time,
-            period_start: Time,
-            transacted_on_account_id: String?
-          ) -> void
+          def initialize: (amount: Integer, currency: Increase::Models::Transaction::Source::CardRevenuePayment::currency, period_end: Time, period_start: Time, transacted_on_account_id: String?) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             currency: Increase::Models::Transaction::Source::CardRevenuePayment::currency,
             period_end: Time,
@@ -1850,7 +1482,7 @@ module Increase
             transacted_on_account_id: String?
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -1873,34 +1505,33 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardRevenuePayment::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardRevenuePayment::currency]
           end
         end
 
-        type card_settlement =
-          {
-            id: String,
-            amount: Integer,
-            card_authorization: String?,
-            card_payment_id: String,
-            cashback: Increase::Transaction::Source::CardSettlement::Cashback?,
-            currency: Increase::Models::Transaction::Source::CardSettlement::currency,
-            interchange: Increase::Transaction::Source::CardSettlement::Interchange?,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String,
-            merchant_country: String,
-            merchant_name: String,
-            merchant_postal_code: String?,
-            merchant_state: String?,
-            network_identifiers: Increase::Transaction::Source::CardSettlement::NetworkIdentifiers,
-            pending_transaction_id: String?,
-            presentment_amount: Integer,
-            presentment_currency: String,
-            purchase_details: Increase::Transaction::Source::CardSettlement::PurchaseDetails?,
-            transaction_id: String,
-            type: Increase::Models::Transaction::Source::CardSettlement::type_
-          }
+        type card_settlement = {
+          id: String,
+          amount: Integer,
+          card_authorization: String?,
+          card_payment_id: String,
+          cashback: Increase::Transaction::Source::CardSettlement::Cashback?,
+          currency: Increase::Models::Transaction::Source::CardSettlement::currency,
+          interchange: Increase::Transaction::Source::CardSettlement::Interchange?,
+          merchant_acceptor_id: String,
+          merchant_category_code: String,
+          merchant_city: String,
+          merchant_country: String,
+          merchant_name: String,
+          merchant_postal_code: String?,
+          merchant_state: String?,
+          network_identifiers: Increase::Transaction::Source::CardSettlement::NetworkIdentifiers,
+          pending_transaction_id: String?,
+          presentment_amount: Integer,
+          presentment_currency: String,
+          purchase_details: Increase::Transaction::Source::CardSettlement::PurchaseDetails?,
+          transaction_id: String,
+          type: Increase::Models::Transaction::Source::CardSettlement::type_
+        }
 
         class CardSettlement < Increase::Internal::Type::BaseModel
           attr_accessor id: String
@@ -1945,31 +1576,9 @@ module Increase
 
           attr_accessor type: Increase::Models::Transaction::Source::CardSettlement::type_
 
-          def initialize: (
-            id: String,
-            amount: Integer,
-            card_authorization: String?,
-            card_payment_id: String,
-            cashback: Increase::Transaction::Source::CardSettlement::Cashback?,
-            currency: Increase::Models::Transaction::Source::CardSettlement::currency,
-            interchange: Increase::Transaction::Source::CardSettlement::Interchange?,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String,
-            merchant_country: String,
-            merchant_name: String,
-            merchant_postal_code: String?,
-            merchant_state: String?,
-            network_identifiers: Increase::Transaction::Source::CardSettlement::NetworkIdentifiers,
-            pending_transaction_id: String?,
-            presentment_amount: Integer,
-            presentment_currency: String,
-            purchase_details: Increase::Transaction::Source::CardSettlement::PurchaseDetails?,
-            transaction_id: String,
-            type: Increase::Models::Transaction::Source::CardSettlement::type_
-          ) -> void
+          def initialize: (id: String, amount: Integer, card_authorization: String?, card_payment_id: String, cashback: Increase::Transaction::Source::CardSettlement::Cashback?, currency: Increase::Models::Transaction::Source::CardSettlement::currency, interchange: Increase::Transaction::Source::CardSettlement::Interchange?, merchant_acceptor_id: String, merchant_category_code: String, merchant_city: String, merchant_country: String, merchant_name: String, merchant_postal_code: String?, merchant_state: String?, network_identifiers: Increase::Transaction::Source::CardSettlement::NetworkIdentifiers, pending_transaction_id: String?, presentment_amount: Integer, presentment_currency: String, purchase_details: Increase::Transaction::Source::CardSettlement::PurchaseDetails?, transaction_id: String, type: Increase::Models::Transaction::Source::CardSettlement::type_) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             id: String,
             amount: Integer,
             card_authorization: String?,
@@ -1993,28 +1602,18 @@ module Increase
             type: Increase::Models::Transaction::Source::CardSettlement::type_
           }
 
-          type cashback =
-            {
-              amount: String,
-              currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency
-            }
+          type cashback = {amount: String, currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency}
 
           class Cashback < Increase::Internal::Type::BaseModel
             attr_accessor amount: String
 
             attr_accessor currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency
 
-            def initialize: (
-              amount: String,
-              currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency
-            ) -> void
+            def initialize: (amount: String, currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency) -> void
 
-            def to_hash: -> {
-              amount: String,
-              currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency
-            }
+            def to_hash: () -> {amount: String, currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::currency}
 
-            type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+            type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
             module Currency
               extend Increase::Internal::Type::Enum
@@ -2037,11 +1636,11 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::currency]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::currency]
             end
           end
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -2064,15 +1663,14 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::currency]
           end
 
-          type interchange =
-            {
-              amount: String,
-              code: String?,
-              currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::currency
-            }
+          type interchange = {
+            amount: String,
+            code: String?,
+            currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::currency
+          }
 
           class Interchange < Increase::Internal::Type::BaseModel
             attr_accessor amount: String
@@ -2081,19 +1679,15 @@ module Increase
 
             attr_accessor currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::currency
 
-            def initialize: (
-              amount: String,
-              code: String?,
-              currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::currency
-            ) -> void
+            def initialize: (amount: String, code: String?, currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::currency) -> void
 
-            def to_hash: -> {
+            def to_hash: () -> {
               amount: String,
               code: String?,
               currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::currency
             }
 
-            type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+            type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
             module Currency
               extend Increase::Internal::Type::Enum
@@ -2116,16 +1710,11 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::currency]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::currency]
             end
           end
 
-          type network_identifiers =
-            {
-              acquirer_business_id: String,
-              acquirer_reference_number: String,
-              transaction_id: String?
-            }
+          type network_identifiers = {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: String?}
 
           class NetworkIdentifiers < Increase::Internal::Type::BaseModel
             attr_accessor acquirer_business_id: String
@@ -2134,32 +1723,23 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize: (
-              acquirer_business_id: String,
-              acquirer_reference_number: String,
-              transaction_id: String?
-            ) -> void
+            def initialize: (acquirer_business_id: String, acquirer_reference_number: String, transaction_id: String?) -> void
 
-            def to_hash: -> {
-              acquirer_business_id: String,
-              acquirer_reference_number: String,
-              transaction_id: String?
-            }
+            def to_hash: () -> {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: String?}
           end
 
-          type purchase_details =
-            {
-              car_rental: Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental?,
-              customer_reference_identifier: String?,
-              local_tax_amount: Integer?,
-              local_tax_currency: String?,
-              lodging: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging?,
-              national_tax_amount: Integer?,
-              national_tax_currency: String?,
-              purchase_identifier: String?,
-              purchase_identifier_format: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format?,
-              travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?
-            }
+          type purchase_details = {
+            car_rental: Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental?,
+            customer_reference_identifier: String?,
+            local_tax_amount: Integer?,
+            local_tax_currency: String?,
+            lodging: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging?,
+            national_tax_amount: Integer?,
+            national_tax_currency: String?,
+            purchase_identifier: String?,
+            purchase_identifier_format: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format?,
+            travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?
+          }
 
           class PurchaseDetails < Increase::Internal::Type::BaseModel
             attr_accessor car_rental: Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental?
@@ -2182,20 +1762,9 @@ module Increase
 
             attr_accessor travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?
 
-            def initialize: (
-              car_rental: Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental?,
-              customer_reference_identifier: String?,
-              local_tax_amount: Integer?,
-              local_tax_currency: String?,
-              lodging: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging?,
-              national_tax_amount: Integer?,
-              national_tax_currency: String?,
-              purchase_identifier: String?,
-              purchase_identifier_format: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format?,
-              travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?
-            ) -> void
+            def initialize: (car_rental: Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental?, customer_reference_identifier: String?, local_tax_amount: Integer?, local_tax_currency: String?, lodging: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Lodging?, national_tax_amount: Integer?, national_tax_currency: String?, purchase_identifier: String?, purchase_identifier_format: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format?, travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?) -> void
 
-            def to_hash: -> {
+            def to_hash: () -> {
               car_rental: Increase::Transaction::Source::CardSettlement::PurchaseDetails::CarRental?,
               customer_reference_identifier: String?,
               local_tax_amount: Integer?,
@@ -2208,25 +1777,24 @@ module Increase
               travel: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel?
             }
 
-            type car_rental =
-              {
-                car_class_code: String?,
-                checkout_date: Date?,
-                daily_rental_rate_amount: Integer?,
-                daily_rental_rate_currency: String?,
-                days_rented: Integer?,
-                extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges?,
-                fuel_charges_amount: Integer?,
-                fuel_charges_currency: String?,
-                insurance_charges_amount: Integer?,
-                insurance_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator?,
-                one_way_drop_off_charges_amount: Integer?,
-                one_way_drop_off_charges_currency: String?,
-                renter_name: String?,
-                weekly_rental_rate_amount: Integer?,
-                weekly_rental_rate_currency: String?
-              }
+            type car_rental = {
+              car_class_code: String?,
+              checkout_date: Date?,
+              daily_rental_rate_amount: Integer?,
+              daily_rental_rate_currency: String?,
+              days_rented: Integer?,
+              extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges?,
+              fuel_charges_amount: Integer?,
+              fuel_charges_currency: String?,
+              insurance_charges_amount: Integer?,
+              insurance_charges_currency: String?,
+              no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator?,
+              one_way_drop_off_charges_amount: Integer?,
+              one_way_drop_off_charges_currency: String?,
+              renter_name: String?,
+              weekly_rental_rate_amount: Integer?,
+              weekly_rental_rate_currency: String?
+            }
 
             class CarRental < Increase::Internal::Type::BaseModel
               attr_accessor car_class_code: String?
@@ -2261,26 +1829,9 @@ module Increase
 
               attr_accessor weekly_rental_rate_currency: String?
 
-              def initialize: (
-                car_class_code: String?,
-                checkout_date: Date?,
-                daily_rental_rate_amount: Integer?,
-                daily_rental_rate_currency: String?,
-                days_rented: Integer?,
-                extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges?,
-                fuel_charges_amount: Integer?,
-                fuel_charges_currency: String?,
-                insurance_charges_amount: Integer?,
-                insurance_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator?,
-                one_way_drop_off_charges_amount: Integer?,
-                one_way_drop_off_charges_currency: String?,
-                renter_name: String?,
-                weekly_rental_rate_amount: Integer?,
-                weekly_rental_rate_currency: String?
-              ) -> void
+              def initialize: (car_class_code: String?, checkout_date: Date?, daily_rental_rate_amount: Integer?, daily_rental_rate_currency: String?, days_rented: Integer?, extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges?, fuel_charges_amount: Integer?, fuel_charges_currency: String?, insurance_charges_amount: Integer?, insurance_charges_currency: String?, no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator?, one_way_drop_off_charges_amount: Integer?, one_way_drop_off_charges_currency: String?, renter_name: String?, weekly_rental_rate_amount: Integer?, weekly_rental_rate_currency: String?) -> void
 
-              def to_hash: -> {
+              def to_hash: () -> {
                 car_class_code: String?,
                 checkout_date: Date?,
                 daily_rental_rate_amount: Integer?,
@@ -2299,13 +1850,7 @@ module Increase
                 weekly_rental_rate_currency: String?
               }
 
-              type extra_charges =
-                :no_extra_charge
-                | :gas
-                | :extra_mileage
-                | :late_return
-                | :one_way_service_fee
-                | :parking_violation
+              type extra_charges = (:no_extra_charge | :gas | :extra_mileage | :late_return | :one_way_service_fee | :parking_violation)
 
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
@@ -2328,11 +1873,10 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges]
               end
 
-              type no_show_indicator =
-                :not_applicable | :no_show_for_specialized_vehicle
+              type no_show_indicator = (:not_applicable | :no_show_for_specialized_vehicle)
 
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
@@ -2343,29 +1887,28 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
-            type lodging =
-              {
-                check_in_date: Date?,
-                daily_room_rate_amount: Integer?,
-                daily_room_rate_currency: String?,
-                extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges?,
-                folio_cash_advances_amount: Integer?,
-                folio_cash_advances_currency: String?,
-                food_beverage_charges_amount: Integer?,
-                food_beverage_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator?,
-                prepaid_expenses_amount: Integer?,
-                prepaid_expenses_currency: String?,
-                room_nights: Integer?,
-                total_room_tax_amount: Integer?,
-                total_room_tax_currency: String?,
-                total_tax_amount: Integer?,
-                total_tax_currency: String?
-              }
+            type lodging = {
+              check_in_date: Date?,
+              daily_room_rate_amount: Integer?,
+              daily_room_rate_currency: String?,
+              extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges?,
+              folio_cash_advances_amount: Integer?,
+              folio_cash_advances_currency: String?,
+              food_beverage_charges_amount: Integer?,
+              food_beverage_charges_currency: String?,
+              no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator?,
+              prepaid_expenses_amount: Integer?,
+              prepaid_expenses_currency: String?,
+              room_nights: Integer?,
+              total_room_tax_amount: Integer?,
+              total_room_tax_currency: String?,
+              total_tax_amount: Integer?,
+              total_tax_currency: String?
+            }
 
             class Lodging < Increase::Internal::Type::BaseModel
               attr_accessor check_in_date: Date?
@@ -2400,26 +1943,9 @@ module Increase
 
               attr_accessor total_tax_currency: String?
 
-              def initialize: (
-                check_in_date: Date?,
-                daily_room_rate_amount: Integer?,
-                daily_room_rate_currency: String?,
-                extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges?,
-                folio_cash_advances_amount: Integer?,
-                folio_cash_advances_currency: String?,
-                food_beverage_charges_amount: Integer?,
-                food_beverage_charges_currency: String?,
-                no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator?,
-                prepaid_expenses_amount: Integer?,
-                prepaid_expenses_currency: String?,
-                room_nights: Integer?,
-                total_room_tax_amount: Integer?,
-                total_room_tax_currency: String?,
-                total_tax_amount: Integer?,
-                total_tax_currency: String?
-              ) -> void
+              def initialize: (check_in_date: Date?, daily_room_rate_amount: Integer?, daily_room_rate_currency: String?, extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges?, folio_cash_advances_amount: Integer?, folio_cash_advances_currency: String?, food_beverage_charges_amount: Integer?, food_beverage_charges_currency: String?, no_show_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator?, prepaid_expenses_amount: Integer?, prepaid_expenses_currency: String?, room_nights: Integer?, total_room_tax_amount: Integer?, total_room_tax_currency: String?, total_tax_amount: Integer?, total_tax_currency: String?) -> void
 
-              def to_hash: -> {
+              def to_hash: () -> {
                 check_in_date: Date?,
                 daily_room_rate_amount: Integer?,
                 daily_room_rate_currency: String?,
@@ -2438,14 +1964,7 @@ module Increase
                 total_tax_currency: String?
               }
 
-              type extra_charges =
-                :no_extra_charge
-                | :restaurant
-                | :gift_shop
-                | :mini_bar
-                | :telephone
-                | :other
-                | :laundry
+              type extra_charges = (:no_extra_charge | :restaurant | :gift_shop | :mini_bar | :telephone | :other | :laundry)
 
               module ExtraCharges
                 extend Increase::Internal::Type::Enum
@@ -2471,10 +1990,10 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges]
               end
 
-              type no_show_indicator = :not_applicable | :no_show
+              type no_show_indicator = (:not_applicable | :no_show)
 
               module NoShowIndicator
                 extend Increase::Internal::Type::Enum
@@ -2485,16 +2004,11 @@ module Increase
                 # No show
                 NO_SHOW: :no_show
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
-            type purchase_identifier_format =
-              :free_text
-              | :order_number
-              | :rental_agreement_number
-              | :hotel_folio_number
-              | :invoice_number
+            type purchase_identifier_format = (:free_text | :order_number | :rental_agreement_number | :hotel_folio_number | :invoice_number)
 
             module PurchaseIdentifierFormat
               extend Increase::Internal::Type::Enum
@@ -2514,24 +2028,23 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format]
             end
 
-            type travel =
-              {
-                ancillary: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary?,
-                computerized_reservation_system: String?,
-                credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?,
-                departure_date: Date?,
-                origination_city_airport_code: String?,
-                passenger_name: String?,
-                restricted_ticket_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator?,
-                ticket_change_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator?,
-                ticket_number: String?,
-                travel_agency_code: String?,
-                travel_agency_name: String?,
-                trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
-              }
+            type travel = {
+              ancillary: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary?,
+              computerized_reservation_system: String?,
+              credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?,
+              departure_date: Date?,
+              origination_city_airport_code: String?,
+              passenger_name: String?,
+              restricted_ticket_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator?,
+              ticket_change_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator?,
+              ticket_number: String?,
+              travel_agency_code: String?,
+              travel_agency_name: String?,
+              trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+            }
 
             class Travel < Increase::Internal::Type::BaseModel
               attr_accessor ancillary: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary?
@@ -2558,22 +2071,9 @@ module Increase
 
               attr_accessor trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
 
-              def initialize: (
-                ancillary: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary?,
-                computerized_reservation_system: String?,
-                credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?,
-                departure_date: Date?,
-                origination_city_airport_code: String?,
-                passenger_name: String?,
-                restricted_ticket_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator?,
-                ticket_change_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator?,
-                ticket_number: String?,
-                travel_agency_code: String?,
-                travel_agency_name: String?,
-                trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
-              ) -> void
+              def initialize: (ancillary: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary?, computerized_reservation_system: String?, credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?, departure_date: Date?, origination_city_airport_code: String?, passenger_name: String?, restricted_ticket_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator?, ticket_change_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator?, ticket_number: String?, travel_agency_code: String?, travel_agency_name: String?, trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?) -> void
 
-              def to_hash: -> {
+              def to_hash: () -> {
                 ancillary: Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary?,
                 computerized_reservation_system: String?,
                 credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator?,
@@ -2588,14 +2088,13 @@ module Increase
                 trip_legs: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
               }
 
-              type ancillary =
-                {
-                  connected_ticket_document_number: String?,
-                  credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
-                  passenger_name_or_description: String?,
-                  services: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
-                  ticket_document_number: String?
-                }
+              type ancillary = {
+                connected_ticket_document_number: String?,
+                credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
+                passenger_name_or_description: String?,
+                services: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                ticket_document_number: String?
+              }
 
               class Ancillary < Increase::Internal::Type::BaseModel
                 attr_accessor connected_ticket_document_number: String?
@@ -2608,15 +2107,9 @@ module Increase
 
                 attr_accessor ticket_document_number: String?
 
-                def initialize: (
-                  connected_ticket_document_number: String?,
-                  credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
-                  passenger_name_or_description: String?,
-                  services: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
-                  ticket_document_number: String?
-                ) -> void
+                def initialize: (connected_ticket_document_number: String?, credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?, passenger_name_or_description: String?, services: ::Array[Increase::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service], ticket_document_number: String?) -> void
 
-                def to_hash: -> {
+                def to_hash: () -> {
                   connected_ticket_document_number: String?,
                   credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                   passenger_name_or_description: String?,
@@ -2624,11 +2117,7 @@ module Increase
                   ticket_document_number: String?
                 }
 
-                type credit_reason_indicator =
-                  :no_credit
-                  | :passenger_transport_ancillary_purchase_cancellation
-                  | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
-                  | :other
+                type credit_reason_indicator = (:no_credit | :passenger_transport_ancillary_purchase_cancellation | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation | :other)
 
                 module CreditReasonIndicator
                   extend Increase::Internal::Type::Enum
@@ -2645,55 +2134,29 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self?.values: () -> ::Array[
+                    Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator
+                  ]
                 end
 
-                type service =
-                  {
-                    category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
-                    sub_category: String?
-                  }
+                type service = {
+                  category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
+                  sub_category: String?
+                }
 
                 class Service < Increase::Internal::Type::BaseModel
                   attr_accessor category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?
 
                   attr_accessor sub_category: String?
 
-                  def initialize: (
-                    category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
-                    sub_category: String?
-                  ) -> void
+                  def initialize: (category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?, sub_category: String?) -> void
 
-                  def to_hash: -> {
+                  def to_hash: () -> {
                     category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category?,
                     sub_category: String?
                   }
 
-                  type category =
-                    :none
-                    | :bundled_service
-                    | :baggage_fee
-                    | :change_fee
-                    | :cargo
-                    | :carbon_offset
-                    | :frequent_flyer
-                    | :gift_card
-                    | :ground_transport
-                    | :in_flight_entertainment
-                    | :lounge
-                    | :medical
-                    | :meal_beverage
-                    | :other
-                    | :passenger_assist_fee
-                    | :pets
-                    | :seat_fees
-                    | :standby
-                    | :service_fee
-                    | :store
-                    | :travel_service
-                    | :unaccompanied_travel
-                    | :upgrades
-                    | :wifi
+                  type category = (:none | :bundled_service | :baggage_fee | :change_fee | :cargo | :carbon_offset | :frequent_flyer | :gift_card | :ground_transport | :in_flight_entertainment | :lounge | :medical | :meal_beverage | :other | :passenger_assist_fee | :pets | :seat_fees | :standby | :service_fee | :store | :travel_service | :unaccompanied_travel | :upgrades | :wifi)
 
                   module Category
                     extend Increase::Internal::Type::Enum
@@ -2770,18 +2233,14 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self?.values: () -> ::Array[
+                      Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category
+                    ]
                   end
                 end
               end
 
-              type credit_reason_indicator =
-                :no_credit
-                | :passenger_transport_ancillary_purchase_cancellation
-                | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
-                | :airline_ticket_cancellation
-                | :other
-                | :partial_refund_of_airline_ticket
+              type credit_reason_indicator = (:no_credit | :passenger_transport_ancillary_purchase_cancellation | :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation | :airline_ticket_cancellation | :other | :partial_refund_of_airline_ticket)
 
               module CreditReasonIndicator
                 extend Increase::Internal::Type::Enum
@@ -2804,11 +2263,10 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
-              type restricted_ticket_indicator =
-                :no_restrictions | :restricted_non_refundable_ticket
+              type restricted_ticket_indicator = (:no_restrictions | :restricted_non_refundable_ticket)
 
               module RestrictedTicketIndicator
                 extend Increase::Internal::Type::Enum
@@ -2819,11 +2277,12 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self?.values: () -> ::Array[
+                  Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator
+                ]
               end
 
-              type ticket_change_indicator =
-                :none | :change_to_existing_ticket | :new_ticket
+              type ticket_change_indicator = (:none | :change_to_existing_ticket | :new_ticket)
 
               module TicketChangeIndicator
                 extend Increase::Internal::Type::Enum
@@ -2837,18 +2296,17 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
+                def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
-              type trip_leg =
-                {
-                  carrier_code: String?,
-                  destination_city_airport_code: String?,
-                  fare_basis_code: String?,
-                  flight_number: String?,
-                  service_class: String?,
-                  stop_over_code: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
-                }
+              type trip_leg = {
+                carrier_code: String?,
+                destination_city_airport_code: String?,
+                fare_basis_code: String?,
+                flight_number: String?,
+                service_class: String?,
+                stop_over_code: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
+              }
 
               class TripLeg < Increase::Internal::Type::BaseModel
                 attr_accessor carrier_code: String?
@@ -2863,16 +2321,9 @@ module Increase
 
                 attr_accessor stop_over_code: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
 
-                def initialize: (
-                  carrier_code: String?,
-                  destination_city_airport_code: String?,
-                  fare_basis_code: String?,
-                  flight_number: String?,
-                  service_class: String?,
-                  stop_over_code: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
-                ) -> void
+                def initialize: (carrier_code: String?, destination_city_airport_code: String?, fare_basis_code: String?, flight_number: String?, service_class: String?, stop_over_code: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?) -> void
 
-                def to_hash: -> {
+                def to_hash: () -> {
                   carrier_code: String?,
                   destination_city_airport_code: String?,
                   fare_basis_code: String?,
@@ -2881,8 +2332,7 @@ module Increase
                   stop_over_code: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code?
                 }
 
-                type stop_over_code =
-                  :none | :stop_over_allowed | :stop_over_not_allowed
+                type stop_over_code = (:none | :stop_over_allowed | :stop_over_not_allowed)
 
                 module StopOverCode
                   extend Increase::Internal::Type::Enum
@@ -2896,7 +2346,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -2909,18 +2359,17 @@ module Increase
 
             CARD_SETTLEMENT: :card_settlement
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::type_]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CardSettlement::type_]
           end
         end
 
-        type cashback_payment =
-          {
-            accrued_on_card_id: String?,
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::CashbackPayment::currency,
-            period_end: Time,
-            period_start: Time
-          }
+        type cashback_payment = {
+          accrued_on_card_id: String?,
+          amount: Integer,
+          currency: Increase::Models::Transaction::Source::CashbackPayment::currency,
+          period_end: Time,
+          period_start: Time
+        }
 
         class CashbackPayment < Increase::Internal::Type::BaseModel
           attr_accessor accrued_on_card_id: String?
@@ -2933,15 +2382,9 @@ module Increase
 
           attr_accessor period_start: Time
 
-          def initialize: (
-            accrued_on_card_id: String?,
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::CashbackPayment::currency,
-            period_end: Time,
-            period_start: Time
-          ) -> void
+          def initialize: (accrued_on_card_id: String?, amount: Integer, currency: Increase::Models::Transaction::Source::CashbackPayment::currency, period_end: Time, period_start: Time) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             accrued_on_card_id: String?,
             amount: Integer,
             currency: Increase::Models::Transaction::Source::CashbackPayment::currency,
@@ -2949,7 +2392,7 @@ module Increase
             period_start: Time
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -2972,42 +2415,11 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CashbackPayment::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CashbackPayment::currency]
           end
         end
 
-        type category =
-          :account_transfer_intention
-          | :ach_transfer_intention
-          | :ach_transfer_rejection
-          | :ach_transfer_return
-          | :cashback_payment
-          | :card_dispute_acceptance
-          | :card_dispute_loss
-          | :card_refund
-          | :card_settlement
-          | :card_revenue_payment
-          | :check_deposit_acceptance
-          | :check_deposit_return
-          | :check_transfer_deposit
-          | :fee_payment
-          | :inbound_ach_transfer
-          | :inbound_ach_transfer_return_intention
-          | :inbound_check_deposit_return_intention
-          | :inbound_check_adjustment
-          | :inbound_real_time_payments_transfer_confirmation
-          | :inbound_real_time_payments_transfer_decline
-          | :inbound_wire_reversal
-          | :inbound_wire_transfer
-          | :inbound_wire_transfer_reversal
-          | :interest_payment
-          | :internal_source
-          | :real_time_payments_transfer_acknowledgement
-          | :sample_funds
-          | :wire_transfer_intention
-          | :swift_transfer_intention
-          | :card_push_transfer_acceptance
-          | :other
+        type category = (:account_transfer_intention | :ach_transfer_intention | :ach_transfer_rejection | :ach_transfer_return | :cashback_payment | :card_dispute_acceptance | :card_dispute_loss | :card_refund | :card_settlement | :card_revenue_payment | :check_deposit_acceptance | :check_deposit_return | :check_transfer_deposit | :fee_payment | :inbound_ach_transfer | :inbound_ach_transfer_return_intention | :inbound_check_deposit_return_intention | :inbound_check_adjustment | :inbound_real_time_payments_transfer_confirmation | :inbound_real_time_payments_transfer_decline | :inbound_wire_reversal | :inbound_wire_transfer | :inbound_wire_transfer_reversal | :interest_payment | :internal_source | :real_time_payments_transfer_acknowledgement | :sample_funds | :wire_transfer_intention | :swift_transfer_intention | :card_push_transfer_acceptance | :other)
 
         module Category
           extend Increase::Internal::Type::Enum
@@ -3105,19 +2517,18 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self?.values: -> ::Array[Increase::Models::Transaction::Source::category]
+          def self?.values: () -> ::Array[Increase::Models::Transaction::Source::category]
         end
 
-        type check_deposit_acceptance =
-          {
-            account_number: String,
-            amount: Integer,
-            auxiliary_on_us: String?,
-            check_deposit_id: String,
-            currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::currency,
-            routing_number: String,
-            serial_number: String?
-          }
+        type check_deposit_acceptance = {
+          account_number: String,
+          amount: Integer,
+          auxiliary_on_us: String?,
+          check_deposit_id: String,
+          currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::currency,
+          routing_number: String,
+          serial_number: String?
+        }
 
         class CheckDepositAcceptance < Increase::Internal::Type::BaseModel
           attr_accessor account_number: String
@@ -3134,17 +2545,9 @@ module Increase
 
           attr_accessor serial_number: String?
 
-          def initialize: (
-            account_number: String,
-            amount: Integer,
-            auxiliary_on_us: String?,
-            check_deposit_id: String,
-            currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::currency,
-            routing_number: String,
-            serial_number: String?
-          ) -> void
+          def initialize: (account_number: String, amount: Integer, auxiliary_on_us: String?, check_deposit_id: String, currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::currency, routing_number: String, serial_number: String?) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             account_number: String,
             amount: Integer,
             auxiliary_on_us: String?,
@@ -3154,7 +2557,7 @@ module Increase
             serial_number: String?
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -3177,19 +2580,18 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::currency]
           end
         end
 
-        type check_deposit_return =
-          {
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Increase::Models::Transaction::Source::CheckDepositReturn::currency,
-            return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::return_reason,
-            returned_at: Time,
-            transaction_id: String
-          }
+        type check_deposit_return = {
+          amount: Integer,
+          check_deposit_id: String,
+          currency: Increase::Models::Transaction::Source::CheckDepositReturn::currency,
+          return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::return_reason,
+          returned_at: Time,
+          transaction_id: String
+        }
 
         class CheckDepositReturn < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -3204,16 +2606,9 @@ module Increase
 
           attr_accessor transaction_id: String
 
-          def initialize: (
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Increase::Models::Transaction::Source::CheckDepositReturn::currency,
-            return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::return_reason,
-            returned_at: Time,
-            transaction_id: String
-          ) -> void
+          def initialize: (amount: Integer, check_deposit_id: String, currency: Increase::Models::Transaction::Source::CheckDepositReturn::currency, return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::return_reason, returned_at: Time, transaction_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             check_deposit_id: String,
             currency: Increase::Models::Transaction::Source::CheckDepositReturn::currency,
@@ -3222,7 +2617,7 @@ module Increase
             transaction_id: String
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -3245,36 +2640,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CheckDepositReturn::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CheckDepositReturn::currency]
           end
 
-          type return_reason =
-            :ach_conversion_not_supported
-            | :closed_account
-            | :duplicate_submission
-            | :insufficient_funds
-            | :no_account
-            | :not_authorized
-            | :stale_dated
-            | :stop_payment
-            | :unknown_reason
-            | :unmatched_details
-            | :unreadable_image
-            | :endorsement_irregular
-            | :altered_or_fictitious_item
-            | :frozen_or_blocked_account
-            | :post_dated
-            | :endorsement_missing
-            | :signature_missing
-            | :stop_payment_suspect
-            | :unusable_image
-            | :image_fails_security_check
-            | :cannot_determine_amount
-            | :signature_irregular
-            | :non_cash_item
-            | :unable_to_process
-            | :item_exceeds_dollar_limit
-            | :branch_or_account_sold
+          type return_reason = (:ach_conversion_not_supported | :closed_account | :duplicate_submission | :insufficient_funds | :no_account | :not_authorized | :stale_dated | :stop_payment | :unknown_reason | :unmatched_details | :unreadable_image | :endorsement_irregular | :altered_or_fictitious_item | :frozen_or_blocked_account | :post_dated | :endorsement_missing | :signature_missing | :stop_payment_suspect | :unusable_image | :image_fails_security_check | :cannot_determine_amount | :signature_irregular | :non_cash_item | :unable_to_process | :item_exceeds_dollar_limit | :branch_or_account_sold)
 
           module ReturnReason
             extend Increase::Internal::Type::Enum
@@ -3357,21 +2726,20 @@ module Increase
             # The bank sold this account and no longer services this customer. (Check21 return code `R`)
             BRANCH_OR_ACCOUNT_SOLD: :branch_or_account_sold
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CheckDepositReturn::return_reason]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CheckDepositReturn::return_reason]
           end
         end
 
-        type check_transfer_deposit =
-          {
-            back_image_file_id: String?,
-            bank_of_first_deposit_routing_number: String?,
-            deposited_at: Time,
-            front_image_file_id: String?,
-            inbound_check_deposit_id: String?,
-            transaction_id: String?,
-            transfer_id: String?,
-            type: Increase::Models::Transaction::Source::CheckTransferDeposit::type_
-          }
+        type check_transfer_deposit = {
+          back_image_file_id: String?,
+          bank_of_first_deposit_routing_number: String?,
+          deposited_at: Time,
+          front_image_file_id: String?,
+          inbound_check_deposit_id: String?,
+          transaction_id: String?,
+          transfer_id: String?,
+          type: Increase::Models::Transaction::Source::CheckTransferDeposit::type_
+        }
 
         class CheckTransferDeposit < Increase::Internal::Type::BaseModel
           attr_accessor back_image_file_id: String?
@@ -3390,18 +2758,9 @@ module Increase
 
           attr_accessor type: Increase::Models::Transaction::Source::CheckTransferDeposit::type_
 
-          def initialize: (
-            back_image_file_id: String?,
-            bank_of_first_deposit_routing_number: String?,
-            deposited_at: Time,
-            front_image_file_id: String?,
-            inbound_check_deposit_id: String?,
-            transaction_id: String?,
-            transfer_id: String?,
-            type: Increase::Models::Transaction::Source::CheckTransferDeposit::type_
-          ) -> void
+          def initialize: (back_image_file_id: String?, bank_of_first_deposit_routing_number: String?, deposited_at: Time, front_image_file_id: String?, inbound_check_deposit_id: String?, transaction_id: String?, transfer_id: String?, type: Increase::Models::Transaction::Source::CheckTransferDeposit::type_) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             back_image_file_id: String?,
             bank_of_first_deposit_routing_number: String?,
             deposited_at: Time,
@@ -3419,17 +2778,16 @@ module Increase
 
             CHECK_TRANSFER_DEPOSIT: :check_transfer_deposit
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::type_]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::type_]
           end
         end
 
-        type fee_payment =
-          {
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::FeePayment::currency,
-            fee_period_start: Date,
-            program_id: String?
-          }
+        type fee_payment = {
+          amount: Integer,
+          currency: Increase::Models::Transaction::Source::FeePayment::currency,
+          fee_period_start: Date,
+          program_id: String?
+        }
 
         class FeePayment < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -3440,21 +2798,16 @@ module Increase
 
           attr_accessor program_id: String?
 
-          def initialize: (
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::FeePayment::currency,
-            fee_period_start: Date,
-            program_id: String?
-          ) -> void
+          def initialize: (amount: Integer, currency: Increase::Models::Transaction::Source::FeePayment::currency, fee_period_start: Date, program_id: String?) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             currency: Increase::Models::Transaction::Source::FeePayment::currency,
             fee_period_start: Date,
             program_id: String?
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -3477,24 +2830,23 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::FeePayment::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::FeePayment::currency]
           end
         end
 
-        type inbound_ach_transfer =
-          {
-            addenda: Increase::Transaction::Source::InboundACHTransfer::Addenda?,
-            amount: Integer,
-            originator_company_descriptive_date: String?,
-            originator_company_discretionary_data: String?,
-            originator_company_entry_description: String,
-            originator_company_id: String,
-            originator_company_name: String,
-            receiver_id_number: String?,
-            receiver_name: String?,
-            trace_number: String,
-            transfer_id: String
-          }
+        type inbound_ach_transfer = {
+          addenda: Increase::Transaction::Source::InboundACHTransfer::Addenda?,
+          amount: Integer,
+          originator_company_descriptive_date: String?,
+          originator_company_discretionary_data: String?,
+          originator_company_entry_description: String,
+          originator_company_id: String,
+          originator_company_name: String,
+          receiver_id_number: String?,
+          receiver_name: String?,
+          trace_number: String,
+          transfer_id: String
+        }
 
         class InboundACHTransfer < Increase::Internal::Type::BaseModel
           attr_accessor addenda: Increase::Transaction::Source::InboundACHTransfer::Addenda?
@@ -3519,21 +2871,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            addenda: Increase::Transaction::Source::InboundACHTransfer::Addenda?,
-            amount: Integer,
-            originator_company_descriptive_date: String?,
-            originator_company_discretionary_data: String?,
-            originator_company_entry_description: String,
-            originator_company_id: String,
-            originator_company_name: String,
-            receiver_id_number: String?,
-            receiver_name: String?,
-            trace_number: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (addenda: Increase::Transaction::Source::InboundACHTransfer::Addenda?, amount: Integer, originator_company_descriptive_date: String?, originator_company_discretionary_data: String?, originator_company_entry_description: String, originator_company_id: String, originator_company_name: String, receiver_id_number: String?, receiver_name: String?, trace_number: String, transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             addenda: Increase::Transaction::Source::InboundACHTransfer::Addenda?,
             amount: Integer,
             originator_company_descriptive_date: String?,
@@ -3547,23 +2887,19 @@ module Increase
             transfer_id: String
           }
 
-          type addenda =
-            {
-              category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category,
-              freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?
-            }
+          type addenda = {
+            category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category,
+            freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?
+          }
 
           class Addenda < Increase::Internal::Type::BaseModel
             attr_accessor category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category
 
             attr_accessor freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?
 
-            def initialize: (
-              category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category,
-              freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?
-            ) -> void
+            def initialize: (category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category, freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?) -> void
 
-            def to_hash: -> {
+            def to_hash: () -> {
               category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category,
               freeform: Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform?
             }
@@ -3576,55 +2912,46 @@ module Increase
               # Unstructured addendum.
               FREEFORM: :freeform
 
-              def self?.values: -> ::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category]
+              def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category]
             end
 
-            type freeform =
-              {
-                entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
-              }
+            type freeform = {entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]}
 
             class Freeform < Increase::Internal::Type::BaseModel
               attr_accessor entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
 
-              def initialize: (
-                entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
-              ) -> void
+              def initialize: (entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]) -> void
 
-              def to_hash: -> {
-                entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
-              }
+              def to_hash: () -> {entries: ::Array[Increase::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]}
 
-              type entry = { payment_related_information: String }
+              type entry = {payment_related_information: String}
 
               class Entry < Increase::Internal::Type::BaseModel
                 attr_accessor payment_related_information: String
 
                 def initialize: (payment_related_information: String) -> void
 
-                def to_hash: -> { payment_related_information: String }
+                def to_hash: () -> {payment_related_information: String}
               end
             end
           end
         end
 
-        type inbound_ach_transfer_return_intention =
-          { inbound_ach_transfer_id: String }
+        type inbound_ach_transfer_return_intention = {inbound_ach_transfer_id: String}
 
         class InboundACHTransferReturnIntention < Increase::Internal::Type::BaseModel
           attr_accessor inbound_ach_transfer_id: String
 
           def initialize: (inbound_ach_transfer_id: String) -> void
 
-          def to_hash: -> { inbound_ach_transfer_id: String }
+          def to_hash: () -> {inbound_ach_transfer_id: String}
         end
 
-        type inbound_check_adjustment =
-          {
-            adjusted_transaction_id: String,
-            amount: Integer,
-            reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::reason
-          }
+        type inbound_check_adjustment = {
+          adjusted_transaction_id: String,
+          amount: Integer,
+          reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::reason
+        }
 
         class InboundCheckAdjustment < Increase::Internal::Type::BaseModel
           attr_accessor adjusted_transaction_id: String
@@ -3633,23 +2960,15 @@ module Increase
 
           attr_accessor reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::reason
 
-          def initialize: (
-            adjusted_transaction_id: String,
-            amount: Integer,
-            reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::reason
-          ) -> void
+          def initialize: (adjusted_transaction_id: String, amount: Integer, reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::reason) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             adjusted_transaction_id: String,
             amount: Integer,
             reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::reason
           }
 
-          type reason =
-            :late_return
-            | :wrong_payee_credit
-            | :adjusted_amount
-            | :non_conforming_item
+          type reason = (:late_return | :wrong_payee_credit | :adjusted_amount | :non_conforming_item)
 
           module Reason
             extend Increase::Internal::Type::Enum
@@ -3666,41 +2985,33 @@ module Increase
             # The recipient was not able to process the check. This usually happens for e.g., low quality images.
             NON_CONFORMING_ITEM: :non_conforming_item
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::reason]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::reason]
           end
         end
 
-        type inbound_check_deposit_return_intention =
-          { inbound_check_deposit_id: String, transfer_id: String? }
+        type inbound_check_deposit_return_intention = {inbound_check_deposit_id: String, transfer_id: String?}
 
         class InboundCheckDepositReturnIntention < Increase::Internal::Type::BaseModel
           attr_accessor inbound_check_deposit_id: String
 
           attr_accessor transfer_id: String?
 
-          def initialize: (
-            inbound_check_deposit_id: String,
-            transfer_id: String?
-          ) -> void
+          def initialize: (inbound_check_deposit_id: String, transfer_id: String?) -> void
 
-          def to_hash: -> {
-            inbound_check_deposit_id: String,
-            transfer_id: String?
-          }
+          def to_hash: () -> {inbound_check_deposit_id: String, transfer_id: String?}
         end
 
-        type inbound_real_time_payments_transfer_confirmation =
-          {
-            amount: Integer,
-            creditor_name: String,
-            currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            remittance_information: String?,
-            transaction_identification: String,
-            transfer_id: String
-          }
+        type inbound_real_time_payments_transfer_confirmation = {
+          amount: Integer,
+          creditor_name: String,
+          currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency,
+          debtor_account_number: String,
+          debtor_name: String,
+          debtor_routing_number: String,
+          remittance_information: String?,
+          transaction_identification: String,
+          transfer_id: String
+        }
 
         class InboundRealTimePaymentsTransferConfirmation < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -3721,19 +3032,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            amount: Integer,
-            creditor_name: String,
-            currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            remittance_information: String?,
-            transaction_identification: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (amount: Integer, creditor_name: String, currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency, debtor_account_number: String, debtor_name: String, debtor_routing_number: String, remittance_information: String?, transaction_identification: String, transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             creditor_name: String,
             currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency,
@@ -3745,7 +3046,7 @@ module Increase
             transfer_id: String
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -3768,23 +3069,22 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency]
           end
         end
 
-        type inbound_real_time_payments_transfer_decline =
-          {
-            amount: Integer,
-            creditor_name: String,
-            currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason,
-            remittance_information: String?,
-            transaction_identification: String,
-            transfer_id: String
-          }
+        type inbound_real_time_payments_transfer_decline = {
+          amount: Integer,
+          creditor_name: String,
+          currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency,
+          debtor_account_number: String,
+          debtor_name: String,
+          debtor_routing_number: String,
+          reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason,
+          remittance_information: String?,
+          transaction_identification: String,
+          transfer_id: String
+        }
 
         class InboundRealTimePaymentsTransferDecline < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -3807,20 +3107,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            amount: Integer,
-            creditor_name: String,
-            currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason,
-            remittance_information: String?,
-            transaction_identification: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (amount: Integer, creditor_name: String, currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency, debtor_account_number: String, debtor_name: String, debtor_routing_number: String, reason: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason, remittance_information: String?, transaction_identification: String, transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             creditor_name: String,
             currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency,
@@ -3833,7 +3122,7 @@ module Increase
             transfer_id: String
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -3856,16 +3145,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency]
           end
 
-          type reason =
-            :account_number_canceled
-            | :account_number_disabled
-            | :account_restricted
-            | :group_locked
-            | :entity_not_active
-            | :real_time_payments_not_enabled
+          type reason = (:account_number_canceled | :account_number_disabled | :account_restricted | :group_locked | :entity_not_active | :real_time_payments_not_enabled)
 
           module Reason
             extend Increase::Internal::Type::Enum
@@ -3888,30 +3171,29 @@ module Increase
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason]
           end
         end
 
-        type inbound_wire_reversal =
-          {
-            amount: Integer,
-            created_at: Time,
-            description: String,
-            financial_institution_to_financial_institution_information: String?,
-            input_cycle_date: Date,
-            input_message_accountability_data: String,
-            input_sequence_number: String,
-            input_source: String,
-            originator_routing_number: String?,
-            previous_message_input_cycle_date: Date,
-            previous_message_input_message_accountability_data: String,
-            previous_message_input_sequence_number: String,
-            previous_message_input_source: String,
-            receiver_financial_institution_information: String?,
-            sender_reference: String?,
-            transaction_id: String,
-            wire_transfer_id: String
-          }
+        type inbound_wire_reversal = {
+          amount: Integer,
+          created_at: Time,
+          description: String,
+          financial_institution_to_financial_institution_information: String?,
+          input_cycle_date: Date,
+          input_message_accountability_data: String,
+          input_sequence_number: String,
+          input_source: String,
+          originator_routing_number: String?,
+          previous_message_input_cycle_date: Date,
+          previous_message_input_message_accountability_data: String,
+          previous_message_input_sequence_number: String,
+          previous_message_input_source: String,
+          receiver_financial_institution_information: String?,
+          sender_reference: String?,
+          transaction_id: String,
+          wire_transfer_id: String
+        }
 
         class InboundWireReversal < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -3948,27 +3230,9 @@ module Increase
 
           attr_accessor wire_transfer_id: String
 
-          def initialize: (
-            amount: Integer,
-            created_at: Time,
-            description: String,
-            financial_institution_to_financial_institution_information: String?,
-            input_cycle_date: Date,
-            input_message_accountability_data: String,
-            input_sequence_number: String,
-            input_source: String,
-            originator_routing_number: String?,
-            previous_message_input_cycle_date: Date,
-            previous_message_input_message_accountability_data: String,
-            previous_message_input_sequence_number: String,
-            previous_message_input_source: String,
-            receiver_financial_institution_information: String?,
-            sender_reference: String?,
-            transaction_id: String,
-            wire_transfer_id: String
-          ) -> void
+          def initialize: (amount: Integer, created_at: Time, description: String, financial_institution_to_financial_institution_information: String?, input_cycle_date: Date, input_message_accountability_data: String, input_sequence_number: String, input_source: String, originator_routing_number: String?, previous_message_input_cycle_date: Date, previous_message_input_message_accountability_data: String, previous_message_input_sequence_number: String, previous_message_input_source: String, receiver_financial_institution_information: String?, sender_reference: String?, transaction_id: String, wire_transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             created_at: Time,
             description: String,
@@ -3989,28 +3253,27 @@ module Increase
           }
         end
 
-        type inbound_wire_transfer =
-          {
-            amount: Integer,
-            :beneficiary_address_line1 => String?,
-            :beneficiary_address_line2 => String?,
-            :beneficiary_address_line3 => String?,
-            beneficiary_name: String?,
-            beneficiary_reference: String?,
-            description: String,
-            input_message_accountability_data: String?,
-            :originator_address_line1 => String?,
-            :originator_address_line2 => String?,
-            :originator_address_line3 => String?,
-            originator_name: String?,
-            originator_routing_number: String?,
-            originator_to_beneficiary_information: String?,
-            :originator_to_beneficiary_information_line1 => String?,
-            :originator_to_beneficiary_information_line2 => String?,
-            :originator_to_beneficiary_information_line3 => String?,
-            :originator_to_beneficiary_information_line4 => String?,
-            transfer_id: String
-          }
+        type inbound_wire_transfer = {
+          amount: Integer,
+          beneficiary_address_line1: String?,
+          beneficiary_address_line2: String?,
+          beneficiary_address_line3: String?,
+          beneficiary_name: String?,
+          beneficiary_reference: String?,
+          description: String,
+          input_message_accountability_data: String?,
+          originator_address_line1: String?,
+          originator_address_line2: String?,
+          originator_address_line3: String?,
+          originator_name: String?,
+          originator_routing_number: String?,
+          originator_to_beneficiary_information: String?,
+          originator_to_beneficiary_information_line1: String?,
+          originator_to_beneficiary_information_line2: String?,
+          originator_to_beneficiary_information_line3: String?,
+          originator_to_beneficiary_information_line4: String?,
+          transfer_id: String
+        }
 
         class InboundWireTransfer < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -4051,7 +3314,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
+          def initialize: (amount: Integer, beneficiary_address_line1: String?, beneficiary_address_line2: String?, beneficiary_address_line3: String?, beneficiary_name: String?, beneficiary_reference: String?, description: String, input_message_accountability_data: String?, originator_address_line1: String?, originator_address_line2: String?, originator_address_line3: String?, originator_name: String?, originator_routing_number: String?, originator_to_beneficiary_information: String?, originator_to_beneficiary_information_line1: String?, originator_to_beneficiary_information_line2: String?, originator_to_beneficiary_information_line3: String?, originator_to_beneficiary_information_line4: String?, transfer_id: String) -> void
+
+          def to_hash: () -> {
             amount: Integer,
             beneficiary_address_line1: String?,
             beneficiary_address_line2: String?,
@@ -4071,50 +3336,26 @@ module Increase
             originator_to_beneficiary_information_line3: String?,
             originator_to_beneficiary_information_line4: String?,
             transfer_id: String
-          ) -> void
-
-          def to_hash: -> {
-            amount: Integer,
-            :beneficiary_address_line1 => String?,
-            :beneficiary_address_line2 => String?,
-            :beneficiary_address_line3 => String?,
-            beneficiary_name: String?,
-            beneficiary_reference: String?,
-            description: String,
-            input_message_accountability_data: String?,
-            :originator_address_line1 => String?,
-            :originator_address_line2 => String?,
-            :originator_address_line3 => String?,
-            originator_name: String?,
-            originator_routing_number: String?,
-            originator_to_beneficiary_information: String?,
-            :originator_to_beneficiary_information_line1 => String?,
-            :originator_to_beneficiary_information_line2 => String?,
-            :originator_to_beneficiary_information_line3 => String?,
-            :originator_to_beneficiary_information_line4 => String?,
-            transfer_id: String
           }
         end
 
-        type inbound_wire_transfer_reversal =
-          { inbound_wire_transfer_id: String }
+        type inbound_wire_transfer_reversal = {inbound_wire_transfer_id: String}
 
         class InboundWireTransferReversal < Increase::Internal::Type::BaseModel
           attr_accessor inbound_wire_transfer_id: String
 
           def initialize: (inbound_wire_transfer_id: String) -> void
 
-          def to_hash: -> { inbound_wire_transfer_id: String }
+          def to_hash: () -> {inbound_wire_transfer_id: String}
         end
 
-        type interest_payment =
-          {
-            accrued_on_account_id: String,
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::InterestPayment::currency,
-            period_end: Time,
-            period_start: Time
-          }
+        type interest_payment = {
+          accrued_on_account_id: String,
+          amount: Integer,
+          currency: Increase::Models::Transaction::Source::InterestPayment::currency,
+          period_end: Time,
+          period_start: Time
+        }
 
         class InterestPayment < Increase::Internal::Type::BaseModel
           attr_accessor accrued_on_account_id: String
@@ -4127,15 +3368,9 @@ module Increase
 
           attr_accessor period_start: Time
 
-          def initialize: (
-            accrued_on_account_id: String,
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::InterestPayment::currency,
-            period_end: Time,
-            period_start: Time
-          ) -> void
+          def initialize: (accrued_on_account_id: String, amount: Integer, currency: Increase::Models::Transaction::Source::InterestPayment::currency, period_end: Time, period_start: Time) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             accrued_on_account_id: String,
             amount: Integer,
             currency: Increase::Models::Transaction::Source::InterestPayment::currency,
@@ -4143,7 +3378,7 @@ module Increase
             period_start: Time
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -4166,16 +3401,15 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InterestPayment::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InterestPayment::currency]
           end
         end
 
-        type internal_source =
-          {
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::InternalSource::currency,
-            reason: Increase::Models::Transaction::Source::InternalSource::reason
-          }
+        type internal_source = {
+          amount: Integer,
+          currency: Increase::Models::Transaction::Source::InternalSource::currency,
+          reason: Increase::Models::Transaction::Source::InternalSource::reason
+        }
 
         class InternalSource < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -4184,19 +3418,15 @@ module Increase
 
           attr_accessor reason: Increase::Models::Transaction::Source::InternalSource::reason
 
-          def initialize: (
-            amount: Integer,
-            currency: Increase::Models::Transaction::Source::InternalSource::currency,
-            reason: Increase::Models::Transaction::Source::InternalSource::reason
-          ) -> void
+          def initialize: (amount: Integer, currency: Increase::Models::Transaction::Source::InternalSource::currency, reason: Increase::Models::Transaction::Source::InternalSource::reason) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             currency: Increase::Models::Transaction::Source::InternalSource::currency,
             reason: Increase::Models::Transaction::Source::InternalSource::reason
           }
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           module Currency
             extend Increase::Internal::Type::Enum
@@ -4219,25 +3449,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InternalSource::currency]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InternalSource::currency]
           end
 
-          type reason =
-            :account_closure
-            | :bank_drawn_check
-            | :bank_drawn_check_credit
-            | :bank_migration
-            | :check_adjustment
-            | :collection_payment
-            | :collection_receivable
-            | :empyreal_adjustment
-            | :error
-            | :error_correction
-            | :fees
-            | :interest
-            | :negative_balance_forgiveness
-            | :sample_funds
-            | :sample_funds_return
+          type reason = (:account_closure | :bank_drawn_check | :bank_drawn_check_credit | :bank_migration | :check_adjustment | :collection_payment | :collection_receivable | :empyreal_adjustment | :error | :error_correction | :fees | :interest | :negative_balance_forgiveness | :sample_funds | :sample_funds_return)
 
           module Reason
             extend Increase::Internal::Type::Enum
@@ -4287,18 +3502,17 @@ module Increase
             # Sample funds return
             SAMPLE_FUNDS_RETURN: :sample_funds_return
 
-            def self?.values: -> ::Array[Increase::Models::Transaction::Source::InternalSource::reason]
+            def self?.values: () -> ::Array[Increase::Models::Transaction::Source::InternalSource::reason]
           end
         end
 
-        type real_time_payments_transfer_acknowledgement =
-          {
-            amount: Integer,
-            destination_account_number: String,
-            destination_routing_number: String,
-            remittance_information: String,
-            transfer_id: String
-          }
+        type real_time_payments_transfer_acknowledgement = {
+          amount: Integer,
+          destination_account_number: String,
+          destination_routing_number: String,
+          remittance_information: String,
+          transfer_id: String
+        }
 
         class RealTimePaymentsTransferAcknowledgement < Increase::Internal::Type::BaseModel
           attr_accessor amount: Integer
@@ -4311,15 +3525,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            amount: Integer,
-            destination_account_number: String,
-            destination_routing_number: String,
-            remittance_information: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (amount: Integer, destination_account_number: String, destination_routing_number: String, remittance_information: String, transfer_id: String) -> void
 
-          def to_hash: -> {
+          def to_hash: () -> {
             amount: Integer,
             destination_account_number: String,
             destination_routing_number: String,
@@ -4328,34 +3536,27 @@ module Increase
           }
         end
 
-        type sample_funds = { originator: String }
+        type sample_funds = {originator: String}
 
         class SampleFunds < Increase::Internal::Type::BaseModel
           attr_accessor originator: String
 
           def initialize: (originator: String) -> void
 
-          def to_hash: -> { originator: String }
+          def to_hash: () -> {originator: String}
         end
 
-        type swift_transfer_intention = { transfer_id: String }
+        type swift_transfer_intention = {transfer_id: String}
 
         class SwiftTransferIntention < Increase::Internal::Type::BaseModel
           attr_accessor transfer_id: String
 
           def initialize: (transfer_id: String) -> void
 
-          def to_hash: -> { transfer_id: String }
+          def to_hash: () -> {transfer_id: String}
         end
 
-        type wire_transfer_intention =
-          {
-            account_number: String,
-            amount: Integer,
-            message_to_recipient: String,
-            routing_number: String,
-            transfer_id: String
-          }
+        type wire_transfer_intention = {account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String}
 
         class WireTransferIntention < Increase::Internal::Type::BaseModel
           attr_accessor account_number: String
@@ -4368,21 +3569,9 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize: (
-            account_number: String,
-            amount: Integer,
-            message_to_recipient: String,
-            routing_number: String,
-            transfer_id: String
-          ) -> void
+          def initialize: (account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String) -> void
 
-          def to_hash: -> {
-            account_number: String,
-            amount: Integer,
-            message_to_recipient: String,
-            routing_number: String,
-            transfer_id: String
-          }
+          def to_hash: () -> {account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String}
         end
       end
 
@@ -4393,7 +3582,7 @@ module Increase
 
         TRANSACTION: :transaction
 
-        def self?.values: -> ::Array[Increase::Models::Transaction::type_]
+        def self?.values: () -> ::Array[Increase::Models::Transaction::type_]
       end
     end
   end

@@ -7,12 +7,7 @@ module Increase
       include Increase::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias do
-          T.any(
-            Increase::EntityArchiveBeneficialOwnerParams,
-            Increase::Internal::AnyHash
-          )
-        end
+        T.type_alias { T.any(Increase::EntityArchiveBeneficialOwnerParams, Increase::Internal::AnyHash) }
 
       # The identifying details of anyone controlling or owning 25% or more of the
       # corporation.
@@ -20,29 +15,18 @@ module Increase
       attr_accessor :beneficial_owner_id
 
       sig do
-        params(
-          beneficial_owner_id: String,
-          request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        params(beneficial_owner_id: String, request_options: Increase::RequestOptions::OrHash)
+          .returns(T.attached_class)
       end
       def self.new(
         # The identifying details of anyone controlling or owning 25% or more of the
-        # corporation.
-        beneficial_owner_id:,
+      # corporation.
+      beneficial_owner_id:,
         request_options: {}
-      )
-      end
+      ); end
 
-      sig do
-        override.returns(
-          {
-            beneficial_owner_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
-      end
-      def to_hash
-      end
+      sig { override.returns({beneficial_owner_id: String, request_options: Increase::RequestOptions}) }
+      def to_hash; end
     end
   end
 end

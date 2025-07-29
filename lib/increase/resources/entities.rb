@@ -35,13 +35,7 @@ module Increase
       # @see Increase::Models::EntityCreateParams
       def create(params)
         parsed, options = Increase::EntityCreateParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "entities",
-          body: parsed,
-          model: Increase::Entity,
-          options: options
-        )
+        @client.request(method: :post, path: "entities", body: parsed, model: Increase::Entity, options: options)
       end
 
       # Retrieve an Entity

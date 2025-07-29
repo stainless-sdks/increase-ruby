@@ -1,28 +1,26 @@
 module Increase
   module Models
-    type ach_transfer_create_params =
-      {
-        account_id: String,
-        amount: Integer,
-        statement_descriptor: String,
-        account_number: String,
-        addenda: Increase::ACHTransferCreateParams::Addenda,
-        company_descriptive_date: String,
-        company_discretionary_data: String,
-        company_entry_description: String,
-        company_name: String,
-        destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
-        external_account_id: String,
-        funding: Increase::Models::ACHTransferCreateParams::funding,
-        individual_id: String,
-        individual_name: String,
-        preferred_effective_date: Increase::ACHTransferCreateParams::PreferredEffectiveDate,
-        require_approval: bool,
-        routing_number: String,
-        standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
-        transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing
-      }
-      & Increase::Internal::Type::request_parameters
+    type ach_transfer_create_params = ({
+      account_id: String,
+      amount: Integer,
+      statement_descriptor: String,
+      account_number: String,
+      addenda: Increase::ACHTransferCreateParams::Addenda,
+      company_descriptive_date: String,
+      company_discretionary_data: String,
+      company_entry_description: String,
+      company_name: String,
+      destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
+      external_account_id: String,
+      funding: Increase::Models::ACHTransferCreateParams::funding,
+      individual_id: String,
+      individual_name: String,
+      preferred_effective_date: Increase::ACHTransferCreateParams::PreferredEffectiveDate,
+      require_approval: bool,
+      routing_number: String,
+      standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
+      transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing
+    } & Increase::Internal::Type::request_parameters)
 
     class ACHTransferCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -40,9 +38,7 @@ module Increase
 
       attr_reader addenda: Increase::ACHTransferCreateParams::Addenda?
 
-      def addenda=: (
-        Increase::ACHTransferCreateParams::Addenda
-      ) -> Increase::ACHTransferCreateParams::Addenda
+      def addenda=: (Increase::ACHTransferCreateParams::Addenda) -> Increase::ACHTransferCreateParams::Addenda
 
       attr_reader company_descriptive_date: String?
 
@@ -62,9 +58,7 @@ module Increase
 
       attr_reader destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder?
 
-      def destination_account_holder=: (
-        Increase::Models::ACHTransferCreateParams::destination_account_holder
-      ) -> Increase::Models::ACHTransferCreateParams::destination_account_holder
+      def destination_account_holder=: (Increase::Models::ACHTransferCreateParams::destination_account_holder) -> Increase::Models::ACHTransferCreateParams::destination_account_holder
 
       attr_reader external_account_id: String?
 
@@ -72,9 +66,7 @@ module Increase
 
       attr_reader funding: Increase::Models::ACHTransferCreateParams::funding?
 
-      def funding=: (
-        Increase::Models::ACHTransferCreateParams::funding
-      ) -> Increase::Models::ACHTransferCreateParams::funding
+      def funding=: (Increase::Models::ACHTransferCreateParams::funding) -> Increase::Models::ACHTransferCreateParams::funding
 
       attr_reader individual_id: String?
 
@@ -86,9 +78,7 @@ module Increase
 
       attr_reader preferred_effective_date: Increase::ACHTransferCreateParams::PreferredEffectiveDate?
 
-      def preferred_effective_date=: (
-        Increase::ACHTransferCreateParams::PreferredEffectiveDate
-      ) -> Increase::ACHTransferCreateParams::PreferredEffectiveDate
+      def preferred_effective_date=: (Increase::ACHTransferCreateParams::PreferredEffectiveDate) -> Increase::ACHTransferCreateParams::PreferredEffectiveDate
 
       attr_reader require_approval: bool?
 
@@ -100,40 +90,15 @@ module Increase
 
       attr_reader standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code?
 
-      def standard_entry_class_code=: (
-        Increase::Models::ACHTransferCreateParams::standard_entry_class_code
-      ) -> Increase::Models::ACHTransferCreateParams::standard_entry_class_code
+      def standard_entry_class_code=: (Increase::Models::ACHTransferCreateParams::standard_entry_class_code) -> Increase::Models::ACHTransferCreateParams::standard_entry_class_code
 
       attr_reader transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing?
 
-      def transaction_timing=: (
-        Increase::Models::ACHTransferCreateParams::transaction_timing
-      ) -> Increase::Models::ACHTransferCreateParams::transaction_timing
+      def transaction_timing=: (Increase::Models::ACHTransferCreateParams::transaction_timing) -> Increase::Models::ACHTransferCreateParams::transaction_timing
 
-      def initialize: (
-        account_id: String,
-        amount: Integer,
-        statement_descriptor: String,
-        ?account_number: String,
-        ?addenda: Increase::ACHTransferCreateParams::Addenda,
-        ?company_descriptive_date: String,
-        ?company_discretionary_data: String,
-        ?company_entry_description: String,
-        ?company_name: String,
-        ?destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder,
-        ?external_account_id: String,
-        ?funding: Increase::Models::ACHTransferCreateParams::funding,
-        ?individual_id: String,
-        ?individual_name: String,
-        ?preferred_effective_date: Increase::ACHTransferCreateParams::PreferredEffectiveDate,
-        ?require_approval: bool,
-        ?routing_number: String,
-        ?standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code,
-        ?transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, amount: Integer, statement_descriptor: String, ?account_number: String, ?addenda: Increase::ACHTransferCreateParams::Addenda, ?company_descriptive_date: String, ?company_discretionary_data: String, ?company_entry_description: String, ?company_name: String, ?destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder, ?external_account_id: String, ?funding: Increase::Models::ACHTransferCreateParams::funding, ?individual_id: String, ?individual_name: String, ?preferred_effective_date: Increase::ACHTransferCreateParams::PreferredEffectiveDate, ?require_approval: bool, ?routing_number: String, ?standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code, ?transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         amount: Integer,
         statement_descriptor: String,
@@ -156,41 +121,32 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type addenda =
-        {
-          category: Increase::Models::ACHTransferCreateParams::Addenda::category,
-          freeform: Increase::ACHTransferCreateParams::Addenda::Freeform,
-          payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-        }
+      type addenda = {
+        category: Increase::Models::ACHTransferCreateParams::Addenda::category,
+        freeform: Increase::ACHTransferCreateParams::Addenda::Freeform,
+        payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+      }
 
       class Addenda < Increase::Internal::Type::BaseModel
         attr_accessor category: Increase::Models::ACHTransferCreateParams::Addenda::category
 
         attr_reader freeform: Increase::ACHTransferCreateParams::Addenda::Freeform?
 
-        def freeform=: (
-          Increase::ACHTransferCreateParams::Addenda::Freeform
-        ) -> Increase::ACHTransferCreateParams::Addenda::Freeform
+        def freeform=: (Increase::ACHTransferCreateParams::Addenda::Freeform) -> Increase::ACHTransferCreateParams::Addenda::Freeform
 
         attr_reader payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice?
 
-        def payment_order_remittance_advice=: (
-          Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-        ) -> Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+        def payment_order_remittance_advice=: (Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice) -> Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
 
-        def initialize: (
-          category: Increase::Models::ACHTransferCreateParams::Addenda::category,
-          ?freeform: Increase::ACHTransferCreateParams::Addenda::Freeform,
-          ?payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-        ) -> void
+        def initialize: (category: Increase::Models::ACHTransferCreateParams::Addenda::category, ?freeform: Increase::ACHTransferCreateParams::Addenda::Freeform, ?payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           category: Increase::Models::ACHTransferCreateParams::Addenda::category,
           freeform: Increase::ACHTransferCreateParams::Addenda::Freeform,
           payment_order_remittance_advice: Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
         }
 
-        type category = :freeform | :payment_order_remittance_advice
+        type category = (:freeform | :payment_order_remittance_advice)
 
         module Category
           extend Increase::Internal::Type::Enum
@@ -201,70 +157,53 @@ module Increase
           # Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
           PAYMENT_ORDER_REMITTANCE_ADVICE: :payment_order_remittance_advice
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransferCreateParams::Addenda::category]
+          def self?.values: () -> ::Array[Increase::Models::ACHTransferCreateParams::Addenda::category]
         end
 
-        type freeform =
-          {
-            entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]
-          }
+        type freeform = {entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]}
 
         class Freeform < Increase::Internal::Type::BaseModel
           attr_accessor entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]
 
-          def initialize: (
-            entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]
-          ) -> void
+          def initialize: (entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]) -> void
 
-          def to_hash: -> {
-            entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]
-          }
+          def to_hash: () -> {entries: ::Array[Increase::ACHTransferCreateParams::Addenda::Freeform::Entry]}
 
-          type entry = { payment_related_information: String }
+          type entry = {payment_related_information: String}
 
           class Entry < Increase::Internal::Type::BaseModel
             attr_accessor payment_related_information: String
 
             def initialize: (payment_related_information: String) -> void
 
-            def to_hash: -> { payment_related_information: String }
+            def to_hash: () -> {payment_related_information: String}
           end
         end
 
-        type payment_order_remittance_advice =
-          {
-            invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-          }
+        type payment_order_remittance_advice = {invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]}
 
         class PaymentOrderRemittanceAdvice < Increase::Internal::Type::BaseModel
           attr_accessor invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
 
-          def initialize: (
-            invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-          ) -> void
+          def initialize: (invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]) -> void
 
-          def to_hash: -> {
-            invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-          }
+          def to_hash: () -> {invoices: ::Array[Increase::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]}
 
-          type invoice = { invoice_number: String, paid_amount: Integer }
+          type invoice = {invoice_number: String, paid_amount: Integer}
 
           class Invoice < Increase::Internal::Type::BaseModel
             attr_accessor invoice_number: String
 
             attr_accessor paid_amount: Integer
 
-            def initialize: (
-              invoice_number: String,
-              paid_amount: Integer
-            ) -> void
+            def initialize: (invoice_number: String, paid_amount: Integer) -> void
 
-            def to_hash: -> { invoice_number: String, paid_amount: Integer }
+            def to_hash: () -> {invoice_number: String, paid_amount: Integer}
           end
         end
       end
 
-      type destination_account_holder = :business | :individual | :unknown
+      type destination_account_holder = (:business | :individual | :unknown)
 
       module DestinationAccountHolder
         extend Increase::Internal::Type::Enum
@@ -278,10 +217,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransferCreateParams::destination_account_holder]
+        def self?.values: () -> ::Array[Increase::Models::ACHTransferCreateParams::destination_account_holder]
       end
 
-      type funding = :checking | :savings
+      type funding = (:checking | :savings)
 
       module Funding
         extend Increase::Internal::Type::Enum
@@ -292,14 +231,13 @@ module Increase
         # A savings account.
         SAVINGS: :savings
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransferCreateParams::funding]
+        def self?.values: () -> ::Array[Increase::Models::ACHTransferCreateParams::funding]
       end
 
-      type preferred_effective_date =
-        {
-          date: Date,
-          settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
-        }
+      type preferred_effective_date = {
+        date: Date,
+        settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
+      }
 
       class PreferredEffectiveDate < Increase::Internal::Type::BaseModel
         attr_reader date: Date?
@@ -308,21 +246,16 @@ module Increase
 
         attr_reader settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule?
 
-        def settlement_schedule=: (
-          Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
-        ) -> Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
+        def settlement_schedule=: (Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule) -> Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
 
-        def initialize: (
-          ?date: Date,
-          ?settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
-        ) -> void
+        def initialize: (?date: Date, ?settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           date: Date,
           settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
         }
 
-        type settlement_schedule = :same_day | :future_dated
+        type settlement_schedule = (:same_day | :future_dated)
 
         module SettlementSchedule
           extend Increase::Internal::Type::Enum
@@ -333,15 +266,11 @@ module Increase
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED: :future_dated
 
-          def self?.values: -> ::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule]
+          def self?.values: () -> ::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule]
         end
       end
 
-      type standard_entry_class_code =
-        :corporate_credit_or_debit
-        | :corporate_trade_exchange
-        | :prearranged_payments_and_deposit
-        | :internet_initiated
+      type standard_entry_class_code = (:corporate_credit_or_debit | :corporate_trade_exchange | :prearranged_payments_and_deposit | :internet_initiated)
 
       module StandardEntryClassCode
         extend Increase::Internal::Type::Enum
@@ -358,10 +287,10 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED: :internet_initiated
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransferCreateParams::standard_entry_class_code]
+        def self?.values: () -> ::Array[Increase::Models::ACHTransferCreateParams::standard_entry_class_code]
       end
 
-      type transaction_timing = :synchronous | :asynchronous
+      type transaction_timing = (:synchronous | :asynchronous)
 
       module TransactionTiming
         extend Increase::Internal::Type::Enum
@@ -372,7 +301,7 @@ module Increase
         # A Transaction will be created when the funds settle at the Federal Reserve.
         ASYNCHRONOUS: :asynchronous
 
-        def self?.values: -> ::Array[Increase::Models::ACHTransferCreateParams::transaction_timing]
+        def self?.values: () -> ::Array[Increase::Models::ACHTransferCreateParams::transaction_timing]
       end
     end
   end

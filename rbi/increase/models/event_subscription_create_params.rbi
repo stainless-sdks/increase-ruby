@@ -6,13 +6,7 @@ module Increase
       extend Increase::Internal::Type::RequestParameters::Converter
       include Increase::Internal::Type::RequestParameters
 
-      OrHash =
-        T.type_alias do
-          T.any(
-            Increase::EventSubscriptionCreateParams,
-            Increase::Internal::AnyHash
-          )
-        end
+      OrHash = T.type_alias { T.any(Increase::EventSubscriptionCreateParams, Increase::Internal::AnyHash) }
 
       # The URL you'd like us to send webhooks to.
       sig { returns(String) }
@@ -28,20 +22,12 @@ module Increase
 
       # If specified, this subscription will only receive webhooks for Events with the
       # specified `category`.
-      sig do
-        returns(
-          T.nilable(
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol
-          )
-        )
-      end
+      sig { returns(T.nilable(Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)) }
       attr_reader :selected_event_category
 
       sig do
-        params(
-          selected_event_category:
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol
-        ).void
+        params(selected_event_category: Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol)
+          .void
       end
       attr_writer :selected_event_category
 
@@ -57,42 +43,40 @@ module Increase
         params(
           url: String,
           oauth_connection_id: String,
-          selected_event_category:
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+          selected_event_category: Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
           shared_secret: String,
           request_options: Increase::RequestOptions::OrHash
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The URL you'd like us to send webhooks to.
-        url:,
+      url:,
         # If specified, this subscription will only receive webhooks for Events associated
-        # with the specified OAuth Connection.
-        oauth_connection_id: nil,
+      # with the specified OAuth Connection.
+      oauth_connection_id: nil,
         # If specified, this subscription will only receive webhooks for Events with the
-        # specified `category`.
-        selected_event_category: nil,
+      # specified `category`.
+      selected_event_category: nil,
         # The key that will be used to sign webhooks. If no value is passed, a random
-        # string will be used as default.
-        shared_secret: nil,
+      # string will be used as default.
+      shared_secret: nil,
         request_options: {}
-      )
-      end
+      ); end
 
       sig do
-        override.returns(
-          {
-            url: String,
-            oauth_connection_id: String,
-            selected_event_category:
-              Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
-            shared_secret: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              url: String,
+              oauth_connection_id: String,
+              selected_event_category: Increase::EventSubscriptionCreateParams::SelectedEventCategory::OrSymbol,
+              shared_secret: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # If specified, this subscription will only receive webhooks for Events with the
       # specified `category`.
@@ -100,27 +84,16 @@ module Increase
         extend Increase::Internal::Type::Enum
 
         TaggedSymbol =
-          T.type_alias do
-            T.all(
-              Symbol,
-              Increase::EventSubscriptionCreateParams::SelectedEventCategory
-            )
-          end
+          T.type_alias { T.all(Symbol, Increase::EventSubscriptionCreateParams::SelectedEventCategory) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED =
-          T.let(
-            :"account.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"account.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Account is updated.
         ACCOUNT_UPDATED =
-          T.let(
-            :"account.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"account.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Account Number is created.
         ACCOUNT_NUMBER_CREATED =
@@ -208,17 +181,11 @@ module Increase
 
         # Occurs whenever a Card is created.
         CARD_CREATED =
-          T.let(
-            :"card.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"card.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever a Card is updated.
         CARD_UPDATED =
-          T.let(
-            :"card.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"card.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever a Card Payment is created.
         CARD_PAYMENT_CREATED =
@@ -327,24 +294,15 @@ module Increase
 
         # Occurs whenever a Document is created.
         DOCUMENT_CREATED =
-          T.let(
-            :"document.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"document.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Entity is created.
         ENTITY_CREATED =
-          T.let(
-            :"entity.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"entity.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Entity is updated.
         ENTITY_UPDATED =
-          T.let(
-            :"entity.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"entity.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Event Subscription is created.
         EVENT_SUBSCRIPTION_CREATED =
@@ -362,17 +320,11 @@ module Increase
 
         # Occurs whenever an Export is created.
         EXPORT_CREATED =
-          T.let(
-            :"export.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"export.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Export is updated.
         EXPORT_UPDATED =
-          T.let(
-            :"export.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"export.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an External Account is created.
         EXTERNAL_ACCOUNT_CREATED =
@@ -390,24 +342,15 @@ module Increase
 
         # Occurs whenever a File is created.
         FILE_CREATED =
-          T.let(
-            :"file.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"file.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever a Group is updated.
         GROUP_UPDATED =
-          T.let(
-            :"group.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"group.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Increase may send webhooks with this category to see if a webhook endpoint is working properly.
         GROUP_HEARTBEAT =
-          T.let(
-            :"group.heartbeat",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"group.heartbeat", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an Inbound ACH Transfer is created.
         INBOUND_ACH_TRANSFER_CREATED =
@@ -530,17 +473,11 @@ module Increase
 
         # Occurs whenever a Lockbox is created.
         LOCKBOX_CREATED =
-          T.let(
-            :"lockbox.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"lockbox.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever a Lockbox is updated.
         LOCKBOX_UPDATED =
-          T.let(
-            :"lockbox.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"lockbox.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever an OAuth Connection is created.
         OAUTH_CONNECTION_CREATED =
@@ -656,17 +593,11 @@ module Increase
 
         # Occurs whenever a Program is created.
         PROGRAM_CREATED =
-          T.let(
-            :"program.created",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"program.created", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever a Program is updated.
         PROGRAM_UPDATED =
-          T.let(
-            :"program.updated",
-            Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-          )
+          T.let(:"program.updated", Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol)
 
         # Occurs whenever a Proof of Authorization Request is created.
         PROOF_OF_AUTHORIZATION_REQUEST_CREATED =
@@ -794,15 +725,8 @@ module Increase
             Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
           )
 
-        sig do
-          override.returns(
-            T::Array[
-              Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol
-            ]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::EventSubscriptionCreateParams::SelectedEventCategory::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

@@ -3,10 +3,7 @@
 module Increase
   module Models
     class BookkeepingEntry < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::BookkeepingEntry, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::BookkeepingEntry, Increase::Internal::AnyHash) }
 
       # The entry identifier.
       sig { returns(String) }
@@ -45,63 +42,53 @@ module Increase
           created_at: Time,
           entry_set_id: String,
           type: Increase::BookkeepingEntry::Type::OrSymbol
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The entry identifier.
-        id:,
+      id:,
         # The identifier for the Account the Entry belongs to.
-        account_id:,
+      account_id:,
         # The Entry amount in the minor unit of its currency. For dollars, for example,
-        # this is cents.
-        amount:,
+      # this is cents.
+      amount:,
         # When the entry set was created.
-        created_at:,
+      created_at:,
         # The identifier for the Account the Entry belongs to.
-        entry_set_id:,
+      entry_set_id:,
         # A constant representing the object's type. For this resource it will always be
-        # `bookkeeping_entry`.
-        type:
-      )
-      end
+      # `bookkeeping_entry`.
+      type:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            amount: Integer,
-            created_at: Time,
-            entry_set_id: String,
-            type: Increase::BookkeepingEntry::Type::TaggedSymbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              amount: Integer,
+              created_at: Time,
+              entry_set_id: String,
+              type: Increase::BookkeepingEntry::Type::TaggedSymbol
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A constant representing the object's type. For this resource it will always be
       # `bookkeeping_entry`.
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::BookkeepingEntry::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::BookkeepingEntry::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        BOOKKEEPING_ENTRY =
-          T.let(
-            :bookkeeping_entry,
-            Increase::BookkeepingEntry::Type::TaggedSymbol
-          )
+        BOOKKEEPING_ENTRY = T.let(:bookkeeping_entry, Increase::BookkeepingEntry::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::BookkeepingEntry::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::BookkeepingEntry::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

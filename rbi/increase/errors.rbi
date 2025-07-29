@@ -9,8 +9,7 @@ module Increase
 
     class ConversionError < Increase::Errors::Error
       sig { returns(T.nilable(StandardError)) }
-      def cause
-      end
+      def cause; end
 
       # @api private
       sig do
@@ -20,10 +19,10 @@ module Increase
           target: T.anything,
           value: T.anything,
           cause: T.nilable(StandardError)
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
-      def self.new(on:, method:, target:, value:, cause: nil)
-      end
+      def self.new(on:, method:, target:, value:, cause: nil); end
     end
 
     class APIError < Increase::Errors::Error
@@ -45,17 +44,10 @@ module Increase
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
-      def self.new(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: nil
-      )
-      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil); end
     end
 
     class APIConnectionError < Increase::Errors::APIError
@@ -74,17 +66,10 @@ module Increase
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
-      def self.new(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: "Connection error."
-      )
-      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error."); end
     end
 
     class APITimeoutError < Increase::Errors::APIConnectionError
@@ -97,17 +82,10 @@ module Increase
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
-      def self.new(
-        url:,
-        status: nil,
-        body: nil,
-        request: nil,
-        response: nil,
-        message: "Request timed out."
-      )
-      end
+      def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out."); end
     end
 
     class APIStatusError < Increase::Errors::APIError
@@ -120,10 +98,10 @@ module Increase
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
-      def self.for(url:, status:, body:, request:, response:, message: nil)
-      end
+      def self.for(url:, status:, body:, request:, response:, message: nil); end
 
       sig { returns(Integer) }
       attr_accessor :status
@@ -137,10 +115,10 @@ module Increase
           request: NilClass,
           response: NilClass,
           message: T.nilable(String)
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
-      def self.new(url:, status:, body:, request:, response:, message: nil)
-      end
+      def self.new(url:, status:, body:, request:, response:, message: nil); end
     end
 
     class BadRequestError < Increase::Errors::APIStatusError

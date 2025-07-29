@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type account_number_create_params =
-      {
-        account_id: String,
-        name: String,
-        inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
-        inbound_checks: Increase::AccountNumberCreateParams::InboundChecks
-      }
-      & Increase::Internal::Type::request_parameters
+    type account_number_create_params = ({
+      account_id: String,
+      name: String,
+      inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
+      inbound_checks: Increase::AccountNumberCreateParams::InboundChecks
+    } & Increase::Internal::Type::request_parameters)
 
     class AccountNumberCreateParams < Increase::Internal::Type::BaseModel
       extend Increase::Internal::Type::RequestParameters::Converter
@@ -19,25 +17,15 @@ module Increase
 
       attr_reader inbound_ach: Increase::AccountNumberCreateParams::InboundACH?
 
-      def inbound_ach=: (
-        Increase::AccountNumberCreateParams::InboundACH
-      ) -> Increase::AccountNumberCreateParams::InboundACH
+      def inbound_ach=: (Increase::AccountNumberCreateParams::InboundACH) -> Increase::AccountNumberCreateParams::InboundACH
 
       attr_reader inbound_checks: Increase::AccountNumberCreateParams::InboundChecks?
 
-      def inbound_checks=: (
-        Increase::AccountNumberCreateParams::InboundChecks
-      ) -> Increase::AccountNumberCreateParams::InboundChecks
+      def inbound_checks=: (Increase::AccountNumberCreateParams::InboundChecks) -> Increase::AccountNumberCreateParams::InboundChecks
 
-      def initialize: (
-        account_id: String,
-        name: String,
-        ?inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
-        ?inbound_checks: Increase::AccountNumberCreateParams::InboundChecks,
-        ?request_options: Increase::request_opts
-      ) -> void
+      def initialize: (account_id: String, name: String, ?inbound_ach: Increase::AccountNumberCreateParams::InboundACH, ?inbound_checks: Increase::AccountNumberCreateParams::InboundChecks, ?request_options: Increase::request_opts) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         account_id: String,
         name: String,
         inbound_ach: Increase::AccountNumberCreateParams::InboundACH,
@@ -45,23 +33,16 @@ module Increase
         request_options: Increase::RequestOptions
       }
 
-      type inbound_ach =
-        {
-          debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status
-        }
+      type inbound_ach = {debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status}
 
       class InboundACH < Increase::Internal::Type::BaseModel
         attr_accessor debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status
 
-        def initialize: (
-          debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status
-        ) -> void
+        def initialize: (debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status) -> void
 
-        def to_hash: -> {
-          debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status
-        }
+        def to_hash: () -> {debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::debit_status}
 
-        type debit_status = :allowed | :blocked
+        type debit_status = (:allowed | :blocked)
 
         module DebitStatus
           extend Increase::Internal::Type::Enum
@@ -72,27 +53,20 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED: :blocked
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundACH::debit_status]
+          def self?.values: () -> ::Array[Increase::Models::AccountNumberCreateParams::InboundACH::debit_status]
         end
       end
 
-      type inbound_checks =
-        {
-          status: Increase::Models::AccountNumberCreateParams::InboundChecks::status
-        }
+      type inbound_checks = {status: Increase::Models::AccountNumberCreateParams::InboundChecks::status}
 
       class InboundChecks < Increase::Internal::Type::BaseModel
         attr_accessor status: Increase::Models::AccountNumberCreateParams::InboundChecks::status
 
-        def initialize: (
-          status: Increase::Models::AccountNumberCreateParams::InboundChecks::status
-        ) -> void
+        def initialize: (status: Increase::Models::AccountNumberCreateParams::InboundChecks::status) -> void
 
-        def to_hash: -> {
-          status: Increase::Models::AccountNumberCreateParams::InboundChecks::status
-        }
+        def to_hash: () -> {status: Increase::Models::AccountNumberCreateParams::InboundChecks::status}
 
-        type status = :allowed | :check_transfers_only
+        type status = (:allowed | :check_transfers_only)
 
         module Status
           extend Increase::Internal::Type::Enum
@@ -103,7 +77,7 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY: :check_transfers_only
 
-          def self?.values: -> ::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::status]
+          def self?.values: () -> ::Array[Increase::Models::AccountNumberCreateParams::InboundChecks::status]
         end
       end
     end

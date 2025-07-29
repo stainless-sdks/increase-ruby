@@ -1,18 +1,17 @@
 module Increase
   module Models
-    type external_account =
-      {
-        id: String,
-        account_holder: Increase::Models::ExternalAccount::account_holder,
-        account_number: String,
-        created_at: Time,
-        description: String,
-        funding: Increase::Models::ExternalAccount::funding,
-        idempotency_key: String?,
-        routing_number: String,
-        status: Increase::Models::ExternalAccount::status,
-        type: Increase::Models::ExternalAccount::type_
-      }
+    type external_account = {
+      id: String,
+      account_holder: Increase::Models::ExternalAccount::account_holder,
+      account_number: String,
+      created_at: Time,
+      description: String,
+      funding: Increase::Models::ExternalAccount::funding,
+      idempotency_key: String?,
+      routing_number: String,
+      status: Increase::Models::ExternalAccount::status,
+      type: Increase::Models::ExternalAccount::type_
+    }
 
     class ExternalAccount < Increase::Internal::Type::BaseModel
       attr_accessor id: String
@@ -35,20 +34,9 @@ module Increase
 
       attr_accessor type: Increase::Models::ExternalAccount::type_
 
-      def initialize: (
-        id: String,
-        account_holder: Increase::Models::ExternalAccount::account_holder,
-        account_number: String,
-        created_at: Time,
-        description: String,
-        funding: Increase::Models::ExternalAccount::funding,
-        idempotency_key: String?,
-        routing_number: String,
-        status: Increase::Models::ExternalAccount::status,
-        type: Increase::Models::ExternalAccount::type_
-      ) -> void
+      def initialize: (id: String, account_holder: Increase::Models::ExternalAccount::account_holder, account_number: String, created_at: Time, description: String, funding: Increase::Models::ExternalAccount::funding, idempotency_key: String?, routing_number: String, status: Increase::Models::ExternalAccount::status, type: Increase::Models::ExternalAccount::type_) -> void
 
-      def to_hash: -> {
+      def to_hash: () -> {
         id: String,
         account_holder: Increase::Models::ExternalAccount::account_holder,
         account_number: String,
@@ -61,7 +49,7 @@ module Increase
         type: Increase::Models::ExternalAccount::type_
       }
 
-      type account_holder = :business | :individual | :unknown
+      type account_holder = (:business | :individual | :unknown)
 
       module AccountHolder
         extend Increase::Internal::Type::Enum
@@ -75,10 +63,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::account_holder]
+        def self?.values: () -> ::Array[Increase::Models::ExternalAccount::account_holder]
       end
 
-      type funding = :checking | :savings | :other
+      type funding = (:checking | :savings | :other)
 
       module Funding
         extend Increase::Internal::Type::Enum
@@ -92,10 +80,10 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::funding]
+        def self?.values: () -> ::Array[Increase::Models::ExternalAccount::funding]
       end
 
-      type status = :active | :archived
+      type status = (:active | :archived)
 
       module Status
         extend Increase::Internal::Type::Enum
@@ -106,7 +94,7 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED: :archived
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::status]
+        def self?.values: () -> ::Array[Increase::Models::ExternalAccount::status]
       end
 
       type type_ = :external_account
@@ -116,7 +104,7 @@ module Increase
 
         EXTERNAL_ACCOUNT: :external_account
 
-        def self?.values: -> ::Array[Increase::Models::ExternalAccount::type_]
+        def self?.values: () -> ::Array[Increase::Models::ExternalAccount::type_]
       end
     end
   end

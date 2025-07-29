@@ -3,10 +3,7 @@
 module Increase
   module Models
     class WireDrawdownRequest < Increase::Internal::Type::BaseModel
-      OrHash =
-        T.type_alias do
-          T.any(Increase::WireDrawdownRequest, Increase::Internal::AnyHash)
-        end
+      OrHash = T.type_alias { T.any(Increase::WireDrawdownRequest, Increase::Internal::AnyHash) }
 
       # The Wire drawdown request identifier.
       sig { returns(String) }
@@ -30,12 +27,7 @@ module Increase
       sig { returns(Increase::WireDrawdownRequest::CreditorAddress) }
       attr_reader :creditor_address
 
-      sig do
-        params(
-          creditor_address:
-            Increase::WireDrawdownRequest::CreditorAddress::OrHash
-        ).void
-      end
+      sig { params(creditor_address: Increase::WireDrawdownRequest::CreditorAddress::OrHash).void }
       attr_writer :creditor_address
 
       # The creditor's name.
@@ -55,11 +47,7 @@ module Increase
       sig { returns(Increase::WireDrawdownRequest::DebtorAddress) }
       attr_reader :debtor_address
 
-      sig do
-        params(
-          debtor_address: Increase::WireDrawdownRequest::DebtorAddress::OrHash
-        ).void
-      end
+      sig { params(debtor_address: Increase::WireDrawdownRequest::DebtorAddress::OrHash).void }
       attr_writer :debtor_address
 
       # The debtor's name.
@@ -90,12 +78,7 @@ module Increase
       sig { returns(T.nilable(Increase::WireDrawdownRequest::Submission)) }
       attr_reader :submission
 
-      sig do
-        params(
-          submission:
-            T.nilable(Increase::WireDrawdownRequest::Submission::OrHash)
-        ).void
-      end
+      sig { params(submission: T.nilable(Increase::WireDrawdownRequest::Submission::OrHash)).void }
       attr_writer :submission
 
       # A constant representing the object's type. For this resource it will always be
@@ -119,8 +102,7 @@ module Increase
           account_number_id: String,
           amount: Integer,
           created_at: Time,
-          creditor_address:
-            Increase::WireDrawdownRequest::CreditorAddress::OrHash,
+          creditor_address: Increase::WireDrawdownRequest::CreditorAddress::OrHash,
           creditor_name: String,
           currency: String,
           debtor_account_number: String,
@@ -130,92 +112,86 @@ module Increase
           fulfillment_inbound_wire_transfer_id: T.nilable(String),
           idempotency_key: T.nilable(String),
           status: Increase::WireDrawdownRequest::Status::OrSymbol,
-          submission:
-            T.nilable(Increase::WireDrawdownRequest::Submission::OrHash),
+          submission: T.nilable(Increase::WireDrawdownRequest::Submission::OrHash),
           type: Increase::WireDrawdownRequest::Type::OrSymbol,
           unstructured_remittance_information: String
-        ).returns(T.attached_class)
+        )
+          .returns(T.attached_class)
       end
       def self.new(
         # The Wire drawdown request identifier.
-        id:,
+      id:,
         # The Account Number to which the debtor—the recipient of this request—is being
-        # requested to send funds.
-        account_number_id:,
+      # requested to send funds.
+      account_number_id:,
         # The amount being requested in cents.
-        amount:,
+      amount:,
         # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        # the wire drawdown request was created.
-        created_at:,
+      # the wire drawdown request was created.
+      created_at:,
         # The creditor's address.
-        creditor_address:,
+      creditor_address:,
         # The creditor's name.
-        creditor_name:,
+      creditor_name:,
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-        # requested. Will always be "USD".
-        currency:,
+      # requested. Will always be "USD".
+      currency:,
         # The debtor's account number.
-        debtor_account_number:,
+      debtor_account_number:,
         # The debtor's address.
-        debtor_address:,
+      debtor_address:,
         # The debtor's name.
-        debtor_name:,
+      debtor_name:,
         # The debtor's routing number.
-        debtor_routing_number:,
+      debtor_routing_number:,
         # If the recipient fulfills the drawdown request by sending funds, then this will
-        # be the identifier of the corresponding Transaction.
-        fulfillment_inbound_wire_transfer_id:,
+      # be the identifier of the corresponding Transaction.
+      fulfillment_inbound_wire_transfer_id:,
         # The idempotency key you chose for this object. This value is unique across
-        # Increase and is used to ensure that a request is only processed once. Learn more
-        # about [idempotency](https://increase.com/documentation/idempotency-keys).
-        idempotency_key:,
+      # Increase and is used to ensure that a request is only processed once. Learn more
+      # about [idempotency](https://increase.com/documentation/idempotency-keys).
+      idempotency_key:,
         # The lifecycle status of the drawdown request.
-        status:,
+      status:,
         # After the drawdown request is submitted to Fedwire, this will contain
-        # supplemental details.
-        submission:,
+      # supplemental details.
+      submission:,
         # A constant representing the object's type. For this resource it will always be
-        # `wire_drawdown_request`.
-        type:,
+      # `wire_drawdown_request`.
+      type:,
         # Remittance information the debtor will see as part of the drawdown request.
-        unstructured_remittance_information:
-      )
-      end
+      unstructured_remittance_information:
+      ); end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_number_id: String,
-            amount: Integer,
-            created_at: Time,
-            creditor_address: Increase::WireDrawdownRequest::CreditorAddress,
-            creditor_name: String,
-            currency: String,
-            debtor_account_number: String,
-            debtor_address: Increase::WireDrawdownRequest::DebtorAddress,
-            debtor_name: String,
-            debtor_routing_number: String,
-            fulfillment_inbound_wire_transfer_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            status: Increase::WireDrawdownRequest::Status::TaggedSymbol,
-            submission: T.nilable(Increase::WireDrawdownRequest::Submission),
-            type: Increase::WireDrawdownRequest::Type::TaggedSymbol,
-            unstructured_remittance_information: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_number_id: String,
+              amount: Integer,
+              created_at: Time,
+              creditor_address: Increase::WireDrawdownRequest::CreditorAddress,
+              creditor_name: String,
+              currency: String,
+              debtor_account_number: String,
+              debtor_address: Increase::WireDrawdownRequest::DebtorAddress,
+              debtor_name: String,
+              debtor_routing_number: String,
+              fulfillment_inbound_wire_transfer_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              status: Increase::WireDrawdownRequest::Status::TaggedSymbol,
+              submission: T.nilable(Increase::WireDrawdownRequest::Submission),
+              type: Increase::WireDrawdownRequest::Type::TaggedSymbol,
+              unstructured_remittance_information: String
+            }
+          )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class CreditorAddress < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::WireDrawdownRequest::CreditorAddress,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::WireDrawdownRequest::CreditorAddress, Increase::Internal::AnyHash) }
 
         # The city, district, town, or village of the address.
         sig { returns(String) }
@@ -252,50 +228,45 @@ module Increase
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The city, district, town, or village of the address.
-          city:,
+        city:,
           # The two-letter
-          # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
-          # the country of the address.
-          country:,
+        # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+        # the country of the address.
+        country:,
           # The first line of the address.
-          line1:,
+        line1:,
           # The second line of the address.
-          line2:,
+        line2:,
           # The ZIP code of the address.
-          postal_code:,
+        postal_code:,
           # The address state.
-          state:
-        )
-        end
+        state:
+        ); end
 
         sig do
-          override.returns(
-            {
-              city: String,
-              country: String,
-              line1: String,
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: String,
+                country: String,
+                line1: String,
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class DebtorAddress < Increase::Internal::Type::BaseModel
         OrHash =
-          T.type_alias do
-            T.any(
-              Increase::WireDrawdownRequest::DebtorAddress,
-              Increase::Internal::AnyHash
-            )
-          end
+          T.type_alias { T.any(Increase::WireDrawdownRequest::DebtorAddress, Increase::Internal::AnyHash) }
 
         # The city, district, town, or village of the address.
         sig { returns(String) }
@@ -332,89 +303,67 @@ module Increase
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).returns(T.attached_class)
+          )
+            .returns(T.attached_class)
         end
         def self.new(
           # The city, district, town, or village of the address.
-          city:,
+        city:,
           # The two-letter
-          # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
-          # the country of the address.
-          country:,
+        # [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+        # the country of the address.
+        country:,
           # The first line of the address.
-          line1:,
+        line1:,
           # The second line of the address.
-          line2:,
+        line2:,
           # The ZIP code of the address.
-          postal_code:,
+        postal_code:,
           # The address state.
-          state:
-        )
-        end
+        state:
+        ); end
 
         sig do
-          override.returns(
-            {
-              city: String,
-              country: String,
-              line1: String,
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: String,
+                country: String,
+                line1: String,
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
-        def to_hash
-        end
+        def to_hash; end
       end
 
       # The lifecycle status of the drawdown request.
       module Status
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::WireDrawdownRequest::Status) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::WireDrawdownRequest::Status) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         # The drawdown request is queued to be submitted to Fedwire.
-        PENDING_SUBMISSION =
-          T.let(
-            :pending_submission,
-            Increase::WireDrawdownRequest::Status::TaggedSymbol
-          )
+        PENDING_SUBMISSION = T.let(:pending_submission, Increase::WireDrawdownRequest::Status::TaggedSymbol)
 
         # The drawdown request has been sent and the recipient should respond in some way.
-        PENDING_RESPONSE =
-          T.let(
-            :pending_response,
-            Increase::WireDrawdownRequest::Status::TaggedSymbol
-          )
+        PENDING_RESPONSE = T.let(:pending_response, Increase::WireDrawdownRequest::Status::TaggedSymbol)
 
         # The drawdown request has been fulfilled by the recipient.
-        FULFILLED =
-          T.let(:fulfilled, Increase::WireDrawdownRequest::Status::TaggedSymbol)
+        FULFILLED = T.let(:fulfilled, Increase::WireDrawdownRequest::Status::TaggedSymbol)
 
         # The drawdown request has been refused by the recipient.
-        REFUSED =
-          T.let(:refused, Increase::WireDrawdownRequest::Status::TaggedSymbol)
+        REFUSED = T.let(:refused, Increase::WireDrawdownRequest::Status::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::WireDrawdownRequest::Status::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::WireDrawdownRequest::Status::TaggedSymbol]) }
+        def self.values; end
       end
 
       class Submission < Increase::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              Increase::WireDrawdownRequest::Submission,
-              Increase::Internal::AnyHash
-            )
-          end
+        OrHash = T.type_alias { T.any(Increase::WireDrawdownRequest::Submission, Increase::Internal::AnyHash) }
 
         # The input message accountability data (IMAD) uniquely identifying the submission
         # with Fedwire.
@@ -423,21 +372,15 @@ module Increase
 
         # After the drawdown request is submitted to Fedwire, this will contain
         # supplemental details.
-        sig do
-          params(input_message_accountability_data: String).returns(
-            T.attached_class
-          )
-        end
+        sig { params(input_message_accountability_data: String).returns(T.attached_class) }
         def self.new(
           # The input message accountability data (IMAD) uniquely identifying the submission
-          # with Fedwire.
-          input_message_accountability_data:
-        )
-        end
+        # with Fedwire.
+        input_message_accountability_data:
+        ); end
 
-        sig { override.returns({ input_message_accountability_data: String }) }
-        def to_hash
-        end
+        sig { override.returns({input_message_accountability_data: String}) }
+        def to_hash; end
       end
 
       # A constant representing the object's type. For this resource it will always be
@@ -445,23 +388,13 @@ module Increase
       module Type
         extend Increase::Internal::Type::Enum
 
-        TaggedSymbol =
-          T.type_alias { T.all(Symbol, Increase::WireDrawdownRequest::Type) }
+        TaggedSymbol = T.type_alias { T.all(Symbol, Increase::WireDrawdownRequest::Type) }
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        WIRE_DRAWDOWN_REQUEST =
-          T.let(
-            :wire_drawdown_request,
-            Increase::WireDrawdownRequest::Type::TaggedSymbol
-          )
+        WIRE_DRAWDOWN_REQUEST = T.let(:wire_drawdown_request, Increase::WireDrawdownRequest::Type::TaggedSymbol)
 
-        sig do
-          override.returns(
-            T::Array[Increase::WireDrawdownRequest::Type::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
+        sig { override.returns(T::Array[Increase::WireDrawdownRequest::Type::TaggedSymbol]) }
+        def self.values; end
       end
     end
   end

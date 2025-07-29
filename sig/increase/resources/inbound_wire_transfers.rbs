@@ -1,27 +1,11 @@
 module Increase
   module Resources
     class InboundWireTransfers
-      def retrieve: (
-        String inbound_wire_transfer_id,
-        ?request_options: Increase::request_opts
-      ) -> Increase::InboundWireTransfer
+      def retrieve: (String inbound_wire_transfer_id, ?request_options: Increase::request_opts) -> Increase::InboundWireTransfer
 
-      def list: (
-        ?account_id: String,
-        ?account_number_id: String,
-        ?created_at: Increase::InboundWireTransferListParams::CreatedAt,
-        ?cursor: String,
-        ?limit: Integer,
-        ?status: Increase::InboundWireTransferListParams::Status,
-        ?wire_drawdown_request_id: String,
-        ?request_options: Increase::request_opts
-      ) -> Increase::Internal::Page[Increase::InboundWireTransfer]
+      def list: (?account_id: String, ?account_number_id: String, ?created_at: Increase::InboundWireTransferListParams::CreatedAt, ?cursor: String, ?limit: Integer, ?status: Increase::InboundWireTransferListParams::Status, ?wire_drawdown_request_id: String, ?request_options: Increase::request_opts) -> Increase::Internal::Page[Increase::InboundWireTransfer]
 
-      def reverse: (
-        String inbound_wire_transfer_id,
-        reason: Increase::Models::InboundWireTransferReverseParams::reason,
-        ?request_options: Increase::request_opts
-      ) -> Increase::InboundWireTransfer
+      def reverse: (String inbound_wire_transfer_id, reason: Increase::Models::InboundWireTransferReverseParams::reason, ?request_options: Increase::request_opts) -> Increase::InboundWireTransfer
 
       def initialize: (client: Increase::Client) -> void
     end

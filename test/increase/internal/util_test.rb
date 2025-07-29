@@ -88,7 +88,7 @@ class Increase::Test::UtilDataHandlingTest < Minitest::Test
 
       Increase::Internal::Util.dig(Object, 1) => nil
       Increase::Internal::Util.dig([], 1.0) { 2 } => 2
-      Increase::Internal::Util.dig([], ->(_) { 2 }) => 2
+      Increase::Internal::Util.dig([], -> (_) { 2 }) => 2
       Increase::Internal::Util.dig([1], -> { _1 in [1] }) => true
     end
   end
@@ -164,7 +164,7 @@ class Increase::Test::RegexMatchTest < Minitest::Test
       "application/json" => true,
       "application/jsonl" => false,
       "application/vnd.github.v3+json" => true,
-      "application/vnd.api+json" => true
+      "application/vnd.api+json" => true,
     }
     cases.each do |header, verdict|
       assert_pattern do
@@ -180,7 +180,7 @@ class Increase::Test::RegexMatchTest < Minitest::Test
       "application/jsonl" => true,
       "application/x-jsonl" => true,
       "application/json" => false,
-      "application/vnd.api+json" => false
+      "application/vnd.api+json" => false,
     }
     cases.each do |header, verdict|
       assert_pattern do
@@ -242,11 +242,7 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
       {strio: StringIO.new("a")} => {"strio" => "a"},
       {strio: Increase::FilePart.new("a")} => {"strio" => "a"},
       {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class Increase/ }},
-      {pathname: Increase::FilePart.new(Pathname(__FILE__))} => {
-        "pathname" => -> {
-          _1.read in /^class Increase/
-        }
-      }
+      {pathname: Increase::FilePart.new(Pathname(__FILE__))} => {"pathname" => -> { _1.read in /^class Increase/ }}
     }
     cases.each do |body, testcase|
       encoded = Increase::Internal::Util.encode_content(headers, body)
@@ -419,7 +415,7 @@ class Increase::Test::UtilContentDecodingTest < Minitest::Test
       "charset=uTf-8 application/json; " => Encoding::UTF_8,
       "charset=UTF-8; application/json; " => Encoding::UTF_8,
       "charset=ISO-8859-1 ;application/json; " => Encoding::ISO_8859_1,
-      "charset=EUC-KR ;application/json; " => Encoding::EUC_KR
+      "charset=EUC-KR ;application/json; " => Encoding::EUC_KR,
     }
     text = String.new.force_encoding(Encoding::BINARY)
     cases.each do |content_type, encoding|
@@ -581,9 +577,9 @@ class Increase::Test::UtilSseTest < Minitest::Test
       },
       "multibyte unicode" => {
         [
-          "data: \u1F62E\u200D\u1F4A8\n"
+          "data: \u1F62E\u200D\u1F4A8\n",
         ] => [
-          {data: "\u1F62E\u200D\u1F4A8\n"}
+          {data: "\u1F62E\u200D\u1F4A8\n"},
         ]
       }
     }

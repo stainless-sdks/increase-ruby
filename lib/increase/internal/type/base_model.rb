@@ -63,26 +63,12 @@ module Increase
             setter = :"#{name_sym}="
             api_name = info.fetch(:api_name, name_sym)
             nilable = info.fetch(:nil?, false)
-            const = if required && !nilable
-              info.fetch(
-                :const,
-                Increase::Internal::OMIT
-              )
-            else
-              Increase::Internal::OMIT
-            end
+            const = required && !nilable ? info.fetch(:const, Increase::Internal::OMIT) : Increase::Internal::OMIT
 
             [name_sym, setter].each { undef_method(_1) } if known_fields.key?(name_sym)
 
             known_fields[name_sym] =
-              {
-                mode: @mode,
-                api_name: api_name,
-                required: required,
-                nilable: nilable,
-                const: const,
-                type_fn: type_fn
-              }
+              {mode: @mode, api_name: api_name, required: required, nilable: nilable, const: const, type_fn: type_fn}
 
             define_method(setter) do |value|
               target = type_fn.call
@@ -108,32 +94,14 @@ module Increase
               in true | false if Increase::Internal::Type::Converter === target
                 @data.fetch(name_sym)
               in ::StandardError => e
-                raise Increase::Errors::ConversionError.new(
-                  on: self.class,
-                  method: __method__,
-                  target: target,
-                  value: @data.fetch(name_sym),
-                  cause: e
-                )
+                raise Increase::Errors::ConversionError.new(on: self.class, method: __method__, target: target, value: @data.fetch(name_sym), cause: e)
               else
                 Kernel.then do
                   value = @data.fetch(name_sym) { const == Increase::Internal::OMIT ? nil : const }
                   state = Increase::Internal::Type::Converter.new_coerce_state(translate_names: false)
-                  if (nilable || !required) && value.nil?
-                    nil
-                  else
-                    Increase::Internal::Type::Converter.coerce(
-                      target, value, state: state
-                    )
-                  end
+                  (nilable || !required) && value.nil? ? nil : Increase::Internal::Type::Converter.coerce(target, value, state: state)
                 rescue StandardError => e
-                  raise Increase::Errors::ConversionError.new(
-                    on: self.class,
-                    method: __method__,
-                    target: target,
-                    value: value,
-                    cause: e
-                  )
+                  raise Increase::Errors::ConversionError.new(on: self.class, method: __method__, target: target, value: value, cause: e)
                 end
               end
             end
@@ -187,9 +155,9 @@ module Increase
           # @param blk [Proc]
           private def request_only(&blk)
             @mode = :dump
-            blk.call
-          ensure
-            @mode = nil
+              blk.call
+            ensure
+              @mode = nil
           end
 
           # @api private
@@ -199,9 +167,9 @@ module Increase
           # @param blk [Proc]
           private def response_only(&blk)
             @mode = :coerce
-            blk.call
-          ensure
-            @mode = nil
+              blk.call
+            ensure
+              @mode = nil
           end
 
           # @api public
@@ -210,7 +178,9 @@ module Increase
           #
           # @return [Boolean]
           def ==(other)
+            # rubocop:disable Layout/LineLength
             other.is_a?(Class) && other <= Increase::Internal::Type::BaseModel && other.fields == fields
+            # rubocop:enable Layout/LineLength
           end
 
           # @api public
@@ -322,7 +292,7 @@ module Increase
           # @return [Hash{Object=>Object}, Object]
           def dump(value, state:)
             unless (coerced = Increase::Internal::Util.coerce_hash(value)).is_a?(Hash)
-              return super
+              return super(value, state: state)
             end
 
             acc = {}
@@ -498,6 +468,7 @@ module Increase
           #
           # @return [String]
           def inspect(depth: 0)
+            # rubocop:disable Layout/LineLength
             return super() if depth.positive?
 
             depth = depth.succ
@@ -511,6 +482,7 @@ module Increase
             end
 
             "#{name}[#{deferred.inspect}]"
+            # rubocop:enable Layout/LineLength
           end
         end
 

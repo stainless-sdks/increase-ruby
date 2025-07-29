@@ -1,13 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type program_create_params =
-        {
-          name: String,
-          bank: Increase::Models::Simulations::ProgramCreateParams::bank,
-          reserve_account_id: String
-        }
-        & Increase::Internal::Type::request_parameters
+      type program_create_params = ({name: String, bank: Increase::Models::Simulations::ProgramCreateParams::bank, reserve_account_id: String} & Increase::Internal::Type::request_parameters)
 
       class ProgramCreateParams < Increase::Internal::Type::BaseModel
         extend Increase::Internal::Type::RequestParameters::Converter
@@ -17,34 +11,22 @@ module Increase
 
         attr_reader bank: Increase::Models::Simulations::ProgramCreateParams::bank?
 
-        def bank=: (
-          Increase::Models::Simulations::ProgramCreateParams::bank
-        ) -> Increase::Models::Simulations::ProgramCreateParams::bank
+        def bank=: (Increase::Models::Simulations::ProgramCreateParams::bank) -> Increase::Models::Simulations::ProgramCreateParams::bank
 
         attr_reader reserve_account_id: String?
 
         def reserve_account_id=: (String) -> String
 
-        def initialize: (
-          name: String,
-          ?bank: Increase::Models::Simulations::ProgramCreateParams::bank,
-          ?reserve_account_id: String,
-          ?request_options: Increase::request_opts
-        ) -> void
+        def initialize: (name: String, ?bank: Increase::Models::Simulations::ProgramCreateParams::bank, ?reserve_account_id: String, ?request_options: Increase::request_opts) -> void
 
-        def to_hash: -> {
+        def to_hash: () -> {
           name: String,
           bank: Increase::Models::Simulations::ProgramCreateParams::bank,
           reserve_account_id: String,
           request_options: Increase::RequestOptions
         }
 
-        type bank =
-          :blue_ridge_bank
-          | :core_bank
-          | :first_internet_bank
-          | :global_innovations_bank
-          | :grasshopper_bank
+        type bank = (:blue_ridge_bank | :core_bank | :first_internet_bank | :global_innovations_bank | :grasshopper_bank)
 
         module Bank
           extend Increase::Internal::Type::Enum
@@ -64,7 +46,7 @@ module Increase
           # Grasshopper Bank
           GRASSHOPPER_BANK: :grasshopper_bank
 
-          def self?.values: -> ::Array[Increase::Models::Simulations::ProgramCreateParams::bank]
+          def self?.values: () -> ::Array[Increase::Models::Simulations::ProgramCreateParams::bank]
         end
       end
     end

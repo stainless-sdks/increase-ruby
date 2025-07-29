@@ -119,9 +119,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::InboundWireTransferListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::Internal::Type::ArrayOf[enum: Increase::InboundWireTransferListParams::Status::In]
-                 },
+                 -> { Increase::Internal::Type::ArrayOf[enum: Increase::InboundWireTransferListParams::Status::In] },
                  api_name: :in
 
         # @!method initialize(in_: nil)
