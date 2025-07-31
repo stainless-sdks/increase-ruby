@@ -213,7 +213,7 @@ module Increase
             send_retry_header: T::Boolean
           ).returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
         end
-        def send_request(
+        private def send_request(
           request,
           redirect_count:,
           retry_count:,
